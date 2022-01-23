@@ -29,8 +29,6 @@ public class FPSControllerCC : MonoBehaviour
     private WaitForSeconds ws = new WaitForSeconds(0.1f);
     [SerializeField] private ParticleSystem forwardDashParticle;
     [SerializeField] private ParticleSystem backwardDashParticle;
-    [SerializeField] private ParticleSystem rightDashParticle;
-    [SerializeField] private ParticleSystem leftDashParticle;
     private float horizontalInput, verticalInput;
 
     void Start()
@@ -68,7 +66,7 @@ public class FPSControllerCC : MonoBehaviour
                 isCrouched = !isCrouched;
             }
             // Handle Dash only when running
-            if (Input.GetKeyDown(KeyCode.E) && characterController.velocity.magnitude > 5.0f)
+            if (Input.GetKeyDown(KeyCode.E) && characterController.velocity.magnitude > 5.0f && Math.Abs(tmp_Horizontal) != 1)
             {
                 tmp_CurrentSpeed = DashSpeed;
                 PlayDashParticle();
@@ -121,16 +119,6 @@ public class FPSControllerCC : MonoBehaviour
         if (verticalInput < 0 && Math.Abs(horizontalInput) <= Math.Abs(verticalInput))
         {
             backwardDashParticle.Play();
-            return;
-        }
-        if (horizontalInput > 0)
-        {
-            rightDashParticle.Play();
-            return;
-        }
-        if (horizontalInput < 0)
-        {
-            leftDashParticle.Play();
             return;
         }
         forwardDashParticle.Play();
