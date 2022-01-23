@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class FPSControllerCC : MonoBehaviour
@@ -12,6 +13,7 @@ public class FPSControllerCC : MonoBehaviour
     public float WalkSpeed;
     public float SprintingSpeedWhenCrouched;
     public float WalkSpeedWhenCrouched;
+    public float DashSpeed = 100f;
 
     [Header("Physics")]
     public float Gravity;
@@ -25,6 +27,11 @@ public class FPSControllerCC : MonoBehaviour
     private float controlerHeight;
 
     private WaitForSeconds ws = new WaitForSeconds(0.1f);
+    [SerializeField] private ParticleSystem forwardDashParticle;
+    [SerializeField] private ParticleSystem backwardDashParticle;
+    [SerializeField] private ParticleSystem rightDashParticle;
+    [SerializeField] private ParticleSystem leftDashParticle;
+    private float horizontalInput, verticalInput;
 
     void Start()
     {
@@ -43,6 +50,9 @@ public class FPSControllerCC : MonoBehaviour
         {
             var tmp_Horizontal = Input.GetAxis("Horizontal");
             var tmp_Vertical = Input.GetAxis("Vertical");
+            horizontalInput = tmp_Horizontal;
+            verticalInput = tmp_Vertical;
+
             movementDirection =
                 characterTransform.TransformDirection(new Vector3(tmp_Horizontal, 0, tmp_Vertical));
             // Handle Jump
@@ -57,11 +67,21 @@ public class FPSControllerCC : MonoBehaviour
                 StartCoroutine(DoCrouch(tmp_CurrentHeight));
                 isCrouched = !isCrouched;
             }
-            // Handle Speed change
-            if (isCrouched)
-                tmp_CurrentSpeed = Input.GetKey(KeyCode.LeftShift) ? SprintingSpeedWhenCrouched : WalkSpeedWhenCrouched;
+            // Handle Dash only when running
+            if (Input.GetKeyDown(KeyCode.E) && characterController.velocity.magnitude > 5.0f)
+            {
+                tmp_CurrentSpeed = DashSpeed;
+                PlayDashParticle();
+            }
             else
-                tmp_CurrentSpeed = Input.GetKey(KeyCode.LeftShift) ? SprintingSpeed : WalkSpeed;
+            {
+                // Handle Speed change
+                if (isCrouched)
+                    tmp_CurrentSpeed = Input.GetKey(KeyCode.LeftShift) ? SprintingSpeedWhenCrouched : WalkSpeedWhenCrouched;
+                else
+                    tmp_CurrentSpeed = Input.GetKey(KeyCode.LeftShift) ? SprintingSpeed : WalkSpeed;
+            }
+           
 
             HandleAnimation();
         }
@@ -89,5 +109,30 @@ public class FPSControllerCC : MonoBehaviour
                 Mathf.Lerp(characterController.height, targetHeight, Time.deltaTime * 20);
             yield return null;
         }
+    }
+
+    private void PlayDashParticle()
+    {
+        if (verticalInput > 0 && Math.Abs(horizontalInput) <= verticalInput)
+        {
+            forwardDashParticle.Play();
+            return;
+        }
+        if (verticalInput < 0 && Math.Abs(horizontalInput) <= Math.Abs(verticalInput))
+        {
+            backwardDashParticle.Play();
+            return;
+        }
+        if (horizontalInput > 0)
+        {
+            rightDashParticle.Play();
+            return;
+        }
+        if (horizontalInput < 0)
+        {
+            leftDashParticle.Play();
+            return;
+        }
+        forwardDashParticle.Play();
     }
 }
