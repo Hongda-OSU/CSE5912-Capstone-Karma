@@ -10,8 +10,8 @@
     -unity-text-align: middle-center;
     height: 93px;
     -unity-text-outline-color: rgba(255, 255, 255, 0.47);
-    text-shadow: 0 0 1px rgba(255, 255, 255, 0.78);
-    -unity-text-outline-width: 1px;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.78);
+    -unity-text-outline-width: 0;
     width: 319px;
     transition-duration: 0.5s;
 }
