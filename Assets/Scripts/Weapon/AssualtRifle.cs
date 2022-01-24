@@ -21,6 +21,8 @@ namespace Assets.Weapon
             MuzzleParticle.Play();
             CurrentAmmo -= 1;
             GunAnimator.Play("Fire", 0, 0);
+            FirearmsShootingAudioSource.clip = FirearmsAudioData.ShootingAudio;
+            FirearmsShootingAudioSource.Play();
             CreateBullet();
             CastingParticle.Play();
             LastFireTime = Time.time;
@@ -30,6 +32,10 @@ namespace Assets.Weapon
         {
             GunAnimator.SetLayerWeight(2, 1);
             GunAnimator.SetTrigger(CurrentAmmo > 0 ? "ReloadLeft" : "ReloadOutOf");
+
+            FirearmsReloadingAudioSource.clip = CurrentAmmo > 0 ? FirearmsAudioData.ReloadLeft : FirearmsAudioData.ReloadOutOf;
+            FirearmsReloadingAudioSource.Play();
+
             if (reloadAmmoCheckerCoroutine == null)
             {
                 reloadAmmoCheckerCoroutine = CheckReloadAmmoAnimationEnd();

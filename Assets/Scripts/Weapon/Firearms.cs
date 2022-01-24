@@ -1,3 +1,4 @@
+using Assets.Scripts.Weapon;
 using UnityEngine;
 
 namespace Assets.Weapon
@@ -20,6 +21,10 @@ namespace Assets.Weapon
         protected float LastFireTime;
         protected Animator GunAnimator;
         protected AnimatorStateInfo GunStateInfo;
+
+        public AudioSource FirearmsShootingAudioSource;
+        public AudioSource FirearmsReloadingAudioSource;
+        public FirearmsAudioData FirearmsAudioData;
 
         protected virtual void Start()
         {
