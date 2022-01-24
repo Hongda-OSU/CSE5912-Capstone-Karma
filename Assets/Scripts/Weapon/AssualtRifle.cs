@@ -6,12 +6,14 @@ namespace Assets.Weapon
     public class AssualtRifle : Firearms
     {
         private IEnumerator reloadAmmoCheckerCoroutine;
+        private IEnumerator doAimingCoroutine;
         private bool isReloading;
 
         protected override void Start()
         {
             base.Start();
             reloadAmmoCheckerCoroutine = CheckReloadAmmoAnimationEnd();
+            doAimingCoroutine = DoAim();
         }
 
         protected override void Shooting()
@@ -20,7 +22,7 @@ namespace Assets.Weapon
             if (!IsAllowShooting()) return;
             MuzzleParticle.Play();
             CurrentAmmo -= 1;
-            GunAnimator.Play("Fire", 0, 0);
+            GunAnimator.Play("Fire", isAiming ? 1: 0, 0);
             FirearmsShootingAudioSource.clip = FirearmsAudioData.ShootingAudio;
             FirearmsShootingAudioSource.Play();
             CreateBullet();
@@ -43,10 +45,27 @@ namespace Assets.Weapon
             }
             else
             {
-                StartCoroutine(reloadAmmoCheckerCoroutine);
+                StopCoroutine(reloadAmmoCheckerCoroutine);
                 reloadAmmoCheckerCoroutine = null;
                 reloadAmmoCheckerCoroutine = CheckReloadAmmoAnimationEnd();
                 StartCoroutine(reloadAmmoCheckerCoroutine);
+            }
+        }
+
+        protected override void Aim()
+        {
+            GunAnimator.SetBool("Aim", isAiming);
+            if (doAimingCoroutine == null)
+            {
+                doAimingCoroutine = DoAim();
+                StartCoroutine(doAimingCoroutine);
+            }
+            else
+            {
+                StopCoroutine(doAimingCoroutine);
+                doAimingCoroutine = null;
+                doAimingCoroutine = DoAim();
+                StartCoroutine(doAimingCoroutine);
             }
         }
 
@@ -60,6 +79,18 @@ namespace Assets.Weapon
                 isReloading = true;
                 Reload();
             }
+
+            if (Input.GetMouseButtonDown(1))
+            {
+                isAiming = true;
+                Aim();
+            }
+
+            if (Input.GetMouseButtonUp(1))
+            {
+                isAiming = false;
+                Aim();
+            }
         }
 
         protected void CreateBullet()
@@ -69,7 +100,7 @@ namespace Assets.Weapon
             bullet_Rigibody.velocity = tmp_Bullet.transform.forward * 200f;
         }
 
-        private IEnumerator CheckReloadAmmoAnimationEnd()
+        IEnumerator CheckReloadAmmoAnimationEnd()
         {
             while (true)
             {
@@ -90,6 +121,20 @@ namespace Assets.Weapon
                         yield break;
                     }
                 }
+            }
+        }
+
+        IEnumerator DoAim()
+        {
+            while (true)
+            {
+                yield return null;
+                float tmp_CurrentFOV = 0f;
+                EyeCamera.fieldOfView =
+                    Mathf.SmoothDamp(EyeCamera.fieldOfView, 
+                        isAiming ? FOVforDoubleMirror : OriginFOV, 
+                        ref tmp_CurrentFOV, 
+                        Time.deltaTime * 2);
             }
         }
     }
