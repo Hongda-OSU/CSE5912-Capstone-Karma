@@ -1,10 +1,10 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/UI%20Toolkit/Style.uss?fileID=7433441132597879392&amp;guid=db47cd8f5441f6544ba37e9fcf69dbae&amp;type=3#Style" />
+    <Style src="project://database/Assets/UI/Styles/Style.uss?fileID=7433441132597879392&amp;guid=db47cd8f5441f6544ba37e9fcf69dbae&amp;type=3#Style" />
     <ui:VisualElement name="Background" style="background-color: rgba(0, 0, 0, 0.75); flex-grow: 1; align-items: center; justify-content: space-around; position: relative;">
-        <ui:Label text="Dungeon Slayer" display-tooltip-when-elided="true" name="GameTitle" style="color: rgba(255, 255, 255, 255); -unity-font-definition: url(&apos;project://database/Assets/UI%20Toolkit/Fonts/FontAssets/Trajan%20Pro%20Regular%20SDF.asset?fileID=11400000&amp;guid=0821ecf0f29a62243aeeef3d0eb445c6&amp;type=2#Trajan Pro Regular SDF&apos;); font-size: 124px; position: relative; top: 127px; justify-content: flex-start; height: 212px; width: 1040px; -unity-text-align: middle-center; -unity-font-style: normal;" />
+        <ui:Label text="Dungeon Slayer" display-tooltip-when-elided="true" name="GameTitle" style="color: rgb(255, 255, 255); -unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/FontAssets/Trajan%20Pro%20Regular%20SDF.asset?fileID=11400000&amp;guid=0821ecf0f29a62243aeeef3d0eb445c6&amp;type=2#Trajan Pro Regular SDF&apos;); font-size: 124px; position: relative; top: 127px; justify-content: flex-start; height: 212px; width: 1040px; -unity-text-align: middle-center; -unity-font-style: normal; -unity-text-outline-width: 1px; -unity-text-outline-color: rgba(255, 255, 255, 0.47); text-shadow: 0 0 1px rgba(255, 255, 255, 0.78);" />
         <ui:GroupBox name="Buttons" style="justify-content: space-around; height: 362px; width: 326px;">
-            <ui:Button text="Start Game" display-tooltip-when-elided="true" name="StartGame" class="Button" style="top: auto; position: relative;" />
-            <ui:Button text="Options" display-tooltip-when-elided="true" name="Options" class="Button" style="top: auto; bottom: auto; -unity-text-align: middle-center; height: 59px; width: 321px;" />
+            <ui:Button text="Start Game" display-tooltip-when-elided="true" name="StartGame" class="Button" />
+            <ui:Button text="Options" display-tooltip-when-elided="true" name="Options" class="Button" />
             <ui:Button text="Quit Game" display-tooltip-when-elided="true" name="QuitGame" class="Button" />
         </ui:GroupBox>
     </ui:VisualElement>
