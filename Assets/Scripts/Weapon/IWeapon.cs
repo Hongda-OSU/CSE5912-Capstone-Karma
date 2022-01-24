@@ -1,5 +1,3 @@
-
-
 namespace Assets.Weapon
 {
     public interface IWeapon
