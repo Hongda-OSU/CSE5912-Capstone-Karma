@@ -13,7 +13,7 @@ public class FPSControllerCC : MonoBehaviour
     public float WalkSpeed;
     public float SprintingSpeedWhenCrouched;
     public float WalkSpeedWhenCrouched;
-    public float DashSpeed = 100f;
+    public float DashSpeed = 1000f;
 
     [Header("Physics")]
     public float Gravity;
