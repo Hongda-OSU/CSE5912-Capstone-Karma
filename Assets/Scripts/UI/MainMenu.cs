@@ -6,26 +6,29 @@ using UnityEngine.SceneManagement;
 
 namespace CSE5912.PolyGamers
 {
-    public class MainMenu : MonoBehaviour
+    public class MainMenu : UI
     {
         [SerializeField] private string gameSceneName;
+        [SerializeField] private GameObject options;
 
+        private Label gameNameText;
         private Button startGameButton;
         private Button optionsButton;
         private Button quitGameButton;
 
         private void Start()
         {
-            VisualElement root = GetComponent<UIDocument>().rootVisualElement;
+            Initialize();
 
-            // set up buttons
-            startGameButton = root.Q<Button>("StartGame");
+            gameNameText = background.Q<Label>("GameName");
+
+            startGameButton = background.Q<Button>("StartGame");
             startGameButton.clicked += StartGameButtonPressed;
 
-            optionsButton = root.Q<Button>("Options");
+            optionsButton = background.Q<Button>("Options");
             optionsButton.clicked += OptionsButtonPressed;
 
-            quitGameButton = root.Q<Button>("QuitGame");
+            quitGameButton = background.Q<Button>("QuitGame");
             quitGameButton.clicked += QuitGameButtonPressed;
         }
         
@@ -38,7 +41,7 @@ namespace CSE5912.PolyGamers
         // open option menu
         private void OptionsButtonPressed()
         {
-            //todo
+            StartCoroutine(LoadUI(options)); 
         }
 
         // quit game
