@@ -11,7 +11,6 @@ namespace CSE5912.PolyGamers
         [SerializeField] private string gameSceneName;
         [SerializeField] private GameObject options;
 
-        private Label gameNameText;
         private Button startGameButton;
         private Button optionsButton;
         private Button quitGameButton;
@@ -19,8 +18,6 @@ namespace CSE5912.PolyGamers
         private void Start()
         {
             Initialize();
-
-            gameNameText = background.Q<Label>("GameName");
 
             startGameButton = background.Q<Button>("StartGame");
             startGameButton.clicked += StartGameButtonPressed;
@@ -41,7 +38,7 @@ namespace CSE5912.PolyGamers
         // open option menu
         private void OptionsButtonPressed()
         {
-            StartCoroutine(LoadUI(options)); 
+            LoadUI(options); 
         }
 
         // quit game

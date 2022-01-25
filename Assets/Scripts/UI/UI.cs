@@ -13,6 +13,8 @@ namespace CSE5912.PolyGamers
         protected VisualElement root;
         protected VisualElement background;
 
+        protected List<Button> buttonList;
+
         public void SetFadingTime(float fadingTime)
         {
             this.fadingTime = fadingTime;
@@ -22,51 +24,75 @@ namespace CSE5912.PolyGamers
         {
             root = GetComponent<UIDocument>().rootVisualElement;
             background = root.Q<VisualElement>("Background");
+
+            buttonList = new List<Button>();
+            root.Query<Button>().ForEach(button => buttonList.Add(button));
+        }
+
+        protected void SetButtonsInteractable(bool isInteractable)
+        {
+            foreach (Button button in buttonList)
+            {
+                if (isInteractable)
+                    button.pickingMode = PickingMode.Position;
+                else
+                    button.pickingMode = PickingMode.Ignore;
+            }
+
+        }
+        protected void LoadUI(GameObject target)
+        {
+            StartCoroutine(FadeTo(target));
         }
 
         private IEnumerator FadeIn()
         {
-            float time = 0f;
+            SetButtonsInteractable(false);
 
             root.style.display = DisplayStyle.Flex;
+
+            float time = 0f;
             while (time < fadingTime)
             {
                 time += delta;
                 yield return new WaitForSecondsRealtime(delta);
 
                 foreach (VisualElement child in background.Children())
-                {
                     child.style.opacity = time / fadingTime;
-                }
+                
             }
+
+            SetButtonsInteractable(true);
         }
 
         private IEnumerator FadeOut()
         {
-            float time = 0f;
+            SetButtonsInteractable(false);
 
+            float time = 0f;
             while (time < fadingTime)
             {
                 time += delta;
                 yield return new WaitForSecondsRealtime(delta);
 
                 foreach (VisualElement child in background.Children())
-                {
                     child.style.opacity = 1 - time / fadingTime;
-                }
+                
             }
             root.style.display = DisplayStyle.None;
         }
 
-        protected IEnumerator LoadUI(GameObject target)
+        private IEnumerator FadeTo(GameObject target)
         {
+
             yield return StartCoroutine(FadeOut());
-            Debug.Log(fadingTime);
+
             target.GetComponent<UI>().background.style.opacity = 1f;
             foreach (VisualElement child in target.GetComponent<UI>().background.Children())
                 child.style.opacity = 0f;
 
             yield return StartCoroutine(target.GetComponent<UI>().FadeIn());
         }
+
     }
 }
