@@ -8,10 +8,12 @@ namespace Assets.Weapon
         private IEnumerator reloadAmmoCheckerCoroutine;
         private IEnumerator doAimingCoroutine;
         private bool isReloading;
+        private Quaternion ControllerOriginLocalRotation;
 
         protected override void Start()
         {
             base.Start();
+            ControllerOriginLocalRotation = transform.localRotation;
             reloadAmmoCheckerCoroutine = CheckReloadAmmoAnimationEnd();
             doAimingCoroutine = DoAim();
         }
@@ -77,20 +79,43 @@ namespace Assets.Weapon
             if (Input.GetKeyDown(KeyCode.R))
             {
                 isReloading = true;
+                isAiming = false;
                 Reload();
             }
 
-            if (Input.GetMouseButtonDown(1))
+            if (Input.GetMouseButtonDown(1) && !isReloading)
             {
                 isAiming = true;
                 Aim();
             }
-
             if (Input.GetMouseButtonUp(1))
             {
                 isAiming = false;
                 Aim();
             }
+
+            // do localRoatation on camera lean
+            //if ( Input.GetKey(KeyCode.Q) && isAiming)
+            //{
+            //    transform.localRotation = Quaternion.Euler(0,0,40); 
+            //    EyeCamera.transform.localRotation = Quaternion.Euler(90, 40 ,0);
+            //}
+            //else
+            //{
+            //    transform.localRotation = ControllerOriginLocalRotation;
+            //    EyeCamera.transform.localRotation = CameraLocalOriginRotation;
+            //}
+
+            //if (Input.GetKey(KeyCode.E) && isAiming)
+            //{
+            //    transform.localRotation = Quaternion.Euler(0, 0, -40);
+            //    EyeCamera.transform.localRotation = Quaternion.Euler(90, -40, 0);
+            //}
+            //else
+            //{
+            //    transform.localRotation = ControllerOriginLocalRotation;
+            //    EyeCamera.transform.localRotation = CameraLocalOriginRotation;
+            //}
         }
 
         protected void CreateBullet()

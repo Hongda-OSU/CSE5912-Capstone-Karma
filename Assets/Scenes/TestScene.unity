@@ -176,7 +176,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -27255,7 +27255,6 @@ MonoBehaviour:
   BulletPrefab: {fileID: 4792577774353629631, guid: bba8e2805246eaf4bb947cc3358b5f7f, type: 3}
   MuzzleParticle: {fileID: 7989154829315048949}
   CastingParticle: {fileID: 1001112698592740011}
-  FOVforDoubleMirror: 30
   FireRate: 10
   AmmoInMag: 30
   MaxAmmoCarried: 120
@@ -27263,6 +27262,7 @@ MonoBehaviour:
   FirearmsReloadingAudioSource: {fileID: 6323525233809450448}
   FirearmsAudioData: {fileID: 11400000, guid: b5aff83e62fa6a04993d91b69f167c5b, type: 2}
   EyeCamera: {fileID: 6244414377075154036}
+  FOVforDoubleMirror: 35
 --- !u!82 &6324315379400352080
 AudioSource:
   m_ObjectHideFlags: 0

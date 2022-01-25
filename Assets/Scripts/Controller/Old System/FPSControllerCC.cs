@@ -66,7 +66,7 @@ public class FPSControllerCC : MonoBehaviour
                 isCrouched = !isCrouched;
             }
             // Handle Dash only when running
-            if (Input.GetKeyDown(KeyCode.E) && characterController.velocity.magnitude > 5.0f && Math.Abs(tmp_Horizontal) != 1)
+            if (Input.GetKeyDown(KeyCode.R) && characterController.velocity.magnitude > 5.0f && Math.Abs(tmp_Horizontal) != 1)
             {
                 tmp_CurrentSpeed = DashSpeed;
                 PlayDashParticle();
@@ -79,10 +79,12 @@ public class FPSControllerCC : MonoBehaviour
                 else
                     tmp_CurrentSpeed = Input.GetKey(KeyCode.LeftShift) ? SprintingSpeed : WalkSpeed;
             }
-           
 
             HandleAnimation();
         }
+        // Knife Attack
+        if (Input.GetKeyDown(KeyCode.Z))
+            characterAnimator.SetTrigger("KnifeAttack");
 
         movementDirection.y -= Gravity * Time.deltaTime * 0.6f;
         characterController.Move(tmp_CurrentSpeed * Time.deltaTime * movementDirection);
