@@ -9,11 +9,13 @@ namespace Assets.Weapon
         private IEnumerator doAimingCoroutine;
         private bool isReloading;
         private Quaternion ControllerOriginLocalRotation;
+        private Vector3 ControllerQriginLocalPosition;
 
         protected override void Start()
         {
             base.Start();
             ControllerOriginLocalRotation = transform.localRotation;
+            ControllerQriginLocalPosition = transform.localPosition;
             reloadAmmoCheckerCoroutine = CheckReloadAmmoAnimationEnd();
             doAimingCoroutine = DoAim();
         }
@@ -71,6 +73,29 @@ namespace Assets.Weapon
             }
         }
 
+        protected override void CameraLean()
+        {
+            if (Input.GetKey(KeyCode.Q))
+                CameraLeanLeft();
+
+            if (Input.GetKey(KeyCode.E))
+                CameraLeanRight();
+        }
+
+        private void CameraLeanLeft()
+        {
+            transform.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.Euler(0,0,SlerpAngle), SlerpTime);
+            transform.localPosition = Vector3.Slerp(transform.localPosition, new Vector3(-SlerpDistance, 0, 0), SlerpTime);
+            EyeCamera.transform.localRotation = Quaternion.Slerp(EyeCamera.transform.localRotation, Quaternion.Euler(90, SlerpAngle, 0), SlerpTime);
+        }
+
+        private void CameraLeanRight()
+        {
+            transform.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.Euler(0, 0, -SlerpAngle), SlerpTime);
+            transform.localPosition = Vector3.Slerp(transform.localPosition, new Vector3(SlerpDistance, 0, 0), SlerpTime);
+            EyeCamera.transform.localRotation = Quaternion.Slerp(EyeCamera.transform.localRotation, Quaternion.Euler(90, -SlerpAngle, 0), SlerpTime);
+        }
+
         void Update()
         {
             if (Input.GetMouseButton(0) && !isReloading)
@@ -94,28 +119,17 @@ namespace Assets.Weapon
                 Aim();
             }
 
-            // do localRoatation on camera lean
-            //if ( Input.GetKey(KeyCode.Q) && isAiming)
-            //{
-            //    transform.localRotation = Quaternion.Euler(0,0,40); 
-            //    EyeCamera.transform.localRotation = Quaternion.Euler(90, 40 ,0);
-            //}
-            //else
-            //{
-            //    transform.localRotation = ControllerOriginLocalRotation;
-            //    EyeCamera.transform.localRotation = CameraLocalOriginRotation;
-            //}
-
-            //if (Input.GetKey(KeyCode.E) && isAiming)
-            //{
-            //    transform.localRotation = Quaternion.Euler(0, 0, -40);
-            //    EyeCamera.transform.localRotation = Quaternion.Euler(90, -40, 0);
-            //}
-            //else
-            //{
-            //    transform.localRotation = ControllerOriginLocalRotation;
-            //    EyeCamera.transform.localRotation = CameraLocalOriginRotation;
-            //}
+            //do localRoatation on camera lean
+            if ((Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.E)) && isAiming)
+            {
+                CameraLean();
+            }
+            else
+            {
+                transform.localRotation = Quaternion.Slerp(transform.localRotation, ControllerOriginLocalRotation, SlerpTime);
+                transform.localPosition = Vector3.Slerp(transform.localPosition, ControllerQriginLocalPosition, SlerpTime);
+                EyeCamera.transform.localRotation = Quaternion.Slerp(EyeCamera.transform.localRotation, CameraLocalOriginRotation, SlerpTime);
+            }
         }
 
         protected void CreateBullet()

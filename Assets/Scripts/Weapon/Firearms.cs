@@ -33,6 +33,9 @@ namespace Assets.Weapon
         protected float OriginFOV;
         protected Quaternion CameraLocalOriginRotation;
         protected bool isAiming;
+        public float SlerpTime;
+        public float SlerpAngle;
+        public float SlerpDistance;
 
 
         protected virtual void Start()
@@ -52,6 +55,7 @@ namespace Assets.Weapon
         protected abstract void Shooting();
         protected abstract void Reload();
         protected abstract void Aim();
+        protected abstract void CameraLean();
 
         protected bool IsAllowShooting()
         {

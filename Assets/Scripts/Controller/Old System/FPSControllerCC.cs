@@ -66,7 +66,7 @@ public class FPSControllerCC : MonoBehaviour
                 isCrouched = !isCrouched;
             }
             // Handle Dash only when running
-            if (Input.GetKeyDown(KeyCode.R) && characterController.velocity.magnitude > 5.0f && Math.Abs(tmp_Horizontal) != 1)
+            if (Input.GetKeyDown(KeyCode.V) && characterController.velocity.magnitude > 5.0f && Math.Abs(tmp_Horizontal) != 1)
             {
                 tmp_CurrentSpeed = DashSpeed;
                 PlayDashParticle();
