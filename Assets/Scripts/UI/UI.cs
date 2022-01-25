@@ -7,11 +7,16 @@ namespace CSE5912.PolyGamers
 {
     public class UI : MonoBehaviour
     {
-        [SerializeField] protected float fadingTime = 0.3f;
+        private float fadingTime = 0.3f;
         float delta = 0.01f;
 
         protected VisualElement root;
         protected VisualElement background;
+
+        public void SetFadingTime(float fadingTime)
+        {
+            this.fadingTime = fadingTime;
+        }
 
         protected void Initialize()
         {
@@ -56,7 +61,7 @@ namespace CSE5912.PolyGamers
         protected IEnumerator LoadUI(GameObject target)
         {
             yield return StartCoroutine(FadeOut());
-
+            Debug.Log(fadingTime);
             target.GetComponent<UI>().background.style.opacity = 1f;
             foreach (VisualElement child in target.GetComponent<UI>().background.Children())
                 child.style.opacity = 0f;
