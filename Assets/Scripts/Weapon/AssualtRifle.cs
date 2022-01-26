@@ -158,7 +158,7 @@ namespace Assets.Weapon
                             CurrentAmmo += CurrentMaxAmmoCarried;
                         else
                             CurrentAmmo = AmmoInMag;
-                        CurrentMaxAmmoCarried = tmp_RemaingAmmo < 0 ? 0 : tmp_RemaingAmmo;
+                        CurrentMaxAmmoCarried = tmp_RemaingAmmo <= 0 ? 0 : tmp_RemaingAmmo;
                         isReloading = false;
                         yield break;
                     }
