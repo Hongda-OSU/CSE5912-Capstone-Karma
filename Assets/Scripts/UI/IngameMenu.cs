@@ -42,10 +42,6 @@ namespace CSE5912.PolyGamers
             // set default view to loadout
             currentView = loadoutView;
             loadoutToggle.value = true;
-
-            // hide other views
-            skillsView.GetRoot().style.display = DisplayStyle.None;
-            //questsView.GetRoot().style.display = DisplayStyle.None;
         }
 
 

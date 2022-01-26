@@ -16,7 +16,7 @@
     align-items: center;
     -unity-text-align: upper-center;
     white-space: normal;
-    color: rgb(255, 255, 255);
+    color: rgba(173, 173, 173, 0.75);
     -unity-font-definition: url('project://database/Assets/UI/Fonts/FontAssets/Trajan%20Pro%20Regular%20SDF.asset?fileID=11400000&guid=0821ecf0f29a62243aeeef3d0eb445c6&type=2#Trajan Pro Regular SDF');
     font-size: 30px;
     border-left-color: rgb(255, 255, 255);
@@ -45,8 +45,8 @@
 .MyToggle:hover {
     -unity-font-definition: url('project://database/Assets/UI/Fonts/FontAssets/Trajan%20Pro%20Regular%20SDF.asset?fileID=11400000&guid=0821ecf0f29a62243aeeef3d0eb445c6&type=2#Trajan Pro Regular SDF');
     font-size: 30px;
-    background-color: rgb(255, 255, 255);
-    color: rgb(0, 0, 0);
+    background-color: rgba(255, 255, 255, 0);
+    color: rgb(255, 255, 255);
     border-left-color: rgb(255, 255, 255);
     border-right-color: rgb(255, 255, 255);
     border-top-color: rgba(0, 0, 0, 0);

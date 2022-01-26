@@ -10,6 +10,8 @@ namespace CSE5912.PolyGamers
         private void Start()
         {
             Initialize();
+
+            root.style.display = DisplayStyle.None;
         }
     }
 }

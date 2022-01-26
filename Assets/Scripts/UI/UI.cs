@@ -22,12 +22,6 @@ namespace CSE5912.PolyGamers
             this.fadingTime = fadingTime;
         }
 
-        // get UI root
-        public VisualElement GetRoot()
-        {
-            return root;
-        }
-
         // initialize for all UIs
         protected void Initialize()
         {
