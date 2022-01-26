@@ -7,7 +7,7 @@ namespace CSE5912.PolyGamers
 {
     public class Options : UI
     {
-        [SerializeField] GameObject parentUI;
+        [SerializeField] UI parentUI;
 
         private Button audioButton;
         private Button KeybindingsButton;
@@ -21,16 +21,16 @@ namespace CSE5912.PolyGamers
         {
             Initialize();
 
-            audioButton = background.Q<Button>("Audio");
+            audioButton = root.Q<Button>("Audio");
             audioButton.clicked += AudioButtonPressed;
 
-            KeybindingsButton = background.Q<Button>("Keybindings");
+            KeybindingsButton = root.Q<Button>("Keybindings");
             KeybindingsButton.clicked += KeybindingsButtonPressed;
 
-            creditsButton = background.Q<Button>("Credits");
+            creditsButton = root.Q<Button>("Credits");
             creditsButton.clicked += CreditsButtonPressed;
 
-            backButton = background.Q<Button>("Back");
+            backButton = root.Q<Button>("Back");
             backButton.clicked += BackButtonPressed;
 
             root.style.display = DisplayStyle.None;
@@ -53,7 +53,7 @@ namespace CSE5912.PolyGamers
 
         private void BackButtonPressed()
         {
-            LoadUI(parentUI);
+            LoadUI(this, parentUI);
         }
     }
 }

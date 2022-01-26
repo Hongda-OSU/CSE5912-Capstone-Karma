@@ -9,7 +9,7 @@ namespace CSE5912.PolyGamers
     public class MainMenu : UI
     {
         [SerializeField] private string gameSceneName;
-        [SerializeField] private GameObject options;
+        [SerializeField] private UI options;
 
         private Button startGameButton;
         private Button optionsButton;
@@ -19,13 +19,13 @@ namespace CSE5912.PolyGamers
         {
             Initialize();
 
-            startGameButton = background.Q<Button>("StartGame");
+            startGameButton = root.Q<Button>("StartGame");
             startGameButton.clicked += StartGameButtonPressed;
 
-            optionsButton = background.Q<Button>("Options");
+            optionsButton = root.Q<Button>("Options");
             optionsButton.clicked += OptionsButtonPressed;
 
-            quitGameButton = background.Q<Button>("QuitGame");
+            quitGameButton = root.Q<Button>("QuitGame");
             quitGameButton.clicked += QuitGameButtonPressed;
         }
         
@@ -38,7 +38,7 @@ namespace CSE5912.PolyGamers
         // open option menu
         private void OptionsButtonPressed()
         {
-            LoadUI(options); 
+            LoadUI(this, options); 
         }
 
         // quit game

@@ -1,0 +1,14 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Styles/MainMenu.uss?fileID=7433441132597879392&amp;guid=db47cd8f5441f6544ba37e9fcf69dbae&amp;type=3#MainMenu" />
+    <Style src="project://database/Assets/UI/Styles/Ingame.uss?fileID=7433441132597879392&amp;guid=394044c853fcc5548b44cd184a52ba94&amp;type=3#Ingame" />
+    <ui:VisualElement name="Background" style="height: 831px; width: 1679px; flex-grow: 0; flex-direction: column; top: 202px; left: 118px; background-color: rgba(0, 0, 0, 0); align-items: flex-start; justify-content: flex-start;">
+        <ui:VisualElement name="WeaponView" style="height: 80px; width: 1473px; -unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/FontAssets/Menlo-Regular%20SDF.asset?fileID=11400000&amp;guid=b187e6b4fc1ba6544b338524871064ca&amp;type=2#Menlo-Regular SDF&apos;); flex-grow: 0.5;">
+            <ui:Label text="Weapons" display-tooltip-when-elided="true" name="WeaponViewLabel" class="Label" style="left: auto; top: auto;" />
+            <ui:ListView focusable="true" name="WeaponList" style="flex-grow: 0.9;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="ModView" style="height: 80px; width: 1474px; flex-grow: 0.5;">
+            <ui:Label text="Mods&#10;" display-tooltip-when-elided="true" name="ModViewLabel" class="Label" style="left: auto; top: auto;" />
+            <ui:ListView focusable="true" name="ModList" style="flex-grow: 0.9;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

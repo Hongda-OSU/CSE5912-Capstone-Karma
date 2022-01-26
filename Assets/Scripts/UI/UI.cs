@@ -20,6 +20,11 @@ namespace CSE5912.PolyGamers
             this.fadingTime = fadingTime;
         }
 
+        public VisualElement GetRoot()
+        {
+            return root;
+        }
+
         protected void Initialize()
         {
             root = GetComponent<UIDocument>().rootVisualElement;
@@ -31,18 +36,20 @@ namespace CSE5912.PolyGamers
 
         protected void SetButtonsInteractable(bool isInteractable)
         {
-            foreach (Button button in buttonList)
+            if (buttonList.Count > 0)
             {
-                if (isInteractable)
-                    button.pickingMode = PickingMode.Position;
-                else
-                    button.pickingMode = PickingMode.Ignore;
+                foreach (Button button in buttonList)
+                {
+                    if (isInteractable)
+                        button.pickingMode = PickingMode.Position;
+                    else
+                        button.pickingMode = PickingMode.Ignore;
+                }
             }
-
         }
-        protected void LoadUI(GameObject target)
+        protected void LoadUI(UI from, UI to)
         {
-            StartCoroutine(FadeTo(target));
+            StartCoroutine(FadeTo(from, to));
         }
 
         private IEnumerator FadeIn()
@@ -82,16 +89,16 @@ namespace CSE5912.PolyGamers
             root.style.display = DisplayStyle.None;
         }
 
-        private IEnumerator FadeTo(GameObject target)
+        private IEnumerator FadeTo(UI from, UI to)
         {
 
-            yield return StartCoroutine(FadeOut());
+            yield return StartCoroutine(from.FadeOut());
 
-            target.GetComponent<UI>().background.style.opacity = 1f;
-            foreach (VisualElement child in target.GetComponent<UI>().background.Children())
+            to.background.style.opacity = 1f;
+            foreach (VisualElement child in to.background.Children())
                 child.style.opacity = 0f;
 
-            yield return StartCoroutine(target.GetComponent<UI>().FadeIn());
+            yield return StartCoroutine(to.FadeIn());
         }
 
     }

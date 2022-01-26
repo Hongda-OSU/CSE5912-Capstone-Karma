@@ -1,0 +1,79 @@
+.Label {
+    font-size: 30px;
+    -unity-font-definition: url('project://database/Assets/UI/Fonts/FontAssets/Menlo-Regular%20SDF.asset?fileID=11400000&guid=b187e6b4fc1ba6544b338524871064ca&type=2#Menlo-Regular SDF');
+    -unity-font-style: normal;
+    height: 46px;
+    width: 139px;
+    -unity-text-align: upper-left;
+    justify-content: flex-start;
+    align-items: auto;
+    color: rgb(255, 255, 255);
+    left: 66px;
+    top: 63px;
+}
+
+.MyToggle {
+    align-items: center;
+    -unity-text-align: upper-center;
+    white-space: normal;
+    color: rgb(255, 255, 255);
+    -unity-font-definition: url('project://database/Assets/UI/Fonts/FontAssets/Trajan%20Pro%20Regular%20SDF.asset?fileID=11400000&guid=0821ecf0f29a62243aeeef3d0eb445c6&type=2#Trajan Pro Regular SDF');
+    font-size: 30px;
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(255, 255, 255);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    border-left-width: 2px;
+    border-right-width: 2px;
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+    margin-left: -1px;
+    margin-right: -1px;
+    margin-top: -1px;
+    margin-bottom: -1px;
+    padding-left: 30px;
+    width: 217px;
+    height: 79px;
+    -unity-font-style: bold;
+    transition-duration: 0.5s;
+}
+
+.MyToggle VisualElement {
+    display: none;
+}
+
+.MyToggle:hover {
+    -unity-font-definition: url('project://database/Assets/UI/Fonts/FontAssets/Trajan%20Pro%20Regular%20SDF.asset?fileID=11400000&guid=0821ecf0f29a62243aeeef3d0eb445c6&type=2#Trajan Pro Regular SDF');
+    font-size: 30px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(255, 255, 255);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    transition-duration: 0.5s;
+}
+
+.MyToggle:active {
+    -unity-font-definition: url('project://database/Assets/UI/Fonts/FontAssets/Trajan%20Pro%20Regular%20SDF.asset?fileID=11400000&guid=0821ecf0f29a62243aeeef3d0eb445c6&type=2#Trajan Pro Regular SDF');
+    font-size: 30px;
+    background-color: rgb(130, 130, 130);
+    color: rgb(255, 255, 255);
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    transition-duration: 0.5s;
+}
+
+.MyToggle:checked {
+    -unity-font-definition: url('project://database/Assets/UI/Fonts/FontAssets/Trajan%20Pro%20Regular%20SDF.asset?fileID=11400000&guid=0821ecf0f29a62243aeeef3d0eb445c6&type=2#Trajan Pro Regular SDF');
+    font-size: 30px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(255, 255, 255);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    transition-duration: 0.5s;
+}
