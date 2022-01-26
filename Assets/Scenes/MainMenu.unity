@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameSceneName: 
-  options: {fileID: 1118927862}
+  options: {fileID: 1118927866}
 --- !u!1 &133912062
 GameObject:
   m_ObjectHideFlags: 0
@@ -364,7 +364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aac7f3995b1b43a40bea75336f2c61c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentUI: {fileID: 12476024}
+  parentUI: {fileID: 12476027}
 --- !u!1 &1816087356
 GameObject:
   m_ObjectHideFlags: 0

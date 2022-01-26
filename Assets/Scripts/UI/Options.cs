@@ -21,6 +21,7 @@ namespace CSE5912.PolyGamers
         {
             Initialize();
 
+            // set up buttons
             audioButton = root.Q<Button>("Audio");
             audioButton.clicked += AudioButtonPressed;
 
@@ -33,6 +34,7 @@ namespace CSE5912.PolyGamers
             backButton = root.Q<Button>("Back");
             backButton.clicked += BackButtonPressed;
 
+            // not showing at default
             root.style.display = DisplayStyle.None;
         }
 
@@ -51,6 +53,7 @@ namespace CSE5912.PolyGamers
             // todo - load credits screen
         }
 
+        // go back to previous UI
         private void BackButtonPressed()
         {
             LoadUI(this, parentUI);

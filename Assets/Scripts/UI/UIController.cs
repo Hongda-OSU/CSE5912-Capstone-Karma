@@ -19,13 +19,11 @@ namespace CSE5912.PolyGamers
             foreach (UI child in uiObject.GetComponentsInChildren<UI>())
                 uiList.Add(child);
         }
+
         private void Start()
         {
-
             foreach (UI ui in uiList)
                 ui.SetFadingTime(fadingTime);
         }
-
-
     }
 }

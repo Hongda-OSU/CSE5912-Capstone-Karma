@@ -19,6 +19,7 @@ namespace CSE5912.PolyGamers
         {
             Initialize();
 
+            // set up buttons
             startGameButton = root.Q<Button>("StartGame");
             startGameButton.clicked += StartGameButtonPressed;
 
@@ -29,7 +30,7 @@ namespace CSE5912.PolyGamers
             quitGameButton.clicked += QuitGameButtonPressed;
         }
         
-        // start main game scene
+        // load the main game scene
         private void StartGameButtonPressed()
         {
             SceneManager.LoadScene(gameSceneName);
@@ -41,7 +42,7 @@ namespace CSE5912.PolyGamers
             LoadUI(this, options); 
         }
 
-        // quit game
+        // quit the game
         private void QuitGameButtonPressed()
         {
 #if UNITY_EDITOR

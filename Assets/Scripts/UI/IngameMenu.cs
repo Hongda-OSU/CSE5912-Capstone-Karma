@@ -58,7 +58,6 @@ namespace CSE5912.PolyGamers
                 currentView = loadoutView;
                 UpdateToggles(loadoutToggle);
             }
-
         }
 
         // switch to skills view
@@ -70,7 +69,6 @@ namespace CSE5912.PolyGamers
                 currentView = skillsView;
                 UpdateToggles(skillsToggle);
             }
-
         }
 
         // switch to quests view

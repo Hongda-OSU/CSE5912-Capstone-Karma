@@ -15,16 +15,20 @@ namespace CSE5912.PolyGamers
 
         protected List<Button> buttonList;
 
+
+        // set time interval when switching UIs
         public void SetFadingTime(float fadingTime)
         {
             this.fadingTime = fadingTime;
         }
 
+        // get UI root
         public VisualElement GetRoot()
         {
             return root;
         }
 
+        // initialize for all UIs
         protected void Initialize()
         {
             root = GetComponent<UIDocument>().rootVisualElement;
@@ -34,6 +38,8 @@ namespace CSE5912.PolyGamers
             root.Query<Button>().ForEach(button => buttonList.Add(button));
         }
 
+        // set interactability of buttons
+        // mainly used to prevent clicking by mistake when switching UIs
         protected void SetButtonsInteractable(bool isInteractable)
         {
             if (buttonList.Count > 0)
@@ -47,10 +53,18 @@ namespace CSE5912.PolyGamers
                 }
             }
         }
+
+        // load from current UI to another
         protected void LoadUI(UI from, UI to)
         {
             StartCoroutine(FadeTo(from, to));
         }
+        
+
+
+        /*
+         *  animation related
+         */
 
         private IEnumerator FadeIn()
         {
@@ -91,7 +105,6 @@ namespace CSE5912.PolyGamers
 
         private IEnumerator FadeTo(UI from, UI to)
         {
-
             yield return StartCoroutine(from.FadeOut());
 
             to.background.style.opacity = 1f;
