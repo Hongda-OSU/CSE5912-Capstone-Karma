@@ -1,4 +1,5 @@
 using System.Collections;
+using Assets.Scripts.Weapon;
 using UnityEngine;
 
 namespace Assets.Weapon
@@ -101,7 +102,7 @@ namespace Assets.Weapon
             if (Input.GetMouseButton(0) && !isReloading)
                 Attack();
 
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.R) && !isReloading)
             {
                 isReloading = true;
                 isAiming = false;
@@ -135,8 +136,10 @@ namespace Assets.Weapon
         protected void CreateBullet()
         {
             GameObject tmp_Bullet = Instantiate(BulletPrefab, MuzzlePoint.position, MuzzlePoint.rotation);
-            var bullet_Rigibody = tmp_Bullet.AddComponent<Rigidbody>();
-            bullet_Rigibody.velocity = tmp_Bullet.transform.forward * 200f;
+            tmp_Bullet.AddComponent<Rigidbody>();
+            var tmp_BulletScript = tmp_Bullet.AddComponent<Bullet>();
+            tmp_BulletScript.BulletSpeed = 100;
+
         }
 
         IEnumerator CheckReloadAmmoAnimationEnd()

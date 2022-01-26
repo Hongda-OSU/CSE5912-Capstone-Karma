@@ -552,7 +552,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1668231725}
   serializedVersion: 8
-  lengthInSec: 0.2
+  lengthInSec: 0.25
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -5365,7 +5365,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1974248285}
   serializedVersion: 8
-  lengthInSec: 0.2
+  lengthInSec: 0.25
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -27352,7 +27352,7 @@ MonoBehaviour:
   BulletPrefab: {fileID: 4792577774353629631, guid: bba8e2805246eaf4bb947cc3358b5f7f, type: 3}
   MuzzleParticle: {fileID: 7989154829315048949}
   CastingParticle: {fileID: 1001112698592740011}
-  FireRate: 10
+  FireRate: 11.7
   AmmoInMag: 30
   MaxAmmoCarried: 120
   FirearmsShootingAudioSource: {fileID: 6323525233809450448}
@@ -27360,7 +27360,7 @@ MonoBehaviour:
   FirearmsAudioData: {fileID: 11400000, guid: b5aff83e62fa6a04993d91b69f167c5b, type: 2}
   EyeCamera: {fileID: 6244414377075154036}
   FOVforDoubleMirror: 35
-  SlerpTime: 0.1
+  SlerpTime: 0.2
   SlerpAngle: 35
   SlerpDistance: 0.65
 --- !u!82 &6324315379400352080
@@ -27475,7 +27475,7 @@ MonoBehaviour:
   WalkSpeed: 4
   SprintingSpeedWhenCrouched: 4
   WalkSpeedWhenCrouched: 2
-  DashSpeed: 1000
+  DashSpeed: 200
   Gravity: 9.8
   JumpHeight: 3
   CrouchHeight: 1

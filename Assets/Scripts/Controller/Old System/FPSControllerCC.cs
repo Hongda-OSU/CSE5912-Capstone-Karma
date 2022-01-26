@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FPSControllerCC : MonoBehaviour
@@ -13,7 +12,7 @@ public class FPSControllerCC : MonoBehaviour
     public float WalkSpeed;
     public float SprintingSpeedWhenCrouched;
     public float WalkSpeedWhenCrouched;
-    public float DashSpeed = 1000f;
+    public float DashSpeed;
 
     [Header("Physics")]
     public float Gravity;
