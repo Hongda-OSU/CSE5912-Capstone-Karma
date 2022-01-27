@@ -42,8 +42,6 @@ namespace PolyGamers.Weapon
             int tmp_AudioDataCount = tmp_TagsWithAudio.ImpactAudioClips.Count;
             AudioClip tmp_AudioClip = tmp_TagsWithAudio.ImpactAudioClips[UnityEngine.Random.Range(0, tmp_AudioDataCount)];
             AudioSource.PlayClipAtPoint(tmp_AudioClip, tmp_Hit.point);
-
-
         }
 
     }

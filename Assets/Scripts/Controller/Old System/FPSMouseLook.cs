@@ -20,9 +20,13 @@ public class FPSMouseLook : MonoBehaviour
     private float currentRecoilTime;
     private Vector2 currentRecoil;
 
+    [Header("CameraSpring")] 
+    private CameraSpring cameraSpring;
+
     private void Start()
     {
         cameraTransform = transform;
+        cameraSpring = GetComponentInChildren<CameraSpring>();
     }
 
     void LateUpdate()
@@ -57,6 +61,7 @@ public class FPSMouseLook : MonoBehaviour
     public void FiringForTest()
     {
         currentRecoil += RecoilRange;
+        cameraSpring.StartCameraSpring();
         currentRecoilTime = 0;
     }
 }

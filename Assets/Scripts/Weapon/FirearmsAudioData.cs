@@ -8,7 +8,5 @@ namespace PolyGamers.Weapon
         public AudioClip ShootingAudio;
         public AudioClip ReloadLeft;
         public AudioClip ReloadOutOf;
-
-
     }
 }
