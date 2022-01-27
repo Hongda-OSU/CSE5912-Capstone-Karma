@@ -5,8 +5,13 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
-    private float lookRadius = 10f;
+    public float viewRadius = 10f;
+    [Range(0, 360)]
+    public float viewAngle = 180f;
+    public bool foundTarget = false;
+
     private float distance;
+    private Vector3 directionToTarget;
 
     Transform target;
     NavMeshAgent agent;
@@ -20,27 +25,57 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         distance = Vector3.Distance(target.position, transform.position);
+        directionToTarget = (target.position - transform.position).normalized;
 
-        if (distance <= lookRadius) {
-            agent.SetDestination(target.position);
+        if (distance <= viewRadius)
+        {
+            if (Vector3.Angle(transform.forward, directionToTarget) < viewAngle / 2)
+            {
+                foundTarget = true; //Currently not used anywhere.
 
-            if (distance <= agent.stoppingDistance) {
-                // Attack player.
-                FaceTarget();
+                FaceTarget(directionToTarget);
+                agent.SetDestination(target.position);
+
+                if (distance <= agent.stoppingDistance)
+                {
+                    // Attack player.
+                }
             }
+            else 
+            {
+                foundTarget = false;
+            }
+        }
+        else 
+        {
+            foundTarget = false;
         }
     }
 
-    private void FaceTarget() { 
-        Vector3 direction = (target.position - transform.position).normalized;
+    private void FaceTarget(Vector3 direction) { 
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
     }
 
+
+    public Vector3 GetTargetPosition() {
+        return target.position;
+    }
+
+    public Vector3 DirFromAngle(float angleInDegrees, bool angleIsGlobal)
+    {
+        if (!angleIsGlobal)
+        {
+            angleInDegrees += transform.eulerAngles.y;
+        }
+        return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
+    }
+
+    /*
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, lookRadius);
+        Gizmos.DrawWireSphere(transform.position, viewRadius);
     }
+    */
 }
