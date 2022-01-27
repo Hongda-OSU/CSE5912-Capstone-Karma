@@ -85,6 +85,9 @@ public class FPSControllerCC : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z))
             characterAnimator.SetTrigger("KnifeAttack");
 
+        //if (Input.GetKeyDown(KeyCode.G))
+        //    characterAnimator.SetTrigger("GrenadeThrow");
+
         movementDirection.y -= Gravity * Time.deltaTime * 0.6f;
         characterController.Move(tmp_CurrentSpeed * Time.deltaTime * movementDirection);
     }

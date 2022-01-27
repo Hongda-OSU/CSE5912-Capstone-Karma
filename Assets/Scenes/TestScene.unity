@@ -27360,9 +27360,9 @@ MonoBehaviour:
   FirearmsAudioData: {fileID: 11400000, guid: b5aff83e62fa6a04993d91b69f167c5b, type: 2}
   EyeCamera: {fileID: 6244414377075154036}
   FOVforDoubleMirror: 35
-  SlerpTime: 0.2
+  SlerpTime: 6.5
   SlerpAngle: 35
-  SlerpDistance: 0.65
+  SlerpDistance: 0.75
 --- !u!82 &6324315379400352080
 AudioSource:
   m_ObjectHideFlags: 0
