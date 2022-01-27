@@ -11,6 +11,10 @@ namespace CSE5912.PolyGamers
         float delta = 0.01f;
 
         protected VisualElement root;
+        public VisualElement Root
+        {
+            get { return root; }
+        }
         protected VisualElement background;
 
         protected List<Button> buttonList;

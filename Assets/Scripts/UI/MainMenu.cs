@@ -15,10 +15,13 @@ namespace CSE5912.PolyGamers
         private Button optionsButton;
         private Button quitGameButton;
 
-        private void Start()
+        private void Awake()
         {
             Initialize();
+        }
 
+        private void Start()
+        {
             // set up buttons
             startGameButton = root.Q<Button>("StartGame");
             startGameButton.clicked += StartGameButtonPressed;

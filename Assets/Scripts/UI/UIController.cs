@@ -17,7 +17,10 @@ namespace CSE5912.PolyGamers
         {
             uiList = new List<UI>();
             foreach (UI child in uiObject.GetComponentsInChildren<UI>())
+            {
                 uiList.Add(child);
+                child.GetComponent<UIDocument>().enabled = true;
+            }
         }
 
         private void Start()

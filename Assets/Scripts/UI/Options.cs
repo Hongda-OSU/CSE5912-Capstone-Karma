@@ -19,8 +19,6 @@ namespace CSE5912.PolyGamers
 
         private void Start()
         {
-            Initialize();
-
             // set up buttons
             audioButton = root.Q<Button>("Audio");
             audioButton.clicked += AudioButtonPressed;

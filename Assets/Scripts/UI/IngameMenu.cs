@@ -8,51 +8,67 @@ namespace CSE5912.PolyGamers
 {
     public class IngameMenu : UI
     {
-        [SerializeField] private UI loadoutView;
+        [SerializeField] private UI weaponView;
+        [SerializeField] private UI modsView;
         [SerializeField] private UI skillsView;
-        [SerializeField] private UI questsView;
 
         private UI currentView;
 
-        private Toggle loadoutToggle;
+        private Toggle weaponsToggle;
+        private Toggle modsToggle;
         private Toggle skillsToggle;
-        private Toggle questsToggle;
-
         private List<Toggle> toggleList;
 
-        private void Start()
+        private void Awake()
         {
             Initialize();
-
+        }
+        private void Start()
+        {
             toggleList = new List<Toggle>();
 
             // set up toggles
-            loadoutToggle = root.Q<Toggle>("Loadout");
-            loadoutToggle.RegisterValueChangedCallback(evt => LoadoutTogglePressed());
-            toggleList.Add(loadoutToggle);
+            weaponsToggle = root.Q<Toggle>("Weapons");
+            weaponsToggle.RegisterValueChangedCallback(evt => WeaponsTogglePressed());
+            toggleList.Add(weaponsToggle);
+
+            modsToggle = root.Q<Toggle>("Mods");
+            modsToggle.RegisterValueChangedCallback(evt => ModsTogglePressed());
+            toggleList.Add(modsToggle);
 
             skillsToggle = root.Q<Toggle>("Skills");
             skillsToggle.RegisterValueChangedCallback(evt => SkillsTogglePressed());
             toggleList.Add(skillsToggle);
 
-            questsToggle = root.Q<Toggle>("Quests");
-            questsToggle.RegisterValueChangedCallback(evt => QuestsTogglePressed());
-            toggleList.Add(questsToggle);
-
             // set default view to loadout
-            currentView = loadoutView;
-            loadoutToggle.value = true;
+            currentView = weaponView;
+            weaponsToggle.value = true;
+
+            // hide other views
+            modsView.Root.style.display = DisplayStyle.None;
+            skillsView.Root.style.display = DisplayStyle.None;
         }
 
 
-        // switch to loadout view
-        private void LoadoutTogglePressed()
+        // switch to weapons view
+        private void WeaponsTogglePressed()
         {
-            if (loadoutToggle.value && currentView != loadoutView)
+            if (weaponsToggle.value && currentView != weaponView)
             {
-                LoadUI(currentView, loadoutView);
-                currentView = loadoutView;
-                UpdateToggles(loadoutToggle);
+                LoadUI(currentView, weaponView);
+                currentView = weaponView;
+                UpdateToggles(weaponsToggle);
+            }
+        }
+
+        // switch to mods view
+        private void ModsTogglePressed()
+        {
+            if (modsToggle.value && currentView != modsView)
+            {
+                LoadUI(currentView, modsView);
+                currentView = modsView;
+                UpdateToggles(modsToggle);
             }
         }
 
@@ -67,16 +83,6 @@ namespace CSE5912.PolyGamers
             }
         }
 
-        // switch to quests view
-        private void QuestsTogglePressed()
-        {
-            if (questsToggle.value && currentView != questsView)
-            {
-                LoadUI(currentView, questsView);
-                currentView = questsView;
-                UpdateToggles(questsToggle);
-            }
-        }
 
         // turn other toggles off
         private void UpdateToggles(Toggle target)

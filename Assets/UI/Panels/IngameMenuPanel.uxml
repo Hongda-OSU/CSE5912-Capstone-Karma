@@ -1,10 +1,10 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/Styles/Ingame.uss?fileID=7433441132597879392&amp;guid=394044c853fcc5548b44cd184a52ba94&amp;type=3#Ingame" />
     <ui:VisualElement name="Background" style="background-color: rgb(0, 0, 0); flex-grow: 1; align-items: center; justify-content: space-around; position: relative;">
-        <ui:GroupBox name="CategoryButtons" style="height: 94px; width: 683px; flex-direction: row; align-items: center; justify-content: center; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; left: 79px; top: 74px; position: absolute;">
-            <ui:Toggle label="Loadout" name="Loadout" value="false" focusable="false" class="MyToggle CatButton" />
+        <ui:GroupBox name="CategoryButtons" style="height: 94px; width: 683px; flex-direction: row; align-items: center; justify-content: center; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; left: 80px; top: 74px; position: absolute;">
+            <ui:Toggle label="Weapons" name="Weapons" value="false" focusable="false" class="MyToggle CatButton" />
+            <ui:Toggle label="Mods" name="Mods" focusable="false" class="MyToggle CatButton" />
             <ui:Toggle label="Skills" name="Skills" focusable="false" class="MyToggle CatButton" />
-            <ui:Toggle label="Quests" name="Quests" focusable="false" class="MyToggle CatButton" />
         </ui:GroupBox>
     </ui:VisualElement>
 </ui:UXML>
