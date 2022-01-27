@@ -1,16 +1,18 @@
 using System.Collections;
-using Assets.Scripts.Weapon;
 using UnityEngine;
 
-namespace Assets.Weapon
+namespace PolyGamers.Weapon
 {
     public class AssualtRifle : Firearms
     {
+        public GameObject ImpactPrefab;
+        public ImpactAudioData impactAudioData;
         private IEnumerator reloadAmmoCheckerCoroutine;
         private IEnumerator doAimingCoroutine;
         private bool isReloading;
         private Quaternion ControllerOriginLocalRotation;
         private Vector3 ControllerQriginLocalPosition;
+        private FPSMouseLook fpsMouseLook;
 
         protected override void Start()
         {
@@ -19,6 +21,7 @@ namespace Assets.Weapon
             ControllerQriginLocalPosition = transform.localPosition;
             reloadAmmoCheckerCoroutine = CheckReloadAmmoAnimationEnd();
             doAimingCoroutine = DoAim();
+            fpsMouseLook = FindObjectOfType<FPSMouseLook>();
         }
 
         protected override void Shooting()
@@ -32,6 +35,7 @@ namespace Assets.Weapon
             FirearmsShootingAudioSource.Play();
             CreateBullet();
             CastingParticle.Play();
+            fpsMouseLook.FiringForTest();
             LastFireTime = Time.time;
         }
 
@@ -136,8 +140,10 @@ namespace Assets.Weapon
         protected void CreateBullet()
         {
             GameObject tmp_Bullet = Instantiate(BulletPrefab, MuzzlePoint.position, MuzzlePoint.rotation);
-            tmp_Bullet.AddComponent<Rigidbody>();
+            tmp_Bullet.transform.eulerAngles += CalculateSpreadOffset();
             var tmp_BulletScript = tmp_Bullet.AddComponent<Bullet>();
+            tmp_BulletScript.ImpactPrefab = ImpactPrefab;
+            tmp_BulletScript.impactAudioData = impactAudioData;
             tmp_BulletScript.BulletSpeed = 100;
 
         }

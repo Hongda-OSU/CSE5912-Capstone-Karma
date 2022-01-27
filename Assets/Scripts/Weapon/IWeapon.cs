@@ -1,4 +1,4 @@
-namespace Assets.Weapon
+namespace PolyGamers.Weapon
 {
     public interface IWeapon
     {

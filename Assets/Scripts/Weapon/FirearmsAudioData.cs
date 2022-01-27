@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts.Weapon
+namespace PolyGamers.Weapon
 {
     [CreateAssetMenu(menuName = "FPS/Firearms Audio Data")]
     public class FirearmsAudioData : ScriptableObject

@@ -1,7 +1,6 @@
-using Assets.Scripts.Weapon;
 using UnityEngine;
 
-namespace Assets.Weapon
+namespace PolyGamers.Weapon
 {
     public abstract class Firearms : MonoBehaviour, IWeapon
     {
@@ -37,6 +36,8 @@ namespace Assets.Weapon
         public float SlerpAngle;
         public float SlerpDistance;
 
+        public float SpreadAngle;
+
 
         protected virtual void Start()
         {
@@ -60,6 +61,12 @@ namespace Assets.Weapon
         protected bool IsAllowShooting()
         {
             return Time.time - LastFireTime > 1 / FireRate;
+        }
+
+        protected Vector3 CalculateSpreadOffset()
+        {
+            float tmp_SpreadPercent = SpreadAngle / EyeCamera.fieldOfView;
+            return tmp_SpreadPercent * UnityEngine.Random.insideUnitCircle;
         }
     }
 }
