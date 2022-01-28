@@ -12,5 +12,6 @@ namespace CSE5912.PolyGamers
 
         // ui related
         public Sprite iconImage;
+        public string description;
     }
 }

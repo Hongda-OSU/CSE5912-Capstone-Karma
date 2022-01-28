@@ -17,6 +17,11 @@ namespace CSE5912.PolyGamers
 
         private Button backButton;
 
+        private void Awake()
+        {
+            Initialize();
+        }
+
         private void Start()
         {
             // set up buttons

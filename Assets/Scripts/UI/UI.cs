@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.InputSystem;
 
 namespace CSE5912.PolyGamers
 {
@@ -17,7 +18,6 @@ namespace CSE5912.PolyGamers
         }
         protected VisualElement background;
 
-        protected List<Button> buttonList;
 
 
         // set time interval when switching UIs
@@ -29,17 +29,18 @@ namespace CSE5912.PolyGamers
         // initialize for all UIs
         protected void Initialize()
         {
+
             root = GetComponent<UIDocument>().rootVisualElement;
             background = root.Q<VisualElement>("Background");
 
-            buttonList = new List<Button>();
-            root.Query<Button>().ForEach(button => buttonList.Add(button));
         }
 
         // set interactability of buttons
         // mainly used to prevent clicking by mistake when switching UIs
-        protected void SetButtonsInteractable(bool isInteractable)
+        protected void SetButtonsInteractable(VisualElement root, bool isInteractable)
         {
+            List<Button> buttonList = new List<Button>();
+            root.Query<Button>().ForEach(button => buttonList.Add(button));
             if (buttonList.Count > 0)
             {
                 foreach (Button button in buttonList)
@@ -66,7 +67,7 @@ namespace CSE5912.PolyGamers
 
         private IEnumerator FadeIn()
         {
-            SetButtonsInteractable(false);
+            SetButtonsInteractable(root, false);
 
             root.style.display = DisplayStyle.Flex;
 
@@ -81,12 +82,31 @@ namespace CSE5912.PolyGamers
                 
             }
 
-            SetButtonsInteractable(true);
+            SetButtonsInteractable(root, true);
+        }
+
+        protected IEnumerator FadeIn(VisualElement element)
+        {
+            SetButtonsInteractable(element, false);
+
+            element.style.display = DisplayStyle.Flex;
+
+            float time = 0f;
+            while (time < fadingTime)
+            {
+                time += delta;
+                yield return new WaitForSecondsRealtime(delta);
+
+                element.style.opacity = time / fadingTime;
+
+            }
+
+            SetButtonsInteractable(element, true);
         }
 
         private IEnumerator FadeOut()
         {
-            SetButtonsInteractable(false);
+            SetButtonsInteractable(root, false);
 
             float time = 0f;
             while (time < fadingTime)
@@ -99,6 +119,21 @@ namespace CSE5912.PolyGamers
                 
             }
             root.style.display = DisplayStyle.None;
+        }
+        protected IEnumerator FadeOut(VisualElement element)
+        {
+            SetButtonsInteractable(element, false);
+
+            float time = 0f;
+            while (time < fadingTime)
+            {
+                time += delta;
+                yield return new WaitForSecondsRealtime(delta);
+
+                element.style.opacity = 1 - time / fadingTime;
+
+            }
+            element.style.display = DisplayStyle.None;
         }
 
         private IEnumerator FadeTo(UI from, UI to)

@@ -9,7 +9,7 @@ namespace CSE5912.PolyGamers
 
         private void Start()
         {
-            
+            description = " This is not a real weapon. ";
         }
     }
 }

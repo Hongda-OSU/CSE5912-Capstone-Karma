@@ -8,9 +8,9 @@ namespace CSE5912.PolyGamers
 {
     public class IngameMenu : UI
     {
-        [SerializeField] private UI weaponView;
-        [SerializeField] private UI modsView;
-        [SerializeField] private UI skillsView;
+        [SerializeField] private WeaponsView weaponsView;
+        [SerializeField] private ModsView modsView;
+        [SerializeField] private SkillsView skillsView;
 
         private UI currentView;
 
@@ -41,7 +41,7 @@ namespace CSE5912.PolyGamers
             toggleList.Add(skillsToggle);
 
             // set default view to loadout
-            currentView = weaponView;
+            currentView = weaponsView;
             weaponsToggle.value = true;
 
             // hide other views
@@ -53,12 +53,16 @@ namespace CSE5912.PolyGamers
         // switch to weapons view
         private void WeaponsTogglePressed()
         {
-            if (weaponsToggle.value && currentView != weaponView)
+            if (weaponsToggle.value && currentView != weaponsView)
             {
-                LoadUI(currentView, weaponView);
-                currentView = weaponView;
+                LoadUI(currentView, weaponsView);
+                currentView = weaponsView;
                 UpdateToggles(weaponsToggle);
+
+                weaponsView.ResetView();
             }
+            else if (!weaponsToggle.value && currentView == weaponsView)
+                weaponsToggle.value = true;
         }
 
         // switch to mods view
@@ -70,6 +74,8 @@ namespace CSE5912.PolyGamers
                 currentView = modsView;
                 UpdateToggles(modsToggle);
             }
+            else if (!modsToggle.value && currentView == modsView)
+                modsToggle.value = true;
         }
 
         // switch to skills view
@@ -81,6 +87,8 @@ namespace CSE5912.PolyGamers
                 currentView = skillsView;
                 UpdateToggles(skillsToggle);
             }
+            else if (!skillsToggle.value && currentView == skillsView)
+                skillsToggle.value = true;
         }
 
 
@@ -90,7 +98,9 @@ namespace CSE5912.PolyGamers
             foreach (Toggle toggle in toggleList)
             {
                 if (toggle != target)
+                {
                     toggle.value = false;
+                }
             }
         }
     }
