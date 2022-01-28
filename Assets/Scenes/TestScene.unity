@@ -25934,7 +25934,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  RecoilRange: {x: 0.5, y: 0.2}
+  RecoilRange: {x: 0.4, y: 0.1}
   RecoilFadeOutTime: 0.3
 --- !u!4 &6263777993926347104
 Transform:
@@ -27582,7 +27582,7 @@ MonoBehaviour:
   WalkSpeed: 4
   SprintingSpeedWhenCrouched: 4
   WalkSpeedWhenCrouched: 2
-  DashSpeed: 500
+  DashSpeed: 200
   Gravity: 9.8
   JumpHeight: 3
   CrouchHeight: 1

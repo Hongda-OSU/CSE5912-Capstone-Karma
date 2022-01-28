@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace PolyGamers.Weapon
 {
-    public class AssualtRifle : Firearms
+    public class AssaultRifle : Firearms
     {
         public GameObject ImpactPrefab;
         public ImpactAudioData impactAudioData;
