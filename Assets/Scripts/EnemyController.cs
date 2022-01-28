@@ -8,7 +8,7 @@ public class EnemyController : MonoBehaviour
     public float viewRadius = 10f;
     [Range(0, 360)]
     public float viewAngle = 180f;
-    public bool foundTarget = false;
+    public bool foundTarget = false; // This is used for testing
 
     private float distance;
     private Vector3 directionToTarget;
@@ -20,6 +20,7 @@ public class EnemyController : MonoBehaviour
     {
         target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
+        agent.isStopped = true;
     }
 
     void Update()
@@ -27,28 +28,24 @@ public class EnemyController : MonoBehaviour
         distance = Vector3.Distance(target.position, transform.position);
         directionToTarget = (target.position - transform.position).normalized;
 
-        if (distance <= viewRadius)
+        if (distance <= viewRadius && Vector3.Angle(transform.forward, directionToTarget) < viewAngle / 2)
         {
-            if (Vector3.Angle(transform.forward, directionToTarget) < viewAngle / 2)
-            {
-                foundTarget = true; //Currently not used anywhere.
+            foundTarget = true;
+            agent.isStopped = false;
 
-                FaceTarget(directionToTarget);
-                agent.SetDestination(target.position);
+            FaceTarget(directionToTarget);
+            agent.SetDestination(target.position);
 
-                if (distance <= agent.stoppingDistance)
-                {
-                    // Attack player.
-                }
-            }
-            else 
+            if (distance <= agent.stoppingDistance)
             {
-                foundTarget = false;
+                agent.isStopped = true;
+                // Attack player.
             }
         }
         else 
         {
             foundTarget = false;
+            agent.isStopped = true;
         }
     }
 
