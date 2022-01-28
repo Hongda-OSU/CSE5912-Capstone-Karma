@@ -40,6 +40,7 @@ public class FPSControllerCC : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
+    private bool jumped;
     void Update()
     {
         float tmp_CurrentSpeed = WalkSpeed;
@@ -56,6 +57,7 @@ public class FPSControllerCC : MonoBehaviour
             if (Input.GetButtonDown("Jump"))
             {
                 movementDirection.y = JumpHeight;
+                characterAnimator.SetTrigger("Jump");
             }
             // Handle Crouch
             if (Input.GetKeyDown(KeyCode.C))

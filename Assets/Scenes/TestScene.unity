@@ -27581,7 +27581,7 @@ MonoBehaviour:
   WalkSpeed: 4
   SprintingSpeedWhenCrouched: 4
   WalkSpeedWhenCrouched: 2
-  DashSpeed: 500
+  DashSpeed: 750
   Gravity: 9.8
   JumpHeight: 3
   CrouchHeight: 1
