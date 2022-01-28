@@ -15,12 +15,15 @@ public class EnemyController : MonoBehaviour
 
     Transform target;
     NavMeshAgent agent;
+    Animator animator;
 
     void Start()
     {
         target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
         agent.isStopped = true;
+        animator = transform.GetChild(0).gameObject.GetComponent<Animator>();
+        animator.applyRootMotion = false;
     }
 
     void Update()
@@ -32,6 +35,7 @@ public class EnemyController : MonoBehaviour
         {
             foundTarget = true;
             agent.isStopped = false;
+            animator.SetBool("Run", true);
 
             FaceTarget(directionToTarget);
             agent.SetDestination(target.position);
@@ -46,6 +50,7 @@ public class EnemyController : MonoBehaviour
         {
             foundTarget = false;
             agent.isStopped = true;
+            animator.SetBool("Run", false);
         }
     }
 
