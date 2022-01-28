@@ -3,21 +3,20 @@
 public class CameraSpringUtility
 {
     public Vector3 Values;
-    private float frequence;
+    private float frequency;
     private float damp;
     private Vector3 dampValues;
 
-    public CameraSpringUtility(float frequence, float damp)
+    public CameraSpringUtility(float frequency, float damp)
     {
-        this.frequence = frequence;
+        this.frequency = frequency;
         this.damp = damp;
     }
 
     public void UpdateSpring(float deltaTime, Vector3 target)
     {
-        Values -= deltaTime * frequence * dampValues;
+        Values -= deltaTime * frequency * dampValues;
         dampValues = Vector3.Lerp(dampValues, Values - target, damp * deltaTime);
-
     }
 }
 

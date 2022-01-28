@@ -1,12 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [ExecuteInEditMode] 
 [RequireComponent(typeof(Camera))] 
 public class RadiaBlur : MonoBehaviour
 {
-
     public Shader RadiaBlurShader;
     public Material RadiaBlurMaterial;
 
@@ -21,8 +18,6 @@ public class RadiaBlur : MonoBehaviour
 
     [Range(0, 1)]
     public float CenterY = 0.5f;
-
-  
 
     void OnRenderImage(RenderTexture src, RenderTexture dest)
     {

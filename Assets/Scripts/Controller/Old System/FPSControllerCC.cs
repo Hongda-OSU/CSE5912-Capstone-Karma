@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using PolyGamers.Weapon;
 using UnityEngine;
 
 public class FPSControllerCC : MonoBehaviour
@@ -25,7 +26,7 @@ public class FPSControllerCC : MonoBehaviour
     private bool isCrouched;
     private float controlerHeight;
 
-    private WaitForSeconds ws = new WaitForSeconds(0.1f);
+    private WaitForSeconds waitOneSeconds = new WaitForSeconds(0.1f);
     [SerializeField] private ParticleSystem forwardDashParticle;
     [SerializeField] private ParticleSystem backwardDashParticle;
     private float horizontalInput, verticalInput;
@@ -106,7 +107,7 @@ public class FPSControllerCC : MonoBehaviour
 
     IEnumerator DoCrouch(float targetHeight)
     {
-        yield return ws;
+        yield return waitOneSeconds;
         while (Math.Abs(characterController.height - targetHeight) > 0.05f)
         {
             characterController.height =

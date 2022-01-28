@@ -10,7 +10,6 @@ public class PlayerFootstepAudioListener : MonoBehaviour
     private Transform footstepTransform;
     private float nextPlayTime;
 
-
     void Start()
     {
         characterController = GetComponent<CharacterController>();

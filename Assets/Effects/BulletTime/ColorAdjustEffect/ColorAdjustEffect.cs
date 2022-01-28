@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 //继承自PostEffectBase
 public class ColorAdjustEffect : PostEffectBase

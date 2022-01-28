@@ -25171,6 +25171,7 @@ GameObject:
   - component: {fileID: 6324315379400352080}
   - component: {fileID: 6324315379400352082}
   - component: {fileID: 6324315379400352081}
+  - component: {fileID: 6324315379400352083}
   m_Layer: 0
   m_Name: Assault_Rifle_01_FPSController
   m_TagString: Untagged
@@ -25305,7 +25306,7 @@ GameObject:
   - component: {fileID: 6323545414396422430}
   - component: {fileID: 6323545414396422431}
   m_Layer: 0
-  m_Name: arms_assault_rifle_01
+  m_Name: AK47
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25933,8 +25934,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  RecoilRange: {x: 0.3, y: 0.05}
-  RecoilFadeOutTime: 0.1
+  RecoilRange: {x: 0.5, y: 0.2}
+  RecoilFadeOutTime: 0.3
 --- !u!4 &6263777993926347104
 Transform:
   m_ObjectHideFlags: 0
@@ -27455,9 +27456,9 @@ MonoBehaviour:
   BulletPrefab: {fileID: 1086664671600574, guid: 5953171a59c27394e9ad5cbb564affa8, type: 3}
   MuzzleParticle: {fileID: 7989154829315048949}
   CastingParticle: {fileID: 1001112698592740011}
-  FireRate: 10
   AmmoInMag: 30
   MaxAmmoCarried: 120
+  FireRate: 10
   FirearmsShootingAudioSource: {fileID: 6323525233809450448}
   FirearmsReloadingAudioSource: {fileID: 6323525233809450448}
   FirearmsAudioData: {fileID: 11400000, guid: b5aff83e62fa6a04993d91b69f167c5b, type: 2}
@@ -27581,7 +27582,7 @@ MonoBehaviour:
   WalkSpeed: 4
   SprintingSpeedWhenCrouched: 4
   WalkSpeedWhenCrouched: 2
-  DashSpeed: 750
+  DashSpeed: 500
   Gravity: 9.8
   JumpHeight: 3
   CrouchHeight: 1
@@ -27605,6 +27606,20 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6324315379400352083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6261282228173511418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 476125afce9c4194aa0d737f0e13e28a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MainWeapon: {fileID: 6323545414396422431}
+  SecondaryWeapon: {fileID: 0}
 --- !u!4 &7786024709879552729
 Transform:
   m_ObjectHideFlags: 0

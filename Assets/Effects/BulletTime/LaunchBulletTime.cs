@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class LaunchBulletTime : MonoBehaviour
 {
@@ -8,7 +6,6 @@ public class LaunchBulletTime : MonoBehaviour
 
     public RadiaBlur radiaBlue;
     public ColorAdjustEffect cae;
-
 
     public AudioSource ass;
     public AudioClip clipIn;

@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 //非运行时也触发效果
 [ExecuteInEditMode]
