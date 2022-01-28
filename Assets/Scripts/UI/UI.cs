@@ -59,7 +59,14 @@ namespace CSE5912.PolyGamers
             StartCoroutine(FadeTo(from, to));
         }
         
+        protected IEnumerator LoadUI(VisualElement from, VisualElement to)
+        {
 
+            yield return StartCoroutine(FadeOut(from));
+
+
+            yield return StartCoroutine(FadeIn(to));
+        }
 
         /*
          *  animation related
@@ -89,6 +96,7 @@ namespace CSE5912.PolyGamers
         {
             SetButtonsInteractable(element, false);
 
+            element.style.opacity = 0f;
             element.style.display = DisplayStyle.Flex;
 
             float time = 0f;
@@ -133,6 +141,7 @@ namespace CSE5912.PolyGamers
                 element.style.opacity = 1 - time / fadingTime;
 
             }
+            element.style.opacity = 0f;
             element.style.display = DisplayStyle.None;
         }
 

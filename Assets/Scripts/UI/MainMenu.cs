@@ -9,15 +9,29 @@ namespace CSE5912.PolyGamers
     public class MainMenu : UI
     {
         [SerializeField] private string gameSceneName;
-        [SerializeField] private UI options;
+
+        private VisualElement mainMenuPanel;
 
         private Button startGameButton;
         private Button optionsButton;
         private Button quitGameButton;
 
+
+        private VisualElement optionsPanel;
+
+        private Button audioButton;
+        private Button KeybindingsButton;
+        private Button creditsButton;
+        //private Button resolutionButton;
+        //private Button languageButton;
+        private Button backButton;
+
         private void Awake()
         {
             Initialize();
+
+            mainMenuPanel = root.Q<VisualElement>("MainMenuPanel");
+            optionsPanel = root.Q<VisualElement>("OptionsPanel");
         }
 
         private void Start()
@@ -31,6 +45,23 @@ namespace CSE5912.PolyGamers
 
             quitGameButton = root.Q<Button>("QuitGame");
             quitGameButton.clicked += QuitGameButtonPressed;
+
+
+            // set up buttons
+            audioButton = root.Q<Button>("Audio");
+            audioButton.clicked += AudioButtonPressed;
+
+            KeybindingsButton = root.Q<Button>("Keybindings");
+            KeybindingsButton.clicked += KeybindingsButtonPressed;
+
+            creditsButton = root.Q<Button>("Credits");
+            creditsButton.clicked += CreditsButtonPressed;
+
+            backButton = root.Q<Button>("Back");
+            backButton.clicked += BackButtonPressed;
+
+            // not showing at default
+            optionsPanel.style.display = DisplayStyle.None;
         }
         
         // load the main game scene
@@ -42,7 +73,7 @@ namespace CSE5912.PolyGamers
         // open option menu
         private void OptionsButtonPressed()
         {
-            LoadUI(this, options); 
+            StartCoroutine(LoadUI(mainMenuPanel, optionsPanel));
         }
 
         // quit the game
@@ -52,6 +83,27 @@ namespace CSE5912.PolyGamers
             UnityEditor.EditorApplication.isPlaying = false;
 #endif
             Application.Quit();
+        }
+
+        private void AudioButtonPressed()
+        {
+            // todo - load audio ui screen
+        }
+
+        private void KeybindingsButtonPressed()
+        {
+            // todo - load keybindings ui screen
+        }
+
+        private void CreditsButtonPressed()
+        {
+            // todo - load credits screen
+        }
+
+        // go back to previous UI
+        private void BackButtonPressed()
+        {
+            StartCoroutine(LoadUI(optionsPanel, mainMenuPanel));
         }
     }
 }
