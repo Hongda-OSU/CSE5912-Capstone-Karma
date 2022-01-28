@@ -5328,7 +5328,8 @@ MonoBehaviour:
   Damp: 15
   MinRecoilRange: {x: -2, y: -5}
   MaxRecoilRange: {x: 2, y: 5}
-  springSpeed: 10
+  SpringSpeed: 10
+  SpringFactorAimed: 0.5
 --- !u!1 &1974248285
 GameObject:
   m_ObjectHideFlags: 0
@@ -25935,6 +25936,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   RecoilRange: {x: 0.4, y: 0.1}
+  RecoilFactorAimed: 0.3
   RecoilFadeOutTime: 0.3
 --- !u!4 &6263777993926347104
 Transform:

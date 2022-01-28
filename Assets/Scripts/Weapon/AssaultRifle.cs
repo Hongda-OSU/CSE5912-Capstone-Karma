@@ -10,14 +10,14 @@ namespace PolyGamers.Weapon
         private IEnumerator reloadAmmoCheckerCoroutine;
         
         private Quaternion ControllerOriginLocalRotation;
-        private Vector3 ControllerQriginLocalPosition;
+        private Vector3 ControllerOriginLocalPosition;
         private FPSMouseLook fpsMouseLook;
 
         protected override void Start()
         {
             base.Start();
             ControllerOriginLocalRotation = transform.localRotation;
-            ControllerQriginLocalPosition = transform.localPosition;
+            ControllerOriginLocalPosition = transform.localPosition;
             reloadAmmoCheckerCoroutine = CheckReloadAmmoAnimationEnd();
             fpsMouseLook = FindObjectOfType<FPSMouseLook>();
         }
@@ -33,7 +33,10 @@ namespace PolyGamers.Weapon
             FirearmsShootingAudioSource.Play();
             CreateBullet();
             CastingParticle.Play();
-            fpsMouseLook.FiringWithRecoil();
+            if (isAiming)
+                fpsMouseLook.FiringWithRecoilAimed();
+            else
+                fpsMouseLook.FiringWithRecoil();
             LastFireTime = Time.time;
         }
 
@@ -71,7 +74,7 @@ namespace PolyGamers.Weapon
         protected override void StopCameraLean()
         {
             transform.localRotation = Quaternion.Slerp(transform.localRotation, ControllerOriginLocalRotation, SlerpTime * Time.deltaTime);
-            transform.localPosition = Vector3.Slerp(transform.localPosition, ControllerQriginLocalPosition, SlerpTime * Time.deltaTime);
+            transform.localPosition = Vector3.Slerp(transform.localPosition, ControllerOriginLocalPosition, SlerpTime * Time.deltaTime);
             EyeCamera.transform.localRotation = Quaternion.Slerp(EyeCamera.transform.localRotation, CameraLocalOriginRotation, SlerpTime * Time.deltaTime);
         }
 

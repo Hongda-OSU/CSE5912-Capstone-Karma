@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 
-public class CameraSpringUtility
+public class CameraShakeUtility
 {
     public Vector3 Values;
     private float frequency;
     private float damp;
     private Vector3 dampValues;
 
-    public CameraSpringUtility(float frequency, float damp)
+    public CameraShakeUtility(float frequency, float damp)
     {
         this.frequency = frequency;
         this.damp = damp;
