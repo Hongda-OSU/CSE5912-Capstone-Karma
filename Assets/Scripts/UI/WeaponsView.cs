@@ -12,7 +12,16 @@ namespace CSE5912.PolyGamers
     {
         private List<VisualElement> slotList;
         private Dictionary<VisualElement, Weapon> slotToWeapon;
-        private VisualElement specific;
+        //private Dictionary<VisualElement, AddOn[]> slotToAddOns;
+
+        private VisualElement specificPanel;
+        private VisualElement addOnsPanel;
+
+        private VisualElement selectedWeaponSlot;
+        private VisualElement selectedAddOnSlot;
+
+        private float height;
+        private Vector2 prevPosition;
 
         // test
         InputActions inputActions;
@@ -20,8 +29,9 @@ namespace CSE5912.PolyGamers
         {
             Initialize();
 
+            VisualElement slots = root.Q<VisualElement>("Slots");
             slotList = new List<VisualElement>();
-            for (int i = 0; i < root.Q<VisualElement>("Slots").childCount; i++)
+            for (int i = 0; i < slots.childCount; i++)
             {
                 slotList.Add(Root.Q<VisualElement>("Slot_" + i));
             }
@@ -32,30 +42,28 @@ namespace CSE5912.PolyGamers
                 VisualElement slot = slotList[i];
                 slotToWeapon.Add(slot, null);
 
-                slot.RegisterCallback<MouseDownEvent>(evt => StartCoroutine(PopUpSpecific(slot)));
+                slot.Q<VisualElement>("Weapon").RegisterCallback<MouseDownEvent>(evt => StartCoroutine(PopUpWeaponSpecific(slot)));
+
+                // test for add-on slots on click
+                slot.Q<VisualElement>("AddOn_0").RegisterCallback<MouseDownEvent>(evt => StartCoroutine(PopUpAddOns(slot)));
             }
 
-            specific = root.Q<VisualElement>("Specific");
-            specific.style.display = DisplayStyle.None;
-            
+            specificPanel = root.Q<VisualElement>("Specific");
+            specificPanel.style.display = DisplayStyle.None;
+            specificPanel.RegisterCallback<MouseDownEvent>(evt => StartCoroutine(PopOffWeaponSpecific()));
+
+            addOnsPanel = root.Q<VisualElement>("AddOns");
+            addOnsPanel.style.display = DisplayStyle.None;
+            addOnsPanel.RegisterCallback<MouseDownEvent>(evt => StartCoroutine(PopOffAddOns()));
 
             // test
-            inputActions = new InputActions();
-            inputActions.UI.Enable();
+            slots.RegisterCallback<GeometryChangedEvent>(evt => height = slots.resolvedStyle.height / slots.childCount);
         }
 
-        private void Start()
-        {
-            
-        }
-
-        private void Update()
-        {
-        }
 
         public void ResetView()
         {
-            specific.style.display = DisplayStyle.None;
+            specificPanel.style.display = DisplayStyle.None;
         }
 
         private void SetWeaponToSlot(VisualElement slot, Weapon weapon)
@@ -65,20 +73,70 @@ namespace CSE5912.PolyGamers
             weaponSlot.style.unityBackgroundScaleMode = ScaleMode.ScaleToFit;
 
             slotToWeapon[slot] = weapon;
+
+            // todo set weapon addons to addon slots
         }
 
-        private IEnumerator PopUpSpecific(VisualElement slot)
+        private IEnumerator PopUpWeaponSpecific(VisualElement weaponSlot)
         {
-            yield return StartCoroutine(FadeOut(specific));
+            if (selectedWeaponSlot != weaponSlot)
+            {
+                selectedWeaponSlot = weaponSlot;
 
-            Weapon weapon = slotToWeapon[slot];
+                yield return StartCoroutine(FadeOut(specificPanel));
 
-            specific.Q<Label>("Description").text = weapon.description;
+                Weapon weapon = slotToWeapon[weaponSlot];
 
-            yield return StartCoroutine(FadeIn(specific));
+                specificPanel.Q<Label>("Description").text = weapon.description;
+
+                yield return StartCoroutine(FadeIn(specificPanel));
+            }
         }
 
+        private IEnumerator PopOffWeaponSpecific()
+        {
+            StartCoroutine(FadeOut(specificPanel));
 
+            selectedWeaponSlot = null;
+
+            yield return null;
+        }
+
+        private IEnumerator PopUpAddOns(VisualElement addOnSlot)
+        {
+            if (selectedAddOnSlot != addOnSlot)
+            {
+                prevPosition.x = addOnSlot.resolvedStyle.top;
+                prevPosition.y = addOnSlot.resolvedStyle.left;
+
+                selectedAddOnSlot = addOnSlot;
+
+                StartCoroutine(TranslateTo(addOnSlot, 0f, 0f));
+                StartCoroutine(FadeIn(addOnsPanel));
+
+                foreach (VisualElement slot in slotList)
+                {
+                    if (slot != addOnSlot)
+                        StartCoroutine(FadeOut(slot));
+                }
+            }
+            yield return null;
+        }
+
+        private IEnumerator PopOffAddOns()
+        {
+            StartCoroutine(TranslateTo(selectedAddOnSlot, prevPosition.x, prevPosition.y));
+            StartCoroutine(FadeOut(addOnsPanel));
+
+            foreach (VisualElement slot in slotList)
+            {
+                if (slot != selectedAddOnSlot)
+                    StartCoroutine(FadeIn(slot));
+            }
+            selectedAddOnSlot = null;
+
+            yield return null;
+        }
 
         public void UpdateWeaponList(Weapon[] weapons)
         {

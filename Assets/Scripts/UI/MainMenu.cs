@@ -73,7 +73,7 @@ namespace CSE5912.PolyGamers
         // open option menu
         private void OptionsButtonPressed()
         {
-            StartCoroutine(LoadUI(mainMenuPanel, optionsPanel));
+            StartCoroutine(FadeTo(mainMenuPanel, optionsPanel));
         }
 
         // quit the game
@@ -103,7 +103,7 @@ namespace CSE5912.PolyGamers
         // go back to previous UI
         private void BackButtonPressed()
         {
-            StartCoroutine(LoadUI(optionsPanel, mainMenuPanel));
+            StartCoroutine(FadeTo(optionsPanel, mainMenuPanel));
         }
     }
 }

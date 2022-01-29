@@ -48,16 +48,34 @@ namespace CSE5912.PolyGamers
         }
 
         // load from current UI to another
-        protected IEnumerator LoadUI(VisualElement from, VisualElement to)
+        protected IEnumerator FadeTo(VisualElement from, VisualElement to)
         {
             yield return StartCoroutine(FadeOut(from));
 
             yield return StartCoroutine(FadeIn(to));
         }
 
+
         /*
          *  animation related
          */
+
+        protected IEnumerator FadeOut(VisualElement element)
+        {
+            SetButtonsInteractable(element, false);
+
+            float time = 0f;
+            while (time < fadingTime)
+            {
+                time += delta;
+                yield return new WaitForSecondsRealtime(delta);
+
+                element.style.opacity = 1 - time / fadingTime;
+            }
+
+            element.style.opacity = 0f;
+            element.style.display = DisplayStyle.None;
+        }
 
         protected IEnumerator FadeIn(VisualElement element)
         {
@@ -73,27 +91,30 @@ namespace CSE5912.PolyGamers
                 yield return new WaitForSecondsRealtime(delta);
 
                 element.style.opacity = time / fadingTime;
-
             }
 
             SetButtonsInteractable(element, true);
         }
 
-        protected IEnumerator FadeOut(VisualElement element)
+
+        protected IEnumerator TranslateTo(VisualElement element, float top, float left)
         {
             SetButtonsInteractable(element, false);
+
+            float deltaTop = element.resolvedStyle.top - top;
+            float deltaLeft = element.resolvedStyle.left - left;
 
             float time = 0f;
             while (time < fadingTime)
             {
+                element.style.top = top + deltaTop * (1 - time / fadingTime);
+                element.style.left = left + deltaLeft * (1 - time / fadingTime);
+
                 time += delta;
                 yield return new WaitForSecondsRealtime(delta);
-
-                element.style.opacity = 1 - time / fadingTime;
-
             }
-            element.style.opacity = 0f;
-            element.style.display = DisplayStyle.None;
+
+            SetButtonsInteractable(element, true);
         }
 
 

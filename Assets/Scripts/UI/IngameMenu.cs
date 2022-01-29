@@ -37,15 +37,15 @@ namespace CSE5912.PolyGamers
 
             // set up toggles
             weaponsToggle = root.Q<Toggle>("Weapons");
-            weaponsToggle.RegisterValueChangedCallback(evt => WeaponsTogglePressed());
+            weaponsToggle.RegisterValueChangedCallback(evt => WeaponsToggleOnChange());
             toggleList.Add(weaponsToggle);
 
             modsToggle = root.Q<Toggle>("Mods");
-            modsToggle.RegisterValueChangedCallback(evt => ModsTogglePressed());
+            modsToggle.RegisterValueChangedCallback(evt => ModsToggleOnChange());
             toggleList.Add(modsToggle);
 
             skillsToggle = root.Q<Toggle>("Skills");
-            skillsToggle.RegisterValueChangedCallback(evt => SkillsTogglePressed());
+            skillsToggle.RegisterValueChangedCallback(evt => SkillsToggleOnChange());
             toggleList.Add(skillsToggle);
 
             // set default view to loadout
@@ -59,11 +59,11 @@ namespace CSE5912.PolyGamers
 
 
         // switch to weapons view
-        private void WeaponsTogglePressed()
+        private void WeaponsToggleOnChange()
         {
             if (weaponsToggle.value && currentPanel != weaponsPanel)
             {
-                StartCoroutine(LoadUI(currentPanel, weaponsPanel));
+                StartCoroutine(FadeTo(currentPanel, weaponsPanel));
                 currentPanel = weaponsPanel;
                 UpdateToggles(weaponsToggle);
 
@@ -74,11 +74,11 @@ namespace CSE5912.PolyGamers
         }
 
         // switch to mods view
-        private void ModsTogglePressed()
+        private void ModsToggleOnChange()
         {
             if (modsToggle.value && currentPanel != modsPanel)
             {
-                StartCoroutine(LoadUI(currentPanel, modsPanel));
+                StartCoroutine(FadeTo(currentPanel, modsPanel));
                 currentPanel = modsPanel;
                 UpdateToggles(modsToggle);
             }
@@ -87,11 +87,11 @@ namespace CSE5912.PolyGamers
         }
 
         // switch to skills view
-        private void SkillsTogglePressed()
+        private void SkillsToggleOnChange()
         {
             if (skillsToggle.value && currentPanel != skillsPanel)
             {
-                StartCoroutine(LoadUI(currentPanel, skillsPanel));
+                StartCoroutine(FadeTo(currentPanel, skillsPanel));
                 currentPanel = skillsPanel;
                 UpdateToggles(skillsToggle);
             }
