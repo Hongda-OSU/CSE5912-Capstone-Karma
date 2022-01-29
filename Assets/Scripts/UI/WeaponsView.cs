@@ -76,7 +76,6 @@ namespace CSE5912.PolyGamers
             specific.Q<Label>("Description").text = weapon.description;
 
             yield return StartCoroutine(FadeIn(specific));
-
         }
 
 
