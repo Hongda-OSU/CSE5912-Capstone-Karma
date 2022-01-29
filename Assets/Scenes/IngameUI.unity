@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 12476025}
   - component: {fileID: 12476027}
   - component: {fileID: 12476028}
-  - component: {fileID: 12476029}
+  - component: {fileID: 12476031}
   - component: {fileID: 12476030}
   m_Layer: 5
   m_Name: IngameMenu
@@ -187,9 +187,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba4dccab7dfdf574abaec0f103e03186, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponsView: {fileID: 12476028}
-  modsView: {fileID: 12476029}
-  skillsView: {fileID: 12476030}
+  weaponsPanelControl: {fileID: 12476028}
+  modsPanelControl: {fileID: 12476031}
+  skillsPanelControl: {fileID: 12476030}
 --- !u!114 &12476028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,18 +202,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7ef38dc1b69bd8428c22e6e3660b4ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &12476029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 12476024}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d4c99ccd7824fc43920eb358c3f4801, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &12476030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,6 +212,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf97e96b109c62047bff57b48e990da6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &12476031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 12476024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac44ebbc395eb864bb838f1fca315429, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &133912062

@@ -8,9 +8,9 @@ namespace CSE5912.PolyGamers
 {
     public class IngameMenu : UI
     {
-        [SerializeField] private WeaponsView weaponsView;
-        [SerializeField] private ModsView modsView;
-        [SerializeField] private SkillsView skillsView;
+        [SerializeField] private WeaponsPanelControl weaponsPanelControl;
+        [SerializeField] private ModsPanelControl modsPanelControl;
+        [SerializeField] private SkillsPanelControl skillsPanelControl;
 
         private VisualElement currentPanel;
 
@@ -50,6 +50,7 @@ namespace CSE5912.PolyGamers
 
             // set default view to loadout
             currentPanel = weaponsPanel;
+            weaponsPanel.style.display = DisplayStyle.Flex;
             weaponsToggle.value = true;
 
             // hide other views
@@ -67,7 +68,7 @@ namespace CSE5912.PolyGamers
                 currentPanel = weaponsPanel;
                 UpdateToggles(weaponsToggle);
 
-                weaponsView.ResetView();
+                weaponsPanelControl.ResetView();
             }
             else if (!weaponsToggle.value && currentPanel == weaponsPanel)
                 weaponsToggle.value = true;

@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 
 namespace CSE5912.PolyGamers
 {
-    public class WeaponsView : UI
+    public class WeaponsPanelControl : UI
     {
         private List<VisualElement> slotList;
         private Dictionary<VisualElement, Weapon> slotToWeapon;
@@ -63,7 +63,8 @@ namespace CSE5912.PolyGamers
 
         public void ResetView()
         {
-            specificPanel.style.display = DisplayStyle.None;
+            StartCoroutine(PopOffAddOns());
+            StartCoroutine(PopUpWeaponSpecific(selectedWeaponSlot));
         }
 
         private void SetWeaponToSlot(VisualElement slot, Weapon weapon)
@@ -119,6 +120,8 @@ namespace CSE5912.PolyGamers
                     if (slot != addOnSlot)
                         StartCoroutine(FadeOut(slot));
                 }
+
+                // todo - change specific to selected add-on
             }
             yield return null;
         }
