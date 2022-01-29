@@ -96,9 +96,12 @@ namespace CSE5912.PolyGamers
 
         private IEnumerator PopOffWeaponSpecific()
         {
-            StartCoroutine(FadeOut(specificPanel));
+            if (selectedWeaponSlot != null)
+            {
+                StartCoroutine(FadeOut(specificPanel));
 
-            selectedWeaponSlot = null;
+                selectedWeaponSlot = null;
+            }
 
             yield return null;
         }
@@ -128,16 +131,18 @@ namespace CSE5912.PolyGamers
 
         private IEnumerator PopOffAddOns()
         {
-            StartCoroutine(TranslateTo(selectedAddOnSlot, prevPosition.x, prevPosition.y));
-            StartCoroutine(FadeOut(addOnsPanel));
-
-            foreach (VisualElement slot in slotList)
+            if (selectedAddOnSlot != null)
             {
-                if (slot != selectedAddOnSlot)
-                    StartCoroutine(FadeIn(slot));
-            }
-            selectedAddOnSlot = null;
+                StartCoroutine(TranslateTo(selectedAddOnSlot, prevPosition.x, prevPosition.y));
+                StartCoroutine(FadeOut(addOnsPanel));
 
+                foreach (VisualElement slot in slotList)
+                {
+                    if (slot != selectedAddOnSlot)
+                        StartCoroutine(FadeIn(slot));
+                }
+                selectedAddOnSlot = null;
+            }
             yield return null;
         }
 
