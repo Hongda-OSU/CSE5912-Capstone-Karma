@@ -16,9 +16,6 @@ namespace CSE5912.PolyGamers
         {
             get { return root; }
         }
-        protected VisualElement background;
-
-
 
         // set time interval when switching UIs
         public void SetFadingTime(float fadingTime)
@@ -29,10 +26,7 @@ namespace CSE5912.PolyGamers
         // initialize for all UIs
         protected void Initialize()
         {
-
             root = GetComponent<UIDocument>().rootVisualElement;
-            background = root.Q<VisualElement>("Background");
-
         }
 
         // set interactability of buttons
@@ -54,16 +48,9 @@ namespace CSE5912.PolyGamers
         }
 
         // load from current UI to another
-        protected void LoadUI(UI from, UI to)
-        {
-            StartCoroutine(FadeTo(from, to));
-        }
-        
         protected IEnumerator LoadUI(VisualElement from, VisualElement to)
         {
-
             yield return StartCoroutine(FadeOut(from));
-
 
             yield return StartCoroutine(FadeIn(to));
         }
@@ -71,26 +58,6 @@ namespace CSE5912.PolyGamers
         /*
          *  animation related
          */
-
-        private IEnumerator FadeIn()
-        {
-            SetButtonsInteractable(root, false);
-
-            root.style.display = DisplayStyle.Flex;
-
-            float time = 0f;
-            while (time < fadingTime)
-            {
-                time += delta;
-                yield return new WaitForSecondsRealtime(delta);
-
-                foreach (VisualElement child in background.Children())
-                    child.style.opacity = time / fadingTime;
-                
-            }
-
-            SetButtonsInteractable(root, true);
-        }
 
         protected IEnumerator FadeIn(VisualElement element)
         {
@@ -112,22 +79,6 @@ namespace CSE5912.PolyGamers
             SetButtonsInteractable(element, true);
         }
 
-        private IEnumerator FadeOut()
-        {
-            SetButtonsInteractable(root, false);
-
-            float time = 0f;
-            while (time < fadingTime)
-            {
-                time += delta;
-                yield return new WaitForSecondsRealtime(delta);
-
-                foreach (VisualElement child in background.Children())
-                    child.style.opacity = 1 - time / fadingTime;
-                
-            }
-            root.style.display = DisplayStyle.None;
-        }
         protected IEnumerator FadeOut(VisualElement element)
         {
             SetButtonsInteractable(element, false);
@@ -145,16 +96,6 @@ namespace CSE5912.PolyGamers
             element.style.display = DisplayStyle.None;
         }
 
-        private IEnumerator FadeTo(UI from, UI to)
-        {
-            yield return StartCoroutine(from.FadeOut());
-
-            to.background.style.opacity = 1f;
-            foreach (VisualElement child in to.background.Children())
-                child.style.opacity = 0f;
-
-            yield return StartCoroutine(to.FadeIn());
-        }
 
     }
 }
