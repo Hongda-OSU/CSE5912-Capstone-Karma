@@ -41,7 +41,10 @@ public class FPSMouseLook : MonoBehaviour
         CalculateRecoilOffset();
 
         cameraRotation.x -= currentRecoil.x;
-        cameraRotation.y += currentRecoil.y;
+        if (UnityEngine.Random.value > 0.5f)
+            cameraRotation.y += currentRecoil.y;
+        else
+            cameraRotation.y -= currentRecoil.y;
 
         cameraRotation.x = Mathf.Clamp(cameraRotation.x, MaxminAngle.x, MaxminAngle.y);
 

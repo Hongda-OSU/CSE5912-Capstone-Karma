@@ -5328,8 +5328,8 @@ MonoBehaviour:
   Damp: 15
   MinRecoilRange: {x: -2, y: -5}
   MaxRecoilRange: {x: 2, y: 5}
-  SpringSpeed: 10
-  SpringFactorAimed: 0.5
+  SpringSpeed: 6
+  SpringFactorAimed: 0.6
 --- !u!1 &1974248285
 GameObject:
   m_ObjectHideFlags: 0
@@ -25935,9 +25935,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  RecoilRange: {x: 0.4, y: 0.1}
-  RecoilFactorAimed: 0.3
-  RecoilFadeOutTime: 0.3
+  RecoilRange: {x: 0.05, y: 0.3}
+  RecoilFactorAimed: 0.5
+  RecoilFadeOutTime: 0.2
 --- !u!4 &6263777993926347104
 Transform:
   m_ObjectHideFlags: 0
@@ -27468,7 +27468,7 @@ MonoBehaviour:
   FOVforDoubleMirror: 35
   SlerpTime: 6.5
   SlerpAngle: 35
-  SlerpDistance: 0.75
+  SlerpDistance: 0.85
   SpreadAngle: 60
   ImpactPrefab: {fileID: 1879272669879180, guid: 7bef351ddc33ae044b671a7664396a20, type: 3}
   impactAudioData: {fileID: 11400000, guid: a4453f74fe5729140b9af202c367f21d, type: 2}
@@ -27584,7 +27584,7 @@ MonoBehaviour:
   WalkSpeed: 4
   SprintingSpeedWhenCrouched: 4
   WalkSpeedWhenCrouched: 2
-  DashSpeed: 200
+  DashSpeed: 750
   Gravity: 9.8
   JumpHeight: 3
   CrouchHeight: 1
