@@ -6,8 +6,9 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
     public float viewRadius = 10f;
+    public float closeDetectionDistance = 1.5f;
     [Range(0, 360)]
-    public float viewAngle = 180f;
+    public float viewAngle = 135f;
     public bool foundTarget = false; // This is used for testing
 
     private float distance;
@@ -31,7 +32,7 @@ public class EnemyController : MonoBehaviour
         distance = Vector3.Distance(target.position, transform.position);
         directionToTarget = (target.position - transform.position).normalized;
 
-        if (distance <= viewRadius && Vector3.Angle(transform.forward, directionToTarget) < viewAngle / 2)
+        if ((distance <= viewRadius && Vector3.Angle(transform.forward, directionToTarget) < viewAngle / 2) || distance <= closeDetectionDistance)
         {
             foundTarget = true;
             agent.isStopped = false;
@@ -40,10 +41,19 @@ public class EnemyController : MonoBehaviour
             FaceTarget(directionToTarget);
             agent.SetDestination(target.position);
 
-            if (distance <= agent.stoppingDistance)
+            if (distance < agent.stoppingDistance + 0.3)
             {
+                // Inside attacking range, attack player.
                 agent.isStopped = true;
-                // Attack player.
+                animator.SetBool("InAttackRange", true);
+                AttackPlayerRandomly();
+            }
+            else 
+            {
+                // Outside attacking range.
+                animator.SetBool("InAttackRange", false);
+                animator.ResetTrigger("Attack_1");
+                animator.ResetTrigger("Attack_2");
             }
         }
         else 
@@ -51,6 +61,21 @@ public class EnemyController : MonoBehaviour
             foundTarget = false;
             agent.isStopped = true;
             animator.SetBool("Run", false);
+        }
+
+
+    }
+
+    private void AttackPlayerRandomly() {
+        float random = Random.Range(0f, 2f);
+
+        if (random <= 1f) 
+        {
+            animator.SetTrigger("Attack_1");
+        }
+        else
+        {
+            animator.SetTrigger("Attack_2");
         }
     }
 
