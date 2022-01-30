@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(EnemyController))]
+[CustomEditor(typeof(IEnemy))]
 
 public class EnemyViewEditor : Editor
 {
@@ -12,20 +12,20 @@ public class EnemyViewEditor : Editor
 
     void OnSceneGUI()
     {
-        EnemyController fow = (EnemyController)target;
+        IEnemy fow = (IEnemy)target;
         Handles.color = Color.white;
-        Vector3 viewAngleA = fow.DirFromAngle(-fow.viewAngle / 2, false);
-        Vector3 viewAngleB = fow.DirFromAngle(fow.viewAngle / 2, false);
+        Vector3 viewAngleA = fow.DirFromAngle(-fow.GetViewAngle() / 2, false);
+        Vector3 viewAngleB = fow.DirFromAngle(fow.GetViewAngle() / 2, false);
 
-        Handles.DrawWireArc(fow.transform.position, Vector3.up, fow.DirFromAngle(-fow.viewAngle, false) + fow.transform.forward, fow.viewAngle, fow.viewRadius);
-        Handles.DrawWireArc(fow.transform.position, Vector3.up, Vector3.forward, 360, fow.closeDetectionDistance);
+        Handles.DrawWireArc(fow.GetTransform().position, Vector3.up, fow.DirFromAngle(-fow.GetViewAngle(), false) + fow.GetTransform().forward, fow.GetViewAngle(), fow.GetViewRadius());
+        Handles.DrawWireArc(fow.GetTransform().position, Vector3.up, Vector3.forward, 360, fow.GetCloseDetectionDistance());
 
-        Handles.DrawLine(fow.transform.position, fow.transform.position + viewAngleA * fow.viewRadius);
-        Handles.DrawLine(fow.transform.position, fow.transform.position + viewAngleB * fow.viewRadius);
+        Handles.DrawLine(fow.GetTransform().position, fow.GetTransform().position + viewAngleA * fow.GetViewRadius());
+        Handles.DrawLine(fow.GetTransform().position, fow.GetTransform().position + viewAngleB * fow.GetViewRadius());
 
         Handles.color = Color.red;
-        if (fow.foundTarget) {
-            Handles.DrawLine(fow.transform.position, fow.GetTargetPosition());
+        if (fow.FoundTarget()) {
+            Handles.DrawLine(fow.GetTransform().position, fow.GetTargetPosition());
         }
     }
 }
