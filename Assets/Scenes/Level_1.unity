@@ -506,10 +506,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f49a5909320f2954f88c226eb6b4de73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewRadius: 10
-  closeDetectionDistance: 1.5
-  viewAngle: 135
-  foundTarget: 0
 --- !u!195 &11839879
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -23291,7 +23287,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 557066484}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &557066488
 Camera:
   m_ObjectHideFlags: 0
