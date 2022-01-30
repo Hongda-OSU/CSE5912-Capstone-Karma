@@ -34,14 +34,12 @@ public class FPSControllerCC : MonoBehaviour
     void Start()
     {
         characterController = GetComponent<CharacterController>();
-        characterAnimator = GetComponentInChildren<Animator>();
         characterTransform = transform;
         controlerHeight = characterController.height;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    private bool jumped;
     void Update()
     {
         float tmp_CurrentSpeed = WalkSpeed;
@@ -100,9 +98,12 @@ public class FPSControllerCC : MonoBehaviour
         var tmp_Velocity = characterController.velocity;
         tmp_Velocity.y = 0;
         velocity = tmp_Velocity.magnitude;
-        if (Input.GetKeyDown(KeyCode.L))
-            characterAnimator.SetTrigger("Inspect");
-        characterAnimator.SetFloat("Velocity", velocity, 0.25f, Time.deltaTime);
+        if (characterAnimator != null)
+        {
+            if (Input.GetKeyDown(KeyCode.L))
+                characterAnimator.SetTrigger("Inspect");
+            characterAnimator.SetFloat("Velocity", velocity, 0.25f, Time.deltaTime);
+        }
     }
 
     IEnumerator DoCrouch(float targetHeight)
@@ -129,5 +130,10 @@ public class FPSControllerCC : MonoBehaviour
             return;
         }
         forwardDashParticle.Play();
+    }
+
+    internal void SetupAnimator(Animator aniamtor)
+    {
+        characterAnimator = aniamtor;
     }
 }

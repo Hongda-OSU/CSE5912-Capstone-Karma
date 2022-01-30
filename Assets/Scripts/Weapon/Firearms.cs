@@ -19,7 +19,7 @@ namespace PolyGamers.Weapon
         protected int CurrentAmmo;
         protected int CurrentMaxAmmoCarried;
         protected float LastFireTime;
-        protected Animator GunAnimator;
+        internal Animator GunAnimator;
         protected AnimatorStateInfo GunStateInfo;
        
         // WeaponAudioInfo
@@ -48,7 +48,7 @@ namespace PolyGamers.Weapon
 
         protected bool IsHoldingTrigger;
 
-        protected virtual void Start()
+        protected virtual void Awake()
         {
             CurrentAmmo = AmmoInMag;
             CurrentMaxAmmoCarried = MaxAmmoCarried;
