@@ -1,0 +1,25 @@
+.WeaponSlot {
+    flex-grow: 0;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    width: 873px;
+    flex-shrink: 1;
+    flex-wrap: nowrap;
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(255, 255, 255);
+    border-top-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+    border-left-width: 3px;
+    border-right-width: 3px;
+    border-top-width: 3px;
+    border-bottom-width: 3px;
+    height: 160px;
+    position: absolute;
+}
+
+.ModSlot {
+    width: 405px;
+    background-image: none;
+    -unity-background-scale-mode: scale-to-fit;
+}
