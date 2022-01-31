@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(IEnemy))]
+[CustomEditor(typeof(Skeleton_1))]
 
 public class EnemyViewEditor : Editor
 {
@@ -12,10 +12,13 @@ public class EnemyViewEditor : Editor
 
     void OnSceneGUI()
     {
-        IEnemy fow = (IEnemy)target;
+        Skeleton_1 fow = (Skeleton_1)target;
         Handles.color = Color.white;
         Vector3 viewAngleA = fow.DirFromAngle(-fow.GetViewAngle() / 2, false);
         Vector3 viewAngleB = fow.DirFromAngle(fow.GetViewAngle() / 2, false);
+
+        // Test code.
+        // Handles.DrawWireArc(Vector3.zero, Vector3.up, Vector3.forward, 360, 10);
 
         Handles.DrawWireArc(fow.GetTransform().position, Vector3.up, fow.DirFromAngle(-fow.GetViewAngle(), false) + fow.GetTransform().forward, fow.GetViewAngle(), fow.GetViewRadius());
         Handles.DrawWireArc(fow.GetTransform().position, Vector3.up, Vector3.forward, 360, fow.GetCloseDetectionDistance());

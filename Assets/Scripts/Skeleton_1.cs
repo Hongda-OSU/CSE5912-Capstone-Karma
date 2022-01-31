@@ -67,18 +67,28 @@ public class Skeleton_1 : MonoBehaviour, IEnemy
     private void ResetAttackAnimationTriggers() {
         animator.ResetTrigger("Attack_1");
         animator.ResetTrigger("Attack_2");
+        animator.ResetTrigger("Attack_3");
+        animator.ResetTrigger("Attack_4");
     }
 
     private void AttackPlayerRandomly() {
         float random = Random.value;
 
-        if (random <= 0.5f) 
+        if (random >= 0f && random < 0.25f)
         {
             animator.SetTrigger("Attack_1");
         }
-        else
+        else if (random >= 0.25f && random < 0.5f)
         {
             animator.SetTrigger("Attack_2");
+        }
+        else if (random >= 0.5f && random < 0.75f) 
+        {
+            animator.SetTrigger("Attack_3");
+        }
+        else if (random >= 0.75f && random < 1f)
+        {
+            animator.SetTrigger("Attack_4");
         }
     }
 
