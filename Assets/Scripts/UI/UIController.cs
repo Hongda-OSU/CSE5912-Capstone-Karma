@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 
 namespace CSE5912.PolyGamers
 {
-    public class MenuController : MonoBehaviour
+    public class UIController : MonoBehaviour
     {
         [SerializeField] private float fadingTime = 0.3f;
         [SerializeField] private GameObject uiObject;
