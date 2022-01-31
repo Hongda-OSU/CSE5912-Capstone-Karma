@@ -30,6 +30,7 @@ namespace CSE5912.PolyGamers
         {
             Initialize();
 
+            SetActive(true);
             mainMenuPanel = root.Q<VisualElement>("MainMenuPanel");
             optionsPanel = root.Q<VisualElement>("OptionsPanel");
         }

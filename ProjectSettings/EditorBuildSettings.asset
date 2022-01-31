@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    path: Assets/LScenes/Level_1.unity
+    guid: b600b664fae0c2849bd165b19fe42369
+  - enabled: 1
+    path: Assets/ExplosiveLLC/RPG Character Mecanim Animation Pack/MainMenu.unity
+    guid: aa8defdc63f994c40903f6d44dd3c22c
   m_configObjects: {}
