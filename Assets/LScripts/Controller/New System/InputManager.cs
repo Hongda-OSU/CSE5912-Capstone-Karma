@@ -1,41 +1,42 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class InputManager : MonoBehaviour
+namespace CSE5912.PolyGamers
 {
-    private PlayerInputs inputSchemes;
-    private FPSMovementCC cc;
-    private FPSMouseLookNew look;
-
-    void Awake()
+    public class InputManager : MonoBehaviour
     {
-        inputSchemes = new PlayerInputs();
-        cc = GetComponent<FPSMovementCC>();
-        look = GetComponentInChildren<FPSMouseLookNew>();
-        inputSchemes.PlayerActions.Jump.performed += ctx => cc.Jump();
-        inputSchemes.PlayerActions.Crouch.performed += ctx => cc.Crouch();
-        inputSchemes.PlayerActions.Sprint.started += ctx => cc.Sprint();
-        inputSchemes.PlayerActions.Sprint.canceled += ctx => cc.Sprint();
-    }
+        [SerializeField] private MenuOpener menuOpener;
+        private PlayerInputs inputSchemes;
+        private FPSMovementCC cc;
+        private FPSMouseLookNew look;
 
-    void FixedUpdate()
-    {
-        cc.ProcessMove(inputSchemes.PlayerActions.Move.ReadValue<Vector2>());
-    }
+        private InputActions inputActions;
+        private MenuOpenHandler menuOpenHandler;
 
-    void LateUpdate()
-    {
-        look.ProcessLook(inputSchemes.PlayerActions.Look.ReadValue<Vector2>());
-    }
+        void Awake()
+        {
+            inputSchemes = new PlayerInputs();
+            cc = GetComponent<FPSMovementCC>();
+            look = GetComponentInChildren<FPSMouseLookNew>();
+            //inputSchemes.PlayerActions.Jump.performed += ctx => cc.Jump();
+            //inputSchemes.PlayerActions.Crouch.performed += ctx => cc.Crouch();
+            //inputSchemes.PlayerActions.Sprint.started += ctx => cc.Sprint();
+            //inputSchemes.PlayerActions.Sprint.canceled += ctx => cc.Sprint();
+
+            inputActions = new InputActions();
+            menuOpenHandler = new MenuOpenHandler(inputSchemes.PlayerActions.Menu, menuOpener);
+        }
 
 
-    void OnEnable()
-    {
-        inputSchemes.PlayerActions.Enable();
-    }
 
-    void OnDisable()
-    {
-        inputSchemes.PlayerActions.Disable();
+        void OnEnable()
+        {
+            inputSchemes.PlayerActions.Enable();
+        }
+
+        void OnDisable()
+        {
+            inputSchemes.PlayerActions.Disable();
+        }
     }
 }

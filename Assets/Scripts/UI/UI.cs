@@ -27,6 +27,26 @@ namespace CSE5912.PolyGamers
         protected void Initialize()
         {
             root = GetComponent<UIDocument>().rootVisualElement;
+            SetActive(false);
+        }
+
+        public void SetActive(bool isActive)
+        {
+            //StartCoroutine(FadeIn());
+            if (!isActive)
+            {
+                root.style.display = DisplayStyle.None;
+
+                UnityEngine.Cursor.visible = false;
+                UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+            }
+            else
+            {
+                root.style.display = DisplayStyle.Flex;
+                UnityEngine.Cursor.visible = true;
+                UnityEngine.Cursor.lockState = CursorLockMode.None;
+            }
+            Debug.Log(root.style.display);
         }
 
         // set interactability of buttons
