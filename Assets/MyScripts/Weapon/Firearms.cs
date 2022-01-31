@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using Unity.VisualScripting;
 
 namespace PolyGamers.Weapon
 {
@@ -68,11 +69,6 @@ namespace PolyGamers.Weapon
         protected abstract void StartCameraLean();
         protected abstract void StopCameraLean();
 
-        protected bool IsAllowShooting()
-        {
-            return Time.time - LastFireTime > 1 / FireRate;
-        }
-
         protected Vector3 CalculateSpreadOffset()
         {
             float tmp_SpreadPercent = SpreadAngle / EyeCamera.fieldOfView;
@@ -102,6 +98,11 @@ namespace PolyGamers.Weapon
                     }
                 }
             }
+        }
+
+        protected bool IsAllowShooting()
+        {
+            return Time.time - LastFireTime > 1 / FireRate;
         }
 
         protected IEnumerator DoAim()

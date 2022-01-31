@@ -49,20 +49,27 @@ namespace PolyGamers.Weapon
 
         private void SwapWeapon()
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1) && carriedWeapon != MainWeapon) // 1-> main weapon (AK...)
+            if (Input.GetKeyDown(KeyCode.Alpha1) && carriedWeapon != MainWeapon && !carriedWeapon.isAiming) // 1-> main weapon (AK...)
             {
+                ResetTriggers();
                 carriedWeapon.gameObject.SetActive(false);
                 carriedWeapon = MainWeapon;
                 carriedWeapon.gameObject.SetActive(true);
                 fpsController.SetupAnimator(carriedWeapon.GunAnimator);
             }
-            else if (Input.GetKeyDown(KeyCode.Alpha2) && carriedWeapon != SecondaryWeapon) // 2-> secondary weapon (Pistol...)
+            else if (Input.GetKeyDown(KeyCode.Alpha2) && carriedWeapon != SecondaryWeapon && !carriedWeapon.isAiming) // 2-> secondary weapon (Pistol...)
             {
+                ResetTriggers();
                 carriedWeapon.gameObject.SetActive(false);
                 carriedWeapon = SecondaryWeapon;
                 carriedWeapon.gameObject.SetActive(true);
                 fpsController.SetupAnimator(carriedWeapon.GunAnimator);
             }
+        }
+
+        private void ResetTriggers()
+        {
+            carriedWeapon.isReloading = false;
         }
     }
 }
