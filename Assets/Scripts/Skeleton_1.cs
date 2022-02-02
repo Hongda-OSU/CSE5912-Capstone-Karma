@@ -5,8 +5,8 @@ using UnityEngine.AI;
 
 public class Skeleton_1 : MonoBehaviour, IEnemy
 {
-    private float viewRadius = 10f;
-    private float closeDetectionDistance = 1.5f;
+    private float viewRadius = 15f;
+    private float closeDetectionDistance = 3f;
     [Range(0, 360)]
     private float viewAngle = 135f;
     private bool foundTarget = false; // This is used for testing
