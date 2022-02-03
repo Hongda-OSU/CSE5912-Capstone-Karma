@@ -1,0 +1,23 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Styles/MainMenu.uss?fileID=7433441132597879392&amp;guid=db47cd8f5441f6544ba37e9fcf69dbae&amp;type=3#MainMenu" />
+    <ui:VisualElement name="Background" style="background-color: rgb(0, 0, 0); flex-grow: 1; align-items: center; justify-content: space-around; position: relative;">
+        <ui:VisualElement name="MainMenuPanel" style="flex-grow: 1; width: 1808px; justify-content: space-around; align-items: center; display: flex;">
+            <ui:Label text="Karma" display-tooltip-when-elided="true" name="GameName" style="color: rgb(255, 255, 255); -unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/FontAssets/Trajan%20Pro%20Regular%20SDF.asset?fileID=11400000&amp;guid=0821ecf0f29a62243aeeef3d0eb445c6&amp;type=2#Trajan Pro Regular SDF&apos;); font-size: 180px; position: relative; top: 127px; justify-content: flex-start; height: 212px; width: 1040px; -unity-text-align: middle-center; -unity-font-style: normal; -unity-text-outline-width: 0; -unity-text-outline-color: rgba(255, 255, 255, 0.47); text-shadow: 0 0 20px rgba(255, 255, 255, 0.78); opacity: 1; scale: 1 1.25;" />
+            <ui:GroupBox name="Buttons" style="justify-content: space-around; height: 362px; width: 326px;">
+                <ui:Button text="Start Game" display-tooltip-when-elided="true" name="StartGame" class="Button" />
+                <ui:Button text="Options" display-tooltip-when-elided="true" name="Options" class="Button" />
+                <ui:Button text="Quit Game" display-tooltip-when-elided="true" name="QuitGame" class="Button" />
+            </ui:GroupBox>
+        </ui:VisualElement>
+        <ui:VisualElement name="OptionsPanel" style="background-color: rgb(0, 0, 0); flex-grow: 1; align-items: center; justify-content: space-around; position: relative; display: none; height: auto; width: auto;">
+            <ui:Label text="Options" display-tooltip-when-elided="true" name="Options" style="color: rgb(255, 255, 255); -unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/FontAssets/Trajan%20Pro%20Regular%20SDF.asset?fileID=11400000&amp;guid=0821ecf0f29a62243aeeef3d0eb445c6&amp;type=2#Trajan Pro Regular SDF&apos;); font-size: 80px; position: relative; top: 127px; justify-content: flex-start; height: 212px; width: 1040px; -unity-text-align: middle-center; -unity-font-style: normal; -unity-text-outline-width: 0; -unity-text-outline-color: rgba(255, 255, 255, 0.47); text-shadow: 0 0 10px rgba(255, 255, 255, 0.78);" />
+            <ui:VisualElement name="Bar" style="background-color: rgb(255, 255, 255); border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); height: 6px; width: 1076px;" />
+            <ui:GroupBox name="Buttons" style="justify-content: space-around; height: 362px; width: 326px; top: -41px;">
+                <ui:Button text="Audio" display-tooltip-when-elided="true" name="Audio" class="Button" />
+                <ui:Button text="Keybindings" display-tooltip-when-elided="true" name="Keybindings" class="Button" />
+                <ui:Button text="Credits" display-tooltip-when-elided="true" name="Credits" class="Button" />
+            </ui:GroupBox>
+            <ui:Button text="Back" display-tooltip-when-elided="true" name="Back" class="Button" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
