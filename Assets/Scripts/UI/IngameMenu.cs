@@ -56,6 +56,8 @@ namespace CSE5912.PolyGamers
             // hide other views
             modsPanel.style.display = DisplayStyle.None;
             skillsPanel.style.display = DisplayStyle.None;
+
+            root.style.display = DisplayStyle.None;
         }
 
 

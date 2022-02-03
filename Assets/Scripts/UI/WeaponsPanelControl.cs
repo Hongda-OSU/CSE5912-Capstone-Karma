@@ -24,7 +24,7 @@ namespace CSE5912.PolyGamers
         private Vector2 prevPosition;
 
         // test
-        InputActions inputActions;
+
         private void Awake()
         {
             Initialize();

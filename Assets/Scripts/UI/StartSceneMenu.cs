@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 
 namespace CSE5912.PolyGamers
 {
-    public class MainMenu : UI
+    public class StartSceneMenu : UI
     {
-        [SerializeField] private string gameSceneName;
+        [SerializeField] private string gameScenePath;
 
         private VisualElement mainMenuPanel;
 
@@ -67,7 +67,7 @@ namespace CSE5912.PolyGamers
         // load the main game scene
         private void StartGameButtonPressed()
         {
-            SceneManager.LoadScene(gameSceneName);
+            SceneManager.LoadScene(gameScenePath);
         }
 
         // open option menu

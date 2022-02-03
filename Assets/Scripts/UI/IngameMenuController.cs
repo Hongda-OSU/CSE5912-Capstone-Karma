@@ -1,0 +1,24 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace CSE5912.PolyGamers
+{
+    public class IngameMenuController : MonoBehaviour
+    {
+        [SerializeField] private IngameMenu ingameMenu;
+
+        bool isDisplayed = false;
+
+        private void Start()
+        {
+            
+        }
+
+        public void SwitchActive()
+        {
+            isDisplayed = !isDisplayed;
+            ingameMenu.GetComponent<UI>().SetDisplay(isDisplayed);
+        }
+    }
+}

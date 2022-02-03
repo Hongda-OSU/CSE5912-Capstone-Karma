@@ -8,13 +8,32 @@ namespace CSE5912.PolyGamers
 {
     public class UI : MonoBehaviour
     {
-        private float fadingTime = 0.3f;
-        float delta = 0.01f;
+        [SerializeField] float fadingTime = 0.15f;
+
+        float deltaTime = 0.01f;
 
         protected VisualElement root;
         public VisualElement Root
         {
             get { return root; }
+        }
+
+        public void SetDisplay(bool isActive)
+        {
+            if (!isActive)
+            {
+                StartCoroutine(FadeOut(root));
+
+                UnityEngine.Cursor.visible = false;
+                UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+            }
+            else
+            {
+                StartCoroutine(FadeIn(root));
+
+                UnityEngine.Cursor.visible = true;
+                UnityEngine.Cursor.lockState = CursorLockMode.None;
+            }
         }
 
         // set time interval when switching UIs
@@ -67,8 +86,8 @@ namespace CSE5912.PolyGamers
             float time = 0f;
             while (time < fadingTime)
             {
-                time += delta;
-                yield return new WaitForSecondsRealtime(delta);
+                time += deltaTime;
+                yield return new WaitForSecondsRealtime(deltaTime);
 
                 element.style.opacity = 1 - time / fadingTime;
             }
@@ -87,8 +106,8 @@ namespace CSE5912.PolyGamers
             float time = 0f;
             while (time < fadingTime)
             {
-                time += delta;
-                yield return new WaitForSecondsRealtime(delta);
+                time += deltaTime;
+                yield return new WaitForSecondsRealtime(deltaTime);
 
                 element.style.opacity = time / fadingTime;
             }
@@ -110,8 +129,8 @@ namespace CSE5912.PolyGamers
                 element.style.top = top + deltaTop * (1 - time / fadingTime);
                 element.style.left = left + deltaLeft * (1 - time / fadingTime);
 
-                time += delta;
-                yield return new WaitForSecondsRealtime(delta);
+                time += deltaTime;
+                yield return new WaitForSecondsRealtime(deltaTime);
             }
 
             SetButtonsInteractable(element, true);

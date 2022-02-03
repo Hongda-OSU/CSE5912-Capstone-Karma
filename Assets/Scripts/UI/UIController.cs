@@ -7,7 +7,7 @@ namespace CSE5912.PolyGamers
 {
     public class UIController : MonoBehaviour
     {
-        [SerializeField] private float fadingTime = 0.3f;
+        [SerializeField] private float fadingTime = 0.15f;
         [SerializeField] private GameObject uiObject;
 
         private List<UI> uiList;
