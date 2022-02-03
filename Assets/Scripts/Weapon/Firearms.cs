@@ -49,6 +49,21 @@ namespace PolyGamers.Weapon
 
         protected bool IsHoldingTrigger;
 
+        // UI related
+        [Header("UI related")]
+        public WeaponType weaponType;
+        public Sprite iconImage;
+        public string description;
+
+        // Attachments
+        [Header("Attachments")]
+        public Attachment attachment_0;
+        public Attachment attachment_1;
+        public Attachment attachment_2;
+        public Attachment attachment_3;
+
+        public enum WeaponType { Rifle, Handgun };
+
         protected virtual void Awake()
         {
             CurrentAmmo = AmmoInMag;

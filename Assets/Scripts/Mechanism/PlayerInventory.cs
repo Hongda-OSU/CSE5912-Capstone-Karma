@@ -6,7 +6,7 @@ namespace CSE5912.PolyGamers
 {
     public class PlayerInventory : MonoBehaviour
     {
-        [SerializeField] private WeaponsPanelControl weaponsView;
+        [SerializeField] private WeaponsPanelControl weaponsPanelControl;
 
         [SerializeField] private int maxWeaponNum = 5;
         [SerializeField] private Weapon[] weapons;
@@ -40,7 +40,7 @@ namespace CSE5912.PolyGamers
 
         private void UpdateAll()
         {
-            weaponsView.UpdateWeaponList(weapons);
+            weaponsPanelControl.UpdateWeaponList(weapons);
         }
     }
 }

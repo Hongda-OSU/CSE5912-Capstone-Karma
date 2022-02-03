@@ -1,14 +1,15 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 namespace PolyGamers.Weapon
 {
-    public class AssaultRifle : Firearms
+    public class Glock : Firearms
     {
+        [Header("Glock")]
         public GameObject ImpactPrefab;
         public ImpactAudioData impactAudioData;
         private IEnumerator reloadAmmoCheckerCoroutine;
-        
+
         private Quaternion ControllerOriginLocalRotation;
         private Vector3 ControllerOriginLocalPosition;
         private FPSMouseLook fpsMouseLook;
@@ -20,6 +21,8 @@ namespace PolyGamers.Weapon
             ControllerOriginLocalPosition = transform.localPosition;
             reloadAmmoCheckerCoroutine = CheckReloadAmmoAnimationEnd();
             fpsMouseLook = FindObjectOfType<FPSMouseLook>();
+
+            weaponType = WeaponType.Handgun;
         }
 
         protected override void Shooting()
@@ -28,7 +31,7 @@ namespace PolyGamers.Weapon
             if (!IsAllowShooting()) return;
             MuzzleParticle.Play();
             CurrentAmmo -= 1;
-            GunAnimator.Play("Fire", isAiming ? 1: 0, 0);
+            GunAnimator.Play("Fire", isAiming ? 1 : 0, 0);
             FirearmsShootingAudioSource.clip = FirearmsAudioData.ShootingAudio;
             FirearmsShootingAudioSource.Play();
             CreateBullet();
@@ -80,7 +83,7 @@ namespace PolyGamers.Weapon
 
         private void CameraLeanLeft()
         {
-            transform.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.Euler(0,0,SlerpAngle), SlerpTime * Time.deltaTime);
+            transform.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.Euler(0, 0, SlerpAngle), SlerpTime * Time.deltaTime);
             transform.localPosition = Vector3.Slerp(transform.localPosition, new Vector3(-SlerpDistance, 0, 0), SlerpTime * Time.deltaTime);
             EyeCamera.transform.localRotation = Quaternion.Slerp(EyeCamera.transform.localRotation, Quaternion.Euler(90, SlerpAngle, 0), SlerpTime * Time.deltaTime);
         }
