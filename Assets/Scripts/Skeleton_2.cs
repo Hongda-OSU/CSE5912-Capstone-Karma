@@ -25,6 +25,7 @@ public class Skeleton_2 : MonoBehaviour, IEnemy
         agent.isStopped = true;
         animator = transform.GetChild(0).gameObject.GetComponent<Animator>();
         animator.applyRootMotion = false;
+        agent.speed = 2f;
     }
 
     void Update()
@@ -37,23 +38,40 @@ public class Skeleton_2 : MonoBehaviour, IEnemy
             foundTarget = true;
             agent.isStopped = false;
             animator.SetBool("Run", true);
+            agent.speed = 6f;
 
             FaceTarget(directionToTarget);
-            agent.SetDestination(target.position);
 
-            ResetAttackAnimationTriggers();
-
+            //ResetAttackAnimationTriggers();
+            
             if (distance < agent.stoppingDistance + 0.3)
             {
                 // Inside attacking range, attack player.
-                agent.isStopped = true;
+                
                 animator.SetBool("InAttackRange", true);
-                AttackPlayerRandomly();
+
+                if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Idle") && !animator.GetCurrentAnimatorStateInfo(0).IsName("Backward")) 
+                {
+                    agent.isStopped = true;
+                    //AttackPlayerRandomly();
+                    animator.SetBool("AttackFinished", true);
+                    agent.stoppingDistance = 10f;
+                }
+                else 
+                {
+                    agent.Move(-1f * directionToTarget * Time.deltaTime);
+                    if (distance >= 10f) {
+                        animator.SetBool("AttackFinished", false);
+                        animator.SetBool("InAttackRange", false);
+                        agent.stoppingDistance = 3f;
+                    }
+                }
             }
             else 
             {
                 // Outside attacking range.
                 animator.SetBool("InAttackRange", false);
+                agent.SetDestination(target.position);
             }
         }
         else 
@@ -61,8 +79,11 @@ public class Skeleton_2 : MonoBehaviour, IEnemy
             foundTarget = false;
             agent.isStopped = true;
             animator.SetBool("Run", false);
+            agent.speed = 2f;
         }
     }
+
+    /*
 
     private void ResetAttackAnimationTriggers() {
         animator.ResetTrigger("Attack_1");
@@ -71,9 +92,13 @@ public class Skeleton_2 : MonoBehaviour, IEnemy
         animator.ResetTrigger("Attack_4");
     }
 
+
     private void AttackPlayerRandomly() {
         float random = Random.value;
 
+        animator.SetTrigger("Attack_1");
+
+        
         if (random >= 0f && random < 0.25f)
         {
             animator.SetTrigger("Attack_1");
@@ -90,7 +115,10 @@ public class Skeleton_2 : MonoBehaviour, IEnemy
         {
             animator.SetTrigger("Attack_4");
         }
+        
     }
+
+    */
 
     private void FaceTarget(Vector3 direction) { 
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
