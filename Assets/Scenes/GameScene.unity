@@ -5341,6 +5341,7 @@ MonoBehaviour:
   weapons:
   - {fileID: 6323545414396422431}
   - {fileID: 7347884081617589204}
+  attachmentList: []
 --- !u!1 &1127093836
 GameObject:
   m_ObjectHideFlags: 0

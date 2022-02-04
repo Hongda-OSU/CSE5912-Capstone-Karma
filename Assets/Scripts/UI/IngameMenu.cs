@@ -58,6 +58,7 @@ namespace CSE5912.PolyGamers
             skillsPanel.style.display = DisplayStyle.None;
 
             root.style.display = DisplayStyle.None;
+            
         }
 
 

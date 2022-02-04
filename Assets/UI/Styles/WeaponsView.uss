@@ -60,3 +60,30 @@
     border-top-width: 3px;
     border-bottom-width: 3px;
 }
+
+.InventorySlot {
+    flex-grow: 1;
+    border-left-color: rgba(255, 255, 255, 255);
+    border-right-color: rgba(255, 255, 255, 255);
+    border-top-color: rgba(255, 255, 255, 255);
+    border-bottom-color: rgba(255, 255, 255, 255);
+    border-left-width: 3px;
+    border-right-width: 3px;
+    border-top-width: 3px;
+    border-bottom-width: 3px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.InventoryRow {
+    flex-grow: 1;
+    width: 875px;
+    flex-direction: row;
+}
+
+.AttachmentIcon {
+    flex-grow: 0.75;
+    flex-shrink: 0.75;
+    width: 75%;
+    height: 75%;
+}

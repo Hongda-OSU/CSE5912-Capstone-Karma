@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace CSE5912.PolyGamers
 {
@@ -8,17 +11,33 @@ namespace CSE5912.PolyGamers
     {
         [SerializeField] private WeaponsPanelControl weaponsPanelControl;
 
-        [SerializeField] private Firearms[] weapons;
-        // mod list
+        [SerializeField] private Firearms[] weapons; 
 
+        [SerializeField] private List<Attachment> attachmentList;
+
+        // test
+        [SerializeField] Sprite attachmentIcon;
 
         private void Awake()
         {
-
         }
         private void Start()
         {
+            attachmentList = new List<Attachment>();
+
+            // test
+            int num = 20;
+            for (int i = 0; i < num; i++)
+            {
+                var attachment = new Attachment();
+                attachment.iconImage = attachmentIcon;
+
+                attachmentList.Add(attachment);
+            }
+
+
             UpdateAll();
+
         }
 
         public void AddWeapon(Firearms weapon)
@@ -36,7 +55,8 @@ namespace CSE5912.PolyGamers
 
         private void UpdateAll()
         {
-            weaponsPanelControl.UpdateWeaponList(weapons);
+            weaponsPanelControl.UpdateWeapons(weapons);
+            weaponsPanelControl.UpdateAttachmentList(attachmentList);
         }
     }
 }
