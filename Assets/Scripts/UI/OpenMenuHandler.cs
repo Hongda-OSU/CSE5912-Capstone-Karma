@@ -7,19 +7,22 @@ namespace CSE5912.PolyGamers
 {
     public class OpenMenuHandler
     {
-
         private IngameMenuController menuController;
 
-        public OpenMenuHandler(InputAction action, IngameMenuController menuController)
+        private InputActions inputSchemes;
+
+        public OpenMenuHandler(InputActions inputSchemes, IngameMenuController menuController)
         {
-            action.performed += OpenMenu_performed;
-            action.Enable();
+            this.inputSchemes = inputSchemes;
+
+            inputSchemes.UiActions.OpenMenu.performed += OpenMenu_performed;
+            inputSchemes.UiActions.OpenMenu.Enable();
             this.menuController = menuController;
         }
 
         void OpenMenu_performed(InputAction.CallbackContext obj)
         {
-            menuController.SwitchActive();
+            menuController.SwitchActive(inputSchemes);
         }
     }
 }

@@ -340,6 +340,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadingTime: 0.15
+  attachmentPerWeapon: 4
 --- !u!114 &544040214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5341,7 +5342,7 @@ MonoBehaviour:
   weapons:
   - {fileID: 6323545414396422431}
   - {fileID: 7347884081617589204}
-  attachmentList: []
+  attachmentIcon: {fileID: 21300000, guid: 2d9d53262d721164b8eba5a23659de54, type: 2}
 --- !u!1 &1127093836
 GameObject:
   m_ObjectHideFlags: 0
@@ -42179,10 +42180,6 @@ MonoBehaviour:
   weaponType: 0
   iconImage: {fileID: 21300000, guid: db048b1e99072ab43b56440f33e8801b, type: 2}
   description: 
-  attachment_0: {fileID: 0}
-  attachment_1: {fileID: 0}
-  attachment_2: {fileID: 0}
-  attachment_3: {fileID: 0}
   ImpactPrefab: {fileID: 1879272669879180, guid: 7bef351ddc33ae044b671a7664396a20, type: 3}
   impactAudioData: {fileID: 11400000, guid: a4453f74fe5729140b9af202c367f21d, type: 2}
 --- !u!82 &6324315379400352080
@@ -44407,10 +44404,6 @@ MonoBehaviour:
   weaponType: 1
   iconImage: {fileID: 21300000, guid: 59d9a6b955fed41478a62f48459c2578, type: 2}
   description: 
-  attachment_0: {fileID: 0}
-  attachment_1: {fileID: 0}
-  attachment_2: {fileID: 0}
-  attachment_3: {fileID: 0}
   ImpactPrefab: {fileID: 1879272669879180, guid: 7bef351ddc33ae044b671a7664396a20, type: 3}
   impactAudioData: {fileID: 11400000, guid: a4453f74fe5729140b9af202c367f21d, type: 2}
 --- !u!4 &7786024709879552729

@@ -18,7 +18,7 @@ namespace CSE5912.PolyGamers
         {
             inputSchemes = new InputActions();
 
-            openMenuHandler = new OpenMenuHandler(inputSchemes.UiActions.OpenMenu, menuController);
+            openMenuHandler = new OpenMenuHandler(inputSchemes, menuController);
 
             //cc = GetComponent<FPSMovementCC>();
             //look = GetComponentInChildren<FPSMouseLookNew>();
