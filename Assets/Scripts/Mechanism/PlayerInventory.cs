@@ -8,17 +8,17 @@ namespace CSE5912.PolyGamers
     {
         [SerializeField] private WeaponsPanelControl weaponsPanelControl;
 
-        [SerializeField] private int maxWeaponNum = 5;
         [SerializeField] private Firearms[] weapons;
         // mod list
 
 
         private void Awake()
         {
-            weapons = new Firearms[maxWeaponNum];
+
         }
         private void Start()
         {
+            UpdateAll();
         }
 
         public void AddWeapon(Firearms weapon)

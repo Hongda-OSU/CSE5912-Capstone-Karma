@@ -15,10 +15,10 @@ namespace CSE5912.PolyGamers
         //private Dictionary<VisualElement, AddOn[]> slotToAddOns;
 
         private VisualElement specificPanel;
-        private VisualElement addOnsPanel;
+        private VisualElement attachmentsPanel;
 
         private VisualElement selectedWeaponSlot;
-        private VisualElement selectedAddOnSlot;
+        private VisualElement selectedAttachmentSlot;
 
         private float height;
         private Vector2 prevPosition;
@@ -45,16 +45,16 @@ namespace CSE5912.PolyGamers
                 slot.Q<VisualElement>("Weapon").RegisterCallback<MouseDownEvent>(evt => StartCoroutine(PopUpWeaponSpecific(slot)));
 
                 // test for add-on slots on click
-                slot.Q<VisualElement>("AddOn_0").RegisterCallback<MouseDownEvent>(evt => StartCoroutine(PopUpAddOns(slot)));
+                slot.Q<VisualElement>("Attachment_0").RegisterCallback<MouseDownEvent>(evt => StartCoroutine(PopUpAttachments(slot)));
             }
 
             specificPanel = root.Q<VisualElement>("Specific");
             specificPanel.style.display = DisplayStyle.None;
             specificPanel.RegisterCallback<MouseDownEvent>(evt => StartCoroutine(PopOffWeaponSpecific()));
 
-            addOnsPanel = root.Q<VisualElement>("AddOns");
-            addOnsPanel.style.display = DisplayStyle.None;
-            addOnsPanel.RegisterCallback<MouseDownEvent>(evt => StartCoroutine(PopOffAddOns()));
+            attachmentsPanel = root.Q<VisualElement>("Attachments");
+            attachmentsPanel.style.display = DisplayStyle.None;
+            attachmentsPanel.RegisterCallback<MouseDownEvent>(evt => StartCoroutine(PopOffAttachments()));
 
             // test
             slots.RegisterCallback<GeometryChangedEvent>(evt => height = slots.resolvedStyle.height / slots.childCount);
@@ -63,7 +63,7 @@ namespace CSE5912.PolyGamers
 
         public void ResetView()
         {
-            StartCoroutine(PopOffAddOns());
+            StartCoroutine(PopOffAttachments());
             StartCoroutine(PopUpWeaponSpecific(selectedWeaponSlot));
         }
 
@@ -106,21 +106,21 @@ namespace CSE5912.PolyGamers
             yield return null;
         }
 
-        private IEnumerator PopUpAddOns(VisualElement addOnSlot)
+        private IEnumerator PopUpAttachments(VisualElement attachmentSlot)
         {
-            if (selectedAddOnSlot != addOnSlot)
+            if (selectedAttachmentSlot != attachmentSlot)
             {
-                prevPosition.x = addOnSlot.resolvedStyle.top;
-                prevPosition.y = addOnSlot.resolvedStyle.left;
+                prevPosition.x = attachmentSlot.resolvedStyle.top;
+                prevPosition.y = attachmentSlot.resolvedStyle.left;
 
-                selectedAddOnSlot = addOnSlot;
+                selectedAttachmentSlot = attachmentSlot;
 
-                StartCoroutine(TranslateTo(addOnSlot, 0f, 0f));
-                StartCoroutine(FadeIn(addOnsPanel));
+                StartCoroutine(TranslateTo(attachmentSlot, 0f, 0f));
+                StartCoroutine(FadeIn(attachmentsPanel));
 
                 foreach (VisualElement slot in slotList)
                 {
-                    if (slot != addOnSlot)
+                    if (slot != attachmentSlot)
                         StartCoroutine(FadeOut(slot));
                 }
 
@@ -129,19 +129,19 @@ namespace CSE5912.PolyGamers
             yield return null;
         }
 
-        private IEnumerator PopOffAddOns()
+        private IEnumerator PopOffAttachments()
         {
-            if (selectedAddOnSlot != null)
+            if (selectedAttachmentSlot != null)
             {
-                StartCoroutine(TranslateTo(selectedAddOnSlot, prevPosition.x, prevPosition.y));
-                StartCoroutine(FadeOut(addOnsPanel));
+                StartCoroutine(TranslateTo(selectedAttachmentSlot, prevPosition.x, prevPosition.y));
+                StartCoroutine(FadeOut(attachmentsPanel));
 
                 foreach (VisualElement slot in slotList)
                 {
-                    if (slot != selectedAddOnSlot)
+                    if (slot != selectedAttachmentSlot)
                         StartCoroutine(FadeIn(slot));
                 }
-                selectedAddOnSlot = null;
+                selectedAttachmentSlot = null;
             }
             yield return null;
         }

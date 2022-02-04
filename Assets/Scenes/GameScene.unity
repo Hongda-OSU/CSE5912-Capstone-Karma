@@ -5337,9 +5337,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b776c39be75f3204aab8076d76489d98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponsPanelControl: {fileID: 0}
-  maxWeaponNum: 5
-  weapons: []
+  weaponsPanelControl: {fileID: 544040213}
+  weapons:
+  - {fileID: 6323545414396422431}
+  - {fileID: 7347884081617589204}
 --- !u!1 &1127093836
 GameObject:
   m_ObjectHideFlags: 0
