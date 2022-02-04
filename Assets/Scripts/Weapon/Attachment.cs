@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace PolyGamers.Weapon
+namespace CSE5912.PolyGamers
 {
     public class Attachment : MonoBehaviour
     {

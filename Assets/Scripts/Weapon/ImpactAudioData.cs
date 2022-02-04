@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace PolyGamers.Weapon
+namespace CSE5912.PolyGamers
 {
     [CreateAssetMenu(menuName = "FPS/Impact Audio Data")]
     public class ImpactAudioData : ScriptableObject

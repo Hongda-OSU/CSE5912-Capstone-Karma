@@ -1,4 +1,4 @@
-namespace PolyGamers.Weapon
+namespace CSE5912.PolyGamers
 {
     public interface IWeapon
     {

@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using Unity.VisualScripting;
 
-namespace PolyGamers.Weapon
+namespace CSE5912.PolyGamers
 {
     public abstract class Firearms : MonoBehaviour, IWeapon
     {

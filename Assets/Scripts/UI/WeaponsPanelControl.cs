@@ -11,7 +11,7 @@ namespace CSE5912.PolyGamers
     public class WeaponsPanelControl : UI
     {
         private List<VisualElement> slotList;
-        private Dictionary<VisualElement, Weapon> slotToWeapon;
+        private Dictionary<VisualElement, Firearms> slotToWeapon;
         //private Dictionary<VisualElement, AddOn[]> slotToAddOns;
 
         private VisualElement specificPanel;
@@ -36,7 +36,7 @@ namespace CSE5912.PolyGamers
                 slotList.Add(Root.Q<VisualElement>("Slot_" + i));
             }
 
-            slotToWeapon = new Dictionary<VisualElement, Weapon>();
+            slotToWeapon = new Dictionary<VisualElement, Firearms>();
             for (int i = 0; i < slotList.Count; i++)
             {
                 VisualElement slot = slotList[i];
@@ -67,7 +67,7 @@ namespace CSE5912.PolyGamers
             StartCoroutine(PopUpWeaponSpecific(selectedWeaponSlot));
         }
 
-        private void SetWeaponToSlot(VisualElement slot, Weapon weapon)
+        private void SetWeaponToSlot(VisualElement slot, Firearms weapon)
         {
             VisualElement weaponSlot = slot.Q<VisualElement>("Weapon");
             weaponSlot.style.backgroundImage = new StyleBackground(weapon.iconImage);
@@ -86,7 +86,7 @@ namespace CSE5912.PolyGamers
 
                 yield return StartCoroutine(FadeOut(specificPanel));
 
-                Weapon weapon = slotToWeapon[weaponSlot];
+                Firearms weapon = slotToWeapon[weaponSlot];
 
                 specificPanel.Q<Label>("Description").text = weapon.description;
 
@@ -146,7 +146,7 @@ namespace CSE5912.PolyGamers
             yield return null;
         }
 
-        public void UpdateWeaponList(Weapon[] weapons)
+        public void UpdateWeaponList(Firearms[] weapons)
         {
             for (int i = 0; i < weapons.Length; i++)
             {

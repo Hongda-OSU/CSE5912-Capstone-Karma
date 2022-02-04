@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using PolyGamers.Weapon;
 using UnityEngine;
 
 public class FPSControllerCC : MonoBehaviour

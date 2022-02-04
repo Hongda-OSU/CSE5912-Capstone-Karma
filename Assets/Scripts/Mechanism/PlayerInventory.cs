@@ -9,23 +9,19 @@ namespace CSE5912.PolyGamers
         [SerializeField] private WeaponsPanelControl weaponsPanelControl;
 
         [SerializeField] private int maxWeaponNum = 5;
-        [SerializeField] private Weapon[] weapons;
+        [SerializeField] private Firearms[] weapons;
         // mod list
 
-        // test 
-        [SerializeField] private Weapon[] weaponsForTest;
 
         private void Awake()
         {
-            weapons = new Weapon[maxWeaponNum];
+            weapons = new Firearms[maxWeaponNum];
         }
         private void Start()
         {
-            foreach (Weapon weapon in weaponsForTest)
-                AddWeapon(weapon);
         }
 
-        public void AddWeapon(Weapon weapon)
+        public void AddWeapon(Firearms weapon)
         {
             for (int i = 0; i < weapons.Length; i++)
             {
