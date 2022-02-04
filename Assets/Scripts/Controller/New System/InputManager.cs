@@ -8,6 +8,7 @@ namespace CSE5912.PolyGamers
         [SerializeField] private IngameMenuController menuController;
 
         private OpenMenuHandler openMenuHandler;
+        private ScrollHandler scrollHandler;
 
         private InputActions inputSchemes;
 
@@ -19,6 +20,7 @@ namespace CSE5912.PolyGamers
             inputSchemes = new InputActions();
 
             openMenuHandler = new OpenMenuHandler(inputSchemes, menuController);
+            scrollHandler = new ScrollHandler(inputSchemes, menuController.ingameMenu.weaponsPanelControl);
 
             //cc = GetComponent<FPSMovementCC>();
             //look = GetComponentInChildren<FPSMouseLookNew>();

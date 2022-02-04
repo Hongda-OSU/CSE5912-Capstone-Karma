@@ -3,7 +3,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: stretch;
-    width: 873px;
+    width: 875px;
     flex-shrink: 1;
     flex-wrap: nowrap;
     border-left-color: rgb(255, 255, 255);
@@ -20,7 +20,7 @@
 
 .WeaponSlot {
     background-color: rgba(0, 0, 0, 0);
-    width: 897px;
+    width: 375px;
     border-left-color: rgba(255, 255, 255, 0);
     border-right-color: rgb(255, 255, 255);
     border-top-color: rgba(255, 255, 255, 0);
@@ -34,7 +34,7 @@
 }
 
 .AttachmentSlot {
-    width: 400px;
+    width: 125px;
     background-image: none;
     -unity-background-scale-mode: scale-to-fit;
     height: auto;
@@ -73,6 +73,7 @@
     border-bottom-width: 3px;
     justify-content: space-around;
     align-items: center;
+    width: 125px;
 }
 
 .InventoryRow {

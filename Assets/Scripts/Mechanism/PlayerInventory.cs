@@ -26,7 +26,7 @@ namespace CSE5912.PolyGamers
             attachmentList = new List<Attachment>();
 
             // test
-            int num = 20;
+            int num = 100;
             for (int i = 0; i < num; i++)
             {
                 var attachment = new Attachment();

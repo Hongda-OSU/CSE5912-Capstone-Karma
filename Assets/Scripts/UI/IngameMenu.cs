@@ -8,9 +8,9 @@ namespace CSE5912.PolyGamers
 {
     public class IngameMenu : UI
     {
-        [SerializeField] private WeaponsPanelControl weaponsPanelControl;
-        [SerializeField] private ModsPanelControl modsPanelControl;
-        [SerializeField] private SkillsPanelControl skillsPanelControl;
+        public WeaponsPanelControl weaponsPanelControl;
+        public ModsPanelControl modsPanelControl;
+        public SkillsPanelControl skillsPanelControl;
 
         private VisualElement currentPanel;
 

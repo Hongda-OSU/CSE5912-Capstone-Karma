@@ -6,7 +6,7 @@ namespace CSE5912.PolyGamers
 {
     public class IngameMenuController : MonoBehaviour
     {
-        [SerializeField] private IngameMenu ingameMenu;
+        public IngameMenu ingameMenu;
 
         bool isDisplayed = false;
 
@@ -30,5 +30,6 @@ namespace CSE5912.PolyGamers
                 inputSchemes.PlayerActions.Enable();
             }
         }
+
     }
 }

@@ -187,6 +187,15 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Scroll"",
+                    ""type"": ""Value"",
+                    ""id"": ""a5785737-ebcc-4992-a450-5b08a6dd5cde"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -198,6 +207,17 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""OpenMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2d177fe4-16b4-472e-98c9-51f9149f7ecb"",
+                    ""path"": ""<Mouse>/scroll/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Scroll"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -216,6 +236,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         // UiActions
         m_UiActions = asset.FindActionMap("UiActions", throwIfNotFound: true);
         m_UiActions_OpenMenu = m_UiActions.FindAction("OpenMenu", throwIfNotFound: true);
+        m_UiActions_Scroll = m_UiActions.FindAction("Scroll", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -341,11 +362,13 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_UiActions;
     private IUiActionsActions m_UiActionsActionsCallbackInterface;
     private readonly InputAction m_UiActions_OpenMenu;
+    private readonly InputAction m_UiActions_Scroll;
     public struct UiActionsActions
     {
         private @InputActions m_Wrapper;
         public UiActionsActions(@InputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @OpenMenu => m_Wrapper.m_UiActions_OpenMenu;
+        public InputAction @Scroll => m_Wrapper.m_UiActions_Scroll;
         public InputActionMap Get() { return m_Wrapper.m_UiActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -358,6 +381,9 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 @OpenMenu.started -= m_Wrapper.m_UiActionsActionsCallbackInterface.OnOpenMenu;
                 @OpenMenu.performed -= m_Wrapper.m_UiActionsActionsCallbackInterface.OnOpenMenu;
                 @OpenMenu.canceled -= m_Wrapper.m_UiActionsActionsCallbackInterface.OnOpenMenu;
+                @Scroll.started -= m_Wrapper.m_UiActionsActionsCallbackInterface.OnScroll;
+                @Scroll.performed -= m_Wrapper.m_UiActionsActionsCallbackInterface.OnScroll;
+                @Scroll.canceled -= m_Wrapper.m_UiActionsActionsCallbackInterface.OnScroll;
             }
             m_Wrapper.m_UiActionsActionsCallbackInterface = instance;
             if (instance != null)
@@ -365,6 +391,9 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 @OpenMenu.started += instance.OnOpenMenu;
                 @OpenMenu.performed += instance.OnOpenMenu;
                 @OpenMenu.canceled += instance.OnOpenMenu;
+                @Scroll.started += instance.OnScroll;
+                @Scroll.performed += instance.OnScroll;
+                @Scroll.canceled += instance.OnScroll;
             }
         }
     }
@@ -380,5 +409,6 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
     public interface IUiActionsActions
     {
         void OnOpenMenu(InputAction.CallbackContext context);
+        void OnScroll(InputAction.CallbackContext context);
     }
 }
