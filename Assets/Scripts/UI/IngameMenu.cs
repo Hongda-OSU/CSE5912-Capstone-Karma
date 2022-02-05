@@ -71,7 +71,7 @@ namespace CSE5912.PolyGamers
                 currentPanel = weaponsPanel;
                 UpdateToggles(weaponsToggle);
 
-                weaponsPanelControl.ResetView();
+                weaponsPanelControl.ResetPanel();
             }
             else if (!weaponsToggle.value && currentPanel == weaponsPanel)
                 weaponsToggle.value = true;

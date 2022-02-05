@@ -57,10 +57,8 @@ namespace CSE5912.PolyGamers
 
         // Attachments
         [Header("Attachments")]
-        public Attachment attachment_0;
-        public Attachment attachment_1;
-        public Attachment attachment_2;
-        public Attachment attachment_3;
+        [SerializeField] protected Attachment[] attachments;
+        public Attachment[] Attachments { get { return attachments; } }
 
         public enum WeaponType { Rifle, Handgun };
 
@@ -72,6 +70,8 @@ namespace CSE5912.PolyGamers
             OriginFOV = EyeCamera.fieldOfView;
             CameraLocalOriginRotation = EyeCamera.transform.localRotation;
             doAimingCoroutine = DoAim();
+
+            attachments = new Attachment[PlayerInventory.NumOfAttachments];
         }
 
         public void Attack()
@@ -83,6 +83,51 @@ namespace CSE5912.PolyGamers
         protected abstract void Reload();
         protected abstract void StartCameraLean();
         protected abstract void StopCameraLean();
+
+
+
+
+        public void SetAttachment(Attachment attachment, int index)
+        {
+            RemoveAttachment(attachments[index]);
+
+            attachments[index] = attachment;
+            attachment.attachedTo = this;
+        }
+
+        public void RemoveAttachment(Attachment target)
+        {
+            if (target == null)
+                return;
+
+            for (int i = 0; i < attachments.Length; i++)
+            {
+                if (attachments[i] == target)
+                {
+                    attachments[i] = null;
+                    target.attachedTo = null;
+                }
+            }
+        }
+
+        public string BuildDescription()
+        {
+            description = 
+                "Name: " + gameObject.name +
+                "\nType: " + weaponType;
+
+            // test
+            description += "\n\n-----------------------------------------\n" +
+                "Test\n";
+            for (int i = 0; i < attachments.Length; i++)
+            {
+                description += "\nAttachment_" + i + ": ";
+                Attachment attachment = attachments[i];
+                if (attachment != null)
+                    description += attachment.name;
+            }
+            return description;
+        }
 
         protected Vector3 CalculateSpreadOffset()
         {

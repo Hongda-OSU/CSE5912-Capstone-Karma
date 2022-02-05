@@ -9,6 +9,12 @@ namespace CSE5912.PolyGamers
 {
     public class PlayerInventory : MonoBehaviour
     {
+        [SerializeField] private static int numOfAttachments = 4;
+        public static int NumOfAttachments
+        {
+            get { return numOfAttachments; }
+        }
+
         [SerializeField] private WeaponsPanelControl weaponsPanelControl;
 
         [SerializeField] private Firearms[] weapons; 
@@ -16,7 +22,7 @@ namespace CSE5912.PolyGamers
         [SerializeField] private List<Attachment> attachmentList;
 
         // test
-        [SerializeField] Sprite attachmentIcon;
+        [SerializeField] Sprite[] attachmentIcons;
 
         private void Awake()
         {
@@ -30,7 +36,8 @@ namespace CSE5912.PolyGamers
             for (int i = 0; i < num; i++)
             {
                 var attachment = new Attachment();
-                attachment.iconImage = attachmentIcon;
+                attachment.name = i.ToString();
+                attachment.iconImage = attachmentIcons[UnityEngine.Random.Range(0, attachmentIcons.Length)];
 
                 attachmentList.Add(attachment);
             }

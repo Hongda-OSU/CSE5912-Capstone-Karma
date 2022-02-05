@@ -8,9 +8,9 @@ namespace CSE5912.PolyGamers
 {
     public class UI : MonoBehaviour
     {
-        [SerializeField] float fadingTime = 0.15f;
+        [SerializeField] protected float fadingTime = 0.15f;
 
-        float deltaTime = 0.01f;
+        private float deltaTime = 0.01f;
 
         protected VisualElement root;
         public VisualElement Root
