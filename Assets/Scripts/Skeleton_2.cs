@@ -38,32 +38,32 @@ public class Skeleton_2 : MonoBehaviour, IEnemy
             foundTarget = true;
             agent.isStopped = false;
             animator.SetBool("Run", true);
-            agent.speed = 6f;
+            agent.speed = 7f;
 
             FaceTarget(directionToTarget);
 
-            //ResetAttackAnimationTriggers();
+            
             
             if (distance < agent.stoppingDistance + 0.3)
             {
-                // Inside attacking range, attack player.
-                
+                // Inside attacking range, attack player.                
                 animator.SetBool("InAttackRange", true);
 
                 if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Idle") && !animator.GetCurrentAnimatorStateInfo(0).IsName("Backward")) 
                 {
                     agent.isStopped = true;
-                    //AttackPlayerRandomly();
+                    AttackPlayerRandomly();
                     animator.SetBool("AttackFinished", true);
-                    agent.stoppingDistance = 10f;
+                    agent.stoppingDistance = Random.Range(7f, 10f);
                 }
                 else 
                 {
                     agent.Move(-1f * directionToTarget * Time.deltaTime);
-                    if (distance >= 10f) {
+                    if (distance >= agent.stoppingDistance) {
                         animator.SetBool("AttackFinished", false);
                         animator.SetBool("InAttackRange", false);
-                        agent.stoppingDistance = 3f;
+                        agent.stoppingDistance = 2f;
+                        ResetAttackAnimationTriggers();
                     }
                 }
             }
@@ -83,8 +83,6 @@ public class Skeleton_2 : MonoBehaviour, IEnemy
         }
     }
 
-    /*
-
     private void ResetAttackAnimationTriggers() {
         animator.ResetTrigger("Attack_1");
         animator.ResetTrigger("Attack_2");
@@ -95,10 +93,7 @@ public class Skeleton_2 : MonoBehaviour, IEnemy
 
     private void AttackPlayerRandomly() {
         float random = Random.value;
-
-        animator.SetTrigger("Attack_1");
-
-        
+    
         if (random >= 0f && random < 0.25f)
         {
             animator.SetTrigger("Attack_1");
@@ -114,11 +109,8 @@ public class Skeleton_2 : MonoBehaviour, IEnemy
         else if (random >= 0.75f && random < 1f)
         {
             animator.SetTrigger("Attack_4");
-        }
-        
+        }    
     }
-
-    */
 
     private void FaceTarget(Vector3 direction) { 
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
