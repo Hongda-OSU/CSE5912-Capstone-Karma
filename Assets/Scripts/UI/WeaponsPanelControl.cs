@@ -576,6 +576,8 @@ namespace CSE5912.PolyGamers
 
         private IEnumerator PopOffSpecific()
         {
+            selectedWeaponSlot = null;
+
             yield return StartCoroutine(FadeOut(specificPanel));
 
             isFadingFinished = true;
