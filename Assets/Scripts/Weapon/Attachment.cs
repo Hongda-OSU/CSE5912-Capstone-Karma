@@ -10,6 +10,7 @@ namespace CSE5912.PolyGamers
         public Sprite iconImage;
         public string description;
         public Firearms attachedTo;
+       
 
         public string BuildDescription()
         {

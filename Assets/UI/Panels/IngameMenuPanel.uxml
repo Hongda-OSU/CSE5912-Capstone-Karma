@@ -49,102 +49,102 @@
                 <ui:Label text="Description" display-tooltip-when-elided="true" name="Description" style="flex-grow: 1; width: 625px; -unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/FontAssets/Menlo-Regular%20SDF.asset?fileID=11400000&amp;guid=b187e6b4fc1ba6544b338524871064ca&amp;type=2#Menlo-Regular SDF&apos;); color: rgb(255, 255, 255); font-size: 20px; white-space: normal;" />
             </ui:VisualElement>
             <ui:VisualElement name="Attachments" style="flex-grow: 1; height: 640px; width: 1017px; border-left-color: rgba(255, 255, 255, 0); border-right-color: rgba(255, 255, 255, 0); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px; align-items: stretch; position: absolute; display: flex; top: 161px; flex-direction: row;">
-                <ui:VisualElement name="Slots" style="flex-grow: 0; width: 875px;">
-                    <ui:VisualElement name="Row_0" class="InventoryRow">
-                        <ui:VisualElement name="Slot_0" class="InventorySlot" style="justify-content: space-around;">
+                <ui:VisualElement name="AttachmentInventorySlots" style="flex-grow: 0; width: 875px;">
+                    <ui:VisualElement name="AttachmentInventoryRow_0" class="InventoryRow">
+                        <ui:VisualElement name="AttachmentInventorySlot_0" class="InventorySlot" style="justify-content: space-around;">
                             <ui:VisualElement name="AttachmentIcon" class="AttachmentIcon" />
                         </ui:VisualElement>
-                        <ui:VisualElement name="Slot_1" class="InventorySlot">
+                        <ui:VisualElement name="AttachmentInventorySlot_1" class="InventorySlot">
                             <ui:VisualElement name="AttachmentIcon" class="AttachmentIcon" />
                         </ui:VisualElement>
-                        <ui:VisualElement name="Slot_2" class="InventorySlot">
+                        <ui:VisualElement name="AttachmentInventorySlot_2" class="InventorySlot">
                             <ui:VisualElement name="AttachmentIcon" class="AttachmentIcon" />
                         </ui:VisualElement>
-                        <ui:VisualElement name="Slot_3" class="InventorySlot">
+                        <ui:VisualElement name="AttachmentInventorySlot_3" class="InventorySlot">
                             <ui:VisualElement name="AttachmentIcon" class="AttachmentIcon" />
                         </ui:VisualElement>
-                        <ui:VisualElement name="Slot_4" class="InventorySlot">
+                        <ui:VisualElement name="AttachmentInventorySlot_4" class="InventorySlot">
                             <ui:VisualElement name="AttachmentIcon" class="AttachmentIcon" />
                         </ui:VisualElement>
-                        <ui:VisualElement name="Slot_5" class="InventorySlot">
+                        <ui:VisualElement name="AttachmentInventorySlot_5" class="InventorySlot">
                             <ui:VisualElement name="AttachmentIcon" class="AttachmentIcon" />
                         </ui:VisualElement>
-                        <ui:VisualElement name="Slot_6" class="InventorySlot">
-                            <ui:VisualElement name="AttachmentIcon" class="AttachmentIcon" />
-                        </ui:VisualElement>
-                    </ui:VisualElement>
-                    <ui:VisualElement name="Row_1" class="InventoryRow">
-                        <ui:VisualElement name="Slot_0" class="InventorySlot" style="justify-content: space-around;">
-                            <ui:VisualElement name="AttachmentIcon" class="AttachmentIcon" />
-                        </ui:VisualElement>
-                        <ui:VisualElement name="Slot_1" class="InventorySlot">
-                            <ui:VisualElement name="AttachmentIcon" class="AttachmentIcon" />
-                        </ui:VisualElement>
-                        <ui:VisualElement name="Slot_2" class="InventorySlot">
-                            <ui:VisualElement name="AttachmentIcon" class="AttachmentIcon" />
-                        </ui:VisualElement>
-                        <ui:VisualElement name="Slot_3" class="InventorySlot">
-                            <ui:VisualElement name="AttachmentIcon" class="AttachmentIcon" />
-                        </ui:VisualElement>
-                        <ui:VisualElement name="Slot_4" class="InventorySlot">
-                            <ui:VisualElement name="AttachmentIcon" class="AttachmentIcon" />
-                        </ui:VisualElement>
-                        <ui:VisualElement name="Slot_5" class="InventorySlot">
-                            <ui:VisualElement name="AttachmentIcon" class="AttachmentIcon" />
-                        </ui:VisualElement>
-                        <ui:VisualElement name="Slot_6" class="InventorySlot">
+                        <ui:VisualElement name="AttachmentInventorySlot_6" class="InventorySlot">
                             <ui:VisualElement name="AttachmentIcon" class="AttachmentIcon" />
                         </ui:VisualElement>
                     </ui:VisualElement>
-                    <ui:VisualElement name="Row_2" class="InventoryRow">
-                        <ui:VisualElement name="Slot_0" class="InventorySlot" style="justify-content: space-around;">
+                    <ui:VisualElement name="AttachmentInventoryRow_1" class="InventoryRow">
+                        <ui:VisualElement name="AttachmentInventorySlot_0" class="InventorySlot" style="justify-content: space-around;">
                             <ui:VisualElement name="AttachmentIcon" class="AttachmentIcon" />
                         </ui:VisualElement>
-                        <ui:VisualElement name="Slot_1" class="InventorySlot">
+                        <ui:VisualElement name="AttachmentInventorySlot_1" class="InventorySlot">
                             <ui:VisualElement name="AttachmentIcon" class="AttachmentIcon" />
                         </ui:VisualElement>
-                        <ui:VisualElement name="Slot_2" class="InventorySlot">
+                        <ui:VisualElement name="AttachmentInventorySlot_2" class="InventorySlot">
                             <ui:VisualElement name="AttachmentIcon" class="AttachmentIcon" />
                         </ui:VisualElement>
-                        <ui:VisualElement name="Slot_3" class="InventorySlot">
+                        <ui:VisualElement name="AttachmentInventorySlot_3" class="InventorySlot">
                             <ui:VisualElement name="AttachmentIcon" class="AttachmentIcon" />
                         </ui:VisualElement>
-                        <ui:VisualElement name="Slot_4" class="InventorySlot">
+                        <ui:VisualElement name="AttachmentInventorySlot_4" class="InventorySlot">
                             <ui:VisualElement name="AttachmentIcon" class="AttachmentIcon" />
                         </ui:VisualElement>
-                        <ui:VisualElement name="Slot_5" class="InventorySlot">
+                        <ui:VisualElement name="AttachmentInventorySlot_5" class="InventorySlot">
                             <ui:VisualElement name="AttachmentIcon" class="AttachmentIcon" />
                         </ui:VisualElement>
-                        <ui:VisualElement name="Slot_6" class="InventorySlot">
+                        <ui:VisualElement name="AttachmentInventorySlot_6" class="InventorySlot">
                             <ui:VisualElement name="AttachmentIcon" class="AttachmentIcon" />
                         </ui:VisualElement>
                     </ui:VisualElement>
-                    <ui:VisualElement name="Row_3" class="InventoryRow">
-                        <ui:VisualElement name="Slot_0" class="InventorySlot" style="justify-content: space-around;">
+                    <ui:VisualElement name="AttachmentInventoryRow_2" class="InventoryRow">
+                        <ui:VisualElement name="AttachmentInventorySlot_0" class="InventorySlot" style="justify-content: space-around;">
                             <ui:VisualElement name="AttachmentIcon" class="AttachmentIcon" />
                         </ui:VisualElement>
-                        <ui:VisualElement name="Slot_1" class="InventorySlot">
+                        <ui:VisualElement name="AttachmentInventorySlot_1" class="InventorySlot">
                             <ui:VisualElement name="AttachmentIcon" class="AttachmentIcon" />
                         </ui:VisualElement>
-                        <ui:VisualElement name="Slot_2" class="InventorySlot">
+                        <ui:VisualElement name="AttachmentInventorySlot_2" class="InventorySlot">
                             <ui:VisualElement name="AttachmentIcon" class="AttachmentIcon" />
                         </ui:VisualElement>
-                        <ui:VisualElement name="Slot_3" class="InventorySlot">
+                        <ui:VisualElement name="AttachmentInventorySlot_3" class="InventorySlot">
                             <ui:VisualElement name="AttachmentIcon" class="AttachmentIcon" />
                         </ui:VisualElement>
-                        <ui:VisualElement name="Slot_4" class="InventorySlot">
+                        <ui:VisualElement name="AttachmentInventorySlot_4" class="InventorySlot">
                             <ui:VisualElement name="AttachmentIcon" class="AttachmentIcon" />
                         </ui:VisualElement>
-                        <ui:VisualElement name="Slot_5" class="InventorySlot">
+                        <ui:VisualElement name="AttachmentInventorySlot_5" class="InventorySlot">
                             <ui:VisualElement name="AttachmentIcon" class="AttachmentIcon" />
                         </ui:VisualElement>
-                        <ui:VisualElement name="Slot_6" class="InventorySlot">
+                        <ui:VisualElement name="AttachmentInventorySlot_6" class="InventorySlot">
+                            <ui:VisualElement name="AttachmentIcon" class="AttachmentIcon" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="AttachmentInventoryRow_3" class="InventoryRow">
+                        <ui:VisualElement name="AttachmentInventorySlot_0" class="InventorySlot" style="justify-content: space-around;">
+                            <ui:VisualElement name="AttachmentIcon" class="AttachmentIcon" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="AttachmentInventorySlot_1" class="InventorySlot">
+                            <ui:VisualElement name="AttachmentIcon" class="AttachmentIcon" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="AttachmentInventorySlot_2" class="InventorySlot">
+                            <ui:VisualElement name="AttachmentIcon" class="AttachmentIcon" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="AttachmentInventorySlot_3" class="InventorySlot">
+                            <ui:VisualElement name="AttachmentIcon" class="AttachmentIcon" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="AttachmentInventorySlot_4" class="InventorySlot">
+                            <ui:VisualElement name="AttachmentIcon" class="AttachmentIcon" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="AttachmentInventorySlot_5" class="InventorySlot">
+                            <ui:VisualElement name="AttachmentIcon" class="AttachmentIcon" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="AttachmentInventorySlot_6" class="InventorySlot">
                             <ui:VisualElement name="AttachmentIcon" class="AttachmentIcon" />
                         </ui:VisualElement>
                     </ui:VisualElement>
                 </ui:VisualElement>
                 <ui:VisualElement name="PageIndicators" style="flex-grow: 0; height: 510px; justify-content: space-around; top: 64px; left: 894px; position: absolute;">
-                    <ui:VisualElement name="Page_0" style="height: 20px; width: 20px; border-left-color: rgba(255, 255, 255, 255); border-right-color: rgba(255, 255, 255, 255); border-top-color: rgba(255, 255, 255, 255); border-bottom-color: rgba(255, 255, 255, 255); border-left-width: 3px; border-right-width: 3px; border-top-width: 3px; border-bottom-width: 3px; border-top-left-radius: 59px; border-bottom-left-radius: 59px; border-top-right-radius: 59px; border-bottom-right-radius: 59px; background-color: rgba(0, 0, 0, 255);" />
+                    <ui:VisualElement name="Page_0" style="height: 20px; width: 20px; border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); border-left-width: 3px; border-right-width: 3px; border-top-width: 3px; border-bottom-width: 3px; border-top-left-radius: 59px; border-bottom-left-radius: 59px; border-top-right-radius: 59px; border-bottom-right-radius: 59px; background-color: rgb(0, 0, 0);" />
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
