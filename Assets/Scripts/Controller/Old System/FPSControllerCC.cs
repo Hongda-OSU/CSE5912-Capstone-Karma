@@ -56,7 +56,8 @@ public class FPSControllerCC : MonoBehaviour
             if (Input.GetButtonDown("Jump"))
             {
                 movementDirection.y = JumpHeight;
-                characterAnimator.SetTrigger("Jump");
+                if (characterAnimator)
+                    characterAnimator.SetTrigger("Jump");
             }
             // Handle Crouch
             if (Input.GetKeyDown(KeyCode.C))
@@ -84,8 +85,11 @@ public class FPSControllerCC : MonoBehaviour
         }
         // Knife Attack
         if (Input.GetKeyDown(KeyCode.Z))
-            characterAnimator.SetTrigger("KnifeAttack");
-
+        {
+            if (characterAnimator)
+                characterAnimator.SetTrigger("KnifeAttack");
+        }
+        
         //if (Input.GetKeyDown(KeyCode.G))
         //    characterAnimator.SetTrigger("GrenadeThrow");
 

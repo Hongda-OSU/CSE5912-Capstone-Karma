@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections;
-using Unity.VisualScripting;
 
 namespace PolyGamers.Weapon
 {
@@ -48,6 +47,7 @@ namespace PolyGamers.Weapon
         public float SpreadAngle;
 
         protected bool IsHoldingTrigger;
+
 
         protected virtual void Awake()
         {

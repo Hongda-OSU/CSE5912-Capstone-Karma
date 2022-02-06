@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace PolyGamers.Weapon
 {
@@ -8,15 +9,25 @@ namespace PolyGamers.Weapon
         public Firearms SecondaryWeapon;
         private Firearms carriedWeapon;
         [SerializeField] private FPSControllerCC fpsController;
+        public Transform WorldCameraTransform;
+        public float RayCastMaxDistance = 2f;
+        public LayerMask CheckItemLayerMask;
+        public List<Firearms> Arms = new List<Firearms>();
+        public Camera Tmp_Camera;
 
         void Start()
         {
-            carriedWeapon = MainWeapon;
-            fpsController.SetupAnimator(carriedWeapon.GunAnimator);
+            // check null weapon
+            if (MainWeapon)
+            {
+                SetupCarriedWeapon(MainWeapon);
+            }
         }
 
         void Update()
         {
+            CheckItem();
+
             if (!carriedWeapon) return;
             SwapWeapon();
 
@@ -45,11 +56,12 @@ namespace PolyGamers.Weapon
                 carriedWeapon.StartLeanShooting();
             else
                 carriedWeapon.StopLeanShooting();
+
         }
 
         private void SwapWeapon()
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1) && carriedWeapon != MainWeapon && !carriedWeapon.isAiming) // 1-> main weapon (AK...)
+            if (Input.GetKeyDown(KeyCode.Alpha1) && carriedWeapon != MainWeapon && !carriedWeapon.isAiming && MainWeapon != null) // 1-> main weapon (AK...)
             {
                 ResetTriggers();
                 carriedWeapon.gameObject.SetActive(false);
@@ -57,7 +69,7 @@ namespace PolyGamers.Weapon
                 carriedWeapon.gameObject.SetActive(true);
                 fpsController.SetupAnimator(carriedWeapon.GunAnimator);
             }
-            else if (Input.GetKeyDown(KeyCode.Alpha2) && carriedWeapon != SecondaryWeapon && !carriedWeapon.isAiming) // 2-> secondary weapon (Pistol...)
+            else if (Input.GetKeyDown(KeyCode.Alpha2) && carriedWeapon != SecondaryWeapon && !carriedWeapon.isAiming && SecondaryWeapon != null) // 2-> secondary weapon (Pistol...)
             {
                 ResetTriggers();
                 carriedWeapon.gameObject.SetActive(false);
@@ -67,10 +79,62 @@ namespace PolyGamers.Weapon
             }
         }
 
+        private void CheckItem()
+        {
+            bool tmp_IsItem = Physics.Raycast(WorldCameraTransform.position,
+                WorldCameraTransform.forward, out RaycastHit hit,
+                RayCastMaxDistance, CheckItemLayerMask);
+
+            // Need to check if the item already exist
+
+            if (tmp_IsItem)
+            {
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    bool tmp_HasItem = hit.collider.TryGetComponent(out BaseItem tmp_BaseItem);
+                    if (tmp_HasItem)
+                    {
+                        if (tmp_BaseItem is FirearmsItem tmp_FirearmsItem)
+                        {
+                            foreach (Firearms tmp_FireArms in Arms)
+                            {
+                                if (tmp_FirearmsItem.ArmsName.CompareTo(tmp_FireArms.name) == 0)
+                                {
+                                    switch (tmp_FirearmsItem.CurrentFirearmsType)
+                                    {
+                                        case FirearmsItem.FirearmsType.AssaultRifle: 
+                                            MainWeapon = tmp_FireArms;
+                                            break;
+
+                                        case FirearmsItem.FirearmsType.HandGun:
+                                            SecondaryWeapon = tmp_FireArms;
+                                            break;
+                                    }
+                                    tmp_FirearmsItem.HideItem();
+                                    SetupCarriedWeapon(tmp_FireArms);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         private void ResetTriggers()
         {
             carriedWeapon.isReloading = false;
         }
+
+        private void SetupCarriedWeapon(Firearms targetWeapon)
+        {
+            if (carriedWeapon)
+                carriedWeapon.gameObject.SetActive(false);
+            carriedWeapon = targetWeapon;
+            carriedWeapon.gameObject.SetActive(true);
+            fpsController.SetupAnimator(carriedWeapon.GunAnimator);
+            Tmp_Camera.gameObject.SetActive(false);
+        }
+
     }
 }
    
