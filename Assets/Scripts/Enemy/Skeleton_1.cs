@@ -23,8 +23,10 @@ public class Skeleton_1 : MonoBehaviour, IEnemy
         target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
         agent.isStopped = true;
-        animator = transform.GetChild(0).gameObject.GetComponent<Animator>();
-        animator.applyRootMotion = false;
+        //
+        animator = GetComponent<Animator>();
+        animator.applyRootMotion = true;
+        //
     }
 
     void Update()
