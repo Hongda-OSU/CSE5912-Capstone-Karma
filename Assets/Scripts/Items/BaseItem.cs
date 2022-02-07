@@ -5,6 +5,4 @@ using UnityEngine;
         public enum ItemType { Firearms, Others}
         public ItemType CurrentItemType;
         public int ItemId;
-
-
     }

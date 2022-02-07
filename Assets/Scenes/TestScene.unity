@@ -40297,7 +40297,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &6261774794983735866
 GameObject:
   m_ObjectHideFlags: 0
@@ -42429,7 +42429,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MainWeapon: {fileID: 6323545414396422431}
-  SecondaryWeapon: {fileID: 0}
+  SecondaryWeapon: {fileID: 7347884081617589204}
   fpsController: {fileID: 6324315379400352081}
   WorldCameraTransform: {fileID: 6263887276710111610}
   RayCastMaxDistance: 2

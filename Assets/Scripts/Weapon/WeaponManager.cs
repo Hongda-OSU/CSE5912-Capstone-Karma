@@ -18,10 +18,11 @@ namespace PolyGamers.Weapon
         void Start()
         {
             // check null weapon
-            if (MainWeapon)
-            {
+            if (MainWeapon != null)
                 SetupCarriedWeapon(MainWeapon);
-            }
+
+            if (MainWeapon == null && SecondaryWeapon != null)
+                SetupCarriedWeapon(SecondaryWeapon);
         }
 
         void Update()
