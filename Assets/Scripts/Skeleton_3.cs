@@ -18,6 +18,8 @@ public class Skeleton_3 : MonoBehaviour, IEnemy
     private NavMeshAgent agent;
     private Animator animator;
 
+    private bool isAttacking = false;
+
     void Start()
     {
         target = PlayerManager.instance.player.transform;
@@ -35,21 +37,29 @@ public class Skeleton_3 : MonoBehaviour, IEnemy
 
         if ((distance <= viewRadius && Vector3.Angle(transform.forward, directionToTarget) < viewAngle / 2) || distance <= closeDetectionDistance)
         {
-            foundTarget = true;
             agent.isStopped = false;
-            animator.SetBool("Run", true);
+            animator.SetBool("FoundPlayer", true);
 
             FaceTarget(directionToTarget);
             agent.SetDestination(target.position);
+            agent.speed = 3f;
 
             ResetAttackAnimationTriggers();
 
-            if (distance < agent.stoppingDistance + 0.3)
+            if (distance < agent.stoppingDistance + 0.3 || isAttacking)
             {
                 // Inside attacking range, attack player.
+                isAttacking = true;
                 agent.isStopped = true;
                 animator.SetBool("InAttackRange", true);
+                animator.SetBool("AttackFinished", false);
                 AttackPlayerRandomly();
+                if ((animator.GetCurrentAnimatorStateInfo(0).IsName("2Hand-Axe-Attack3") || 
+                    animator.GetCurrentAnimatorStateInfo(0).IsName("2Hand-Axe-Attack1")) &&
+                    animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f) {
+                    isAttacking = false ;
+                    animator.SetBool("AttackFinished", true);
+                }
             }
             else 
             {
@@ -59,30 +69,30 @@ public class Skeleton_3 : MonoBehaviour, IEnemy
         }
         else 
         {
-            foundTarget = false;
             agent.isStopped = true;
-            animator.SetBool("Run", false);
+            animator.SetBool("FoundPlayer", false);
         }
     }
 
     private void ResetAttackAnimationTriggers() {
         animator.ResetTrigger("Attack_1");
         animator.ResetTrigger("Attack_2");
-        animator.ResetTrigger("Attack_3");
-        animator.ResetTrigger("Attack_4");
+        //animator.ResetTrigger("Attack_3");
+        //animator.ResetTrigger("Attack_4");
     }
 
     private void AttackPlayerRandomly() {
         float random = Random.value;
 
-        if (random >= 0f && random < 0.25f)
+        if (random >= 0f && random < 0.5f)
         {
             animator.SetTrigger("Attack_1");
         }
-        else if (random >= 0.25f && random < 0.5f)
+        else if (random >= 0.5f && random < 1f)
         {
             animator.SetTrigger("Attack_2");
         }
+        /*
         else if (random >= 0.5f && random < 0.75f) 
         {
             animator.SetTrigger("Attack_3");
@@ -91,6 +101,7 @@ public class Skeleton_3 : MonoBehaviour, IEnemy
         {
             animator.SetTrigger("Attack_4");
         }
+        */
     }
 
     private void FaceTarget(Vector3 direction) { 

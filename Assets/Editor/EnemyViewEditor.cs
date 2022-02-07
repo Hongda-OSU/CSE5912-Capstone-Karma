@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(Skeleton_1))]
+[CustomEditor(typeof(Skeleton_3))]
 
 public class EnemyViewEditor : Editor
 {
@@ -12,8 +12,8 @@ public class EnemyViewEditor : Editor
 
     void OnSceneGUI()
     {
-        Skeleton_1 fow = (Skeleton_1)target;
-        Handles.color = Color.white;
+        Skeleton_3 fow = (Skeleton_3)target;
+        Handles.color = Color.green;
         Vector3 viewAngleA = fow.DirFromAngle(-fow.GetViewAngle() / 2, false);
         Vector3 viewAngleB = fow.DirFromAngle(fow.GetViewAngle() / 2, false);
 
