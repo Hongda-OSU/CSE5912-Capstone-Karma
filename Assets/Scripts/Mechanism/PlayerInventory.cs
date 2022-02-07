@@ -63,7 +63,7 @@ namespace CSE5912.PolyGamers
         private void UpdateAll()
         {
             weaponsPanelControl.UpdateWeapons(weapons);
-            weaponsPanelControl.UpdateAttachmentList(attachmentList);
+            weaponsPanelControl.attachmentInventoryControl.UpdateAttachmentList(attachmentList);
         }
     }
 }

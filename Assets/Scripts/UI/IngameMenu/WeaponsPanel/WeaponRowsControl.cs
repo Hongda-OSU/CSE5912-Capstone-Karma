@@ -10,31 +10,36 @@ namespace CSE5912.PolyGamers
     {
         // weapon slot
 
-        public List<WeaponRow> weaponRowList;
+        public List<WeaponRow> rowList;
+
+        private VisualElement weaponRows;
 
         private void Awake()
         {
             Initialize();
 
             // find weapon slots
-            VisualElement weaponRows = uiDocument.rootVisualElement.Q<VisualElement>("WeaponRows");
+            weaponRows = uiDocument.rootVisualElement.Q<VisualElement>("WeaponRows");
 
             weaponRows.style.display = DisplayStyle.Flex;
 
-            weaponRowList = new List<WeaponRow>();
-            for (int i = 0; i < weaponRows.childCount; i++)
-            {
-                weaponRowList.Add(new WeaponRow(weaponRows.Q<VisualElement>("WeaponRow_" + i)));
-            }
+            rowList = new List<WeaponRow>();
 
         }
 
-        
+        private void Start()
+        {
+            for (int i = 0; i < weaponRows.childCount; i++)
+            {
+                rowList.Add(new WeaponRow(weaponRows.Q<VisualElement>("WeaponRow_" + i)));
+            }
+        }
+
         public Attachment GetEquippedAttachment(VisualElement slot)
         {
             Firearms weapon = null;
 
-            foreach (WeaponRow weaponRow in weaponRowList)
+            foreach (WeaponRow weaponRow in rowList)
                 if (weaponRow.ContainsAttachmentSlot(slot))
                         weapon = weaponRow.weapon;
 
@@ -46,7 +51,7 @@ namespace CSE5912.PolyGamers
         {
             int index = -1;
 
-            foreach (WeaponRow weaponRow in weaponRowList)
+            foreach (WeaponRow weaponRow in rowList)
                 if (weaponRow.ContainsAttachmentSlot(slot))
                     index = Array.IndexOf(weaponRow.attachmentSlots, slot);
 
@@ -57,7 +62,7 @@ namespace CSE5912.PolyGamers
         {
             Firearms weapon = null;
 
-            foreach (WeaponRow weaponRow in weaponRowList)
+            foreach (WeaponRow weaponRow in rowList)
             {
                 if (weaponRow.row == row)
                 {
@@ -70,7 +75,7 @@ namespace CSE5912.PolyGamers
 
         public void SetWeaponToRow(int index, Firearms weapon)
         {
-            WeaponRow weaponRow = weaponRowList[index];
+            WeaponRow weaponRow = rowList[index];
 
             weaponRow.weapon = weapon;
 

@@ -258,6 +258,7 @@ GameObject:
   - component: {fileID: 336562825}
   - component: {fileID: 336562827}
   - component: {fileID: 336562826}
+  - component: {fileID: 336562828}
   m_Layer: 5
   m_Name: WeaponsPanel
   m_TagString: Untagged
@@ -309,6 +310,21 @@ MonoBehaviour:
   uiDocument: {fileID: 544040215}
   fadingTime: 0.15
   weaponRowsControl: {fileID: 336562826}
+  attachmentInventoryControl: {fileID: 336562828}
+--- !u!114 &336562828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336562824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b1ccc5d15bee6a4084ef3ed899312ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiDocument: {fileID: 544040215}
+  fadingTime: 0.15
 --- !u!1 &497563616 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f20cbadfeaa7b1a44a20164a2cb61764, type: 3}

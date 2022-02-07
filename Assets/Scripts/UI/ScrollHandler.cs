@@ -29,7 +29,8 @@ namespace CSE5912.PolyGamers
             else if (scroll > 0)
                 step = -1;
 
-            weaponsPanelControl.FlipInventoryPage(step);
+            weaponsPanelControl.attachmentInventoryControl.FlipInventoryPage(step);
+            weaponsPanelControl.UpdateSlotsVisual();
         }
     }
 }
