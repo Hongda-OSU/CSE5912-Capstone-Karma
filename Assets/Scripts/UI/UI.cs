@@ -8,6 +8,7 @@ namespace CSE5912.PolyGamers
 {
     public class UI : MonoBehaviour
     {
+        [SerializeField] protected UIDocument uiDocument;
         [SerializeField] protected float fadingTime = 0.15f;
 
         private float deltaTime = 0.01f;
@@ -45,7 +46,7 @@ namespace CSE5912.PolyGamers
         // initialize for all UIs
         protected void Initialize()
         {
-            root = GetComponent<UIDocument>().rootVisualElement;
+            root = uiDocument.rootVisualElement;
         }
 
         // set interactability of buttons

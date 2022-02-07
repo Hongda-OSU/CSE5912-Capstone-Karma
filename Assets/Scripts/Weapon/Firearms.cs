@@ -71,7 +71,7 @@ namespace CSE5912.PolyGamers
             CameraLocalOriginRotation = EyeCamera.transform.localRotation;
             doAimingCoroutine = DoAim();
 
-            attachments = new Attachment[PlayerInventory.NumOfAttachments];
+            attachments = new Attachment[PlayerInventory.NumOfAttachmentsPerWeapon];
         }
 
         public void Attack()
