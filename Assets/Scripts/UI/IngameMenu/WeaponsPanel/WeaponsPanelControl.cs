@@ -11,17 +11,13 @@ namespace CSE5912.PolyGamers
     public class WeaponsPanelControl : UI
     {
         public WeaponRowsControl weaponRowsControl;
-
         public AttachmentInventoryControl attachmentInventoryControl;
 
         private VisualElement specificPanel;
 
-
-
         private bool isFadingFinished = true;
 
         private VisualElement selectedAttachmentInventorySlot;
-
         private VisualElement selectedWeaponSlot;
         private VisualElement selectedEquippedAttachmentSlot;
         private Firearms selectedWeapon;
@@ -37,11 +33,10 @@ namespace CSE5912.PolyGamers
             specificPanel = root.Q<VisualElement>("Specific");
             specificPanel.style.display = DisplayStyle.None;
 
-
         }
+
         private void Start()
         {
-
             foreach (var weaponRow in weaponRowsControl.rowList)
             {
                 weaponRow.weaponSlot.RegisterCallback<MouseDownEvent>(evt => WeaponSlot_performed(weaponRow.weaponSlot));
@@ -57,6 +52,12 @@ namespace CSE5912.PolyGamers
                 inventorySlot.slot.RegisterCallback<MouseDownEvent>(evt => AttachmentInventorySlot_performed(inventorySlot.slot));
             }
         }
+
+
+
+        /*
+         *  general
+         */
 
         private void ApplySelectedEffect(VisualElement slot, bool isSelected)
         {
@@ -169,8 +170,55 @@ namespace CSE5912.PolyGamers
             }
         }
 
+        public void UpdateSlotsVisual()
+        {
 
-        
+            foreach (var inventorySlot in attachmentInventoryControl.slotList)
+            {
+                if (inventorySlot.attachment == selectedAttachment)
+                    inventorySlot.slot.style.backgroundColor = Color.red;
+                else if (inventorySlot.attachment.attachedTo != null)
+                {
+                    inventorySlot.slot.style.backgroundColor = Color.gray;
+                }
+                else
+                    inventorySlot.slot.style.backgroundColor = Color.clear;
+            }
+
+            foreach (var row in weaponRowsControl.rowList)
+            {
+                Firearms weapon = row.weapon;
+
+                if (weapon == null)
+                    break;
+
+                VisualElement weaponSlot = row.weaponSlot;
+                if (weapon == selectedWeapon)
+                    ApplySelectedEffect(weaponSlot, true);
+                else
+                    ApplySelectedEffect(weaponSlot, false);
+
+                Attachment[] attachments = weapon.Attachments;
+                for (int i = 0; i < attachments.Length; i++)
+                {
+                    VisualElement attachmentSlot = row.attachmentSlots[i];
+                    if (attachments[i] == null)
+                    {
+                        attachmentSlot.style.backgroundImage = null;
+                    }
+                    if (attachmentSlot == selectedEquippedAttachmentSlot)
+                    {
+                        attachmentSlot.style.backgroundColor = Color.red;
+                    }
+                    else
+                    {
+                        attachmentSlot.style.backgroundColor = Color.clear;
+                    }
+                }
+            }
+        }
+
+
 
         /*
          *  weapon slot
@@ -196,6 +244,7 @@ namespace CSE5912.PolyGamers
 
             SelectSlot(attachmentSlot);
         }
+
 
 
         /*
@@ -248,97 +297,6 @@ namespace CSE5912.PolyGamers
             }
 
         }
-
-        public void UpdateSlotsVisual()
-        {
-
-            foreach (var inventorySlot in attachmentInventoryControl.slotList)
-            {
-                if (inventorySlot.attachment == selectedAttachment)
-                    inventorySlot.slot.style.backgroundColor = Color.red;
-                else if (inventorySlot.attachment.attachedTo != null)
-                {
-                    inventorySlot.slot.style.backgroundColor = Color.gray;
-                }
-                else
-                    inventorySlot.slot.style.backgroundColor = Color.clear;
-            }
-
-            foreach (var row in weaponRowsControl.rowList)
-            {
-                Firearms weapon = row.weapon;
-
-                if (weapon == null)
-                    break;
-
-                VisualElement weaponSlot = row.weaponSlot;
-                if (weapon == selectedWeapon)
-                    ApplySelectedEffect(weaponSlot, true);
-                else
-                    ApplySelectedEffect(weaponSlot, false);
-
-                Attachment[] attachments = weapon.Attachments;
-                for (int i = 0; i < attachments.Length; i++)
-                {
-                    VisualElement attachmentSlot = row.attachmentSlots[i];
-                    if (attachments[i] == null)
-                    {
-                        attachmentSlot.style.backgroundImage = null;
-                    }
-                    if (attachmentSlot == selectedEquippedAttachmentSlot)
-                    {
-                        attachmentSlot.style.backgroundColor = Color.red;
-                    }
-                    else
-                    {
-                        attachmentSlot.style.backgroundColor = Color.clear;
-                    }
-                }
-            }
-        }
-
-        private IEnumerator PopUpAttachmentSpecific(VisualElement attachmentInventorySlot)
-        {
-            Attachment attachment = attachmentInventoryControl.FindAttachmentBySlot(attachmentInventorySlot);
-
-            if (attachment == null)
-            {
-                yield return StartCoroutine(PopOffSpecific());
-            }
-            else if (selectedAttachmentInventorySlot != attachmentInventorySlot)
-            {
-                yield return StartCoroutine(PopOffSpecific());
-
-                specificPanel.Q<Label>("Description").text = attachment.BuildDescription();
-
-                yield return StartCoroutine(FadeIn(specificPanel));
-            }
-        }
-
-        private IEnumerator PopUpAttachmentSpecific(Attachment attachment)
-        {
-            if (attachment == null)
-            {
-                yield return StartCoroutine(PopOffSpecific());
-            }
-            else 
-            {
-                yield return StartCoroutine(PopOffSpecific());
-
-                specificPanel.Q<Label>("Description").text = attachment.BuildDescription();
-
-                yield return StartCoroutine(FadeIn(specificPanel));
-            }
-        }
-
-
-
-
-
-
-        /*
-         *  specific panel
-         */
         private IEnumerator PopUpAttachmentInventory(VisualElement attachmentSlot)
         {
             UpdateSlotsVisual();
@@ -381,12 +339,50 @@ namespace CSE5912.PolyGamers
                         StartCoroutine(FadeIn(weaponRow.row));
                 }
 
-                selectedEquippedAttachmentSlot.style.backgroundColor = Color.clear;
                 selectedEquippedAttachmentSlot = null;
 
+                UpdateSlotsVisual();
             }
             yield return null;
         }
+
+
+
+        /*
+         *  specific 
+         */
+
+        private IEnumerator PopUpAttachmentSpecific(VisualElement attachmentInventorySlot)
+        {
+            Attachment attachment = attachmentInventoryControl.FindAttachmentBySlot(attachmentInventorySlot);
+
+            if (attachment == null)
+            {
+                yield return StartCoroutine(PopOffSpecific());
+            }
+            else if (selectedAttachmentInventorySlot != attachmentInventorySlot)
+            {
+                yield return StartCoroutine(PopOffSpecific());
+
+                yield return StartCoroutine(PopUpSpecific(attachment.BuildDescription()));
+            }
+        }
+
+        private IEnumerator PopUpAttachmentSpecific(Attachment attachment)
+        {
+            if (attachment == null)
+            {
+                yield return StartCoroutine(PopOffSpecific());
+            }
+            else 
+            {
+                yield return StartCoroutine(PopOffSpecific());
+
+                yield return StartCoroutine(PopUpSpecific(attachment.BuildDescription()));
+            }
+        }
+
+        
         private IEnumerator PopUpWeaponSpecific(VisualElement weaponSlot)
         {
             Firearms weapon = weaponRowsControl.FindWeaponByRow(weaponSlot.parent);
@@ -399,11 +395,15 @@ namespace CSE5912.PolyGamers
             {
                 yield return StartCoroutine(PopOffSpecific());
 
-                specificPanel.Q<Label>("Description").text = weapon.BuildDescription();
-
-                yield return StartCoroutine(FadeIn(specificPanel));
-
+                yield return StartCoroutine(PopUpSpecific(weapon.BuildDescription()));
             }
+        }
+
+        private IEnumerator PopUpSpecific(string description)
+        {
+            specificPanel.Q<Label>("Description").text = description;
+
+            yield return StartCoroutine(FadeIn(specificPanel));
         }
 
         private IEnumerator PopOffSpecific()
@@ -414,10 +414,6 @@ namespace CSE5912.PolyGamers
 
             isFadingFinished = true;
         }
-
-
-
-
 
     }
 }
