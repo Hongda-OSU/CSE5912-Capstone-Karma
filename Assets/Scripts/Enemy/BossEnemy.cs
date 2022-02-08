@@ -106,6 +106,8 @@ namespace CSE5912.PolyGamers
             isPlayerInSafeDistance = distanceToPlayer < safeDistance;
 
             CalculateAggro();
+
+            PerformActions();
         }
 
 
@@ -114,6 +116,13 @@ namespace CSE5912.PolyGamers
          *  enemy actions
          */
 
+        // perform the whole action logic
+        protected virtual void PerformActions()
+        {
+
+        }
+
+        // actions
         protected virtual void Rest()
         {
             status = Status.Idle;

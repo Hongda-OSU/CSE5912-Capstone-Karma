@@ -7,16 +7,8 @@ namespace CSE5912.PolyGamers
 {
     public class SkeletonKnightControl : BossEnemy
     {
-        protected override void Start()
+        protected override void PerformActions()
         {
-            base.Start();
-        }
-
-        protected override void Update()
-        {
-            base.Update();
-
-            Debug.Log("Status: " + status);
             switch (status)
             {
                 case Status.Idle:
@@ -86,7 +78,6 @@ namespace CSE5912.PolyGamers
                     break;
             }
         }
-
 
     }
 }
