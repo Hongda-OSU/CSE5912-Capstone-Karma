@@ -242,9 +242,20 @@ namespace CSE5912.PolyGamers
             StartCoroutine(PopUpAttachmentInventory(attachmentSlot));
 
             Attachment attachment = weaponRowsControl.GetEquippedAttachment(attachmentSlot);
+
             if (attachment != null)
             {
-                StartCoroutine(PopUpAttachmentSpecific(attachment));
+                if (selectedEquippedAttachmentSlot == attachmentSlot)
+                {
+                    Firearms weapon = weaponRowsControl.FindWeaponByRow(attachmentSlot.parent);
+                    weapon.RemoveAttachment(attachment);
+                    selectedAttachment = null;
+                    StartCoroutine(PopOffSpecific());
+                }
+                else 
+                { 
+                    StartCoroutine(PopUpAttachmentSpecific(attachment));
+                }
             }
 
             SelectSlot(attachmentSlot);
