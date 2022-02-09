@@ -29,15 +29,34 @@ namespace CSE5912.PolyGamers
 
         }
 
-        public void SetIndicatorNum(int num)
+        public void SetIndicators(int index, int totalNum)
         {
             for (int i = 0; i < indicatorList.Count; i++)
             {
-                if (i < num)
-                    indicatorList[i].style.display = DisplayStyle.Flex;
+                var indicator = indicatorList[i];
+
+                if (i < totalNum)
+                {
+                    indicator.style.display = DisplayStyle.Flex;
+
+                    SetIndicatorActive(i, i == index);
+                }
 
                 else
-                    indicatorList[i].style.display = DisplayStyle.None;
+                    indicator.style.display = DisplayStyle.None;
+
+            }
+        }
+
+        private void SetIndicatorActive(int index, bool isActive)
+        {
+            if (isActive)
+            {
+                indicatorList[index].style.opacity = 1;
+            }
+            else
+            {
+                indicatorList[index].style.opacity = 0.3f;
             }
         }
 

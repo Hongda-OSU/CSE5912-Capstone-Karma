@@ -66,8 +66,8 @@ namespace CSE5912.PolyGamers
         {
             this.attachmentList = attachmentList;
 
-            totalPages = attachmentList.Count / slotList.Count;
-            pageIndicatorControl.SetIndicatorNum(totalPages);
+            totalPages = attachmentList.Count / slotList.Count + 1;
+            pageIndicatorControl.SetIndicators(currentPage, totalPages);
 
             ClearAttachmentInventory();
 
@@ -97,12 +97,14 @@ namespace CSE5912.PolyGamers
 
             int numPerPage = slotList.Count;
             int numOfAttachments = attachmentList.Count;
-            int numOfPages = numOfAttachments / numPerPage + 1;
 
             if (numOfAttachments % numPerPage == 0)
                 return;
 
-            currentPage = Mathf.Clamp(currentPage + steps, 0, numOfPages - 1);
+            currentPage = Mathf.Clamp(currentPage + steps, 0, totalPages - 1);
+            totalPages = numOfAttachments / numPerPage + 1;
+
+            pageIndicatorControl.SetIndicators(currentPage, totalPages);
 
             int numOnPage = Mathf.Clamp(numOfAttachments - numPerPage * currentPage, 0, numPerPage);
 

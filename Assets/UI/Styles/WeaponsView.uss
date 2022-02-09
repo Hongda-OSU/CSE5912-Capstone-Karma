@@ -63,10 +63,10 @@
 
 .InventorySlot {
     flex-grow: 1;
-    border-left-color: rgba(255, 255, 255, 255);
-    border-right-color: rgba(255, 255, 255, 255);
-    border-top-color: rgba(255, 255, 255, 255);
-    border-bottom-color: rgba(255, 255, 255, 255);
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(255, 255, 255);
+    border-top-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
     border-left-width: 3px;
     border-right-width: 3px;
     border-top-width: 3px;
@@ -87,4 +87,26 @@
     flex-shrink: 0.75;
     width: 75%;
     height: 75%;
+    transition-duration: 0.15s;
+}
+
+.PageIndicator {
+    height: 20px;
+    width: 20px;
+    border-left-color: rgba(255, 255, 255, 0);
+    border-right-color: rgba(255, 255, 255, 0);
+    border-top-color: rgba(255, 255, 255, 0);
+    border-bottom-color: rgba(255, 255, 255, 0);
+    border-left-width: 3px;
+    border-right-width: 3px;
+    border-top-width: 3px;
+    border-bottom-width: 3px;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    background-color: rgb(255, 255, 255);
+    padding-top: 0;
+    margin-top: 15px;
+    transition-duration: 0.3s;
 }

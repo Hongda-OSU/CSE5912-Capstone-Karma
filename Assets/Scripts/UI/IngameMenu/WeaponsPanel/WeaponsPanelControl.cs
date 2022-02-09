@@ -275,6 +275,8 @@ namespace CSE5912.PolyGamers
             {
 
                 Attachment attachment = attachmentInventoryControl.FindAttachmentBySlot(attachmentInventorySlot);
+                if (attachment == null)
+                    return;
 
                 selectedAttachment = null;
 
