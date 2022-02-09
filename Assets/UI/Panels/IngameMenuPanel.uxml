@@ -2,13 +2,13 @@
     <Style src="project://database/Assets/UI/Styles/SkillsView.uss?fileID=7433441132597879392&amp;guid=6c0ba5d71397ef5419695f15dc4c45db&amp;type=3#SkillsView" />
     <Style src="project://database/Assets/UI/Styles/Ingame.uss?fileID=7433441132597879392&amp;guid=394044c853fcc5548b44cd184a52ba94&amp;type=3#Ingame" />
     <Style src="project://database/Assets/UI/Styles/WeaponsView.uss?fileID=7433441132597879392&amp;guid=41f86612847d72049837f08362464366&amp;type=3#WeaponsView" />
-    <ui:VisualElement name="Background" style="background-color: rgba(0, 0, 0, 0.71); flex-grow: 1; align-items: flex-start; justify-content: space-around; position: relative; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; -unity-background-scale-mode: stretch-to-fill; -unity-slice-left: 0; -unity-slice-top: 0; -unity-slice-right: 0; -unity-slice-bottom: 0;">
+    <ui:VisualElement name="Background" style="background-color: rgba(0, 0, 0, 0.59); flex-grow: 1; align-items: flex-start; justify-content: space-around; position: relative; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; -unity-background-scale-mode: stretch-to-fill; -unity-slice-left: 0; -unity-slice-top: 0; -unity-slice-right: 0; -unity-slice-bottom: 0;">
         <ui:GroupBox name="CategoryButtons" style="height: 94px; width: 683px; flex-direction: row; align-items: center; justify-content: center; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; left: 80px; top: auto; position: relative; display: flex;">
             <ui:Toggle label="Weapons" name="Weapons" value="false" focusable="false" class="MyToggle CatButton" />
             <ui:Toggle label="Mods" name="Mods" focusable="false" class="MyToggle CatButton" />
             <ui:Toggle label="Skills" name="Skills" focusable="false" class="MyToggle CatButton" />
         </ui:GroupBox>
-        <ui:VisualElement name="WeaponsPanel" style="height: 800px; width: 1818px; flex-grow: 0; flex-direction: row; top: auto; left: 80px; background-color: rgba(0, 0, 0, 0); align-items: flex-start; justify-content: flex-start; display: flex;">
+        <ui:VisualElement name="WeaponsPanel" style="height: 800px; width: 1818px; flex-grow: 0; flex-direction: row; top: auto; left: 80px; background-color: rgba(0, 0, 0, 0); align-items: flex-start; justify-content: flex-start; display: none;">
             <ui:VisualElement name="WeaponRows" style="flex-grow: 1; width: 650px; align-items: stretch; justify-content: flex-start; display: flex;">
                 <ui:VisualElement name="WeaponRow_0" class="Slot" style="display: flex;">
                     <ui:VisualElement name="Weapon" class="WeaponSlot" />
@@ -46,11 +46,11 @@
                     <ui:VisualElement name="Attachment_3" class="AttachmentSlot" style="background-color: rgba(0, 0, 0, 0); border-left-color: rgba(255, 255, 255, 0); border-right-color: rgba(255, 255, 255, 0); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px;" />
                 </ui:VisualElement>
             </ui:VisualElement>
-            <ui:VisualElement name="Specific" style="flex-grow: 1; height: 800px; width: 208px; border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px; align-items: center; display: flex; background-color: rgba(0, 0, 0, 0.49);">
+            <ui:VisualElement name="Specific" style="flex-grow: 1; height: 800px; width: 208px; border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px; align-items: center; display: flex; background-color: rgba(0, 0, 0, 0.65);">
                 <ui:Label text="Description" display-tooltip-when-elided="true" name="Description" style="flex-grow: 1; width: 625px; -unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/FontAssets/Menlo-Regular%20SDF.asset?fileID=11400000&amp;guid=b187e6b4fc1ba6544b338524871064ca&amp;type=2#Menlo-Regular SDF&apos;); color: rgb(255, 255, 255); font-size: 20px; white-space: normal;" />
             </ui:VisualElement>
             <ui:VisualElement name="AttachmentInventory" style="flex-grow: 1; height: 640px; width: 1017px; border-left-color: rgba(255, 255, 255, 0); border-right-color: rgba(255, 255, 255, 0); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px; align-items: stretch; position: absolute; display: flex; top: 161px; flex-direction: row; background-color: rgba(0, 0, 0, 0);">
-                <ui:VisualElement name="AttachmentInventorySlots" style="flex-grow: 0; width: 875px; background-color: rgba(0, 0, 0, 0.49);">
+                <ui:VisualElement name="AttachmentInventorySlots" style="flex-grow: 0; width: 875px; background-color: rgba(0, 0, 0, 0.65);">
                     <ui:VisualElement name="AttachmentInventoryRow_0" class="InventoryRow">
                         <ui:VisualElement name="AttachmentInventorySlot_0" class="InventorySlot" style="justify-content: space-around;">
                             <ui:VisualElement name="AttachmentIcon" class="AttachmentIcon" />
@@ -177,60 +177,63 @@
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="SkillsPanel" style="height: 800px; width: 1680px; flex-grow: 0; flex-direction: row; top: auto; left: 80px; background-color: rgba(0, 0, 0, 0); align-items: flex-start; justify-content: flex-start; display: none;">
-            <ui:VisualElement name="SkillTree" style="flex-grow: 1; width: 1186px; height: 800px; opacity: 1; justify-content: flex-start; align-items: center;">
-                <ui:VisualElement name="Skill_0" class="Skill ElectroSkill">
-                    <ui:VisualElement name="SkillIcon" class="SkillIcon" style="flex-grow: 0; background-image: url(&apos;project://database/Assets/UI/VFX/SkillIcons/Lightning_Bolt.png?fileID=2800000&amp;guid=ea5e7c60e1996af41a7649922b07bc43&amp;type=3#Lightning_Bolt&apos;); -unity-background-image-tint-color: rgb(255, 255, 255);" />
-                    <ui:VisualElement name="LevelIndicator" class="LevelIndicators">
-                        <ui:VisualElement name="Indicator_0" class="LevelIndicator" />
-                        <ui:VisualElement name="Indicator_1" class="LevelIndicator" />
-                        <ui:VisualElement name="Indicator_2" class="LevelIndicator" />
-                        <ui:VisualElement name="Indicator_3" class="LevelIndicator" />
-                        <ui:VisualElement name="Indicator_4" class="LevelIndicator" />
+        <ui:VisualElement name="SkillsPanel" style="height: 800px; width: 1680px; flex-grow: 0; flex-direction: row; top: auto; left: 80px; background-color: rgba(0, 0, 0, 0); align-items: flex-start; justify-content: flex-start; display: flex;">
+            <ui:Label text="Skill Points:" display-tooltip-when-elided="true" name="SkillPoints" style="height: 64px; width: 165px; -unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/FontAssets/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); font-size: 23px;" />
+            <ui:VisualElement name="SkillTree_Electro" style="flex-grow: 1; width: 1186px; height: 800px; opacity: 1; justify-content: flex-start; align-items: center;">
+                <ui:VisualElement name="Tree_0" style="align-items: center;">
+                    <ui:VisualElement name="Skill_0" class="Skill ElectroSkill">
+                        <ui:VisualElement name="SkillIcon" class="SkillIcon" style="flex-grow: 0; background-image: url(&apos;project://database/Assets/UI/VFX/SkillIcons/Lightning_Bolt.png?fileID=2800000&amp;guid=ea5e7c60e1996af41a7649922b07bc43&amp;type=3#Lightning_Bolt&apos;); -unity-background-image-tint-color: rgb(255, 255, 255);" />
+                        <ui:VisualElement name="LevelIndicator" class="LevelIndicators">
+                            <ui:VisualElement name="Indicator_0" class="LevelIndicator" style="display: flex;" />
+                            <ui:VisualElement name="Indicator_1" class="LevelIndicator" />
+                            <ui:VisualElement name="Indicator_2" class="LevelIndicator" />
+                            <ui:VisualElement name="Indicator_3" class="LevelIndicator" />
+                            <ui:VisualElement name="Indicator_4" class="LevelIndicator" />
+                        </ui:VisualElement>
                     </ui:VisualElement>
-                </ui:VisualElement>
-                <ui:VisualElement name="Connector" class="Connector" />
-                <ui:VisualElement name="Skill_1" class="Skill ElectroSkill">
-                    <ui:VisualElement name="SkillIcon" class="SkillIcon" style="flex-grow: 0; background-image: url(&apos;project://database/Assets/UI/VFX/SkillIcons/Chain_Lightning.png?fileID=2800000&amp;guid=c5ead0a5a6c56ac44b93ccf5722f5a32&amp;type=3#Chain_Lightning&apos;); -unity-background-image-tint-color: rgb(255, 255, 255);" />
-                    <ui:VisualElement name="LevelIndicator" class="LevelIndicators">
-                        <ui:VisualElement name="Indicator_0" class="LevelIndicator" />
-                        <ui:VisualElement name="Indicator_1" class="LevelIndicator" />
-                        <ui:VisualElement name="Indicator_2" class="LevelIndicator" />
-                        <ui:VisualElement name="Indicator_3" class="LevelIndicator" />
-                        <ui:VisualElement name="Indicator_4" class="LevelIndicator" />
+                    <ui:VisualElement name="Connector" class="Connector" />
+                    <ui:VisualElement name="Skill_1" class="Skill ElectroSkill">
+                        <ui:VisualElement name="SkillIcon" class="SkillIcon" style="flex-grow: 0; background-image: url(&apos;project://database/Assets/UI/VFX/SkillIcons/Chain_Lightning.png?fileID=2800000&amp;guid=c5ead0a5a6c56ac44b93ccf5722f5a32&amp;type=3#Chain_Lightning&apos;); -unity-background-image-tint-color: rgb(255, 255, 255);" />
+                        <ui:VisualElement name="LevelIndicator" class="LevelIndicators">
+                            <ui:VisualElement name="Indicator_0" class="LevelIndicator" />
+                            <ui:VisualElement name="Indicator_1" class="LevelIndicator" />
+                            <ui:VisualElement name="Indicator_2" class="LevelIndicator" />
+                            <ui:VisualElement name="Indicator_3" class="LevelIndicator" />
+                            <ui:VisualElement name="Indicator_4" class="LevelIndicator" />
+                        </ui:VisualElement>
                     </ui:VisualElement>
-                </ui:VisualElement>
-                <ui:VisualElement name="Connector" class="Connector" />
-                <ui:VisualElement name="Skill_2" class="Skill ElectroSkill">
-                    <ui:VisualElement name="SkillIcon" class="SkillIcon" style="flex-grow: 0; background-image: url(&apos;project://database/Assets/UI/VFX/SkillIcons/Charge_Bolt.png?fileID=2800000&amp;guid=c26a210ad2be80a439f4538e803e976b&amp;type=3#Charge_Bolt&apos;); -unity-background-image-tint-color: rgb(255, 255, 255);" />
-                    <ui:VisualElement name="LevelIndicator" class="LevelIndicators">
-                        <ui:VisualElement name="Indicator_0" class="LevelIndicator" />
-                        <ui:VisualElement name="Indicator_1" class="LevelIndicator" />
-                        <ui:VisualElement name="Indicator_2" class="LevelIndicator" />
-                        <ui:VisualElement name="Indicator_3" class="LevelIndicator" />
-                        <ui:VisualElement name="Indicator_4" class="LevelIndicator" />
+                    <ui:VisualElement name="Connector" class="Connector" />
+                    <ui:VisualElement name="Skill_2" class="Skill ElectroSkill">
+                        <ui:VisualElement name="SkillIcon" class="SkillIcon" style="flex-grow: 0; background-image: url(&apos;project://database/Assets/UI/VFX/SkillIcons/Charge_Bolt.png?fileID=2800000&amp;guid=c26a210ad2be80a439f4538e803e976b&amp;type=3#Charge_Bolt&apos;); -unity-background-image-tint-color: rgb(255, 255, 255);" />
+                        <ui:VisualElement name="LevelIndicator" class="LevelIndicators">
+                            <ui:VisualElement name="Indicator_0" class="LevelIndicator" />
+                            <ui:VisualElement name="Indicator_1" class="LevelIndicator" />
+                            <ui:VisualElement name="Indicator_2" class="LevelIndicator" />
+                            <ui:VisualElement name="Indicator_3" class="LevelIndicator" />
+                            <ui:VisualElement name="Indicator_4" class="LevelIndicator" />
+                        </ui:VisualElement>
                     </ui:VisualElement>
-                </ui:VisualElement>
-                <ui:VisualElement name="Connector" class="Connector" />
-                <ui:VisualElement name="Skill_3" class="Skill ElectroSkill">
-                    <ui:VisualElement name="SkillIcon" class="SkillIcon" style="flex-grow: 0; background-image: url(&apos;project://database/Assets/UI/VFX/SkillIcons/Detonate.png?fileID=2800000&amp;guid=78906658231aa4a4fb34011160d9c9b6&amp;type=3#Detonate&apos;); -unity-background-image-tint-color: rgb(255, 255, 255);" />
-                    <ui:VisualElement name="LevelIndicator" class="LevelIndicators">
-                        <ui:VisualElement name="Indicator_0" class="LevelIndicator" />
-                        <ui:VisualElement name="Indicator_1" class="LevelIndicator" />
-                        <ui:VisualElement name="Indicator_2" class="LevelIndicator" />
-                        <ui:VisualElement name="Indicator_3" class="LevelIndicator" />
-                        <ui:VisualElement name="Indicator_4" class="LevelIndicator" />
+                    <ui:VisualElement name="Connector" class="Connector" />
+                    <ui:VisualElement name="Skill_3" class="Skill ElectroSkill">
+                        <ui:VisualElement name="SkillIcon" class="SkillIcon" style="flex-grow: 0; background-image: url(&apos;project://database/Assets/UI/VFX/SkillIcons/Detonate.png?fileID=2800000&amp;guid=78906658231aa4a4fb34011160d9c9b6&amp;type=3#Detonate&apos;); -unity-background-image-tint-color: rgb(255, 255, 255);" />
+                        <ui:VisualElement name="LevelIndicator" class="LevelIndicators">
+                            <ui:VisualElement name="Indicator_0" class="LevelIndicator" />
+                            <ui:VisualElement name="Indicator_1" class="LevelIndicator" />
+                            <ui:VisualElement name="Indicator_2" class="LevelIndicator" />
+                            <ui:VisualElement name="Indicator_3" class="LevelIndicator" />
+                            <ui:VisualElement name="Indicator_4" class="LevelIndicator" />
+                        </ui:VisualElement>
                     </ui:VisualElement>
-                </ui:VisualElement>
-                <ui:VisualElement name="Connector" class="Connector" />
-                <ui:VisualElement name="Skill_4" class="Skill ElectroSkill">
-                    <ui:VisualElement name="SkillIcon" class="SkillIcon" style="flex-grow: 0; background-image: url(&apos;project://database/Assets/UI/VFX/SkillIcons/Electric_Smite.png?fileID=2800000&amp;guid=43c6361489022954d88e4f20206947e2&amp;type=3#Electric_Smite&apos;); -unity-background-image-tint-color: rgb(255, 255, 255);" />
-                    <ui:VisualElement name="LevelIndicator" class="LevelIndicators">
-                        <ui:VisualElement name="Indicator_0" class="LevelIndicator" />
-                        <ui:VisualElement name="Indicator_1" class="LevelIndicator" />
-                        <ui:VisualElement name="Indicator_2" class="LevelIndicator" />
-                        <ui:VisualElement name="Indicator_3" class="LevelIndicator" />
-                        <ui:VisualElement name="Indicator_4" class="LevelIndicator" />
+                    <ui:VisualElement name="Connector" class="Connector" />
+                    <ui:VisualElement name="Skill_4" class="Skill ElectroSkill">
+                        <ui:VisualElement name="SkillIcon" class="SkillIcon" style="flex-grow: 0; background-image: url(&apos;project://database/Assets/UI/VFX/SkillIcons/Electric_Smite.png?fileID=2800000&amp;guid=43c6361489022954d88e4f20206947e2&amp;type=3#Electric_Smite&apos;); -unity-background-image-tint-color: rgb(255, 255, 255);" />
+                        <ui:VisualElement name="LevelIndicator" class="LevelIndicators">
+                            <ui:VisualElement name="Indicator_0" class="LevelIndicator" />
+                            <ui:VisualElement name="Indicator_1" class="LevelIndicator" />
+                            <ui:VisualElement name="Indicator_2" class="LevelIndicator" />
+                            <ui:VisualElement name="Indicator_3" class="LevelIndicator" />
+                            <ui:VisualElement name="Indicator_4" class="LevelIndicator" />
+                        </ui:VisualElement>
                     </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement>

@@ -16,7 +16,7 @@
     border-bottom-width: 3px;
     height: 160px;
     position: absolute;
-    background-color: rgba(0, 0, 0, 0.49);
+    background-color: rgba(0, 0, 0, 0.65);
 }
 
 .WeaponSlot {

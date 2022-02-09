@@ -19,7 +19,7 @@ namespace CSE5912.PolyGamers
             Initialize();
 
             // find weapon slots
-            weaponRows = uiDocument.rootVisualElement.Q<VisualElement>("WeaponRows");
+            weaponRows = root.Q<VisualElement>("WeaponRows");
 
             weaponRows.style.display = DisplayStyle.Flex;
 

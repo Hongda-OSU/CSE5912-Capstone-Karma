@@ -8,12 +8,15 @@
     border-top-right-radius: 50px;
     border-bottom-right-radius: 50px;
     background-color: rgb(255, 255, 255);
+    padding-right: 0;
+    margin-right: 2px;
+    margin-left: 2px;
 }
 
 .LevelIndicators {
     flex-grow: 0;
     width: 70px;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     flex-direction: row;
     top: 5px;
@@ -39,7 +42,7 @@
     border-top-width: 2px;
     border-bottom-width: 2px;
     -unity-background-image-tint-color: rgba(255, 255, 255, 255);
-    background-color: rgba(0, 0, 0, 0.49);
+    background-color: rgba(0, 0, 0, 0.65);
 }
 
 .Connector {
