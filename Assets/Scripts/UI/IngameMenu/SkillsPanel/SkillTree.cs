@@ -5,30 +5,17 @@ using UnityEngine.UIElements;
 
 namespace CSE5912.PolyGamers
 {
-    public class SkillSlotsControl: UI
+    public class SkillTree
     {
-        public List<SkillSlot> electroSkillSlotList;
+        public List<SkillSlot> skillSlotList;
 
-        public VisualElement electroSkillTree;
+        public VisualElement skillTreeElement;
 
 
-        private void Awake()
+        public SkillTree(VisualElement skillsPanel)
         {
-            Initialize();
-
-            electroSkillTree = root.Q<VisualElement>("SkillTree_Electro");
-            electroSkillSlotList = InitializeSkillSlot(electroSkillTree);
-
-
-            // test
-            for (int i = 0; i < electroSkillSlotList.Count; i++)
-            {
-                var slot = electroSkillSlotList[i];
-                slot.skill = new Skill();
-
-                if (i != 0)
-                    slot.skill.requiredSkill = electroSkillSlotList[i - 1].skill;
-            }
+            skillTreeElement = skillsPanel.Q<VisualElement>("SkillTree_Electro");
+            skillSlotList = InitializeSkillSlot(skillTreeElement);
         }
 
         private List<SkillSlot> InitializeSkillSlot(VisualElement skillTree)
@@ -58,14 +45,22 @@ namespace CSE5912.PolyGamers
         //    return null;
         //}
 
-        public void LevelUpSkill(VisualElement slot)
+        public bool LevelUpSkill(VisualElement slot)
         {
-            foreach (var skillSlot in electroSkillSlotList)
+            foreach (var skillSlot in skillSlotList)
             {
                 if (skillSlot.slot == slot)
-                    skillSlot.LevelUp();
+                    return skillSlot.LevelUp();
             }
+            return false;
+        }
 
+        public void AssignSkillToSkillSlot(List<Skill> skillList)
+        {
+            for (int i = 0; i < skillSlotList.Count; i++)
+            {
+                skillSlotList[i].skill = skillList[i];
+            }
         }
     }
 }

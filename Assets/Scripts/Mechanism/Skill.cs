@@ -15,18 +15,20 @@ namespace CSE5912.PolyGamers
         private int level = 0;
         private int maxLevel = 5;
 
-        public void LevelUp()
+        public bool LevelUp()
         {
             if (level >= maxLevel)
-                return;
+                return false;
 
             if (requiredSkill != null && !requiredSkill.IsLeanred)
-                return;
+                return false;
 
             if (level == 0)
                 isLearned = true;
 
             level++;
+
+            return true;
         }
 
         public void ResetLevel()

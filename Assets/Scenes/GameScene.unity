@@ -5401,6 +5401,51 @@ MonoBehaviour:
   - {fileID: 21300000, guid: bb3442e858d00534f877838b8bb81757, type: 2}
   - {fileID: 21300000, guid: 2d9d53262d721164b8eba5a23659de54, type: 2}
   - {fileID: 21300000, guid: d7d40aa3515c1b043a1e059732ca664f, type: 2}
+--- !u!1 &996534200
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 996534201}
+  - component: {fileID: 996534202}
+  m_Layer: 0
+  m_Name: Skill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &996534201
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996534200}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1520179205}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &996534202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996534200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f193ba5a7f70a214789fae553883fec6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillPoints: 100
 --- !u!1 &1019157714
 GameObject:
   m_ObjectHideFlags: 0
@@ -10380,7 +10425,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1258131725}
   - component: {fileID: 1258131726}
-  - component: {fileID: 1258131727}
   m_Layer: 5
   m_Name: SkillsPanel
   m_TagString: Untagged
@@ -10417,21 +10461,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiDocument: {fileID: 544040215}
   fadingTime: 0.15
-  skillSlotsControl: {fileID: 1258131727}
---- !u!114 &1258131727
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1258131724}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87e6695c3ca9e624a8df005dcbe4bb8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  uiDocument: {fileID: 544040215}
-  fadingTime: 0.15
+  playerSkill: {fileID: 996534202}
 --- !u!1 &1368196765
 GameObject:
   m_ObjectHideFlags: 0
@@ -15483,6 +15513,7 @@ Transform:
   m_Children:
   - {fileID: 6263798030970390178}
   - {fileID: 969084780}
+  - {fileID: 996534201}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
