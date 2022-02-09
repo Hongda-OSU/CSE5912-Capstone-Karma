@@ -18,6 +18,8 @@ public class Skeleton_1 : MonoBehaviour, IEnemy
     private NavMeshAgent agent;
     private Animator animator;
 
+    private bool isAttacking = false;
+
     void Start()
     {
         target = PlayerManager.instance.player.transform;
@@ -35,7 +37,6 @@ public class Skeleton_1 : MonoBehaviour, IEnemy
         if ((distance <= viewRadius && Vector3.Angle(transform.forward, directionToTarget) < viewAngle / 2) || distance <= closeDetectionDistance)
         {
             foundTarget = true;
-            agent.isStopped = false;
             animator.SetBool("Run", true);
 
             FaceTarget(directionToTarget);
@@ -46,14 +47,33 @@ public class Skeleton_1 : MonoBehaviour, IEnemy
             if (distance < agent.stoppingDistance + 0.3)
             {
                 // Inside attacking range, attack player.
-                agent.isStopped = true;
                 animator.SetBool("InAttackRange", true);
                 AttackPlayerRandomly();
+                isAttacking = true;
             }
             else 
             {
                 // Outside attacking range.
                 animator.SetBool("InAttackRange", false);
+            }
+
+            if (!(animator.GetCurrentAnimatorStateInfo(0).IsName("Mace-Attack-L1") ||
+                animator.GetCurrentAnimatorStateInfo(0).IsName("Dagger-Attack-L1") ||
+                animator.GetCurrentAnimatorStateInfo(0).IsName("Mace-Attack-R1") ||
+                animator.GetCurrentAnimatorStateInfo(0).IsName("Item-Attack-R2")))
+            {
+                isAttacking = false;
+            }
+
+            Debug.Log(isAttacking);
+
+            if (isAttacking)
+            {
+                agent.isStopped = true;
+            }
+            else
+            {
+                agent.isStopped = false;
             }
         }
         else 
