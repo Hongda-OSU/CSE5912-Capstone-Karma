@@ -23,11 +23,6 @@ namespace CSE5912.PolyGamers
             }
         }
 
-        private void Start()
-        {
-            foreach (UI ui in uiList)
-                ui.SetFadingTime(fadingTime);
-        }
 
     }
 }

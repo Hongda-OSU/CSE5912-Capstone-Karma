@@ -37,21 +37,15 @@ namespace CSE5912.PolyGamers
             }
         }
 
-        // set time interval when switching UIs
-        public void SetFadingTime(float fadingTime)
-        {
-            this.fadingTime = fadingTime;
-        }
-
         // initialize for all UIs
-        protected void Initialize()
+        protected virtual void Initialize()
         {
             root = uiDocument.rootVisualElement;
         }
 
         // set interactability of buttons
         // mainly used to prevent clicking by mistake when switching UIs
-        protected void SetButtonsInteractable(VisualElement root, bool isInteractable)
+        protected virtual void SetButtonsInteractable(VisualElement root, bool isInteractable)
         {
             List<Button> buttonList = new List<Button>();
             root.Query<Button>().ForEach(button => buttonList.Add(button));

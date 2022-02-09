@@ -12,9 +12,13 @@ namespace CSE5912.PolyGamers
 
         public VisualElement attachmentsInventory;
 
+        [SerializeField] private PageIndicatorControl pageIndicatorControl;
+
         private List<Attachment> attachmentList;
 
         private int currentPage = 0;
+        private int totalPages = 0;
+        public int TotalPages { get { return totalPages; } }
 
         private void Awake()
         {
@@ -25,10 +29,7 @@ namespace CSE5912.PolyGamers
             attachmentsInventory.style.display = DisplayStyle.None;
 
             slotList = new List<AttachmentInventorySlot>();
-        }
 
-        private void Start()
-        {
             for (int i = 0; i < attachmentsInventory.Q<VisualElement>("AttachmentInventorySlots").childCount; i++)
             {
                 VisualElement row = attachmentsInventory.Q<VisualElement>("AttachmentInventoryRow_" + i);
@@ -61,9 +62,12 @@ namespace CSE5912.PolyGamers
             return attachment;
         }
 
-        public void UpdateAttachmentList(List<Attachment> attachmentList)
+        public void UpdateAttachmentInventory(List<Attachment> attachmentList)
         {
             this.attachmentList = attachmentList;
+
+            totalPages = attachmentList.Count / slotList.Count;
+            pageIndicatorControl.SetIndicatorNum(totalPages);
 
             ClearAttachmentInventory();
 

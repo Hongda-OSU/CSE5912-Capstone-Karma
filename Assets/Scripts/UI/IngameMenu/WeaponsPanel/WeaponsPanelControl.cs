@@ -175,8 +175,13 @@ namespace CSE5912.PolyGamers
 
             foreach (var inventorySlot in attachmentInventoryControl.slotList)
             {
+                if (inventorySlot.attachment == null)
+                    break;
+
                 if (inventorySlot.attachment == selectedAttachment)
+                {
                     inventorySlot.slot.style.backgroundColor = Color.red;
+                }
                 else if (inventorySlot.attachment.attachedTo != null)
                 {
                     inventorySlot.slot.style.backgroundColor = Color.gray;
@@ -253,7 +258,6 @@ namespace CSE5912.PolyGamers
 
         private void AttachmentInventorySlot_performed(VisualElement attachmentInventorySlot)
         {
-
             if (selectedAttachmentInventorySlot != attachmentInventorySlot)
             {
 

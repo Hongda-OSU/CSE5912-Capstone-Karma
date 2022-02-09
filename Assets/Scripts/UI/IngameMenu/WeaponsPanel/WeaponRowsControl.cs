@@ -25,10 +25,6 @@ namespace CSE5912.PolyGamers
 
             rowList = new List<WeaponRow>();
 
-        }
-
-        private void Start()
-        {
             for (int i = 0; i < weaponRows.childCount; i++)
             {
                 rowList.Add(new WeaponRow(weaponRows.Q<VisualElement>("WeaponRow_" + i)));
@@ -42,6 +38,9 @@ namespace CSE5912.PolyGamers
             foreach (WeaponRow weaponRow in rowList)
                 if (weaponRow.ContainsAttachmentSlot(slot))
                         weapon = weaponRow.weapon;
+
+            if (weapon == null)
+                return null;
 
             int index = GetAttachmentSlotIndex(slot);
 
