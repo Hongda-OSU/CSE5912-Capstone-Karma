@@ -18,6 +18,10 @@ public class Goblin_1 : MonoBehaviour, IEnemy
     private NavMeshAgent agent;
     private Animator animator;
 
+    private bool isPlayingDeathAnimation = false;
+
+    [SerializeField] protected float hp = 100f;
+
     void Start()
     {
         target = PlayerManager.instance.player.transform;
@@ -25,30 +29,44 @@ public class Goblin_1 : MonoBehaviour, IEnemy
         agent.isStopped = true;
         animator = transform.GetChild(0).gameObject.GetComponent<Animator>();
         animator.applyRootMotion = false;
+        agent.speed = 1.5f;
     }
 
     void Update()
     {
+        
         distance = Vector3.Distance(target.position, transform.position);
         directionToTarget = (target.position - transform.position).normalized;
 
-        if ((distance <= viewRadius && Vector3.Angle(transform.forward, directionToTarget) < viewAngle / 2) || distance <= closeDetectionDistance)
+        Debug.DrawRay(transform.position, directionToTarget, Color.red);
+
+        if (hp <= 0)
+        {
+            HandleDeath();
+            return;
+        }
+
+        if ((distance <= viewRadius && Vector3.Angle(transform.forward, directionToTarget) < viewAngle / 2) || 
+            distance <= closeDetectionDistance)
         {
             foundTarget = true;
             agent.isStopped = false;
-            animator.SetBool("Run", true);
+            animator.SetBool("FoundPlayer", true);
 
             FaceTarget(directionToTarget);
             agent.SetDestination(target.position);
+            agent.speed = 3f;
 
             ResetAttackAnimationTriggers();
 
-            if (distance < agent.stoppingDistance + 0.3)
+            if (distance < agent.stoppingDistance + 0.3f)
             {
                 // Inside attacking range, attack player.
                 agent.isStopped = true;
                 animator.SetBool("InAttackRange", true);
-                AttackPlayerRandomly();
+                //MoveLeftOrRight();
+
+                //AttackPlayerRandomly();
             }
             else 
             {
@@ -60,8 +78,57 @@ public class Goblin_1 : MonoBehaviour, IEnemy
         {
             foundTarget = false;
             agent.isStopped = true;
-            animator.SetBool("Run", false);
+            animator.SetBool("FoundPlayer", false);
         }
+    }
+
+    private void HandleDeath()
+    {
+        if (!isPlayingDeathAnimation)
+        {
+            PlayDeathAnimation();
+            isPlayingDeathAnimation = true;
+        }
+
+        agent.isStopped = true;
+
+        if ((animator.GetCurrentAnimatorStateInfo(0).IsName("2Hand-Spear-Death1") ||
+            animator.GetCurrentAnimatorStateInfo(0).IsName("Shooting-Death1")) &&
+            animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void PlayDeathAnimation()
+    {
+        float random = Random.value;
+
+        if (random >= 0f && random < 0.5f)
+        {
+            animator.SetTrigger("Die_1");
+        }
+        else if (random >= 0.5f && random < 1f)
+        {
+            animator.SetTrigger("Die_2");
+        }
+    }
+
+    private void MoveLeftOrRight() {
+        agent.Move(0.7f * Tangent(directionToTarget) * Time.deltaTime);
+        agent.Move(-0.7f * Tangent(directionToTarget) * Time.deltaTime);
+        // Continue from here
+    }
+
+    private Vector3 Tangent(Vector3 direction) {
+        Vector3 tangent = Vector3.Cross(direction, Vector3.up);
+
+        if (tangent.magnitude == 0)
+        {
+            tangent = Vector3.Cross(direction, Vector3.right);
+        }
+
+        return tangent;
     }
 
     private void ResetAttackAnimationTriggers() {
@@ -99,13 +166,12 @@ public class Goblin_1 : MonoBehaviour, IEnemy
 
     public void TakeDamage(float amount)
     {
-        // TODO
+        hp -= amount;
     }
 
     public float GetHP()
     {
-        // TODO
-        return 0f;
+        return hp;
     }
 
     // These codes below are used by Eiditor for testing purpose.

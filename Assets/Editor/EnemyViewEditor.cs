@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(Skeleton_3))]
+[CustomEditor(typeof(Goblin_1))]
 
 public class EnemyViewEditor : Editor
 {
@@ -12,7 +12,8 @@ public class EnemyViewEditor : Editor
 
     void OnSceneGUI()
     {
-        Skeleton_3 fow = (Skeleton_3)target;
+        /*
+        Goblin_1 fow = (Goblin_1)target;
         Handles.color = Color.green;
         Vector3 viewAngleA = fow.DirFromAngle(-fow.GetViewAngle() / 2, false);
         Vector3 viewAngleB = fow.DirFromAngle(fow.GetViewAngle() / 2, false);
@@ -30,5 +31,6 @@ public class EnemyViewEditor : Editor
         if (fow.FoundTarget()) {
             Handles.DrawLine(fow.GetTransform().position, fow.GetTargetPosition());
         }
+        */
     }
 }
