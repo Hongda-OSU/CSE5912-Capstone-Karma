@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace CSE5912.PolyGamers
 {
-    public class ImageFactory : MonoBehaviour
+    public class Singleton : MonoBehaviour
     {
 
     }

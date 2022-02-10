@@ -8,9 +8,9 @@ namespace CSE5912.PolyGamers
 {
     public class IngameMenu : UI
     {
-        public WeaponsPanelControl weaponsPanelControl;
-        public ModsPanelControl modsPanelControl;
-        public SkillsPanelControl skillsPanelControl;
+        private WeaponsPanelControl weaponsPanelControl;
+        private ModsPanelControl modsPanelControl;
+        private SkillsPanelControl skillsPanelControl;
 
         private VisualElement currentPanel;
 
@@ -29,6 +29,9 @@ namespace CSE5912.PolyGamers
         }
         private void Start()
         {
+            weaponsPanelControl = WeaponsPanelControl.Instance;
+            skillsPanelControl = SkillsPanelControl.Instance;
+
             toggleList = new List<Toggle>();
 
             weaponsPanel = root.Q<VisualElement>("WeaponsPanel");

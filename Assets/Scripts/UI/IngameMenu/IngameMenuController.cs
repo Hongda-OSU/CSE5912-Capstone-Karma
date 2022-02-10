@@ -10,6 +10,19 @@ namespace CSE5912.PolyGamers
 
         bool isDisplayed = false;
 
+        private static IngameMenuController instance;
+        public static IngameMenuController Instance { get { return instance; } }
+
+
+        private void Awake()
+        {
+            if (instance != null && instance != this)
+            {
+                Destroy(gameObject);
+            }
+            instance = this;
+        }
+
         private void Start()
         {
             

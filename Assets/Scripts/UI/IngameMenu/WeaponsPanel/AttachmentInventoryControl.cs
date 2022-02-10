@@ -12,7 +12,7 @@ namespace CSE5912.PolyGamers
 
         public VisualElement attachmentsInventory;
 
-        [SerializeField] private PageIndicatorControl pageIndicatorControl;
+        private AttachmentInventoryPageIndicatorControl indicatorControl;
 
         private List<Attachment> attachmentList;
 
@@ -20,8 +20,17 @@ namespace CSE5912.PolyGamers
         private int totalPages = 0;
         public int TotalPages { get { return totalPages; } }
 
+        private static AttachmentInventoryControl instance;
+        public static AttachmentInventoryControl Instance { get { return instance; } }
+
         private void Awake()
         {
+            if (instance != null && instance != this)
+            {
+                Destroy(gameObject);
+            }
+            instance = this;
+
             Initialize();
 
             attachmentsInventory = root.Q<VisualElement>("AttachmentInventory");
@@ -39,6 +48,11 @@ namespace CSE5912.PolyGamers
                     slotList.Add(new AttachmentInventorySlot(slot));
                 }
             }
+        }
+
+        private void Start()
+        {
+            indicatorControl = AttachmentInventoryPageIndicatorControl.Instance;
         }
 
         public bool IsInventoryOpened()
@@ -67,7 +81,7 @@ namespace CSE5912.PolyGamers
             this.attachmentList = attachmentList;
 
             totalPages = attachmentList.Count / slotList.Count + 1;
-            pageIndicatorControl.SetIndicators(currentPage, totalPages);
+            indicatorControl.SetIndicators(currentPage, totalPages);
 
             ClearAttachmentInventory();
 
@@ -104,7 +118,7 @@ namespace CSE5912.PolyGamers
             currentPage = Mathf.Clamp(currentPage + steps, 0, totalPages - 1);
             totalPages = numOfAttachments / numPerPage + 1;
 
-            pageIndicatorControl.SetIndicators(currentPage, totalPages);
+            indicatorControl.SetIndicators(currentPage, totalPages);
 
             int numOnPage = Mathf.Clamp(numOfAttachments - numPerPage * currentPage, 0, numPerPage);
 
@@ -112,7 +126,7 @@ namespace CSE5912.PolyGamers
 
             for (int i = 0; i < numOnPage; i++)
             {
-                int index = i + numOnPage * currentPage;
+                int index = i + numPerPage * currentPage;
                 Attachment attachment = attachmentList[index];
                 VisualElement slot = slotList[i].slot;
 
@@ -120,7 +134,10 @@ namespace CSE5912.PolyGamers
 
                 slot.Q<VisualElement>("AttachmentIcon").style.backgroundImage = new StyleBackground(attachment.iconImage);
                 slot.style.unityBackgroundScaleMode = ScaleMode.ScaleToFit;
+
             }
+
+            
         }
 
         private void ClearAttachmentInventory()

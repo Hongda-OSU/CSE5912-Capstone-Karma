@@ -10,8 +10,8 @@ namespace CSE5912.PolyGamers
 {
     public class WeaponsPanelControl : UI
     {
-        public WeaponRowsControl weaponRowsControl;
-        public AttachmentInventoryControl attachmentInventoryControl;
+        private WeaponRowsControl weaponRowsControl;
+        private AttachmentInventoryControl attachmentInventoryControl;
 
         private VisualElement specificPanel;
 
@@ -26,8 +26,17 @@ namespace CSE5912.PolyGamers
         private Vector2 previousWeaponRowPosition;
 
 
+        private static WeaponsPanelControl instance;
+        public static WeaponsPanelControl Instance { get { return instance; } }
+
         private void Awake()
         {
+            if (instance != null && instance != this)
+            {
+                Destroy(gameObject);
+            }
+            instance = this;
+
             Initialize();
 
             specificPanel = root.Q<VisualElement>("Specific");
@@ -37,6 +46,9 @@ namespace CSE5912.PolyGamers
 
         private void Start()
         {
+            weaponRowsControl = WeaponRowsControl.Instance;
+            attachmentInventoryControl = AttachmentInventoryControl.Instance;
+
             foreach (var weaponRow in weaponRowsControl.rowList)
             {
                 weaponRow.weaponSlot.RegisterCallback<MouseDownEvent>(evt => WeaponSlot_performed(weaponRow.weaponSlot));
@@ -58,21 +70,6 @@ namespace CSE5912.PolyGamers
         /*
          *  general
          */
-
-        private void ApplySelectedEffect(VisualElement slot, bool isSelected)
-        {
-            if (slot != null)
-            {
-                if (isSelected)
-                {
-                    slot.style.backgroundColor = Color.red;
-                }
-                else
-                {
-                    slot.style.backgroundColor = Color.clear;
-                }
-            }
-        }
 
         private void SelectSlot(VisualElement slot)
         {
@@ -154,11 +151,12 @@ namespace CSE5912.PolyGamers
 
 
 
-            public void ResetPanel()
+        public void ResetPanel()
         {
             StartCoroutine(PopOffAttachmentInventory());
             StartCoroutine(PopOffSpecific());
         }
+
         public void UpdateWeapons(Firearms[] weapons)
         {
             for (int i = 0; i < weapons.Length; i++)
@@ -173,23 +171,6 @@ namespace CSE5912.PolyGamers
         public void UpdateSlotsVisual()
         {
 
-            foreach (var inventorySlot in attachmentInventoryControl.slotList)
-            {
-                if (inventorySlot.attachment == null)
-                    break;
-
-                if (inventorySlot.attachment == selectedAttachment)
-                {
-                    inventorySlot.slot.style.backgroundColor = Color.red;
-                }
-                else if (inventorySlot.attachment.attachedTo != null)
-                {
-                    inventorySlot.slot.style.backgroundColor = Color.gray;
-                }
-                else
-                    inventorySlot.slot.style.backgroundColor = Color.clear;
-            }
-
             foreach (var row in weaponRowsControl.rowList)
             {
                 Firearms weapon = row.weapon;
@@ -198,29 +179,45 @@ namespace CSE5912.PolyGamers
                     break;
 
                 VisualElement weaponSlot = row.weaponSlot;
-                if (weapon == selectedWeapon)
-                    ApplySelectedEffect(weaponSlot, true);
-                else
-                    ApplySelectedEffect(weaponSlot, false);
+
+                ApplySelectedVfx(weaponSlot, weapon == selectedWeapon);
 
                 Attachment[] attachments = weapon.Attachments;
                 for (int i = 0; i < attachments.Length; i++)
                 {
                     VisualElement attachmentSlot = row.attachmentSlots[i];
+                    VisualElement attachmentIconSlot = row.attachmentIconSlots[i];
                     if (attachments[i] == null)
                     {
-                        attachmentSlot.style.backgroundImage = null;
+                        attachmentIconSlot.style.backgroundImage = null;
                     }
-                    if (attachmentSlot == selectedEquippedAttachmentSlot)
+                    ApplySelectedVfx(attachmentSlot, attachmentSlot == selectedEquippedAttachmentSlot);
+                }
+            }
+
+            foreach (var inventorySlot in attachmentInventoryControl.slotList)
+            {
+                VisualElement slot = inventorySlot.slot;
+                if (inventorySlot.attachment == null)
+                {
+                    ApplySelectedVfx(slot, false);
+                    slot.style.backgroundColor = Color.clear;
+                }
+                else
+                {
+                    ApplySelectedVfx(slot, inventorySlot.attachment == selectedAttachment);
+
+                    if (inventorySlot.attachment.attachedTo != null)
                     {
-                        attachmentSlot.style.backgroundColor = Color.red;
+                        slot.style.backgroundColor = Color.gray;
                     }
                     else
                     {
-                        attachmentSlot.style.backgroundColor = Color.clear;
+                        slot.style.backgroundColor = Color.clear;
                     }
                 }
             }
+
         }
 
 
@@ -256,6 +253,10 @@ namespace CSE5912.PolyGamers
                 { 
                     StartCoroutine(PopUpAttachmentSpecific(attachment));
                 }
+            }
+            else
+            {
+                selectedAttachment = null;
             }
 
             SelectSlot(attachmentSlot);
@@ -295,13 +296,15 @@ namespace CSE5912.PolyGamers
                     weapon.RemoveAttachment(attachment);
                 }
 
-                Firearms newWeapon = weaponRowsControl.FindWeaponByRow(selectedEquippedAttachmentSlot.parent);
+                WeaponRow weaponRow = weaponRowsControl.GetWeaponRow(selectedEquippedAttachmentSlot.parent);
+
+                Firearms newWeapon = weaponRow.weapon;
 
                 int index = weaponRowsControl.GetAttachmentSlotIndex(selectedEquippedAttachmentSlot);
                 newWeapon.SetAttachment(attachment, index);
 
-                selectedEquippedAttachmentSlot.style.backgroundImage = new StyleBackground(attachment.iconImage);
-                selectedEquippedAttachmentSlot.style.unityBackgroundScaleMode = ScaleMode.ScaleToFit;
+                weaponRow.attachmentIconSlots[index].style.backgroundImage = new StyleBackground(attachment.iconImage);
+                weaponRow.attachmentIconSlots[index].style.unityBackgroundScaleMode = ScaleMode.ScaleToFit;
 
                 selectedAttachmentInventorySlot = null;
 
@@ -310,8 +313,15 @@ namespace CSE5912.PolyGamers
                 StartCoroutine(PopOffAttachmentInventory());
                 StartCoroutine(PopOffSpecific());
             }
-
         }
+
+        public void FlipInventoryPage(int steps)
+        {
+            attachmentInventoryControl.FlipInventoryPage(steps);
+
+            selectedAttachmentInventorySlot = null;
+        }
+
         private IEnumerator PopUpAttachmentInventory(VisualElement attachmentSlot)
         {
             UpdateSlotsVisual();

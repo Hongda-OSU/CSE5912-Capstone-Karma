@@ -5,8 +5,6 @@ namespace CSE5912.PolyGamers
 {
     public class InputManager : MonoBehaviour
     {
-        [SerializeField] private IngameMenuController menuController;
-
         private OpenMenuHandler openMenuHandler;
         private ScrollHandler scrollHandler;
 
@@ -19,8 +17,8 @@ namespace CSE5912.PolyGamers
         {
             inputSchemes = new InputActions();
 
-            openMenuHandler = new OpenMenuHandler(inputSchemes, menuController);
-            scrollHandler = new ScrollHandler(inputSchemes, menuController.ingameMenu.weaponsPanelControl);
+            openMenuHandler = new OpenMenuHandler(inputSchemes, IngameMenuController.Instance);
+            scrollHandler = new ScrollHandler(inputSchemes, WeaponsPanelControl.Instance);
 
             //cc = GetComponent<FPSMovementCC>();
             //look = GetComponentInChildren<FPSMouseLookNew>();

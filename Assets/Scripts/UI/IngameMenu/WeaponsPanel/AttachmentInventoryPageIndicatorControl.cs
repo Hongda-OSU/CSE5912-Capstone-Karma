@@ -5,14 +5,23 @@ using UnityEngine.UIElements;
 
 namespace CSE5912.PolyGamers
 {
-    public class PageIndicatorControl : UI
+    public class AttachmentInventoryPageIndicatorControl : UI
     {
         private List<VisualElement> indicatorList;
 
         private VisualElement pageIndicators;
 
+        private static AttachmentInventoryPageIndicatorControl instance;
+        public static AttachmentInventoryPageIndicatorControl Instance { get { return instance; } }
+
         private void Awake()
         {
+            if (instance != null && instance != this)
+            {
+                Destroy(gameObject);
+            }
+            instance = this;
+
             Initialize();
 
             pageIndicators = root.Q<VisualElement>("AttachmentInventoryPageIndicators");

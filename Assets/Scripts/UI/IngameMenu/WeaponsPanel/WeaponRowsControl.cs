@@ -14,8 +14,17 @@ namespace CSE5912.PolyGamers
 
         private VisualElement weaponRows;
 
+        private static WeaponRowsControl instance;
+        public static WeaponRowsControl Instance { get { return instance; } }
+
         private void Awake()
         {
+            if (instance != null && instance != this)
+            {
+                Destroy(gameObject);
+            }
+            instance = this;
+
             Initialize();
 
             // find weapon slots
@@ -29,6 +38,16 @@ namespace CSE5912.PolyGamers
             {
                 rowList.Add(new WeaponRow(weaponRows.Q<VisualElement>("WeaponRow_" + i)));
             }
+        }
+
+        public WeaponRow GetWeaponRow(VisualElement row)
+        {
+            foreach (var weaponRow in rowList)
+            {
+                if (weaponRow.row == row)
+                    return weaponRow;
+            }
+            return null;
         }
 
         public Attachment GetEquippedAttachment(VisualElement slot)
@@ -75,14 +94,18 @@ namespace CSE5912.PolyGamers
         public void SetWeaponToRow(int index, Firearms weapon)
         {
             WeaponRow weaponRow = rowList[index];
+            VisualElement iconSlot = weaponRow.weaponIconSlot;
 
             weaponRow.weapon = weapon;
 
-            weaponRow.weaponSlot.style.backgroundImage = new StyleBackground(weapon.iconImage);
-            weaponRow.weaponSlot.style.unityBackgroundScaleMode = ScaleMode.ScaleToFit;
-
+            iconSlot.style.backgroundImage = new StyleBackground(weapon.iconImage);
+            iconSlot.style.unityBackgroundScaleMode = ScaleMode.ScaleToFit;
         }
 
+        public void SetAttachment()
+        {
+
+        }
 
     }
 

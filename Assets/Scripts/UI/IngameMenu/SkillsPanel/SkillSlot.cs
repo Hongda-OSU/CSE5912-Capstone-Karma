@@ -43,11 +43,11 @@ namespace CSE5912.PolyGamers
         {
             if (isActive)
             {
-                slot.style.opacity = 1f;
+                icon.style.opacity = 1f;
             }
             else
             {
-                slot.style.opacity = 0.5f;
+                icon.style.opacity = 0.5f;
                 foreach (var indicator in indicatorList)
                     indicator.style.display = DisplayStyle.None;
             }

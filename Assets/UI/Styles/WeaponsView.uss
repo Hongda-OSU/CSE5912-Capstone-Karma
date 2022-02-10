@@ -3,7 +3,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: stretch;
-    width: 875px;
+    width: 600px;
     flex-shrink: 1;
     flex-wrap: nowrap;
     border-left-color: rgb(255, 255, 255);
@@ -14,7 +14,7 @@
     border-right-width: 3px;
     border-top-width: 3px;
     border-bottom-width: 3px;
-    height: 160px;
+    height: 125px;
     position: absolute;
     background-color: rgba(0, 0, 0, 0.65);
 }
@@ -32,12 +32,16 @@
     border-bottom-width: 2px;
     flex-grow: 1;
     transition-duration: 0.5s;
+    background-image: url('project://database/Assets/UI/VFX/Framing.png?fileID=2800000&guid=80fd7e667798045488d21ee46c1808d3&type=3#Framing');
+    -unity-background-scale-mode: stretch-to-fill;
+    -unity-slice-top: 0;
+    -unity-slice-right: 0;
 }
 
 .AttachmentSlot {
     width: 125px;
-    background-image: none;
-    -unity-background-scale-mode: scale-to-fit;
+    background-image: url('project://database/Assets/UI/VFX/Framing.png?fileID=2800000&guid=80fd7e667798045488d21ee46c1808d3&type=3#Framing');
+    -unity-background-scale-mode: stretch-to-fill;
     height: auto;
     border-left-color: rgb(255, 255, 255);
     border-right-color: rgb(255, 255, 255);
@@ -75,12 +79,16 @@
     justify-content: space-around;
     align-items: center;
     width: 125px;
+    background-image: url('project://database/Assets/UI/VFX/Framing.png?fileID=2800000&guid=80fd7e667798045488d21ee46c1808d3&type=3#Framing');
+    height: 125px;
 }
 
 .InventoryRow {
     flex-grow: 1;
-    width: 875px;
+    width: 600px;
     flex-direction: row;
+    height: 30px;
+    top: 0;
 }
 
 .AttachmentIcon {
@@ -92,8 +100,8 @@
 }
 
 .PageIndicator {
-    height: 20px;
-    width: 20px;
+    height: 10px;
+    width: 10px;
     border-left-color: rgba(255, 255, 255, 0);
     border-right-color: rgba(255, 255, 255, 0);
     border-top-color: rgba(255, 255, 255, 0);

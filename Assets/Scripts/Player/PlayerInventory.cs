@@ -10,25 +10,35 @@ namespace CSE5912.PolyGamers
     public class PlayerInventory : MonoBehaviour
     {
         [SerializeField] private static int numOfAttachmentsPerWeapon = 4;
-        public static int NumOfAttachmentsPerWeapon
-        {
-            get { return numOfAttachmentsPerWeapon; }
-        }
+        public static int NumOfAttachmentsPerWeapon { get { return numOfAttachmentsPerWeapon; } }
 
-        [SerializeField] private WeaponsPanelControl weaponsPanelControl;
+        private WeaponsPanelControl weaponsPanelControl;
+        private AttachmentInventoryControl attachmentInventoryControl;
 
         [SerializeField] private Firearms[] weapons; 
 
-        [SerializeField] private List<Attachment> attachmentList;
+        private List<Attachment> attachmentList;
+
+
+        private static PlayerInventory instance;
+        public static PlayerInventory Instance { get { return instance; } }
 
         // test
         [SerializeField] Sprite[] attachmentIcons;
 
         private void Awake()
         {
+            if (instance != null && instance != this)
+            {
+                Destroy(gameObject);
+            }
+            instance = this;
         }
         private void Start()
         {
+            weaponsPanelControl = WeaponsPanelControl.Instance;
+            attachmentInventoryControl = AttachmentInventoryControl.Instance;
+
             attachmentList = new List<Attachment>();
 
             // test
@@ -63,7 +73,7 @@ namespace CSE5912.PolyGamers
         private void UpdateAll()
         {
             weaponsPanelControl.UpdateWeapons(weapons);
-            weaponsPanelControl.attachmentInventoryControl.UpdateAttachmentInventory(attachmentList);
+            attachmentInventoryControl.UpdateAttachmentInventory(attachmentList);
         }
     }
 }

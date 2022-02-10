@@ -10,9 +10,11 @@ namespace CSE5912.PolyGamers
         public VisualElement row;
 
         public VisualElement weaponSlot;
+        public VisualElement weaponIconSlot;
         public Firearms weapon;
 
         public VisualElement[] attachmentSlots;
+        public VisualElement[] attachmentIconSlots;
         public Attachment[] attachments;
 
         public WeaponRow(VisualElement weaponRow)
@@ -26,14 +28,24 @@ namespace CSE5912.PolyGamers
             row = weaponRow;
 
             weaponSlot = weaponRow.Q<VisualElement>("Weapon");
+            weaponSlot.style.unityBackgroundImageTintColor = Color.clear;
+
             weapon = null;
 
+            weaponIconSlot = weaponRow.Q<VisualElement>("WeaponIcon");
+
             int num = PlayerInventory.NumOfAttachmentsPerWeapon;
+
             attachmentSlots = new VisualElement[num];
+            attachmentIconSlots = new VisualElement[num];
             attachments = new Attachment[num];
+
             for (int i = 0; i < num; i++)
             {
                 attachmentSlots[i] = weaponRow.Q<VisualElement>("Attachment_" + i);
+                attachmentSlots[i].style.unityBackgroundImageTintColor = Color.clear;
+
+                attachmentIconSlots[i] = attachmentSlots[i].Q<VisualElement>("AttachmentIcon");
             }
         }
 

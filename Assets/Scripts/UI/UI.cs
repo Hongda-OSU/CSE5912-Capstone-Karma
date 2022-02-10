@@ -14,11 +14,27 @@ namespace CSE5912.PolyGamers
         private float deltaTime = 0.01f;
 
         protected VisualElement root;
-        public VisualElement Root
+        public VisualElement Root { get { return root; } }
+
+
+        // initialize for all UIs
+        protected virtual void Initialize()
         {
-            get { return root; }
+
+            root = uiDocument.rootVisualElement;
         }
 
+        protected virtual void ApplySelectedVfx(VisualElement slot, bool isSelected)
+        {
+            if (isSelected)
+            {
+                slot.style.unityBackgroundImageTintColor = Color.white;
+            }
+            else
+            {
+                slot.style.unityBackgroundImageTintColor = Color.clear;
+            }
+        }
         public void SetDisplay(bool isActive)
         {
             if (!isActive)
@@ -37,11 +53,6 @@ namespace CSE5912.PolyGamers
             }
         }
 
-        // initialize for all UIs
-        protected virtual void Initialize()
-        {
-            root = uiDocument.rootVisualElement;
-        }
 
         // set interactability of buttons
         // mainly used to prevent clicking by mistake when switching UIs

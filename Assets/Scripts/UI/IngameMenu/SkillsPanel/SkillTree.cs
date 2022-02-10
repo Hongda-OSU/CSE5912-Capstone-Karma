@@ -7,32 +7,61 @@ namespace CSE5912.PolyGamers
 {
     public class SkillTree
     {
+        public SkillSlot mainSkill;
+        public Dictionary<int, List<SkillSlot>> indexToSkillSlotChain;
+
+        public List<SkillSlot> independentSkillSlotList;
+
         public List<SkillSlot> skillSlotList;
 
         public VisualElement skillTreeElement;
 
 
-        public SkillTree(VisualElement skillsPanel)
+        protected virtual void Initialize(VisualElement skillsPanel)
         {
-            skillTreeElement = skillsPanel.Q<VisualElement>("SkillTree_Electro");
-            skillSlotList = InitializeSkillSlot(skillTreeElement);
-        }
+            skillTreeElement = skillsPanel;
 
-        private List<SkillSlot> InitializeSkillSlot(VisualElement skillTree)
-        {
-            List<SkillSlot> skillSlotList = new List<SkillSlot>();
-            foreach (var child in skillTree.Children())
+            indexToSkillSlotChain = new Dictionary<int, List<SkillSlot>>();
+            independentSkillSlotList = new List<SkillSlot>();
+            skillSlotList = new List<SkillSlot>();
+
+            foreach (var child in skillTreeElement.Children())
             {
-                for (int i = 0; i < child.childCount; i++)
+                string name = child.name;
+                if (name == "MainSkill")
                 {
-                    var skillSlot = child.Q<VisualElement>("Skill_" + i);
-                    if (skillSlot != null)
+                    mainSkill = new SkillSlot(child);
+                    skillSlotList.Add(mainSkill);
+                }
+
+                else if (name == "IndependentSkills")
+                {
+                    foreach (var skill in child.Children())
                     {
-                        skillSlotList.Add(new SkillSlot(skillSlot));
+                        SkillSlot skillSlot = new SkillSlot(skill);
+
+                        independentSkillSlotList.Add(skillSlot);
+                        skillSlotList.Add(skillSlot);
                     }
                 }
+                else if (name.Contains("SkillChain_"))
+                {
+                    int index = int.Parse(name.Substring(name.Length - 1));
+                    List<SkillSlot> skillChain = new List<SkillSlot>();
+                    for (int i = 0; i < child.childCount; i++)
+                    {
+                        var slot = child.Q<VisualElement>("Skill_" + i);
+                        if (slot == null)
+                            break;
+
+                        SkillSlot skillSlot = new SkillSlot(slot);
+
+                        skillChain.Add(skillSlot);
+                        skillSlotList.Add(skillSlot);
+                    }
+                    indexToSkillSlotChain.Add(index, skillChain);
+                }
             }
-            return skillSlotList;
         }
 
         public Skill FindSkillBySlot(VisualElement slot)
@@ -55,12 +84,5 @@ namespace CSE5912.PolyGamers
             return false;
         }
 
-        public void AssignSkillToSkillSlot(List<Skill> skillList)
-        {
-            for (int i = 0; i < skillSlotList.Count; i++)
-            {
-                skillSlotList[i].skill = skillList[i];
-            }
-        }
     }
 }
