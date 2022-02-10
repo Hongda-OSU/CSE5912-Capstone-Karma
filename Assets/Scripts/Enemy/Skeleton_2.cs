@@ -18,6 +18,10 @@ public class Skeleton_2 : MonoBehaviour, IEnemy
     private NavMeshAgent agent;
     private Animator animator;
 
+    private bool isPlayingDeathAnimation = false;
+
+    [SerializeField] protected float hp = 100f;
+
     void Start()
     {
         target = PlayerManager.instance.player.transform;
@@ -33,6 +37,12 @@ public class Skeleton_2 : MonoBehaviour, IEnemy
         distance = Vector3.Distance(target.position, transform.position);
         directionToTarget = (target.position - transform.position).normalized;
 
+        if (hp <= 0)
+        {
+            HandleDeath();
+            return;
+        }
+
         if ((distance <= viewRadius && Vector3.Angle(transform.forward, directionToTarget) < viewAngle / 2) || distance <= closeDetectionDistance)
         {
             foundTarget = true;
@@ -40,9 +50,7 @@ public class Skeleton_2 : MonoBehaviour, IEnemy
             animator.SetBool("Run", true);
             agent.speed = 7f;
 
-            FaceTarget(directionToTarget);
-
-            
+            FaceTarget(directionToTarget);           
             
             if (distance < agent.stoppingDistance + 0.3)
             {
@@ -83,6 +91,38 @@ public class Skeleton_2 : MonoBehaviour, IEnemy
         }
     }
 
+    private void HandleDeath()
+    {
+        if (!isPlayingDeathAnimation)
+        {
+            PlayDeathAnimation();
+            isPlayingDeathAnimation = true;
+        }
+
+        agent.isStopped = true;
+
+        if ((animator.GetCurrentAnimatorStateInfo(0).IsName("Armed-Death1") || 
+            animator.GetCurrentAnimatorStateInfo(0).IsName("Unarmed-Death1")) && 
+            animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void PlayDeathAnimation()
+    {
+        float random = Random.value;
+
+        if (random >= 0f && random < 0.5f)
+        {
+            animator.SetTrigger("Die_1");
+        }
+        else if (random >= 0.5f && random < 1f)
+        {
+            animator.SetTrigger("Die_2");
+        }
+    }
+
     private void ResetAttackAnimationTriggers() {
         animator.ResetTrigger("Attack_1");
         animator.ResetTrigger("Attack_2");
@@ -119,13 +159,12 @@ public class Skeleton_2 : MonoBehaviour, IEnemy
 
     public void TakeDamage(float amount)
     {
-        // TODO
+        hp -= amount;
     }
 
     public float GetHP()
     {
-        // TODO
-        return 0f;
+        return hp;
     }
 
     // These codes below are used by Eiditor for testing purpose.
