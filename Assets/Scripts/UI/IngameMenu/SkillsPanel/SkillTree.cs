@@ -10,7 +10,7 @@ namespace CSE5912.PolyGamers
         public SkillSlot mainSkill;
         public Dictionary<int, List<SkillSlot>> indexToSkillSlotChain;
 
-        public List<SkillSlot> independentSkillSlotList;
+        public List<SkillSlot> buffList;
 
         public List<SkillSlot> skillSlotList;
 
@@ -22,7 +22,7 @@ namespace CSE5912.PolyGamers
             skillTreeElement = skillsPanel;
 
             indexToSkillSlotChain = new Dictionary<int, List<SkillSlot>>();
-            independentSkillSlotList = new List<SkillSlot>();
+            buffList = new List<SkillSlot>();
             skillSlotList = new List<SkillSlot>();
 
             foreach (var child in skillTreeElement.Children())
@@ -34,13 +34,13 @@ namespace CSE5912.PolyGamers
                     skillSlotList.Add(mainSkill);
                 }
 
-                else if (name == "IndependentSkills")
+                else if (name == "Buffs")
                 {
                     foreach (var skill in child.Children())
                     {
                         SkillSlot skillSlot = new SkillSlot(skill);
 
-                        independentSkillSlotList.Add(skillSlot);
+                        buffList.Add(skillSlot);
                         skillSlotList.Add(skillSlot);
                     }
                 }

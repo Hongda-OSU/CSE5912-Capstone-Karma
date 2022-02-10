@@ -34,7 +34,7 @@ namespace CSE5912.PolyGamers
                         slotChain[i].skill.RequiredSkill = slotChain[i - 1].skill;
                 }
             }
-            foreach (var skillSlot in independentSkillSlotList)
+            foreach (var skillSlot in buffList)
                 skillSlot.skill = new Skill();
         }
     }

@@ -93,6 +93,7 @@ namespace CSE5912.PolyGamers
             }
             else if (isFadingFinished && playerSkill.skillPoints > 0)
             {
+
                 if (skillTree_elements.LevelUpSkill(slot))
                     playerSkill.skillPoints--;
             }
@@ -122,18 +123,16 @@ namespace CSE5912.PolyGamers
             }
             else if (selectedSkillSlot != slot)
             {
-                if (isSpecificOpened)
-                    yield return StartCoroutine(PopOffSpecific());
-
-                yield return StartCoroutine(PopUpSpecific(skill.BuildSpecific()));
+                PopUpSpecific(skill.BuildSpecific());
             }
         }
 
-        private IEnumerator PopUpSpecific(string specific)
+        private void PopUpSpecific(string specific)
         {
             specificPanel.Q<Label>("Specific").text = specific;
 
-            yield return StartCoroutine(FadeIn(specificPanel));
+            specificPanel.style.opacity = 1f;
+            specificPanel.style.display = DisplayStyle.Flex;
 
             isSpecificOpened = true;
 

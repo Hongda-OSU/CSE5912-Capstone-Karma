@@ -132,7 +132,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 227289556}
-  - component: {fileID: 227289558}
   - component: {fileID: 227289557}
   - component: {fileID: 227289555}
   m_Layer: 0
@@ -180,19 +179,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66d8c8e2a117ce44ba8fe88445c2a5e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  menuController: {fileID: 227289555}
---- !u!114 &227289558
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 227289554}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5e938a015fef80408ad64b639995a84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &288839730
@@ -323,8 +309,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiDocument: {fileID: 544040215}
   fadingTime: 0.15
-  weaponRowsControl: {fileID: 336562826}
-  attachmentInventoryControl: {fileID: 336562828}
 --- !u!114 &336562828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -339,7 +323,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiDocument: {fileID: 544040215}
   fadingTime: 0.15
-  pageIndicatorControl: {fileID: 336562829}
 --- !u!114 &336562829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -422,9 +405,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiDocument: {fileID: 544040215}
   fadingTime: 0.15
-  weaponsPanelControl: {fileID: 336562827}
-  modsPanelControl: {fileID: 1019157716}
-  skillsPanelControl: {fileID: 1258131726}
 --- !u!114 &544040215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5406,7 +5386,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b776c39be75f3204aab8076d76489d98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponsPanelControl: {fileID: 336562827}
   weapons:
   - {fileID: 6323545414396422431}
   - {fileID: 7347884081617589204}
@@ -10474,7 +10453,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiDocument: {fileID: 544040215}
   fadingTime: 0.15
-  playerSkill: {fileID: 996534202}
 --- !u!1 &1368196765
 GameObject:
   m_ObjectHideFlags: 0

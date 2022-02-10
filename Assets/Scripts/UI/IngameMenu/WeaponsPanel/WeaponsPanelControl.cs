@@ -15,8 +15,6 @@ namespace CSE5912.PolyGamers
 
         private VisualElement specificPanel;
 
-        private bool isFadingFinished = true;
-
         private VisualElement selectedAttachmentInventorySlot;
         private VisualElement selectedWeaponSlot;
         private VisualElement selectedEquippedAttachmentSlot;
@@ -39,8 +37,8 @@ namespace CSE5912.PolyGamers
 
             Initialize();
 
-            specificPanel = root.Q<VisualElement>("Specific");
-            specificPanel.style.display = DisplayStyle.None;
+            specificPanel = root.Q<VisualElement>("ItemSpecific");
+            specificPanel.style.display = DisplayStyle.Flex;
 
         }
 
@@ -272,16 +270,13 @@ namespace CSE5912.PolyGamers
         {
             if (selectedAttachmentInventorySlot != attachmentInventorySlot)
             {
-
-                isFadingFinished = false;
-
                 StartCoroutine(PopUpAttachmentSpecific(attachmentInventorySlot));
 
                 SelectSlot(attachmentInventorySlot);
 
                 return;
             }
-            else if (isFadingFinished)
+            else
             {
 
                 Attachment attachment = attachmentInventoryControl.FindAttachmentBySlot(attachmentInventorySlot);
@@ -387,9 +382,7 @@ namespace CSE5912.PolyGamers
             }
             else if (selectedAttachmentInventorySlot != attachmentInventorySlot)
             {
-                yield return StartCoroutine(PopOffSpecific());
-
-                yield return StartCoroutine(PopUpSpecific(attachment.BuildDescription()));
+                PopUpSpecific(attachment.BuildDescription());
             }
         }
 
@@ -401,9 +394,7 @@ namespace CSE5912.PolyGamers
             }
             else 
             {
-                yield return StartCoroutine(PopOffSpecific());
-
-                yield return StartCoroutine(PopUpSpecific(attachment.BuildDescription()));
+                PopUpSpecific(attachment.BuildDescription());
             }
         }
 
@@ -418,17 +409,16 @@ namespace CSE5912.PolyGamers
             }
             else if (selectedWeaponSlot != weaponSlot && attachmentInventoryControl.attachmentsInventory.style.display == DisplayStyle.None)
             {
-                yield return StartCoroutine(PopOffSpecific());
-
-                yield return StartCoroutine(PopUpSpecific(weapon.BuildDescription()));
+                PopUpSpecific(weapon.BuildDescription());
             }
         }
 
-        private IEnumerator PopUpSpecific(string description)
+        private void PopUpSpecific(string description)
         {
             specificPanel.Q<Label>("Description").text = description;
 
-            yield return StartCoroutine(FadeIn(specificPanel));
+            specificPanel.style.opacity = 1f;
+            specificPanel.style.display = DisplayStyle.Flex;
         }
 
         private IEnumerator PopOffSpecific()
@@ -436,8 +426,6 @@ namespace CSE5912.PolyGamers
             selectedWeaponSlot = null;
 
             yield return StartCoroutine(FadeOut(specificPanel));
-
-            isFadingFinished = true;
         }
 
     }

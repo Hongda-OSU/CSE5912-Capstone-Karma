@@ -63,7 +63,7 @@
     border-bottom-width: 1px;
 }
 
-.IndependentSkillSlot {
+.BuffSkillSlot {
     top: auto;
     margin-right: 10px;
     width: 75px;
