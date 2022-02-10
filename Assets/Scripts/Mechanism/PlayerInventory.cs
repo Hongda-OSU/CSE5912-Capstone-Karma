@@ -46,10 +46,7 @@ namespace CSE5912.PolyGamers
             UpdateAll();
 
         }
-        private void Update()
-        {
-            Debug.Log(weapons[0].Attachments[0]);
-        }
+
         public void AddWeapon(Firearms weapon)
         {
             for (int i = 0; i < weapons.Length; i++)

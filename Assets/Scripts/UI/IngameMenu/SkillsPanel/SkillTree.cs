@@ -35,15 +35,15 @@ namespace CSE5912.PolyGamers
             return skillSlotList;
         }
 
-        //public Skill FindSkillBySlot(VisualElement slot)
-        //{
-        //    foreach (var skillSlot in electroSkillSlotList)
-        //    {
-        //        if (skillSlot.slot == slot)
-        //            return skillSlot.skill;
-        //    }
-        //    return null;
-        //}
+        public Skill FindSkillBySlot(VisualElement slot)
+        {
+            foreach (var skillSlot in skillSlotList)
+            {
+                if (skillSlot.slot == slot)
+                    return skillSlot.skill;
+            }
+            return null;
+        }
 
         public bool LevelUpSkill(VisualElement slot)
         {

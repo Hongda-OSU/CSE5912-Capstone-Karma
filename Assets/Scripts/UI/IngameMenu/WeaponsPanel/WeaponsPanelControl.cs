@@ -274,8 +274,6 @@ namespace CSE5912.PolyGamers
 
                 isFadingFinished = false;
 
-                UpdateSlotsVisual();
-
                 StartCoroutine(PopUpAttachmentSpecific(attachmentInventorySlot));
 
                 SelectSlot(attachmentInventorySlot);
