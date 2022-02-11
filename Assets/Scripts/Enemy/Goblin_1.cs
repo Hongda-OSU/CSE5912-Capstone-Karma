@@ -19,6 +19,12 @@ public class Goblin_1 : MonoBehaviour, IEnemy
     private Animator animator;
 
     private bool isPlayingDeathAnimation = false;
+    private bool isMovingBack = false;
+    private bool isMovingAroundPlayer = false;
+    private bool isAttacking = false;
+
+    private bool readyToAttack = false;
+    private float attackCoolDown = 5f;
 
     [SerializeField] protected float hp = 100f;
 
@@ -57,21 +63,56 @@ public class Goblin_1 : MonoBehaviour, IEnemy
             agent.SetDestination(target.position);
             agent.speed = 3f;
 
-            ResetAttackAnimationTriggers();
-
-            if (distance < agent.stoppingDistance + 0.3f)
+            if (distance < agent.stoppingDistance + 0.1f)
             {
                 // Inside attacking range, attack player.
                 agent.isStopped = true;
                 animator.SetBool("InAttackRange", true);
-                //MoveLeftOrRight();
 
-                //AttackPlayerRandomly();
+                //Need further changes
+                if (!isMovingBack) {
+                    SetReadyToAttack();
+                }
+             
+                if (!readyToAttack)
+                {
+                    Move();
+                    animator.SetBool("ReadyToAttack", false);
+                }
+                else 
+                {
+                    animator.SetBool("ReadyToAttack", true);                   
+                    isAttacking = true;
+                }
+
+                if (isAttacking)
+                {
+                    AttackPlayerRandomly();
+                }
+                else 
+                {                  
+                    if (distance < agent.stoppingDistance)
+                    {
+                        animator.SetBool("MoveBack", true);
+                        isMovingBack = true;
+                    }
+                    else
+                    {
+                        animator.SetBool("MoveBack", false);
+                        isMovingBack = false;
+                    }                   
+
+                    ResetAttackAnimationTriggers();
+                }
+
+                RandomlySetMoveLeftOrRightBoolean();
             }
             else 
             {
                 // Outside attacking range.
                 animator.SetBool("InAttackRange", false);
+                isMovingAroundPlayer = false;
+                ResetMoveLeftOrRightTrigger();
             }
         }
         else 
@@ -114,10 +155,83 @@ public class Goblin_1 : MonoBehaviour, IEnemy
         }
     }
 
-    private void MoveLeftOrRight() {
-        agent.Move(0.7f * Tangent(directionToTarget) * Time.deltaTime);
-        agent.Move(-0.7f * Tangent(directionToTarget) * Time.deltaTime);
-        // Continue from here
+    private void SetReadyToAttack() {
+        float random = Random.value;
+
+        if (attackCoolDown <= 0) {
+            if (random >= 0f && random < 0.05f)
+            {
+                readyToAttack = true;
+                attackCoolDown = 5f;
+            }
+        }
+        else 
+        {
+            readyToAttack = false;
+            attackCoolDown -= Time.deltaTime;
+        }
+    }
+
+    private void RandomlySetMoveLeftOrRightBoolean()
+    {
+        float random = Random.value;
+
+        if (random >= 0f && random < 0.5f)
+        {
+            animator.SetBool("MoveLeft", true);
+        }
+        else if (random >= 0.5 && random < 1f)
+        {
+            animator.SetBool("MoveLeft", false);
+        }
+    }
+
+    private void ResetMoveLeftOrRightTrigger() {
+        animator.ResetTrigger("MoveLeft");
+        animator.ResetTrigger("MoveRight");
+    }
+
+    private void Move() {
+        if (isAttacking)
+        {
+            if (distance > 2.5f)
+            {
+                agent.Move(4f * directionToTarget * Time.deltaTime);
+            }
+            
+            if ((animator.GetCurrentAnimatorStateInfo(0).IsName("2Hand-Spear-Attack9") ||
+                     animator.GetCurrentAnimatorStateInfo(0).IsName("2Hand-Spear-Attack1") ||
+                     animator.GetCurrentAnimatorStateInfo(0).IsName("Spear-Attack-R4")) &&
+                     animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f) {
+                isAttacking = false;
+                isMovingBack = true;
+                animator.SetBool("MoveBack", true);
+            }
+        }
+        else 
+        {
+            if (!isMovingBack)
+            {
+                if (!isMovingAroundPlayer)
+                {
+                    RandomlySetMoveLeftOrRightBoolean();
+                    isMovingAroundPlayer = true;
+                }
+
+                if (animator.GetCurrentAnimatorStateInfo(0).IsName("2Hand-Spear-Strafe-Left"))
+                {
+                    agent.Move(1f * Tangent(directionToTarget) * Time.deltaTime);
+                }
+                else if (animator.GetCurrentAnimatorStateInfo(0).IsName("2Hand-Spear-Strafe-Right"))
+                {
+                    agent.Move(-1f * Tangent(directionToTarget) * Time.deltaTime);
+                }
+            }
+            else
+            {
+                agent.Move(-2f * directionToTarget * Time.deltaTime);
+            }
+        }
     }
 
     private Vector3 Tangent(Vector3 direction) {
@@ -135,27 +249,22 @@ public class Goblin_1 : MonoBehaviour, IEnemy
         animator.ResetTrigger("Attack_1");
         animator.ResetTrigger("Attack_2");
         animator.ResetTrigger("Attack_3");
-        animator.ResetTrigger("Attack_4");
     }
 
     private void AttackPlayerRandomly() {
         float random = Random.value;
 
-        if (random >= 0f && random < 0.25f)
+        if (random >= 0f && random < 0.33f)
         {
             animator.SetTrigger("Attack_1");
         }
-        else if (random >= 0.25f && random < 0.5f)
+        else if (random >= 0.33f && random < 0.67f)
         {
             animator.SetTrigger("Attack_2");
         }
-        else if (random >= 0.5f && random < 0.75f) 
+        else if (random >= 0.67f && random < 1f) 
         {
             animator.SetTrigger("Attack_3");
-        }
-        else if (random >= 0.75f && random < 1f)
-        {
-            animator.SetTrigger("Attack_4");
         }
     }
 
@@ -172,6 +281,11 @@ public class Goblin_1 : MonoBehaviour, IEnemy
     public float GetHP()
     {
         return hp;
+    }
+
+    void Hit()
+    {
+
     }
 
     // These codes below are used by Eiditor for testing purpose.
