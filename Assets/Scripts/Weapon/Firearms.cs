@@ -46,7 +46,8 @@ namespace PolyGamers.Weapon
         // CameraShaking
         public float SpreadAngle;
 
-        protected bool IsHoldingTrigger;
+        // check Shooting 
+        internal bool IsHoldingTrigger;
 
 
         protected virtual void Awake()
