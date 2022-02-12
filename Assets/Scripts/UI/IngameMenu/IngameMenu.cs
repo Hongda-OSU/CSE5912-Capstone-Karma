@@ -23,8 +23,16 @@ namespace CSE5912.PolyGamers
         private VisualElement modsPanel;
         private VisualElement skillsPanel;
 
+        private static IngameMenu instance;
+        public static IngameMenu Instance { get { return instance; } }
         private void Awake()
         {
+            if (instance != null && instance != this)
+            {
+                Destroy(gameObject);
+            }
+            instance = this;
+
             Initialize();
         }
         private void Start()

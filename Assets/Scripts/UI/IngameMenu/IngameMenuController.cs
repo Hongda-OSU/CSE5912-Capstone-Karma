@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace CSE5912.PolyGamers
 {
     public class IngameMenuController : MonoBehaviour
     {
-        public IngameMenu ingameMenu;
+
+        private IngameMenu ingameMenu;
 
         bool isDisplayed = false;
 
@@ -25,13 +27,16 @@ namespace CSE5912.PolyGamers
 
         private void Start()
         {
-            
+            ingameMenu = IngameMenu.Instance;
         }
 
         public void SwitchActive(InputActions inputSchemes)
         {
             isDisplayed = !isDisplayed;
+
             ingameMenu.GetComponent<UI>().SetDisplay(isDisplayed);
+
+            PostProcessingController.Instance.SetBlurryCameraView(isDisplayed);
 
             if (isDisplayed)
             {
