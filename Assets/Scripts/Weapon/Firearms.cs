@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace PolyGamers.Weapon
 {
@@ -31,7 +32,7 @@ namespace PolyGamers.Weapon
         public Camera EyeCamera;
         public float FOVforDoubleMirror;
         internal bool isAiming;
-        protected float OriginFOV;
+        protected float EyeOriginFOV;
         private IEnumerator doAimingCoroutine;
 
         // WeaponReloading
@@ -49,15 +50,28 @@ namespace PolyGamers.Weapon
         // check Shooting 
         internal bool IsHoldingTrigger;
 
+        public List<ScopeInfo> ScopeInfos = new List<ScopeInfo>();
+        protected ScopeInfo rigoutScopeInfo;
+        public Camera GunCamera;
+        protected Transform GunCameraTransform;
+        protected float GunOriginFOV;
+        private Vector3 originalEyePosition;
+
+
+        public CrosshairContorller crosshairContorller;
 
         protected virtual void Awake()
         {
             CurrentAmmo = AmmoInMag;
             CurrentMaxAmmoCarried = MaxAmmoCarried;
             GunAnimator = GetComponent<Animator>();
-            OriginFOV = EyeCamera.fieldOfView;
+            EyeOriginFOV = EyeCamera.fieldOfView;
+            GunOriginFOV = GunCamera.fieldOfView;
             CameraLocalOriginRotation = EyeCamera.transform.localRotation;
             doAimingCoroutine = DoAim();
+
+            GunCameraTransform = GunCamera.transform;
+            originalEyePosition = GunCameraTransform.localPosition;
         }
 
         public void Attack()
@@ -111,11 +125,23 @@ namespace PolyGamers.Weapon
             while (true)
             {
                 yield return null;
-                float tmp_CurrentFOV = 0f;
+                float tmp_EyeCurrentFOV = 0f;
                 EyeCamera.fieldOfView = Mathf.SmoothDamp(EyeCamera.fieldOfView,
-                        isAiming ? FOVforDoubleMirror : OriginFOV,
-                        ref tmp_CurrentFOV,
+                        isAiming ? FOVforDoubleMirror : EyeOriginFOV,
+                        ref tmp_EyeCurrentFOV,
                         Time.deltaTime * 2);
+
+                //float tmp_GunCurrentFOV = 0f;
+                //GunCamera.fieldOfView = Mathf.SmoothDamp(GunCamera.fieldOfView,
+                //    isAiming ? rigoutScopeInfo.GunFov : GunOriginFOV,
+                //    ref tmp_GunCurrentFOV,
+                //    Time.deltaTime * 2);
+
+                //Vector3 tmp_RefPosition = Vector3.zero;
+                //GunCameraTransform.localPosition = Vector3.SmoothDamp(GunCameraTransform.localPosition,
+                //    isAiming ? rigoutScopeInfo.GunCameraPosition : originalEyePosition,
+                //    ref tmp_RefPosition,
+                //    Time.deltaTime * 2);
             }
         }
 
@@ -136,6 +162,15 @@ namespace PolyGamers.Weapon
             }
         }
 
+        [System.Serializable]
+        public class ScopeInfo
+        {
+            public string ScopeName;
+            public GameObject ScopeGameObject;
+            public float GunFov;
+            public Vector3 GunCameraPosition;
+        }
+
 
         internal void HoldTrigger()
         {
@@ -151,12 +186,14 @@ namespace PolyGamers.Weapon
         internal void StartAiming()
         {
             isAiming = true;
+            //crosshairContorller.gameObject.SetActive(false);
             Aiming();
         }
 
         internal void StopAiming()
         {
             isAiming = false;
+            //crosshairContorller.gameObject.SetActive(true);
             Aiming();
         }
 
@@ -176,6 +213,11 @@ namespace PolyGamers.Weapon
         internal void StopLeanShooting()
         {
             StopCameraLean();
+        }
+
+        internal void SetupCarriedScope(ScopeInfo scopeInfo)
+        {
+            rigoutScopeInfo = scopeInfo;
         }
     }
 }

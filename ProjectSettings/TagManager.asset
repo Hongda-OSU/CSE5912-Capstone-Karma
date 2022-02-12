@@ -9,6 +9,7 @@ TagManager:
   - ExplosiveBarrel
   - FX
   - Test Audio
+  - Bullet
   layers:
   - Default
   - TransparentFX

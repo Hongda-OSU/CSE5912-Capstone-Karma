@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace PolyGamers.Weapon
@@ -18,6 +19,8 @@ namespace PolyGamers.Weapon
         public List<Firearms> Arms = new List<Firearms>();
 
         public Camera Tmp_Camera;
+        internal bool isAiming;
+        internal bool isFiring;
 
         void Start()
         {
@@ -41,11 +44,17 @@ namespace PolyGamers.Weapon
 
             // hold the left mouse to shoot, no shooting on reloading
             if (Input.GetMouseButton(0) && !carriedWeapon.isReloading)
+            {
                 carriedWeapon.HoldTrigger();
-
+                isFiring = true;
+            }
+            
             // release the left mouse to stop shooting
             if (Input.GetMouseButtonUp(0))
+            {
                 carriedWeapon.ReleaseTrigger();
+                isFiring = false;
+            }
 
             // reload ammo by pressing R
             if (Input.GetKeyDown(KeyCode.R) && !carriedWeapon.isReloading)
@@ -53,12 +62,18 @@ namespace PolyGamers.Weapon
 
             // weapon aiming by holding the right mouse, no aiming during reloading
             if (Input.GetMouseButtonDown(1) && !carriedWeapon.isReloading)
+            {
                 carriedWeapon.StartAiming();
+                isAiming = true;
+            }
 
             // stop weapon aiming by releasing the right mouse
             if (Input.GetMouseButtonUp(1))
+            {
                 carriedWeapon.StopAiming();
-
+                isAiming = false;
+            }
+            
             // start lean shooting only when aiming, press Q for left lean, E for right lean
             if ((Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.E)) && carriedWeapon.isAiming)
                 carriedWeapon.StartLeanShooting();
@@ -102,19 +117,21 @@ namespace PolyGamers.Weapon
 
         private void CheckItem()
         {
+            
             bool tmp_IsItem = Physics.Raycast(WorldCameraTransform.position,
                 WorldCameraTransform.forward, out RaycastHit hit,
                 RayCastMaxDistance, CheckItemLayerMask);
-
             // Need to check if the item already exist
             if (tmp_IsItem)
             {
+                Debug.Log(hit.collider.name);
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     bool tmp_HasItem = hit.collider.TryGetComponent(out BaseItem tmp_BaseItem);
                     if (tmp_HasItem)
                     {
                         PickupWeapon(tmp_BaseItem);
+                        PickupAttachment(tmp_BaseItem);
                     }
                 }
             }
@@ -140,6 +157,32 @@ namespace PolyGamers.Weapon
                     SetupCarriedWeapon(tmp_Arm);
                 }
             }
+        }
+
+        private void PickupAttachment(BaseItem baseItem)
+        {
+            if (!(baseItem is Attachment tmp_AttachmentItem)) return;
+
+            switch (tmp_AttachmentItem.CurrentAttachmentType)
+            {
+                case Attachment.AttachmentType.Scope:
+                    foreach (Firearms.ScopeInfo tmp_ScopeInfo in carriedWeapon.ScopeInfos)
+                    {
+                        if (tmp_ScopeInfo.ScopeName.CompareTo(tmp_AttachmentItem.ItemName) != 0)
+                        {
+                            tmp_ScopeInfo.ScopeGameObject.SetActive(false);
+                            continue;
+                        }
+                        tmp_ScopeInfo.ScopeGameObject.SetActive(true);
+                        carriedWeapon.SetupCarriedScope(tmp_ScopeInfo);
+                    }
+                    break;
+                case Attachment.AttachmentType.Other:
+                    break;
+            }
+
+
+           
         }
 
         // allow weapon switching during reloading

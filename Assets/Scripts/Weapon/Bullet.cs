@@ -29,7 +29,6 @@ namespace PolyGamers.Weapon
                 Instantiate(ImpactPrefab,
                     tmp_Hit.point,
                     Quaternion.LookRotation(tmp_Hit.normal, Vector3.up));
-
             Destroy(tmp_BulletEffect, 3);
 
 
