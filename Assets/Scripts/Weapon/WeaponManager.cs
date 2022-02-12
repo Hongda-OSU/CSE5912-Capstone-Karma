@@ -1,6 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 namespace PolyGamers.Weapon
 {
@@ -21,6 +22,8 @@ namespace PolyGamers.Weapon
         public Camera Tmp_Camera;
         internal bool isAiming;
         internal bool isFiring;
+        public GameObject AmmoCount;
+        private TMPro.TextMeshProUGUI AmmoText;
 
         void Start()
         {
@@ -30,6 +33,8 @@ namespace PolyGamers.Weapon
             // if main weapon not exist and secondary weapon exist, set secondary weapon as carried weapon
             if (MainWeapon == null && SecondaryWeapon != null)
                 SetupCarriedWeapon(SecondaryWeapon);
+
+            AmmoText = AmmoCount.GetComponent<TMPro.TextMeshProUGUI>();
         }
 
         void Update()
@@ -80,6 +85,12 @@ namespace PolyGamers.Weapon
             else
                 carriedWeapon.StopLeanShooting();
 
+            UpdateAmmoInfo(carriedWeapon.GetCurrentAmmo, carriedWeapon.GetCurrentMaxAmmo);
+        }
+
+        private void UpdateAmmoInfo(int ammo, int remainingAmmo)
+        {
+            AmmoText.SetText(ammo + "/" + remainingAmmo);
         }
 
         private void SwapWeapon()
@@ -124,7 +135,6 @@ namespace PolyGamers.Weapon
             // Need to check if the item already exist
             if (tmp_IsItem)
             {
-                Debug.Log(hit.collider.name);
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     bool tmp_HasItem = hit.collider.TryGetComponent(out BaseItem tmp_BaseItem);
@@ -180,9 +190,6 @@ namespace PolyGamers.Weapon
                 case Attachment.AttachmentType.Other:
                     break;
             }
-
-
-           
         }
 
         // allow weapon switching during reloading

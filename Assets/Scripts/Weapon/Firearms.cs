@@ -22,7 +22,9 @@ namespace PolyGamers.Weapon
         protected float LastFireTime;
         internal Animator GunAnimator;
         protected AnimatorStateInfo GunStateInfo;
-       
+        public int GetCurrentAmmo => CurrentAmmo;
+        public int GetCurrentMaxAmmo => CurrentMaxAmmoCarried;
+
         // WeaponAudioInfo
         public AudioSource FirearmsShootingAudioSource;
         public AudioSource FirearmsReloadingAudioSource;
@@ -131,6 +133,9 @@ namespace PolyGamers.Weapon
                         ref tmp_EyeCurrentFOV,
                         Time.deltaTime * 2);
 
+                //TODO: check attachment, if true, disable crosshair when aiming, damp Main camera position to (x,-0.2f,0.03f)
+
+
                 //float tmp_GunCurrentFOV = 0f;
                 //GunCamera.fieldOfView = Mathf.SmoothDamp(GunCamera.fieldOfView,
                 //    isAiming ? rigoutScopeInfo.GunFov : GunOriginFOV,
@@ -186,14 +191,12 @@ namespace PolyGamers.Weapon
         internal void StartAiming()
         {
             isAiming = true;
-            //crosshairContorller.gameObject.SetActive(false);
             Aiming();
         }
 
         internal void StopAiming()
         {
             isAiming = false;
-            //crosshairContorller.gameObject.SetActive(true);
             Aiming();
         }
 
