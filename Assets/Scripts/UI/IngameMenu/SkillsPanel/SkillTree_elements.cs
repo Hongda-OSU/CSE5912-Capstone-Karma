@@ -26,7 +26,7 @@ namespace CSE5912.PolyGamers
             foreach (var kvp in indexToSkillSlotChain)
             {
                 var slotChain = kvp.Value;
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < 4; i++)
                 {
                     slotChain[i].skill = new Skill();
 

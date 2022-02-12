@@ -38,7 +38,7 @@ namespace CSE5912.PolyGamers
             Initialize();
 
             specificPanel = root.Q<VisualElement>("ItemSpecific");
-            specificPanel.style.display = DisplayStyle.Flex;
+            specificPanel.style.display = DisplayStyle.None;
 
         }
 
