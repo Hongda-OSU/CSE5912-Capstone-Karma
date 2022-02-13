@@ -22,12 +22,12 @@ public class FPSMouseLook : MonoBehaviour
     private Vector2 currentRecoil;
 
     // CameraShake 
-    private CameraShake _cameraShake;
+    private CameraShake cameraShake;
 
     private void Start()
     {
         cameraTransform = transform;
-        _cameraShake = GetComponentInChildren<CameraShake>();
+        cameraShake = GetComponentInChildren<CameraShake>();
     }
 
     void LateUpdate()
@@ -65,14 +65,14 @@ public class FPSMouseLook : MonoBehaviour
     public void FiringWithRecoil()
     {
         currentRecoil += RecoilRange;
-        _cameraShake.StartCameraSpring();
+        cameraShake.StartCameraSpring();
         currentRecoilTime = 0;
     }
 
     public void FiringWithRecoilAimed()
     {
         currentRecoil += RecoilRange * RecoilFactorAimed;
-        _cameraShake.StartCameraSpringAimed();
+        cameraShake.StartCameraSpringAimed();
         currentRecoilTime = 0;
     }
 }

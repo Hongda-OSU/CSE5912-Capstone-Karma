@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 using UnityEngine.UI;
 
 namespace PolyGamers.Weapon
@@ -14,16 +13,18 @@ namespace PolyGamers.Weapon
         private Firearms carriedWeapon;
 
         // Weapon pick up
-        public Transform WorldCameraTransform;
-        public float RayCastMaxDistance = 2f;
-        public LayerMask CheckItemLayerMask;
-        public List<Firearms> Arms = new List<Firearms>();
+        public Transform EyeCameraTransform;
+        public float RayCastMaxDistance; // for item pickup
+        public LayerMask ItemLayerMask; // item will be placed under Item layer
+        public List<Firearms> Arms = new List<Firearms>(); // the firearms (under player controller) enabled when the related gun is picked up
 
-        public Camera Tmp_Camera;
         internal bool isAiming;
         internal bool isFiring;
+        internal bool isAttached;
         public GameObject AmmoCount;
+        public Image WeaponIcon;
         private TMPro.TextMeshProUGUI AmmoText;
+        public GameObject crosshair;
 
         void Start()
         {
@@ -34,7 +35,11 @@ namespace PolyGamers.Weapon
             if (MainWeapon == null && SecondaryWeapon != null)
                 SetupCarriedWeapon(SecondaryWeapon);
 
-            AmmoText = AmmoCount.GetComponent<TMPro.TextMeshProUGUI>();
+            if (carriedWeapon)
+            {
+                AmmoText = AmmoCount.GetComponent<TMPro.TextMeshProUGUI>();
+                WeaponIcon.sprite = carriedWeapon.GunIcon;
+            }
         }
 
         void Update()
@@ -65,18 +70,22 @@ namespace PolyGamers.Weapon
             if (Input.GetKeyDown(KeyCode.R) && !carriedWeapon.isReloading)
                 carriedWeapon.ReloadAmmo();
 
-            // weapon aiming by holding the right mouse, no aiming during reloading
+            // weapon aiming by holding the right mouse, no aiming during reloading (disable crosshair when scope attached)
             if (Input.GetMouseButtonDown(1) && !carriedWeapon.isReloading)
             {
                 carriedWeapon.StartAiming();
                 isAiming = true;
+                if (isAttached)
+                    crosshair.gameObject.SetActive(false);
             }
 
-            // stop weapon aiming by releasing the right mouse
+            // stop weapon aiming by releasing the right mouse (enable crosshair when scope attached)
             if (Input.GetMouseButtonUp(1))
             {
                 carriedWeapon.StopAiming();
                 isAiming = false;
+                if (isAttached)
+                    crosshair.gameObject.SetActive(true);
             }
             
             // start lean shooting only when aiming, press Q for left lean, E for right lean
@@ -124,14 +133,15 @@ namespace PolyGamers.Weapon
                 carriedWeapon.gameObject.SetActive(true);
                 fpsController.SetupAnimator(carriedWeapon.GunAnimator);
             }
+            WeaponIcon.sprite = carriedWeapon.GunIcon;
         }
 
         private void CheckItem()
         {
             
-            bool tmp_IsItem = Physics.Raycast(WorldCameraTransform.position,
-                WorldCameraTransform.forward, out RaycastHit hit,
-                RayCastMaxDistance, CheckItemLayerMask);
+            bool tmp_IsItem = Physics.Raycast(EyeCameraTransform.position,
+                EyeCameraTransform.forward, out RaycastHit hit,
+                RayCastMaxDistance, ItemLayerMask);
             // Need to check if the item already exist
             if (tmp_IsItem)
             {
@@ -185,6 +195,9 @@ namespace PolyGamers.Weapon
                         }
                         tmp_ScopeInfo.ScopeGameObject.SetActive(true);
                         carriedWeapon.SetupCarriedScope(tmp_ScopeInfo);
+                        //
+                        carriedWeapon.isAttached = true;
+                        isAttached = true;
                     }
                     break;
                 case Attachment.AttachmentType.Other:
@@ -207,8 +220,6 @@ namespace PolyGamers.Weapon
             carriedWeapon = targetWeapon;
             carriedWeapon.gameObject.SetActive(true);
             fpsController.SetupAnimator(carriedWeapon.GunAnimator);
-            // Tmp_Camera is a camera if player doesn't have any weapon
-            Tmp_Camera.gameObject.SetActive(false);
         }
 
     }
