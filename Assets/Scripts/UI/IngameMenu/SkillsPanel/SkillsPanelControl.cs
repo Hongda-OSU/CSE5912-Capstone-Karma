@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static CSE5912.PolyGamers.Skill;
 
 namespace CSE5912.PolyGamers
 {
@@ -10,16 +11,17 @@ namespace CSE5912.PolyGamers
         private PlayerSkill playerSkill;
 
         private SkillTree skillTree_elements;
+        private List<SkillTree> skillTreeList;
+        public List<SkillTree> SkillTreeList { get { return skillTreeList; } }
 
-        private VisualElement skillsPanel;
+        private VisualElement skillsPanel_elements;
 
         private VisualElement selectedSkillSlot;
 
         private Label skillPointsLabel;
 
         private VisualElement specificPanel;
-        private bool isSpecificOpened = false;
-        private bool isFadingFinished = true;
+
 
         private static SkillsPanelControl instance;
         public static SkillsPanelControl Instance { get { return instance; } }
@@ -34,13 +36,16 @@ namespace CSE5912.PolyGamers
 
             Initialize();
 
-            skillsPanel = root.Q<VisualElement>("SkillsPanel");
+            skillsPanel_elements = root.Q<VisualElement>("SkillsPanel");
 
-            skillPointsLabel = skillsPanel.Q<Label>("SkillPoints");
+            skillPointsLabel = skillsPanel_elements.Q<Label>("SkillPoints");
 
-            specificPanel = skillsPanel.Q<VisualElement>("SkillSpecific");
+            specificPanel = skillsPanel_elements.Q<VisualElement>("SkillSpecific");
 
-            skillTree_elements = new SkillTree_elements(skillsPanel);
+            skillTree_elements = new SkillTree_elements(skillsPanel_elements);
+
+            skillTreeList = new List<SkillTree>();
+            skillTreeList.Add(skillTree_elements);
         }
 
         private void Start()
@@ -69,7 +74,7 @@ namespace CSE5912.PolyGamers
             Skill skill = null;
 
             string slotName = slot.name;
-            if (slotName.Contains("Skill_") || slotName.Contains("MainSkill"))
+            if (slotName.Contains("MainSkill") || slotName.Contains("Skill_") || slotName.Contains("Buff_"))
             {
                 skill = skillTree_elements.FindSkillBySlot(slot);
 
@@ -83,19 +88,15 @@ namespace CSE5912.PolyGamers
         {
             if (selectedSkillSlot != slot)
             {
-                isFadingFinished = false;
-
                 StartCoroutine(PopUpSkillSpecific(slot));
 
                 SelectSlot(slot);
 
                 return;
             }
-            else if (isFadingFinished && playerSkill.skillPoints > 0)
+            else 
             {
-
-                if (skillTree_elements.LevelUpSkill(slot))
-                    playerSkill.skillPoints--;
+                skillTree_elements.LevelUpSkill(slot);
             }
 
             UpdateVisual();
@@ -103,7 +104,7 @@ namespace CSE5912.PolyGamers
 
         private void UpdateVisual()
         {
-            skillPointsLabel.text = "Skill Points: " + playerSkill.skillPoints;
+            skillPointsLabel.text = "Skill Points: " + playerSkill.SkillPoints;
 
             foreach (var skillSlot in skillTree_elements.skillSlotList)
             {
@@ -133,10 +134,6 @@ namespace CSE5912.PolyGamers
 
             specificPanel.style.opacity = 1f;
             specificPanel.style.display = DisplayStyle.Flex;
-
-            isSpecificOpened = true;
-
-            isFadingFinished = true;
         }
 
         private IEnumerator PopOffSpecific()
@@ -145,10 +142,6 @@ namespace CSE5912.PolyGamers
             selectedSkillSlot = null;
 
             yield return StartCoroutine(FadeOut(specificPanel));
-
-            isSpecificOpened = false;
-
-            isFadingFinished = true;
         }
     }
 }

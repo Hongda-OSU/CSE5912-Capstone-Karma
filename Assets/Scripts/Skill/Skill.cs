@@ -6,34 +6,77 @@ namespace CSE5912.PolyGamers
 {
     public class Skill
     {
-        private string name;
+        protected string name;
 
-        private Skill requiredSkill;
+        protected Skill requiredSkill;
 
-        private bool isLearned = false;
+        protected bool isLearned = false;
 
-        private int level = 0;
-        private int maxLevel = 5;
+        protected int level = 0;
+        protected int maxLevel = 5;
 
-        private string description;
-        public bool LevelUp()
+        protected int learnCost = 1;
+        protected int levelupCost = 1;
+
+        protected string description;
+
+        protected float cooldown;
+        protected float timeSince = 0f;
+        protected bool isReady = true;
+
+        protected SkillType type;
+        public enum SkillType
         {
+            passive,
+            main,
+            buff,
+        }
+
+
+        public virtual IEnumerator PerformEffect()
+        {
+            yield return null;
+        }
+
+        protected IEnumerator StartCoolingdown() 
+        { 
+            while (timeSince < cooldown)
+            {
+                yield return new WaitForSeconds(Time.deltaTime);
+
+                timeSince += Time.deltaTime;
+            }
+
+            timeSince = 0f;
+            isReady = true;
+        }
+
+        public void LevelUp()
+        {
+            PlayerSkill playerSkill = PlayerSkill.Instance;
+
             if (level >= maxLevel)
-                return false;
+                return;
 
             if (requiredSkill != null && !requiredSkill.IsLeanred)
-                return false;
+                return;
 
-            if (level == 0)
+            if (level == 0 && playerSkill.SkillPoints >= learnCost)
+            {
                 isLearned = true;
-
-            level++;
-
-            return true;
+                playerSkill.SkillPoints -= learnCost;
+                level++;
+            }
+            else if (level > 0 && playerSkill.SkillPoints >= levelupCost)
+            {
+                playerSkill.SkillPoints -= levelupCost;
+                level++;
+            }
         }
 
         public void ResetLevel()
         {
+            isReady = false;
             isLearned = false;
             level = 0;
         }
@@ -42,7 +85,8 @@ namespace CSE5912.PolyGamers
         {
             string specific =
                 "Name: " + name +
-                "\nDescription" + description;
+                "\nType: " + type.ToString() +
+                "\nDescription: " + description;
 
             if (requiredSkill != null)
                 specific += "\nRequire: " + requiredSkill.name;
@@ -55,6 +99,9 @@ namespace CSE5912.PolyGamers
         public Skill RequiredSkill { get { return requiredSkill; } set { requiredSkill = value; } }
         public bool IsLeanred { get { return isLearned; } }
         public int Level { get { return level; } }
+        public float Cooldown { get { return cooldown; } }
+        public bool IsReady { get { return isReady; } }
+        public SkillType Type { get { return type; } }
 
        
     }

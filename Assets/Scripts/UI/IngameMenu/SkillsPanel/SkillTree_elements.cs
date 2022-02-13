@@ -17,12 +17,11 @@ namespace CSE5912.PolyGamers
         {
             base.Initialize(skillTreePanel);
 
-            // todo - assign skills
-            // main
-            // chain
 
             mainSkill.skill = new Skill();
 
+            // test
+            // empty skills
             foreach (var kvp in indexToSkillSlotChain)
             {
                 var slotChain = kvp.Value;
@@ -34,8 +33,14 @@ namespace CSE5912.PolyGamers
                         slotChain[i].skill.RequiredSkill = slotChain[i - 1].skill;
                 }
             }
-            foreach (var skillSlot in buffList)
+            foreach (var skillSlot in buffSlotList)
                 skillSlot.skill = new Skill();
+
+
+            // todo - assign skills
+            // main
+            // chain
+            buffSlotList[0].skill = new FireMastery();
         }
     }
 }

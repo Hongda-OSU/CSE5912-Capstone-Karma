@@ -10,7 +10,7 @@ namespace CSE5912.PolyGamers
         public SkillSlot mainSkill;
         public Dictionary<int, List<SkillSlot>> indexToSkillSlotChain;
 
-        public List<SkillSlot> buffList;
+        public List<SkillSlot> buffSlotList;
 
         public List<SkillSlot> skillSlotList;
 
@@ -22,7 +22,7 @@ namespace CSE5912.PolyGamers
             skillTreeElement = skillsPanel;
 
             indexToSkillSlotChain = new Dictionary<int, List<SkillSlot>>();
-            buffList = new List<SkillSlot>();
+            buffSlotList = new List<SkillSlot>();
             skillSlotList = new List<SkillSlot>();
 
             foreach (var child in skillTreeElement.Children())
@@ -36,14 +36,19 @@ namespace CSE5912.PolyGamers
 
                 else if (name == "Buffs")
                 {
-                    foreach (var skill in child.Children())
+                    for (int i = 0; i < child.childCount; i++)
                     {
-                        SkillSlot skillSlot = new SkillSlot(skill);
+                        var slot = child.Q<VisualElement>("Buff_" + i);
+                        if (slot == null)
+                            break;
 
-                        buffList.Add(skillSlot);
+                        SkillSlot skillSlot = new SkillSlot(slot);
+
+                        buffSlotList.Add(skillSlot);
                         skillSlotList.Add(skillSlot);
                     }
                 }
+
                 else if (name.Contains("SkillChain_"))
                 {
                     int index = int.Parse(name.Substring(name.Length - 1));
@@ -74,14 +79,17 @@ namespace CSE5912.PolyGamers
             return null;
         }
 
-        public bool LevelUpSkill(VisualElement slot)
+        public void LevelUpSkill(VisualElement slot)
         {
             foreach (var skillSlot in skillSlotList)
             {
                 if (skillSlot.slot == slot)
-                    return skillSlot.LevelUp();
+                {
+                    skillSlot.LevelUp();
+
+                    return;
+                }
             }
-            return false;
         }
 
     }
