@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace PolyGamers.Weapon
+namespace CSE5912.PolyGamers
 {
     public class AK47 : Firearms
     {

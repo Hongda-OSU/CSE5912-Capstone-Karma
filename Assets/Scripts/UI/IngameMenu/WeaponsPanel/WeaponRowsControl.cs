@@ -34,6 +34,10 @@ namespace CSE5912.PolyGamers
 
             rowList = new List<WeaponRow>();
 
+        }
+
+        private void Start()
+        {
             for (int i = 0; i < weaponRows.childCount; i++)
             {
                 rowList.Add(new WeaponRow(weaponRows.Q<VisualElement>("WeaponRow_" + i)));

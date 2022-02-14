@@ -34,7 +34,7 @@ namespace CSE5912.PolyGamers
 
             weaponIconSlot = weaponRow.Q<VisualElement>("WeaponIcon");
 
-            int num = PlayerInventory.NumOfAttachmentsPerWeapon;
+            int num = PlayerInventory.Instance.NumOfAttachmentsPerWeapon;
 
             attachmentSlots = new VisualElement[num];
             attachmentIconSlots = new VisualElement[num];

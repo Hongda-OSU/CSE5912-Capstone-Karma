@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace PolyGamers.Weapon
+namespace CSE5912.PolyGamers
 {
     public abstract class Firearms : MonoBehaviour, IWeapon
     {
@@ -56,6 +56,19 @@ namespace PolyGamers.Weapon
         // check Shoot 
         internal bool IsHoldingTrigger;
 
+        // UI related
+        [Header("UI related")]
+        public WeaponType weaponType;
+        public Sprite iconImage;
+        public string description;
+
+        // Attachments
+        [Header("Attachments")]
+        [SerializeField] protected Attachment[] attachments;
+        public Attachment[] Attachments { get { return attachments; } }
+
+        public enum WeaponType { Rifle, Handgun };
+
         // Gun icon (for UI)
         public Sprite GunIcon;
 
@@ -81,6 +94,8 @@ namespace PolyGamers.Weapon
             GunCameraLocalOriginalRotation = GunCamera.transform.localRotation;
             GunCameraLocalOriginalPosition = GunCamera.transform.localPosition;
             doAimingCoroutine = DoAim();
+
+            attachments = new Attachment[PlayerInventory.Instance.NumOfAttachmentsPerWeapon];
         }
 
         public void Attack()
@@ -222,6 +237,53 @@ namespace PolyGamers.Weapon
         internal void SetupCarriedScope(ScopeInfo scopeInfo)
         {
             this.scopeInfo = scopeInfo;
+        }
+
+
+        /*
+         * Ui related
+         */
+
+        public void SetAttachment(Attachment attachment, int index)
+        {
+            RemoveAttachment(attachments[index]);
+
+            attachments[index] = attachment;
+            attachment.attachedTo = this;
+        }
+
+        public void RemoveAttachment(Attachment target)
+        {
+            if (target == null)
+                return;
+
+            for (int i = 0; i < attachments.Length; i++)
+            {
+                if (attachments[i] == target)
+                {
+                    attachments[i] = null;
+                    target.attachedTo = null;
+                }
+            }
+        }
+
+        public string BuildDescription()
+        {
+            description =
+                "Name: " + gameObject.name +
+                "\nType: " + weaponType;
+
+            // test
+            description += "\n\n-----------------------------------------\n" +
+                "Test\n";
+            for (int i = 0; i < attachments.Length; i++)
+            {
+                description += "\nAttachment_" + i + ": ";
+                Attachment attachment = attachments[i];
+                if (attachment != null)
+                    description += attachment.attachmentName;
+            }
+            return description;
         }
     }
 }

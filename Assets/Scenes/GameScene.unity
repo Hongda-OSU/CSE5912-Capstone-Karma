@@ -5440,6 +5440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b776c39be75f3204aab8076d76489d98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numOfAttachmentsPerWeapon: 4
   weapons:
   - {fileID: 6323545414396422431}
   - {fileID: 7347884081617589204}
@@ -40249,7 +40250,7 @@ GameObject:
   - component: {fileID: 6323204566015221677}
   - component: {fileID: 6323204566015221681}
   m_Layer: 0
-  m_Name: Gun Camera
+  m_Name: Eye Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40462,7 +40463,7 @@ GameObject:
   - component: {fileID: 6263780888349356400}
   - component: {fileID: 6244414377075154036}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: Gun Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42535,11 +42536,11 @@ MonoBehaviour:
   AmmoInMag: 30
   MaxAmmoCarried: 120
   FireRate: 10
-  FirearmsShootingAudioSource: {fileID: 6323525233809450448}
-  FirearmsReloadingAudioSource: {fileID: 6323525233809450448}
-  FirearmsAudioData: {fileID: 11400000, guid: b5aff83e62fa6a04993d91b69f167c5b, type: 2}
-  EyeCamera: {fileID: 6244414377075154036}
-  FOVforDoubleMirror: 35
+  ShootingAudioSource: {fileID: 6323525233809450448}
+  ReloadingAudioSource: {fileID: 6323525233809450448}
+  WeaponAudioData: {fileID: 11400000, guid: 451e28270860743d18a1e240f522fd72, type: 2}
+  GunCamera: {fileID: 6244414377075154036}
+  FOVWhenAimed: 0
   SlerpTime: 6.5
   SlerpAngle: 35
   SlerpDistance: 0.85
@@ -42547,8 +42548,11 @@ MonoBehaviour:
   weaponType: 0
   iconImage: {fileID: 21300000, guid: db048b1e99072ab43b56440f33e8801b, type: 2}
   description: 
+  attachments: []
+  GunIcon: {fileID: 0}
+  ScopeInfos: []
   ImpactPrefab: {fileID: 1879272669879180, guid: 7bef351ddc33ae044b671a7664396a20, type: 3}
-  impactAudioData: {fileID: 11400000, guid: a4453f74fe5729140b9af202c367f21d, type: 2}
+  impactAudioData: {fileID: 11400000, guid: 77d82378f50d24793accd21a66000c94, type: 2}
 --- !u!82 &6324315379400352080
 AudioSource:
   m_ObjectHideFlags: 0
@@ -42697,9 +42701,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 476125afce9c4194aa0d737f0e13e28a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fpsController: {fileID: 6324315379400352081}
   MainWeapon: {fileID: 6323545414396422431}
   SecondaryWeapon: {fileID: 7347884081617589204}
-  fpsController: {fileID: 6324315379400352081}
+  EyeCameraTransform: {fileID: 6263887276710111610}
+  RayCastMaxDistance: 0
+  ItemLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  Arms: []
 --- !u!4 &7251382488508547389
 Transform:
   m_ObjectHideFlags: 0
@@ -43281,7 +43291,7 @@ GameObject:
   - component: {fileID: 7258685714668777317}
   - component: {fileID: 7270670572879506863}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: Gun Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44759,11 +44769,11 @@ MonoBehaviour:
   AmmoInMag: 8
   MaxAmmoCarried: 32
   FireRate: 5
-  FirearmsShootingAudioSource: {fileID: 7316410137558538907}
-  FirearmsReloadingAudioSource: {fileID: 7316410137558538907}
-  FirearmsAudioData: {fileID: 11400000, guid: 4a28fc5339b14394cb909b4c66004902, type: 2}
-  EyeCamera: {fileID: 7270670572879506863}
-  FOVforDoubleMirror: 45
+  ShootingAudioSource: {fileID: 7316410137558538907}
+  ReloadingAudioSource: {fileID: 7316410137558538907}
+  WeaponAudioData: {fileID: 11400000, guid: 571751b02e0e14122bea17d011d37143, type: 2}
+  GunCamera: {fileID: 7270670572879506863}
+  FOVWhenAimed: 0
   SlerpTime: 7
   SlerpAngle: 30
   SlerpDistance: 0.8
@@ -44771,8 +44781,11 @@ MonoBehaviour:
   weaponType: 1
   iconImage: {fileID: 21300000, guid: 59d9a6b955fed41478a62f48459c2578, type: 2}
   description: 
+  attachments: []
+  GunIcon: {fileID: 0}
+  ScopeInfos: []
   ImpactPrefab: {fileID: 1879272669879180, guid: 7bef351ddc33ae044b671a7664396a20, type: 3}
-  impactAudioData: {fileID: 11400000, guid: a4453f74fe5729140b9af202c367f21d, type: 2}
+  impactAudioData: {fileID: 11400000, guid: 77d82378f50d24793accd21a66000c94, type: 2}
 --- !u!4 &7786024709879552729
 Transform:
   m_ObjectHideFlags: 0

@@ -9,8 +9,8 @@ namespace CSE5912.PolyGamers
 {
     public class PlayerInventory : MonoBehaviour
     {
-        [SerializeField] private static int numOfAttachmentsPerWeapon = 4;
-        public static int NumOfAttachmentsPerWeapon { get { return numOfAttachmentsPerWeapon; } }
+        [SerializeField] private int numOfAttachmentsPerWeapon = 4;
+        public int NumOfAttachmentsPerWeapon { get { return numOfAttachmentsPerWeapon; } }
 
         private WeaponsPanelControl weaponsPanelControl;
         private AttachmentInventoryControl attachmentInventoryControl;
@@ -45,11 +45,14 @@ namespace CSE5912.PolyGamers
             int num = 100;
             for (int i = 0; i < num; i++)
             {
-                var attachment = new Attachment();
-                attachment.name = i.ToString();
-                attachment.iconImage = attachmentIcons[UnityEngine.Random.Range(0, attachmentIcons.Length)];
+                var attachment = new GameObject();
+                attachment.AddComponent<Attachment>();
+                var at = attachment.GetComponent<Attachment>();
 
-                attachmentList.Add(attachment);
+                at.attachmentName = i.ToString();
+                at.iconImage = attachmentIcons[UnityEngine.Random.Range(0, attachmentIcons.Length)];
+
+                attachmentList.Add(at);
             }
 
 

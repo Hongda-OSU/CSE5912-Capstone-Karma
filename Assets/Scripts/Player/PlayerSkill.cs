@@ -44,7 +44,6 @@ namespace CSE5912.PolyGamers
             }
 
             //test
-            Debug.Log(PlayerStats.Instance.ExtraDamageFactor_fire);
         }
 
         private void PerformSkill(Skill skill)

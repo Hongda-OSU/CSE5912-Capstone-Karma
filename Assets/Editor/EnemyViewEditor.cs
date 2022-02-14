@@ -3,34 +3,38 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(Goblin_1))]
-
-public class EnemyViewEditor : Editor
+namespace CSE5912.PolyGamers
 {
-    public GameObject closestTarget;
-    // float closestDistance = 9999;
+    [CustomEditor(typeof(Goblin_1))]
 
-    void OnSceneGUI()
+    public class EnemyViewEditor : Editor
     {
-        /*
-        Goblin_1 fow = (Goblin_1)target;
-        Handles.color = Color.green;
-        Vector3 viewAngleA = fow.DirFromAngle(-fow.GetViewAngle() / 2, false);
-        Vector3 viewAngleB = fow.DirFromAngle(fow.GetViewAngle() / 2, false);
+        public GameObject closestTarget;
+        // float closestDistance = 9999;
 
-        // Test code.
-        // Handles.DrawWireArc(Vector3.zero, Vector3.up, Vector3.forward, 360, 10);
+        void OnSceneGUI()
+        {
+            /*
+            Goblin_1 fow = (Goblin_1)target;
+            Handles.color = Color.green;
+            Vector3 viewAngleA = fow.DirFromAngle(-fow.GetViewAngle() / 2, false);
+            Vector3 viewAngleB = fow.DirFromAngle(fow.GetViewAngle() / 2, false);
 
-        Handles.DrawWireArc(fow.GetTransform().position, Vector3.up, fow.DirFromAngle(-fow.GetViewAngle(), false) + fow.GetTransform().forward, fow.GetViewAngle(), fow.GetViewRadius());
-        Handles.DrawWireArc(fow.GetTransform().position, Vector3.up, Vector3.forward, 360, fow.GetCloseDetectionDistance());
+            // Test code.
+            // Handles.DrawWireArc(Vector3.zero, Vector3.up, Vector3.forward, 360, 10);
 
-        Handles.DrawLine(fow.GetTransform().position, fow.GetTransform().position + viewAngleA * fow.GetViewRadius());
-        Handles.DrawLine(fow.GetTransform().position, fow.GetTransform().position + viewAngleB * fow.GetViewRadius());
+            Handles.DrawWireArc(fow.GetTransform().position, Vector3.up, fow.DirFromAngle(-fow.GetViewAngle(), false) + fow.GetTransform().forward, fow.GetViewAngle(), fow.GetViewRadius());
+            Handles.DrawWireArc(fow.GetTransform().position, Vector3.up, Vector3.forward, 360, fow.GetCloseDetectionDistance());
 
-        Handles.color = Color.red;
-        if (fow.FoundTarget()) {
-            Handles.DrawLine(fow.GetTransform().position, fow.GetTargetPosition());
+            Handles.DrawLine(fow.GetTransform().position, fow.GetTransform().position + viewAngleA * fow.GetViewRadius());
+            Handles.DrawLine(fow.GetTransform().position, fow.GetTransform().position + viewAngleB * fow.GetViewRadius());
+
+            Handles.color = Color.red;
+            if (fow.FoundTarget()) {
+                Handles.DrawLine(fow.GetTransform().position, fow.GetTargetPosition());
+            }
+            */
         }
-        */
     }
+
 }

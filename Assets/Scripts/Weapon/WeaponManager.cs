@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace PolyGamers.Weapon
+namespace CSE5912.PolyGamers
 {
     public class WeaponManager : MonoBehaviour
     {
@@ -21,10 +21,10 @@ namespace PolyGamers.Weapon
         internal bool isAiming;
         internal bool isFiring;
         internal bool isAttached;
-        public GameObject AmmoCount;
-        public Image WeaponIcon;
-        private TMPro.TextMeshProUGUI AmmoText;
-        public GameObject crosshair;
+        //public GameObject AmmoCount;
+        //public Image WeaponIcon;
+        //private TMPro.TextMeshProUGUI AmmoText;
+        //public GameObject crosshair;
 
         void Start()
         {
@@ -37,8 +37,8 @@ namespace PolyGamers.Weapon
 
             if (carriedWeapon)
             {
-                AmmoText = AmmoCount.GetComponent<TMPro.TextMeshProUGUI>();
-                WeaponIcon.sprite = carriedWeapon.GunIcon;
+                //AmmoText = AmmoCount.GetComponent<TMPro.TextMeshProUGUI>();
+                //WeaponIcon.sprite = carriedWeapon.GunIcon;
             }
         }
 
@@ -75,8 +75,8 @@ namespace PolyGamers.Weapon
             {
                 carriedWeapon.StartAiming();
                 isAiming = true;
-                if (isAttached)
-                    crosshair.gameObject.SetActive(false);
+                //if (isAttached)
+                    //crosshair.gameObject.SetActive(false);
             }
 
             // stop weapon aiming by releasing the right mouse (enable crosshair when scope attached)
@@ -84,8 +84,8 @@ namespace PolyGamers.Weapon
             {
                 carriedWeapon.StopAiming();
                 isAiming = false;
-                if (isAttached)
-                    crosshair.gameObject.SetActive(true);
+                //if (isAttached)
+                    //crosshair.gameObject.SetActive(true);
             }
             
             // start lean shooting only when aiming, press Q for left lean, E for right lean
@@ -99,7 +99,7 @@ namespace PolyGamers.Weapon
 
         private void UpdateAmmoInfo(int ammo, int remainingAmmo)
         {
-            AmmoText.SetText(ammo + "/" + remainingAmmo);
+            //AmmoText.SetText(ammo + "/" + remainingAmmo);
         }
 
         private void SwapWeapon()
@@ -133,7 +133,7 @@ namespace PolyGamers.Weapon
                 carriedWeapon.gameObject.SetActive(true);
                 fpsController.SetupAnimator(carriedWeapon.GunAnimator);
             }
-            WeaponIcon.sprite = carriedWeapon.GunIcon;
+            //WeaponIcon.sprite = carriedWeapon.GunIcon;
         }
 
         private void CheckItem()
