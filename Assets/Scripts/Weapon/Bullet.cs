@@ -52,7 +52,9 @@ namespace PolyGamers.Weapon
         {
             if (hit.transform.tag == "Enemy")
             {
-                Debug.Log("Enemy Hit");
+                Debug.Log(hit.transform.gameObject.name);
+                IEnemy enemy = hit.transform.GetComponent<IEnemy>();
+                enemy.TakeDamage(10);
             }
         }
 

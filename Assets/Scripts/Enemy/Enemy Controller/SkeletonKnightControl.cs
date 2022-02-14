@@ -7,6 +7,11 @@ namespace CSE5912.PolyGamers
 {
     public class SkeletonKnightControl : BossEnemy
     {
+        void Awake()
+        {
+            health = 100;
+        }
+
         protected override void PerformActions()
         {
             switch (status)
