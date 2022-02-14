@@ -1,39 +1,36 @@
 using System.Collections;
 using UnityEngine;
 
-namespace CSE5912.PolyGamers
+namespace PolyGamers.Weapon
 {
     public class AK47 : Firearms
     {
-        [Header("AK47")]
         public GameObject ImpactPrefab;
         public ImpactAudioData impactAudioData;
         private IEnumerator reloadAmmoCheckerCoroutine;
         
-        private Quaternion ControllerOriginLocalRotation;
-        private Vector3 ControllerOriginLocalPosition;
+        private Quaternion ControllerLocalOriginalRotation;
+        private Vector3 ControllerLocalOriginalPosition;
         private FPSMouseLook fpsMouseLook;
 
         protected override void Awake()
         {
             base.Awake();
-            ControllerOriginLocalRotation = transform.localRotation;
-            ControllerOriginLocalPosition = transform.localPosition;
+            ControllerLocalOriginalRotation = transform.localRotation;
+            ControllerLocalOriginalPosition = transform.localPosition;
             reloadAmmoCheckerCoroutine = CheckReloadAmmoAnimationEnd();
             fpsMouseLook = FindObjectOfType<FPSMouseLook>();
-
-            weaponType = WeaponType.Rifle;
         }
 
-        protected override void Shooting()
+        protected override void Shoot()
         {
             if (CurrentAmmo <= 0) return;
             if (!IsAllowShooting()) return;
             MuzzleParticle.Play();
             CurrentAmmo -= 1;
             GunAnimator.Play("Fire", isAiming ? 1: 0, 0);
-            FirearmsShootingAudioSource.clip = FirearmsAudioData.ShootingAudio;
-            FirearmsShootingAudioSource.Play();
+            ShootingAudioSource.clip = WeaponAudioData.ShootingAudio;
+            ShootingAudioSource.Play();
             CreateBullet();
             CastingParticle.Play();
             if (isAiming)
@@ -48,8 +45,8 @@ namespace CSE5912.PolyGamers
             GunAnimator.SetLayerWeight(2, 1);
             GunAnimator.SetTrigger(CurrentAmmo > 0 ? "ReloadLeft" : "ReloadOutOf");
 
-            FirearmsReloadingAudioSource.clip = CurrentAmmo > 0 ? FirearmsAudioData.ReloadLeft : FirearmsAudioData.ReloadOutOf;
-            FirearmsReloadingAudioSource.Play();
+            ReloadingAudioSource.clip = CurrentAmmo > 0 ? WeaponAudioData.ReloadLeft : WeaponAudioData.ReloadOutOf;
+            ReloadingAudioSource.Play();
 
             if (reloadAmmoCheckerCoroutine == null)
             {
@@ -76,29 +73,29 @@ namespace CSE5912.PolyGamers
 
         protected override void StopCameraLean()
         {
-            transform.localRotation = Quaternion.Slerp(transform.localRotation, ControllerOriginLocalRotation, SlerpTime * Time.deltaTime);
-            transform.localPosition = Vector3.Slerp(transform.localPosition, ControllerOriginLocalPosition, SlerpTime * Time.deltaTime);
-            EyeCamera.transform.localRotation = Quaternion.Slerp(EyeCamera.transform.localRotation, CameraLocalOriginRotation, SlerpTime * Time.deltaTime);
+            transform.localRotation = Quaternion.Slerp(transform.localRotation, ControllerLocalOriginalRotation, SlerpTime * Time.deltaTime);
+            transform.localPosition = Vector3.Slerp(transform.localPosition, ControllerLocalOriginalPosition, SlerpTime * Time.deltaTime);
+            GunCamera.transform.localRotation = Quaternion.Slerp(GunCamera.transform.localRotation, GunCameraLocalOriginalRotation, SlerpTime * Time.deltaTime);
         }
 
         private void CameraLeanLeft()
         {
             transform.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.Euler(0,0,SlerpAngle), SlerpTime * Time.deltaTime);
             transform.localPosition = Vector3.Slerp(transform.localPosition, new Vector3(-SlerpDistance, 0, 0), SlerpTime * Time.deltaTime);
-            EyeCamera.transform.localRotation = Quaternion.Slerp(EyeCamera.transform.localRotation, Quaternion.Euler(90, SlerpAngle, 0), SlerpTime * Time.deltaTime);
+            GunCamera.transform.localRotation = Quaternion.Slerp(GunCamera.transform.localRotation, Quaternion.Euler(90, SlerpAngle, 0), SlerpTime * Time.deltaTime);
         }
 
         private void CameraLeanRight()
         {
             transform.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.Euler(0, 0, -SlerpAngle), SlerpTime * Time.deltaTime);
             transform.localPosition = Vector3.Slerp(transform.localPosition, new Vector3(SlerpDistance, 0, 0), SlerpTime * Time.deltaTime);
-            EyeCamera.transform.localRotation = Quaternion.Slerp(EyeCamera.transform.localRotation, Quaternion.Euler(90, -SlerpAngle, 0), SlerpTime * Time.deltaTime);
+            GunCamera.transform.localRotation = Quaternion.Slerp(GunCamera.transform.localRotation, Quaternion.Euler(90, -SlerpAngle, 0), SlerpTime * Time.deltaTime);
         }
 
         protected void CreateBullet()
         {
             GameObject tmp_Bullet = Instantiate(BulletPrefab, MuzzlePoint.position, MuzzlePoint.rotation);
-            tmp_Bullet.transform.eulerAngles += CalculateSpreadOffset();
+            tmp_Bullet.transform.eulerAngles += CalculateBulletSpreadOffset();
             var tmp_BulletScript = tmp_Bullet.AddComponent<Bullet>();
             tmp_BulletScript.ImpactPrefab = ImpactPrefab;
             tmp_BulletScript.impactAudioData = impactAudioData;
