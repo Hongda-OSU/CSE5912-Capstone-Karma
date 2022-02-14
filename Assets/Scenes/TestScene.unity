@@ -1439,10 +1439,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33e4a60c694a1a748af287e18ed5157c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentItemType: 1
-  ItemName: 2X
-  ItemId: 1500
-  CurrentAttachmentType: 0
 --- !u!65 &1808355382
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1473,10 +1469,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33e4a60c694a1a748af287e18ed5157c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentItemType: 1
-  ItemName: RedDotSight
-  ItemId: 1501
-  CurrentAttachmentType: 0
 --- !u!65 &1821737849
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2281,6 +2273,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 789240833929632200, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
+      propertyPath: WeaponAudioData
+      value: 
+      objectReference: {fileID: 11400000, guid: 571751b02e0e14122bea17d011d37143, type: 2}
+    - target: {fileID: 789240833929632200, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
+      propertyPath: impactAudioData
+      value: 
+      objectReference: {fileID: 11400000, guid: 77d82378f50d24793accd21a66000c94, type: 2}
+    - target: {fileID: 4092260174426645251, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
+      propertyPath: WeaponAudioData
+      value: 
+      objectReference: {fileID: 11400000, guid: 451e28270860743d18a1e240f522fd72, type: 2}
+    - target: {fileID: 4092260174426645251, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
+      propertyPath: impactAudioData
+      value: 
+      objectReference: {fileID: 11400000, guid: 77d82378f50d24793accd21a66000c94, type: 2}
     - target: {fileID: 4093601272437484367, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
       propertyPath: AmmoCount
       value: 
