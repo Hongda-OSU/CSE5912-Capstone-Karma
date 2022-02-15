@@ -95,8 +95,9 @@ namespace CSE5912.PolyGamers
             GunCameraLocalOriginalPosition = GunCamera.transform.localPosition;
             doAimingCoroutine = DoAim();
 
-            //attachments = new Attachment[PlayerInventory.Instance.NumOfAttachmentsPerWeapon];
+            attachments = new Attachment[PlayerInventory.NumOfAttachmentsPerWeapon];
         }
+
 
         public void Attack()
         {

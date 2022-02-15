@@ -9,8 +9,8 @@ namespace CSE5912.PolyGamers
 {
     public class PlayerInventory : MonoBehaviour
     {
-        [SerializeField] private int numOfAttachmentsPerWeapon = 4;
-        public int NumOfAttachmentsPerWeapon { get { return numOfAttachmentsPerWeapon; } }
+        [SerializeField] private static int numOfAttachmentsPerWeapon = 4;
+        public static int NumOfAttachmentsPerWeapon { get { return numOfAttachmentsPerWeapon; } }
 
         private WeaponsPanelControl weaponsPanelControl;
         private AttachmentInventoryControl attachmentInventoryControl;
