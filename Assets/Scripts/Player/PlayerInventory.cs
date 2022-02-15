@@ -25,6 +25,7 @@ namespace CSE5912.PolyGamers
 
         // test
         [SerializeField] Sprite[] attachmentIcons;
+        bool yes = false;
 
         private void Awake()
         {
@@ -33,31 +34,38 @@ namespace CSE5912.PolyGamers
                 Destroy(gameObject);
             }
             instance = this;
+
+            attachmentList = new List<Attachment>();
         }
         private void Start()
         {
             weaponsPanelControl = WeaponsPanelControl.Instance;
             attachmentInventoryControl = AttachmentInventoryControl.Instance;
+        }
 
-            attachmentList = new List<Attachment>();
+        private void Update()
+        {
 
-            // test
-            int num = 100;
-            for (int i = 0; i < num; i++)
+            if (!yes)
             {
-                var attachment = new GameObject();
-                attachment.AddComponent<Attachment>();
-                var at = attachment.GetComponent<Attachment>();
+                // test
+                int num = 100;
+                for (int i = 0; i < num; i++)
+                {
+                    var attachment = new GameObject();
+                    attachment.AddComponent<Attachment>();
+                    var at = attachment.GetComponent<Attachment>();
 
-                at.attachmentName = i.ToString();
-                at.iconImage = attachmentIcons[UnityEngine.Random.Range(0, attachmentIcons.Length)];
+                    at.attachmentName = i.ToString();
+                    at.iconImage = attachmentIcons[UnityEngine.Random.Range(0, attachmentIcons.Length)];
 
-                attachmentList.Add(at);
+                    attachmentList.Add(at);
+                }
+
+
+                UpdateAll();
+                yes = true;
             }
-
-
-            UpdateAll();
-
         }
 
         public void AddWeapon(Firearms weapon)
