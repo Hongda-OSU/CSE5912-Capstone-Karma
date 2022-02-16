@@ -14,16 +14,16 @@
                     <ui:VisualElement name="Weapon" class="WeaponSlot">
                         <ui:VisualElement name="WeaponIcon" style="flex-grow: 1;" />
                     </ui:VisualElement>
-                    <ui:VisualElement name="Attachment_0" class="AttachmentSlot" style="background-color: rgba(0, 0, 0, 0); border-left-color: rgba(255, 255, 255, 0); border-right-color: rgb(255, 255, 255); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px;">
+                    <ui:VisualElement name="Attachment_0" class="AttachmentSlot">
                         <ui:VisualElement name="AttachmentIcon" style="flex-grow: 1;" />
                     </ui:VisualElement>
-                    <ui:VisualElement name="Attachment_1" class="AttachmentSlot" style="background-color: rgba(0, 0, 0, 0); border-left-color: rgba(255, 255, 255, 0); border-right-color: rgb(255, 255, 255); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px;">
+                    <ui:VisualElement name="Attachment_1" class="AttachmentSlot">
                         <ui:VisualElement name="AttachmentIcon" style="flex-grow: 1;" />
                     </ui:VisualElement>
-                    <ui:VisualElement name="Attachment_2" class="AttachmentSlot" style="background-color: rgba(0, 0, 0, 0); border-left-color: rgba(255, 255, 255, 0); border-right-color: rgb(255, 255, 255); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px;">
+                    <ui:VisualElement name="Attachment_2" class="AttachmentSlot">
                         <ui:VisualElement name="AttachmentIcon" style="flex-grow: 1;" />
                     </ui:VisualElement>
-                    <ui:VisualElement name="Attachment_3" class="AttachmentSlot" style="background-color: rgba(0, 0, 0, 0); border-left-color: rgba(255, 255, 255, 0); border-right-color: rgba(255, 255, 255, 0); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px;">
+                    <ui:VisualElement name="Attachment_3" class="AttachmentSlot">
                         <ui:VisualElement name="AttachmentIcon" style="flex-grow: 1;" />
                     </ui:VisualElement>
                 </ui:VisualElement>
@@ -31,16 +31,16 @@
                     <ui:VisualElement name="Weapon" class="WeaponSlot">
                         <ui:VisualElement name="WeaponIcon" style="flex-grow: 1;" />
                     </ui:VisualElement>
-                    <ui:VisualElement name="Attachment_0" class="AttachmentSlot" style="background-color: rgba(0, 0, 0, 0); border-left-color: rgba(255, 255, 255, 0); border-right-color: rgb(255, 255, 255); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px;">
+                    <ui:VisualElement name="Attachment_0" class="AttachmentSlot">
                         <ui:VisualElement name="AttachmentIcon" style="flex-grow: 1;" />
                     </ui:VisualElement>
-                    <ui:VisualElement name="Attachment_1" class="AttachmentSlot" style="background-color: rgba(0, 0, 0, 0); border-left-color: rgba(255, 255, 255, 0); border-right-color: rgb(255, 255, 255); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px;">
+                    <ui:VisualElement name="Attachment_1" class="AttachmentSlot">
                         <ui:VisualElement name="AttachmentIcon" style="flex-grow: 1;" />
                     </ui:VisualElement>
-                    <ui:VisualElement name="Attachment_2" class="AttachmentSlot" style="background-color: rgba(0, 0, 0, 0); border-left-color: rgba(255, 255, 255, 0); border-right-color: rgb(255, 255, 255); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px;">
+                    <ui:VisualElement name="Attachment_2" class="AttachmentSlot">
                         <ui:VisualElement name="AttachmentIcon" style="flex-grow: 1;" />
                     </ui:VisualElement>
-                    <ui:VisualElement name="Attachment_3" class="AttachmentSlot" style="background-color: rgba(0, 0, 0, 0); border-left-color: rgba(255, 255, 255, 0); border-right-color: rgba(255, 255, 255, 0); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px;">
+                    <ui:VisualElement name="Attachment_3" class="AttachmentSlot">
                         <ui:VisualElement name="AttachmentIcon" style="flex-grow: 1;" />
                     </ui:VisualElement>
                 </ui:VisualElement>
@@ -48,16 +48,16 @@
                     <ui:VisualElement name="Weapon" class="WeaponSlot">
                         <ui:VisualElement name="WeaponIcon" style="flex-grow: 1;" />
                     </ui:VisualElement>
-                    <ui:VisualElement name="Attachment_0" class="AttachmentSlot" style="background-color: rgba(0, 0, 0, 0); border-left-color: rgba(255, 255, 255, 0); border-right-color: rgb(255, 255, 255); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px;">
+                    <ui:VisualElement name="Attachment_0" class="AttachmentSlot">
                         <ui:VisualElement name="AttachmentIcon" style="flex-grow: 1;" />
                     </ui:VisualElement>
-                    <ui:VisualElement name="Attachment_1" class="AttachmentSlot" style="background-color: rgba(0, 0, 0, 0); border-left-color: rgba(255, 255, 255, 0); border-right-color: rgb(255, 255, 255); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px;">
+                    <ui:VisualElement name="Attachment_1" class="AttachmentSlot">
                         <ui:VisualElement name="AttachmentIcon" style="flex-grow: 1;" />
                     </ui:VisualElement>
-                    <ui:VisualElement name="Attachment_2" class="AttachmentSlot" style="background-color: rgba(0, 0, 0, 0); border-left-color: rgba(255, 255, 255, 0); border-right-color: rgb(255, 255, 255); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px;">
+                    <ui:VisualElement name="Attachment_2" class="AttachmentSlot">
                         <ui:VisualElement name="AttachmentIcon" style="flex-grow: 1;" />
                     </ui:VisualElement>
-                    <ui:VisualElement name="Attachment_3" class="AttachmentSlot" style="background-color: rgba(0, 0, 0, 0); border-left-color: rgba(255, 255, 255, 0); border-right-color: rgba(255, 255, 255, 0); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px;">
+                    <ui:VisualElement name="Attachment_3" class="AttachmentSlot">
                         <ui:VisualElement name="AttachmentIcon" style="flex-grow: 1;" />
                     </ui:VisualElement>
                 </ui:VisualElement>
@@ -65,16 +65,16 @@
                     <ui:VisualElement name="Weapon" class="WeaponSlot">
                         <ui:VisualElement name="WeaponIcon" style="flex-grow: 1;" />
                     </ui:VisualElement>
-                    <ui:VisualElement name="Attachment_0" class="AttachmentSlot" style="background-color: rgba(0, 0, 0, 0); border-left-color: rgba(255, 255, 255, 0); border-right-color: rgb(255, 255, 255); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px;">
+                    <ui:VisualElement name="Attachment_0" class="AttachmentSlot">
                         <ui:VisualElement name="AttachmentIcon" style="flex-grow: 1;" />
                     </ui:VisualElement>
-                    <ui:VisualElement name="Attachment_1" class="AttachmentSlot" style="background-color: rgba(0, 0, 0, 0); border-left-color: rgba(255, 255, 255, 0); border-right-color: rgb(255, 255, 255); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px;">
+                    <ui:VisualElement name="Attachment_1" class="AttachmentSlot">
                         <ui:VisualElement name="AttachmentIcon" style="flex-grow: 1;" />
                     </ui:VisualElement>
-                    <ui:VisualElement name="Attachment_2" class="AttachmentSlot" style="background-color: rgba(0, 0, 0, 0); border-left-color: rgba(255, 255, 255, 0); border-right-color: rgb(255, 255, 255); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px;">
+                    <ui:VisualElement name="Attachment_2" class="AttachmentSlot">
                         <ui:VisualElement name="AttachmentIcon" style="flex-grow: 1;" />
                     </ui:VisualElement>
-                    <ui:VisualElement name="Attachment_3" class="AttachmentSlot" style="background-color: rgba(0, 0, 0, 0); border-left-color: rgba(255, 255, 255, 0); border-right-color: rgba(255, 255, 255, 0); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px;">
+                    <ui:VisualElement name="Attachment_3" class="AttachmentSlot">
                         <ui:VisualElement name="AttachmentIcon" style="flex-grow: 1;" />
                     </ui:VisualElement>
                 </ui:VisualElement>
@@ -82,21 +82,21 @@
                     <ui:VisualElement name="Weapon" class="WeaponSlot">
                         <ui:VisualElement name="WeaponIcon" style="flex-grow: 1;" />
                     </ui:VisualElement>
-                    <ui:VisualElement name="Attachment_0" class="AttachmentSlot" style="background-color: rgba(0, 0, 0, 0); border-left-color: rgba(255, 255, 255, 0); border-right-color: rgb(255, 255, 255); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px;">
+                    <ui:VisualElement name="Attachment_0" class="AttachmentSlot">
                         <ui:VisualElement name="AttachmentIcon" style="flex-grow: 1;" />
                     </ui:VisualElement>
-                    <ui:VisualElement name="Attachment_1" class="AttachmentSlot" style="background-color: rgba(0, 0, 0, 0); border-left-color: rgba(255, 255, 255, 0); border-right-color: rgb(255, 255, 255); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px;">
+                    <ui:VisualElement name="Attachment_1" class="AttachmentSlot">
                         <ui:VisualElement name="AttachmentIcon" style="flex-grow: 1;" />
                     </ui:VisualElement>
-                    <ui:VisualElement name="Attachment_2" class="AttachmentSlot" style="background-color: rgba(0, 0, 0, 0); border-left-color: rgba(255, 255, 255, 0); border-right-color: rgb(255, 255, 255); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px;">
+                    <ui:VisualElement name="Attachment_2" class="AttachmentSlot">
                         <ui:VisualElement name="AttachmentIcon" style="flex-grow: 1;" />
                     </ui:VisualElement>
-                    <ui:VisualElement name="Attachment_3" class="AttachmentSlot" style="background-color: rgba(0, 0, 0, 0); border-left-color: rgba(255, 255, 255, 0); border-right-color: rgba(255, 255, 255, 0); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px;">
+                    <ui:VisualElement name="Attachment_3" class="AttachmentSlot">
                         <ui:VisualElement name="AttachmentIcon" style="flex-grow: 1;" />
                     </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement>
-            <ui:VisualElement name="ItemSpecific" style="flex-grow: 1; height: auto; width: auto; border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px; align-items: center; display: flex; background-color: rgba(0, 0, 0, 0.65); left: 800px; top: 50px; position: absolute;">
+            <ui:VisualElement name="ItemSpecific" style="flex-grow: 1; height: auto; width: auto; border-left-color: rgb(75, 76, 73); border-right-color: rgb(75, 76, 73); border-top-color: rgb(75, 76, 73); border-bottom-color: rgb(75, 76, 73); border-left-width: 1px; border-right-width: 1px; border-top-width: 1px; border-bottom-width: 1px; align-items: center; display: flex; background-color: rgba(0, 0, 0, 0.65); left: 800px; top: 50px; position: absolute;">
                 <ui:Label text="Description" display-tooltip-when-elided="true" name="Description" style="flex-grow: 1; width: 460px; -unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/FontAssets/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); font-size: 12px; white-space: normal; height: 532px;" />
             </ui:VisualElement>
             <ui:VisualElement name="AttachmentInventory" style="flex-grow: 1; height: 480px; width: 600px; border-left-color: rgba(255, 255, 255, 0); border-right-color: rgba(255, 255, 255, 0); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px; align-items: stretch; position: absolute; display: flex; top: 161px; flex-direction: row; background-color: rgba(0, 0, 0, 0);">
@@ -543,7 +543,7 @@
                     </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement>
-            <ui:VisualElement name="SkillSpecific" style="flex-grow: 1; height: 600px; width: 401px; background-color: rgba(0, 0, 0, 0.65); justify-content: space-around;">
+            <ui:VisualElement name="SkillSpecific" style="flex-grow: 1; height: 600px; width: 401px; background-color: rgba(0, 0, 0, 0.65); justify-content: space-around; border-left-color: rgb(75, 76, 73); border-right-color: rgb(75, 76, 73); border-top-color: rgb(75, 76, 73); border-bottom-color: rgb(75, 76, 73); border-left-width: 1px; border-right-width: 1px; border-top-width: 1px; border-bottom-width: 1px;">
                 <ui:Label text="Description&#10;" display-tooltip-when-elided="true" name="Specific" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/FontAssets/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); font-size: 12px; color: rgb(255, 255, 255); height: 470px;" />
             </ui:VisualElement>
         </ui:VisualElement>

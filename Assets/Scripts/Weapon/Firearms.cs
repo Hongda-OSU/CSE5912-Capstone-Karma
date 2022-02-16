@@ -69,9 +69,6 @@ namespace CSE5912.PolyGamers
 
         public enum WeaponType { Rifle, Handgun };
 
-        // Gun icon (for UI)
-        public Sprite GunIcon;
-
         // Attachment info
         public List<ScopeInfo> ScopeInfos = new List<ScopeInfo>();
         protected ScopeInfo scopeInfo;

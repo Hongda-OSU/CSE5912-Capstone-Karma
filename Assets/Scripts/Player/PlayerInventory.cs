@@ -15,7 +15,7 @@ namespace CSE5912.PolyGamers
         private WeaponsPanelControl weaponsPanelControl;
         private AttachmentInventoryControl attachmentInventoryControl;
 
-        [SerializeField] private Firearms[] weapons; 
+        [SerializeField] private Firearms[] playerWeapons; 
 
         private List<Attachment> attachmentList;
 
@@ -70,11 +70,11 @@ namespace CSE5912.PolyGamers
 
         public void AddWeapon(Firearms weapon)
         {
-            for (int i = 0; i < weapons.Length; i++)
+            for (int i = 0; i < playerWeapons.Length; i++)
             {
-                if (weapons[i] == null)
+                if (playerWeapons[i] == null)
                 {
-                    weapons[i] = weapon;
+                    playerWeapons[i] = weapon;
                     break;
                 }
             }
@@ -83,8 +83,13 @@ namespace CSE5912.PolyGamers
 
         private void UpdateAll()
         {
-            weaponsPanelControl.UpdateWeapons(weapons);
+            weaponsPanelControl.UpdateWeapons(playerWeapons);
             attachmentInventoryControl.UpdateAttachmentInventory(attachmentList);
+        }
+
+        public List<Firearms> GetPlayerWeaponList()
+        {
+            return new List<Firearms>(playerWeapons);
         }
     }
 }

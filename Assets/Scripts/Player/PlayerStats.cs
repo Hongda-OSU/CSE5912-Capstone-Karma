@@ -45,8 +45,22 @@ namespace CSE5912.PolyGamers
         }
 
 
-        public float Health { get { return health; } set { Mathf.Clamp(health += value, 0, maxHealth); } }
-        public float MaxHealth { get { return maxHealth; } set {  maxHealth = value; } }
+        public float Health { get { return health; } 
+            set 
+            { 
+                Mathf.Clamp(health += value, 0, maxHealth);
+                HealthBarControl.Instance.UpdateHealthBar();
+            } 
+        }
+        public float MaxHealth { get { return maxHealth; } 
+            set 
+            {  
+                maxHealth += value;
+                if (maxHealth < 0f)
+                    maxHealth = 0f;
+                HealthBarControl.Instance.UpdateHealthBar();
+            } 
+        }
         public float Shield_armor {  get { return shield_armor; } set { shield_armor = value; } }
         public float Shield_energy { get { return shield_energy; } set { shield_energy = value; } }
         public float ExtraMoveSpeedFactor { get { return extraMoveSpeedFactor; } set { extraMoveSpeedFactor = value; } }

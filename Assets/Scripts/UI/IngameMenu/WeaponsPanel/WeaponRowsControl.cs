@@ -8,8 +8,6 @@ namespace CSE5912.PolyGamers
 {
     public class WeaponRowsControl : UI
     {
-        // weapon slot
-
         public List<WeaponRow> rowList;
 
         private VisualElement weaponRows;
