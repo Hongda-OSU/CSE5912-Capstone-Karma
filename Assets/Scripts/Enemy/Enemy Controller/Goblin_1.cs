@@ -29,10 +29,11 @@ namespace CSE5912.PolyGamers
         private float attackCoolDown = 5f;
 
         [SerializeField] protected float hp = 100f;
+        [SerializeField] protected float maxHp = 100f;
 
         void Start()
         {
-            target = PlayerManager.instance.player.transform;
+            target = PlayerManager.Instance.Player.transform;
             agent = GetComponent<NavMeshAgent>();
             agent.isStopped = true;
             animator = transform.GetChild(0).gameObject.GetComponent<Animator>();
@@ -291,11 +292,15 @@ namespace CSE5912.PolyGamers
             //Debug.Log("Goblin hit");
         }
 
-        public float GetHP()
+        public float GetHealth()
         {
             return hp;
         }
 
+        public float GetMaxHealth()
+        {
+            return maxHp;
+        }
         void Hit()
         {
 

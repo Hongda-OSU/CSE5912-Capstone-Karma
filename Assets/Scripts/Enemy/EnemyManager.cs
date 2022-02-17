@@ -34,7 +34,7 @@ namespace CSE5912.PolyGamers
             var planes = GeometryUtility.CalculateFrustumPlanes(playerCamera);
             foreach (GameObject enemy in enemyList)
             {
-                if (enemy != null && GeometryUtility.TestPlanesAABB(planes, enemy.GetComponent<Collider>().bounds))
+                if (enemy != null && enemy.tag == "Enemy" && GeometryUtility.TestPlanesAABB(planes, enemy.GetComponent<Collider>().bounds))
                 {
                     result.Add(enemy);
                 }

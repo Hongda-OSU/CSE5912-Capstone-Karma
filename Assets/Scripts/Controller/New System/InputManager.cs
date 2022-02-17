@@ -13,7 +13,7 @@ namespace CSE5912.PolyGamers
         //private FPSMovementCC cc;
         //private FPSMouseLookNew look;
 
-        void Awake()
+        private void Start()
         {
             inputSchemes = new InputActions();
 

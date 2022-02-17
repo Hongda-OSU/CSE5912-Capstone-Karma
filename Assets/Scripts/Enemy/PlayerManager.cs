@@ -6,15 +6,25 @@ namespace CSE5912.PolyGamers
 {
     public class PlayerManager : MonoBehaviour
     {
+        [SerializeField] private GameObject player;
+        [SerializeField] private Camera playerCamera;
 
-        public static PlayerManager instance;
+        private static PlayerManager instance;
+        public static PlayerManager Instance { get { return instance; } }
 
         private void Awake()
         {
+            if (instance != null && instance != this)
+            {
+                Destroy(gameObject);
+            }
             instance = this;
         }
 
-        public GameObject player;
 
+
+
+        public GameObject Player { get { return player; } }
+        public Camera PlayerCamera { get { return playerCamera; } }
     }
 }

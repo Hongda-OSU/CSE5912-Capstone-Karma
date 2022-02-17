@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Styles/Hud.uss?fileID=7433441132597879392&amp;guid=ca36900cbf93cba4d99cfd34716a89b8&amp;type=3#Hud" />
+    <ui:VisualElement name="Root" style="align-items: flex-start;">
+        <ui:VisualElement name="MaxHealthBar" style="background-color: rgba(0, 15, 8, 0.78); width: 100px; height: 10px; position: absolute;">
+            <ui:VisualElement name="HealthBar" style="position: absolute; width: 100px; height: 10px; background-color: rgb(222, 29, 11); -unity-text-outline-color: rgb(0, 0, 0);" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

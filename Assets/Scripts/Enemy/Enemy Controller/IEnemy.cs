@@ -8,7 +8,8 @@ namespace CSE5912.PolyGamers
     {
         //public string GetName();
 
-        public float GetHP();
+        public float GetHealth();
+        public float GetMaxHealth();
 
         //public float GetExperience();
 

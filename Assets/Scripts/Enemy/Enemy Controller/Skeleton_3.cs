@@ -24,10 +24,11 @@ namespace CSE5912.PolyGamers
         private bool isPlayingDeathAnimation = false;
 
         [SerializeField] protected float hp = 250f;
+        [SerializeField] protected float maxHp = 250f;
 
         void Start()
         {
-            target = PlayerManager.instance.player.transform;
+            target = PlayerManager.Instance.Player.transform;
             agent = GetComponent<NavMeshAgent>();
             agent.isStopped = true;
             animator = transform.GetChild(0).gameObject.GetComponent<Animator>();
@@ -164,9 +165,14 @@ namespace CSE5912.PolyGamers
             hp -= amount;
         }
 
-        public float GetHP()
+        public float GetHealth()
         {
             return hp;
+        }
+
+        public float GetMaxHealth()
+        {
+            return maxHp;
         }
 
         // These codes below are used by Eiditor for testing purpose.

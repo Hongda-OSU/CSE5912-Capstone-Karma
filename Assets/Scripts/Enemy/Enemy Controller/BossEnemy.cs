@@ -13,6 +13,7 @@ namespace CSE5912.PolyGamers
         [SerializeField] protected float experience;
 
         [SerializeField] protected float health;
+        [SerializeField] protected float maxHealth;
 
         [SerializeField] protected float attackDamage;
 
@@ -86,7 +87,7 @@ namespace CSE5912.PolyGamers
 
         protected virtual void Start()
         {
-            target = PlayerManager.instance.player.transform;
+            target = PlayerManager.Instance.Player.transform;
 
             agent = GetComponent<NavMeshAgent>();
             agent.isStopped = true;
@@ -230,9 +231,13 @@ namespace CSE5912.PolyGamers
         {
             return enemyName;
         }
-        public virtual float GetHP()
+        public virtual float GetHealth()
         {
             return health;
+        }
+        public float GetMaxHealth()
+        {
+            return maxHealth;
         }
         public virtual float GetExperience()
         {

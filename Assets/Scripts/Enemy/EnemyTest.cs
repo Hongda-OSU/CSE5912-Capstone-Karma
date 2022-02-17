@@ -23,7 +23,7 @@ namespace CSE5912.PolyGamers
 
         void Start()
         {
-            target = PlayerManager.instance.player.transform;
+            target = PlayerManager.Instance.Player.transform;
             agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
             agent.isStopped = true;
             animator = transform.GetChild(0).gameObject.GetComponent<Animator>();

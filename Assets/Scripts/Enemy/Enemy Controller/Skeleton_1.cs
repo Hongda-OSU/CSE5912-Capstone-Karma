@@ -23,7 +23,8 @@ namespace CSE5912.PolyGamers
         private bool isAttacking = false;
         private bool isPlayingDeathAnimation = false;
 
-        [SerializeField] protected float HP = 100f;
+        [SerializeField] protected float hp = 100f;
+        [SerializeField] protected float maxHp = 100f;
         [SerializeField] protected bool Wander = false;
 
         private bool wandering = false;
@@ -31,7 +32,7 @@ namespace CSE5912.PolyGamers
 
         void Start()
         {
-            target = PlayerManager.instance.player.transform;
+            target = PlayerManager.Instance.Player.transform;
             agent = GetComponent<NavMeshAgent>();
             agent.isStopped = true;
             animator = transform.GetChild(0).gameObject.GetComponent<Animator>();
@@ -43,7 +44,7 @@ namespace CSE5912.PolyGamers
             distance = Vector3.Distance(target.position, transform.position);
             directionToTarget = (target.position - transform.position).normalized;
          
-            if (HP <= 0)
+            if (hp <= 0)
             {
                 HandleDeath();
                 return;
@@ -205,12 +206,16 @@ namespace CSE5912.PolyGamers
 
         public void TakeDamage(float amount)
         {
-            HP -= amount;
+            hp -= amount;
         }
 
-        public float GetHP()
+        public float GetHealth()
         {
-            return HP;
+            return hp;
+        }
+        public float GetMaxHealth()
+        {
+            return maxHp;
         }
 
         // These codes below are used by Eiditor for testing purpose.
