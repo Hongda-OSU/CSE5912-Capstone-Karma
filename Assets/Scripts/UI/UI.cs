@@ -11,7 +11,7 @@ namespace CSE5912.PolyGamers
         [SerializeField] protected UIDocument uiDocument;
         [SerializeField] protected float fadingTime = 0.15f;
 
-        private float deltaTime = 0.01f;
+        protected float deltaTime = 0.01f;
 
         protected VisualElement root;
         public VisualElement Root { get { return root; } }
@@ -85,7 +85,7 @@ namespace CSE5912.PolyGamers
          *  animation related
          */
 
-        protected IEnumerator FadeOut(VisualElement element)
+        protected virtual IEnumerator FadeOut(VisualElement element)
         {
             SetButtonsInteractable(element, false);
 
