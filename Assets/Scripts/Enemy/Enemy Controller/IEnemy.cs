@@ -16,6 +16,7 @@ namespace CSE5912.PolyGamers
 
         public void TakeDamage(float amount);
 
+        public bool FoundTarget();
 
 
 
@@ -25,7 +26,6 @@ namespace CSE5912.PolyGamers
         //public float GetViewAngle();
         //public float GetViewRadius();
         //public float GetCloseDetectionDistance();
-        //public bool FoundTarget();
         //public Vector3 DirFromAngle(float angleInDegrees, bool angleIsGlobal);
     }
 }

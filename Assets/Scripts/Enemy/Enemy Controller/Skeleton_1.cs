@@ -23,7 +23,11 @@ namespace CSE5912.PolyGamers
         private bool isAttacking = false;
         private bool isPlayingDeathAnimation = false;
 
-        [SerializeField] protected float hp = 100f;
+        [SerializeField] protected float HP = 100f;
+        [SerializeField] protected bool Wander = false;
+
+        private bool wandering = false;
+        private float wanderCounter = 10f;
 
         void Start()
         {
@@ -38,18 +42,25 @@ namespace CSE5912.PolyGamers
         {
             distance = Vector3.Distance(target.position, transform.position);
             directionToTarget = (target.position - transform.position).normalized;
-
-            if (hp <= 0)
+         
+            if (HP <= 0)
             {
                 HandleDeath();
                 return;
             }
 
+            if (Wander) {
+                HandleWander();
+            }
+            
 
             if ((distance <= viewRadius && Vector3.Angle(transform.forward, directionToTarget) < viewAngle / 2) || distance <= closeDetectionDistance)
             {
                 foundTarget = true;
-                animator.SetBool("Run", true);
+                agent.isStopped = false;
+                agent.speed = 3f;
+                agent.stoppingDistance = 2f;
+                animator.SetBool("FoundPlayer", true);
 
                 FaceTarget(directionToTarget);
                 agent.SetDestination(target.position);
@@ -89,8 +100,38 @@ namespace CSE5912.PolyGamers
             else
             {
                 foundTarget = false;
-                agent.isStopped = true;
-                animator.SetBool("Run", false);
+                animator.SetBool("FoundPlayer", false);
+                if (!Wander) {
+                    agent.isStopped = true;
+                }
+            }     
+        }
+
+        private void HandleWander() {
+            if (!foundTarget)
+            {
+                agent.isStopped = false;
+                agent.speed = 1f;
+                agent.stoppingDistance = 0f;
+
+                if (!agent.hasPath)
+                {
+                    agent.SetDestination(GetPoint.Instance.GetRandomPoint());
+                }
+
+                if (Vector3.Distance(agent.destination, transform.position) <= 0.1f) {
+                    animator.SetBool("Wander", false);
+                }
+                else 
+                {
+                    animator.SetBool("Wander", true);
+                }
+            }
+            else
+            {
+                animator.SetBool("Wander", false);
+                animator.SetBool("FoundPlayer", true);
+                Wander = false;
             }
         }
 
@@ -164,12 +205,12 @@ namespace CSE5912.PolyGamers
 
         public void TakeDamage(float amount)
         {
-            hp -= amount;
+            HP -= amount;
         }
 
         public float GetHP()
         {
-            return hp;
+            return HP;
         }
 
         // These codes below are used by Eiditor for testing purpose.

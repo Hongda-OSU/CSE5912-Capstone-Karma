@@ -288,6 +288,7 @@ namespace CSE5912.PolyGamers
         public void TakeDamage(float amount)
         {
             hp -= amount;
+            //Debug.Log("Goblin hit");
         }
 
         public float GetHP()
