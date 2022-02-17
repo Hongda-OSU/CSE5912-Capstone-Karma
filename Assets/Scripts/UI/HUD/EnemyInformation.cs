@@ -68,6 +68,7 @@ namespace CSE5912.PolyGamers
                     deltaEffect.style.height = healthBar.resolvedStyle.height;
                     deltaEffect.style.backgroundColor = Color.white;
                     deltaEffect.style.left = enemy.GetHealth() * widthPerUnit;
+                    deltaEffect.style.position = Position.Absolute;
 
                     StartCoroutine(FadeOut(deltaEffect));
                 }
