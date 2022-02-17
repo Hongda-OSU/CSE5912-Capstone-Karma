@@ -28,7 +28,7 @@ namespace CSE5912.PolyGamers
         private bool readyToAttack = false;
         private float attackCoolDown = 5f;
 
-        [SerializeField] protected float hp = 100f;
+        [SerializeField] protected float HP = 100f;
 
         void Start()
         {
@@ -48,7 +48,7 @@ namespace CSE5912.PolyGamers
 
             Debug.DrawRay(transform.position, directionToTarget, Color.red);
 
-            if (hp <= 0)
+            if (HP <= 0)
             {
                 HandleDeath();
                 return;
@@ -287,13 +287,13 @@ namespace CSE5912.PolyGamers
 
         public void TakeDamage(float amount)
         {
-            hp -= amount;
+            HP -= amount;
             //Debug.Log("Goblin hit");
         }
 
         public float GetHP()
         {
-            return hp;
+            return HP;
         }
 
         void Hit()

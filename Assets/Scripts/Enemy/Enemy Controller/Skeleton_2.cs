@@ -22,7 +22,7 @@ namespace CSE5912.PolyGamers
 
         private bool isPlayingDeathAnimation = false;
 
-        [SerializeField] protected float hp = 100f;
+        [SerializeField] protected float HP = 100f;
 
         void Start()
         {
@@ -39,7 +39,7 @@ namespace CSE5912.PolyGamers
             distance = Vector3.Distance(target.position, transform.position);
             directionToTarget = (target.position - transform.position).normalized;
 
-            if (hp <= 0)
+            if (HP <= 0)
             {
                 HandleDeath();
                 return;
@@ -165,12 +165,12 @@ namespace CSE5912.PolyGamers
 
         public void TakeDamage(float amount)
         {
-            hp -= amount;
+            HP -= amount;
         }
 
         public float GetHP()
         {
-            return hp;
+            return HP;
         }
 
         // These codes below are used by Eiditor for testing purpose.

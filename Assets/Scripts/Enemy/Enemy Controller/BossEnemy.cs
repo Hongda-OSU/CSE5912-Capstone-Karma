@@ -246,11 +246,6 @@ namespace CSE5912.PolyGamers
         {
             health -= amount;
         }
-        public virtual bool FoundTarget() 
-        {
-            return playerDetected;
-        }
-
 
         /*
          *  animation control
