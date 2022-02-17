@@ -17,12 +17,13 @@ namespace CSE5912.PolyGamers
 
         public void TakeDamage(float amount);
 
-        public bool FoundTarget();
+
 
 
 
         // Methods below are for displaying enemy detection range, used in Editor.
         //public Vector3 GetTargetPosition();
+        //public bool FoundTarget();
         //public Transform GetTransform();
         //public float GetViewAngle();
         //public float GetViewRadius();
