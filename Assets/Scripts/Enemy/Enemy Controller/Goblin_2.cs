@@ -23,6 +23,7 @@ namespace CSE5912.PolyGamers
         private bool isPlayingDeathAnimation = false;
 
         [SerializeField] protected float HP = 100f;
+        [SerializeField] protected float maxHp = 100f;
 
         void Start()
         {
@@ -38,9 +39,14 @@ namespace CSE5912.PolyGamers
             throw new System.NotImplementedException();
         }
 
-        public float GetHP()
+        public float GetHealth()
         {
             throw new System.NotImplementedException();
+        }
+
+        public float GetMaxHealth()
+        {
+            return maxHp;
         }
 
         public void TakeDamage(float amount)
