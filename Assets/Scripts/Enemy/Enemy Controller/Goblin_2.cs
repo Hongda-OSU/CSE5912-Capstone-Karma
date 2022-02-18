@@ -13,7 +13,7 @@ namespace CSE5912.PolyGamers
             maxHp = 100f;
         }
 
-        protected override void Update()
+        void Update()
         {
             //TODO
         }
@@ -21,6 +21,21 @@ namespace CSE5912.PolyGamers
         public override void TakeDamage(float amount)
         {
             //TODO
+        }
+
+        protected override void HandleDeath()
+        {
+            
+        }
+
+        protected override void HandleWander()
+        {
+            
+        }
+
+        protected override void HandlePatrol()
+        {
+            
         }
     }
 }

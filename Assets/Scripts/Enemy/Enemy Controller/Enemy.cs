@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 namespace CSE5912.PolyGamers
 {
-    public class Enemy : MonoBehaviour, IEnemy
+    public abstract class Enemy : MonoBehaviour, IEnemy
     {
         [Header("Enemy Properties")]
         [SerializeField] protected string enemyName;
@@ -28,6 +28,7 @@ namespace CSE5912.PolyGamers
 
         protected bool foundTarget = false;
         protected bool isPlayingDeathAnimation = false;
+        protected bool isAttackedByPlayer = false;
 
         protected float distance;
         protected Vector3 directionToTarget;
@@ -45,25 +46,11 @@ namespace CSE5912.PolyGamers
             animator.applyRootMotion = false;
         }
 
-        protected virtual void Update()
-        {
-        
-        }
+        protected abstract void HandleDeath();
 
-        protected virtual void HandleDeath()
-        {
+        protected abstract void HandleWander();
 
-        }
-
-        protected virtual void HandleWander() 
-        { 
-        
-        }
-
-        protected virtual void HandlePatrol()
-        {
-
-        }
+        protected abstract void HandlePatrol();
 
         protected virtual void FaceTarget(Vector3 direction)
         {
@@ -85,6 +72,9 @@ namespace CSE5912.PolyGamers
         public virtual void TakeDamage(float amount)
         {
             hp -= amount;
+            if (!isAttackedByPlayer) {
+                isAttackedByPlayer = true;
+            }
         }
 
 

@@ -19,7 +19,7 @@ namespace CSE5912.PolyGamers
             maxHp = 100f;
         }
 
-        protected override void Update()
+        void Update()
         {
             distance = Vector3.Distance(target.position, transform.position);
             directionToTarget = (target.position - transform.position).normalized;
@@ -35,7 +35,8 @@ namespace CSE5912.PolyGamers
             }
             
 
-            if ((distance <= viewRadius && Vector3.Angle(transform.forward, directionToTarget) < viewAngle / 2) || distance <= closeDetectionRange)
+            if ((distance <= viewRadius && Vector3.Angle(transform.forward, directionToTarget) < viewAngle / 2) 
+                || distance <= closeDetectionRange || isAttackedByPlayer)
             {
                 foundTarget = true;
                 agent.isStopped = false;
@@ -114,6 +115,11 @@ namespace CSE5912.PolyGamers
                 animator.SetBool("FoundPlayer", true);
                 canWander = false;
             }
+        }
+
+        protected override void HandlePatrol()
+        {
+
         }
 
         protected override void HandleDeath()

@@ -7,7 +7,7 @@ namespace CSE5912.PolyGamers
 {
     public class Skeleton_2 : Enemy
     {
-        protected override void Update()
+        void Update()
         {
             distance = Vector3.Distance(target.position, transform.position);
             directionToTarget = (target.position - transform.position).normalized;
@@ -18,7 +18,8 @@ namespace CSE5912.PolyGamers
                 return;
             }
 
-            if ((distance <= viewRadius && Vector3.Angle(transform.forward, directionToTarget) < viewAngle / 2) || distance <= closeDetectionRange)
+            if ((distance <= viewRadius && Vector3.Angle(transform.forward, directionToTarget) < viewAngle / 2) 
+                || distance <= closeDetectionRange || isAttackedByPlayer)
             {
                 foundTarget = true;
                 agent.isStopped = false;
@@ -128,6 +129,16 @@ namespace CSE5912.PolyGamers
             {
                 animator.SetTrigger("Attack_4");
             }
+        }
+
+        protected override void HandleWander()
+        {
+
+        }
+
+        protected override void HandlePatrol()
+        {
+
         }
     }
 }
