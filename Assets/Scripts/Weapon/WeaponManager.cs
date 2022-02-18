@@ -26,6 +26,18 @@ namespace CSE5912.PolyGamers
         //private TMPro.TextMeshProUGUI AmmoText;
         //public GameObject crosshair;
 
+        private static WeaponManager instance;
+        public static WeaponManager Instance { get { return instance; } }
+
+        private void Awake()
+        {
+            if (instance != null && instance != this)
+            {
+                Destroy(gameObject);
+            }
+            instance = this;
+        }
+
         void Start()
         {
             // if main weapon exist, then set main weapon as carried weapon
@@ -227,6 +239,10 @@ namespace CSE5912.PolyGamers
             fpsController.SetupAnimator(carriedWeapon.GunAnimator);
         }
 
+        public GameObject GetCurrentWeapon()
+        {
+            return carriedWeapon.gameObject;
+        }
     }
 }
    

@@ -21,7 +21,10 @@ namespace CSE5912.PolyGamers
             instance = this;
         }
 
-
+        private void Update()
+        {
+            Debug.Log(WeaponManager.Instance.GetCurrentWeapon());
+        }
 
 
         public GameObject Player { get { return player; } }
