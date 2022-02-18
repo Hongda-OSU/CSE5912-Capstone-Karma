@@ -21,17 +21,11 @@ namespace CSE5912.PolyGamers
             instance = this;
         }
 
-
         private void Update()
         {
-            Debug.Log(WeaponManager.Instance.CurrentWeapon.name);
+            Debug.Log(WeaponManager.Instance.GetCurrentWeapon());
         }
 
-
-        public void UpdatePlayerCamera(Camera camera)
-        {
-            playerCamera = camera;
-        }
 
         public GameObject Player { get { return player; } }
         public Camera PlayerCamera { get { return playerCamera; } }
