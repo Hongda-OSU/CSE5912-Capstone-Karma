@@ -82,6 +82,8 @@ namespace CSE5912.PolyGamers
             public Vector3 GunCameraPosition;
         }
 
+        public static Firearms Instance { get; private set; }
+
         protected virtual void Awake()
         {
             CurrentAmmo = AmmoInMag; // set current ammo to the defined ammo in mag
@@ -93,9 +95,7 @@ namespace CSE5912.PolyGamers
             GunCameraLocalOriginalPosition = GunCamera.transform.localPosition;
             doAimingCoroutine = DoAim();
 
-            // 
             attachments = new Attachment[PlayerInventory.NumOfAttachmentsPerWeapon];
-           
         }
 
 
