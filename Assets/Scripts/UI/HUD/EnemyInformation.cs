@@ -40,19 +40,35 @@ namespace CSE5912.PolyGamers
         {
             currentCamera = WeaponManager.Instance.CarriedWeapon.GunCamera;
 
-            SetHealthBar();
-
-            SetPosition();
-        }
-
-        private void SetHealthBar()
-        {
-            float distance = Vector3.Distance(PlayerManager.Instance.Player.transform.position, gameObject.transform.position);
-            if (distance > distanceToDisplay)
+            if (DisplayEnabled())
+            {
+                SetHealthBar();
+                SetPosition();
+            }
+            else
             {
                 maxHealthBar.style.display = DisplayStyle.None;
-                return;
             }
+        }
+
+        private bool DisplayEnabled()
+        {
+            float distance = Vector3.Distance(PlayerManager.Instance.Player.transform.position, transform.position);
+
+            GameObject player = PlayerManager.Instance.Player;
+            RaycastHit hit;
+
+            if (distance < distanceToDisplay)
+            {
+                if (Physics.Raycast(transform.position, (player.transform.position - transform.position), out hit, distanceToDisplay))
+                {
+                    return hit.transform.gameObject == player;
+                }
+            }
+            return false;
+        }
+        private void SetHealthBar()
+        {
 
             var width = widthPerUnit * enemy.GetMaxHealth();
 
