@@ -8,6 +8,11 @@ namespace CSE5912.PolyGamers
     {
         // FPS controller and Weapons
         [SerializeField] private FPSControllerCC fpsController;
+
+        [SerializeField] private GameObject presetWeapons;
+
+        private GameObject currentWeapon;
+
         public Firearms MainWeapon;
         public Firearms SecondaryWeapon;
         private Firearms carriedWeapon;
@@ -25,6 +30,18 @@ namespace CSE5912.PolyGamers
         //public Image WeaponIcon;
         //private TMPro.TextMeshProUGUI AmmoText;
         //public GameObject crosshair;
+
+        private static WeaponManager instance;
+        public static WeaponManager Instance { get { return instance; } }
+
+        private void Awake()
+        {
+            if (instance != null && instance != this)
+            {
+                Destroy(gameObject);
+            }
+            instance = this;
+        }
 
         void Start()
         {
@@ -45,6 +62,8 @@ namespace CSE5912.PolyGamers
                 //AmmoText = AmmoCount.GetComponent<TMPro.TextMeshProUGUI>();
                 //WeaponIcon.sprite = carriedWeapon.GunIcon;
             }
+
+            UpdateCurrentWeapon();
         }
 
         void Update()
@@ -138,6 +157,7 @@ namespace CSE5912.PolyGamers
                 carriedWeapon.gameObject.SetActive(true);
                 fpsController.SetupAnimator(carriedWeapon.GunAnimator);
             }
+            UpdateCurrentWeapon();
             //WeaponIcon.sprite = carriedWeapon.GunIcon;
         }
 
@@ -227,6 +247,23 @@ namespace CSE5912.PolyGamers
             fpsController.SetupAnimator(carriedWeapon.GunAnimator);
         }
 
+        // update the current weapon held by player
+        private void UpdateCurrentWeapon()
+        {
+            foreach (Transform weapon in presetWeapons.transform)
+            {
+                if (weapon.gameObject.activeSelf)
+                {
+                    currentWeapon = weapon.gameObject;
+                    return;
+                }
+            }
+
+            currentWeapon = null;
+            Debug.LogError("Error: no weapon is held by player");
+        }
+
+        public GameObject CurrentWeapon { get { return currentWeapon; } }
     }
 }
    
