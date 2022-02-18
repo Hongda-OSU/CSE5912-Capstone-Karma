@@ -13,6 +13,9 @@ namespace CSE5912.PolyGamers
         private List<VisualElement> weaponInformationList;
         private List<Firearms> playerWeaponList;
 
+        private VisualElement prevWeapon;
+        private int prevAmmo;
+
         private static WeaponInformationControl instance;
         public static WeaponInformationControl Instance { get { return instance; } }
         private void Awake()
@@ -41,10 +44,11 @@ namespace CSE5912.PolyGamers
 
         private void Update()
         {
-            UpdateWeaponInformation();
+            UpdateWeapon();
+            UpdateInformation();
         }
 
-        public void UpdateWeaponInformation()
+        public void UpdateWeapon()
         {
 
             playerWeaponList = PlayerInventory.Instance.GetPlayerWeaponList();
@@ -57,25 +61,47 @@ namespace CSE5912.PolyGamers
                     weapon.style.unityBackgroundScaleMode = ScaleMode.ScaleToFit;
                     weapon.style.display = DisplayStyle.Flex;
 
-                    currentWeapon = WeaponManager.Instance.CarriedWeapon;
-                    int index = playerWeaponList.IndexOf(currentWeapon);
-                    if (i == index)
-                    {
-                        weapon.style.opacity = 1f;
-                        weapon.Q<Label>("Ammo").text = currentWeapon.GetCurrentAmmo.ToString() + " / " + currentWeapon.GetCurrentMaxAmmo.ToString();
-
-                    }
-                    else
-                    {
-                        weapon.style.opacity = 0.5f;
-                        weapon.Q<Label>("Ammo").text = "";
-                    }
                 }
                 else
                 {
                     weapon.style.display = DisplayStyle.None;
                 }
             }
+        }
+
+        public void UpdateInformation()
+        {
+            currentWeapon = WeaponManager.Instance.CarriedWeapon;
+            int index = playerWeaponList.IndexOf(currentWeapon);
+
+            for (int i = 0; i < weaponInformationList.Count; i++)
+            {
+                var weapon = weaponInformationList[i];
+
+                if (i == index)
+                {
+                    weapon.style.opacity = 1f;
+
+                    int ammo = currentWeapon.GetCurrentAmmo;
+                    int maxAmmo = currentWeapon.GetCurrentMaxAmmo;
+                    weapon.Q<Label>("Ammo").text = ammo.ToString() + " / " + maxAmmo.ToString();
+
+                    if (prevAmmo > ammo && prevWeapon == weapon)
+                    {
+                        //StartCoroutine(FadeIn(weapon));
+                    }
+                    prevAmmo = ammo;
+                    
+
+                    prevWeapon = weapon;
+                }
+                else
+                {
+                    weapon.style.opacity = 0.5f;
+                    weapon.Q<Label>("Ammo").text = "";
+                }
+            }
+
         }
     }
 }
