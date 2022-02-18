@@ -11,6 +11,8 @@ namespace CSE5912.PolyGamers
 
         [SerializeField] private float widthPerUnit = 1f;
 
+        [SerializeField] private float distanceToDisplay = 10f;
+
         private VisualElement healthBar;
         private VisualElement maxHealthBar;
 
@@ -45,6 +47,13 @@ namespace CSE5912.PolyGamers
 
         private void SetHealthBar()
         {
+            float distance = Vector3.Distance(PlayerManager.Instance.Player.transform.position, gameObject.transform.position);
+            if (distance > distanceToDisplay)
+            {
+                maxHealthBar.style.display = DisplayStyle.None;
+                return;
+            }
+
             var width = widthPerUnit * enemy.GetMaxHealth();
 
             var planes = GeometryUtility.CalculateFrustumPlanes(currentCamera);

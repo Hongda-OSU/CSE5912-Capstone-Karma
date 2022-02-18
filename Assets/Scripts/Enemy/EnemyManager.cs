@@ -41,5 +41,18 @@ namespace CSE5912.PolyGamers
             }
             return result;
         }
+
+        public List<GameObject> GetEnemiesAroundPlayer(float radius)
+        {
+            List<GameObject> result = new List<GameObject>();
+
+            foreach (GameObject enemy in enemyList)
+            {
+                float distance = Vector3.Distance(PlayerManager.Instance.Player.transform.position, enemy.transform.position);
+                if (distance <= radius)
+                    result.Add(enemy);
+            }
+            return result;
+        }
     }
 }
