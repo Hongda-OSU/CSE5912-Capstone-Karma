@@ -50,8 +50,6 @@ public class FPSMouseLook : MonoBehaviour
 
         characterTransform.rotation = Quaternion.Euler(0, cameraRotation.y, 0);
         cameraTransform.rotation = Quaternion.Euler(cameraRotation.x, cameraRotation.y, 0);
-
-
     }
 
     private void CalculateRecoilOffset()
