@@ -4,25 +4,37 @@ using UnityEngine;
 
 public class FPSControllerRB : MonoBehaviour
 {
+    private Rigidbody characterRigidbody;
+    private CapsuleCollider capsuleCollider;
+    private Animator characterAnimator;
+
+    [Header("Speed")]
     public float WalkSpeed;
+    public float WalkSpeedWhenCrouched;
     public float SprintingSpeed;
     public float SprintingSpeedWhenCrouched;
-    public float WalkSpeedWhenCrouched;
+    public float DashSpeed;
 
+    [Header("Physics")]
     public float JumpHeight;
     public float CrouchHeight;
     public float Gravity;
 
     private Transform characterTransform;
-    private Rigidbody characterRigidbody;
-    private CapsuleCollider capsuleCollider;
+    private Vector3 movementDirection;
+
     private float currentSpeed;
     private float originHeight;
 
     private bool isGrounded = true;
     private bool isCrouched;
 
-    private Vector3 currentVelocity;
+    private WaitForSeconds waitOneSeconds = new WaitForSeconds(0.1f);
+    [SerializeField] private ParticleSystem forwardDashParticle;
+    [SerializeField] private ParticleSystem backwardDashParticle;
+
+    private float horizontalInput, verticalInput;
+
 
     private void Start()
     {
@@ -57,8 +69,8 @@ public class FPSControllerRB : MonoBehaviour
 
             if (Input.GetButtonDown("Jump"))
             {
-                characterRigidbody.velocity = new Vector3(currentVelocity.x, CalculateJumpHeightSpeed(),
-                    currentVelocity.z);
+                characterRigidbody.velocity = new Vector3(movementDirection.x, CalculateJumpHeightSpeed(),
+                    movementDirection.z);
             }
         }
     }
@@ -74,7 +86,7 @@ public class FPSControllerRB : MonoBehaviour
         tmp_CurrentDirection *= currentSpeed;
 
         var tmp_CurrentVelocity = characterRigidbody.velocity;
-        currentVelocity = tmp_CurrentVelocity;
+        movementDirection = tmp_CurrentVelocity;
         var tmp_VelocityChange = tmp_CurrentDirection - tmp_CurrentVelocity;
         tmp_VelocityChange.y = 0;
 
