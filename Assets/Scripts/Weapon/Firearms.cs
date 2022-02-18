@@ -14,11 +14,11 @@ namespace CSE5912.PolyGamers
         public ParticleSystem CastingParticle;
         
         // WeaponInfo (might need external reference from Player Controller)
-        public int AmmoInMag = 30; // the amount of ammo per mag
-        public int MaxAmmoCarried = 120; // the amount of ammo total
+        public int AmmoInMag; // predefined ammo per mag
+        public int MaxAmmoCarried; // predefined ammo total
         public float FireRate; // gun fire rate
-        protected int CurrentAmmo;
-        protected int CurrentMaxAmmoCarried;
+        protected int CurrentAmmo; // current ammo in mag (per)
+        protected int CurrentMaxAmmoCarried; // total current ammo left in mag (all)
         protected float LastFireTime;
         // for fps controller to play the correct animation
         internal Animator GunAnimator; 
@@ -34,9 +34,9 @@ namespace CSE5912.PolyGamers
         public FirearmsAudioData WeaponAudioData;
 
         // WeaponAiming
-        public Camera GunCamera;
+        public Camera GunCamera; // Camera in Gun
         public float FOVWhenAimed; // the updated field of view for gun camera when aimed
-        protected float GunCameraOriginFOV;
+        protected float GunCameraOriginFOV; // Camera FOV
         internal bool isAiming;
         private IEnumerator doAimingCoroutine;
 
@@ -53,7 +53,7 @@ namespace CSE5912.PolyGamers
         // CameraShaking
         public float SpreadAngle;
 
-        // check Shoot 
+        // Weapon Shooting 
         internal bool IsHoldingTrigger;
 
         // UI related
@@ -70,8 +70,8 @@ namespace CSE5912.PolyGamers
         public enum WeaponType { Rifle, Handgun };
 
         // Attachment info
-        public List<ScopeInfo> ScopeInfos = new List<ScopeInfo>();
-        protected ScopeInfo scopeInfo;
+        public List<ScopeInfo> ScopeInfos = new List<ScopeInfo>(); // holder of different scopes
+        protected ScopeInfo scopeInfo; // store the information of scopes
         internal bool isAttached;
         [System.Serializable]
         public class ScopeInfo
@@ -82,12 +82,15 @@ namespace CSE5912.PolyGamers
             public Vector3 GunCameraPosition;
         }
 
+        public static Firearms Instance { get; private set; }
+
         protected virtual void Awake()
         {
-            CurrentAmmo = AmmoInMag;
-            CurrentMaxAmmoCarried = MaxAmmoCarried;
-            GunAnimator = GetComponent<Animator>();
-            GunCameraOriginFOV = GunCamera.fieldOfView;
+            CurrentAmmo = AmmoInMag; // set current ammo to the defined ammo in mag
+            CurrentMaxAmmoCarried = MaxAmmoCarried; 
+            GunAnimator = GetComponent<Animator>(); // set up the correct gun animator
+            // save the original value for gun camera FOV, localPos and localRot
+            GunCameraOriginFOV = GunCamera.fieldOfView; 
             GunCameraLocalOriginalRotation = GunCamera.transform.localRotation;
             GunCameraLocalOriginalPosition = GunCamera.transform.localPosition;
             doAimingCoroutine = DoAim();

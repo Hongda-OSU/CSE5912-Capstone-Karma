@@ -30,7 +30,12 @@ namespace CSE5912.PolyGamers
         {
             // if main weapon exist, then set main weapon as carried weapon
             if (MainWeapon != null)
+            {
                 SetupCarriedWeapon(MainWeapon);
+                //if (SecondaryWeapon)
+                //    SecondaryWeapon.gameObject.SetActive(false);
+            }
+                
             // if main weapon not exist and secondary weapon exist, set secondary weapon as carried weapon
             if (MainWeapon == null && SecondaryWeapon != null)
                 SetupCarriedWeapon(SecondaryWeapon);
@@ -111,7 +116,7 @@ namespace CSE5912.PolyGamers
                 && carriedWeapon != MainWeapon
                 && MainWeapon != null
                 && !carriedWeapon.isAiming
-                && !carriedWeapon.IsHoldingTrigger) 
+                && !carriedWeapon.IsHoldingTrigger)
             {
                 ResetTriggers();
                 // active main weapon and set up the corresponding gun animator for fps controller
