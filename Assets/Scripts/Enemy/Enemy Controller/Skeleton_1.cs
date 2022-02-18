@@ -101,7 +101,7 @@ namespace CSE5912.PolyGamers
                     agent.SetDestination(GetPoint.Instance.GetRandomPoint());
                 }
 
-                if (Vector3.Distance(agent.destination, transform.position) <= 0.1f) {
+                if (Vector3.Distance(agent.destination, transform.position) <= 0.2f) {
                     animator.SetBool("Wander", false);
                 }
                 else 
