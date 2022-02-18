@@ -7,7 +7,7 @@ namespace CSE5912.PolyGamers
 {
     public class EnemyInformation : UI
     {
-        [SerializeField] private Camera playerCamera;
+        [SerializeField] private Camera currentCamera;
 
         [SerializeField] private float widthPerUnit = 1f;
 
@@ -33,13 +33,11 @@ namespace CSE5912.PolyGamers
             enemy = target.GetComponent<IEnemy>();
         }
 
-        private void Start()
-        {
-            playerCamera = PlayerManager.Instance.PlayerCamera;
-        }
 
         private void LateUpdate()
         {
+            currentCamera = WeaponManager.Instance.CarriedWeapon.GunCamera;
+
             SetHealthBar();
 
             SetPosition();
@@ -49,7 +47,7 @@ namespace CSE5912.PolyGamers
         {
             var width = widthPerUnit * enemy.GetMaxHealth();
 
-            var planes = GeometryUtility.CalculateFrustumPlanes(playerCamera);
+            var planes = GeometryUtility.CalculateFrustumPlanes(currentCamera);
             if (enemy.GetHealth() > 0 && GeometryUtility.TestPlanesAABB(planes, target.GetComponent<Collider>().bounds))
             {
                 healthBar.style.display = DisplayStyle.Flex;
@@ -84,7 +82,7 @@ namespace CSE5912.PolyGamers
         }
         private void SetPosition()
         {
-            Vector2 newPosition = RuntimePanelUtils.CameraTransformWorldToPanel(maxHealthBar.panel, pivot.transform.position, playerCamera);
+            Vector2 newPosition = RuntimePanelUtils.CameraTransformWorldToPanel(maxHealthBar.panel, pivot.transform.position, currentCamera);
 
             root.transform.position = new Vector2(newPosition.x - widthPerUnit * enemy.GetMaxHealth() / 2, newPosition.y);
         }

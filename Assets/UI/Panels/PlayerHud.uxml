@@ -8,16 +8,26 @@
             <ui:VisualElement name="Health" style="left: 50px; bottom: 50px; position: absolute; width: 200px; height: 30px; flex-direction: row; justify-content: flex-start; align-items: stretch;">
                 <ui:VisualElement name="Icon" style="position: absolute; width: 20px; height: 20px; background-image: url(&apos;project://database/Assets/UI/VFX/HealthIcon.png?fileID=2800000&amp;guid=9cc2526fdb46ba84995ea946483bf22a&amp;type=3#HealthIcon&apos;);" />
                 <ui:VisualElement name="MaxHealthBar" style="position: absolute; width: 200px; height: 20px; left: 30px; bottom: auto; background-color: rgba(0, 15, 8, 0.78); opacity: 1;">
-                    <ui:VisualElement name="HealthBar" class="Weapon" style="width: 200px; height: 20px; background-color: rgb(41, 169, 178); border-left-color: rgba(25, 113, 119, 0.72); border-right-color: rgba(25, 113, 119, 0.72); border-top-color: rgba(25, 113, 119, 0.72); border-bottom-color: rgba(25, 113, 119, 0.72); border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; opacity: 1;" />
+                    <ui:VisualElement name="HealthBar" style="width: 200px; height: 20px; background-color: rgb(41, 169, 178); border-left-color: rgba(25, 113, 119, 0.72); border-right-color: rgba(25, 113, 119, 0.72); border-top-color: rgba(25, 113, 119, 0.72); border-bottom-color: rgba(25, 113, 119, 0.72); border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; opacity: 1;" />
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="WeaponInformation" style="position: absolute; right: 50px; bottom: 50px; width: 500px; height: 600px; flex-direction: column-reverse; align-items: flex-end; justify-content: flex-start;">
-            <ui:VisualElement name="Weapon_4" class="Weapon" />
-            <ui:VisualElement name="Weapon_3" class="Weapon" style="flex-direction: column-reverse;" />
-            <ui:VisualElement name="Weapon_2" class="Weapon" />
-            <ui:VisualElement name="Weapon_1" class="Weapon" />
-            <ui:VisualElement name="Weapon_0" class="Weapon" />
+            <ui:VisualElement name="Weapon_4" class="Weapon" style="background-image: url(&apos;project://database/Assets/UI/VFX/UI/Gun_Icons_Spritesheet/Gun_Icons_Spritesheet.png?fileID=21300000&amp;guid=ce679aa762875164cb3718b2eaa85abc&amp;type=3#assault_rifle_01_icon&apos;); -unity-background-scale-mode: scale-to-fit;">
+                <ui:Label text="Label" display-tooltip-when-elided="true" name="Ammo" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/FontAssets/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgba(255, 255, 255, 255); -unity-text-align: upper-center;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="Weapon_3" class="Weapon" style="flex-direction: column;">
+                <ui:Label text="Label" display-tooltip-when-elided="true" name="Ammo" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/FontAssets/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); -unity-text-align: upper-center;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="Weapon_2" class="Weapon">
+                <ui:Label text="Label" display-tooltip-when-elided="true" name="Ammo" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/FontAssets/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); -unity-text-align: upper-center;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="Weapon_1" class="Weapon">
+                <ui:Label text="Label" display-tooltip-when-elided="true" name="Ammo" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/FontAssets/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); -unity-text-align: upper-center;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="Weapon_0" class="Weapon">
+                <ui:Label text="Label" display-tooltip-when-elided="true" name="Ammo" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/FontAssets/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); -unity-text-align: upper-center;" />
+            </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

@@ -23,7 +23,6 @@ namespace CSE5912.PolyGamers
 
         private void Update()
         {
-            Debug.Log(WeaponManager.Instance.GetCurrentWeapon());
         }
 
 

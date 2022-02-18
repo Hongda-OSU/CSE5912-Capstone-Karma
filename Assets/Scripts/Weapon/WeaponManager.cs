@@ -12,6 +12,8 @@ namespace CSE5912.PolyGamers
         public Firearms SecondaryWeapon;
         private Firearms carriedWeapon;
 
+        private Camera currentCamera;
+
         // Weapon pick up
         public Transform EyeCameraTransform;
         public float RayCastMaxDistance; // for item pickup
@@ -36,6 +38,7 @@ namespace CSE5912.PolyGamers
                 Destroy(gameObject);
             }
             instance = this;
+
         }
 
         void Start()
@@ -239,10 +242,9 @@ namespace CSE5912.PolyGamers
             fpsController.SetupAnimator(carriedWeapon.GunAnimator);
         }
 
-        public GameObject GetCurrentWeapon()
-        {
-            return carriedWeapon.gameObject;
-        }
+
+        public Firearms CarriedWeapon { get { return carriedWeapon; } }
+
     }
 }
    

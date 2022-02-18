@@ -7,8 +7,11 @@ namespace CSE5912.PolyGamers
 {
     public class WeaponInformationControl : UI
     {
+        [SerializeField] private Firearms currentWeapon;
+
         private VisualElement weaponInformation;
-        private List<VisualElement> weaponList;
+        private List<VisualElement> weaponInformationList;
+        private List<Firearms> playerWeaponList;
 
         private static WeaponInformationControl instance;
         public static WeaponInformationControl Instance { get { return instance; } }
@@ -22,32 +25,55 @@ namespace CSE5912.PolyGamers
 
             Initialize();
 
-            weaponList = new List<VisualElement>();
+            weaponInformationList = new List<VisualElement>();
 
             weaponInformation = root.Q<VisualElement>("WeaponInformation");
             for (int i = 0; i < weaponInformation.childCount; i++)
             {
                 VisualElement child = weaponInformation.Q<VisualElement>("Weapon_" + i);
-                weaponList.Add(child);
-                child.style.display = DisplayStyle.None;
+                weaponInformationList.Add(child);
             }
         }
 
         private void Start()
         {
-            var playerWeaponList = PlayerInventory.Instance.GetPlayerWeaponList();
-            for (int i = 0; i < weaponList.Count; i++)
+        }
+
+        private void Update()
+        {
+            UpdateWeaponInformation();
+        }
+
+        public void UpdateWeaponInformation()
+        {
+
+            playerWeaponList = PlayerInventory.Instance.GetPlayerWeaponList();
+            for (int i = 0; i < weaponInformationList.Count; i++)
             {
+                var weapon = weaponInformationList[i];
                 if (i < playerWeaponList.Count)
                 {
-                    weaponList[i].style.backgroundImage = new StyleBackground(playerWeaponList[i].iconImage);
-                    weaponList[i].style.unityBackgroundScaleMode = ScaleMode.ScaleToFit;
-                    weaponList[i].style.display = DisplayStyle.Flex;
+                    weapon.style.backgroundImage = new StyleBackground(playerWeaponList[i].iconImage);
+                    weapon.style.unityBackgroundScaleMode = ScaleMode.ScaleToFit;
+                    weapon.style.display = DisplayStyle.Flex;
+
+                    currentWeapon = WeaponManager.Instance.CarriedWeapon;
+                    int index = playerWeaponList.IndexOf(currentWeapon);
+                    if (i == index)
+                    {
+                        weapon.style.opacity = 1f;
+                        weapon.Q<Label>("Ammo").text = currentWeapon.GetCurrentAmmo.ToString() + " / " + currentWeapon.GetCurrentMaxAmmo.ToString();
+
+                    }
+                    else
+                    {
+                        weapon.style.opacity = 0.5f;
+                        weapon.Q<Label>("Ammo").text = "";
+                    }
                 }
                 else
                 {
-                    weaponList[i].style.display = DisplayStyle.None;
-
+                    weapon.style.display = DisplayStyle.None;
                 }
             }
         }

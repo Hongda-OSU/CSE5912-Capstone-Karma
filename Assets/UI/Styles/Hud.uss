@@ -1,4 +1,9 @@
 .Weapon {
     width: 200px;
     height: 100px;
+    justify-content: flex-end;
+    max-width: 300px;
+    max-height: 150px;
+    min-width: 200px;
+    min-height: 100px;
 }

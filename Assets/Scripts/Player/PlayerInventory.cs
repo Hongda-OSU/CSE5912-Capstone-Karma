@@ -83,8 +83,9 @@ namespace CSE5912.PolyGamers
 
         private void UpdateAll()
         {
-            weaponsPanelControl.UpdateWeapons(playerWeapons);
-            attachmentInventoryControl.UpdateAttachmentInventory(attachmentList);
+            WeaponsPanelControl.Instance.UpdateWeapons(playerWeapons);
+            AttachmentInventoryControl.Instance.UpdateAttachmentInventory(attachmentList);
+            WeaponInformationControl.Instance.UpdateWeaponInformation();
         }
 
         public List<Firearms> GetPlayerWeaponList()
