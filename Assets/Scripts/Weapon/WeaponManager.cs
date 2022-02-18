@@ -7,7 +7,7 @@ namespace PolyGamers.Weapon
     public class WeaponManager : MonoBehaviour
     {
         // FPS controller and Weapons
-        [SerializeField] private FPSControllerCC fpsController;
+        [SerializeField] private FPSControllerRB fpsController;
         public Firearms MainWeapon;
         public Firearms SecondaryWeapon;
         private Firearms carriedWeapon;

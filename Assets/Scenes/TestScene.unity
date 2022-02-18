@@ -52469,7 +52469,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1198427960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94958,7 +94958,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2111898227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94971,7 +94971,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 476125afce9c4194aa0d737f0e13e28a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fpsController: {fileID: 0}
+  fpsController: {fileID: 2111898232}
   MainWeapon: {fileID: 1887684356}
   SecondaryWeapon: {fileID: 282902915}
   EyeCameraTransform: {fileID: 125784696}
@@ -95205,7 +95205,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2118787146}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -105556,7 +105556,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &6261285919493548658
 GameObject:
   m_ObjectHideFlags: 0
@@ -107832,7 +107832,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 476125afce9c4194aa0d737f0e13e28a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fpsController: {fileID: 6324315379400352081}
+  fpsController: {fileID: 0}
   MainWeapon: {fileID: 6323545414396422431}
   SecondaryWeapon: {fileID: 7347884081617589204}
   EyeCameraTransform: {fileID: 6263887276710111610}
