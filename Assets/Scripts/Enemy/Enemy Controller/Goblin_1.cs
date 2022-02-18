@@ -27,7 +27,6 @@ namespace CSE5912.PolyGamers
             directionToTarget = (target.position - transform.position).normalized;
 
             Debug.DrawRay(transform.position, directionToTarget, Color.red);
-            Debug.Log("Test");
 
             if (hp <= 0)
             {

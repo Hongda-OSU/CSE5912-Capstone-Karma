@@ -7,6 +7,13 @@ namespace CSE5912.PolyGamers
 {
     public class Skeleton_2 : Enemy
     {
+        private void Awake()
+        {
+            enemyName = "Skeleton Slave";
+            hp = 100f;
+            maxHp = 100f;
+        }
+
         void Update()
         {
             distance = Vector3.Distance(target.position, transform.position);
