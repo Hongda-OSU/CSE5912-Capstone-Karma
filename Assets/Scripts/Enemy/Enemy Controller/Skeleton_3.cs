@@ -9,6 +9,13 @@ namespace CSE5912.PolyGamers
     {
         private bool isAttacking = false;
 
+        private void Awake()
+        {
+            enemyName = "Skeleton Warrior";
+            hp = 200f;
+            maxHp = 200f;
+        }
+
         void Update()
         {
             distance = Vector3.Distance(target.position, transform.position);

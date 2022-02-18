@@ -42,7 +42,8 @@ namespace CSE5912.PolyGamers
             target = PlayerManager.Instance.Player.transform;
             agent = GetComponent<NavMeshAgent>();
             agent.isStopped = true;
-            animator = transform.GetChild(0).gameObject.GetComponent<Animator>();
+            //animator = transform.GetChild(0).gameObject.GetComponent<Animator>();
+            animator = transform.gameObject.GetComponent<Animator>();
             animator.applyRootMotion = false;
         }
 
@@ -72,6 +73,7 @@ namespace CSE5912.PolyGamers
         public virtual void TakeDamage(float amount)
         {
             hp -= amount;
+
             if (!isAttackedByPlayer) {
                 isAttackedByPlayer = true;
             }
