@@ -91,10 +91,6 @@ public class FPSControllerRB : MonoBehaviour
 
             HandleAnimation();
         }
-        //else
-        //{
-        //    characterRigidbody.AddForce(new Vector3(0, -Gravity * characterRigidbody.mass, 0));
-        //}
     }
 
     private void FixedUpdate()
