@@ -5,22 +5,8 @@ using UnityEngine.AI;
 
 namespace CSE5912.PolyGamers
 {
-    public class Goblin_1 : MonoBehaviour, IEnemy
+    public class Goblin_1 : Enemy
     {
-        private float viewRadius = 15f;
-        private float closeDetectionDistance = 3f;
-        [Range(0, 360)]
-        private float viewAngle = 135f;
-        private bool foundTarget = false; // This is used for testing
-
-        private float distance;
-        private Vector3 directionToTarget;
-
-        private Transform target;
-        private NavMeshAgent agent;
-        private Animator animator;
-
-        private bool isPlayingDeathAnimation = false;
         private bool isMovingBack = false;
         private bool isMovingAroundPlayer = false;
         private bool isAttacking = false;
@@ -28,26 +14,20 @@ namespace CSE5912.PolyGamers
         private bool readyToAttack = false;
         private float attackCoolDown = 5f;
 
-        [SerializeField] protected float hp = 100f;
-        [SerializeField] protected float maxHp = 100f;
-
-        void Start()
+        private void Awake()
         {
-            target = PlayerManager.Instance.Player.transform;
-            agent = GetComponent<NavMeshAgent>();
-            agent.isStopped = true;
-            animator = transform.GetChild(0).gameObject.GetComponent<Animator>();
-            animator.applyRootMotion = false;
-            agent.speed = 1.5f;
+            enemyName = "Spear Goblin";
+            hp = 100f;
+            maxHp = 100f;
         }
 
-        void Update()
+        protected override void Update()
         {
-
             distance = Vector3.Distance(target.position, transform.position);
             directionToTarget = (target.position - transform.position).normalized;
 
             Debug.DrawRay(transform.position, directionToTarget, Color.red);
+            Debug.Log("Test");
 
             if (hp <= 0)
             {
@@ -56,7 +36,7 @@ namespace CSE5912.PolyGamers
             }
 
             if ((distance <= viewRadius && Vector3.Angle(transform.forward, directionToTarget) < viewAngle / 2) ||
-                distance <= closeDetectionDistance)
+                distance <= closeDetectionRange)
             {
                 foundTarget = true;
                 agent.isStopped = false;
@@ -127,7 +107,7 @@ namespace CSE5912.PolyGamers
             }
         }
 
-        private void HandleDeath()
+        protected override void HandleDeath()
         {
             if (!isPlayingDeathAnimation)
             {
@@ -278,72 +258,6 @@ namespace CSE5912.PolyGamers
             {
                 animator.SetTrigger("Attack_3");
             }
-        }
-
-        private void FaceTarget(Vector3 direction)
-        {
-            Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
-        }
-
-        public void TakeDamage(float amount)
-        {
-            hp -= amount;
-            //Debug.Log("Goblin hit");
-        }
-
-        public float GetHealth()
-        {
-            return hp;
-        }
-
-        public float GetMaxHealth()
-        {
-            return maxHp;
-        }
-        void Hit()
-        {
-
-        }
-
-        // These codes below are used by Eiditor for testing purpose.
-        public Vector3 GetTargetPosition()
-        {
-            return target.position;
-        }
-
-        public Transform GetTransform()
-        {
-            return transform;
-        }
-
-        public float GetViewAngle()
-        {
-            return viewAngle;
-        }
-
-        public float GetViewRadius()
-        {
-            return viewRadius;
-        }
-
-        public float GetCloseDetectionDistance()
-        {
-            return closeDetectionDistance;
-        }
-
-        public bool FoundTarget()
-        {
-            return foundTarget;
-        }
-
-        public Vector3 DirFromAngle(float angleInDegrees, bool angleIsGlobal)
-        {
-            if (!angleIsGlobal)
-            {
-                angleInDegrees += transform.eulerAngles.y;
-            }
-            return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
         }
     }
 }
