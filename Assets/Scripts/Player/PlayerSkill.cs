@@ -25,8 +25,6 @@ namespace CSE5912.PolyGamers
 
         private void Update()
         {
-            PlayerStats.Instance.ResetExtras();
-
             PerformSkills();
         }
 
@@ -44,6 +42,7 @@ namespace CSE5912.PolyGamers
             }
 
             //test
+            Debug.Log(PlayerStats.Instance.DamageFactor_fire);
         }
 
         private void PerformSkill(Skill skill)

@@ -5,41 +5,41 @@ using UnityEngine.AI;
 
 namespace CSE5912.PolyGamers
 {
-    public class Skeleton_3 : Enemy
+    public class Skeleton_3 : RegularEnemy
     {
         private bool isAttacking = false;
 
         private void Awake()
         {
             enemyName = "Skeleton Warrior";
-            hp = 200f;
-            maxHp = 200f;
+            health = 200f;
+            maxHealth = 200f;
         }
 
         void Update()
         {
-            distance = Vector3.Distance(target.position, transform.position);
-            directionToTarget = (target.position - transform.position).normalized;
+            distanceToPlayer = Vector3.Distance(player.position, transform.position);
+            directionToPlayer = (player.position - transform.position).normalized;
 
-            if (hp <= 0)
+            if (health <= 0)
             {
                 HandleDeath();
                 return;
             }
 
-            if ((distance <= viewRadius && Vector3.Angle(transform.forward, directionToTarget) < viewAngle / 2) 
-                || distance <= closeDetectionRange || isAttackedByPlayer)
+            if ((distanceToPlayer <= viewRadius && Vector3.Angle(transform.forward, directionToPlayer) < viewAngle / 2) 
+                || distanceToPlayer <= closeDetectionRange || isAttackedByPlayer)
             {
                 agent.isStopped = false;
                 animator.SetBool("FoundPlayer", true);
 
-                FaceTarget(directionToTarget);
-                agent.SetDestination(target.position);
+                FaceTarget(directionToPlayer);
+                agent.SetDestination(player.position);
                 agent.speed = 3f;
 
                 ResetAttackAnimationTriggers();
 
-                if (distance < agent.stoppingDistance + 0.3 || isAttacking)
+                if (distanceToPlayer < agent.stoppingDistance + 0.3 || isAttacking)
                 {
                     // Inside attacking range, attack player.
                     isAttacking = true;

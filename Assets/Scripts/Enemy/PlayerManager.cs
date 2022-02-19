@@ -9,6 +9,8 @@ namespace CSE5912.PolyGamers
         [SerializeField] private GameObject player;
         [SerializeField] private Camera playerCamera;
 
+        private Enemy enemyHit;
+
         private static PlayerManager instance;
         public static PlayerManager Instance { get { return instance; } }
 
@@ -25,6 +27,23 @@ namespace CSE5912.PolyGamers
         {
         }
 
+
+        public void PerformDamage(Enemy enemy)
+        {
+            enemyHit = enemy;
+            Firearms weapon = WeaponManager.Instance.CarriedWeapon;
+
+            float critDamageFactor = 1f;
+            if (PlayerStats.Instance.CritChance > Random.value) // todo - or enemy vital is hit)
+            {
+                critDamageFactor = PlayerStats.Instance.CritDamageFactor;
+            }
+
+            Damage damage = new Damage(weapon.damage * critDamageFactor, weapon.element, PlayerStats.Instance, enemyHit);
+            enemyHit.TakeDamage(damage);
+
+            Debug.Log(enemyHit.Health);
+        }
 
         public GameObject Player { get { return player; } }
         public Camera PlayerCamera { get { return playerCamera; } }

@@ -21,9 +21,28 @@ namespace CSE5912.PolyGamers
 
         public override IEnumerator PerformEffect()
         {
-            PlayerStats.Instance.ExtraDamageFactor_fire += damagePerLevel * level;
+            if (isReady)
+            {
+                PlayerStats.Instance.DamageFactor_fire += damagePerLevel;
+                isReady = false;
+            }
 
             yield return null;
+        }
+
+        public override bool LevelUp()
+        {
+            bool result = base.LevelUp();
+            if (result)
+                isReady = true;
+
+            return result;
+        }
+
+        public override void ResetLevel()
+        {
+            base.ResetLevel();
+            PlayerStats.Instance.DamageFactor_fire -= damagePerLevel * level;
         }
     }
 }

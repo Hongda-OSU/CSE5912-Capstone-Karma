@@ -20,7 +20,7 @@ namespace CSE5912.PolyGamers
 
         private GameObject target;
         private GameObject pivot;
-        private IEnemy enemy;
+        private Enemy enemy;
 
         private void Awake()
         {
@@ -32,7 +32,7 @@ namespace CSE5912.PolyGamers
 
             target = transform.parent.gameObject;
             pivot = gameObject;
-            enemy = target.GetComponent<IEnemy>();
+            enemy = target.GetComponent<Enemy>();
         }
 
 
@@ -70,18 +70,18 @@ namespace CSE5912.PolyGamers
         private void SetHealthBar()
         {
 
-            var width = widthPerUnit * enemy.GetMaxHealth();
+            var width = widthPerUnit * enemy.MaxHealth;
 
             var planes = GeometryUtility.CalculateFrustumPlanes(currentCamera);
-            if (enemy.GetHealth() > 0 && GeometryUtility.TestPlanesAABB(planes, target.GetComponent<Collider>().bounds))
+            if (enemy.Health > 0 && GeometryUtility.TestPlanesAABB(planes, target.GetComponent<Collider>().bounds))
             {
                 healthBar.style.display = DisplayStyle.Flex;
-                healthBar.style.width = width * enemy.GetHealth() / enemy.GetMaxHealth();
+                healthBar.style.width = width * enemy.Health / enemy.MaxHealth;
 
                 maxHealthBar.style.display = DisplayStyle.Flex;
                 maxHealthBar.style.width = width;
 
-                var deltaHealth = prevHealth - enemy.GetHealth();
+                var deltaHealth = prevHealth - enemy.Health;
                 if (deltaHealth > 0)
                 {
                     VisualElement deltaEffect = new VisualElement();
@@ -90,14 +90,14 @@ namespace CSE5912.PolyGamers
                     deltaEffect.style.width = deltaHealth * widthPerUnit;
                     deltaEffect.style.height = healthBar.resolvedStyle.height;
                     deltaEffect.style.backgroundColor = Color.white;
-                    deltaEffect.style.left = enemy.GetHealth() * widthPerUnit;
+                    deltaEffect.style.left = enemy.Health * widthPerUnit;
                     deltaEffect.style.position = Position.Absolute;
 
                     StartCoroutine(FadeOut(deltaEffect));
                 }
 
 
-                prevHealth = enemy.GetHealth();
+                prevHealth = enemy.Health;
             }
             else
             {
@@ -109,7 +109,7 @@ namespace CSE5912.PolyGamers
         {
             Vector2 newPosition = RuntimePanelUtils.CameraTransformWorldToPanel(maxHealthBar.panel, pivot.transform.position, currentCamera);
 
-            root.transform.position = new Vector2(newPosition.x - widthPerUnit * enemy.GetMaxHealth() / 2, newPosition.y);
+            root.transform.position = new Vector2(newPosition.x - widthPerUnit * enemy.MaxHealth / 2, newPosition.y);
         }
 
         protected override IEnumerator FadeOut(VisualElement element)

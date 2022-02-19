@@ -6,34 +6,46 @@ namespace CSE5912.PolyGamers
 {
     public class Damage
     {
-        private float value;
+        private float rawValue;
+
+        private float resolvedValue;
 
         private ElementType element;
 
-        private GameObject source;
-        private GameObject target;
+        private IDamageable source;
+        private IDamageable target;
 
 
         public enum ElementType
         {
-            None,
+            Physical,
             Fire,
             Cryo,
             Electro,
             Venom,
         }
 
-        public Damage(float value, ElementType element, GameObject source, GameObject target)
+        public Damage(float rawValue, ElementType element, IDamageable source, IDamageable target)
         {
-            this.value = value;
+            this.rawValue = rawValue;
             this.element = element;
             this.source = source;
             this.target = target;
+            this.resolvedValue = CalculateResolvedValue(target.GetResist());
+            Debug.Log(resolvedValue);
         }
 
-        public float Value { get { return value; } set { this.value = value; } }
-        public ElementType Element { get { return element; } set { element = value; } }
-        public GameObject Source { get { return source; } set { source = value; } }
-        public GameObject Target { get { return target; } set { target = value; } }
+        private float CalculateResolvedValue(Resist resist)
+        {
+            float resistValue = resist.FindResisByElement(element).Value;
+            Debug.Log(resistValue);
+            return rawValue * (100 / (100 + resistValue));
+        }
+
+        public float RawValue { get { return rawValue; } }
+        public float ResolvedValue { get { return resolvedValue; } }
+        public ElementType Element { get { return element; } }
+        public IDamageable Source { get { return source; } }
+        public IDamageable Target { get { return target; } }
     }
 }

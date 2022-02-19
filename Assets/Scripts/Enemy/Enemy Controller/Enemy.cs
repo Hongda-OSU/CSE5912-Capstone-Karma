@@ -5,14 +5,28 @@ using UnityEngine.AI;
 
 namespace CSE5912.PolyGamers
 {
-    public abstract class Enemy : MonoBehaviour, IEnemy
+    public class Enemy : MonoBehaviour, IDamageable
     {
         [Header("Enemy Properties")]
         [SerializeField] protected string enemyName;
-        [SerializeField] protected string enemyLevel;
+        [SerializeField] protected int level;
         [SerializeField] protected float experience;
-        [SerializeField] protected float hp;
-        [SerializeField] protected float maxHp;
+
+        [SerializeField] protected float health;
+        [SerializeField] protected float maxHealth;
+
+        [SerializeField] protected float attackDamage;
+        [SerializeField] protected float attackRange = 5f;
+
+        protected Debuff debuff;
+
+        [Header("Resists")]
+        [SerializeField] private float physicalResist = 0f;
+        [SerializeField] private float fireResist = 0f;
+        [SerializeField] private float cryoResist = 0f;
+        [SerializeField] private float electroResist = 0f;
+        [SerializeField] private float venomResist = 0f;
+        protected Resist resist;
 
         [Header("Detection Range")]
         [SerializeField] protected float viewRadius = 15f;
@@ -20,38 +34,49 @@ namespace CSE5912.PolyGamers
         [SerializeField] protected float viewAngle = 135f;
         [SerializeField] protected float closeDetectionRange = 3f;
 
-        [Header("Path Finding")]
-        [SerializeField] protected bool canWander = false;
-        [SerializeField] protected float wanderAreaNumber = 0f;
-        [SerializeField] protected bool canPatrol = false;
-        [SerializeField] protected float patrolRouteNumber = 0f;
-
         protected bool foundTarget = false;
         protected bool isPlayingDeathAnimation = false;
         protected bool isAttackedByPlayer = false;
 
-        protected float distance;
-        protected Vector3 directionToTarget;
+        protected float distanceToPlayer;
+        protected Vector3 directionToPlayer;
 
-        protected Transform target;
-        protected NavMeshAgent agent;
+        protected Transform player;
         protected Animator animator;
+        protected NavMeshAgent agent;
 
-        protected virtual void Start()
+        protected void Initialize()
         {
-            target = PlayerManager.Instance.Player.transform;
+            player = PlayerManager.Instance.Player.transform;
+            animator = GetComponent<Animator>();
             agent = GetComponent<NavMeshAgent>();
-            agent.isStopped = true;
-            //animator = transform.GetChild(0).gameObject.GetComponent<Animator>();
-            animator = transform.gameObject.GetComponent<Animator>();
-            animator.applyRootMotion = false;
+
+            debuff = new Debuff();
+
+            resist = new Resist();
+            resist.SetValues(physicalResist, fireResist, cryoResist, electroResist, venomResist);
         }
 
-        protected abstract void HandleDeath();
+        public virtual void TakeDamage(Damage damage)
+        {
+            float value = damage.ResolvedValue;
 
-        protected abstract void HandleWander();
+            health -= value;
 
-        protected abstract void HandlePatrol();
+            if (!isAttackedByPlayer)
+            {
+                isAttackedByPlayer = true;
+            }
+        }
+
+        public int GetDebuffStack(Debuff.DebuffType type)
+        {
+            return debuff.GetDebuffStack(type);
+        }
+        public Resist GetResist()
+        {
+            return resist;
+        }
 
         protected virtual void FaceTarget(Vector3 direction)
         {
@@ -59,67 +84,28 @@ namespace CSE5912.PolyGamers
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
         }
 
-        // IEnemy interface methods
-        public float GetHealth()
-        {
-            return hp;
-        }
-
-        public float GetMaxHealth()
-        {
-            return maxHp;
-        }
-
-        public virtual void TakeDamage(float amount)
-        {
-            hp -= amount;
-
-            if (!isAttackedByPlayer) {
-                isAttackedByPlayer = true;
-            }
-        }
-
 
         /*
-        // These codes below are used by Eiditor for testing purpose.
-        public Vector3 GetTargetPosition()
+         * used by animation event
+         */
+        protected virtual void Hit()
         {
-            return target.position;
+
+        }
+        protected virtual void FootL()
+        {
+
+        }
+        protected virtual void FootR()
+        {
+
         }
 
-        public Transform GetTransform()
-        {
-            return transform;
-        }
-
-        public float GetViewAngle()
-        {
-            return viewAngle;
-        }
-
-        public float GetViewRadius()
-        {
-            return viewRadius;
-        }
-
-        public float GetCloseDetectionDistance()
-        {
-            return closeDetectionRange;
-        }
-
-        public bool FoundTarget()
-        {
-            return foundTarget;
-        }
-
-        public Vector3 DirFromAngle(float angleInDegrees, bool angleIsGlobal)
-        {
-            if (!angleIsGlobal)
-            {
-                angleInDegrees += transform.eulerAngles.y;
-            }
-            return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
-        }
-        */
+        public string EnemyName { get { return enemyName; } }
+        public int Level { get { return level; } }
+        public float Experience { get { return experience;} }
+        public float Health { get { return health;} }
+        public float MaxHealth { get { return maxHealth;} }
+        public float AttackDamage { get { return attackDamage;} }
     }
 }

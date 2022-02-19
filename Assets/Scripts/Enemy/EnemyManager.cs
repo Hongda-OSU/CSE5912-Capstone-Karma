@@ -11,6 +11,7 @@ namespace CSE5912.PolyGamers
 
         private List<GameObject> enemyList;
 
+
         private static EnemyManager instance;
         public static EnemyManager Instance { get { return instance; } }
 

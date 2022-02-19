@@ -52,9 +52,7 @@ namespace CSE5912.PolyGamers
         {
             if (hit.transform.tag == "Enemy")
             {
-                Debug.Log(hit.transform.gameObject.name);
-                IEnemy enemy = hit.transform.GetComponent<IEnemy>();
-                enemy.TakeDamage(10);
+                PlayerManager.Instance.PerformDamage(hit.transform.GetComponent<Enemy>());
             }
         }
 

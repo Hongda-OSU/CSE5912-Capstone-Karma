@@ -22,7 +22,7 @@ namespace CSE5912.PolyGamers
 
         protected float cooldown;
         protected float timeSince = 0f;
-        protected bool isReady = true;
+        protected bool isReady = false;
 
         protected SkillType type;
         public enum SkillType
@@ -51,15 +51,15 @@ namespace CSE5912.PolyGamers
             isReady = true;
         }
 
-        public void LevelUp()
+        public virtual bool LevelUp()
         {
             PlayerSkill playerSkill = PlayerSkill.Instance;
 
             if (level >= maxLevel)
-                return;
+                return false;
 
             if (requiredSkill != null && !requiredSkill.IsLeanred)
-                return;
+                return false;
 
             if (level == 0 && playerSkill.SkillPoints >= learnCost)
             {
@@ -72,9 +72,10 @@ namespace CSE5912.PolyGamers
                 playerSkill.SkillPoints -= levelupCost;
                 level++;
             }
+            return true;
         }
 
-        public void ResetLevel()
+        public virtual void ResetLevel()
         {
             isReady = false;
             isLearned = false;

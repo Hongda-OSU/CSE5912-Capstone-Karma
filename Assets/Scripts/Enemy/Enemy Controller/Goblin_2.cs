@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace CSE5912.PolyGamers
 {
-    public class Goblin_2 : Enemy
+    public class Goblin_2 : RegularEnemy
     {
         private bool isAttacking = false;
         private bool isGuarding = false;
@@ -12,30 +12,30 @@ namespace CSE5912.PolyGamers
         private void Awake()
         {
             enemyName = "Shield Goblin";
-            hp = 100f;
-            maxHp = 100f;
+            health = 100f;
+            maxHealth = 100f;
         }
 
         void Update()
         {
-            distance = Vector3.Distance(target.position, transform.position);
-            directionToTarget = (target.position - transform.position).normalized;
+            distanceToPlayer = Vector3.Distance(player.position, transform.position);
+            directionToPlayer = (player.position - transform.position).normalized;
 
-            if ((distance <= viewRadius && Vector3.Angle(transform.forward, directionToTarget) < viewAngle / 2)
-                || distance <= closeDetectionRange || isAttackedByPlayer) { 
+            if ((distanceToPlayer <= viewRadius && Vector3.Angle(transform.forward, directionToPlayer) < viewAngle / 2)
+                || distanceToPlayer <= closeDetectionRange || isAttackedByPlayer) { 
             
             }
         }
 
-        public override void TakeDamage(float amount)
+        public override void TakeDamage(Damage damage)
         {
             if (isGuarding)
             {
-                hp -= (amount / 2);
+                health -= (damage.ResolvedValue / 2);
             }
             else 
             {
-                hp -= amount;
+                health -= damage.ResolvedValue;
             }
 
             if (!isAttackedByPlayer)

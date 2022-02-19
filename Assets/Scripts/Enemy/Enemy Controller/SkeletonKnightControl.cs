@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 namespace CSE5912.PolyGamers
 {
-    public class SkeletonKnightControl : BossEnemy
+    public class SkeletonKnightControl : EliteEnemy
     {
         void Awake()
         {
@@ -28,7 +28,7 @@ namespace CSE5912.PolyGamers
                     break;
 
                 case Status.Moving:
-                    if (distanceToPlayer < safeDistance)
+                    if (distanceToPlayer < closeDetectionRange)
                     {
                         Retreat();
                     }

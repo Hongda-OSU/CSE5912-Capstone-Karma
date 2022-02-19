@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 namespace CSE5912.PolyGamers
 {
-    public class Goblin_1 : Enemy
+    public class Goblin_1 : RegularEnemy
     {
         private bool isMovingBack = false;
         private bool isMovingAroundPlayer = false;
@@ -17,35 +17,35 @@ namespace CSE5912.PolyGamers
         private void Awake()
         {
             enemyName = "Spear Goblin";
-            hp = 100f;
-            maxHp = 100f;
+            health = 100f;
+            maxHealth = 100f;
         }
 
         void Update()
         {
-            distance = Vector3.Distance(target.position, transform.position);
-            directionToTarget = (target.position - transform.position).normalized;
+            distanceToPlayer = Vector3.Distance(player.position, transform.position);
+            directionToPlayer = (player.position - transform.position).normalized;
 
-            Debug.DrawRay(transform.position, directionToTarget, Color.red);
+            Debug.DrawRay(transform.position, directionToPlayer, Color.red);
 
-            if (hp <= 0)
+            if (health <= 0)
             {
                 HandleDeath();
                 return;
             }
 
-            if ((distance <= viewRadius && Vector3.Angle(transform.forward, directionToTarget) < viewAngle / 2) ||
-                distance <= closeDetectionRange || isAttackedByPlayer)
+            if ((distanceToPlayer <= viewRadius && Vector3.Angle(transform.forward, directionToPlayer) < viewAngle / 2) ||
+                distanceToPlayer <= closeDetectionRange || isAttackedByPlayer)
             {
                 foundTarget = true;
                 agent.isStopped = false;
                 animator.SetBool("FoundPlayer", true);
 
-                FaceTarget(directionToTarget);
-                agent.SetDestination(target.position);
+                FaceTarget(directionToPlayer);
+                agent.SetDestination(player.position);
                 agent.speed = 3f;
 
-                if (distance < agent.stoppingDistance + 0.1f)
+                if (distanceToPlayer < agent.stoppingDistance + 0.1f)
                 {
                     // Inside attacking range, attack player.
                     agent.isStopped = true;
@@ -74,7 +74,7 @@ namespace CSE5912.PolyGamers
                     }
                     else
                     {
-                        if (distance < agent.stoppingDistance)
+                        if (distanceToPlayer < agent.stoppingDistance)
                         {
                             animator.SetBool("MoveBack", true);
                             isMovingBack = true;
@@ -181,9 +181,9 @@ namespace CSE5912.PolyGamers
         {
             if (isAttacking)
             {
-                if (distance > 2.5f)
+                if (distanceToPlayer > 2.5f)
                 {
-                    agent.Move(4f * directionToTarget * Time.deltaTime);
+                    agent.Move(4f * directionToPlayer * Time.deltaTime);
                 }
 
                 if ((animator.GetCurrentAnimatorStateInfo(0).IsName("2Hand-Spear-Attack9") ||
@@ -208,16 +208,16 @@ namespace CSE5912.PolyGamers
 
                     if (animator.GetCurrentAnimatorStateInfo(0).IsName("2Hand-Spear-Strafe-Left"))
                     {
-                        agent.Move(1f * Tangent(directionToTarget) * Time.deltaTime);
+                        agent.Move(1f * Tangent(directionToPlayer) * Time.deltaTime);
                     }
                     else if (animator.GetCurrentAnimatorStateInfo(0).IsName("2Hand-Spear-Strafe-Right"))
                     {
-                        agent.Move(-1f * Tangent(directionToTarget) * Time.deltaTime);
+                        agent.Move(-1f * Tangent(directionToPlayer) * Time.deltaTime);
                     }
                 }
                 else
                 {
-                    agent.Move(-2f * directionToTarget * Time.deltaTime);
+                    agent.Move(-2f * directionToPlayer * Time.deltaTime);
                 }
             }
         }
