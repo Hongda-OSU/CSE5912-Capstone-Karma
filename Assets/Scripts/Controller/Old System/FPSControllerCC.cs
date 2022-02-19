@@ -25,7 +25,8 @@ namespace CSE5912.PolyGamers
         private Vector3 movementDirection;
         private float velocity;
         private bool isCrouched;
-        private float controlerHeight;
+         
+        private float controllerHeight;
 
         private WaitForSeconds waitOneSeconds = new WaitForSeconds(0.1f);
         [SerializeField] private ParticleSystem forwardDashParticle;
@@ -36,7 +37,7 @@ namespace CSE5912.PolyGamers
         {
             characterController = GetComponent<CharacterController>();
             characterTransform = transform;
-            controlerHeight = characterController.height;
+            controllerHeight = characterController.height;
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
         }
@@ -44,6 +45,8 @@ namespace CSE5912.PolyGamers
         void Update()
         {
             float tmp_CurrentSpeed = WalkSpeed;
+
+            //Debug.Log(characterController.isGrounded);
             if (characterController.isGrounded)
             {
                 var tmp_Horizontal = Input.GetAxis("Horizontal");
@@ -63,7 +66,7 @@ namespace CSE5912.PolyGamers
                 // Handle Crouch
                 if (Input.GetKeyDown(KeyCode.C))
                 {
-                    var tmp_CurrentHeight = isCrouched ? controlerHeight : CrouchHeight;
+                    var tmp_CurrentHeight = isCrouched ? controllerHeight : CrouchHeight;
                     StartCoroutine(DoCrouch(tmp_CurrentHeight));
                     isCrouched = !isCrouched;
                 }
@@ -93,9 +96,10 @@ namespace CSE5912.PolyGamers
 
             //if (Input.GetKeyDown(KeyCode.G))
             //    characterAnimator.SetTrigger("GrenadeThrow");
-
+           
             movementDirection.y -= Gravity * Time.deltaTime * 0.6f;
             characterController.Move(tmp_CurrentSpeed * Time.deltaTime * movementDirection);
+        
         }
 
         private void HandleAnimation()
@@ -103,6 +107,8 @@ namespace CSE5912.PolyGamers
             var tmp_Velocity = characterController.velocity;
             tmp_Velocity.y = 0;
             velocity = tmp_Velocity.magnitude;
+            if (Math.Abs(horizontalInput) > 0 && Math.Abs(verticalInput) > 0)
+                velocity /= (float) Math.Sqrt(2);
             if (characterAnimator != null)
             {
                 if (Input.GetKeyDown(KeyCode.L))
