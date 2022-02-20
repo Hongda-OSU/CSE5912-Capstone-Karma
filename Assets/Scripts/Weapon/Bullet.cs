@@ -30,11 +30,11 @@ namespace CSE5912.PolyGamers
             CheckDamgeEenemy(tmp_Hit);
 
 
-            var tmp_BulletEffect =
-                Instantiate(ImpactPrefab,
-                    tmp_Hit.point,
-                    Quaternion.LookRotation(tmp_Hit.normal, Vector3.up));
-            Destroy(tmp_BulletEffect, 3);
+            //var tmp_BulletEffect =
+            //    Instantiate(ImpactPrefab,
+            //        tmp_Hit.point,
+            //        Quaternion.LookRotation(tmp_Hit.normal, Vector3.up));
+            //Destroy(tmp_BulletEffect, 0.3f);
 
 
             // For Audio

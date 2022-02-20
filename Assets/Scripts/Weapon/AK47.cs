@@ -100,7 +100,7 @@ namespace CSE5912.PolyGamers
             tmp_BulletScript.ImpactPrefab = ImpactPrefab;
             tmp_BulletScript.impactAudioData = impactAudioData;
             tmp_BulletScript.BulletSpeed = 100;
-            Destroy(tmp_Bullet, 5);
+            Destroy(tmp_Bullet, 3);
         }
     }
 }

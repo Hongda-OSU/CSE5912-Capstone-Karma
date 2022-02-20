@@ -19301,8 +19301,8 @@ Transform:
   - {fileID: 844360213054739687}
   - {fileID: 844378735147550325}
   - {fileID: 840427755587785009}
-  m_Father: {fileID: 8001524343805952293}
-  m_RootOrder: 0
+  m_Father: {fileID: 2035013661394570684}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &789240833929632207
 Animator:
@@ -19533,6 +19533,8 @@ MonoBehaviour:
   BulletPrefab: {fileID: 1086664671600574, guid: 5953171a59c27394e9ad5cbb564affa8, type: 3}
   MuzzleParticle: {fileID: 8001524344595978273}
   CastingParticle: {fileID: 8001524343704493139}
+  damage: 0
+  element: 0
   AmmoInMag: 8
   MaxAmmoCarried: 32
   FireRate: 5
@@ -19545,7 +19547,10 @@ MonoBehaviour:
   SlerpAngle: 30
   SlerpDistance: 0.8
   SpreadAngle: 90
-  GunIcon: {fileID: 21300008, guid: dccc05b8d01dde54f88f9910329187c2, type: 3}
+  weaponType: 0
+  iconImage: {fileID: 0}
+  description: 
+  attachments: []
   ScopeInfos:
   - ScopeName: 2X
     ScopeGameObject: {fileID: 8001524344842474005}
@@ -21360,7 +21365,7 @@ GameObject:
   - component: {fileID: 4172119940055524134}
   - component: {fileID: 4172119940055524135}
   m_Layer: 0
-  m_Name: Assault_Rifle_01_Arms
+  m_Name: Arms
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22303,7 +22308,7 @@ Transform:
   - {fileID: 4177547165787733008}
   - {fileID: 4172165387639674274}
   - {fileID: 4177565240146861980}
-  m_Father: {fileID: 8001524343387242871}
+  m_Father: {fileID: 2035013661394570684}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &4087883302255141078
@@ -22535,6 +22540,8 @@ MonoBehaviour:
   BulletPrefab: {fileID: 1086664671600574, guid: 5953171a59c27394e9ad5cbb564affa8, type: 3}
   MuzzleParticle: {fileID: 131785274410668009}
   CastingParticle: {fileID: 7129116084192102583}
+  damage: 0
+  element: 0
   AmmoInMag: 30
   MaxAmmoCarried: 120
   FireRate: 10
@@ -22547,7 +22554,10 @@ MonoBehaviour:
   SlerpAngle: 35
   SlerpDistance: 0.85
   SpreadAngle: 60
-  GunIcon: {fileID: 21300000, guid: dccc05b8d01dde54f88f9910329187c2, type: 3}
+  weaponType: 0
+  iconImage: {fileID: 0}
+  description: 
+  attachments: []
   ScopeInfos:
   - ScopeName: 2X
     ScopeGameObject: {fileID: 7928387301083919709}
@@ -23870,9 +23880,6 @@ MonoBehaviour:
   Arms:
   - {fileID: 4092260174426645251}
   - {fileID: 789240833929632200}
-  AmmoCount: {fileID: 0}
-  WeaponIcon: {fileID: 0}
-  crosshair: {fileID: 0}
 --- !u!1 &4174721822237410750
 GameObject:
   m_ObjectHideFlags: 0
@@ -23967,6 +23974,39 @@ Transform:
   - {fileID: 4172150166167108460}
   m_Father: {fileID: 4177547165787733008}
   m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5793499334547682943
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2035013661394570684}
+  m_Layer: 0
+  m_Name: Weapons
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2035013661394570684
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5793499334547682943}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4172228652431933508}
+  - {fileID: 844079113169153507}
+  m_Father: {fileID: 8001524343436085603}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7129116084192102580
 GameObject:
@@ -43439,38 +43479,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!1 &8001524343387242870
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8001524343387242871}
-  m_Layer: 0
-  m_Name: AssaultRife
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8001524343387242871
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8001524343387242870}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 4172228652431933508}
-  m_Father: {fileID: 8001524343436085603}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8001524343436085602
 GameObject:
   m_ObjectHideFlags: 0
@@ -43501,8 +43509,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4172254879188689766}
-  - {fileID: 8001524343387242871}
-  - {fileID: 8001524343805952293}
+  - {fileID: 2035013661394570684}
   m_Father: {fileID: 4172119940055524134}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -53396,38 +53403,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &8001524343805952292
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8001524343805952293}
-  m_Layer: 0
-  m_Name: HandGun
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8001524343805952293
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8001524343805952292}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 844079113169153507}
-  m_Father: {fileID: 8001524343436085603}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8001524344012835969
 GameObject:
   m_ObjectHideFlags: 0
