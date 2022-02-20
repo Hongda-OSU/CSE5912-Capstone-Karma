@@ -28,21 +28,16 @@ namespace CSE5912.PolyGamers
         }
 
 
-        public void PerformDamage(Enemy enemy)
+        public void PerformDamage(Enemy enemy, Vector3 position)
         {
             enemyHit = enemy;
             Firearms weapon = WeaponManager.Instance.CarriedWeapon;
 
-            float critDamageFactor = 1f;
-            if (PlayerStats.Instance.CritChance > Random.value) // todo - or enemy vital is hit)
-            {
-                critDamageFactor = PlayerStats.Instance.CritDamageFactor;
-            }
 
-            Damage damage = new Damage(weapon.damage * critDamageFactor, weapon.element, PlayerStats.Instance, enemyHit);
+            Damage damage = new Damage(weapon.damage, PlayerStats.Instance.ComputeExtraDamage(), weapon.element, PlayerStats.Instance, enemyHit);
             enemyHit.TakeDamage(damage);
 
-            Debug.Log(enemyHit.Health);
+            StartCoroutine(DamageNumber.Instance.DisplayDamageNumber(damage, position));
         }
 
         public GameObject Player { get { return player; } }

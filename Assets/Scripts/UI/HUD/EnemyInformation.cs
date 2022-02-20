@@ -109,7 +109,7 @@ namespace CSE5912.PolyGamers
         {
             Vector2 newPosition = RuntimePanelUtils.CameraTransformWorldToPanel(maxHealthBar.panel, pivot.transform.position, currentCamera);
 
-            root.transform.position = new Vector2(newPosition.x - widthPerUnit * enemy.MaxHealth / 2, newPosition.y);
+            maxHealthBar.transform.position = new Vector2(newPosition.x - widthPerUnit * enemy.MaxHealth / 2, newPosition.y);
         }
 
         protected override IEnumerator FadeOut(VisualElement element)

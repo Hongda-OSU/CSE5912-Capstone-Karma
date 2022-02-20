@@ -14,7 +14,7 @@ namespace CSE5912.PolyGamers
         [SerializeField] private float moveSpeedFactor = 1f;
         [SerializeField] private float reloadSpeedFactor = 1f;
 
-        [SerializeField] private float critDamageFactor = 1.5f;
+        [SerializeField] private float critDamageFactor = 0.5f;
         [Range(0f, 1f)]
         [SerializeField] private float critChance = 0f;
 
@@ -57,6 +57,16 @@ namespace CSE5912.PolyGamers
             return resist;
         }
 
+        public float ComputeExtraDamage()
+        {
+            float extraDamage = 0f;
+            if (critChance > Random.value) // todo - or enemy vital is hit)
+            {
+                extraDamage = WeaponManager.Instance.CarriedWeapon.damage * critDamageFactor;
+            }
+            return extraDamage;
+        }
+
         public void ResetFactors()
         {
             moveSpeedFactor = 1f;
@@ -77,7 +87,7 @@ namespace CSE5912.PolyGamers
             set 
             { 
                 Mathf.Clamp(health += value, 0, maxHealth);
-                HealthBarControl.Instance.UpdateHealthBar();
+                PlayerHealthBarControl.Instance.UpdateHealthBar();
             } 
         }
         public float MaxHealth { get { return maxHealth; } 
@@ -86,7 +96,7 @@ namespace CSE5912.PolyGamers
                 maxHealth += value;
                 if (maxHealth < 0f)
                     maxHealth = 0f;
-                HealthBarControl.Instance.UpdateHealthBar();
+                PlayerHealthBarControl.Instance.UpdateHealthBar();
             } 
         }
         public float Shield_armor {  get { return shield_armor; } set { shield_armor = value; } }

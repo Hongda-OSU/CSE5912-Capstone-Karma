@@ -78,6 +78,11 @@ namespace CSE5912.PolyGamers
             return resist;
         }
 
+        public float ComputeExtraDamage()
+        {
+            return 0f;
+        }
+
         protected virtual void FaceTarget(Vector3 direction)
         {
             Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));

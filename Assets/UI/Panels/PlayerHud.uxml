@@ -14,7 +14,7 @@
         </ui:VisualElement>
         <ui:VisualElement name="WeaponInformation" style="position: absolute; right: 50px; bottom: 50px; width: 500px; height: 600px; flex-direction: column-reverse; align-items: flex-end; justify-content: flex-start;">
             <ui:VisualElement name="Weapon_4" class="Weapon" style="background-image: url(&apos;project://database/Assets/UI/VFX/UI/Gun_Icons_Spritesheet/Gun_Icons_Spritesheet.png?fileID=21300000&amp;guid=ce679aa762875164cb3718b2eaa85abc&amp;type=3#assault_rifle_01_icon&apos;); -unity-background-scale-mode: scale-to-fit;">
-                <ui:Label text="Label" display-tooltip-when-elided="true" name="Ammo" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/FontAssets/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgba(255, 255, 255, 255); -unity-text-align: upper-center;" />
+                <ui:Label text="Label" display-tooltip-when-elided="true" name="Ammo" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/FontAssets/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); -unity-text-align: upper-center;" />
             </ui:VisualElement>
             <ui:VisualElement name="Weapon_3" class="Weapon" style="flex-direction: column;">
                 <ui:Label text="Label" display-tooltip-when-elided="true" name="Ammo" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/FontAssets/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); -unity-text-align: upper-center;" />
@@ -30,4 +30,5 @@
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
+    <ui:VisualElement name="DamageNumbers" style="position: absolute;" />
 </ui:UXML>

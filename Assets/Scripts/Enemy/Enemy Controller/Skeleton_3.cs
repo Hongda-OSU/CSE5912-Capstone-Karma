@@ -12,8 +12,6 @@ namespace CSE5912.PolyGamers
         private void Awake()
         {
             enemyName = "Skeleton Warrior";
-            health = 200f;
-            maxHealth = 200f;
         }
 
         void Update()
