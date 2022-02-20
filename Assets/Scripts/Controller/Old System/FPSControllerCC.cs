@@ -33,6 +33,9 @@ namespace CSE5912.PolyGamers
         [SerializeField] private ParticleSystem backwardDashParticle;
         private float horizontalInput, verticalInput;
 
+        private Vector3 hitNormal;
+        private bool isGrounded;
+
         void Start()
         {
             characterController = GetComponent<CharacterController>();
@@ -45,8 +48,6 @@ namespace CSE5912.PolyGamers
         void Update()
         {
             float tmp_CurrentSpeed = WalkSpeed;
-
-            //Debug.Log(characterController.isGrounded);
             if (characterController.isGrounded)
             {
                 var tmp_Horizontal = Input.GetAxis("Horizontal");
@@ -84,16 +85,8 @@ namespace CSE5912.PolyGamers
                     else
                         tmp_CurrentSpeed = Input.GetKey(KeyCode.LeftShift) ? SprintingSpeed : WalkSpeed;
                 }
-
                 HandleAnimation();
             }
-            // Knife Attack
-            if (Input.GetKeyDown(KeyCode.Z))
-            {
-                if (characterAnimator)
-                    characterAnimator.SetTrigger("KnifeAttack");
-            }
-
             //if (Input.GetKeyDown(KeyCode.G))
             //    characterAnimator.SetTrigger("GrenadeThrow");
            
@@ -101,6 +94,12 @@ namespace CSE5912.PolyGamers
             characterController.Move(tmp_CurrentSpeed * Time.deltaTime * movementDirection);
         
         }
+
+        //void OnControllerColliderHit(ControllerColliderHit hit)
+        //{
+        //    hitNormal = hit.normal;
+        //    isGrounded = Vector3.Angle(Vector3.up, hitNormal) <= characterController.slopeLimit;
+        //}
 
         private void HandleAnimation()
         {
@@ -114,6 +113,13 @@ namespace CSE5912.PolyGamers
                 if (Input.GetKeyDown(KeyCode.L))
                     characterAnimator.SetTrigger("Inspect");
                 characterAnimator.SetFloat("Velocity", velocity, 0.25f, Time.deltaTime);
+            }
+
+            // Knife Attack
+            if (Input.GetKeyDown(KeyCode.Z))
+            {
+                if (characterAnimator)
+                    characterAnimator.SetTrigger("KnifeAttack");
             }
         }
 
