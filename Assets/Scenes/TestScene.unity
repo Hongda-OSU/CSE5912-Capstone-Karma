@@ -436,9 +436,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49f1e43d22ee77b46b22eda8c34d17d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiDocument: {fileID: 0}
+  fadingTime: 0.15
   CharacterController: {fileID: 6324315379400352082}
   weaponManager: {fileID: 6324315379400352083}
-  Reticle: {fileID: 443440493}
   OriginalSize: 100
   FiringSize: 85
   AimingSize: 75
@@ -901,7 +902,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1198427960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2348,6 +2349,10 @@ PrefabInstance:
     - target: {fileID: 4174719190247411942, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
       propertyPath: m_Name
       value: FPSController
+      objectReference: {fileID: 0}
+    - target: {fileID: 4174719190247411942, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
