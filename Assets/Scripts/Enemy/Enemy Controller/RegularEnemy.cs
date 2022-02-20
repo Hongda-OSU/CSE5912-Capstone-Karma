@@ -11,7 +11,7 @@ namespace CSE5912.PolyGamers
         [SerializeField] protected bool canWander = false;
         [SerializeField] protected float wanderAreaNumber = 0f;
         [SerializeField] protected bool canPatrol = false;
-        [SerializeField] protected float patrolRouteNumber = 0f;
+        [SerializeField] protected Transform[] waypoints;
 
         protected virtual void Start()
         {

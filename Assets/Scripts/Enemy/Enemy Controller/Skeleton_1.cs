@@ -32,6 +32,7 @@ namespace CSE5912.PolyGamers
 
             if (canWander) {
                 HandleWander();
+                return;
             }
             
 
