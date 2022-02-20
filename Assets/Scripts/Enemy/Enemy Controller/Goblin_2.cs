@@ -10,6 +10,9 @@ namespace CSE5912.PolyGamers
         private bool isGuarding = false;
 
         private bool getToInitialPosition = false;
+        private float waitTime = 2f;
+        private float patrolCounter = 0f;
+        private bool patrolling = false;
 
         int m_CurrentWaypointIndex;
 
@@ -18,6 +21,8 @@ namespace CSE5912.PolyGamers
             enemyName = "Shield Goblin";
             health = 100f;
             maxHealth = 100f;
+            viewAngle = 100f;
+            viewRadius = 15;
         }
 
 
@@ -99,15 +104,59 @@ namespace CSE5912.PolyGamers
 
         protected override void HandlePatrol()
         {
-            if (!getToInitialPosition) {
-                agent.SetDestination(waypoints[0].position);
-                getToInitialPosition = true;
-            }
-
-            if (agent.remainingDistance < agent.stoppingDistance)
+            if (!foundTarget)
             {
-                m_CurrentWaypointIndex = (m_CurrentWaypointIndex + 1) % waypoints.Length;
-                agent.SetDestination(waypoints[m_CurrentWaypointIndex].position);
+                if (!getToInitialPosition)
+                {
+                    agent.SetDestination(waypoints[0].position);
+                    agent.isStopped = false;
+                    agent.stoppingDistance = 0f;
+                    patrolling = true;
+
+                    if (Vector3.Distance(waypoints[0].position, transform.position) <= 0.1f) 
+                    {
+                        getToInitialPosition = true;
+                        patrolling = false;
+                    }
+                }
+                else 
+                {
+                    if (patrolCounter <= 0f && !patrolling)
+                    {
+                        agent.isStopped = false;
+                        patrolling = true;
+                        patrolCounter = waitTime;
+                    }
+                    if (patrolCounter > 0f && !patrolling)
+                    {
+                        agent.isStopped = true;
+                        patrolCounter -= 1f * Time.deltaTime;
+                    } 
+                    if (patrolling) 
+                    {
+                        if (agent.remainingDistance <= agent.stoppingDistance + 0.1f)
+                        {
+                            m_CurrentWaypointIndex = (m_CurrentWaypointIndex + 1) % waypoints.Length;
+                            agent.SetDestination(waypoints[m_CurrentWaypointIndex].position);
+                            patrolling = false;
+                        }
+                    }
+                }
+
+                if (patrolling)
+                {
+                    animator.SetBool("Patrol", true);
+                }
+                else
+                {
+                    animator.SetBool("Patrol", false);
+                }
+            }
+            else 
+            {
+                animator.SetBool("Patrol", false);
+                animator.SetBool("FoundPlayer", true);
+                canPatrol = false;
             }
         }
     }

@@ -28,13 +28,8 @@ namespace CSE5912.PolyGamers
         protected abstract void HandlePatrol();
 
 
-        /*
+        
         // These codes below are used by Eiditor for testing purpose.
-        public Vector3 GetTargetPosition()
-        {
-            return target.position;
-        }
-
         public Transform GetTransform()
         {
             return transform;
@@ -68,6 +63,6 @@ namespace CSE5912.PolyGamers
             }
             return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
         }
-        */
+        
     }
 }
