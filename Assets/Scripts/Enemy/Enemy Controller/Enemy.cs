@@ -112,5 +112,6 @@ namespace CSE5912.PolyGamers
         public float Health { get { return health;} }
         public float MaxHealth { get { return maxHealth;} }
         public float AttackDamage { get { return attackDamage;} }
+        public bool IsAttackedByPlayer { get { return isAttackedByPlayer; } }
     }
 }

@@ -7,10 +7,6 @@ namespace CSE5912.PolyGamers
 {
     public class SkeletonKnightControl : EliteEnemy
     {
-        void Awake()
-        {
-            health = 100;
-        }
 
         protected override void PerformActions()
         {

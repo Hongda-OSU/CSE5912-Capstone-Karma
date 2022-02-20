@@ -26,9 +26,10 @@ namespace CSE5912.PolyGamers
             Venom,
         }
 
-        public Damage(float rawValue, float extra, ElementType element, IDamageable source, IDamageable target)
+        public Damage(float rawValue, ElementType element, IDamageable source, IDamageable target)
         {
-            if (extra > 0)
+            float extra = source.ComputeExtraDamage();
+            if (extra > 0f)
                 isCrit = true;
 
             this.rawValue = rawValue + extra;
@@ -40,7 +41,9 @@ namespace CSE5912.PolyGamers
 
         private float CalculateResolvedValue(Resist resist)
         {
+
             float resistValue = resist.FindResisByElement(element).Value;
+
             return rawValue * (100 / (100 + resistValue));
         }
 
