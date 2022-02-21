@@ -52071,6 +52071,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1187481587}
   - component: {fileID: 1187481588}
+  - component: {fileID: 1187481589}
   m_Layer: 0
   m_Name: Skill
   m_TagString: Untagged
@@ -52106,6 +52107,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillPoints: 100
+--- !u!114 &1187481589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187481586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 771aacfecc5441542a395d4f4e98b8b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  physicalColor: {r: 1, g: 1, b: 1, a: 1}
+  fireColor: {r: 1, g: 0, b: 0, a: 1}
+  cryoColor: {r: 0, g: 1, b: 1, a: 1}
+  electroColor: {r: 0, g: 0, b: 1, a: 1}
+  venomColor: {r: 0, g: 1, b: 0, a: 1}
 --- !u!1 &1189201247
 GameObject:
   m_ObjectHideFlags: 0
@@ -91573,24 +91591,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 214d9417912c0a544ba12e4f2cdd3d7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  statPoint: 1
+  level: 1
+  experience: 0
+  experienceToUpgrade: 668
   health: 25
   maxHealth: 100
   shield_armor: 0
+  maxShield_armor: 100
   shield_energy: 0
+  maxShield_energy: 100
   moveSpeedFactor: 0
   reloadSpeedFactor: 1
+  critRate: 0
   critDamageFactor: 0.5
-  critChance: 0.5
-  physicalResist: 0
-  fireResist: 0
-  cryoResist: 0
-  electroResist: 0
-  venomResist: 0
   damageFactor_physic: 0
   damageFactor_fire: 0
   damageFactor_cryo: 0
   damageFactor_electro: 0
   damageFactor_venom: 0
+  physicalResist: 0
+  fireResist: 0
+  cryoResist: 0
+  electroResist: 0
+  venomResist: 0
+  healthUp: 10
+  shieldUp: 10
+  critRateUp: 0.02
+  critDamageUp: 0.05
+  damageUp: 0.03
+  resistUp: 30
 --- !u!1001 &2112189544
 PrefabInstance:
   m_ObjectHideFlags: 0
