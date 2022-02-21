@@ -7,7 +7,6 @@ namespace CSE5912.PolyGamers
     public class Goblin_2 : RegularEnemy
     {
         private bool isAttacking = false;
-        private bool isGuarding = false;
 
         private bool getToInitialPosition = false;
         private float waitTime = 2f;
@@ -15,17 +14,6 @@ namespace CSE5912.PolyGamers
         private bool patrolling = false;
 
         int m_CurrentWaypointIndex;
-
-        private void Awake()
-        {
-            enemyName = "Shield Goblin";
-            health = 100f;
-            maxHealth = 100f;
-            viewAngle = 100f;
-            viewRadius = 15;
-        }
-
-
 
         void Update()
         {
@@ -35,7 +23,8 @@ namespace CSE5912.PolyGamers
                 return;
             }
 
-            if (canPatrol) {
+            if (canPatrol)
+            {
                 HandlePatrol();
             }
 
@@ -43,21 +32,81 @@ namespace CSE5912.PolyGamers
             directionToPlayer = (player.position - transform.position).normalized;
 
             if ((distanceToPlayer <= viewRadius && Vector3.Angle(transform.forward, directionToPlayer) < viewAngle / 2)
-                || distanceToPlayer <= closeDetectionRange || isAttackedByPlayer) { 
-            
+                || distanceToPlayer <= closeDetectionRange || isAttackedByPlayer)
+            {
+
+                foundTarget = true;
+                agent.isStopped = false;
+                animator.SetBool("FoundPlayer", true);
+
+                FaceTarget(directionToPlayer);
+                agent.SetDestination(player.position);
+                agent.stoppingDistance = 2f;
+                agent.speed = 3f;
+
+                ResetAttackAnimationTriggers();
+
+                if (distanceToPlayer < agent.stoppingDistance + 0.3)
+                {
+                    animator.SetBool("InAttackRange", true);
+                    AttackPlayerRandomly();
+                    isAttacking = true;
+                }
+                else
+                {
+                    animator.SetBool("InAttackRange", false);                   
+                }
+
+                if (!(animator.GetCurrentAnimatorStateInfo(0).IsName("Mace-Attack-R1") ||
+                    animator.GetCurrentAnimatorStateInfo(0).IsName("Mace-Attack-R2") ||
+                    animator.GetCurrentAnimatorStateInfo(0).IsName("Sword-Attack-R7")))
+                {
+                    isAttacking = false;
+                }
+
+                if (isAttacking)
+                {
+                    agent.isStopped = true;
+                }
+                else
+                {
+                    agent.isStopped = false;
+                }
+            }
+            else 
+            {
+                foundTarget = false;
+                animator.SetBool("FoundPlayer", false);
+                if (!canPatrol)
+                {
+                    agent.isStopped = true;
+                }
+            }
+        }
+
+        private void ResetAttackAnimationTriggers()
+        {
+            animator.ResetTrigger("Attack_1");
+            animator.ResetTrigger("Attack_2");
+        }
+
+        private void AttackPlayerRandomly()
+        {
+            float random = Random.value;
+
+            if (random >= 0f && random < 0.5f)
+            {
+                animator.SetTrigger("Attack_1");
+            }
+            else if (random >= 0.5f && random < 1f)
+            {
+                animator.SetTrigger("Attack_2");
             }
         }
 
         public override void TakeDamage(Damage damage)
         {
-            if (isGuarding)
-            {
-                health -= (damage.ResolvedValue / 2);
-            }
-            else 
-            {
-                health -= damage.ResolvedValue;
-            }
+            health -= damage.ResolvedValue;
 
             if (!isAttackedByPlayer)
             {

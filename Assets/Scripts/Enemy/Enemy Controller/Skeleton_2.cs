@@ -7,13 +7,6 @@ namespace CSE5912.PolyGamers
 {
     public class Skeleton_2 : RegularEnemy
     {
-        private void Awake()
-        {
-            enemyName = "Skeleton Slave";
-            health = 100f;
-            maxHealth = 100f;
-        }
-
         void Update()
         {
             distanceToPlayer = Vector3.Distance(player.position, transform.position);

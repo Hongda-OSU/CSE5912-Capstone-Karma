@@ -14,13 +14,6 @@ namespace CSE5912.PolyGamers
         private bool readyToAttack = false;
         private float attackCoolDown = 5f;
 
-        private void Awake()
-        {
-            enemyName = "Spear Goblin";
-            health = 100f;
-            maxHealth = 100f;
-        }
-
         void Update()
         {
             distanceToPlayer = Vector3.Distance(player.position, transform.position);
