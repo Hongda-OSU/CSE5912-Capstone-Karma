@@ -183,7 +183,7 @@ namespace CSE5912.PolyGamers
                     } 
                     if (patrolling) 
                     {
-                        if (Vector3.Distance(waypoints[m_CurrentWaypointIndex].transform.position, transform.position) <= agent.stoppingDistance + 0.1f)
+                        if (agent.remainingDistance <= agent.stoppingDistance + 0.1f)
                         {
                             m_CurrentWaypointIndex = (m_CurrentWaypointIndex + 1) % waypoints.Length;
                             agent.SetDestination(waypoints[m_CurrentWaypointIndex].position);
