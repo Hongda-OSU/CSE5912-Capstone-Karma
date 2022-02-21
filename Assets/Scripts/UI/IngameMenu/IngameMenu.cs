@@ -9,18 +9,18 @@ namespace CSE5912.PolyGamers
     public class IngameMenu : UI
     {
         private WeaponsPanelControl weaponsPanelControl;
-        private ModsPanelControl modsPanelControl;
+        private StatsPanelControl statsPanelControl;
         private SkillsPanelControl skillsPanelControl;
 
         private VisualElement currentPanel;
 
         private Toggle weaponsToggle;
-        private Toggle modsToggle;
+        private Toggle statsToggle;
         private Toggle skillsToggle;
         private List<Toggle> toggleList;
 
         private VisualElement weaponsPanel;
-        private VisualElement modsPanel;
+        private VisualElement statsPanel;
         private VisualElement skillsPanel;
 
         private static IngameMenu instance;
@@ -43,7 +43,7 @@ namespace CSE5912.PolyGamers
             toggleList = new List<Toggle>();
 
             weaponsPanel = root.Q<VisualElement>("WeaponsPanel");
-            modsPanel = root.Q<VisualElement>("ModsPanel");
+            statsPanel = root.Q<VisualElement>("StatsPanel");
             skillsPanel = root.Q<VisualElement>("SkillsPanel");
 
             // set up toggles
@@ -51,9 +51,9 @@ namespace CSE5912.PolyGamers
             weaponsToggle.RegisterValueChangedCallback(evt => WeaponsToggleOnChange());
             toggleList.Add(weaponsToggle);
 
-            modsToggle = root.Q<Toggle>("Mods");
-            modsToggle.RegisterValueChangedCallback(evt => ModsToggleOnChange());
-            toggleList.Add(modsToggle);
+            statsToggle = root.Q<Toggle>("Stats");
+            statsToggle.RegisterValueChangedCallback(evt => ModsToggleOnChange());
+            toggleList.Add(statsToggle);
 
             skillsToggle = root.Q<Toggle>("Skills");
             skillsToggle.RegisterValueChangedCallback(evt => SkillsToggleOnChange());
@@ -65,7 +65,7 @@ namespace CSE5912.PolyGamers
             weaponsToggle.value = true;
 
             // hide other views
-            modsPanel.style.display = DisplayStyle.None;
+            statsPanel.style.display = DisplayStyle.None;
             skillsPanel.style.display = DisplayStyle.None;
 
             root.style.display = DisplayStyle.None;
@@ -91,14 +91,14 @@ namespace CSE5912.PolyGamers
         // switch to mods view
         private void ModsToggleOnChange()
         {
-            if (modsToggle.value && currentPanel != modsPanel)
+            if (statsToggle.value && currentPanel != statsPanel)
             {
-                StartCoroutine(FadeTo(currentPanel, modsPanel));
-                currentPanel = modsPanel;
-                UpdateToggles(modsToggle);
+                StartCoroutine(FadeTo(currentPanel, statsPanel));
+                currentPanel = statsPanel;
+                UpdateToggles(statsToggle);
             }
-            else if (!modsToggle.value && currentPanel == modsPanel)
-                modsToggle.value = true;
+            else if (!statsToggle.value && currentPanel == statsPanel)
+                statsToggle.value = true;
         }
 
         // switch to skills view

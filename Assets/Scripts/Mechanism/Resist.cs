@@ -15,24 +15,24 @@ namespace CSE5912.PolyGamers
         public class ElementResist
         {
             private float value = 0f;
-            private Damage.ElementType element;
+            private Element.Type element;
 
-            public ElementResist(Damage.ElementType element)
+            public ElementResist(Element.Type element)
             {
                 this.element = element;
             }
 
             public float Value { get { return value; } set { if (value >= 0f) this.value = value; } }
-            public Damage.ElementType Element { get { return element; } }
+            public Element.Type Element { get { return element; } }
         }
 
         public Resist()
         {
-            physical = new ElementResist(Damage.ElementType.Physical);
-            fire = new ElementResist(Damage.ElementType.Fire);
-            cryo = new ElementResist(Damage.ElementType.Cryo);
-            electro = new ElementResist(Damage.ElementType.Electro);
-            venom = new ElementResist(Damage.ElementType.Venom);
+            physical = new ElementResist(Element.Type.Physical);
+            fire = new ElementResist(Element.Type.Fire);
+            cryo = new ElementResist(Element.Type.Cryo);
+            electro = new ElementResist(Element.Type.Electro);
+            venom = new ElementResist(Element.Type.Venom);
         }
 
         public void SetValues(float physical, float fire, float cryo, float electro, float venom)
@@ -44,19 +44,19 @@ namespace CSE5912.PolyGamers
             this.venom.Value = venom;
         }
 
-        public ElementResist FindResisByElement(Damage.ElementType element)
+        public ElementResist FindResisByElement(Element.Type element)
         {
             switch (element)
             {
-                case Damage.ElementType.Physical:
+                case Element.Type.Physical:
                     return physical;
-                case Damage.ElementType.Fire:
+                case Element.Type.Fire:
                     return fire;
-                case Damage.ElementType.Cryo:
+                case Element.Type.Cryo:
                     return cryo;
-                case Damage.ElementType.Electro:
+                case Element.Type.Electro:
                     return electro;
-                case Damage.ElementType.Venom:
+                case Element.Type.Venom:
                     return venom;
             }
             return null;

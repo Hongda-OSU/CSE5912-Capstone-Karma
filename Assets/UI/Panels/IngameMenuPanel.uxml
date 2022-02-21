@@ -1,11 +1,12 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Styles/StatsView.uss?fileID=7433441132597879392&amp;guid=f4af694d3614da24c8990d37e6be8c13&amp;type=3#StatsView" />
     <Style src="project://database/Assets/UI/Styles/SkillsView.uss?fileID=7433441132597879392&amp;guid=6c0ba5d71397ef5419695f15dc4c45db&amp;type=3#SkillsView" />
     <Style src="project://database/Assets/UI/Styles/Ingame.uss?fileID=7433441132597879392&amp;guid=394044c853fcc5548b44cd184a52ba94&amp;type=3#Ingame" />
     <Style src="project://database/Assets/UI/Styles/WeaponsView.uss?fileID=7433441132597879392&amp;guid=41f86612847d72049837f08362464366&amp;type=3#WeaponsView" />
     <ui:VisualElement name="Background" style="background-color: rgba(0, 0, 0, 0.65); flex-grow: 1; align-items: flex-start; justify-content: space-around; position: relative; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; -unity-background-scale-mode: stretch-to-fill; -unity-slice-left: 0; -unity-slice-top: 0; -unity-slice-right: 0; -unity-slice-bottom: 0; background-image: none;">
         <ui:GroupBox name="CategoryButtons" style="height: 94px; width: 683px; flex-direction: row; align-items: center; justify-content: center; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; left: 80px; top: auto; position: relative; display: flex;">
             <ui:Toggle label="Weapons" name="Weapons" value="false" focusable="false" class="MyToggle CatButton" />
-            <ui:Toggle label="Mods" name="Mods" focusable="false" class="MyToggle CatButton" />
+            <ui:Toggle label="Stats" name="Stats" focusable="false" class="MyToggle CatButton" />
             <ui:Toggle label="Skills" name="Skills" focusable="false" class="MyToggle CatButton" />
         </ui:GroupBox>
         <ui:VisualElement name="WeaponsPanel" style="height: 800px; width: 1600px; flex-grow: 0; flex-direction: row; top: auto; left: 80px; background-color: rgba(0, 0, 0, 0); align-items: flex-start; justify-content: flex-start; display: none;">
@@ -97,7 +98,7 @@
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement name="ItemSpecific" style="flex-grow: 1; height: auto; width: auto; border-left-color: rgb(75, 76, 73); border-right-color: rgb(75, 76, 73); border-top-color: rgb(75, 76, 73); border-bottom-color: rgb(75, 76, 73); border-left-width: 1px; border-right-width: 1px; border-top-width: 1px; border-bottom-width: 1px; align-items: center; display: flex; background-color: rgba(0, 0, 0, 0.65); left: 800px; top: 50px; position: absolute;">
-                <ui:Label text="Description" display-tooltip-when-elided="true" name="Description" style="flex-grow: 1; width: 460px; -unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/FontAssets/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); font-size: 12px; white-space: normal; height: 532px;" />
+                <ui:Label text="Description" display-tooltip-when-elided="true" name="Description" style="flex-grow: 1; width: 460px; -unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); font-size: 12px; white-space: normal; height: 532px;" />
             </ui:VisualElement>
             <ui:VisualElement name="AttachmentInventory" style="flex-grow: 1; height: 480px; width: 600px; border-left-color: rgba(255, 255, 255, 0); border-right-color: rgba(255, 255, 255, 0); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px; align-items: stretch; position: absolute; display: flex; top: 161px; flex-direction: row; background-color: rgba(0, 0, 0, 0);">
                 <ui:VisualElement name="AttachmentInventorySlots" style="flex-grow: 0; width: 875px; background-color: rgba(0, 0, 0, 0.65); align-items: center; justify-content: flex-start; height: 480px; top: -35px; left: 3px;">
@@ -208,8 +209,8 @@
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="ModsPanel" style="height: 800px; width: 1680px; flex-grow: 0; flex-direction: column; top: auto; left: 80px; background-color: rgba(0, 0, 0, 0); align-items: flex-start; justify-content: flex-start; display: none; overflow: visible;">
-            <ui:VisualElement name="Mods" style="height: 797px; width: 518px; flex-grow: 1;">
+        <ui:VisualElement name="StatsPanel" style="height: 800px; width: 1680px; flex-grow: 0; flex-direction: column; top: auto; left: 80px; background-color: rgba(0, 0, 0, 0); align-items: flex-start; justify-content: flex-start; display: flex; overflow: visible;">
+            <ui:VisualElement name="Mods" style="height: 797px; width: 518px; flex-grow: 1; display: none;">
                 <ui:VisualElement name="Slot_0" class="ItemSlot ModSlot" style="height: auto;">
                     <ui:VisualElement name="ModIcon" style="background-color: rgba(0, 0, 0, 0); width: auto; border-left-color: rgba(255, 255, 255, 0); border-right-color: rgb(255, 255, 255); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px; flex-grow: 1;" />
                 </ui:VisualElement>
@@ -226,9 +227,119 @@
                     <ui:VisualElement name="ModIcon" style="background-color: rgba(0, 0, 0, 0); width: auto; border-left-color: rgba(255, 255, 255, 0); border-right-color: rgb(255, 255, 255); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px; flex-grow: 1;" />
                 </ui:VisualElement>
             </ui:VisualElement>
+            <ui:VisualElement name="Stats" style="height: 838px; width: auto; background-color: rgba(0, 0, 0, 0.65); margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px;">
+                <ui:VisualElement name="Level" class="DataRow">
+                    <ui:Label text="Level" display-tooltip-when-elided="true" name="Label" class="StatLabel" style="color: rgb(255, 255, 255);" />
+                    <ui:Label text="1" name="Data" class="Data" style="left: 30px;" />
+                    <ui:Button text="+" display-tooltip-when-elided="true" name="LevelUp" class="LevelUp" style="opacity: 0; display: none;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="Experience" class="DataRow">
+                    <ui:Label text="Experience" display-tooltip-when-elided="true" name="Label" class="StatLabel" style="color: rgb(255, 255, 255);" />
+                    <ui:Label text="625 / 1000" name="Data" class="Data" style="left: 30px;" />
+                    <ui:Button text="+" display-tooltip-when-elided="true" name="LevelUp" class="LevelUp" style="opacity: 0; display: none;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="Margin" class="DataRow">
+                    <ui:Label display-tooltip-when-elided="true" name="Label" class="StatLabel" style="color: rgb(255, 255, 255);" />
+                </ui:VisualElement>
+                <ui:VisualElement name="Health" class="DataRow">
+                    <ui:Label text="Health" display-tooltip-when-elided="true" name="Label" class="StatLabel" style="color: rgb(255, 255, 255);" />
+                    <ui:Label text="25 / 100" name="Data" class="Data" />
+                    <ui:Button text="+" display-tooltip-when-elided="true" name="LevelUp" class="LevelUp" />
+                </ui:VisualElement>
+                <ui:VisualElement name="Shield_armor" class="DataRow">
+                    <ui:Label text="Armor Shield" display-tooltip-when-elided="true" name="Label" class="StatLabel" style="color: rgb(255, 255, 255);" />
+                    <ui:Label text="30 / 100" name="Data" tooltip="?" class="Data" />
+                    <ui:Button text="+" display-tooltip-when-elided="true" name="LevelUp" class="LevelUp" />
+                </ui:VisualElement>
+                <ui:VisualElement name="Shield_energy" class="DataRow">
+                    <ui:Label text="Energy Shield" display-tooltip-when-elided="true" name="Label" class="StatLabel" style="color: rgb(255, 255, 255);" />
+                    <ui:Label text="30 / 100" name="Data" class="Data" />
+                    <ui:Button text="+" display-tooltip-when-elided="true" name="LevelUp" class="LevelUp" />
+                </ui:VisualElement>
+                <ui:VisualElement name="Margin" class="DataRow">
+                    <ui:Label display-tooltip-when-elided="true" name="Label" class="StatLabel" style="color: rgb(255, 255, 255);" />
+                </ui:VisualElement>
+                <ui:VisualElement name="CritRate" class="DataRow">
+                    <ui:Label text="Critical Rate" display-tooltip-when-elided="true" name="Label" enable-rich-text="true" class="StatLabel" style="color: rgb(255, 255, 255);" />
+                    <ui:Label text="50%" name="Data" class="Data" />
+                    <ui:Button text="+" display-tooltip-when-elided="true" name="LevelUp" class="LevelUp" />
+                </ui:VisualElement>
+                <ui:VisualElement name="CritDamage" class="DataRow">
+                    <ui:Label text="Critical Damage" display-tooltip-when-elided="true" name="Label" class="StatLabel" style="color: rgb(255, 255, 255);" />
+                    <ui:Label text="150%" name="Data" class="Data" />
+                    <ui:Button text="+" display-tooltip-when-elided="true" name="LevelUp" class="LevelUp" />
+                </ui:VisualElement>
+                <ui:VisualElement name="Margin" class="DataRow">
+                    <ui:Label display-tooltip-when-elided="true" name="Label" class="StatLabel" style="color: rgb(255, 255, 255);" />
+                </ui:VisualElement>
+                <ui:VisualElement name="PhysicalDamage" class="DataRow">
+                    <ui:Label text="Physical Damage" display-tooltip-when-elided="true" name="Label" class="StatLabel" style="color: rgb(255, 255, 255);" />
+                    <ui:Label text="100%" name="Data" class="Data" />
+                    <ui:Button text="+" display-tooltip-when-elided="true" name="LevelUp" class="LevelUp" />
+                </ui:VisualElement>
+                <ui:VisualElement name="FireDamage" class="DataRow">
+                    <ui:Label text="Fire Damage" display-tooltip-when-elided="true" name="Label" class="StatLabel" style="color: rgb(255, 255, 255);" />
+                    <ui:Label text="100%" name="Data" class="Data" />
+                    <ui:Button text="+" display-tooltip-when-elided="true" name="LevelUp" class="LevelUp" />
+                </ui:VisualElement>
+                <ui:VisualElement name="CryoDamage" class="DataRow">
+                    <ui:Label text="Cryo Damage" display-tooltip-when-elided="true" name="Label" class="StatLabel" style="color: rgb(255, 255, 255);" />
+                    <ui:Label text="100%" name="Data" class="Data" />
+                    <ui:Button text="+" display-tooltip-when-elided="true" name="LevelUp" class="LevelUp" />
+                </ui:VisualElement>
+                <ui:VisualElement name="ElectroDamage" class="DataRow">
+                    <ui:Label text="Electro Damage" display-tooltip-when-elided="true" name="Label" class="StatLabel" style="color: rgb(255, 255, 255);" />
+                    <ui:Label text="100%" name="Data" class="Data" />
+                    <ui:Button text="+" display-tooltip-when-elided="true" name="LevelUp" class="LevelUp" />
+                </ui:VisualElement>
+                <ui:VisualElement name="VenomDamage" class="DataRow">
+                    <ui:Label text="Venom Damage" display-tooltip-when-elided="true" name="Label" class="StatLabel" style="color: rgb(255, 255, 255);" />
+                    <ui:Label text="100%" name="Data" class="Data" />
+                    <ui:Button text="+" display-tooltip-when-elided="true" name="LevelUp" class="LevelUp" />
+                </ui:VisualElement>
+                <ui:VisualElement name="Margin" class="DataRow">
+                    <ui:Label display-tooltip-when-elided="true" name="Label" class="StatLabel" style="color: rgb(255, 255, 255);" />
+                </ui:VisualElement>
+                <ui:VisualElement name="PhysicalResist" class="DataRow">
+                    <ui:Label text="Physical Resist" display-tooltip-when-elided="true" name="Label" class="StatLabel" style="color: rgb(255, 255, 255);" />
+                    <ui:Label text="100%" name="Data" class="Data" />
+                    <ui:Button text="+" display-tooltip-when-elided="true" name="LevelUp" class="LevelUp" />
+                </ui:VisualElement>
+                <ui:VisualElement name="FireResist" class="DataRow">
+                    <ui:Label text="Fire Resist" display-tooltip-when-elided="true" name="Label" class="StatLabel" style="color: rgb(255, 255, 255);" />
+                    <ui:Label text="100%" name="Data" class="Data" />
+                    <ui:Button text="+" display-tooltip-when-elided="true" name="LevelUp" class="LevelUp" />
+                </ui:VisualElement>
+                <ui:VisualElement name="CryoResist" class="DataRow">
+                    <ui:Label text="Cryo Resist" display-tooltip-when-elided="true" name="Label" class="StatLabel" style="color: rgb(255, 255, 255);" />
+                    <ui:Label text="100%" name="Data" class="Data" />
+                    <ui:Button text="+" display-tooltip-when-elided="true" name="LevelUp" class="LevelUp" />
+                </ui:VisualElement>
+                <ui:VisualElement name="ElectroResist" class="DataRow">
+                    <ui:Label text="Electro Resist" display-tooltip-when-elided="true" name="Label" class="StatLabel" style="color: rgb(255, 255, 255);" />
+                    <ui:Label text="100%" name="Data" class="Data" />
+                    <ui:Button text="+" display-tooltip-when-elided="true" name="LevelUp" class="LevelUp" />
+                </ui:VisualElement>
+                <ui:VisualElement name="VenomResist" class="DataRow">
+                    <ui:Label text="Venom Resist" display-tooltip-when-elided="true" name="Label" class="StatLabel" style="color: rgb(255, 255, 255);" />
+                    <ui:Label text="100%" name="Data" class="Data" />
+                    <ui:Button text="+" display-tooltip-when-elided="true" name="LevelUp" class="LevelUp" />
+                </ui:VisualElement>
+                <ui:VisualElement name="Margin" class="DataRow">
+                    <ui:Label display-tooltip-when-elided="true" name="Label" class="StatLabel" style="color: rgb(255, 255, 255);" />
+                </ui:VisualElement>
+                <ui:VisualElement name="Margin" class="DataRow">
+                    <ui:Label display-tooltip-when-elided="true" name="Label" class="StatLabel" style="color: rgb(255, 255, 255);" />
+                </ui:VisualElement>
+                <ui:VisualElement name="StatPoint" class="DataRow">
+                    <ui:Label text="Stat Point" display-tooltip-when-elided="true" name="Label" class="StatLabel" style="color: rgb(255, 255, 255); width: auto; font-size: 30px;" />
+                    <ui:Label text="10" name="Data" class="Data" style="left: auto; -unity-text-align: upper-center; font-size: 30px;" />
+                    <ui:Button text="+" display-tooltip-when-elided="true" name="LevelUp" class="LevelUp" style="display: none;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="SkillsPanel" style="height: 800px; width: 1756px; flex-grow: 0; flex-direction: row; top: auto; left: 80px; background-color: rgba(0, 0, 0, 0); align-items: flex-start; justify-content: flex-start; display: flex;">
-            <ui:Label text="Skill Points:" display-tooltip-when-elided="true" name="SkillPoints" style="height: 64px; width: 165px; -unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/FontAssets/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); font-size: 23px;" />
+        <ui:VisualElement name="SkillsPanel" style="height: 800px; width: 1756px; flex-grow: 0; flex-direction: row; top: auto; left: 80px; background-color: rgba(0, 0, 0, 0); align-items: flex-start; justify-content: flex-start; display: none;">
+            <ui:Label text="Skill Points:" display-tooltip-when-elided="true" name="SkillPoints" style="height: 64px; width: 165px; -unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); font-size: 23px;" />
             <ui:VisualElement name="SkillTree_elements" style="flex-grow: 1; width: 979px; height: 600px; opacity: 1; justify-content: space-around; align-items: center; flex-direction: row;">
                 <ui:VisualElement name="MainSkill" class="MainSkillSlot">
                     <ui:VisualElement name="SkillIcon" class="SkillIcon" style="flex-grow: 0; background-image: url(&apos;project://database/Assets/UI/VFX/SkillIcons/Elements/Epiphany.jpg?fileID=2800000&amp;guid=5236d2fc24f170e4c97d93d8c827bf08&amp;type=3#Epiphany&apos;); -unity-background-image-tint-color: rgb(255, 255, 255); width: 100px; height: 100px; overflow: visible; -unity-background-scale-mode: stretch-to-fill; top: 9px; margin-top: 0; margin-bottom: 0; border-left-width: 1px; border-right-width: 1px; border-top-width: 1px; border-bottom-width: 1px; border-left-color: rgb(71, 43, 99); border-right-color: rgb(71, 43, 99); border-top-color: rgb(71, 43, 99); border-bottom-color: rgb(71, 43, 99);" />
@@ -544,7 +655,7 @@
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement name="SkillSpecific" style="flex-grow: 1; height: 600px; width: 401px; background-color: rgba(0, 0, 0, 0.65); justify-content: space-around; border-left-color: rgb(75, 76, 73); border-right-color: rgb(75, 76, 73); border-top-color: rgb(75, 76, 73); border-bottom-color: rgb(75, 76, 73); border-left-width: 1px; border-right-width: 1px; border-top-width: 1px; border-bottom-width: 1px;">
-                <ui:Label text="Description&#10;" display-tooltip-when-elided="true" name="Specific" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/FontAssets/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); font-size: 12px; color: rgb(255, 255, 255); height: 470px;" />
+                <ui:Label text="Description&#10;" display-tooltip-when-elided="true" name="Specific" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); font-size: 12px; color: rgb(255, 255, 255); height: 470px;" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>

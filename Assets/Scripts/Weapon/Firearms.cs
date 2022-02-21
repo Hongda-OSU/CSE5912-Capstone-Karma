@@ -15,7 +15,7 @@ namespace CSE5912.PolyGamers
 
         // WeaponInfo (might need external reference from Player Controller)
         public float damage = 0f;
-        public Damage.ElementType element;
+        public Element.Type element;
         public int AmmoInMag; // predefined ammo per mag
         public int MaxAmmoCarried; // predefined ammo total
         public float FireRate; // gun fire rate

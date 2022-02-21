@@ -48,7 +48,6 @@ namespace CSE5912.PolyGamers
         void Update()
         {
             float tmp_CurrentSpeed = WalkSpeed;
-            Debug.Log(characterController.isGrounded);
             if (characterController.isGrounded)
             {
                 var tmp_Horizontal = Input.GetAxis("Horizontal");

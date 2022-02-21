@@ -1,0 +1,62 @@
+.LevelUp {
+    font-size: 20px;
+    height: 25px;
+    width: 20px;
+    background-color: rgba(255, 255, 255, 0);
+    color: rgb(255, 255, 255);
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(255, 255, 255);
+    border-top-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+    -unity-font-definition: url('project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&guid=8f7da2db5416b234a88cdb420d609972&type=2#Futura SDF');
+    bottom: 1px;
+    transition-duration: 0.2s;
+}
+
+.Data {
+    flex-grow: 0;
+    -unity-font-definition: url('project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&guid=8f7da2db5416b234a88cdb420d609972&type=2#Futura SDF');
+    color: rgba(255, 255, 255, 255);
+    width: 112px;
+    align-items: flex-start;
+    -unity-text-align: upper-right;
+}
+
+.DataRow {
+    flex-direction: row;
+}
+
+.StatLabel {
+    -unity-font-definition: url('project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&guid=8f7da2db5416b234a88cdb420d609972&type=2#Futura SDF');
+    width: 530px;
+}
+
+.LevelUp:hover {
+    font-size: 20px;
+    height: 25px;
+    width: 20px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(255, 255, 255);
+    border-top-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+    -unity-font-definition: url('project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&guid=8f7da2db5416b234a88cdb420d609972&type=2#Futura SDF');
+    bottom: 1px;
+}
+
+.LevelUp:active {
+    font-size: 20px;
+    height: 25px;
+    width: 20px;
+    background-color: rgba(255, 255, 255, 0.6);
+    color: rgb(255, 255, 255);
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(255, 255, 255);
+    border-top-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+    -unity-font-definition: url('project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&guid=8f7da2db5416b234a88cdb420d609972&type=2#Futura SDF');
+    bottom: 1px;
+    transition-duration: 0.1s;
+    -unity-text-outline-color: rgba(255, 255, 255, 255);
+}
