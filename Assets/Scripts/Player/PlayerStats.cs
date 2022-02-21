@@ -44,7 +44,7 @@ namespace CSE5912.PolyGamers
         [SerializeField] private float venomResist = 0f;
         private Resist resist;
 
-        [Header("Levelup")]
+        [Header("Stats Up per Level")]
         [SerializeField] private float healthUp = 10f;
         [SerializeField] private float shieldUp = 10f;
         [SerializeField] private float critRateUp = 0.02f;
