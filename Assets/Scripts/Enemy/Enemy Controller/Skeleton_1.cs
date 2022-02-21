@@ -12,13 +12,6 @@ namespace CSE5912.PolyGamers
         private bool wandering = false;
         private float wanderCounter = 10f;
 
-        private void Awake()
-        {
-            enemyName = "Skeleton";
-            health = 100f;
-            maxHealth = 100f;
-        }
-
         void Update()
         {
             distanceToPlayer = Vector3.Distance(player.position, transform.position);

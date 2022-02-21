@@ -364,7 +364,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &484979331
 GameObject:
@@ -478,7 +478,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 409632, guid: c26833473ce06df4ba5631fd7a4b98bc, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 409632, guid: c26833473ce06df4ba5631fd7a4b98bc, type: 3}
       propertyPath: m_LocalScale.x
@@ -933,7 +933,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 991290155}
   m_LocalRotation: {x: 0, y: -0.99959534, z: 0, w: 0.028445214}
-  m_LocalPosition: {x: 36.84, y: 0.26, z: 71.61}
+  m_LocalPosition: {x: 25.99, y: 0.26, z: 72.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4690,12 +4690,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 406d1c336cc189f45ba7a353bac81b57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyName: 
-  level: 0
+  enemyName: Shield Goblin
+  level: 1
   experience: 0
-  health: 0
-  maxHealth: 0
-  attackDamage: 0
+  health: 100
+  maxHealth: 100
+  attackDamage: 10
   attackRange: 5
   physicalResist: 0
   fireResist: 0
@@ -4703,7 +4703,7 @@ MonoBehaviour:
   electroResist: 0
   venomResist: 0
   viewRadius: 15
-  viewAngle: 135
+  viewAngle: 100
   closeDetectionRange: 3
   canWander: 0
   wanderAreaNumber: 0

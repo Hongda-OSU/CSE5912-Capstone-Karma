@@ -11,6 +11,7 @@ TagManager:
   - Test Audio
   - Bullet
   - Enemy
+  - Shield
   layers:
   - Default
   - TransparentFX
