@@ -9,11 +9,6 @@ namespace CSE5912.PolyGamers
     {
         private bool isAttacking = false;
 
-        private void Awake()
-        {
-            enemyName = "Skeleton Warrior";
-        }
-
         void Update()
         {
             distanceToPlayer = Vector3.Distance(player.position, transform.position);
