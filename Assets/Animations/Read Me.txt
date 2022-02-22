@@ -1,0 +1,13 @@
+
+Elevate your POLYGON - Fantasy Rivals characters with these top quality hand keyed animations.
+
+Featuring an essential set of animations tailor made for three characters from the Fantasy Rivals asset pack.
+Slayer - Fort Golem - Pig Butcher
+
+All animations are made with the same setup as the original Fantasy Rivals.
+
+Although each characters animations were specifically tailored to them, all the animation data can retargeted to any other character using the Unity Humanoid rig.
+
+In collaboration with the master of souls-like tutorials, Sharp Accent.
+Learn the steps to implement these tailor made animations with examples from an actual production project, including AI and combat gameplay.
+  https://youtu.be/7yfbzM5012o
