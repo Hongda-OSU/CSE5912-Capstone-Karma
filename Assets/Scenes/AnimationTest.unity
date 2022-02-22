@@ -1018,7 +1018,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1800608336}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 48.35, y: -0.49, z: 55.07}
+  m_LocalPosition: {x: 48.35, y: -3.6, z: 28.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6685,7 +6685,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4196151434538916977}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 35.997597, y: -0.7600002, z: 52.595398}
+  m_LocalPosition: {x: 21.9, y: -0.7600002, z: 40.34}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7409,6 +7409,7 @@ GameObject:
   - component: {fileID: 4193926154858738047}
   - component: {fileID: 4281082087200268859}
   - component: {fileID: 4281082087200268860}
+  - component: {fileID: 4281082087200268861}
   m_Layer: 0
   m_Name: Goelm
   m_TagString: Untagged
@@ -7626,6 +7627,18 @@ CapsuleCollider:
   m_Height: 1.9
   m_Direction: 1
   m_Center: {x: 0, y: 0.9, z: 0}
+--- !u!114 &4281082087200268861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4196151434538916977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3703c04d07e3a2040bd09c5a248c54a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!137 &4311583236314165061
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
