@@ -101,6 +101,7 @@ namespace CSE5912.PolyGamers
             weaponRow.weapon = weapon;
 
             iconSlot.style.backgroundImage = new StyleBackground(weapon.iconImage);
+            iconSlot.style.unityBackgroundImageTintColor = WeaponsPanelControl.Instance.RarityToColor[weapon.Rarity];
             iconSlot.style.unityBackgroundScaleMode = ScaleMode.ScaleToFit;
         }
 

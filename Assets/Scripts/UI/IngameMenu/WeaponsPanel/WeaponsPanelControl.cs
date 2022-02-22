@@ -433,6 +433,11 @@ namespace CSE5912.PolyGamers
             VisualElement specific = specificPanel.Q<VisualElement>("Specific");
             VisualElement bonus = specificPanel.Q<VisualElement>("Bonus");
 
+            specificPanel.style.borderBottomColor = rarityToColor[weapon.Rarity];
+            specificPanel.style.borderLeftColor = rarityToColor[weapon.Rarity];
+            specificPanel.style.borderRightColor = rarityToColor[weapon.Rarity];
+
+
             title.Q<Label>("Name").text = weapon.WeaponName;
             title.Q<Label>("Name").style.color = rarityToColor[weapon.Rarity];
 
@@ -512,7 +517,11 @@ namespace CSE5912.PolyGamers
             selectedWeaponSlot = null;
 
             yield return StartCoroutine(FadeOut(specificPanel));
+
+            specificPanel.style.opacity = 0f;
         }
 
+
+        public Dictionary<Firearms.WeaponRarity, Color> RarityToColor { get { return rarityToColor; } }
     }
 }
