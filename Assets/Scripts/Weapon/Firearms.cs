@@ -15,11 +15,13 @@ namespace CSE5912.PolyGamers
         public ParticleSystem MuzzleParticle;
         public ParticleSystem CastingParticle;
 
-        [Header("WeaponInfo")]  
-        // weapon damage value
-        public float damage = 0f;
-        // weapon elemental type
-        public Element.Type element;
+        // weapon stats
+        [SerializeField] private int level = 1;
+        [SerializeField] private float damage = 0f;
+        [SerializeField] private Element.Type element;
+        private WeaponBonus weaponBonus;
+
+        [Header("WeaponInfo")]
         // predefined ammo per mag (AK: 30, Glock: 8)
         public int AmmoInMag;
         // predefined ammo total (AK: 120, Glock: 32)
@@ -102,6 +104,7 @@ namespace CSE5912.PolyGamers
 
         protected virtual void Awake()
         {
+            weaponBonus = new WeaponBonus(level);
             // set up current ammo
             CurrentAmmo = AmmoInMag; 
             CurrentMaxAmmoCarried = MaxAmmoCarried;
@@ -114,6 +117,15 @@ namespace CSE5912.PolyGamers
             doAimingCoroutine = DoAim();
             // define how many attachments one gun could have (4)
             attachments = new Attachment[PlayerInventory.NumOfAttachmentsPerWeapon];
+        }
+
+        protected virtual void Update()
+        {
+            weaponBonus.Perform(true);
+        }
+        private void OnDisable()
+        {
+            weaponBonus.Perform(false);
         }
 
         public void Attack()
@@ -296,10 +308,9 @@ namespace CSE5912.PolyGamers
             description =
                 "Name: " + gameObject.name +
                 "\nType: " + weaponType;
-
             // test
             description += "\n\n-----------------------------------------\n" +
-                "Test\n";
+                           "Test\n";
             for (int i = 0; i < attachments.Length; i++)
             {
                 description += "\nAttachment_" + i + ": ";
@@ -307,7 +318,19 @@ namespace CSE5912.PolyGamers
                 if (attachment != null)
                     description += attachment.attachmentName;
             }
+
+            var bonusDescriptionList = weaponBonus.GetBonusDescriptionList();
+            for (int i = 0; i < bonusDescriptionList.Count; i++)
+            {
+                description += "\n" + bonusDescriptionList[i];
+            }
+
             return description;
         }
+
+
+        public int Level { get { return level; } }
+        public float Damage { get { return damage; } }
+        public Element.Type Element { get { return element; } }
     }
 }
