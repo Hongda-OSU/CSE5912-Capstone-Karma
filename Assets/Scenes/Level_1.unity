@@ -10542,17 +10542,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4360623281039732, guid: 6ba104f97c32d5047ba032874347fc4a, type: 3}
   m_PrefabInstance: {fileID: 217043343}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &217450568 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4092260174426645251, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
-  m_PrefabInstance: {fileID: 1704977954}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a5432ab6191d084a891074cb44ef5a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &217761888
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30560,9 +30549,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b776c39be75f3204aab8076d76489d98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerWeapons:
-  - {fileID: 217450568}
-  - {fileID: 368006569}
+  maxNumOfWeapons: 5
+  maxNumOfAttachmentsPerWeapon: 4
+  defaultWeapon: {fileID: 368006569}
+  playerWeapons: []
   attachmentIcons:
   - {fileID: 21300000, guid: bb3442e858d00534f877838b8bb81757, type: 2}
   - {fileID: 21300000, guid: 2d9d53262d721164b8eba5a23659de54, type: 2}
@@ -31422,6 +31412,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4175703234892098, guid: 70c36c4adc1ac9849998aac621053468, type: 3}
   m_PrefabInstance: {fileID: 687944444}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &690651479 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5793499334547682943, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
+  m_PrefabInstance: {fileID: 1704977954}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &693208150
 PrefabInstance:
@@ -74593,9 +74588,17 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 789240833929632200, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
+      propertyPath: rarity
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 789240833929632200, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
       propertyPath: iconImage
       value: 
       objectReference: {fileID: 21300008, guid: ce679aa762875164cb3718b2eaa85abc, type: 3}
+    - target: {fileID: 789240833929632200, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
+      propertyPath: weaponName
+      value: dddd
+      objectReference: {fileID: 0}
     - target: {fileID: 789240833929632200, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
       propertyPath: weaponType
       value: 1
@@ -74681,9 +74684,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4093601272437484367, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
+      propertyPath: MainWeapon
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4093601272437484367, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
       propertyPath: WeaponIcon
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4093601272437484367, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
+      propertyPath: SecondaryWeapon
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4093601272437484367, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
+      propertyPath: weaponCollection
+      value: 
+      objectReference: {fileID: 690651479}
     - target: {fileID: 4153306448948074088, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
       propertyPath: m_Enabled
       value: 1

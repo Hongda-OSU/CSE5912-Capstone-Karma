@@ -9,8 +9,10 @@ namespace CSE5912.PolyGamers
 {
     public class PlayerInventory : MonoBehaviour
     {
-        [SerializeField] private static int numOfAttachmentsPerWeapon = 4;
-        public static int NumOfAttachmentsPerWeapon { get { return numOfAttachmentsPerWeapon; } }
+        [SerializeField] private int maxNumOfWeapons = 5;
+        [SerializeField] private int maxNumOfAttachmentsPerWeapon = 4;
+
+        [SerializeField] private Firearms defaultWeapon;
 
         private WeaponsPanelControl weaponsPanelControl;
         private AttachmentInventoryControl attachmentInventoryControl;
@@ -35,6 +37,7 @@ namespace CSE5912.PolyGamers
             }
             instance = this;
 
+            playerWeapons = new Firearms[maxNumOfWeapons];
             attachmentList = new List<Attachment>();
         }
         private void Start()
@@ -45,15 +48,20 @@ namespace CSE5912.PolyGamers
 
         private void Update()
         {
+            if (!Contains(defaultWeapon))
+                AddWeapon(defaultWeapon);
 
             if (!yes)
             {
                 // test
+                GameObject testAttachments = new GameObject();
                 int num = 100;
                 for (int i = 0; i < num; i++)
                 {
                     var attachment = new GameObject();
                     attachment.AddComponent<Attachment>();
+                    attachment.transform.SetParent(testAttachments.transform);
+
                     var at = attachment.GetComponent<Attachment>();
 
                     at.attachmentName = i.ToString();
@@ -82,6 +90,16 @@ namespace CSE5912.PolyGamers
             UpdateAll();
         }
 
+        public bool Contains(Firearms target)
+        {
+            foreach (var weapon in playerWeapons)
+            {
+                if (weapon == target)
+                    return true;
+            }
+            return false;
+        }
+
         private void UpdateAll()
         {
             WeaponsPanelControl.Instance.UpdateWeapons(playerWeapons);
@@ -91,7 +109,21 @@ namespace CSE5912.PolyGamers
 
         public List<Firearms> GetPlayerWeaponList()
         {
-            return new List<Firearms>(playerWeapons);
+            var list = new List<Firearms>();
+            for (int i = 0; i < playerWeapons.Length; i++)
+            {
+                if (playerWeapons[i] != null)
+                {
+                    list.Add(playerWeapons[i]);
+                }
+            }
+            return list;
         }
+
+
+        public Firearms DefaultWeapon { get { return defaultWeapon; } }
+        public int MaxNumOfWeapons { get { return maxNumOfWeapons; } }
+        public int MaxNumOfAttachmentsPerWeapon { get { return maxNumOfAttachmentsPerWeapon; } }
+        public Firearms[] PlayerWeapons { get { return playerWeapons; } }
     }
 }

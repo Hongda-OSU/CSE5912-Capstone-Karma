@@ -131,8 +131,12 @@ namespace CSE5912.PolyGamers
             GunCameraLocalOriginalRotation = GunCamera.transform.localRotation;
             GunCameraLocalOriginalPosition = GunCamera.transform.localPosition;
             doAimingCoroutine = DoAim();
+        }
+
+        protected void Start()
+        {
             // define how many attachments one gun could have (4)
-            attachments = new Attachment[PlayerInventory.NumOfAttachmentsPerWeapon];
+            attachments = new Attachment[PlayerInventory.Instance.MaxNumOfAttachmentsPerWeapon];
         }
 
         protected virtual void Update()

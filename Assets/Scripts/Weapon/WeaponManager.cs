@@ -12,10 +12,12 @@ namespace CSE5912.PolyGamers
         public Firearms SecondaryWeapon;
         // TODO: add three more weapon 
 
+        [SerializeField] private GameObject weaponCollection;
+        private List<Firearms> presetWeaponList;
+
         // current weapon player equipped
         private Firearms carriedWeapon;
         // TODO: comment
-        private Camera currentCamera;
 
         // Weapon pick up
         public Transform EyeCameraTransform;
@@ -42,23 +44,43 @@ namespace CSE5912.PolyGamers
                 Destroy(gameObject);
             }
             instance = this;
+
+            presetWeaponList = new List<Firearms>();
         }
 
         void Start()
         {
+            // disable all weapons on start
+            foreach (Transform child in weaponCollection.transform)
+            {
+                var weapon = child.GetComponent<Firearms>();
+                presetWeaponList.Add(weapon);
+                weapon.gameObject.SetActive(false);
+            }
+
+
+            MainWeapon = PlayerInventory.Instance.DefaultWeapon;
+            // baihua: player always has at least one defualt weapon on start
             // if main weapon exist, then set main weapon as carried weapon (By default the player has a primary weapon)
             if (MainWeapon != null)
             {
                 SetupCarriedWeapon(MainWeapon);
             }
-                
-            // if main weapon not exist and secondary weapon exist, set secondary weapon as carried weapon
-            if (MainWeapon == null && SecondaryWeapon != null)
-                SetupCarriedWeapon(SecondaryWeapon);
+            else
+            {
+                Debug.LogError("Error: Default weapon not set. ");
+            }
+
+            //// if main weapon not exist and secondary weapon exist, set secondary weapon as carried weapon
+            //if (MainWeapon == null && SecondaryWeapon != null)
+            //    SetupCarriedWeapon(SecondaryWeapon);
         }
 
         void Update()
         {
+            MainWeapon = PlayerInventory.Instance.PlayerWeapons[0];
+            SecondaryWeapon = PlayerInventory.Instance.PlayerWeapons[1];
+
             // check item pick up
             CheckItem();
             // don't update if no weapon
@@ -237,7 +259,7 @@ namespace CSE5912.PolyGamers
             carriedWeapon.isReloading = false;
         }
 
-        private void SetupCarriedWeapon(Firearms targetWeapon)
+        public void SetupCarriedWeapon(Firearms targetWeapon)
         {
             // disable current carried weapon if exist
             if (carriedWeapon)

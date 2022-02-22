@@ -102,7 +102,7 @@ namespace CSE5912.PolyGamers
                 return;
 
             // calculate final damage on health
-            health += overflow_armor;
+            Health += overflow_armor;
         }
 
 
@@ -214,15 +214,16 @@ namespace CSE5912.PolyGamers
         }
         public float Health { get { return health; } 
             set 
-            { 
-                Mathf.Clamp(health += value, 0, maxHealth);
+            {
+                health = value;
+                Mathf.Clamp(health, 0, maxHealth);
                 PlayerHealthBarControl.Instance.UpdateHealthBar();
             } 
         }
         public float MaxHealth { get { return maxHealth; } 
             set 
             {  
-                maxHealth += value;
+                maxHealth = value;
                 if (maxHealth < 0f)
                     maxHealth = 0f;
                 PlayerHealthBarControl.Instance.UpdateHealthBar();
