@@ -53937,6 +53937,11 @@ MonoBehaviour:
   maxHealth: 1000
   attackDamage: 0
   attackRange: 5
+  damageFactor_physical: 1
+  damageFactor_fire: 1
+  damageFactor_cryo: 1
+  damageFactor_electro: 1
+  damageFactor_venom: 1
   physicalResist: 0
   fireResist: 0
   cryoResist: 0
@@ -74629,7 +74634,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4092260174426645251, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
       propertyPath: element
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4092260174426645251, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
       propertyPath: iconImage
@@ -92495,7 +92500,7 @@ MonoBehaviour:
   reloadSpeedFactor: 1
   critRate: 0
   critDamageFactor: 0.5
-  damageFactor_physic: 0
+  damageFactor_physical: 0
   damageFactor_fire: 0
   damageFactor_cryo: 0
   damageFactor_electro: 0

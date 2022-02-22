@@ -13,9 +13,13 @@ namespace CSE5912.PolyGamers
         public ParticleSystem MuzzleParticle;
         public ParticleSystem CastingParticle;
 
+        // weapon stats
+        [SerializeField] private int level = 1;
+        [SerializeField] private float damage = 0f;
+        [SerializeField] private Element.Type element;
+        private WeaponBonus weaponBonus;
+
         // WeaponInfo (might need external reference from Player Controller)
-        public float damage = 0f;
-        public Element.Type element;
         public int AmmoInMag; // predefined ammo per mag
         public int MaxAmmoCarried; // predefined ammo total
         public float FireRate; // gun fire rate
@@ -88,6 +92,8 @@ namespace CSE5912.PolyGamers
 
         protected virtual void Awake()
         {
+            weaponBonus = new WeaponBonus(level);
+
             CurrentAmmo = AmmoInMag; // set current ammo to the defined ammo in mag
             CurrentMaxAmmoCarried = MaxAmmoCarried; 
             GunAnimator = GetComponent<Animator>(); // set up the correct gun animator
@@ -100,6 +106,14 @@ namespace CSE5912.PolyGamers
             attachments = new Attachment[PlayerInventory.NumOfAttachmentsPerWeapon];
         }
 
+        protected virtual void Update()
+        {
+            weaponBonus.Perform(true);
+        }
+        private void OnDisable()
+        {
+            weaponBonus.Perform(false);
+        }
 
         public void Attack()
         {
@@ -286,7 +300,19 @@ namespace CSE5912.PolyGamers
                 if (attachment != null)
                     description += attachment.attachmentName;
             }
+
+            var bonusDescriptionList = weaponBonus.GetBonusDescriptionList();
+            for (int i = 0; i < bonusDescriptionList.Count; i++)
+            {
+                description += "\n" + bonusDescriptionList[i];
+            }
+
             return description;
         }
+
+
+        public int Level { get { return level; } }
+        public float Damage { get { return damage; } }
+        public Element.Type Element { get { return element; } }
     }
 }
