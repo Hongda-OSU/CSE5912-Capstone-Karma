@@ -70,6 +70,9 @@ namespace CSE5912.PolyGamers
 
         public virtual void TakeDamage(Damage damage)
         {
+            if (health <= 0) 
+                return;
+
             float value = damage.ResolvedValue;
 
             health -= value;

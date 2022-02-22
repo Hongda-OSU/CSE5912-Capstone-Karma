@@ -11,6 +11,7 @@ namespace CSE5912.PolyGamers
         [SerializeField] private Color cryoColor = Color.cyan;
         [SerializeField] private Color electroColor = Color.blue;
         [SerializeField] private Color venomColor = Color.green;
+        private Dictionary<Type, Color> typeToColor;
 
         public enum Type
         {
@@ -31,24 +32,15 @@ namespace CSE5912.PolyGamers
                 Destroy(gameObject);
             }
             instance = this;
+
+            typeToColor = new Dictionary<Type,Color>();
+            typeToColor.Add(Type.Physical, physicalColor);
+            typeToColor.Add(Type.Fire, fireColor);
+            typeToColor.Add(Type.Cryo, cryoColor);
+            typeToColor.Add(Type.Electro, electroColor);
+            typeToColor.Add(Type.Venom, venomColor);
         }
 
-        public Color GetColor(Element.Type type)
-        {
-            switch (type)
-            {
-                case Type.Physical:
-                    return physicalColor;
-                case Type.Fire:
-                    return fireColor;
-                case Type.Cryo:
-                    return cryoColor;
-                case Type.Electro:
-                    return electroColor;
-                case Type.Venom:
-                    return venomColor;
-            }
-            return Color.black;
-        }
+        public Dictionary<Type, Color> TypeToColor { get { return typeToColor; } }
     }
 }

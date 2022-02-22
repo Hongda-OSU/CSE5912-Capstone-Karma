@@ -6,22 +6,22 @@ namespace CSE5912.PolyGamers
 {
     public class WeaponBonus
     {
+        private Firearms weapon;
+
         private List<Bonus> bonusList;
-        public WeaponBonus(int weaponLevel)
+        public WeaponBonus(Firearms weapon)
         {
+            this.weapon = weapon;  
+
             bonusList = new List<Bonus>();
-            for (int i = 0; i < weaponLevel; i++)
+            for (int i = 0; i < (int)weapon.Rarity; i++)
             {
-                bonusList.Add(new Bonus(weaponLevel));
+                bonusList.Add(new Bonus((int)weapon.Rarity));
             }
         }
 
         public void Perform(bool enabled)
         {
-            if (!enabled)
-            {
-                int i = 3;
-            }
             foreach (var bonus in bonusList)
                 bonus.Perform(enabled);
         }
@@ -47,6 +47,7 @@ namespace CSE5912.PolyGamers
             private static float factorPerLevel = 0.5f;
             private static float damageBonus = 0.042f;
 
+            //internal enum 
             internal Bonus(int level)
             {
                 this.level = level;

@@ -6,6 +6,29 @@ namespace CSE5912.PolyGamers
 {
     public abstract class Firearms : MonoBehaviour, IWeapon
     {
+        // weapon stats
+        [Header("WeaponStats")]
+        [SerializeField] private string weaponName;
+        [SerializeField] private WeaponType weaponType;
+        [SerializeField] private WeaponRarity rarity = WeaponRarity.Common;
+        [SerializeField] private float damage = 0f;
+        [SerializeField] private Element.Type element;
+        private WeaponBonus weaponBonus;
+
+        public enum WeaponRarity
+        {
+            Common = 1,
+            Rare = 2,
+            Epic = 3,
+            Legendary = 4,
+            Divine = 5,
+        }
+        public enum WeaponType
+        {
+            AK47,
+            Glock18,
+        }
+
         [Header("WeaponEffect")]
         // position where bullet generate
         public Transform MuzzlePoint;
@@ -15,11 +38,6 @@ namespace CSE5912.PolyGamers
         public ParticleSystem MuzzleParticle;
         public ParticleSystem CastingParticle;
 
-        // weapon stats
-        [SerializeField] private int level = 1;
-        [SerializeField] private float damage = 0f;
-        [SerializeField] private Element.Type element;
-        private WeaponBonus weaponBonus;
 
         [Header("WeaponInfo")]
         // predefined ammo per mag (AK: 30, Glock: 8)
@@ -69,13 +87,11 @@ namespace CSE5912.PolyGamers
         [Header("CameraShaking")] 
         public float SpreadAngle;
 
-        public enum WeaponType { Rifle, Handgun };
         public enum ShootingType { Fixed, Continued }
         public ShootingType shootingType;
 
         // UI related
         [Header("UI related")]
-        public WeaponType weaponType;
         public Sprite iconImage;
         public string description;
 
@@ -104,7 +120,7 @@ namespace CSE5912.PolyGamers
 
         protected virtual void Awake()
         {
-            weaponBonus = new WeaponBonus(level);
+            weaponBonus = new WeaponBonus(this);
             // set up current ammo
             CurrentAmmo = AmmoInMag; 
             CurrentMaxAmmoCarried = MaxAmmoCarried;
@@ -328,9 +344,11 @@ namespace CSE5912.PolyGamers
             return description;
         }
 
-
-        public int Level { get { return level; } }
+        public string WeaponName { get { return weaponName; } }
+        public WeaponType Type { get { return weaponType; } } 
+        public WeaponRarity Rarity { get { return rarity; } }
         public float Damage { get { return damage; } }
         public Element.Type Element { get { return element; } }
+        public WeaponBonus Bonus { get { return weaponBonus; } }
     }
 }

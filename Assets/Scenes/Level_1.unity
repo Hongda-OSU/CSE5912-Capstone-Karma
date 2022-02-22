@@ -74637,6 +74637,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4092260174426645251, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
+      propertyPath: rarity
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4092260174426645251, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
       propertyPath: element
       value: 1
       objectReference: {fileID: 0}
@@ -74644,6 +74648,10 @@ PrefabInstance:
       propertyPath: iconImage
       value: 
       objectReference: {fileID: 21300000, guid: ce679aa762875164cb3718b2eaa85abc, type: 3}
+    - target: {fileID: 4092260174426645251, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
+      propertyPath: weaponName
+      value: Divine AK47
+      objectReference: {fileID: 0}
     - target: {fileID: 4092260174426645251, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
       propertyPath: ImpactPrefab
       value: 
@@ -89711,6 +89719,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiDocument: {fileID: 1627926486}
   fadingTime: 0.15
+  commonColor: {r: 1, g: 1, b: 1, a: 1}
+  rareColor: {r: 0, g: 0, b: 1, a: 1}
+  epicColor: {r: 1, g: 0, b: 1, a: 1}
+  legendaryColor: {r: 1, g: 0, b: 0, a: 1}
+  devineColor: {r: 0, g: 1, b: 1, a: 1}
 --- !u!1001 &2038327205
 PrefabInstance:
   m_ObjectHideFlags: 0

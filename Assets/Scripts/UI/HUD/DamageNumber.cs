@@ -43,7 +43,7 @@ namespace CSE5912.PolyGamers
             TextMeshPro tmp = numberObj.GetComponent<TextMeshPro>();
             tmp.text = number.ToString();
             tmp.fontSize = fontSize;
-            tmp.color = Element.Instance.GetColor(damage.Element);
+            tmp.color = Element.Instance.TypeToColor[damage.Element];
 
             if (damage.IsCrit)
             {

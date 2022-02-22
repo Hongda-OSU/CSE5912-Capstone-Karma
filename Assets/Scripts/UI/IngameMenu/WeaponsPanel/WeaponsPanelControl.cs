@@ -10,6 +10,13 @@ namespace CSE5912.PolyGamers
 {
     public class WeaponsPanelControl : UI
     {
+        [SerializeField] private Color commonColor = Color.white;
+        [SerializeField] private Color rareColor = Color.blue;
+        [SerializeField] private Color epicColor = Color.magenta;
+        [SerializeField] private Color legendaryColor = Color.red;
+        [SerializeField] private Color devineColor = Color.cyan;
+        private Dictionary<Firearms.WeaponRarity, Color> rarityToColor;
+
         private WeaponRowsControl weaponRowsControl;
         private AttachmentInventoryControl attachmentInventoryControl;
 
@@ -36,6 +43,13 @@ namespace CSE5912.PolyGamers
             instance = this;
 
             Initialize();
+
+            rarityToColor = new Dictionary<Firearms.WeaponRarity, Color>();
+            rarityToColor.Add(Firearms.WeaponRarity.Common, commonColor);
+            rarityToColor.Add(Firearms.WeaponRarity.Rare, rareColor);
+            rarityToColor.Add(Firearms.WeaponRarity.Epic, epicColor);
+            rarityToColor.Add(Firearms.WeaponRarity.Legendary, legendaryColor);
+            rarityToColor.Add(Firearms.WeaponRarity.Divine, devineColor);
 
             specificPanel = root.Q<VisualElement>("ItemSpecific");
             specificPanel.style.display = DisplayStyle.None;
@@ -382,7 +396,7 @@ namespace CSE5912.PolyGamers
             }
             else if (selectedAttachmentInventorySlot != attachmentInventorySlot)
             {
-                PopUpSpecific(attachment.BuildDescription());
+                PopUpSpecific(attachment);
             }
         }
 
@@ -394,7 +408,7 @@ namespace CSE5912.PolyGamers
             }
             else 
             {
-                PopUpSpecific(attachment.BuildDescription());
+                PopUpSpecific(attachment);
             }
         }
 
@@ -409,18 +423,90 @@ namespace CSE5912.PolyGamers
             }
             else if (selectedWeaponSlot != weaponSlot && attachmentInventoryControl.attachmentsInventory.style.display == DisplayStyle.None)
             {
-                PopUpSpecific(weapon.BuildDescription());
+                PopUpSpecific(weapon);
             }
         }
 
-        private void PopUpSpecific(string description)
+        private void PopUpSpecific(Firearms weapon)
         {
-            specificPanel.Q<Label>("Description").text = description;
+            VisualElement title = specificPanel.Q<VisualElement>("Title");
+            VisualElement specific = specificPanel.Q<VisualElement>("Specific");
+            VisualElement bonus = specificPanel.Q<VisualElement>("Bonus");
+
+            title.Q<Label>("Name").text = weapon.WeaponName;
+            title.Q<Label>("Name").style.color = rarityToColor[weapon.Rarity];
+
+            title.Q<Label>("Type").text = weapon.Type.ToString();
+
+
+            //specific.Q<VisualElement>("Rarity").Q<Label>("Label").style.color = rarityToColor[weapon.Rarity];
+            specific.Q<VisualElement>("Rarity").Q<Label>("Data").text = weapon.Rarity.ToString();
+            specific.Q<VisualElement>("Rarity").Q<Label>("Data").style.color = rarityToColor[weapon.Rarity];
+
+            //specific.Q<VisualElement>("Damage").Q<Label>("Label").style.color = rarityToColor[weapon.Rarity];
+            specific.Q<VisualElement>("Damage").Q<Label>("Data").text = weapon.Damage.ToString();
+
+            //specific.Q<VisualElement>("Element").Q<Label>("Label").style.color = rarityToColor[weapon.Rarity];
+            specific.Q<VisualElement>("Element").Q<Label>("Data").text = weapon.Element.ToString();
+            specific.Q<VisualElement>("Element").Q<Label>("Data").style.color = Element.Instance.TypeToColor[weapon.Element];
+
+            //specific.Q<VisualElement>("Ammo").Q<Label>("Label").style.color = rarityToColor[weapon.Rarity];
+            specific.Q<VisualElement>("Ammo").Q<Label>("Data").text = weapon.AmmoInMag.ToString();
+
+
+            var list = weapon.Bonus.GetBonusDescriptionList();
+            int num = 0;
+            foreach (var child in bonus.Children())
+            {
+                if (num < list.Count)
+                {
+                    child.Q<Label>("Data").text = list[num];
+                    child.style.display = DisplayStyle.Flex;
+                }
+                else
+                {
+                    child.style.display = DisplayStyle.None;
+                }
+                num++;
+            }
 
             specificPanel.style.opacity = 1f;
             specificPanel.style.display = DisplayStyle.Flex;
         }
 
+        private void PopUpSpecific(Attachment attachment)
+        {
+            //VisualElement title = specificPanel.Q<VisualElement>("Title");
+            //VisualElement specific = specificPanel.Q<VisualElement>("Specific");
+            //VisualElement bonus = specificPanel.Q<VisualElement>("Bonus");
+
+            //title.Q<Label>("Name").text = weapon.WeaponName;
+            //title.Q<Label>("Type").text = weapon.Type.ToString();
+
+            //specific.Q<VisualElement>("Rarity").Q<Label>("Data").text = weapon.Rarity.ToString();
+            //specific.Q<VisualElement>("Damage").Q<Label>("Data").text = weapon.Damage.ToString();
+            //specific.Q<VisualElement>("Element").Q<Label>("Data").text = weapon.Element.ToString();
+            //specific.Q<VisualElement>("Ammo").Q<Label>("Data").text = weapon.AmmoInMag.ToString();
+
+            //var list = weapon.Bonus.GetBonusDescriptionList();
+            //int num = 0;
+            //foreach (var child in bonus.Children())
+            //{
+            //    if (num < list.Count)
+            //    {
+            //        child.Q<Label>("Data").text = list[num];
+            //        child.style.display = DisplayStyle.Flex;
+            //    }
+            //    else
+            //    {
+            //        child.style.display = DisplayStyle.None;
+            //    }
+            //    num++;
+            //}
+
+            specificPanel.style.opacity = 1f;
+            specificPanel.style.display = DisplayStyle.Flex;
+        }
         private IEnumerator PopOffSpecific()
         {
             selectedWeaponSlot = null;

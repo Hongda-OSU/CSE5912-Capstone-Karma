@@ -31,6 +31,7 @@ namespace CSE5912.PolyGamers
         public void PerformDamage(Enemy enemy, Vector3 position)
         {
             enemyHit = enemy;
+
             Firearms weapon = WeaponManager.Instance.CarriedWeapon;
 
             Damage damage = new Damage(weapon.Damage, weapon.Element, PlayerStats.Instance, enemyHit);

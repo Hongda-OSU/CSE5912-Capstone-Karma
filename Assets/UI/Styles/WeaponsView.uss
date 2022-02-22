@@ -119,3 +119,11 @@
     margin-top: 15px;
     transition-duration: 0.3s;
 }
+
+.SpecificRow {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 300px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
