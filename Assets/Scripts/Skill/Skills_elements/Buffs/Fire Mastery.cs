@@ -23,7 +23,7 @@ namespace CSE5912.PolyGamers
         {
             if (isReady)
             {
-                PlayerStats.Instance.DamageFactor_fire += damagePerLevel;
+                PlayerStats.Instance.GetDamageFactor().Fire.Value += damagePerLevel;
                 isReady = false;
             }
 
@@ -42,7 +42,7 @@ namespace CSE5912.PolyGamers
         public override void ResetLevel()
         {
             base.ResetLevel();
-            PlayerStats.Instance.DamageFactor_fire -= damagePerLevel * level;
+            PlayerStats.Instance.GetDamageFactor().Fire.Value -= damagePerLevel * level;
         }
     }
 }

@@ -84,6 +84,17 @@ namespace CSE5912.PolyGamers
             }
         }
 
+        protected override void Hit()
+        {
+            float damageAmount;
+            if (distanceToPlayer <= attackRange)
+            {
+                damageAmount = attackDamage + Mathf.RoundToInt(Random.Range(-2f, 4f));
+                Damage damage = new Damage(damageAmount, Element.Type.Physical, this, PlayerStats.Instance);
+                PlayerStats.Instance.TakeDamage(damage);
+            }
+        }
+
         private void ResetAttackAnimationTriggers()
         {
             animator.ResetTrigger("Attack_1");

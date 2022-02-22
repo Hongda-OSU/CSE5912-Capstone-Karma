@@ -33,7 +33,7 @@ namespace CSE5912.PolyGamers
             enemyHit = enemy;
             Firearms weapon = WeaponManager.Instance.CarriedWeapon;
 
-            Damage damage = new Damage(weapon.damage, weapon.element, PlayerStats.Instance, enemyHit);
+            Damage damage = new Damage(weapon.Damage, weapon.Element, PlayerStats.Instance, enemyHit);
             enemyHit.TakeDamage(damage);
 
             StartCoroutine(DamageNumber.Instance.DisplayDamageNumber(damage, position));

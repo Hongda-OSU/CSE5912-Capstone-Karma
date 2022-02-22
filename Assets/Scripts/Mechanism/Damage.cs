@@ -26,16 +26,16 @@ namespace CSE5912.PolyGamers
             this.element = element;
             this.source = source;
             this.target = target;
-            this.resolvedValue = CalculateResolvedValue(target.GetResist());
+            this.resolvedValue = CalculateResolvedValue(source.GetDamageFactor(), target.GetResist());
         }
 
 
-        private float CalculateResolvedValue(Resist resist)
+        private float CalculateResolvedValue(DamageFactor damageFactor, Resist resist)
         {
-
+            float damageFactorValue = damageFactor.FindDamageFactorByElement(element).Value;
             float resistValue = resist.FindResisByElement(element).Value;
 
-            return rawValue * (1 - PercentageReduced(resistValue));
+            return rawValue * (1 + damageFactorValue) * (1 - PercentageReduced(resistValue));
         }
 
         public static float PercentageReduced(float resistValue)

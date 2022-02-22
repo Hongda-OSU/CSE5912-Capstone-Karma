@@ -61,6 +61,35 @@ namespace CSE5912.PolyGamers
             }
         }
 
+        protected override void Hit()
+        {
+            float damageAmount;
+            if (distanceToPlayer <= attackRange)
+            {
+                damageAmount = attackDamage + Mathf.RoundToInt(Random.Range(-5f, 2f));
+                Damage damage = new Damage(damageAmount, Element.Type.Physical, this, PlayerStats.Instance);
+                PlayerStats.Instance.TakeDamage(damage);
+            }
+        }
+
+        void Kick()
+        {
+            if (distanceToPlayer <= attackRange)
+            {
+                Damage damage = new Damage(attackDamage + Mathf.RoundToInt(Random.Range(0f, 6f)), Element.Type.Physical, this, PlayerStats.Instance);
+                PlayerStats.Instance.TakeDamage(damage);
+            }
+        }
+
+        void HeavyHit()
+        {
+            if (distanceToPlayer <= attackRange)
+            {
+                Damage damage = new Damage(Mathf.RoundToInt(Random.Range(9f, 12f)), Element.Type.Physical, this, PlayerStats.Instance);
+                PlayerStats.Instance.TakeDamage(damage);
+            }
+        }
+
         protected override void HandleDeath()
         {
             if (!isPlayingDeathAnimation)

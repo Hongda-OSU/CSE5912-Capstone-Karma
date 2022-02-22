@@ -20,6 +20,14 @@ namespace CSE5912.PolyGamers
 
         protected Debuff debuff;
 
+        [Header("Damage")]
+        [SerializeField] private float damageFactor_physical = 1f;
+        [SerializeField] private float damageFactor_fire = 1f;
+        [SerializeField] private float damageFactor_cryo = 1f;
+        [SerializeField] private float damageFactor_electro = 1f;
+        [SerializeField] private float damageFactor_venom = 1f;
+        private DamageFactor damageFactor;
+
         [Header("Resists")]
         [SerializeField] private float physicalResist = 0f;
         [SerializeField] private float fireResist = 0f;
@@ -53,6 +61,9 @@ namespace CSE5912.PolyGamers
 
             debuff = new Debuff();
 
+            damageFactor = new DamageFactor();
+            damageFactor.SetValues(damageFactor_physical, damageFactor_fire, damageFactor_cryo, damageFactor_electro, damageFactor_venom);
+
             resist = new Resist();
             resist.SetValues(physicalResist, fireResist, cryoResist, electroResist, venomResist);
         }
@@ -72,6 +83,12 @@ namespace CSE5912.PolyGamers
         public int GetDebuffStack(Debuff.DebuffType type)
         {
             return debuff.GetDebuffStack(type);
+        }
+
+
+        public DamageFactor GetDamageFactor()
+        {
+            return damageFactor;
         }
         public Resist GetResist()
         {
