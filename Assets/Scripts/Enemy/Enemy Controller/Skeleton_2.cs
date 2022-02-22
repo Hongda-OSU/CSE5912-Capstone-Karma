@@ -18,7 +18,7 @@ namespace CSE5912.PolyGamers
                 return;
             }
 
-            if ((distanceToPlayer <= viewRadius && Vector3.Angle(transform.forward, directionToPlayer) < viewAngle / 2) 
+            if ((distanceToPlayer <= viewRadius && Vector3.Angle(transform.forward, directionToPlayer) < viewAngle / 2)
                 || distanceToPlayer <= closeDetectionRange || isAttackedByPlayer)
             {
                 foundTarget = true;
@@ -65,6 +65,25 @@ namespace CSE5912.PolyGamers
                 agent.isStopped = true;
                 animator.SetBool("Run", false);
                 agent.speed = 2f;
+            }
+        }
+
+        protected override void Hit()
+        {
+            float damageAmount;
+            if (distanceToPlayer <= attackRange)
+            {
+                damageAmount = attackDamage + Mathf.RoundToInt(Random.Range(-3f, 2f));
+                Damage damage = new Damage(damageAmount, Element.Type.Physical, this, PlayerStats.Instance);
+                PlayerStats.Instance.TakeDamage(damage);
+            }
+        }
+
+        void Scratch() {
+            if (distanceToPlayer <= attackRange)
+            {
+                Damage damage = new Damage(Mathf.RoundToInt(Random.Range(8f, 10f)), Element.Type.Physical, this, PlayerStats.Instance);
+                PlayerStats.Instance.TakeDamage(damage);
             }
         }
 
