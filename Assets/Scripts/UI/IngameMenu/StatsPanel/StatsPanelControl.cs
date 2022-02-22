@@ -68,21 +68,21 @@ namespace CSE5912.PolyGamers
             
 
             SetData("Level", stats.Level.ToString());
-            SetData("Experience", Mathf.Ceil(stats.Experience) + " / " + Mathf.Ceil(stats.ExperienceToUpgrade));
+            SetData("Experience", Mathf.Floor(stats.Experience) + " / " + Mathf.Ceil(stats.ExperienceToUpgrade));
             SetData("StatPoint", stats.StatPoint.ToString());
 
             SetData("Health", Mathf.Ceil(stats.Health) + " / " + Mathf.Ceil(stats.MaxHealth));
             SetData("Shield_armor", Mathf.Ceil(stats.Shield_armor) + " / " + Mathf.Ceil(stats.MaxShield_armor));
             SetData("Shield_energy", Mathf.Ceil(stats.Shield_energy) + " / " + Mathf.Ceil(stats.MaxShield_energy));
 
-            SetData("CritRate", Mathf.Ceil(stats.CritRate * 100) + "%");
-            SetData("CritDamage", Mathf.Ceil((1f + stats.CritDamageFactor) * 100) + "%");
+            SetData("CritRate", Math.Round((stats.CritRate * 100), 1) + "%");
+            SetData("CritDamage", Math.Round(((1f + stats.CritDamageFactor) * 100), 1) + "%");
 
-            SetData("PhysicalDamage", Mathf.Ceil(stats.DamageFactor_physic * 100) + "%");
-            SetData("FireDamage", Mathf.Ceil(stats.DamageFactor_fire * 100) + "%");
-            SetData("CryoDamage", Mathf.Ceil(stats.DamageFactor_cryo * 100) + "%");
-            SetData("ElectroDamage", Mathf.Ceil(stats.DamageFactor_electro * 100) + "%");
-            SetData("VenomDamage", Mathf.Ceil(stats.DamageFactor_venom * 100) + "%");
+            SetData("PhysicalDamage", Math.Round((stats.GetDamageFactor().Physical.Value * 100), 1) + "%");
+            SetData("FireDamage", Math.Round((stats.GetDamageFactor().Fire.Value * 100), 1) + "%");
+            SetData("CryoDamage", Math.Round((stats.GetDamageFactor().Cryo.Value * 100), 1) + "%");
+            SetData("ElectroDamage", Math.Round((stats.GetDamageFactor().Electro.Value * 100), 1) + "%");
+            SetData("VenomDamage", Math.Round((stats.GetDamageFactor().Venom.Value * 100), 1) + "%");
 
             var resist = stats.GetResist();
             SetResistData(resist, Element.Type.Physical);

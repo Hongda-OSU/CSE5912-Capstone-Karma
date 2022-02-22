@@ -30,11 +30,12 @@ namespace CSE5912.PolyGamers
         [SerializeField] private float critDamageFactor = 0.5f;
 
         [Header("Damage")]
-        [SerializeField] private float damageFactor_physic = 1f;
+        [SerializeField] private float damageFactor_physical = 1f;
         [SerializeField] private float damageFactor_fire = 1f;
         [SerializeField] private float damageFactor_cryo = 1f;
         [SerializeField] private float damageFactor_electro = 1f;
         [SerializeField] private float damageFactor_venom = 1f;
+        private DamageFactor damageFactor;
 
         [Header("Resist")]
         [SerializeField] private float physicalResist = 0f;
@@ -63,6 +64,9 @@ namespace CSE5912.PolyGamers
                 Destroy(gameObject);
             }
             instance = this;
+
+            damageFactor = new DamageFactor();
+            damageFactor.SetValues(damageFactor_physical, damageFactor_fire, damageFactor_cryo, damageFactor_electro, damageFactor_venom);
 
             resist = new Resist();
             resist.SetValues(physicalResist, fireResist, cryoResist, electroResist, venomResist);
@@ -107,7 +111,7 @@ namespace CSE5912.PolyGamers
             float extraDamage = 0f;
             if (critRate > Random.value) // todo - or enemy vital is hit)
             {
-                extraDamage = WeaponManager.Instance.CarriedWeapon.damage * critDamageFactor;
+                extraDamage = WeaponManager.Instance.CarriedWeapon.Damage * critDamageFactor;
             }
             return extraDamage;
         }
@@ -131,7 +135,7 @@ namespace CSE5912.PolyGamers
             moveSpeedFactor = 1f;
             reloadSpeedFactor = 1f;
 
-            damageFactor_physic = 1f;
+            damageFactor_physical = 1f;
             damageFactor_fire = 1f;
             damageFactor_cryo = 1f;
             damageFactor_electro = 1f;
@@ -165,7 +169,7 @@ namespace CSE5912.PolyGamers
                     critDamageFactor += critDamageUp;
                     break;
                 case "PhysicalDamage":
-                    damageFactor_physic += damageUp;
+                    damageFactor_physical += damageUp;
                     break;
                 case "FireDamage":
                     damageFactor_fire += damageUp;
@@ -200,7 +204,10 @@ namespace CSE5912.PolyGamers
 
         
 
-
+        public DamageFactor GetDamageFactor()
+        {
+            return damageFactor;
+        }
         public Resist GetResist()
         {
             return resist;
@@ -233,11 +240,6 @@ namespace CSE5912.PolyGamers
         public float CritRate { get { return critRate; } set { critRate = Mathf.Clamp(value, 0f, 1f); } }
         public float MoveSpeedFactor { get { return moveSpeedFactor; } set { moveSpeedFactor = value; } }
         public float ReloadSpeedFactor { get { return reloadSpeedFactor; } set { reloadSpeedFactor = value; } }
-        public float DamageFactor_physic { get { return damageFactor_physic; } set { damageFactor_physic = value; } }
-        public float DamageFactor_fire {  get { return damageFactor_fire; } set { damageFactor_fire = value; } }
-        public float DamageFactor_cryo {  get { return damageFactor_cryo;} set { damageFactor_cryo = value;} }
-        public float DamageFactor_electro {  get { return damageFactor_electro; } set { damageFactor_electro = value;} }
-        public float DamageFactor_venom { get { return damageFactor_venom; } set { damageFactor_venom = value;} }
 
         public float HealthUp { get { return healthUp; } }
         public float ShieldUp { get { return shieldUp; } }

@@ -68,6 +68,7 @@ namespace CSE5912.PolyGamers
             }
         }
 
+
         public void AddWeapon(Firearms weapon)
         {
             for (int i = 0; i < playerWeapons.Length; i++)

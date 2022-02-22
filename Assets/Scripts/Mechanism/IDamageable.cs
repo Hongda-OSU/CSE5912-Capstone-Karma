@@ -8,6 +8,7 @@ namespace CSE5912.PolyGamers
     {
         public void TakeDamage(Damage damage);
 
+        public DamageFactor GetDamageFactor();
         public Resist GetResist();
 
         public float ComputeExtraDamage();

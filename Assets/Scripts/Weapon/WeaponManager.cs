@@ -12,8 +12,6 @@ namespace CSE5912.PolyGamers
         public Firearms SecondaryWeapon;
         private Firearms carriedWeapon;
 
-        private Camera currentCamera;
-
         // Weapon pick up
         public Transform EyeCameraTransform;
         public float RayCastMaxDistance; // for item pickup
@@ -23,10 +21,6 @@ namespace CSE5912.PolyGamers
         internal bool isAiming;
         internal bool isFiring;
         internal bool isAttached;
-        //public GameObject AmmoCount;
-        //public Image WeaponIcon;
-        //private TMPro.TextMeshProUGUI AmmoText;
-        //public GameObject crosshair;
 
         private static WeaponManager instance;
         public static WeaponManager Instance { get { return instance; } }
