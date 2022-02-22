@@ -73898,6 +73898,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300008, guid: ce679aa762875164cb3718b2eaa85abc, type: 3}
     - target: {fileID: 789240833929632200, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
+      propertyPath: weaponType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 789240833929632200, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
       propertyPath: WeaponAudioData
       value: 
       objectReference: {fileID: 11400000, guid: 571751b02e0e14122bea17d011d37143, type: 2}
@@ -73945,6 +73949,10 @@ PrefabInstance:
       propertyPath: ImpactPrefab
       value: 
       objectReference: {fileID: 1879272669879180, guid: 7bef351ddc33ae044b671a7664396a20, type: 3}
+    - target: {fileID: 4092260174426645251, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
+      propertyPath: shootingType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4092260174426645251, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
       propertyPath: WeaponAudioData
       value: 

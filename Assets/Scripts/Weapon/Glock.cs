@@ -5,6 +5,7 @@ namespace CSE5912.PolyGamers
 {
     public class Glock : Firearms
     {
+        // bullet hole effect
         public GameObject ImpactPrefab;
         public ImpactAudioData impactAudioData;
         private IEnumerator reloadAmmoCheckerCoroutine;
@@ -16,6 +17,7 @@ namespace CSE5912.PolyGamers
         protected override void Awake()
         {
             base.Awake();
+            // get current gameobject local rotation and local position, used in lean shooting
             ControllerLocalOriginalRotation = transform.localRotation;
             ControllerLocalOriginalPosition = transform.localPosition;
             reloadAmmoCheckerCoroutine = CheckReloadAmmoAnimationEnd();
@@ -24,6 +26,7 @@ namespace CSE5912.PolyGamers
 
         protected override void Shoot()
         {
+            // same logic in AK47
             if (CurrentAmmo <= 0) return;
             if (!IsAllowShooting()) return;
             MuzzleParticle.Play();
@@ -66,7 +69,6 @@ namespace CSE5912.PolyGamers
         {
             if (Input.GetKey(KeyCode.Q))
                 CameraLeanLeft();
-
             if (Input.GetKey(KeyCode.E))
                 CameraLeanRight();
         }
@@ -94,13 +96,13 @@ namespace CSE5912.PolyGamers
 
         protected void CreateBullet()
         {
-            GameObject tmp_Bullet = Instantiate(BulletPrefab, MuzzlePoint.position, MuzzlePoint.rotation);
-            tmp_Bullet.transform.eulerAngles += CalculateBulletSpreadOffset();
-            var tmp_BulletScript = tmp_Bullet.AddComponent<Bullet>();
-            tmp_BulletScript.ImpactPrefab = ImpactPrefab;
-            tmp_BulletScript.impactAudioData = impactAudioData;
-            tmp_BulletScript.BulletSpeed = 100;
-            Destroy(tmp_Bullet, 5);
+            GameObject bullet = Instantiate(BulletPrefab, MuzzlePoint.position, MuzzlePoint.rotation);
+            bullet.transform.eulerAngles += CalculateBulletSpreadOffset();
+            var bulletScript = bullet.AddComponent<Bullet>();
+            bulletScript.ImpactPrefab = ImpactPrefab;
+            bulletScript.impactAudioData = impactAudioData;
+            bulletScript.BulletSpeed = 100;
+            Destroy(bullet, 5);
         }
     }
 }

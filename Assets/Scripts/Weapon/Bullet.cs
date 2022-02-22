@@ -5,10 +5,12 @@ namespace CSE5912.PolyGamers
     public class Bullet : MonoBehaviour
     {
         public float BulletSpeed;
+        private Transform bulletTransform;
+        // track bullet position
+        private Vector3 prevPosition;
+        // get impact component from Firearm class
         public GameObject ImpactPrefab;
         public ImpactAudioData impactAudioData;
-        private Transform bulletTransform;
-        private Vector3 prevPosition;
 
         void Start()
         {
@@ -23,29 +25,29 @@ namespace CSE5912.PolyGamers
 
             if (!Physics.Raycast(prevPosition,
                 (bulletTransform.position - prevPosition).normalized,
-                out RaycastHit tmp_Hit,
+                out RaycastHit hit,
                 (bulletTransform.position - prevPosition).magnitude)) return;
 
             // TODO:
-            CheckDamgeEenemy(tmp_Hit);
+            CheckDamgeEenemy(hit);
 
 
             //var tmp_BulletEffect =
             //    Instantiate(ImpactPrefab,
             //        tmp_Hit.point,
             //        Quaternion.LookRotation(tmp_Hit.normal, Vector3.up));
-            //Destroy(tmp_BulletEffect, 0.3f);
+            //Destroy(tmp_BulletEffect, 1f);
 
 
-            // For Audio
-            var tmp_TagsWithAudio = impactAudioData.ImpactTagsWithAudios.Find((tmp_AudioData) =>
+            // For impact Audio
+            var tmp_TagsWithAudio = impactAudioData.ImpactTagsWithAudios.Find((audioData) =>
             {
-                return tmp_AudioData.Tag.Equals(tmp_Hit.collider.tag);
+                return audioData.Tag.Equals(hit.collider.tag);
             });
             if (tmp_TagsWithAudio == null) return;
             int tmp_AudioDataCount = tmp_TagsWithAudio.ImpactAudioClips.Count;
             AudioClip tmp_AudioClip = tmp_TagsWithAudio.ImpactAudioClips[UnityEngine.Random.Range(0, tmp_AudioDataCount)];
-            AudioSource.PlayClipAtPoint(tmp_AudioClip, tmp_Hit.point);
+            AudioSource.PlayClipAtPoint(tmp_AudioClip, hit.point);
         }
 
         private void CheckDamgeEenemy(RaycastHit hit)

@@ -6,57 +6,70 @@ namespace CSE5912.PolyGamers
 {
     public abstract class Firearms : MonoBehaviour, IWeapon
     {
-        // WeaponEffect 
-        public Transform MuzzlePoint; // position where bullet fire
-        public Transform CasingPoint; // position where bullet pops
+        [Header("WeaponEffect")]
+        // position where bullet generate
+        public Transform MuzzlePoint;
+        // position where bullet pops
+        public Transform CasingPoint; 
         public GameObject BulletPrefab;
         public ParticleSystem MuzzleParticle;
         public ParticleSystem CastingParticle;
 
-        // WeaponInfo (might need external reference from Player Controller)
+        [Header("WeaponInfo")]  
+        // weapon damage value
         public float damage = 0f;
+        // weapon elemental type
         public Element.Type element;
-        public int AmmoInMag; // predefined ammo per mag
-        public int MaxAmmoCarried; // predefined ammo total
-        public float FireRate; // gun fire rate
-        protected int CurrentAmmo; // current ammo in mag (per)
-        protected int CurrentMaxAmmoCarried; // total current ammo left in mag (all)
+        // predefined ammo per mag (AK: 30, Glock: 8)
+        public int AmmoInMag;
+        // predefined ammo total (AK: 120, Glock: 32)
+        public int MaxAmmoCarried;
+        public float FireRate;
+        // current ammo in mag (per)
+        protected int CurrentAmmo;
+        // total current ammo left in mag (all)
+        protected int CurrentMaxAmmoCarried;
         protected float LastFireTime;
-        // for fps controller to play the correct animation
+        // current gun animator
         internal Animator GunAnimator; 
         protected AnimatorStateInfo GunStateInfo;
         
-        // Get current ammo and ammo left in mag
+        // Get current ammo and ammo left in mag 
         public int GetCurrentAmmo => CurrentAmmo;
         public int GetCurrentMaxAmmo => CurrentMaxAmmoCarried;
 
-        // WeaponAudioInfo
+        [Header("WeaponAudioInfo")]
         public AudioSource ShootingAudioSource;
         public AudioSource ReloadingAudioSource;
         public FirearmsAudioData WeaponAudioData;
 
-        // WeaponAiming
-        public Camera GunCamera; // Camera in Gun
-        public float FOVWhenAimed; // the updated field of view for gun camera when aimed
-        protected float GunCameraOriginFOV; // Camera FOV
+        [Header("WeaponAiming")]
+        public Camera GunCamera;
+        protected float GunCameraOriginFOV;
+        // the updated field of view for gun camera when aimed
+        public float FOVWhenAimed;
         internal bool isAiming;
         private IEnumerator doAimingCoroutine;
 
-        // WeaponReloading
+        // Weapon Shooting & Reloading
+        internal bool IsHoldingTrigger;
         internal bool isReloading;
 
-        // WeaponLeaning
+        [Header("WeaponLeaning")]
+        // camera local rotation and position
         protected Quaternion GunCameraLocalOriginalRotation;
         protected Vector3 GunCameraLocalOriginalPosition;
+        // camera slerping value
         public float SlerpTime;
         public float SlerpAngle;
         public float SlerpDistance;
 
-        // CameraShaking
+        [Header("CameraShaking")] 
         public float SpreadAngle;
 
-        // Weapon Shooting 
-        internal bool IsHoldingTrigger;
+        public enum WeaponType { Rifle, Handgun };
+        public enum ShootingType { Fixed, Continued }
+        public ShootingType shootingType;
 
         // UI related
         [Header("UI related")]
@@ -69,12 +82,11 @@ namespace CSE5912.PolyGamers
         [SerializeField] protected Attachment[] attachments;
         public Attachment[] Attachments { get { return attachments; } }
 
-        public enum WeaponType { Rifle, Handgun };
-
-        // Attachment info
-        public List<ScopeInfo> ScopeInfos = new List<ScopeInfo>(); // holder of different scopes
-        protected ScopeInfo scopeInfo; // store the information of scopes
-        internal bool isAttached;
+        [Header("Attachment info")]
+        // holder of different scopes in this gun
+        public List<ScopeInfo> ScopeInfos = new List<ScopeInfo>();
+        // store the information of scopes, like scope gameobject, fov
+        protected ScopeInfo scopeInfo;
         [System.Serializable]
         public class ScopeInfo
         {
@@ -83,32 +95,35 @@ namespace CSE5912.PolyGamers
             public float GunCameraFovWhenAttached;
             public Vector3 GunCameraPosition;
         }
+        internal bool isAttached;
 
+        // Firearms singleton
         public static Firearms Instance { get; private set; }
 
         protected virtual void Awake()
         {
-            CurrentAmmo = AmmoInMag; // set current ammo to the defined ammo in mag
-            CurrentMaxAmmoCarried = MaxAmmoCarried; 
-            GunAnimator = GetComponent<Animator>(); // set up the correct gun animator
+            // set up current ammo
+            CurrentAmmo = AmmoInMag; 
+            CurrentMaxAmmoCarried = MaxAmmoCarried;
+            // set up the gun animator
+            GunAnimator = GetComponent<Animator>(); 
             // save the original value for gun camera FOV, localPos and localRot
             GunCameraOriginFOV = GunCamera.fieldOfView; 
             GunCameraLocalOriginalRotation = GunCamera.transform.localRotation;
             GunCameraLocalOriginalPosition = GunCamera.transform.localPosition;
             doAimingCoroutine = DoAim();
-
+            // define how many attachments one gun could have (4)
             attachments = new Attachment[PlayerInventory.NumOfAttachmentsPerWeapon];
         }
-
 
         public void Attack()
         {
             Shoot();
         }
 
-        // check if able to shoot (shoot with fire rate)
         protected bool IsAllowShooting()
         {
+            // check if able to shoot
             return Time.time - LastFireTime > 1 / FireRate;
         }
 
@@ -119,8 +134,8 @@ namespace CSE5912.PolyGamers
 
         protected Vector3 CalculateBulletSpreadOffset()
         {
-            // field of view smaller (aimed), less bullet spread
-            float spreadPercentage = SpreadAngle / GunCamera.fieldOfView;
+            // aimed => less bullet spread
+            float spreadPercentage = SpreadAngle / (100 - GunCamera.fieldOfView);
             return spreadPercentage * UnityEngine.Random.insideUnitCircle;
         }
 
@@ -134,14 +149,16 @@ namespace CSE5912.PolyGamers
                 {
                     if (GunStateInfo.normalizedTime >= 0.9f)
                     {
-                        int tmp_HeadAmmoCount = AmmoInMag - CurrentAmmo;
-                        int tmp_RemaingAmmo = CurrentMaxAmmoCarried - tmp_HeadAmmoCount;
-                        if (tmp_RemaingAmmo <= 0)
+                        // calculate how many ammo have been used and how much ammo left
+                        int ammoUsed = AmmoInMag - CurrentAmmo;
+                        int remaingAmmo = CurrentMaxAmmoCarried - ammoUsed;
+                        if (remaingAmmo <= 0)
                             CurrentAmmo += CurrentMaxAmmoCarried;
                         else
                             CurrentAmmo = AmmoInMag;
-                        CurrentMaxAmmoCarried = tmp_RemaingAmmo <= 0 ? 0 : tmp_RemaingAmmo;
-
+                        // update how many ammo left 
+                        CurrentMaxAmmoCarried = remaingAmmo <= 0 ? 0 : remaingAmmo;
+                        // reloading finished
                         isReloading = false;
                         yield break;
                     }
@@ -149,35 +166,7 @@ namespace CSE5912.PolyGamers
             }
         }
 
-        protected IEnumerator DoAim()
-        {
-            while (true)
-            {
-                yield return null;
-                float tmp_RefGunCameraFOV = 0f;
-                GunCamera.fieldOfView = Mathf.SmoothDamp(GunCamera.fieldOfView,
-                        isAiming ? FOVWhenAimed : GunCameraOriginFOV,
-                        ref tmp_RefGunCameraFOV,
-                        Time.deltaTime * 2);
-
-                //TODO: check attachment, if true, disable crosshair when aiming, damp Main camera position to (x,-0.2f,0.03f)
-                if (isAttached)
-                {
-                    //float tmp_GunCurrentFOV = 0f;
-                    //GunCamera.fieldOfView = Mathf.SmoothDamp(GunCamera.fieldOfView,
-                    //    isAiming ? scopeInfo.GunFov : GunOriginFOV,
-                    //    ref tmp_GunCurrentFOV,
-                    //    Time.deltaTime * 2);
-
-                    Vector3 tmp_RefGunCameraPosition = Vector3.zero;
-                    GunCamera.transform.localPosition = Vector3.SmoothDamp(GunCamera.transform.localPosition,
-                        isAiming ? scopeInfo.GunCameraPosition : GunCameraLocalOriginalPosition,
-                        ref tmp_RefGunCameraPosition,
-                        Time.deltaTime * 2);
-                }
-            }
-        }
-
+        // weapon aiming
         protected void Aiming()
         {
             GunAnimator.SetBool("Aim", isAiming);
@@ -195,7 +184,43 @@ namespace CSE5912.PolyGamers
             }
         }
 
+        protected IEnumerator DoAim()
+        {
+            while (true)
+            {
+                yield return null;
+                float tmp_RefGunCameraFOV = 0f;
+                // smooth transit to aiming fov
+                GunCamera.fieldOfView = Mathf.SmoothDamp(GunCamera.fieldOfView,
+                        isAiming ? FOVWhenAimed : GunCameraOriginFOV,
+                        ref tmp_RefGunCameraFOV,
+                        Time.deltaTime * 2);
 
+                //TODO: check attachment, if true, smooth transit gun camera position to (0,-0.2f,0.03f)
+                if (isAttached)
+                {
+                    //float tmp_GunCurrentFOV = 0f;
+                    //GunCamera.fieldOfView = Mathf.SmoothDamp(GunCamera.fieldOfView,
+                    //    isAiming ? scopeInfo.GunFov : GunOriginFOV,
+                    //    ref tmp_GunCurrentFOV,
+                    //    Time.deltaTime * 2);
+
+                    // smooth transit to aiming pos
+                    Vector3 tmp_RefGunCameraPosition = Vector3.zero;
+                    GunCamera.transform.localPosition = Vector3.SmoothDamp(GunCamera.transform.localPosition,
+                        isAiming ? scopeInfo.GunCameraPosition : GunCameraLocalOriginalPosition,
+                        ref tmp_RefGunCameraPosition,
+                        Time.deltaTime * 2);
+                }
+            }
+        }
+
+        internal void SetupCarriedScope(ScopeInfo scopeInfo)
+        {
+            this.scopeInfo = scopeInfo;
+        }
+
+        // for weapon shooting
         internal void HoldTrigger()
         {
             Attack();
@@ -207,6 +232,7 @@ namespace CSE5912.PolyGamers
             IsHoldingTrigger = false;
         }
 
+        // for weapon aiming
         internal void StartAiming()
         {
             isAiming = true;
@@ -219,6 +245,7 @@ namespace CSE5912.PolyGamers
             Aiming();
         }
 
+        // for weapon reloading
         internal void ReloadAmmo()
         {
             isReloading = true;
@@ -227,6 +254,7 @@ namespace CSE5912.PolyGamers
             Reload();
         }
 
+        // for weapon lean shooting
         internal void StartLeanShooting()
         {
             StartCameraLean();
@@ -237,16 +265,9 @@ namespace CSE5912.PolyGamers
             StopCameraLean();
         }
 
-        internal void SetupCarriedScope(ScopeInfo scopeInfo)
-        {
-            this.scopeInfo = scopeInfo;
-        }
-
-
         /*
          * Ui related
          */
-
         public void SetAttachment(Attachment attachment, int index)
         {
             RemoveAttachment(attachments[index]);

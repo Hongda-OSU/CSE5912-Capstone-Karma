@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace CSE5912.PolyGamers
 {
@@ -8,77 +7,85 @@ namespace CSE5912.PolyGamers
     {
         // FPS controller and Weapons
         [SerializeField] private FPSControllerCC fpsController;
+        // 1st weapon in the inspector
         public Firearms MainWeapon;
         public Firearms SecondaryWeapon;
-        private Firearms carriedWeapon;
+        // TODO: add three more weapon 
 
+        // current weapon player equipped
+        private Firearms carriedWeapon;
+        // TODO: comment
         private Camera currentCamera;
 
         // Weapon pick up
         public Transform EyeCameraTransform;
-        public float RayCastMaxDistance; // for item pickup
-        public LayerMask ItemLayerMask; // item will be placed under Item layer
-        public List<Firearms> Arms = new List<Firearms>(); // the firearms (under player controller) enabled when the related gun is picked up
+        // the distance for player to pickup the weapon
+        public float RayCastMaxDistance;
+        // weapons and attachments will be placed under Item layer
+        public LayerMask ItemLayerMask;
+        // a list of weapons that could be enabled when the related gun is picked up
+        public List<Firearms> Arms = new List<Firearms>(); 
 
+        // condition checking
         internal bool isAiming;
         internal bool isFiring;
-        internal bool isAttached;
-        //public GameObject AmmoCount;
-        //public Image WeaponIcon;
-        //private TMPro.TextMeshProUGUI AmmoText;
-        //public GameObject crosshair;
 
+        // WeaponManager singleton
         private static WeaponManager instance;
         public static WeaponManager Instance { get { return instance; } }
 
         private void Awake()
         {
+            // create 
             if (instance != null && instance != this)
             {
                 Destroy(gameObject);
             }
             instance = this;
-
         }
 
         void Start()
         {
-            // if main weapon exist, then set main weapon as carried weapon
+            // if main weapon exist, then set main weapon as carried weapon (By default the player has a primary weapon)
             if (MainWeapon != null)
             {
                 SetupCarriedWeapon(MainWeapon);
-                //if (SecondaryWeapon)
-                //    SecondaryWeapon.gameObject.SetActive(false);
             }
                 
             // if main weapon not exist and secondary weapon exist, set secondary weapon as carried weapon
             if (MainWeapon == null && SecondaryWeapon != null)
                 SetupCarriedWeapon(SecondaryWeapon);
-
-            if (carriedWeapon)
-            {
-                //AmmoText = AmmoCount.GetComponent<TMPro.TextMeshProUGUI>();
-                //WeaponIcon.sprite = carriedWeapon.GunIcon;
-            }
         }
 
         void Update()
         {
-            // method to pick up item
+            // check item pick up
             CheckItem();
             // don't update if no weapon
             if (!carriedWeapon) return;
-
             // handle weapon swapping
             SwapWeapon();
 
             // hold the left mouse to shoot, no shooting on reloading
-            if (Input.GetMouseButton(0) && !carriedWeapon.isReloading)
+            // shooting type: continue
+            if (carriedWeapon.shootingType == Firearms.ShootingType.Continued)
             {
-                carriedWeapon.HoldTrigger();
-                isFiring = true;
+                if (Input.GetMouseButton(0) && !carriedWeapon.isReloading)
+                {
+                    carriedWeapon.HoldTrigger();
+                    isFiring = true;
+                }
             }
-            
+            // shooting type: fixed
+            if (carriedWeapon.shootingType == Firearms.ShootingType.Fixed)
+            {
+                if (Input.GetMouseButtonDown(0) && !carriedWeapon.isReloading)
+                {
+                    carriedWeapon.HoldTrigger();
+                    isFiring = true;
+                }
+            }
+
             // release the left mouse to stop shooting
             if (Input.GetMouseButtonUp(0))
             {
@@ -95,8 +102,6 @@ namespace CSE5912.PolyGamers
             {
                 carriedWeapon.StartAiming();
                 isAiming = true;
-                //if (isAttached)
-                    //crosshair.gameObject.SetActive(false);
             }
 
             // stop weapon aiming by releasing the right mouse (enable crosshair when scope attached)
@@ -104,8 +109,6 @@ namespace CSE5912.PolyGamers
             {
                 carriedWeapon.StopAiming();
                 isAiming = false;
-                //if (isAttached)
-                    //crosshair.gameObject.SetActive(true);
             }
             
             // start lean shooting only when aiming, press Q for left lean, E for right lean
@@ -113,14 +116,10 @@ namespace CSE5912.PolyGamers
                 carriedWeapon.StartLeanShooting();
             else
                 carriedWeapon.StopLeanShooting();
-
-            UpdateAmmoInfo(carriedWeapon.GetCurrentAmmo, carriedWeapon.GetCurrentMaxAmmo);
         }
 
-        private void UpdateAmmoInfo(int ammo, int remainingAmmo)
-        {
-            //AmmoText.SetText(ammo + "/" + remainingAmmo);
-        }
+        // getter method for current weapon
+        public Firearms CarriedWeapon { get { return carriedWeapon; } }
 
         private void SwapWeapon()
         {
@@ -153,25 +152,26 @@ namespace CSE5912.PolyGamers
                 carriedWeapon.gameObject.SetActive(true);
                 fpsController.SetupAnimator(carriedWeapon.GunAnimator);
             }
-            //WeaponIcon.sprite = carriedWeapon.GunIcon;
         }
 
         private void CheckItem()
         {
-            
-            bool tmp_IsItem = Physics.Raycast(EyeCameraTransform.position,
+            // using raycast to detect if the item in front of player is in Item layer
+            bool isItem = Physics.Raycast(EyeCameraTransform.position,
                 EyeCameraTransform.forward, out RaycastHit hit,
                 RayCastMaxDistance, ItemLayerMask);
-            // Need to check if the item already exist
-            if (tmp_IsItem)
+            if (isItem)
             {
+                // player pick up weapon by pressing E
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    bool tmp_HasItem = hit.collider.TryGetComponent(out BaseItem tmp_BaseItem);
-                    if (tmp_HasItem)
+                    // get the item component of type BaseItem, if it exists
+                    bool hasItem = hit.collider.TryGetComponent(out BaseItem baseItem);
+                    if (hasItem)
                     {
-                        PickupWeapon(tmp_BaseItem);
-                        PickupAttachment(tmp_BaseItem);
+                        // pick up the baseItem (could be FirearmsItem or Attachment)
+                        PickupWeapon(baseItem);
+                        PickupAttachment(baseItem);
                     }
                 }
             }
@@ -179,45 +179,51 @@ namespace CSE5912.PolyGamers
 
         private void PickupWeapon(BaseItem baseItem)
         {
-            if (!(baseItem is FirearmsItem tmp_FirearmsItem)) return;
-            foreach (Firearms tmp_Arm in Arms)
+            // if the baseItem find is not FirearmsItem, return
+            if (!(baseItem is FirearmsItem firearmsItem)) return;
+            // loop through each arm in the Firearm list
+            foreach (Firearms arm in Arms)
             {
-                if (tmp_FirearmsItem.ArmsName.CompareTo(tmp_Arm.name) == 0)
+                // compare the arm name to find the corresponding Firearm weapon
+                if (firearmsItem.ArmsName.CompareTo(arm.name) == 0)
                 {
-                    switch (tmp_FirearmsItem.CurrentFirearmsType)
+                    // equip firearm weapon base on weapon type
+                    switch (firearmsItem.CurrentFirearmsType)
                     {
                         case FirearmsItem.FirearmsType.AssaultRifle:
-                            MainWeapon = tmp_Arm;
+                            MainWeapon = arm;
                             break;
                         case FirearmsItem.FirearmsType.HandGun:
-                            SecondaryWeapon = tmp_Arm;
+                            SecondaryWeapon = arm;
                             break;
                     }
-                    tmp_FirearmsItem.HideItem();
-                    SetupCarriedWeapon(tmp_Arm);
+                    // firearmsItem.HideItem();
+                    SetupCarriedWeapon(arm);
                 }
             }
         }
 
         private void PickupAttachment(BaseItem baseItem)
         {
-            if (!(baseItem is Attachment tmp_AttachmentItem)) return;
-
-            switch (tmp_AttachmentItem.CurrentAttachmentType)
+            // if the baseItem find is not Attachment, return
+            if (!(baseItem is Attachment attachment)) return;
+            // enable attachment on weapon base on attachment type
+            switch (attachment.CurrentAttachmentType)
             {
                 case Attachment.AttachmentType.Scope:
-                    foreach (Firearms.ScopeInfo tmp_ScopeInfo in carriedWeapon.ScopeInfos)
+                    foreach (Firearms.ScopeInfo scopeInfo in carriedWeapon.ScopeInfos)
                     {
-                        if (tmp_ScopeInfo.ScopeName.CompareTo(tmp_AttachmentItem.ItemName) != 0)
+                        // find the right scope to enable
+                        if (scopeInfo.ScopeName.CompareTo(attachment.ItemName) != 0)
                         {
-                            tmp_ScopeInfo.ScopeGameObject.SetActive(false);
+                            scopeInfo.ScopeGameObject.SetActive(false);
                             continue;
                         }
-                        tmp_ScopeInfo.ScopeGameObject.SetActive(true);
-                        carriedWeapon.SetupCarriedScope(tmp_ScopeInfo);
-                        //
+                        // enable the scope
+                        scopeInfo.ScopeGameObject.SetActive(true);
+                        carriedWeapon.SetupCarriedScope(scopeInfo);
+                        // enable scoping value in Firearms
                         carriedWeapon.isAttached = true;
-                        isAttached = true;
                     }
                     break;
                 case Attachment.AttachmentType.Other:
@@ -239,12 +245,9 @@ namespace CSE5912.PolyGamers
             // swap to target weapon and set up gun animator
             carriedWeapon = targetWeapon;
             carriedWeapon.gameObject.SetActive(true);
+            // set up the correct gun animator
             fpsController.SetupAnimator(carriedWeapon.GunAnimator);
         }
-
-
-        public Firearms CarriedWeapon { get { return carriedWeapon; } }
-
     }
 }
    

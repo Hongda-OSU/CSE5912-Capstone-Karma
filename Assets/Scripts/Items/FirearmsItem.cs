@@ -4,7 +4,7 @@ namespace CSE5912.PolyGamers
 {
     public class FirearmsItem : BaseItem
     {
-        public enum FirearmsType { AssaultRifle, HandGun }
+        public enum FirearmsType { AssaultRifle, HandGun, Other }
         public FirearmsType CurrentFirearmsType;
         public string ArmsName;
 

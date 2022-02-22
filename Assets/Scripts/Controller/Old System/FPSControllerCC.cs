@@ -33,9 +33,6 @@ namespace CSE5912.PolyGamers
         [SerializeField] private ParticleSystem backwardDashParticle;
         private float horizontalInput, verticalInput;
 
-        private Vector3 hitNormal;
-        private bool isGrounded;
-
         void Start()
         {
             characterController = GetComponent<CharacterController>();
@@ -87,19 +84,9 @@ namespace CSE5912.PolyGamers
                 }
                 HandleAnimation();
             }
-            //if (Input.GetKeyDown(KeyCode.G))
-            //    characterAnimator.SetTrigger("GrenadeThrow");
-           
             movementDirection.y -= Gravity * Time.deltaTime * 0.6f;
             characterController.Move(tmp_CurrentSpeed * Time.deltaTime * movementDirection);
-        
         }
-
-        //void OnControllerColliderHit(ControllerColliderHit hit)
-        //{
-        //    hitNormal = hit.normal;
-        //    isGrounded = Vector3.Angle(Vector3.up, hitNormal) <= characterController.slopeLimit;
-        //}
 
         private void HandleAnimation()
         {
