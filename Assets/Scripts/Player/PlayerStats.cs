@@ -215,8 +215,7 @@ namespace CSE5912.PolyGamers
         public float Health { get { return health; } 
             set 
             {
-                health = value;
-                Mathf.Clamp(health, 0, maxHealth);
+                health = Mathf.Clamp(value, 0, maxHealth);
                 PlayerHealthBarControl.Instance.UpdateHealthBar();
             } 
         }
