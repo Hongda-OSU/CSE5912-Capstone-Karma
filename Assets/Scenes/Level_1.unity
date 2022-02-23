@@ -64485,8 +64485,8 @@ MonoBehaviour:
   CurrentItemType: 0
   ItemName: 
   ItemId: 1200
-  CurrentFirearmsType: 1
-  ArmsName: Glock18
+  CurrentFirearmsType: 0
+  ArmsName: 
 --- !u!65 &1415962874
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -65283,7 +65283,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1432578216}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 72.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -95699,7 +95699,7 @@ MonoBehaviour:
   ItemName: 
   ItemId: 1000
   CurrentFirearmsType: 0
-  ArmsName: AK47
+  ArmsName: 
 --- !u!65 &2105670148
 BoxCollider:
   m_ObjectHideFlags: 0
