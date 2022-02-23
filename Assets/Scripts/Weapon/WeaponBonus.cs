@@ -13,8 +13,13 @@ namespace CSE5912.PolyGamers
         private List<Bonus> bonusList;
         public WeaponBonus(Firearms weapon)
         {
-            this.weapon = weapon;
+            this.weapon = weapon; 
+            Initialize();
+        }
 
+        public void Initialize()
+        {
+            weapon.name = weapon.Rarity.ToString() + weapon.Type;
 
             bonusList = new List<Bonus>();
             for (int i = 0; i < (int)weapon.Rarity; i++)
@@ -54,7 +59,7 @@ namespace CSE5912.PolyGamers
 
         internal class Bonus
         {
-            internal delegate void BonusFunction(bool add);
+            internal delegate void BonusFunction(bool enabled);
 
             private Firearms weapon;
 
@@ -74,6 +79,9 @@ namespace CSE5912.PolyGamers
             private static float critDamageBonus = 0.06f;
             private static float critRateBonus = 0.12f;
             private static float ammoBonus = 0.2f;
+            private static float recoilReductionBonus = 0.15f;
+            private static float spreadReductionBonus = 0.15f;
+            private static float fireRateBonus = 0.05f;
 
             //internal enum 
             internal Bonus(Firearms weapon)
@@ -92,6 +100,9 @@ namespace CSE5912.PolyGamers
                     IncreaseCritDamage,
                     IncreaseCritRate,
                     IncreaseAmmo,
+                    DecreaseRecoil,
+                    DecreaseSpread,
+                    IncreaseFireRate,
                 };
             }
 
@@ -106,26 +117,34 @@ namespace CSE5912.PolyGamers
                 bonusFunction(enabled);
             }
 
-            private float ResolveValue(float value)
+            private float ResolveValue(float bonusValue)
             {
-                float resolvedValue = UnityEngine.Random.Range(value * (1 - valueVariance), value * (1 + valueVariance));
+                float resolvedValue = bonusValue * factorPerLevel * (level + 1);
+
+                resolvedValue = UnityEngine.Random.Range(resolvedValue * (1 - valueVariance), resolvedValue * (1 + valueVariance));
+
                 return (float)Math.Round(resolvedValue, 3);
             }
-            internal void IncreaseDamage_physical(bool add)
+
+
+            /*
+             *  Regular Bonuses
+             */
+
+            internal void IncreaseDamage_physical(bool enabled)
             {
-                if (add != isReady)
+                if (enabled != isReady)
                     return;
 
                 if (!isInitialized)
                 {
-                    value = elementDamageBonus * factorPerLevel * (level + 1);
-                    value = ResolveValue(value);
+                    value = ResolveValue(elementDamageBonus);
                     isInitialized = true;
                 }
 
                 description = "Physical Damage +" + Math.Round(value * 100, 1) + "%";
 
-                if (add)
+                if (enabled)
                 {
                     PlayerStats.Instance.GetDamageFactor().Physical.Value += value;
                     isReady = false;
@@ -137,21 +156,20 @@ namespace CSE5912.PolyGamers
                 }
             }
 
-            internal void IncreaseDamage_fire(bool add)
+            internal void IncreaseDamage_fire(bool enabled)
             {
-                if (add != isReady)
+                if (enabled != isReady)
                     return;
 
                 if (!isInitialized)
                 {
-                    value = elementDamageBonus * factorPerLevel * (level + 1);
-                    value = ResolveValue(value);
+                    value = ResolveValue(elementDamageBonus);
                     isInitialized = true;
                 }
 
                 description = "Fire Damage +" + Math.Round(value * 100, 1) + "%";
 
-                if (add)
+                if (enabled)
                 {
                     PlayerStats.Instance.GetDamageFactor().Fire.Value += value;
                     isReady = false;
@@ -164,21 +182,20 @@ namespace CSE5912.PolyGamers
             }
 
 
-            internal void IncreaseDamage_cryo(bool add)
+            internal void IncreaseDamage_cryo(bool enabled)
             {
-                if (add != isReady)
+                if (enabled != isReady)
                     return;
 
                 if (!isInitialized)
                 {
-                    value = elementDamageBonus * factorPerLevel * (level + 1);
-                    value = ResolveValue(value);
+                    value = ResolveValue(elementDamageBonus);
                     isInitialized = true;
                 }
 
                 description = "Cryo Damage +" + Math.Round(value * 100, 1) + "%";
 
-                if (add)
+                if (enabled)
                 {
                     PlayerStats.Instance.GetDamageFactor().Cryo.Value += value;
                     isReady = false;
@@ -190,21 +207,20 @@ namespace CSE5912.PolyGamers
                 }
             }
 
-            internal void IncreaseDamage_electro(bool add)
+            internal void IncreaseDamage_electro(bool enabled)
             {
-                if (add != isReady)
+                if (enabled != isReady)
                     return;
 
                 if (!isInitialized)
                 {
-                    value = elementDamageBonus * factorPerLevel * (level + 1);
-                    value = ResolveValue(value);
+                    value = ResolveValue(elementDamageBonus);
                     isInitialized = true;
                 }
 
                 description = "Electro Damage +" + Math.Round(value * 100, 1) + "%";
 
-                if (add)
+                if (enabled)
                 {
                     PlayerStats.Instance.GetDamageFactor().Electro.Value += value;
                     isReady = false;
@@ -216,21 +232,20 @@ namespace CSE5912.PolyGamers
                 }
             }
 
-            internal void IncreaseDamage_venom(bool add)
+            internal void IncreaseDamage_venom(bool enabled)
             {
-                if (add != isReady)
+                if (enabled != isReady)
                     return;
 
                 if (!isInitialized)
                 {
-                    value = elementDamageBonus * factorPerLevel * (level + 1);
-                    value = ResolveValue(value);
+                    value = ResolveValue(elementDamageBonus);
                     isInitialized = true;
                 }
 
                 description = "Venom Damage +" + Math.Round(value * 100, 1) + "%";
 
-                if (add)
+                if (enabled)
                 {
                     PlayerStats.Instance.GetDamageFactor().Venom.Value += value;
                     isReady = false;
@@ -243,21 +258,20 @@ namespace CSE5912.PolyGamers
             }
 
 
-            internal void IncreaseCritDamage(bool add)
+            internal void IncreaseCritDamage(bool enabled)
             {
-                if (add != isReady)
+                if (enabled != isReady)
                     return;
 
                 if (!isInitialized)
                 {
-                    value = critDamageBonus * factorPerLevel * (level + 1);
-                    value = ResolveValue(value);
+                    value = ResolveValue(critDamageBonus);
                     isInitialized = true;
                 }
 
                 description = "Critical Damage +" + Math.Round(value * 100, 1) + "%";
 
-                if (add)
+                if (enabled)
                 {
                     PlayerStats.Instance.CritDamageFactor += value;
                     isReady = false;
@@ -269,21 +283,20 @@ namespace CSE5912.PolyGamers
                 }
             }
 
-            internal void IncreaseCritRate(bool add)
+            internal void IncreaseCritRate(bool enabled)
             {
-                if (add != isReady)
+                if (enabled != isReady)
                     return;
 
                 if (!isInitialized)
                 {
-                    value = critRateBonus * factorPerLevel * (level + 1);
-                    value = ResolveValue(value);
+                    value = ResolveValue(critRateBonus);
                     isInitialized = true;
                 }
 
                 description = "Critical Rate +" + Math.Round(value * 100, 1) + "%";
 
-                if (add)
+                if (enabled)
                 {
                     PlayerStats.Instance.CritRate += value;
                     isReady = false;
@@ -295,22 +308,21 @@ namespace CSE5912.PolyGamers
                 }
             }
 
-            internal void IncreaseAmmo(bool add)
+            internal void IncreaseAmmo(bool enabled)
             {
-                if (add != isReady)
+                if (enabled != isReady)
                     return;
 
                 if (!isInitialized)
                 {
-                    value = ammoBonus * factorPerLevel * (level + 1);
-                    value = ResolveValue(value);
+                    value = ResolveValue(ammoBonus);
                     isInitialized = true;
                 }
 
                 description = "Ammo +" + Math.Round(value * 100, 1) + "%";
 
                 int ammo = WeaponManager.Instance.CarriedWeapon.AmmoInMag;
-                if (add)
+                if (enabled)
                 {
                     WeaponManager.Instance.CarriedWeapon.AmmoInMag = (int)Mathf.Floor(ammo * (1 + value));
                     isReady = false;
@@ -322,7 +334,81 @@ namespace CSE5912.PolyGamers
                 }
             }
 
+            internal void DecreaseRecoil(bool enabled)
+            {
+                if (enabled != isReady)
+                    return;
 
+                if (!isInitialized)
+                {
+                    value = ResolveValue(recoilReductionBonus);
+                    isInitialized = true;
+                }
+
+                description = "Recoil -" + Math.Round(value * 100, 1) + "%";
+
+                if (enabled)
+                {
+                    FPSMouseLook.Instance.RecoilScale *= 1 - value;
+                    isReady = false;
+                }
+                else
+                {
+                    FPSMouseLook.Instance.RecoilScale /= 1 - value;
+                    isReady = true;
+                }
+            }
+
+            internal void DecreaseSpread(bool enabled)
+            {
+                if (enabled != isReady)
+                    return;
+
+                if (!isInitialized)
+                {
+                    value = ResolveValue(spreadReductionBonus);
+                    isInitialized = true;
+                }
+
+                description = "Spread -" + Math.Round(value * 100, 1) + "%";
+
+                if (enabled)
+                {
+                    WeaponManager.Instance.CarriedWeapon.SpreadAngle *= (1 - value);
+                    isReady = false;
+                }
+                else
+                {
+                    WeaponManager.Instance.CarriedWeapon.SpreadAngle /= (1 - value);
+                    isReady = true;
+                }
+            }
+
+
+            internal void IncreaseFireRate(bool enabled)
+            {
+                if (enabled != isReady)
+                    return;
+
+                if (!isInitialized)
+                {
+                    value = ResolveValue(fireRateBonus);
+                    isInitialized = true;
+                }
+
+                description = "Fire Rate +" + Math.Round(value * 100, 1) + "%";
+
+                if (enabled)
+                {
+                    WeaponManager.Instance.CarriedWeapon.FireRate *= (1 + value);
+                    isReady = false;
+                }
+                else
+                {
+                    WeaponManager.Instance.CarriedWeapon.FireRate /= (1 + value);
+                    isReady = true;
+                }
+            }
 
             public string Description { get { return description; } }
         } 

@@ -18,6 +18,7 @@ namespace CSE5912.PolyGamers
         [Header("Recoil")]
         public AnimationCurve RecoilCurve;
         public Vector2 RecoilRange;
+        public float RecoilScale = 1f;
         public float RecoilFactorAimed;
         public float RecoilFadeOutTime;
         private float currentRecoilTime;
@@ -26,6 +27,15 @@ namespace CSE5912.PolyGamers
         // CameraShake 
         private CameraShake cameraShake;
 
+        private static FPSMouseLook instance;
+        public static FPSMouseLook Instance { get { return instance; } }
+
+        private void Awake()
+        {
+            if (instance != null && instance != this)
+                Destroy(gameObject);
+            instance = this;
+        }
         private void Start()
         {
             cameraTransform = transform;
@@ -64,14 +74,14 @@ namespace CSE5912.PolyGamers
 
         public void FiringWithRecoil()
         {
-            currentRecoil += RecoilRange;
+            currentRecoil += RecoilRange * RecoilScale;
             cameraShake.StartCameraSpring();
             currentRecoilTime = 0;
         }
 
         public void FiringWithRecoilAimed()
         {
-            currentRecoil += RecoilRange * RecoilFactorAimed;
+            currentRecoil += RecoilRange * RecoilFactorAimed * RecoilScale;
             cameraShake.StartCameraSpringAimed();
             currentRecoilTime = 0;
         }
