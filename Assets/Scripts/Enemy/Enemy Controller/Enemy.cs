@@ -18,6 +18,8 @@ namespace CSE5912.PolyGamers
         [SerializeField] protected float attackDamage;
         [SerializeField] protected float attackRange = 5f;
 
+        protected bool isAlive = true;
+
         protected Debuff debuff;
 
         [Header("Damage")]
@@ -35,6 +37,15 @@ namespace CSE5912.PolyGamers
         [SerializeField] private float electroResist = 0f;
         [SerializeField] private float venomResist = 0f;
         protected Resist resist;
+
+        [Header("Random Dropoff")]
+        [SerializeField] private float dropWeaponChance;
+        [SerializeField] private Firearms.WeaponType dropWeaponType;
+        [SerializeField] private Firearms.WeaponRarity dropWeaponRarity;
+
+        [Header("Certain Dropoff")]
+        // todo
+        //[SerializeField] private
 
         [Header("Detection Range")]
         [SerializeField] protected float viewRadius = 15f;
@@ -70,17 +81,31 @@ namespace CSE5912.PolyGamers
 
         public virtual void TakeDamage(Damage damage)
         {
-            if (health <= 0) 
+            if (!isAlive)
+            {
                 return;
+            }
 
             float value = damage.ResolvedValue;
 
             health -= value;
 
+            if (health <= 0)
+            {
+                isAlive = false;
+                //test
+                DropWeapon();
+            }
+
             if (!isAttackedByPlayer)
             {
                 isAttackedByPlayer = true;
             }
+        }
+
+        protected virtual void Die()
+        {
+
         }
 
         public int GetDebuffStack(Debuff.DebuffType type)
@@ -101,6 +126,15 @@ namespace CSE5912.PolyGamers
         public float ComputeExtraDamage()
         {
             return 0f;
+        }
+
+        protected void DropWeapon()
+        {
+            if (Random.value < dropWeaponChance)
+                return;
+
+            DropoffManager.Instance.DropWeapon(dropWeaponType, dropWeaponRarity, transform.position);
+
         }
 
         protected virtual void FaceTarget(Vector3 direction)

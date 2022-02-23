@@ -188,41 +188,54 @@ namespace CSE5912.PolyGamers
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     // get the item component of type BaseItem, if it exists
-                    bool hasItem = hit.collider.TryGetComponent(out BaseItem baseItem);
+                    bool hasItem = hit.collider.TryGetComponent(out FirearmsItem firearmsItem);
                     if (hasItem)
                     {
-                        // pick up the baseItem (could be FirearmsItem or Attachment)
-                        PickupWeapon(baseItem);
-                        PickupAttachment(baseItem);
+                        PickupWeapon(firearmsItem);
+                        Debug.Log(firearmsItem.Weapon.WeaponName);
                     }
+                    //if (hasItem)
+                    //{
+                    //    // pick up the baseItem (could be FirearmsItem or Attachment)
+                    //    PickupWeapon(baseItem);
+                    //    PickupAttachment(baseItem);
+                    //}
                 }
             }
         }
 
-        private void PickupWeapon(BaseItem baseItem)
+        private void PickupWeapon(FirearmsItem firearmsItem)
         {
             // if the baseItem find is not FirearmsItem, return
-            if (!(baseItem is FirearmsItem firearmsItem)) return;
+            //if (!(firearmsItem is FirearmsItem firearmsItem)) return;
+            var weapon = firearmsItem.Weapon;
+
+            weapon.gameObject.transform.SetParent(weaponCollection.transform, false);
+
+            PlayerInventory.Instance.AddWeapon(weapon);
+
+            SetupCarriedWeapon(weapon);
+
             // loop through each arm in the Firearm list
-            foreach (Firearms arm in Arms)
-            {
-                // compare the arm name to find the corresponding Firearm weapon
-                if (firearmsItem.ArmsName.CompareTo(arm.name) == 0)
-                {
-                    // equip firearm weapon base on weapon type
-                    switch (firearmsItem.CurrentFirearmsType)
-                    {
-                        case FirearmsItem.FirearmsType.AssaultRifle:
-                            MainWeapon = arm;
-                            break;
-                        case FirearmsItem.FirearmsType.HandGun:
-                            SecondaryWeapon = arm;
-                            break;
-                    }
-                    // firearmsItem.HideItem();
-                    SetupCarriedWeapon(arm);
-                }
-            }
+            //foreach (Firearms arm in Arms)
+            //{
+            //    // compare the arm name to find the corresponding Firearm weapon
+            //    if (firearmsItem.ArmsName.CompareTo(arm.name) == 0)
+            //    {
+            //        // equip firearm weapon base on weapon type
+            //        switch (firearmsItem.CurrentFirearmsType)
+            //        {
+            //            case FirearmsItem.FirearmsType.AssaultRifle:
+            //                MainWeapon = arm;
+            //                break;
+            //            case FirearmsItem.FirearmsType.HandGun:
+            //                SecondaryWeapon = arm;
+            //                break;
+            //        }
+            //        // firearmsItem.HideItem();
+            //        SetupCarriedWeapon(arm);
+            //    }
+            //}
         }
 
         private void PickupAttachment(BaseItem baseItem)
