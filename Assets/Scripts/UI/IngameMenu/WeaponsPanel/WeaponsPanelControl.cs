@@ -110,12 +110,14 @@ namespace CSE5912.PolyGamers
             {
                 weapon = weaponRowsControl.FindWeaponByRow(slot.parent);
 
-                if (selectedWeaponSlot != slot && !attachmentInventoryControl.IsInventoryOpened())
+                if (selectedWeaponSlot != slot)
                 {
                     selectedWeapon = weapon;
                 }
 
                 selectedWeaponSlot = slot;
+                selectedEquippedAttachmentSlot = null;
+                selectedAttachmentInventorySlot = null;
             }
 
             return weapon;
@@ -141,6 +143,7 @@ namespace CSE5912.PolyGamers
                     }
 
                     selectedEquippedAttachmentSlot = slot;
+                    selectedWeaponSlot = null;
                 }
             }
 
@@ -164,6 +167,7 @@ namespace CSE5912.PolyGamers
 
                     selectedAttachmentInventorySlot = slot;
                 }
+                selectedWeaponSlot = null;
             }
 
             return attachment;
@@ -248,6 +252,10 @@ namespace CSE5912.PolyGamers
 
         private void WeaponSlot_performed(VisualElement weaponSlot)
         {
+            if (attachmentInventoryControl.attachmentsInventory.style.display == DisplayStyle.Flex)
+            {
+                StartCoroutine(PopOffAttachmentInventory());
+            }
             StartCoroutine(PopUpWeaponSpecific(weaponSlot));
 
             SelectSlot(weaponSlot);
@@ -382,6 +390,7 @@ namespace CSE5912.PolyGamers
                 }
 
                 selectedEquippedAttachmentSlot = null;
+                selectedAttachment = null;
 
                 UpdateSlotsVisual();
             }
@@ -429,7 +438,7 @@ namespace CSE5912.PolyGamers
             {
                 yield return StartCoroutine(PopOffSpecific());
             }
-            else if (selectedWeaponSlot != weaponSlot && attachmentInventoryControl.attachmentsInventory.style.display == DisplayStyle.None)
+            else if (selectedWeaponSlot != weaponSlot)
             {
                 PopUpSpecific(weapon);
             }

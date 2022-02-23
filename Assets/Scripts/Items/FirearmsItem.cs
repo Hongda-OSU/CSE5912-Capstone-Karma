@@ -9,6 +9,11 @@ namespace CSE5912.PolyGamers
         private WeaponBonus bonus;
 
 
+        private void Awake()
+        {
+            CurrentItemType = ItemType.Firearms;
+        }
+
         public void AssignWeapon(Firearms weapon)
         {
             this.weapon = weapon;

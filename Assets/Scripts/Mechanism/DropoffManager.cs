@@ -68,63 +68,46 @@ namespace CSE5912.PolyGamers
             weapon.gameObject.SetActive(false);
 
 
-            GameObject dropItem = null;
+            GameObject dropoff = null;
             foreach (var drop in weaponDropoffList)
             {
                 if (drop.GetComponent<FirearmsItem>().Type == type)
                 {
                     Vector3 pos = position + Vector3.up * 2 * drop.GetComponent<Renderer>().bounds.size.y;
-                    dropItem = Instantiate(drop, pos, Quaternion.identity);
-                    dropItem.transform.SetParent(transform);
+                    dropoff = Instantiate(drop, pos, Quaternion.identity);
+                    dropoff.transform.SetParent(transform);
                 }
             }
 
-            dropItem.GetComponent<FirearmsItem>().AssignWeapon(weapon);
+            dropoff.GetComponent<FirearmsItem>().AssignWeapon(weapon);
 
-            return dropItem;
+            return dropoff;
         }
 
-        //public GameObject DropAttachment(Attachment.AttachmentType type, Attachment.AttachmentRarity rarity, Vector3 position)
-        //{
-        //    GameObject weaponObj = null;
-        //    foreach (var baseWeapon in baseWeaponList)
-        //    {
-        //        if (baseWeapon.GetComponent<Firearms>().Type == type)
-        //        {
-        //            weaponObj = Instantiate(baseWeapon);
-        //            weaponObj.transform.SetParent(transform);
-        //        }
-        //    }
-        //    if (weaponObj == null)
-        //    {
-        //        Debug.LogError("Error: Weapon type " + type.ToString() + " not found. ");
-        //        return null;
-        //    }
+        public GameObject DropAttachment(Attachment.AttachmentType type, Attachment.AttachmentRarity rarity, Vector3 position)
+        {
+            GameObject dropoff;
 
+            var list = new List<GameObject>();
+            foreach (var attachmentDropoff in attachmentDropoffList)
+            {
+                if (attachmentDropoff.GetComponent<AttachmentItem>().Type == type)
+                {
+                    list.Add(attachmentDropoff);
+                }
+            }
 
-        //    var weapon = weaponObj.GetComponent<Firearms>();
+            var randomAttachment = list[Random.Range(0, list.Count)];
 
-        //    weapon.Rarity = rarity;
-        //    WeaponBonus weaponBonus = new WeaponBonus(weapon);
-        //    weapon.Bonus = weaponBonus;
+            Vector3 pos = position + Vector3.up * 2 * randomAttachment.GetComponent<Renderer>().bounds.size.y;
 
-        //    weapon.gameObject.SetActive(false);
+            dropoff = Instantiate(randomAttachment, pos, Quaternion.identity);
+            dropoff.GetComponent<AttachmentItem>().InitializeBonus(rarity);
 
+            dropoff.transform.SetParent(transform);
+            dropoff.GetComponent<AttachmentItem>().Attachment.transform.SetParent(transform);
 
-        //    GameObject dropItem = null;
-        //    foreach (var drop in weaponDropoffList)
-        //    {
-        //        if (drop.GetComponent<FirearmsItem>().Type == type)
-        //        {
-        //            Vector3 pos = position + Vector3.up * 2 * drop.GetComponent<Renderer>().bounds.size.y;
-        //            dropItem = Instantiate(drop, pos, Quaternion.identity);
-        //            dropItem.transform.SetParent(transform);
-        //        }
-        //    }
-
-        //    dropItem.GetComponent<FirearmsItem>().AssignWeapon(weapon);
-
-        //    return dropItem;
-        //}
+            return dropoff;
+        }
     }
 }

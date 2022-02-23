@@ -108,7 +108,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 269269138436948110, guid: 8079191e181a385438e9fd0455e3806a, type: 3}
       propertyPath: m_Name
-      value: scope_02 Variant
+      value: Scope-Holo
       objectReference: {fileID: 0}
     - target: {fileID: 269269138436948110, guid: 8079191e181a385438e9fd0455e3806a, type: 3}
       propertyPath: m_Layer
@@ -198,7 +198,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.04340194, y: 0.058007747, z: 0.088354945}
   m_Center: {x: 0.00000025052577, y: 0.0077210525, z: 0.00060309283}
---- !u!114 &5462706828886364275
+--- !u!114 &5760182477230231037
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -207,17 +207,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5220740907608690912}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 602da8c095672d74abed12bc25da86a2, type: 3}
+  m_Script: {fileID: 11500000, guid: f331ea9f2051a59498176f6e64aee75d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentItemType: 0
-  ItemName: RedDotSight
-  ItemId: 1501
-  attachmentName: 
-  iconImage: {fileID: 0}
-  description: 
-  attachedTo: {fileID: 0}
-  CurrentAttachmentType: 0
+  CurrentItemType: 1
+  type: 1
+  iconImage: {fileID: 21300032, guid: 04e6792f470c37741aa02ec74be1777b, type: 3}
 --- !u!4 &9090680676642661107 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3884349190680375965, guid: 8079191e181a385438e9fd0455e3806a, type: 3}
@@ -244,7 +239,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1719131515888008, guid: 33f6247810b654041bccca4adbd93f45, type: 3}
       propertyPath: m_Name
-      value: Assault_Rifle_01
+      value: AK47
       objectReference: {fileID: 0}
     - target: {fileID: 1719131515888008, guid: 33f6247810b654041bccca4adbd93f45, type: 3}
       propertyPath: m_Layer
@@ -344,8 +339,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentItemType: 0
-  ItemName: 
-  ItemId: 1000
   type: 0
 --- !u!1001 &5462706830128030429
 PrefabInstance:
@@ -356,7 +349,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 75529581697974353, guid: e5ded3e14b561024391b2f166b501b9c, type: 3}
       propertyPath: m_Name
-      value: scope_01 Variant
+      value: Scope-Red Dot
       objectReference: {fileID: 0}
     - target: {fileID: 75529581697974353, guid: e5ded3e14b561024391b2f166b501b9c, type: 3}
       propertyPath: m_Layer
@@ -466,7 +459,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.05651803, y: 0.06595277, z: 0.091709055}
   m_Center: {x: 0.00000008568168, y: 0.003227138, z: 0.00000023841858}
---- !u!114 &5462706830128030430
+--- !u!114 &7384371746725063360
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -475,17 +468,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5387214632027284108}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 602da8c095672d74abed12bc25da86a2, type: 3}
+  m_Script: {fileID: 11500000, guid: f331ea9f2051a59498176f6e64aee75d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentItemType: 0
-  ItemName: 2X
-  ItemId: 1500
-  attachmentName: 
-  iconImage: {fileID: 0}
-  description: 
-  attachedTo: {fileID: 0}
-  CurrentAttachmentType: 0
+  CurrentItemType: 1
+  type: 1
+  iconImage: {fileID: 21300030, guid: 04e6792f470c37741aa02ec74be1777b, type: 3}
 --- !u!4 &8978034651525484703 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3987669300611822146, guid: e5ded3e14b561024391b2f166b501b9c, type: 3}
@@ -508,7 +496,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1669814075106190, guid: ea530e89dc913d14480baec0a57c7801, type: 3}
       propertyPath: m_Name
-      value: Handgun_01
+      value: Glock18
       objectReference: {fileID: 0}
     - target: {fileID: 1669814075106190, guid: ea530e89dc913d14480baec0a57c7801, type: 3}
       propertyPath: m_Layer
@@ -612,6 +600,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentItemType: 0
-  ItemName: 
-  ItemId: 1200
   type: 1

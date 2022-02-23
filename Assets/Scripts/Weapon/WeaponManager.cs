@@ -188,26 +188,22 @@ namespace CSE5912.PolyGamers
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     // get the item component of type BaseItem, if it exists
-                    bool hasItem = hit.collider.TryGetComponent(out FirearmsItem firearmsItem);
+                    bool hasItem = hit.collider.TryGetComponent(out BaseItem item);
                     if (hasItem)
                     {
-                        PickupWeapon(firearmsItem);
-                        Debug.Log(firearmsItem.Weapon.WeaponName);
+                        PickupWeapon(item);
+                        PickupAttachment(item);
+                        Debug.Log(item.name);
                     }
-                    //if (hasItem)
-                    //{
-                    //    // pick up the baseItem (could be FirearmsItem or Attachment)
-                    //    PickupWeapon(baseItem);
-                    //    PickupAttachment(baseItem);
-                    //}
                 }
             }
         }
 
-        private void PickupWeapon(FirearmsItem firearmsItem)
+        private void PickupWeapon(BaseItem baseItem)
         {
             // if the baseItem find is not FirearmsItem, return
-            //if (!(firearmsItem is FirearmsItem firearmsItem)) return;
+            if (!(baseItem is FirearmsItem firearmsItem)) return;
+
             var weapon = firearmsItem.Weapon;
 
             weapon.gameObject.transform.SetParent(weaponCollection.transform, false);
@@ -242,6 +238,11 @@ namespace CSE5912.PolyGamers
         {
             // if the baseItem find is not Attachment, return
             if (!(baseItem is AttachmentItem attachmentItem)) return;
+
+            var attachment = attachmentItem.Attachment;
+
+            PlayerInventory.Instance.AddAttachment(attachment);
+
             // enable attachment on weapon base on attachment type
             //switch (attachmentItem.Type)
             //{
