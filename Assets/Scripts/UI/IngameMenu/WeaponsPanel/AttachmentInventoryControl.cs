@@ -97,7 +97,7 @@ namespace CSE5912.PolyGamers
 
                     slotList[i].attachment = attachment;
 
-                    slot.Q<VisualElement>("AttachmentIcon").style.backgroundImage = new StyleBackground(attachment.iconImage);
+                    slot.Q<VisualElement>("AttachmentIcon").style.backgroundImage = new StyleBackground(attachment.IconImage);
                     slot.style.unityBackgroundScaleMode = ScaleMode.ScaleToFit;
                 }
             }
@@ -132,7 +132,7 @@ namespace CSE5912.PolyGamers
 
                 slotList[i].attachment = attachment;
 
-                slot.Q<VisualElement>("AttachmentIcon").style.backgroundImage = new StyleBackground(attachment.iconImage);
+                slot.Q<VisualElement>("AttachmentIcon").style.backgroundImage = new StyleBackground(attachment.IconImage);
                 slot.style.unityBackgroundScaleMode = ScaleMode.ScaleToFit;
 
             }

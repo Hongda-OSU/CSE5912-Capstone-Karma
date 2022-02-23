@@ -14,8 +14,9 @@ namespace CSE5912.PolyGamers
         [SerializeField] private Color rareColor = Color.blue;
         [SerializeField] private Color epicColor = Color.magenta;
         [SerializeField] private Color legendaryColor = Color.red;
-        [SerializeField] private Color devineColor = Color.cyan;
-        private Dictionary<Firearms.WeaponRarity, Color> rarityToColor;
+        [SerializeField] private Color divineColor = Color.cyan;
+        private Dictionary<Firearms.WeaponRarity, Color> weaponRarityToColor;
+        private Dictionary<Attachment.AttachmentRarity, Color> attachmentRarityToColor;
 
         private WeaponRowsControl weaponRowsControl;
         private AttachmentInventoryControl attachmentInventoryControl;
@@ -44,12 +45,19 @@ namespace CSE5912.PolyGamers
 
             Initialize();
 
-            rarityToColor = new Dictionary<Firearms.WeaponRarity, Color>();
-            rarityToColor.Add(Firearms.WeaponRarity.Common, commonColor);
-            rarityToColor.Add(Firearms.WeaponRarity.Rare, rareColor);
-            rarityToColor.Add(Firearms.WeaponRarity.Epic, epicColor);
-            rarityToColor.Add(Firearms.WeaponRarity.Legendary, legendaryColor);
-            rarityToColor.Add(Firearms.WeaponRarity.Divine, devineColor);
+            weaponRarityToColor = new Dictionary<Firearms.WeaponRarity, Color>();
+            weaponRarityToColor.Add(Firearms.WeaponRarity.Common, commonColor);
+            weaponRarityToColor.Add(Firearms.WeaponRarity.Rare, rareColor);
+            weaponRarityToColor.Add(Firearms.WeaponRarity.Epic, epicColor);
+            weaponRarityToColor.Add(Firearms.WeaponRarity.Legendary, legendaryColor);
+            weaponRarityToColor.Add(Firearms.WeaponRarity.Divine, divineColor);
+
+            attachmentRarityToColor = new Dictionary<Attachment.AttachmentRarity, Color>();
+            attachmentRarityToColor.Add(Attachment.AttachmentRarity.Common, commonColor);
+            attachmentRarityToColor.Add(Attachment.AttachmentRarity.Rare, rareColor);
+            attachmentRarityToColor.Add(Attachment.AttachmentRarity.Epic, epicColor);
+            attachmentRarityToColor.Add(Attachment.AttachmentRarity.Legendary, legendaryColor);
+            attachmentRarityToColor.Add(Attachment.AttachmentRarity.Divine, divineColor);
 
             specificPanel = root.Q<VisualElement>("ItemSpecific");
             specificPanel.style.display = DisplayStyle.None;
@@ -219,7 +227,7 @@ namespace CSE5912.PolyGamers
                 {
                     ApplySelectedVfx(slot, inventorySlot.attachment == selectedAttachment);
 
-                    if (inventorySlot.attachment.attachedTo != null)
+                    if (inventorySlot.attachment.AttachedTo != null)
                     {
                         slot.style.backgroundColor = Color.gray;
                     }
@@ -299,7 +307,7 @@ namespace CSE5912.PolyGamers
 
                 selectedAttachment = null;
 
-                Firearms weapon = attachment.attachedTo;
+                Firearms weapon = attachment.AttachedTo;
                 if (weapon != null)
                 {
                     weapon.RemoveAttachment(attachment);
@@ -312,7 +320,7 @@ namespace CSE5912.PolyGamers
                 int index = weaponRowsControl.GetAttachmentSlotIndex(selectedEquippedAttachmentSlot);
                 newWeapon.SetAttachment(attachment, index);
 
-                weaponRow.attachmentIconSlots[index].style.backgroundImage = new StyleBackground(attachment.iconImage);
+                weaponRow.attachmentIconSlots[index].style.backgroundImage = new StyleBackground(attachment.IconImage);
                 weaponRow.attachmentIconSlots[index].style.unityBackgroundScaleMode = ScaleMode.ScaleToFit;
 
                 selectedAttachmentInventorySlot = null;
@@ -429,24 +437,31 @@ namespace CSE5912.PolyGamers
 
         private void PopUpSpecific(Firearms weapon)
         {
+            specificPanel.Q<VisualElement>("WeaponSpecific").style.display = DisplayStyle.Flex;
+            specificPanel.Q<VisualElement>("AttachmentSpecific").style.display = DisplayStyle.None;
+
+
+            Color color = weaponRarityToColor[weapon.Rarity];
+
+            specificPanel.style.borderBottomColor = color;
+            specificPanel.style.borderLeftColor = color;
+            specificPanel.style.borderRightColor = color;
+
+
             VisualElement title = specificPanel.Q<VisualElement>("Title");
             VisualElement specific = specificPanel.Q<VisualElement>("Specific");
             VisualElement bonus = specificPanel.Q<VisualElement>("Bonus");
 
-            specificPanel.style.borderBottomColor = rarityToColor[weapon.Rarity];
-            specificPanel.style.borderLeftColor = rarityToColor[weapon.Rarity];
-            specificPanel.style.borderRightColor = rarityToColor[weapon.Rarity];
-
 
             title.Q<Label>("Name").text = weapon.WeaponName;
-            title.Q<Label>("Name").style.color = rarityToColor[weapon.Rarity];
+            title.Q<Label>("Name").style.color = color;
 
             title.Q<Label>("Type").text = weapon.Type.ToString();
 
 
             //specific.Q<VisualElement>("Rarity").Q<Label>("Label").style.color = rarityToColor[weapon.Rarity];
             specific.Q<VisualElement>("Rarity").Q<Label>("Data").text = weapon.Rarity.ToString();
-            specific.Q<VisualElement>("Rarity").Q<Label>("Data").style.color = rarityToColor[weapon.Rarity];
+            specific.Q<VisualElement>("Rarity").Q<Label>("Data").style.color = color;
 
             //specific.Q<VisualElement>("Damage").Q<Label>("Label").style.color = rarityToColor[weapon.Rarity];
             specific.Q<VisualElement>("Damage").Q<Label>("Data").text = weapon.Damage.ToString();
@@ -481,33 +496,47 @@ namespace CSE5912.PolyGamers
 
         private void PopUpSpecific(Attachment attachment)
         {
-            //VisualElement title = specificPanel.Q<VisualElement>("Title");
-            //VisualElement specific = specificPanel.Q<VisualElement>("Specific");
-            //VisualElement bonus = specificPanel.Q<VisualElement>("Bonus");
+            specificPanel.Q<VisualElement>("WeaponSpecific").style.display = DisplayStyle.None;
+            specificPanel.Q<VisualElement>("AttachmentSpecific").style.display = DisplayStyle.Flex;
 
-            //title.Q<Label>("Name").text = weapon.WeaponName;
-            //title.Q<Label>("Type").text = weapon.Type.ToString();
 
-            //specific.Q<VisualElement>("Rarity").Q<Label>("Data").text = weapon.Rarity.ToString();
-            //specific.Q<VisualElement>("Damage").Q<Label>("Data").text = weapon.Damage.ToString();
-            //specific.Q<VisualElement>("Element").Q<Label>("Data").text = weapon.Element.ToString();
-            //specific.Q<VisualElement>("Ammo").Q<Label>("Data").text = weapon.AmmoInMag.ToString();
+            Color color = attachmentRarityToColor[attachment.Rarity];
 
-            //var list = weapon.Bonus.GetBonusDescriptionList();
-            //int num = 0;
-            //foreach (var child in bonus.Children())
-            //{
-            //    if (num < list.Count)
-            //    {
-            //        child.Q<Label>("Data").text = list[num];
-            //        child.style.display = DisplayStyle.Flex;
-            //    }
-            //    else
-            //    {
-            //        child.style.display = DisplayStyle.None;
-            //    }
-            //    num++;
-            //}
+            specificPanel.style.borderBottomColor = color;
+            specificPanel.style.borderLeftColor = color;
+            specificPanel.style.borderRightColor = color;
+
+
+            VisualElement title = specificPanel.Q<VisualElement>("Title");
+            VisualElement specific = specificPanel.Q<VisualElement>("Specific");
+            VisualElement bonus = specificPanel.Q<VisualElement>("Bonus");
+
+
+            title.Q<Label>("Name").text = attachment.AttachmentName;
+            title.Q<Label>("Name").style.color = color;
+
+            title.Q<Label>("Type").text = attachment.Type.ToString();
+
+
+            //specific.Q<VisualElement>("Rarity").Q<Label>("Label").style.color = rarityToColor[weapon.Rarity];
+            specific.Q<VisualElement>("Rarity").Q<Label>("Data").text = attachment.Rarity.ToString();
+            specific.Q<VisualElement>("Rarity").Q<Label>("Data").style.color = color;
+
+            var list = attachment.Bonus.GetBonusDescriptionList();
+            int num = 0;
+            foreach (var child in bonus.Children())
+            {
+                if (num < list.Count)
+                {
+                    child.Q<Label>("Data").text = list[num];
+                    child.style.display = DisplayStyle.Flex;
+                }
+                else
+                {
+                    child.style.display = DisplayStyle.None;
+                }
+                num++;
+            }
 
             specificPanel.style.opacity = 1f;
             specificPanel.style.display = DisplayStyle.Flex;
@@ -522,6 +551,7 @@ namespace CSE5912.PolyGamers
         }
 
 
-        public Dictionary<Firearms.WeaponRarity, Color> RarityToColor { get { return rarityToColor; } }
+        public Dictionary<Firearms.WeaponRarity, Color> WeaponRarityToColor { get { return weaponRarityToColor; } }
+        public Dictionary<Attachment.AttachmentRarity, Color> AttachmentRarityToColor { get { return attachmentRarityToColor; } }
     }
 }

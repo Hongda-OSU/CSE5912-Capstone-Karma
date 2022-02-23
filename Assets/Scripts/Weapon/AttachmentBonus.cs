@@ -5,26 +5,26 @@ using UnityEngine;
 
 namespace CSE5912.PolyGamers
 {
-    public class WeaponBonus
+    public class AttachmentBonus
     {
-        private Firearms weapon;
+        private Attachment attachment;
 
         private List<int> availableBonusIndex;
         private List<Bonus> bonusList;
-        public WeaponBonus(Firearms weapon)
+        public AttachmentBonus(Attachment attachment)
         {
-            this.weapon = weapon; 
+            this.attachment = attachment; 
             Initialize();
         }
 
         public void Initialize()
         {
-            weapon.name = weapon.Rarity.ToString() + weapon.Type;
+            attachment.name = attachment.Rarity.ToString() + attachment.Type;
 
             bonusList = new List<Bonus>();
-            for (int i = 0; i < (int)weapon.Rarity + 1; i++)
+            for (int i = 0; i < (int)attachment.Rarity + 1; i++)
             {
-                Bonus bonus = new Bonus(weapon);
+                Bonus bonus = new Bonus(attachment);
                 if (i == 0)
                 {
                     availableBonusIndex = new List<int>();
@@ -61,7 +61,7 @@ namespace CSE5912.PolyGamers
         {
             internal delegate void BonusFunction(bool enabled);
 
-            private Firearms weapon;
+            private Attachment attachment;
 
             private float value;
             private int level;
@@ -84,10 +84,10 @@ namespace CSE5912.PolyGamers
             private static float fireRateBonus = 0.05f;
 
             //internal enum 
-            internal Bonus(Firearms weapon)
+            internal Bonus(Attachment attachment)
             {
-                this.weapon = weapon;
-                level = (int)weapon.Rarity + 1;
+                this.attachment = attachment;
+                level = (int)attachment.Rarity + 1;
                 isReady = true;
 
                 bonusFunctionList = new List<BonusFunction>()
@@ -324,9 +324,13 @@ namespace CSE5912.PolyGamers
                 int ammo = WeaponManager.Instance.CarriedWeapon.AmmoInMag;
                 if (enabled)
                 {
-                    weapon.AmmoInMag = (int)Mathf.Floor(ammo * (1 + value));
-                    weapon.CurrentAmmo = weapon.AmmoInMag;
+                    WeaponManager.Instance.CarriedWeapon.AmmoInMag = (int)Mathf.Floor(ammo * (1 + value));
                     isReady = false;
+                }
+                else
+                {
+                    WeaponManager.Instance.CarriedWeapon.AmmoInMag = (int)Mathf.Ceil(ammo / (1 + value));
+                    isReady = true;
                 }
             }
 
@@ -370,8 +374,13 @@ namespace CSE5912.PolyGamers
 
                 if (enabled)
                 {
-                    weapon.SpreadAngle *= 1 - value;
+                    WeaponManager.Instance.CarriedWeapon.SpreadAngle *= (1 - value);
                     isReady = false;
+                }
+                else
+                {
+                    WeaponManager.Instance.CarriedWeapon.SpreadAngle /= (1 - value);
+                    isReady = true;
                 }
             }
 
@@ -391,8 +400,13 @@ namespace CSE5912.PolyGamers
 
                 if (enabled)
                 {
-                    weapon.FireRate *= 1 + value;
+                    WeaponManager.Instance.CarriedWeapon.FireRate *= (1 + value);
                     isReady = false;
+                }
+                else
+                {
+                    WeaponManager.Instance.CarriedWeapon.FireRate /= (1 + value);
+                    isReady = true;
                 }
             }
 

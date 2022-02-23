@@ -15,7 +15,7 @@ namespace CSE5912.PolyGamers
 
         public VisualElement[] attachmentSlots;
         public VisualElement[] attachmentIconSlots;
-        public Attachment[] attachments;
+        public AttachmentItem[] attachments;
 
         public WeaponRow(VisualElement weaponRow)
         {
@@ -38,7 +38,7 @@ namespace CSE5912.PolyGamers
 
             attachmentSlots = new VisualElement[num];
             attachmentIconSlots = new VisualElement[num];
-            attachments = new Attachment[num];
+            attachments = new AttachmentItem[num];
 
             for (int i = 0; i < num; i++)
             {

@@ -26,7 +26,7 @@ namespace CSE5912.PolyGamers
         // weapons and attachments will be placed under Item layer
         public LayerMask ItemLayerMask;
         // a list of weapons that could be enabled when the related gun is picked up
-        public List<Firearms> Arms = new List<Firearms>(); 
+        //public List<Firearms> Arms = new List<Firearms>(); 
 
         // condition checking
         internal bool isAiming;
@@ -241,29 +241,29 @@ namespace CSE5912.PolyGamers
         private void PickupAttachment(BaseItem baseItem)
         {
             // if the baseItem find is not Attachment, return
-            if (!(baseItem is Attachment attachment)) return;
+            if (!(baseItem is AttachmentItem attachmentItem)) return;
             // enable attachment on weapon base on attachment type
-            switch (attachment.CurrentAttachmentType)
-            {
-                case Attachment.AttachmentType.Scope:
-                    foreach (Firearms.ScopeInfo scopeInfo in carriedWeapon.ScopeInfos)
-                    {
-                        // find the right scope to enable
-                        if (scopeInfo.ScopeName.CompareTo(attachment.ItemName) != 0)
-                        {
-                            scopeInfo.ScopeGameObject.SetActive(false);
-                            continue;
-                        }
-                        // enable the scope
-                        scopeInfo.ScopeGameObject.SetActive(true);
-                        carriedWeapon.SetupCarriedScope(scopeInfo);
-                        // enable scoping value in Firearms
-                        carriedWeapon.isAttached = true;
-                    }
-                    break;
-                case Attachment.AttachmentType.Other:
-                    break;
-            }
+            //switch (attachmentItem.Type)
+            //{
+            //    case Attachment.AttachmentType.Scope:
+            //        foreach (Firearms.ScopeInfo scopeInfo in carriedWeapon.ScopeInfos)
+            //        {
+            //            // find the right scope to enable
+            //            if (scopeInfo.ScopeName.CompareTo(attachmentItem.) != 0)
+            //            {
+            //                scopeInfo.ScopeGameObject.SetActive(false);
+            //                continue;
+            //            }
+            //            // enable the scope
+            //            scopeInfo.ScopeGameObject.SetActive(true);
+            //            carriedWeapon.SetupCarriedScope(scopeInfo);
+            //            // enable scoping value in Firearms
+            //            carriedWeapon.isAttached = true;
+            //        }
+            //        break;
+            //    case Attachment.AttachmentType.Other:
+            //        break;
+            //}
         }
 
         // allow weapon switching during reloading

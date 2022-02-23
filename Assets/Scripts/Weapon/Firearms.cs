@@ -17,11 +17,11 @@ namespace CSE5912.PolyGamers
 
         public enum WeaponRarity
         {
-            Common = 1,
-            Rare = 2,
-            Epic = 3,
-            Legendary = 4,
-            Divine = 5,
+            Common = 0,
+            Rare = 1,
+            Epic = 2,
+            Legendary = 3,
+            Divine = 4,
         }
         public enum WeaponType
         {
@@ -46,7 +46,7 @@ namespace CSE5912.PolyGamers
         public int MaxAmmoCarried;
         public float FireRate;
         // current ammo in mag (per)
-        protected int CurrentAmmo;
+        public int CurrentAmmo;
         // total current ammo left in mag (all)
         protected int CurrentMaxAmmoCarried;
         protected float LastFireTime;
@@ -55,7 +55,7 @@ namespace CSE5912.PolyGamers
         protected AnimatorStateInfo GunStateInfo;
         
         // Get current ammo and ammo left in mag 
-        public int GetCurrentAmmo => CurrentAmmo;
+        //public int GetCurrentAmmo => CurrentAmmo;
         public int GetCurrentMaxAmmo => CurrentMaxAmmoCarried;
 
         [Header("WeaponAudioInfo")]
@@ -93,30 +93,29 @@ namespace CSE5912.PolyGamers
         // UI related
         [Header("UI related")]
         public Sprite iconImage;
-        public string description;
 
         // Attachments
         [Header("Attachments")]
         [SerializeField] protected Attachment[] attachments;
         public Attachment[] Attachments { get { return attachments; } }
 
-        [Header("Attachment info")]
-        // holder of different scopes in this gun
-        public List<ScopeInfo> ScopeInfos = new List<ScopeInfo>();
-        // store the information of scopes, like scope gameobject, fov
-        protected ScopeInfo scopeInfo;
-        [System.Serializable]
-        public class ScopeInfo
-        {
-            public string ScopeName;
-            public GameObject ScopeGameObject;
-            public float GunCameraFovWhenAttached;
-            public Vector3 GunCameraPosition;
-        }
+        //[Header("Attachment info")]
+        //// holder of different scopes in this gun
+        //public List<ScopeInfo> ScopeInfos = new List<ScopeInfo>();
+        //// store the information of scopes, like scope gameobject, fov
+        //protected ScopeInfo scopeInfo;
+        //[System.Serializable]
+        //public class ScopeInfo
+        //{
+        //    public string ScopeName;
+        //    public GameObject ScopeGameObject;
+        //    public float GunCameraFovWhenAttached;
+        //    public Vector3 GunCameraPosition;
+        //}
         internal bool isAttached;
 
         // Firearms singleton
-        public static Firearms Instance { get; private set; }
+        //public static Firearms Instance { get; private set; }
 
         protected virtual void Awake()
         {
@@ -229,28 +228,28 @@ namespace CSE5912.PolyGamers
                         Time.deltaTime * 2);
 
                 //TODO: check attachment, if true, smooth transit gun camera position to (0,-0.2f,0.03f)
-                if (isAttached)
-                {
-                    //float tmp_GunCurrentFOV = 0f;
-                    //GunCamera.fieldOfView = Mathf.SmoothDamp(GunCamera.fieldOfView,
-                    //    isAiming ? scopeInfo.GunFov : GunOriginFOV,
-                    //    ref tmp_GunCurrentFOV,
-                    //    Time.deltaTime * 2);
+                //if (isAttached)
+                //{
+                //    //float tmp_GunCurrentFOV = 0f;
+                //    //GunCamera.fieldOfView = Mathf.SmoothDamp(GunCamera.fieldOfView,
+                //    //    isAiming ? scopeInfo.GunFov : GunOriginFOV,
+                //    //    ref tmp_GunCurrentFOV,
+                //    //    Time.deltaTime * 2);
 
-                    // smooth transit to aiming pos
-                    Vector3 tmp_RefGunCameraPosition = Vector3.zero;
-                    GunCamera.transform.localPosition = Vector3.SmoothDamp(GunCamera.transform.localPosition,
-                        isAiming ? scopeInfo.GunCameraPosition : GunCameraLocalOriginalPosition,
-                        ref tmp_RefGunCameraPosition,
-                        Time.deltaTime * 2);
-                }
+                //    // smooth transit to aiming pos
+                //    Vector3 tmp_RefGunCameraPosition = Vector3.zero;
+                //    GunCamera.transform.localPosition = Vector3.SmoothDamp(GunCamera.transform.localPosition,
+                //        isAiming ? scopeInfo.GunCameraPosition : GunCameraLocalOriginalPosition,
+                //        ref tmp_RefGunCameraPosition,
+                //        Time.deltaTime * 2);
+                //}
             }
         }
 
-        internal void SetupCarriedScope(ScopeInfo scopeInfo)
-        {
-            this.scopeInfo = scopeInfo;
-        }
+        //internal void SetupCarriedScope(ScopeInfo scopeInfo)
+        //{
+        //    this.scopeInfo = scopeInfo;
+        //}
 
         // for weapon shooting
         internal void HoldTrigger()
@@ -305,7 +304,7 @@ namespace CSE5912.PolyGamers
             RemoveAttachment(attachments[index]);
 
             attachments[index] = attachment;
-            attachment.attachedTo = this;
+            attachment.AttachedTo = this;
         }
 
         public void RemoveAttachment(Attachment target)
@@ -318,34 +317,9 @@ namespace CSE5912.PolyGamers
                 if (attachments[i] == target)
                 {
                     attachments[i] = null;
-                    target.attachedTo = null;
+                    target.AttachedTo = null;
                 }
             }
-        }
-
-        public string BuildDescription()
-        {
-            description =
-                "Name: " + gameObject.name +
-                "\nType: " + weaponType;
-            // test
-            description += "\n\n-----------------------------------------\n" +
-                           "Test\n";
-            for (int i = 0; i < attachments.Length; i++)
-            {
-                description += "\nAttachment_" + i + ": ";
-                Attachment attachment = attachments[i];
-                if (attachment != null)
-                    description += attachment.attachmentName;
-            }
-
-            var bonusDescriptionList = weaponBonus.GetBonusDescriptionList();
-            for (int i = 0; i < bonusDescriptionList.Count; i++)
-            {
-                description += "\n" + bonusDescriptionList[i];
-            }
-
-            return description;
         }
 
         public string WeaponName { get { return weaponName; } }

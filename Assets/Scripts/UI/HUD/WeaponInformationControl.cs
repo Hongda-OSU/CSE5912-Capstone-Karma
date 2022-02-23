@@ -82,7 +82,7 @@ namespace CSE5912.PolyGamers
                 {
                     weapon.style.opacity = 1f;
 
-                    int ammo = currentWeapon.GetCurrentAmmo;
+                    int ammo = currentWeapon.CurrentAmmo;
                     int maxAmmo = currentWeapon.GetCurrentMaxAmmo;
                     weapon.Q<Label>("Ammo").text = ammo.ToString() + " / " + maxAmmo.ToString();
 

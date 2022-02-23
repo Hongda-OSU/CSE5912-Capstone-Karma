@@ -64,8 +64,8 @@ namespace CSE5912.PolyGamers
 
                     var at = attachment.GetComponent<Attachment>();
 
-                    at.attachmentName = i.ToString();
-                    at.iconImage = attachmentIcons[UnityEngine.Random.Range(0, attachmentIcons.Length)];
+                    at.AttachmentName = i.ToString();
+                    at.IconImage = attachmentIcons[UnityEngine.Random.Range(0, attachmentIcons.Length)];
 
                     attachmentList.Add(at);
                 }

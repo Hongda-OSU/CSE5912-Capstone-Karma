@@ -56169,7 +56169,7 @@ MonoBehaviour:
   venomResist: 0
   dropWeaponChance: 0
   dropWeaponType: 0
-  dropWeaponRarity: 0
+  dropWeaponRarity: 5
   viewRadius: 15
   viewAngle: 135
   closeDetectionRange: 3
@@ -64269,6 +64269,10 @@ PrefabInstance:
       value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 7203780589899866328, guid: 2b3e9cdcf9fe4764a8e8be1af929877e, type: 3}
+      propertyPath: dropWeaponRarity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7203780589899866328, guid: 2b3e9cdcf9fe4764a8e8be1af929877e, type: 3}
       propertyPath: waypoints.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -64640,8 +64644,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentItemType: 0
-  ItemName: 
-  ItemId: 1200
   type: 0
 --- !u!65 &1415962874
 BoxCollider:
@@ -68628,7 +68630,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 789240833929632200, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
       propertyPath: rarity
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 789240833929632200, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
       propertyPath: AmmoInMag
@@ -93081,7 +93083,7 @@ MonoBehaviour:
   rareColor: {r: 0, g: 0, b: 1, a: 1}
   epicColor: {r: 1, g: 0, b: 1, a: 1}
   legendaryColor: {r: 1, g: 0, b: 0, a: 1}
-  devineColor: {r: 0, g: 1, b: 1, a: 1}
+  divineColor: {r: 0, g: 1, b: 1, a: 1}
 --- !u!1001 &2038327205
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -95821,8 +95823,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentItemType: 0
-  ItemName: 
-  ItemId: 1000
   type: 0
 --- !u!65 &2105670148
 BoxCollider:

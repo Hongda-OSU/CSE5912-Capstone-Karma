@@ -40,8 +40,8 @@ namespace CSE5912.PolyGamers
 
         [Header("Random Dropoff")]
         [SerializeField] private float dropWeaponChance;
-        [SerializeField] private Firearms.WeaponType dropWeaponType;
-        [SerializeField] private Firearms.WeaponRarity dropWeaponRarity;
+        [SerializeField] private Firearms.WeaponType dropWeaponType = Firearms.WeaponType.AK47;
+        [SerializeField] private Firearms.WeaponRarity dropWeaponRarity = Firearms.WeaponRarity.Divine;
 
         [Header("Certain Dropoff")]
         // todo
