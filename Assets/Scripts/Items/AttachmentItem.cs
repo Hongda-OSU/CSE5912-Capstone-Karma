@@ -19,15 +19,17 @@ namespace CSE5912.PolyGamers
             GameObject obj = new GameObject();
             attachment = obj.AddComponent<Attachment>();
             attachment.IconImage = iconImage;
-            InitializeBonus(rarity);
+            Setup(rarity);
         }
 
-        public void InitializeBonus(Attachment.AttachmentRarity rarity)
+        public void Setup(Attachment.AttachmentRarity rarity)
         {
             attachment.Rarity = rarity;
             bonus = new AttachmentBonus(attachment);
             attachment.Bonus = bonus;
             attachment.gameObject.name = attachment.AttachmentName;
+
+            SetupVfx(WeaponsPanelControl.Instance.AttachmentRarityToColor[rarity]);
         }
 
         public Attachment.AttachmentType Type { get { return type; } }

@@ -15,9 +15,12 @@ namespace CSE5912.PolyGamers
 
         }
 
-        public void AssignWeapon(Firearms weapon)
+        public void Setup(Firearms weapon)
         {
             this.weapon = weapon;
+
+            var color = WeaponsPanelControl.Instance.WeaponRarityToColor[weapon.Rarity];
+            SetupVfx(color);
         }
 
 

@@ -13,6 +13,8 @@ namespace CSE5912.PolyGamers
         [SerializeField] private GameObject baseWeaponPrefabs;
         private List<GameObject> baseWeaponList;
 
+        [SerializeField] private Vector2 dropPositionVariance;
+
         private static DropoffManager instance;
         public static DropoffManager Instance { get { return instance; } }
 
@@ -74,12 +76,15 @@ namespace CSE5912.PolyGamers
                 if (drop.GetComponent<FirearmsItem>().Type == type)
                 {
                     Vector3 pos = position + Vector3.up * 2 * drop.GetComponent<Renderer>().bounds.size.y;
+
+                    Vector3 offset = new Vector3(Random.Range(-dropPositionVariance.x, dropPositionVariance.x), 0, Random.Range(-dropPositionVariance.y, dropPositionVariance.y));
+                    pos += offset;
                     dropoff = Instantiate(drop, pos, Quaternion.identity);
                     dropoff.transform.SetParent(transform);
                 }
             }
 
-            dropoff.GetComponent<FirearmsItem>().AssignWeapon(weapon);
+            dropoff.GetComponent<FirearmsItem>().Setup(weapon);
 
             return dropoff;
         }
@@ -99,10 +104,10 @@ namespace CSE5912.PolyGamers
 
             var randomAttachment = list[Random.Range(0, list.Count)];
 
-            Vector3 pos = position + Vector3.up * 2 * randomAttachment.GetComponent<Renderer>().bounds.size.y;
+            Vector3 pos = position + Vector3.up * 6 * randomAttachment.GetComponent<Renderer>().bounds.size.y;
 
             dropoff = Instantiate(randomAttachment, pos, Quaternion.identity);
-            dropoff.GetComponent<AttachmentItem>().InitializeBonus(rarity);
+            dropoff.GetComponent<AttachmentItem>().Setup(rarity);
 
             dropoff.transform.SetParent(transform);
             dropoff.GetComponent<AttachmentItem>().Attachment.transform.SetParent(transform);
