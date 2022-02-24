@@ -18,7 +18,7 @@ namespace CSE5912.PolyGamers
         private void Update()
         {
             var target = PlayerManager.Instance.HitByBullet;
-            if (!isReady || target == null)
+            if (!isReady || target == null || !target.IsAlive)
                 return;
 
             foreach (var other in EnemyManager.Instance.EnemyList)

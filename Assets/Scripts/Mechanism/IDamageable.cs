@@ -11,6 +11,6 @@ namespace CSE5912.PolyGamers
         public DamageFactor GetDamageFactor();
         public Resist GetResist();
 
-        public float ComputeExtraDamage();
+        public float ComputeExtraDamage(float baseValue);
     }
 }

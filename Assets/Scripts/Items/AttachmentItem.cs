@@ -18,6 +18,8 @@ namespace CSE5912.PolyGamers
 
             GameObject obj = new GameObject();
             attachment = obj.AddComponent<Attachment>();
+            attachment.Type = type;
+            attachment.Rarity = rarity;
             attachment.IconImage = iconImage;
             Setup(rarity);
         }

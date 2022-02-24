@@ -43,7 +43,7 @@ namespace CSE5912.PolyGamers
 
 
         public string AttachmentName { get { return attachmentName; } set { attachmentName = value; } }
-        public AttachmentType Type { get { return attachmentType; } }
+        public AttachmentType Type { get { return attachmentType; } set { attachmentType = value; } }
         public AttachmentRarity Rarity { get { return rarity; } set { rarity = value; } }
         public Firearms AttachedTo { get { return attachedTo; } set { attachedTo = value; } }
         public AttachmentBonus Bonus { get { return attachmentBonus; } set { attachmentBonus = value; } }

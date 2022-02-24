@@ -18,7 +18,7 @@ namespace CSE5912.PolyGamers
 
         public Damage(float rawValue, Element.Type element, IDamageable source, IDamageable target)
         {
-            float extra = source.ComputeExtraDamage();
+            float extra = source.ComputeExtraDamage(rawValue);
             if (extra > 0f)
                 isCrit = true;
 

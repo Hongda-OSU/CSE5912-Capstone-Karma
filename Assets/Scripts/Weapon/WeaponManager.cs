@@ -238,6 +238,8 @@ namespace CSE5912.PolyGamers
             var attachment = attachmentItem.Attachment;
 
             PlayerInventory.Instance.AddAttachment(attachment);
+
+            baseItem.gameObject.SetActive(false);
         }
 
         private void DropWeapon(Firearms weapon, Vector3 position)

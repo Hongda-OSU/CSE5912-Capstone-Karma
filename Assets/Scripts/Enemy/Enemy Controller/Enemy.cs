@@ -18,7 +18,8 @@ namespace CSE5912.PolyGamers
         [SerializeField] protected float attackDamage;
         [SerializeField] protected float attackRange = 5f;
 
-        protected bool isAlive = true;
+        [SerializeField] protected bool isAlive = true;
+        [SerializeField] protected bool isFrozen = false;
 
         protected Debuff debuff;
 
@@ -109,7 +110,7 @@ namespace CSE5912.PolyGamers
 
         protected virtual void Die()
         {
-
+            // remove enemy from enemy list and destroy
         }
 
         public int GetDebuffStack(Debuff.DebuffType type)
@@ -127,7 +128,7 @@ namespace CSE5912.PolyGamers
             return resist;
         }
 
-        public float ComputeExtraDamage()
+        public float ComputeExtraDamage(float baseValue)
         {
             return 0f;
         }
@@ -178,5 +179,6 @@ namespace CSE5912.PolyGamers
         public float MaxHealth { get { return maxHealth;} }
         public float AttackDamage { get { return attackDamage;} }
         public bool IsAttackedByPlayer { get { return isAttackedByPlayer; } }
+        public bool IsAlive { get { return isAlive; } }
     }
 }

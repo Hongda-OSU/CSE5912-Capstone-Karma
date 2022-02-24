@@ -112,12 +112,12 @@ namespace CSE5912.PolyGamers
         }
 
 
-        public float ComputeExtraDamage()
+        public float ComputeExtraDamage(float baseValue)
         {
             float extraDamage = 0f;
             if (critRate > Random.value) // todo - or enemy vital is hit)
             {
-                extraDamage = WeaponManager.Instance.CarriedWeapon.Damage * critDamageFactor;
+                extraDamage = baseValue * critDamageFactor;
             }
             return extraDamage;
         }
