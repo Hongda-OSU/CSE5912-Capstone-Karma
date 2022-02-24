@@ -68722,11 +68722,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4093601272437484365, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
       propertyPath: Gravity
-      value: 15
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 4093601272437484365, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
       propertyPath: JumpHeight
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4093601272437484365, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
       propertyPath: cooldownTimer
