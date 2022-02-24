@@ -77429,6 +77429,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiDocument: {fileID: 103568467}
   fadingTime: 0.15
+  peekScale: 0.75
+  xOffset: 50
+  yOffset: -450
 --- !u!1001 &1701998825
 PrefabInstance:
   m_ObjectHideFlags: 0

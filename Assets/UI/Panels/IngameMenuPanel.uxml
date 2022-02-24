@@ -154,6 +154,18 @@
                         <ui:VisualElement name="BonusRow" class="SpecificRow" style="justify-content: center;">
                             <ui:Label text="Physical Damage +4.2%" display-tooltip-when-elided="true" name="Data" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); font-size: 12px;" />
                         </ui:VisualElement>
+                        <ui:VisualElement name="BonusRow" class="SpecificRow" style="justify-content: center;">
+                            <ui:Label text="Physical Damage +4.2%" display-tooltip-when-elided="true" name="Data" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); font-size: 12px;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="BonusRow" class="SpecificRow" style="justify-content: center;">
+                            <ui:Label text="Physical Damage +4.2%" display-tooltip-when-elided="true" name="Data" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); font-size: 12px;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="BonusRow" class="SpecificRow" style="justify-content: center;">
+                            <ui:Label text="Physical Damage +4.2%" display-tooltip-when-elided="true" name="Data" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); font-size: 12px;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="BonusRow" class="SpecificRow" style="justify-content: center;">
+                            <ui:Label text="Physical Damage +4.2%" display-tooltip-when-elided="true" name="Data" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); font-size: 12px;" />
+                        </ui:VisualElement>
                     </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement>

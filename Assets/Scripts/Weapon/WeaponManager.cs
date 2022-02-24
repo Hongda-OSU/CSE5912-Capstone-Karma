@@ -182,10 +182,11 @@ namespace CSE5912.PolyGamers
             bool isItem = Physics.Raycast(EyeCameraTransform.position,
                 EyeCameraTransform.forward, out RaycastHit hit,
                 RayCastMaxDistance, ItemLayerMask);
-            Debug.Log(isItem);
+
             if (isItem)
             {
                 bool hasItem = hit.collider.TryGetComponent(out BaseItem item);
+
                 ItemPeekControl.Instance.PeekItem(item);
 
                 // player pick up weapon by pressing E
@@ -229,6 +230,7 @@ namespace CSE5912.PolyGamers
             var attachment = attachmentItem.Attachment;
 
             PlayerInventory.Instance.AddAttachment(attachment);
+            Debug.Log(attachment.Rarity);
 
         }
 

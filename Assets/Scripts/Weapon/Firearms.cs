@@ -322,11 +322,12 @@ namespace CSE5912.PolyGamers
             }
         }
 
-        public string WeaponName { get { return weaponName; } }
+        public string WeaponName { get { return weaponName; } set { weaponName = value; } }
         public WeaponType Type { get { return weaponType; } } 
         public WeaponRarity Rarity { get { return rarity; } set { rarity = value; } }
         public float Damage { get { return damage; } }
         public Element.Type Element { get { return element; } }
         public WeaponBonus Bonus { get { return weaponBonus; } set { weaponBonus = value; } }
+        public Sprite IconImage { get { return iconImage; } }
     }
 }

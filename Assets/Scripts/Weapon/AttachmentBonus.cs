@@ -19,7 +19,7 @@ namespace CSE5912.PolyGamers
 
         public void Initialize()
         {
-            attachment.name = attachment.Rarity.ToString() + attachment.Type;
+            attachment.AttachmentName = attachment.Rarity.ToString() + attachment.Type;
 
             bonusList = new List<Bonus>();
             for (int i = 0; i < (int)attachment.Rarity + 1; i++)
@@ -109,6 +109,10 @@ namespace CSE5912.PolyGamers
             internal void AssignBonusFunction(int index)
             {
                 var func = bonusFunctionList[index];
+
+                func(true);
+                func(false);
+
                 bonusFunction = func;
             }
 

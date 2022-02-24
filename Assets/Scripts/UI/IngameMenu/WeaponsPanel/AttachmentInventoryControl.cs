@@ -98,6 +98,7 @@ namespace CSE5912.PolyGamers
                     slotList[i].attachment = attachment;
 
                     slot.Q<VisualElement>("AttachmentIcon").style.backgroundImage = new StyleBackground(attachment.IconImage);
+                    slot.Q<VisualElement>("AttachmentIcon").style.unityBackgroundImageTintColor = WeaponsPanelControl.Instance.AttachmentRarityToColor[attachment.Rarity];
                     slot.style.unityBackgroundScaleMode = ScaleMode.ScaleToFit;
                 }
             }

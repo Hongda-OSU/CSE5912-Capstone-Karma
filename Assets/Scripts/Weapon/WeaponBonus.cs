@@ -19,7 +19,7 @@ namespace CSE5912.PolyGamers
 
         public void Initialize()
         {
-            weapon.name = weapon.Rarity.ToString() + weapon.Type;
+            weapon.WeaponName = weapon.Rarity.ToString() + weapon.Type;
 
             bonusList = new List<Bonus>();
             for (int i = 0; i < (int)weapon.Rarity + 1; i++)
