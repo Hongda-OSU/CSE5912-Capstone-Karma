@@ -46,36 +46,12 @@ namespace CSE5912.PolyGamers
         {
             weaponsPanelControl = WeaponsPanelControl.Instance;
             attachmentInventoryControl = AttachmentInventoryControl.Instance;
+            AddWeapon(defaultWeapon);
         }
 
         private void Update()
         {
-            if (!Contains(defaultWeapon))
-                AddWeapon(defaultWeapon);
 
-            //if (!yes)
-            //{
-            //    // test
-            //    GameObject testAttachments = new GameObject();
-            //    int num = 100;
-            //    for (int i = 0; i < num; i++)
-            //    {
-            //        var attachment = new GameObject();
-            //        attachment.AddComponent<Attachment>();
-            //        attachment.transform.SetParent(testAttachments.transform);
-
-            //        var at = attachment.GetComponent<Attachment>();
-
-            //        at.AttachmentName = i.ToString();
-            //        at.IconImage = attachmentIcons[UnityEngine.Random.Range(0, attachmentIcons.Length)];
-
-            //        attachmentList.Add(at);
-            //    }
-
-
-            //    UpdateAll();
-            //    yes = true;
-            //}
         }
 
 
@@ -92,6 +68,19 @@ namespace CSE5912.PolyGamers
             UpdateAll();
         }
 
+        public void RemoveWeapon(Firearms weapon)
+        {
+            for (int i = 0; i < playerWeapons.Length; i++)
+            {
+                if (playerWeapons[i] == weapon)
+                {
+                    playerWeapons[i] = null;
+                    break;
+                }
+            }
+            UpdateAll();
+        }
+
         public void AddAttachment(Attachment attachment)
         {
             attachmentList.Add(attachment);
@@ -100,6 +89,21 @@ namespace CSE5912.PolyGamers
             UpdateAll();
         }
 
+        public void RemoveAttachment(Attachment attachment)
+        {
+            attachmentList.Remove(attachment);
+            Destroy(attachment.gameObject);
+
+            UpdateAll();
+        }
+
+        public bool IsWeaponInventoryFull()
+        {
+            foreach (var weapon in playerWeapons)
+                if (weapon == null)
+                    return false;
+            return true;
+        }
         public bool Contains(Firearms target)
         {
             foreach (var weapon in playerWeapons)

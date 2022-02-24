@@ -99,6 +99,8 @@ namespace CSE5912.PolyGamers
         [SerializeField] protected Attachment[] attachments;
         public Attachment[] Attachments { get { return attachments; } }
 
+        public FirearmsItem firearmsItem;
+
         //[Header("Attachment info")]
         //// holder of different scopes in this gun
         //public List<ScopeInfo> ScopeInfos = new List<ScopeInfo>();

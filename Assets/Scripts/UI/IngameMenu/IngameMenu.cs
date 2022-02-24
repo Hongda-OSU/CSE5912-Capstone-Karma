@@ -23,6 +23,8 @@ namespace CSE5912.PolyGamers
         private VisualElement statsPanel;
         private VisualElement skillsPanel;
 
+        private bool isFadingComplete = true;
+
         private static IngameMenu instance;
         public static IngameMenu Instance { get { return instance; } }
         private void Awake()
@@ -72,22 +74,27 @@ namespace CSE5912.PolyGamers
             
         }
 
-        public override void Display(bool enabled)
+        public IEnumerator DisplayMenu(bool enabled)
         {
+            if (!isFadingComplete)
+                yield break;
+
+            isFadingComplete = false;
             if (!enabled)
             {
-                StartCoroutine(FadeOut(root));
-
                 UnityEngine.Cursor.visible = false;
                 UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+
+                yield return StartCoroutine(FadeOut(root));
             }
             else
             {
-                StartCoroutine(FadeIn(root));
-
                 UnityEngine.Cursor.visible = true;
                 UnityEngine.Cursor.lockState = CursorLockMode.None;
+
+                yield return StartCoroutine(FadeIn(root));
             }
+            isFadingComplete = true;
         }
 
         // switch to weapons view
@@ -143,5 +150,8 @@ namespace CSE5912.PolyGamers
                 }
             }
         }
+
+
+        public bool IsFadingComplete { get { return isFadingComplete; } }
     }
 }

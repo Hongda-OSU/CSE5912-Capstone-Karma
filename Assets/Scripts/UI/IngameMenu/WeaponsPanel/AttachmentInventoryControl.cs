@@ -12,7 +12,7 @@ namespace CSE5912.PolyGamers
 
         public VisualElement attachmentsInventory;
 
-        private AttachmentInventoryPageIndicatorControl indicatorControl;
+        [SerializeField] private AttachmentInventoryPageIndicatorControl indicatorControl;
 
         private List<Attachment> attachmentList;
 
@@ -52,7 +52,7 @@ namespace CSE5912.PolyGamers
 
         private void Start()
         {
-            indicatorControl = AttachmentInventoryPageIndicatorControl.Instance;
+            //indicatorControl = AttachmentInventoryPageIndicatorControl.Instance;
         }
 
         public bool IsInventoryOpened()

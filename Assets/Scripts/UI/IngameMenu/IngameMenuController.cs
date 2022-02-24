@@ -32,21 +32,28 @@ namespace CSE5912.PolyGamers
 
         public void SwitchActive(InputActions inputSchemes)
         {
+            if (!ingameMenu.GetComponent<IngameMenu>().IsFadingComplete)
+                return;
+
             isDisplayed = !isDisplayed;
 
-            ingameMenu.GetComponent<UI>().Display(isDisplayed);
+            WeaponsPanelControl.Instance.ResetPanel();
 
             PostProcessingController.Instance.SetBlurryCameraView(isDisplayed);
 
             if (isDisplayed)
             {
                 inputSchemes.PlayerActions.Disable();
+                inputSchemes.FPSActions.Disable();
                 inputSchemes.UiActions.Enable();
             }
             else
             {
                 inputSchemes.PlayerActions.Enable();
+                inputSchemes.FPSActions.Enable();
             }
+
+            StartCoroutine(ingameMenu.GetComponent<IngameMenu>().DisplayMenu(isDisplayed));
         }
 
     }

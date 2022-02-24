@@ -59,9 +59,8 @@ namespace CSE5912.PolyGamers
                 weapon.gameObject.SetActive(false);
             }
 
+            // set up default weapon on game start
             MainWeapon = PlayerInventory.Instance.DefaultWeapon;
-            // baihua: player always has at least one defualt weapon on start
-            // if main weapon exist, then set main weapon as carried weapon (By default the player has a primary weapon)
             if (MainWeapon != null)
             {
                 SetupCarriedWeapon(MainWeapon);
@@ -71,9 +70,6 @@ namespace CSE5912.PolyGamers
                 Debug.LogError("Error: Default weapon not set. ");
             }
 
-            //// if main weapon not exist and secondary weapon exist, set secondary weapon as carried weapon
-            //if (MainWeapon == null && SecondaryWeapon != null)
-            //    SetupCarriedWeapon(SecondaryWeapon);
         }
 
         void Update()
@@ -204,7 +200,6 @@ namespace CSE5912.PolyGamers
                     {
                         PickupWeapon(item);
                         PickupAttachment(item);
-                        Debug.Log(item.name);
                     }
                 }
             }
@@ -221,12 +216,18 @@ namespace CSE5912.PolyGamers
 
             var weapon = firearmsItem.Weapon;
 
-            weapon.gameObject.transform.SetParent(weaponCollection.transform, false);
+            if (PlayerInventory.Instance.IsWeaponInventoryFull())
+            {
+                DropWeapon(carriedWeapon, baseItem.transform.position);
+            }
 
             PlayerInventory.Instance.AddWeapon(weapon);
 
-            SetupCarriedWeapon(weapon);
+            baseItem.gameObject.SetActive(false);
 
+            weapon.gameObject.transform.SetParent(weaponCollection.transform, false);
+
+            SetupCarriedWeapon(weapon);
         }
 
         private void PickupAttachment(BaseItem baseItem)
@@ -237,8 +238,16 @@ namespace CSE5912.PolyGamers
             var attachment = attachmentItem.Attachment;
 
             PlayerInventory.Instance.AddAttachment(attachment);
-            Debug.Log(attachment.Rarity);
+        }
 
+        private void DropWeapon(Firearms weapon, Vector3 position)
+        {
+            FirearmsItem item = weapon.firearmsItem;
+
+            item.gameObject.SetActive(true);
+            item.transform.position = position;
+
+            PlayerInventory.Instance.RemoveWeapon(weapon);
         }
 
         // allow weapon switching during reloading

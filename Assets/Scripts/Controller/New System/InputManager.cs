@@ -13,8 +13,14 @@ namespace CSE5912.PolyGamers
         private FPSMouseLook fpsMouseLook;
         private WeaponManager weaponManager;
 
+        private static InputManager instance;
+        public static InputManager Instance { get { return instance; } }
         void Awake()
         {
+            if (instance != null && instance != this)
+                Destroy(gameObject);
+            instance = this;
+
             inputSchemes = new InputActions();
             fpsController = FindObjectOfType<FPSControllerCC>();
             fpsMouseLook = FindObjectOfType<FPSMouseLook>();

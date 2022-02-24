@@ -18,8 +18,8 @@ namespace CSE5912.PolyGamers
         private Dictionary<Firearms.WeaponRarity, Color> weaponRarityToColor;
         private Dictionary<Attachment.AttachmentRarity, Color> attachmentRarityToColor;
 
-        private WeaponRowsControl weaponRowsControl;
-        private AttachmentInventoryControl attachmentInventoryControl;
+        [SerializeField] private WeaponRowsControl weaponRowsControl;
+        [SerializeField] private AttachmentInventoryControl attachmentInventoryControl;
 
         private VisualElement specificPanel;
 
@@ -66,8 +66,8 @@ namespace CSE5912.PolyGamers
 
         private void Start()
         {
-            weaponRowsControl = WeaponRowsControl.Instance;
-            attachmentInventoryControl = AttachmentInventoryControl.Instance;
+            //weaponRowsControl = WeaponRowsControl.Instance;
+            //attachmentInventoryControl = AttachmentInventoryControl.Instance;
 
             foreach (var weaponRow in weaponRowsControl.rowList)
             {
@@ -177,6 +177,7 @@ namespace CSE5912.PolyGamers
 
         public void ResetPanel()
         {
+            selectedWeapon = null;
             StartCoroutine(PopOffAttachmentInventory());
             StartCoroutine(PopOffSpecific());
         }
@@ -286,6 +287,7 @@ namespace CSE5912.PolyGamers
             {
                 selectedAttachment = null;
             }
+            selectedAttachmentInventorySlot = null;
 
             SelectSlot(attachmentSlot);
         }
@@ -390,6 +392,7 @@ namespace CSE5912.PolyGamers
                         StartCoroutine(FadeIn(weaponRow.row));
                 }
 
+                selectedWeaponSlot = null;
                 selectedEquippedAttachmentSlot = null;
                 selectedAttachment = null;
 
@@ -553,6 +556,8 @@ namespace CSE5912.PolyGamers
         private IEnumerator PopOffSpecific()
         {
             selectedWeaponSlot = null;
+
+            UpdateSlotsVisual();
 
             yield return StartCoroutine(FadeOut(specificPanel));
 
