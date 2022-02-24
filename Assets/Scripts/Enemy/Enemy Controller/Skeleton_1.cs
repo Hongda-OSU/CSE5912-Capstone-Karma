@@ -93,7 +93,7 @@ namespace CSE5912.PolyGamers
         }
 
         protected override void HandleWander() {
-            if (!foundTarget)
+            if (!foundTarget && !isAttackedByPlayer)
             {
                 agent.isStopped = false;
                 agent.speed = 1f;
@@ -101,7 +101,7 @@ namespace CSE5912.PolyGamers
 
                 if (!agent.hasPath)
                 {
-                    agent.SetDestination(GetPoint.Instance.GetRandomPoint());
+                    agent.SetDestination(WanderAreaManager.Instance.GetRandomPoint(wanderAreaNumber));
                 }
 
                 if (Vector3.Distance(agent.destination, transform.position) <= 0.2f) {

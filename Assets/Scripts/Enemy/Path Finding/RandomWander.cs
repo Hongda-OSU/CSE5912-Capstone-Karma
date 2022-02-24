@@ -7,12 +7,14 @@ namespace CSE5912.PolyGamers
 { 
     public class RandomWander : MonoBehaviour
 {
+    private Enemy enemy;
     private NavMeshAgent agent;
     public float radius;
 
     // Start is called before the first frame update
     void Start()
     {
+        enemy = GetComponent<Enemy>();
         agent = GetComponent<NavMeshAgent>();
     }
 
