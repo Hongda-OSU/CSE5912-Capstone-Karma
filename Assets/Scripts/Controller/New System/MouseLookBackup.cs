@@ -1,8 +1,10 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace CSE5912.PolyGamers
 {
-    public class FPSMouseLook : MonoBehaviour
+    public class MouseBackup : MonoBehaviour
     {
         [Header("Transform")]
         [SerializeField] private Transform characterTransform;
@@ -27,8 +29,8 @@ namespace CSE5912.PolyGamers
         // CameraShake 
         private CameraShake cameraShake;
 
-        private static FPSMouseLook instance;
-        public static FPSMouseLook Instance { get { return instance; } }
+        private static MouseBackup instance;
+        public static MouseBackup Instance { get { return instance; } }
 
         private void Awake()
         {
@@ -42,13 +44,13 @@ namespace CSE5912.PolyGamers
             cameraShake = GetComponentInChildren<CameraShake>();
         }
 
-        public void ProcessLook(Vector2 lookInput)
+        void LateUpdate()
         {
-            var tmp_MouseX = lookInput.x;
-            var tmp_MouseY = lookInput.y;
+            var tmp_MouseX = Input.GetAxis("Mouse X");
+            var tmp_MouseY = Input.GetAxis("Mouse Y");
 
-            cameraRotation.x -= tmp_MouseY * MouseSensitivity * Time.deltaTime;
-            cameraRotation.y += tmp_MouseX * MouseSensitivity * Time.deltaTime;
+            cameraRotation.x -= tmp_MouseY * MouseSensitivity;
+            cameraRotation.y += tmp_MouseX * MouseSensitivity;
 
             CalculateRecoilOffset();
 

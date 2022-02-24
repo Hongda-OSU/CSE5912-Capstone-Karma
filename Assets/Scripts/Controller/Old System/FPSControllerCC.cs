@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using UnityEngine;
-
 namespace CSE5912.PolyGamers
 {
     public class FPSControllerCC : MonoBehaviour
@@ -15,6 +14,8 @@ namespace CSE5912.PolyGamers
         public float SprintingSpeedWhenCrouched;
         public float WalkSpeedWhenCrouched;
         public float DashSpeed;
+        // determine player current speed
+        private float currentSpeed;
 
         [Header("Physics")]
         public float Gravity;
@@ -23,15 +24,28 @@ namespace CSE5912.PolyGamers
 
         private Transform characterTransform;
         private Vector3 movementDirection;
+        private Vector3 playerVelocity;
+        // player velocity before perform second Move()
         private float velocity;
+
         private bool isCrouched;
-         
+        private bool isSprinted;
+        private bool isDashPressed;
+
         private float controllerHeight;
+        private float horizontalInput, verticalInput;
+
+        // fake timer
+        private float coyoteTime = 0;
+        // increase to 0.5f for double jump
+        private const float const_maxCoyoteTime = 0.1f;
 
         private WaitForSeconds waitOneSeconds = new WaitForSeconds(0.1f);
         [SerializeField] private ParticleSystem forwardDashParticle;
         [SerializeField] private ParticleSystem backwardDashParticle;
-        private float horizontalInput, verticalInput;
+
+        // Perform Dash with cool down
+        private CooldownTimer cooldownTimer = new CooldownTimer(2f);
 
         void Start()
         {
@@ -44,70 +58,116 @@ namespace CSE5912.PolyGamers
 
         void Update()
         {
-            float tmp_CurrentSpeed = WalkSpeed;
+            currentSpeed = WalkSpeed;
+            // faking isGrounded
             if (characterController.isGrounded)
-            {
-                var tmp_Horizontal = Input.GetAxis("Horizontal");
-                var tmp_Vertical = Input.GetAxis("Vertical");
-                horizontalInput = tmp_Horizontal;
-                verticalInput = tmp_Vertical;
+                coyoteTime = 0;
+            else
+                coyoteTime += Time.deltaTime;
 
-                movementDirection =
-                    characterTransform.TransformDirection(new Vector3(tmp_Horizontal, 0, tmp_Vertical));
-                // Handle Jump
-                if (Input.GetButtonDown("Jump"))
-                {
-                    movementDirection.y = JumpHeight;
-                    if (characterAnimator)
-                        characterAnimator.SetTrigger("Jump");
-                }
-                // Handle Crouch
-                if (Input.GetKeyDown(KeyCode.C))
-                {
-                    var tmp_CurrentHeight = isCrouched ? controllerHeight : CrouchHeight;
-                    StartCoroutine(DoCrouch(tmp_CurrentHeight));
-                    isCrouched = !isCrouched;
-                }
-                // Handle Dash only when running
-                if (Input.GetKeyDown(KeyCode.V) && characterController.velocity.magnitude > 5.0f && Math.Abs(tmp_Horizontal) != 1)
-                {
-                    tmp_CurrentSpeed = DashSpeed;
-                    PlayDashParticle();
-                }
-                else
-                {
-                    // Handle Speed change
-                    if (isCrouched)
-                        tmp_CurrentSpeed = Input.GetKey(KeyCode.LeftShift) ? SprintingSpeedWhenCrouched : WalkSpeedWhenCrouched;
-                    else
-                        tmp_CurrentSpeed = Input.GetKey(KeyCode.LeftShift) ? SprintingSpeed : WalkSpeed;
-                }
-                HandleAnimation();
+            if (isDashPressed)
+            {
+                currentSpeed = DashSpeed;
+                isDashPressed = false;
             }
-            movementDirection.y -= Gravity * Time.deltaTime * 0.6f;
-            characterController.Move(tmp_CurrentSpeed * Time.deltaTime * movementDirection);
+            else
+            {
+                // determine current speed;
+                if (isCrouched)
+                    currentSpeed = isSprinted ? SprintingSpeedWhenCrouched : WalkSpeedWhenCrouched;
+                else
+                    currentSpeed = isSprinted ? SprintingSpeed : WalkSpeed;
+            }
+            HandleAnimation();
+
+            // skill cool down
+            if (cooldownTimer.IsActive)
+                cooldownTimer.Update(Time.deltaTime);
+        }
+
+        public bool isGrounded()
+        {
+            return coyoteTime < const_maxCoyoteTime;
+        }
+
+        public void ProcessMove(Vector2 movementInput)
+        {
+            horizontalInput = movementInput.x;
+            verticalInput = movementInput.y;
+            movementDirection =
+                characterTransform.TransformDirection(new Vector3(horizontalInput, 0, verticalInput));
+            // (1) first Move() that handle player movement
+            characterController.Move(currentSpeed * Time.deltaTime * movementDirection);
+            velocity = GetVeloctiy(characterController.velocity);
+            // (2) second Move() that apply gravity to player
+            playerVelocity.y -= Gravity * Time.deltaTime;
+            // player grounded => stick with ground
+            if (isGrounded() && playerVelocity.y < 0f)
+                playerVelocity.y = -2f;
+            characterController.Move(playerVelocity * Time.deltaTime);
+        }
+
+        private float GetVeloctiy(Vector3 velocityHolder)
+        {
+            velocityHolder.y = 0;
+            return velocityHolder.magnitude;
+        }
+
+        // Perform Jump
+        public void PerformJump()
+        {
+            if (isGrounded())
+            {
+                // calculate jump height
+                playerVelocity.y = Mathf.Sqrt(JumpHeight * Gravity * 2f);
+                if (characterAnimator)
+                    characterAnimator.SetTrigger("Jump");
+            }
+        }
+
+        // Perform Crouch
+        public void PerformCrouch()
+        {
+            if (isGrounded())
+            {
+                var currentHeight = isCrouched ? controllerHeight : CrouchHeight;
+                StartCoroutine(DoCrouch(currentHeight));
+                isCrouched = !isCrouched;
+            }
+        }
+
+        // Perform Dash
+        public void PerformDash()
+        {
+            // Dashing when running
+            if (isGrounded() && velocity > 5.0f && Math.Abs(horizontalInput) != 1)
+            {
+                if (cooldownTimer.IsActive) return;
+                cooldownTimer.Start();
+                isDashPressed = true;
+                PlayDashParticle();
+            }
+        }
+
+        public void PerformInspect()
+        {
+            if (characterAnimator)
+                characterAnimator.SetTrigger("Inspect");
+        }
+
+        // Handle Sprint
+        public void DoSprint()
+        {
+            isSprinted = !isSprinted;
         }
 
         private void HandleAnimation()
         {
-            var tmp_Velocity = characterController.velocity;
-            tmp_Velocity.y = 0;
-            velocity = tmp_Velocity.magnitude;
-            if (Math.Abs(horizontalInput) > 0 && Math.Abs(verticalInput) > 0)
-                velocity /= (float) Math.Sqrt(2);
-            if (characterAnimator != null)
-            {
-                if (Input.GetKeyDown(KeyCode.L))
-                    characterAnimator.SetTrigger("Inspect");
+            // walk animation when press both W and A/D
+            if (Math.Abs(horizontalInput) > 0 && Math.Abs(verticalInput) > 0 && !isSprinted)
+                velocity /= (float)Math.Sqrt(2);
+            if (characterAnimator)
                 characterAnimator.SetFloat("Velocity", velocity, 0.25f, Time.deltaTime);
-            }
-
-            // Knife Attack
-            if (Input.GetKeyDown(KeyCode.Z))
-            {
-                if (characterAnimator)
-                    characterAnimator.SetTrigger("KnifeAttack");
-            }
         }
 
         IEnumerator DoCrouch(float targetHeight)
@@ -116,13 +176,14 @@ namespace CSE5912.PolyGamers
             while (Math.Abs(characterController.height - targetHeight) > 0.05f)
             {
                 characterController.height =
-                    Mathf.Lerp(characterController.height, targetHeight, Time.deltaTime * 20);
+                    Mathf.Lerp(characterController.height, targetHeight, Time.deltaTime * 10);
                 yield return null;
             }
         }
 
         private void PlayDashParticle()
         {
+            // Only forward and backward dash, but could do left and right
             if (verticalInput > 0 && Math.Abs(horizontalInput) <= verticalInput)
             {
                 forwardDashParticle.Play();

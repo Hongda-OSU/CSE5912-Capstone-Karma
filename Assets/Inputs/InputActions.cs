@@ -65,8 +65,44 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Sprint"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""468e466e-daaf-4b9d-905c-214caec5c8f4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Dash"",
+                    ""type"": ""Button"",
+                    ""id"": ""d488b0da-5da7-424a-8137-7f27a3cd917f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""BulletTime"",
+                    ""type"": ""Value"",
+                    ""id"": ""90b9f2aa-7e8a-45cb-b03f-4fad355a6163"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""PickUp"",
+                    ""type"": ""Button"",
+                    ""id"": ""7e0a325f-3901-4f9f-ab39-ab51ad813cbc"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Inspect"",
+                    ""type"": ""Button"",
+                    ""id"": ""7ca46670-0dbc-4087-a4d8-2eafe392b3c4"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -172,6 +208,298 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""action"": ""Sprint"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""36b23889-e051-40a6-9fc9-fc528f07308a"",
+                    ""path"": ""<Keyboard>/v"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""064ce952-9776-4c7e-beb2-9ed41ec4f2a7"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""BulletTime"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""99525d8e-007e-4cc0-af54-ba8ca11100e1"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PickUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b28d9833-a792-4a0c-8595-6bf6078e785e"",
+                    ""path"": ""<Keyboard>/l"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Inspect"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""FPSActions"",
+            ""id"": ""d4080a9b-f7a1-4958-93ab-29a7820427e6"",
+            ""actions"": [
+                {
+                    ""name"": ""Shoot"",
+                    ""type"": ""Value"",
+                    ""id"": ""81067827-7a08-4b92-a41b-3a603b30d941"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Aim"",
+                    ""type"": ""Value"",
+                    ""id"": ""9d5d7893-c6ff-4e9c-a46b-8e37cd72e289"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Reload"",
+                    ""type"": ""Button"",
+                    ""id"": ""02f6b9cf-9321-4959-84e1-7b75da67769c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LeanLeft"",
+                    ""type"": ""Value"",
+                    ""id"": ""a3cdcf6d-ab57-4b56-bc61-d6ba8cf2cabb"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""LeanRight"",
+                    ""type"": ""Value"",
+                    ""id"": ""c397baf7-88a9-40cf-bb1e-b2231e3a41be"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ThrowGrenade"",
+                    ""type"": ""Button"",
+                    ""id"": ""6c41bed7-5a94-4313-8b6d-81e630acdfe4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""KnifeAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""2d5eb909-4b8c-4b25-a382-f247a7a6f154"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwitchToMainWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""912cbfea-8f8c-4a7b-a5eb-6cfe680e9a3e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwitchToSecondaryWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""7d4e1af8-5f78-47d8-a86f-457b78ed254b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwitchToTertiaryWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""1d8dce58-fddc-46aa-836a-128a702c9838"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwitchToQuaternaryWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""af0a987f-16ab-4df0-8fec-b263ca94f41e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwitchToQuinaryWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""02c91236-3bd1-48b7-a199-2554a9df8ba2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""14ec7535-972a-4099-a0c3-4d0bb15bee82"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""52f7a560-ed8d-4788-8354-edbc0f0e17ae"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bfa2abc5-4214-476d-8bf3-78e312bfd005"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reload"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7e5c3874-2f82-4ce0-ade6-3119762c89a0"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeanLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5007d38c-9e50-408c-9290-ceaedfbe8e43"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeanRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2ae36262-029f-4b04-9c75-9037daa29a3e"",
+                    ""path"": ""<Keyboard>/g"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ThrowGrenade"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""259f38ea-9d56-4e8c-9b6d-db30793e15e7"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchToMainWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""098cf59f-9535-4500-b379-b19fdba009a7"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchToSecondaryWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""19b44d48-f7bd-47de-9b5e-836c0212fe1e"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchToTertiaryWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""292c131e-b7f9-43ef-b92d-df4f902e0f82"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchToQuaternaryWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fa40728a-1f46-48c6-8488-92aa70aaa1e0"",
+                    ""path"": ""<Keyboard>/5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchToQuinaryWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ac38d969-8f53-416f-a57b-a0b5cdf0ccb1"",
+                    ""path"": ""<Keyboard>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""KnifeAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -233,6 +561,24 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         m_PlayerActions_Jump = m_PlayerActions.FindAction("Jump", throwIfNotFound: true);
         m_PlayerActions_Crouch = m_PlayerActions.FindAction("Crouch", throwIfNotFound: true);
         m_PlayerActions_Sprint = m_PlayerActions.FindAction("Sprint", throwIfNotFound: true);
+        m_PlayerActions_Dash = m_PlayerActions.FindAction("Dash", throwIfNotFound: true);
+        m_PlayerActions_BulletTime = m_PlayerActions.FindAction("BulletTime", throwIfNotFound: true);
+        m_PlayerActions_PickUp = m_PlayerActions.FindAction("PickUp", throwIfNotFound: true);
+        m_PlayerActions_Inspect = m_PlayerActions.FindAction("Inspect", throwIfNotFound: true);
+        // FPSActions
+        m_FPSActions = asset.FindActionMap("FPSActions", throwIfNotFound: true);
+        m_FPSActions_Shoot = m_FPSActions.FindAction("Shoot", throwIfNotFound: true);
+        m_FPSActions_Aim = m_FPSActions.FindAction("Aim", throwIfNotFound: true);
+        m_FPSActions_Reload = m_FPSActions.FindAction("Reload", throwIfNotFound: true);
+        m_FPSActions_LeanLeft = m_FPSActions.FindAction("LeanLeft", throwIfNotFound: true);
+        m_FPSActions_LeanRight = m_FPSActions.FindAction("LeanRight", throwIfNotFound: true);
+        m_FPSActions_ThrowGrenade = m_FPSActions.FindAction("ThrowGrenade", throwIfNotFound: true);
+        m_FPSActions_KnifeAttack = m_FPSActions.FindAction("KnifeAttack", throwIfNotFound: true);
+        m_FPSActions_SwitchToMainWeapon = m_FPSActions.FindAction("SwitchToMainWeapon", throwIfNotFound: true);
+        m_FPSActions_SwitchToSecondaryWeapon = m_FPSActions.FindAction("SwitchToSecondaryWeapon", throwIfNotFound: true);
+        m_FPSActions_SwitchToTertiaryWeapon = m_FPSActions.FindAction("SwitchToTertiaryWeapon", throwIfNotFound: true);
+        m_FPSActions_SwitchToQuaternaryWeapon = m_FPSActions.FindAction("SwitchToQuaternaryWeapon", throwIfNotFound: true);
+        m_FPSActions_SwitchToQuinaryWeapon = m_FPSActions.FindAction("SwitchToQuinaryWeapon", throwIfNotFound: true);
         // UiActions
         m_UiActions = asset.FindActionMap("UiActions", throwIfNotFound: true);
         m_UiActions_OpenMenu = m_UiActions.FindAction("OpenMenu", throwIfNotFound: true);
@@ -301,6 +647,10 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerActions_Jump;
     private readonly InputAction m_PlayerActions_Crouch;
     private readonly InputAction m_PlayerActions_Sprint;
+    private readonly InputAction m_PlayerActions_Dash;
+    private readonly InputAction m_PlayerActions_BulletTime;
+    private readonly InputAction m_PlayerActions_PickUp;
+    private readonly InputAction m_PlayerActions_Inspect;
     public struct PlayerActionsActions
     {
         private @InputActions m_Wrapper;
@@ -310,6 +660,10 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_PlayerActions_Jump;
         public InputAction @Crouch => m_Wrapper.m_PlayerActions_Crouch;
         public InputAction @Sprint => m_Wrapper.m_PlayerActions_Sprint;
+        public InputAction @Dash => m_Wrapper.m_PlayerActions_Dash;
+        public InputAction @BulletTime => m_Wrapper.m_PlayerActions_BulletTime;
+        public InputAction @PickUp => m_Wrapper.m_PlayerActions_PickUp;
+        public InputAction @Inspect => m_Wrapper.m_PlayerActions_Inspect;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -334,6 +688,18 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 @Sprint.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnSprint;
                 @Sprint.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnSprint;
                 @Sprint.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnSprint;
+                @Dash.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnDash;
+                @Dash.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnDash;
+                @Dash.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnDash;
+                @BulletTime.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnBulletTime;
+                @BulletTime.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnBulletTime;
+                @BulletTime.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnBulletTime;
+                @PickUp.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnPickUp;
+                @PickUp.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnPickUp;
+                @PickUp.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnPickUp;
+                @Inspect.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnInspect;
+                @Inspect.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnInspect;
+                @Inspect.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnInspect;
             }
             m_Wrapper.m_PlayerActionsActionsCallbackInterface = instance;
             if (instance != null)
@@ -353,10 +719,143 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 @Sprint.started += instance.OnSprint;
                 @Sprint.performed += instance.OnSprint;
                 @Sprint.canceled += instance.OnSprint;
+                @Dash.started += instance.OnDash;
+                @Dash.performed += instance.OnDash;
+                @Dash.canceled += instance.OnDash;
+                @BulletTime.started += instance.OnBulletTime;
+                @BulletTime.performed += instance.OnBulletTime;
+                @BulletTime.canceled += instance.OnBulletTime;
+                @PickUp.started += instance.OnPickUp;
+                @PickUp.performed += instance.OnPickUp;
+                @PickUp.canceled += instance.OnPickUp;
+                @Inspect.started += instance.OnInspect;
+                @Inspect.performed += instance.OnInspect;
+                @Inspect.canceled += instance.OnInspect;
             }
         }
     }
     public PlayerActionsActions @PlayerActions => new PlayerActionsActions(this);
+
+    // FPSActions
+    private readonly InputActionMap m_FPSActions;
+    private IFPSActionsActions m_FPSActionsActionsCallbackInterface;
+    private readonly InputAction m_FPSActions_Shoot;
+    private readonly InputAction m_FPSActions_Aim;
+    private readonly InputAction m_FPSActions_Reload;
+    private readonly InputAction m_FPSActions_LeanLeft;
+    private readonly InputAction m_FPSActions_LeanRight;
+    private readonly InputAction m_FPSActions_ThrowGrenade;
+    private readonly InputAction m_FPSActions_KnifeAttack;
+    private readonly InputAction m_FPSActions_SwitchToMainWeapon;
+    private readonly InputAction m_FPSActions_SwitchToSecondaryWeapon;
+    private readonly InputAction m_FPSActions_SwitchToTertiaryWeapon;
+    private readonly InputAction m_FPSActions_SwitchToQuaternaryWeapon;
+    private readonly InputAction m_FPSActions_SwitchToQuinaryWeapon;
+    public struct FPSActionsActions
+    {
+        private @InputActions m_Wrapper;
+        public FPSActionsActions(@InputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Shoot => m_Wrapper.m_FPSActions_Shoot;
+        public InputAction @Aim => m_Wrapper.m_FPSActions_Aim;
+        public InputAction @Reload => m_Wrapper.m_FPSActions_Reload;
+        public InputAction @LeanLeft => m_Wrapper.m_FPSActions_LeanLeft;
+        public InputAction @LeanRight => m_Wrapper.m_FPSActions_LeanRight;
+        public InputAction @ThrowGrenade => m_Wrapper.m_FPSActions_ThrowGrenade;
+        public InputAction @KnifeAttack => m_Wrapper.m_FPSActions_KnifeAttack;
+        public InputAction @SwitchToMainWeapon => m_Wrapper.m_FPSActions_SwitchToMainWeapon;
+        public InputAction @SwitchToSecondaryWeapon => m_Wrapper.m_FPSActions_SwitchToSecondaryWeapon;
+        public InputAction @SwitchToTertiaryWeapon => m_Wrapper.m_FPSActions_SwitchToTertiaryWeapon;
+        public InputAction @SwitchToQuaternaryWeapon => m_Wrapper.m_FPSActions_SwitchToQuaternaryWeapon;
+        public InputAction @SwitchToQuinaryWeapon => m_Wrapper.m_FPSActions_SwitchToQuinaryWeapon;
+        public InputActionMap Get() { return m_Wrapper.m_FPSActions; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(FPSActionsActions set) { return set.Get(); }
+        public void SetCallbacks(IFPSActionsActions instance)
+        {
+            if (m_Wrapper.m_FPSActionsActionsCallbackInterface != null)
+            {
+                @Shoot.started -= m_Wrapper.m_FPSActionsActionsCallbackInterface.OnShoot;
+                @Shoot.performed -= m_Wrapper.m_FPSActionsActionsCallbackInterface.OnShoot;
+                @Shoot.canceled -= m_Wrapper.m_FPSActionsActionsCallbackInterface.OnShoot;
+                @Aim.started -= m_Wrapper.m_FPSActionsActionsCallbackInterface.OnAim;
+                @Aim.performed -= m_Wrapper.m_FPSActionsActionsCallbackInterface.OnAim;
+                @Aim.canceled -= m_Wrapper.m_FPSActionsActionsCallbackInterface.OnAim;
+                @Reload.started -= m_Wrapper.m_FPSActionsActionsCallbackInterface.OnReload;
+                @Reload.performed -= m_Wrapper.m_FPSActionsActionsCallbackInterface.OnReload;
+                @Reload.canceled -= m_Wrapper.m_FPSActionsActionsCallbackInterface.OnReload;
+                @LeanLeft.started -= m_Wrapper.m_FPSActionsActionsCallbackInterface.OnLeanLeft;
+                @LeanLeft.performed -= m_Wrapper.m_FPSActionsActionsCallbackInterface.OnLeanLeft;
+                @LeanLeft.canceled -= m_Wrapper.m_FPSActionsActionsCallbackInterface.OnLeanLeft;
+                @LeanRight.started -= m_Wrapper.m_FPSActionsActionsCallbackInterface.OnLeanRight;
+                @LeanRight.performed -= m_Wrapper.m_FPSActionsActionsCallbackInterface.OnLeanRight;
+                @LeanRight.canceled -= m_Wrapper.m_FPSActionsActionsCallbackInterface.OnLeanRight;
+                @ThrowGrenade.started -= m_Wrapper.m_FPSActionsActionsCallbackInterface.OnThrowGrenade;
+                @ThrowGrenade.performed -= m_Wrapper.m_FPSActionsActionsCallbackInterface.OnThrowGrenade;
+                @ThrowGrenade.canceled -= m_Wrapper.m_FPSActionsActionsCallbackInterface.OnThrowGrenade;
+                @KnifeAttack.started -= m_Wrapper.m_FPSActionsActionsCallbackInterface.OnKnifeAttack;
+                @KnifeAttack.performed -= m_Wrapper.m_FPSActionsActionsCallbackInterface.OnKnifeAttack;
+                @KnifeAttack.canceled -= m_Wrapper.m_FPSActionsActionsCallbackInterface.OnKnifeAttack;
+                @SwitchToMainWeapon.started -= m_Wrapper.m_FPSActionsActionsCallbackInterface.OnSwitchToMainWeapon;
+                @SwitchToMainWeapon.performed -= m_Wrapper.m_FPSActionsActionsCallbackInterface.OnSwitchToMainWeapon;
+                @SwitchToMainWeapon.canceled -= m_Wrapper.m_FPSActionsActionsCallbackInterface.OnSwitchToMainWeapon;
+                @SwitchToSecondaryWeapon.started -= m_Wrapper.m_FPSActionsActionsCallbackInterface.OnSwitchToSecondaryWeapon;
+                @SwitchToSecondaryWeapon.performed -= m_Wrapper.m_FPSActionsActionsCallbackInterface.OnSwitchToSecondaryWeapon;
+                @SwitchToSecondaryWeapon.canceled -= m_Wrapper.m_FPSActionsActionsCallbackInterface.OnSwitchToSecondaryWeapon;
+                @SwitchToTertiaryWeapon.started -= m_Wrapper.m_FPSActionsActionsCallbackInterface.OnSwitchToTertiaryWeapon;
+                @SwitchToTertiaryWeapon.performed -= m_Wrapper.m_FPSActionsActionsCallbackInterface.OnSwitchToTertiaryWeapon;
+                @SwitchToTertiaryWeapon.canceled -= m_Wrapper.m_FPSActionsActionsCallbackInterface.OnSwitchToTertiaryWeapon;
+                @SwitchToQuaternaryWeapon.started -= m_Wrapper.m_FPSActionsActionsCallbackInterface.OnSwitchToQuaternaryWeapon;
+                @SwitchToQuaternaryWeapon.performed -= m_Wrapper.m_FPSActionsActionsCallbackInterface.OnSwitchToQuaternaryWeapon;
+                @SwitchToQuaternaryWeapon.canceled -= m_Wrapper.m_FPSActionsActionsCallbackInterface.OnSwitchToQuaternaryWeapon;
+                @SwitchToQuinaryWeapon.started -= m_Wrapper.m_FPSActionsActionsCallbackInterface.OnSwitchToQuinaryWeapon;
+                @SwitchToQuinaryWeapon.performed -= m_Wrapper.m_FPSActionsActionsCallbackInterface.OnSwitchToQuinaryWeapon;
+                @SwitchToQuinaryWeapon.canceled -= m_Wrapper.m_FPSActionsActionsCallbackInterface.OnSwitchToQuinaryWeapon;
+            }
+            m_Wrapper.m_FPSActionsActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Shoot.started += instance.OnShoot;
+                @Shoot.performed += instance.OnShoot;
+                @Shoot.canceled += instance.OnShoot;
+                @Aim.started += instance.OnAim;
+                @Aim.performed += instance.OnAim;
+                @Aim.canceled += instance.OnAim;
+                @Reload.started += instance.OnReload;
+                @Reload.performed += instance.OnReload;
+                @Reload.canceled += instance.OnReload;
+                @LeanLeft.started += instance.OnLeanLeft;
+                @LeanLeft.performed += instance.OnLeanLeft;
+                @LeanLeft.canceled += instance.OnLeanLeft;
+                @LeanRight.started += instance.OnLeanRight;
+                @LeanRight.performed += instance.OnLeanRight;
+                @LeanRight.canceled += instance.OnLeanRight;
+                @ThrowGrenade.started += instance.OnThrowGrenade;
+                @ThrowGrenade.performed += instance.OnThrowGrenade;
+                @ThrowGrenade.canceled += instance.OnThrowGrenade;
+                @KnifeAttack.started += instance.OnKnifeAttack;
+                @KnifeAttack.performed += instance.OnKnifeAttack;
+                @KnifeAttack.canceled += instance.OnKnifeAttack;
+                @SwitchToMainWeapon.started += instance.OnSwitchToMainWeapon;
+                @SwitchToMainWeapon.performed += instance.OnSwitchToMainWeapon;
+                @SwitchToMainWeapon.canceled += instance.OnSwitchToMainWeapon;
+                @SwitchToSecondaryWeapon.started += instance.OnSwitchToSecondaryWeapon;
+                @SwitchToSecondaryWeapon.performed += instance.OnSwitchToSecondaryWeapon;
+                @SwitchToSecondaryWeapon.canceled += instance.OnSwitchToSecondaryWeapon;
+                @SwitchToTertiaryWeapon.started += instance.OnSwitchToTertiaryWeapon;
+                @SwitchToTertiaryWeapon.performed += instance.OnSwitchToTertiaryWeapon;
+                @SwitchToTertiaryWeapon.canceled += instance.OnSwitchToTertiaryWeapon;
+                @SwitchToQuaternaryWeapon.started += instance.OnSwitchToQuaternaryWeapon;
+                @SwitchToQuaternaryWeapon.performed += instance.OnSwitchToQuaternaryWeapon;
+                @SwitchToQuaternaryWeapon.canceled += instance.OnSwitchToQuaternaryWeapon;
+                @SwitchToQuinaryWeapon.started += instance.OnSwitchToQuinaryWeapon;
+                @SwitchToQuinaryWeapon.performed += instance.OnSwitchToQuinaryWeapon;
+                @SwitchToQuinaryWeapon.canceled += instance.OnSwitchToQuinaryWeapon;
+            }
+        }
+    }
+    public FPSActionsActions @FPSActions => new FPSActionsActions(this);
 
     // UiActions
     private readonly InputActionMap m_UiActions;
@@ -405,6 +904,25 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnCrouch(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
+        void OnDash(InputAction.CallbackContext context);
+        void OnBulletTime(InputAction.CallbackContext context);
+        void OnPickUp(InputAction.CallbackContext context);
+        void OnInspect(InputAction.CallbackContext context);
+    }
+    public interface IFPSActionsActions
+    {
+        void OnShoot(InputAction.CallbackContext context);
+        void OnAim(InputAction.CallbackContext context);
+        void OnReload(InputAction.CallbackContext context);
+        void OnLeanLeft(InputAction.CallbackContext context);
+        void OnLeanRight(InputAction.CallbackContext context);
+        void OnThrowGrenade(InputAction.CallbackContext context);
+        void OnKnifeAttack(InputAction.CallbackContext context);
+        void OnSwitchToMainWeapon(InputAction.CallbackContext context);
+        void OnSwitchToSecondaryWeapon(InputAction.CallbackContext context);
+        void OnSwitchToTertiaryWeapon(InputAction.CallbackContext context);
+        void OnSwitchToQuaternaryWeapon(InputAction.CallbackContext context);
+        void OnSwitchToQuinaryWeapon(InputAction.CallbackContext context);
     }
     public interface IUiActionsActions
     {

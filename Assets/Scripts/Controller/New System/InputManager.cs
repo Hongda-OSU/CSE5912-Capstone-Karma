@@ -9,44 +9,55 @@ namespace CSE5912.PolyGamers
         private ScrollHandler scrollHandler;
 
         private InputActions inputSchemes;
+        private FPSControllerCC fpsController;
+        private FPSMouseLook fpsMouseLook;
+        private WeaponManager weaponManager;
 
-        //private FPSMovementCC cc;
-        //private FPSMouseLookNew look;
-
-        private void Start()
+        void Awake()
         {
             inputSchemes = new InputActions();
+            fpsController = FindObjectOfType<FPSControllerCC>();
+            fpsMouseLook = FindObjectOfType<FPSMouseLook>();
+            weaponManager = FindObjectOfType<WeaponManager>();
+            weaponManager.inputSchemes = inputSchemes;
 
-            openMenuHandler = new OpenMenuHandler(inputSchemes, IngameMenuController.Instance);
-            scrollHandler = new ScrollHandler(inputSchemes, WeaponsPanelControl.Instance);
-
-            //cc = GetComponent<FPSMovementCC>();
-            //look = GetComponentInChildren<FPSMouseLookNew>();
-            //inputSchemes.PlayerActions.Jump.performed += ctx => cc.Jump();
-            //inputSchemes.PlayerActions.Crouch.performed += ctx => cc.Crouch();
-            //inputSchemes.PlayerActions.Sprint.started += ctx => cc.Sprint();
-            //inputSchemes.PlayerActions.Sprint.canceled += ctx => cc.Sprint();
+            inputSchemes.PlayerActions.Jump.performed += ctx => fpsController.PerformJump();
+            inputSchemes.PlayerActions.Crouch.performed += ctx => fpsController.PerformCrouch();
+            inputSchemes.PlayerActions.Dash.performed += ctx => fpsController.PerformDash();
+            inputSchemes.PlayerActions.Inspect.performed += ctx => fpsController.PerformInspect();
+            inputSchemes.PlayerActions.Sprint.performed += ctx => fpsController.DoSprint();
+            inputSchemes.PlayerActions.Sprint.canceled += ctx => fpsController.DoSprint();
+            inputSchemes.FPSActions.Reload.performed += ctx => weaponManager.StartReloadAmmo();
+            inputSchemes.FPSActions.Aim.performed += ctx => weaponManager.StartAiming();
+            inputSchemes.FPSActions.Aim.canceled += ctx => weaponManager.StopAiming();
         }
 
-        //void FixedUpdate()
-        //{
-        //    cc.ProcessMove(inputSchemes.PlayerActions.Move.ReadValue<Vector2>());
-        //}
+        void Start()
+        {
+            openMenuHandler = new OpenMenuHandler(inputSchemes, IngameMenuController.Instance);
+            scrollHandler = new ScrollHandler(inputSchemes, WeaponsPanelControl.Instance);
+        }
 
-        //void LateUpdate()
-        //{
-        //    look.ProcessLook(inputSchemes.PlayerActions.Look.ReadValue<Vector2>());
-        //}
+        void Update()
+        {
+            fpsController.ProcessMove(inputSchemes.PlayerActions.Move.ReadValue<Vector2>());
+        }
 
+        void LateUpdate()
+        {
+            fpsMouseLook.ProcessLook(inputSchemes.PlayerActions.Look.ReadValue<Vector2>());
+        }
 
-        //void OnEnable()
-        //{
-        //    inputSchemes.PlayerActions.Enable();
-        //}
+        void OnEnable()
+        {
+            inputSchemes.PlayerActions.Enable();
+            inputSchemes.FPSActions.Enable();
+        }
 
-        //void OnDisable()
-        //{
-        //    inputSchemes.PlayerActions.Disable();
-        //}
+        void OnDisable()
+        {
+            inputSchemes.PlayerActions.Disable();
+            inputSchemes.FPSActions.Disable();
+        }
     }
 }
