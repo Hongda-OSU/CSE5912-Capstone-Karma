@@ -5,6 +5,7 @@ namespace CSE5912.PolyGamers
     public class Bullet : MonoBehaviour
     {
         public float BulletSpeed;
+        public bool Penetrable;
         private Transform bulletTransform;
         // track bullet position
         private Vector3 prevPosition;
@@ -50,6 +51,12 @@ namespace CSE5912.PolyGamers
             int tmp_AudioDataCount = tmp_TagsWithAudio.ImpactAudioClips.Count;
             AudioClip tmp_AudioClip = tmp_TagsWithAudio.ImpactAudioClips[UnityEngine.Random.Range(0, tmp_AudioDataCount)];
             AudioSource.PlayClipAtPoint(tmp_AudioClip, hit.point);
+
+            if (hit.transform != null && !Penetrable)
+            {
+                Destroy(this.gameObject);
+            }
+
         }
 
         private void CheckDamgeEenemy(RaycastHit hit)
@@ -58,6 +65,8 @@ namespace CSE5912.PolyGamers
             {
                 PlayerManager.Instance.HitByBullet = hit.transform.GetComponent<Enemy>();
                 PlayerManager.Instance.PerformDamage(hit.transform.GetComponent<Enemy>(), hit.point);
+                if (!Penetrable)
+                    Destroy(gameObject);
             }
         }
 

@@ -13,6 +13,7 @@ namespace CSE5912.PolyGamers
         private Quaternion ControllerLocalOriginalRotation;
         private Vector3 ControllerLocalOriginalPosition;
         private FPSMouseLook fpsMouseLook;
+        public bool BulletPenetrable = true;
 
         protected override void Awake()
         {
@@ -94,7 +95,8 @@ namespace CSE5912.PolyGamers
             bulletScript.ImpactPrefab = ImpactPrefab;
             bulletScript.impactAudioData = impactAudioData;
             bulletScript.BulletSpeed = 100;
-            Destroy(bullet, 5);
+            bulletScript.Penetrable = BulletPenetrable;
+            Destroy(bullet, 3);
         }
     }
 }

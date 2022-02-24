@@ -9,10 +9,11 @@ namespace CSE5912.PolyGamers
         public GameObject ImpactPrefab;
         public ImpactAudioData impactAudioData;
         private IEnumerator reloadAmmoCheckerCoroutine;
-        
+
         private Quaternion ControllerLocalOriginalRotation;
         private Vector3 ControllerLocalOriginalPosition;
         private FPSMouseLook fpsMouseLook;
+        public bool BulletPenetrable = true;
 
         protected override void Awake()
         {
@@ -107,6 +108,7 @@ namespace CSE5912.PolyGamers
             bulletScript.ImpactPrefab = ImpactPrefab;
             bulletScript.impactAudioData = impactAudioData;
             bulletScript.BulletSpeed = 100;
+            bulletScript.Penetrable = BulletPenetrable;
             // destroy bullet in 3s
             Destroy(bullet, 3);
         }
