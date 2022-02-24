@@ -64,6 +64,21 @@ namespace CSE5912.PolyGamers
             crosshair.style.height = currentSize;
         }
 
+        public override void Display(bool enabled)
+        {
+            if (enabled)
+            {
+                crosshair.style.display = DisplayStyle.Flex;
+            }
+            else
+            {
+                crosshair.style.display = DisplayStyle.None;
+            }
+        }
+
         //TODO: when hit enemy, change the color of crosshair to red
+
+
+        public VisualElement Crosshair { get { return crosshair; } }
     }
 }

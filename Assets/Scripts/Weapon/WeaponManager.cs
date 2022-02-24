@@ -182,13 +182,16 @@ namespace CSE5912.PolyGamers
             bool isItem = Physics.Raycast(EyeCameraTransform.position,
                 EyeCameraTransform.forward, out RaycastHit hit,
                 RayCastMaxDistance, ItemLayerMask);
+            Debug.Log(isItem);
             if (isItem)
             {
+                bool hasItem = hit.collider.TryGetComponent(out BaseItem item);
+                ItemPeekControl.Instance.PeekItem(item);
+
                 // player pick up weapon by pressing E
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     // get the item component of type BaseItem, if it exists
-                    bool hasItem = hit.collider.TryGetComponent(out BaseItem item);
                     if (hasItem)
                     {
                         PickupWeapon(item);
@@ -196,6 +199,10 @@ namespace CSE5912.PolyGamers
                         Debug.Log(item.name);
                     }
                 }
+            }
+            else
+            {
+                ItemPeekControl.Instance.Clear();
             }
         }
 
@@ -212,26 +219,6 @@ namespace CSE5912.PolyGamers
 
             SetupCarriedWeapon(weapon);
 
-            // loop through each arm in the Firearm list
-            //foreach (Firearms arm in Arms)
-            //{
-            //    // compare the arm name to find the corresponding Firearm weapon
-            //    if (firearmsItem.ArmsName.CompareTo(arm.name) == 0)
-            //    {
-            //        // equip firearm weapon base on weapon type
-            //        switch (firearmsItem.CurrentFirearmsType)
-            //        {
-            //            case FirearmsItem.FirearmsType.AssaultRifle:
-            //                MainWeapon = arm;
-            //                break;
-            //            case FirearmsItem.FirearmsType.HandGun:
-            //                SecondaryWeapon = arm;
-            //                break;
-            //        }
-            //        // firearmsItem.HideItem();
-            //        SetupCarriedWeapon(arm);
-            //    }
-            //}
         }
 
         private void PickupAttachment(BaseItem baseItem)
@@ -243,28 +230,6 @@ namespace CSE5912.PolyGamers
 
             PlayerInventory.Instance.AddAttachment(attachment);
 
-            // enable attachment on weapon base on attachment type
-            //switch (attachmentItem.Type)
-            //{
-            //    case Attachment.AttachmentType.Scope:
-            //        foreach (Firearms.ScopeInfo scopeInfo in carriedWeapon.ScopeInfos)
-            //        {
-            //            // find the right scope to enable
-            //            if (scopeInfo.ScopeName.CompareTo(attachmentItem.) != 0)
-            //            {
-            //                scopeInfo.ScopeGameObject.SetActive(false);
-            //                continue;
-            //            }
-            //            // enable the scope
-            //            scopeInfo.ScopeGameObject.SetActive(true);
-            //            carriedWeapon.SetupCarriedScope(scopeInfo);
-            //            // enable scoping value in Firearms
-            //            carriedWeapon.isAttached = true;
-            //        }
-            //        break;
-            //    case Attachment.AttachmentType.Other:
-            //        break;
-            //}
         }
 
         // allow weapon switching during reloading

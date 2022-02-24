@@ -35,22 +35,9 @@ namespace CSE5912.PolyGamers
                 slot.style.unityBackgroundImageTintColor = Color.clear;
             }
         }
-        public void SetDisplay(bool isActive)
+        public virtual void Display(bool enabled)
         {
-            if (!isActive)
-            {
-                StartCoroutine(FadeOut(root));
-
-                UnityEngine.Cursor.visible = false;
-                UnityEngine.Cursor.lockState = CursorLockMode.Locked;
-            }
-            else
-            {
-                StartCoroutine(FadeIn(root));
-
-                UnityEngine.Cursor.visible = true;
-                UnityEngine.Cursor.lockState = CursorLockMode.None;
-            }
+            Debug.LogWarning("Warning: UI.Display() is not defined but being called. ");
         }
 
 

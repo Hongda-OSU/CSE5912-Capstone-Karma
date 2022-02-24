@@ -101,7 +101,18 @@ namespace CSE5912.PolyGamers
                     weapon.Q<Label>("Ammo").text = "";
                 }
             }
+        }
 
+        public override void Display(bool enabled)
+        {
+            if (enabled)
+            {
+                weaponInformation.style.display = DisplayStyle.Flex;
+            }
+            else
+            {
+                weaponInformation.style.display = DisplayStyle.None;
+            }
         }
     }
 }
