@@ -51,12 +51,6 @@ namespace CSE5912.PolyGamers
             int tmp_AudioDataCount = tmp_TagsWithAudio.ImpactAudioClips.Count;
             AudioClip tmp_AudioClip = tmp_TagsWithAudio.ImpactAudioClips[UnityEngine.Random.Range(0, tmp_AudioDataCount)];
             AudioSource.PlayClipAtPoint(tmp_AudioClip, hit.point);
-
-            if (hit.transform != null && !Penetrable)
-            {
-                Destroy(this.gameObject);
-            }
-
         }
 
         private void CheckDamgeEenemy(RaycastHit hit)
