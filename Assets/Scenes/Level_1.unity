@@ -25538,14 +25538,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 602da8c095672d74abed12bc25da86a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentItemType: 0
-  ItemName: RedDotSight
-  ItemId: 1501
-  attachmentName: 
-  iconImage: {fileID: 0}
-  description: 
-  attachedTo: {fileID: 0}
-  CurrentAttachmentType: 0
 --- !u!65 &539055091
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -68649,6 +68641,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 789240833929632200, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
+      propertyPath: SpreadAngle
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 789240833929632200, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
       propertyPath: MaxAmmoCarried
       value: 10000
       objectReference: {fileID: 0}
@@ -68724,6 +68720,22 @@ PrefabInstance:
       propertyPath: attachments.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4093601272437484365, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
+      propertyPath: Gravity
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4093601272437484365, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
+      propertyPath: JumpHeight
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4093601272437484365, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
+      propertyPath: cooldownTimer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4093601272437484366, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
+      propertyPath: m_SlopeLimit
+      value: 65
+      objectReference: {fileID: 0}
     - target: {fileID: 4093601272437484367, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
       propertyPath: AmmoCount
       value: 
@@ -68779,6 +68791,10 @@ PrefabInstance:
     - target: {fileID: 4156378107618010386, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
       propertyPath: m_CullingMask.m_Bits
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4172119940055524135, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
+      propertyPath: MouseSensitivity
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 4172133018842139838, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
       propertyPath: m_RootOrder
@@ -89818,14 +89834,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 602da8c095672d74abed12bc25da86a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentItemType: 0
-  ItemName: 2X
-  ItemId: 1500
-  attachmentName: 
-  iconImage: {fileID: 0}
-  description: 
-  attachedTo: {fileID: 0}
-  CurrentAttachmentType: 0
 --- !u!65 &1981784416
 BoxCollider:
   m_ObjectHideFlags: 0

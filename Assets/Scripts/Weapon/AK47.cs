@@ -74,13 +74,6 @@ namespace CSE5912.PolyGamers
         }
 
         // camera leaning use gun camera(rotation) and current gameobject(rotation and position)
-        protected override void StartCameraLean()
-        {
-            if (Input.GetKey(KeyCode.Q))
-                CameraLeanLeft();
-            if (Input.GetKey(KeyCode.E))
-                CameraLeanRight();
-        }
 
         protected override void StopCameraLean()
         {
@@ -89,14 +82,14 @@ namespace CSE5912.PolyGamers
             GunCamera.transform.localRotation = Quaternion.Slerp(GunCamera.transform.localRotation, GunCameraLocalOriginalRotation, SlerpTime * Time.deltaTime);
         }
 
-        private void CameraLeanLeft()
+        protected override void CameraLeftLean()
         {
             transform.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.Euler(0,0,SlerpAngle), SlerpTime * Time.deltaTime);
             transform.localPosition = Vector3.Slerp(transform.localPosition, new Vector3(-SlerpDistance, 0, 0), SlerpTime * Time.deltaTime);
             GunCamera.transform.localRotation = Quaternion.Slerp(GunCamera.transform.localRotation, Quaternion.Euler(90, SlerpAngle, 0), SlerpTime * Time.deltaTime);
         }
 
-        private void CameraLeanRight()
+        protected override void CameraLeanRight()
         {
             transform.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.Euler(0, 0, -SlerpAngle), SlerpTime * Time.deltaTime);
             transform.localPosition = Vector3.Slerp(transform.localPosition, new Vector3(SlerpDistance, 0, 0), SlerpTime * Time.deltaTime);

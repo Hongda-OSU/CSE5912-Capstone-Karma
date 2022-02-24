@@ -132,10 +132,12 @@ namespace CSE5912.PolyGamers
                 carriedWeapon.StopAiming();
                 isAiming = false;
             }
-            
+
             // start lean shooting only when aiming, press Q for left lean, E for right lean
-            if ((Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.E)) && carriedWeapon.isAiming)
-                carriedWeapon.StartLeanShooting();
+            if ((Input.GetKey(KeyCode.Q)) && carriedWeapon.isAiming)
+                carriedWeapon.StartLeftLeanShooting();
+            else if (Input.GetKey(KeyCode.E) && carriedWeapon.isAiming)
+                carriedWeapon.StartRightLeanShooting();
             else
                 carriedWeapon.StopLeanShooting();
         }

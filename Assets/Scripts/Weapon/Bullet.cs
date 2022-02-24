@@ -31,13 +31,15 @@ namespace CSE5912.PolyGamers
             // TODO:
             CheckDamgeEenemy(hit);
 
-
-            //var tmp_BulletEffect =
-            //    Instantiate(ImpactPrefab,
-            //        tmp_Hit.point,
-            //        Quaternion.LookRotation(tmp_Hit.normal, Vector3.up));
-            //Destroy(tmp_BulletEffect, 1f);
-
+            // impact prefab
+            if (hit.transform.tag != "Enemy")
+            {
+                var tmp_BulletEffect =
+                    Instantiate(ImpactPrefab,
+                        hit.point,
+                        Quaternion.LookRotation(hit.normal, Vector3.up));
+                Destroy(tmp_BulletEffect, 1f);
+            }
 
             // For impact Audio
             var tmp_TagsWithAudio = impactAudioData.ImpactTagsWithAudios.Find((audioData) =>

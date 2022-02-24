@@ -53,7 +53,6 @@ public class FPSMovementCC : MonoBehaviour
         if (isGrounded && playerVelocity.y < 0f)
             playerVelocity.y = -2f;
         characterController.Move(playerVelocity * Time.deltaTime);
-
     }
 
     public void Jump()

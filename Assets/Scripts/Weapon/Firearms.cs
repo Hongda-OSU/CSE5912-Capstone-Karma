@@ -160,7 +160,8 @@ namespace CSE5912.PolyGamers
 
         protected abstract void Shoot();
         protected abstract void Reload();
-        protected abstract void StartCameraLean();
+        protected abstract void CameraLeftLean();
+        protected abstract void CameraLeanRight();
         protected abstract void StopCameraLean();
 
         protected Vector3 CalculateBulletSpreadOffset()
@@ -286,9 +287,13 @@ namespace CSE5912.PolyGamers
         }
 
         // for weapon lean shooting
-        internal void StartLeanShooting()
+        internal void StartLeftLeanShooting()
         {
-            StartCameraLean();
+            CameraLeftLean();
+        }
+        internal void StartRightLeanShooting()
+        {
+            CameraLeanRight();
         }
 
         internal void StopLeanShooting()
