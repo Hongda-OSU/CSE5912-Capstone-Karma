@@ -11,19 +11,25 @@ namespace CSE5912.PolyGamers
         private InputActions inputSchemes;
         private FPSControllerCC fpsController;
         private FPSMouseLook fpsMouseLook;
+        private WeaponManager weaponManager;
 
         void Awake()
         {
             inputSchemes = new InputActions();
             fpsController = FindObjectOfType<FPSControllerCC>();
             fpsMouseLook = FindObjectOfType<FPSMouseLook>();
+            weaponManager = FindObjectOfType<WeaponManager>();
+            weaponManager.inputSchemes = inputSchemes;
 
             inputSchemes.PlayerActions.Jump.performed += ctx => fpsController.PerformJump();
             inputSchemes.PlayerActions.Crouch.performed += ctx => fpsController.PerformCrouch();
             inputSchemes.PlayerActions.Dash.performed += ctx => fpsController.PerformDash();
             inputSchemes.PlayerActions.Inspect.performed += ctx => fpsController.PerformInspect();
-            inputSchemes.PlayerActions.Sprint.started += ctx => fpsController.DoSprint();
+            inputSchemes.PlayerActions.Sprint.performed += ctx => fpsController.DoSprint();
             inputSchemes.PlayerActions.Sprint.canceled += ctx => fpsController.DoSprint();
+            inputSchemes.FPSActions.Reload.performed += ctx => weaponManager.StartReloadAmmo();
+            inputSchemes.FPSActions.Aim.performed += ctx => weaponManager.StartAiming();
+            inputSchemes.FPSActions.Aim.canceled += ctx => weaponManager.StopAiming();
         }
 
         void Start()

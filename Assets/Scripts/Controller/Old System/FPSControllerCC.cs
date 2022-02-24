@@ -15,7 +15,7 @@ namespace CSE5912.PolyGamers
         public float WalkSpeedWhenCrouched;
         public float DashSpeed;
         // determine player current speed
-        public float currentSpeed;
+        private float currentSpeed;
 
         [Header("Physics")]
         public float Gravity;
@@ -80,9 +80,9 @@ namespace CSE5912.PolyGamers
             }
             HandleAnimation();
 
+            // skill cool down
             if (cooldownTimer.IsActive)
                 cooldownTimer.Update(Time.deltaTime);
-
         }
 
         public bool isGrounded()
@@ -99,7 +99,6 @@ namespace CSE5912.PolyGamers
             // (1) first Move() that handle player movement
             characterController.Move(currentSpeed * Time.deltaTime * movementDirection);
             velocity = GetVeloctiy(characterController.velocity);
-
             // (2) second Move() that apply gravity to player
             playerVelocity.y -= Gravity * Time.deltaTime;
             // player grounded => stick with ground
@@ -167,7 +166,8 @@ namespace CSE5912.PolyGamers
             // walk animation when press both W and A/D
             if (Math.Abs(horizontalInput) > 0 && Math.Abs(verticalInput) > 0 && !isSprinted)
                 velocity /= (float)Math.Sqrt(2);
-            characterAnimator.SetFloat("Velocity", velocity, 0.25f, Time.deltaTime);
+            if (characterAnimator)
+                characterAnimator.SetFloat("Velocity", velocity, 0.25f, Time.deltaTime);
         }
 
         IEnumerator DoCrouch(float targetHeight)

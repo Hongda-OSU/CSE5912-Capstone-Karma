@@ -5,6 +5,7 @@ namespace CSE5912.PolyGamers
 {
     public class WeaponManager : MonoBehaviour
     {
+        public InputActions inputSchemes;
         // FPS controller and Weapons
         [SerializeField] private FPSControllerCC fpsController;
         // 1st weapon in the inspector
@@ -17,7 +18,6 @@ namespace CSE5912.PolyGamers
 
         // current weapon player equipped
         private Firearms carriedWeapon;
-        // TODO: comment
 
         // Weapon pick up
         public Transform EyeCameraTransform;
@@ -35,6 +35,7 @@ namespace CSE5912.PolyGamers
         // WeaponManager singleton
         private static WeaponManager instance;
         public static WeaponManager Instance { get { return instance; } }
+
 
         private void Awake()
         {
@@ -57,7 +58,6 @@ namespace CSE5912.PolyGamers
                 presetWeaponList.Add(weapon);
                 weapon.gameObject.SetActive(false);
             }
-
 
             MainWeapon = PlayerInventory.Instance.DefaultWeapon;
             // baihua: player always has at least one defualt weapon on start
@@ -92,7 +92,7 @@ namespace CSE5912.PolyGamers
             // shooting type: continue
             if (carriedWeapon.shootingType == Firearms.ShootingType.Continued)
             {
-                if (Input.GetMouseButton(0) && !carriedWeapon.isReloading)
+                if (inputSchemes.FPSActions.Shoot.ContinuedShooting() && !carriedWeapon.isReloading)
                 {
                     carriedWeapon.HoldTrigger();
                     isFiring = true;
@@ -101,45 +101,50 @@ namespace CSE5912.PolyGamers
             // shooting type: fixed
             if (carriedWeapon.shootingType == Firearms.ShootingType.Fixed)
             {
-                if (Input.GetMouseButtonDown(0) && !carriedWeapon.isReloading)
+                if (inputSchemes.FPSActions.Shoot.FixedShooting() && !carriedWeapon.isReloading)
                 {
                     carriedWeapon.HoldTrigger();
                     isFiring = true;
                 }
             }
-
             // release the left mouse to stop shooting
-            if (Input.GetMouseButtonUp(0))
+            if (inputSchemes.FPSActions.Shoot.StopShooting())
             {
                 carriedWeapon.ReleaseTrigger();
                 isFiring = false;
             }
 
-            // reload ammo by pressing R
-            if (Input.GetKeyDown(KeyCode.R) && !carriedWeapon.isReloading)
-                carriedWeapon.ReloadAmmo();
+            // start lean shooting only when aiming, press Q for left lean, E for right lean
+            if (inputSchemes.FPSActions.LeanLeft.IsPressed() && carriedWeapon.isAiming)
+                carriedWeapon.StartLeftLeanShooting();
+            else if (inputSchemes.FPSActions.LeanRight.IsPressed() && carriedWeapon.isAiming)
+                carriedWeapon.StartRightLeanShooting();
+            else
+                carriedWeapon.StopLeanShooting();
+        }
 
-            // weapon aiming by holding the right mouse, no aiming during reloading (disable crosshair when scope attached)
-            if (Input.GetMouseButtonDown(1) && !carriedWeapon.isReloading)
+        // reload ammo by pressing R
+        public void StartReloadAmmo()
+        {
+            if (!carriedWeapon.isReloading)
+                carriedWeapon.ReloadAmmo();
+        }
+
+        // weapon aiming by holding the right mouse, no aiming during reloading (disable crosshair when scope attached)
+        public void StartAiming()
+        {
+            if (!carriedWeapon.isReloading)
             {
                 carriedWeapon.StartAiming();
                 isAiming = true;
             }
+        }
 
-            // stop weapon aiming by releasing the right mouse (enable crosshair when scope attached)
-            if (Input.GetMouseButtonUp(1))
-            {
-                carriedWeapon.StopAiming();
-                isAiming = false;
-            }
-
-            // start lean shooting only when aiming, press Q for left lean, E for right lean
-            if ((Input.GetKey(KeyCode.Q)) && carriedWeapon.isAiming)
-                carriedWeapon.StartLeftLeanShooting();
-            else if (Input.GetKey(KeyCode.E) && carriedWeapon.isAiming)
-                carriedWeapon.StartRightLeanShooting();
-            else
-                carriedWeapon.StopLeanShooting();
+        // stop weapon aiming by releasing the right mouse (enable crosshair when scope attached)
+        public void StopAiming()
+        {
+            carriedWeapon.StopAiming();
+            isAiming = false;
         }
 
         // getter method for current weapon
@@ -150,7 +155,7 @@ namespace CSE5912.PolyGamers
             // 1. switch to main weapon by pressing Alpha1
             // 2. Cannot switch to itself or main weapon is not exist
             // 3. Cannot switch weapon when aiming or shooting
-            if (Input.GetKeyDown(KeyCode.Alpha1) 
+            if (inputSchemes.FPSActions.SwitchToMainWeapon.triggered 
                 && carriedWeapon != MainWeapon
                 && MainWeapon != null
                 && !carriedWeapon.isAiming
@@ -164,7 +169,7 @@ namespace CSE5912.PolyGamers
                 fpsController.SetupAnimator(carriedWeapon.GunAnimator);
             }
             // 1. switch to secondary weapon by pressing Alpha2
-            else if (Input.GetKeyDown(KeyCode.Alpha2) 
+            else if (inputSchemes.FPSActions.SwitchToSecondaryWeapon.triggered
                      && carriedWeapon != SecondaryWeapon 
                      && !carriedWeapon.isAiming 
                      && SecondaryWeapon != null &&
@@ -187,7 +192,7 @@ namespace CSE5912.PolyGamers
             if (isItem)
             {
                 // player pick up weapon by pressing E
-                if (Input.GetKeyDown(KeyCode.E))
+                if (inputSchemes.PlayerActions.PickUp.triggered)
                 {
                     // get the item component of type BaseItem, if it exists
                     bool hasItem = hit.collider.TryGetComponent(out FirearmsItem firearmsItem);
