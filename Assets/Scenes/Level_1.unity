@@ -68634,6 +68634,18 @@ PrefabInstance:
       propertyPath: attachments.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4093601272437484365, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
+      propertyPath: Gravity
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4093601272437484365, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
+      propertyPath: JumpHeight
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4093601272437484366, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
+      propertyPath: m_SlopeLimit
+      value: 65
+      objectReference: {fileID: 0}
     - target: {fileID: 4093601272437484367, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
       propertyPath: AmmoCount
       value: 
@@ -68689,6 +68701,10 @@ PrefabInstance:
     - target: {fileID: 4156378107618010386, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
       propertyPath: m_CullingMask.m_Bits
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4172119940055524135, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
+      propertyPath: MouseSensitivity
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 4172133018842139838, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
       propertyPath: m_RootOrder
