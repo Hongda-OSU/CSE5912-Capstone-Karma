@@ -8,7 +8,8 @@ namespace CSE5912.PolyGamers
     public class SkillTree
     {
         public SkillSlot mainSkill;
-        public Dictionary<int, List<SkillSlot>> indexToSkillSlotChain;
+
+        public List<SkillSlot> passiveSlotList;
 
         public List<SkillSlot> buffSlotList;
 
@@ -21,7 +22,7 @@ namespace CSE5912.PolyGamers
         {
             skillTreeElement = skillsPanel;
 
-            indexToSkillSlotChain = new Dictionary<int, List<SkillSlot>>();
+            passiveSlotList = new List<SkillSlot>();
             buffSlotList = new List<SkillSlot>();
             skillSlotList = new List<SkillSlot>();
 
@@ -61,10 +62,9 @@ namespace CSE5912.PolyGamers
 
                         SkillSlot skillSlot = new SkillSlot(slot);
 
-                        skillChain.Add(skillSlot);
+                        passiveSlotList.Add(skillSlot);
                         skillSlotList.Add(skillSlot);
                     }
-                    indexToSkillSlotChain.Add(index, skillChain);
                 }
             }
         }
@@ -90,6 +90,15 @@ namespace CSE5912.PolyGamers
                     return;
                 }
             }
+        }
+
+        public void AssignPassive(int index, Skill skill)
+        {
+            passiveSlotList[index].skill = skill;
+        }
+        public void AssignBuff(int index, Skill skill)
+        {
+            buffSlotList[index].skill = skill;
         }
 
     }

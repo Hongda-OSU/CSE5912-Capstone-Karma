@@ -55,5 +55,8 @@ namespace CSE5912.PolyGamers
             }
             return result;
         }
+
+
+        public List<GameObject> EnemyList { get { return enemyList; } }
     }
 }

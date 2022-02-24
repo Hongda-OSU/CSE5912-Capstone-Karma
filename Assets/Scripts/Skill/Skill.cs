@@ -4,27 +4,27 @@ using UnityEngine;
 
 namespace CSE5912.PolyGamers
 {
-    public class Skill
+    public class Skill : MonoBehaviour
     {
-        protected string name;
+        [SerializeField] protected string skillName;
 
-        protected Skill requiredSkill;
+        [SerializeField] protected Skill requiredSkill;
 
-        protected bool isLearned = false;
+        [SerializeField] protected bool isLearned = false;
 
-        protected int level = 0;
-        protected int maxLevel = 5;
+        [SerializeField] protected int level = 0;
+        [SerializeField] protected int maxLevel = 5;
 
-        protected int learnCost = 1;
-        protected int levelupCost = 1;
+        [SerializeField] protected int learnCost = 1;
+        [SerializeField] protected int levelupCost = 1;
 
         protected string description;
 
-        protected float cooldown;
+        [SerializeField] protected float cooldown;
         protected float timeSince = 0f;
         protected bool isReady = false;
 
-        protected SkillType type;
+        [SerializeField] protected SkillType type;
         public enum SkillType
         {
             passive,
@@ -32,24 +32,26 @@ namespace CSE5912.PolyGamers
             buff,
         }
 
-
-        public virtual IEnumerator PerformEffect()
+        protected void StartCoolingdown()
         {
-            yield return null;
+            StartCoroutine(CoolDown());
         }
 
-        protected IEnumerator StartCoolingdown() 
-        { 
+        private IEnumerator CoolDown() 
+        {
+            isReady = false;
+
             while (timeSince < cooldown)
             {
                 yield return new WaitForSeconds(Time.deltaTime);
 
                 timeSince += Time.deltaTime;
             }
-
             timeSince = 0f;
+
             isReady = true;
         }
+
 
         public virtual bool LevelUp()
         {
@@ -77,6 +79,7 @@ namespace CSE5912.PolyGamers
 
         public virtual void ResetLevel()
         {
+            PlayerSkill.Instance.SkillPoints += learnCost + levelupCost * (level - 1);
             isReady = false;
             isLearned = false;
             level = 0;
@@ -85,18 +88,18 @@ namespace CSE5912.PolyGamers
         public string BuildSpecific()
         {
             string specific =
-                "Name: " + name +
+                "Name: " + skillName +
                 "\nType: " + type.ToString() +
                 "\nDescription: " + description;
 
             if (requiredSkill != null)
-                specific += "\nRequire: " + requiredSkill.name;
+                specific += "\nRequire: " + requiredSkill.skillName;
 
             return specific;
         }
 
 
-        public string Name { get { return name; } }
+        public string Name { get { return skillName; } }
         public Skill RequiredSkill { get { return requiredSkill; } set { requiredSkill = value; } }
         public bool IsLeanred { get { return isLearned; } }
         public int Level { get { return level; } }

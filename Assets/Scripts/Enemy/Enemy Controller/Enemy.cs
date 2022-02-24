@@ -73,10 +73,10 @@ namespace CSE5912.PolyGamers
             animator = GetComponent<Animator>();
             agent = GetComponent<NavMeshAgent>();
 
-            debuff = new Debuff();
+            debuff = new Debuff(PlayerStats.Instance, this);
 
             damageFactor = new DamageFactor();
-            damageFactor.SetValues(damageFactor_physical, damageFactor_fire, damageFactor_cryo, damageFactor_electro, damageFactor_venom);
+            damageFactor.SetDamageValues(damageFactor_physical, damageFactor_fire, damageFactor_cryo, damageFactor_electro, damageFactor_venom);
 
             resist = new Resist();
             resist.SetValues(physicalResist, fireResist, cryoResist, electroResist, venomResist);

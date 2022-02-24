@@ -37,6 +37,12 @@ namespace CSE5912.PolyGamers
         [SerializeField] private float damageFactor_venom = 1f;
         private DamageFactor damageFactor;
 
+        [Header("Debuff")]
+        [SerializeField] private float burnedBaseChance = 0f;
+        [SerializeField] private float frozenBaseChance = 0f;
+        [SerializeField] private float electrocutedBaseChance = 0f;
+        [SerializeField] private float infectedBaseChance = 0f;
+
         [Header("Resist")]
         [SerializeField] private float physicalResist = 0f;
         [SerializeField] private float fireResist = 0f;
@@ -66,7 +72,7 @@ namespace CSE5912.PolyGamers
             instance = this;
 
             damageFactor = new DamageFactor();
-            damageFactor.SetValues(damageFactor_physical, damageFactor_fire, damageFactor_cryo, damageFactor_electro, damageFactor_venom);
+            damageFactor.SetDamageValues(damageFactor_physical, damageFactor_fire, damageFactor_cryo, damageFactor_electro, damageFactor_venom);
 
             resist = new Resist();
             resist.SetValues(physicalResist, fireResist, cryoResist, electroResist, venomResist);
@@ -169,19 +175,19 @@ namespace CSE5912.PolyGamers
                     critDamageFactor += critDamageUp;
                     break;
                 case "PhysicalDamage":
-                    damageFactor_physical += damageUp;
+                    damageFactor.Physical.Value += damageUp;
                     break;
                 case "FireDamage":
-                    damageFactor_fire += damageUp;
+                    damageFactor.Fire.Value += damageUp;
                     break;
                 case "CryoDamage":
-                    damageFactor_cryo += damageUp;
+                    damageFactor.Cryo.Value += damageUp;
                     break;
                 case "ElectroDamage":
-                    damageFactor_electro += damageUp;
+                    damageFactor.Electro.Value += damageUp;
                     break;
                 case "VenomDamage":
-                    damageFactor_venom += damageUp;
+                    damageFactor.Venom.Value += damageUp;
                     break;
                 case "PhysicalResist":
                     resist.Physical.Value += resistUp;

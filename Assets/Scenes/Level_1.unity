@@ -22138,6 +22138,75 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4708422889803948, guid: 5950f32cf2be89c47990c1e2bd86bbe2, type: 3}
   m_PrefabInstance: {fileID: 474702074}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &474856143
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 944618396}
+    m_Modifications:
+    - target: {fileID: 1016950843055038975, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1016950843055038975, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: level
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1016950843055038975, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: skillName
+      value: Fire Mastery
+      objectReference: {fileID: 0}
+    - target: {fileID: 4123112667914540131, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: m_Name
+      value: SkillTree_element
+      objectReference: {fileID: 0}
+    - target: {fileID: 7083110851631250395, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7083110851631250395, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7083110851631250395, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7083110851631250395, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7083110851631250395, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7083110851631250395, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7083110851631250395, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7083110851631250395, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7083110851631250395, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7083110851631250395, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7083110851631250395, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
 --- !u!1001 &475846323
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42619,7 +42688,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 963249631}
   m_Father: {fileID: 1079088360}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -42653,6 +42723,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillPoints: 100
+  skillTree_element: {fileID: 963249630}
 --- !u!1001 &945824128
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43759,6 +43830,16 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4915694893590650, guid: 0dfdba163b6c7b741aef9fc19bee1502, type: 3}
   m_PrefabInstance: {fileID: 962714449}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &963249630 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4123112667914540131, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+  m_PrefabInstance: {fileID: 474856143}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &963249631 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7083110851631250395, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+  m_PrefabInstance: {fileID: 474856143}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &964416054
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44620,7 +44701,7 @@ GameObject:
   - component: {fileID: 983615336}
   - component: {fileID: 983615337}
   m_Layer: 5
-  m_Name: ModsPanel
+  m_Name: StatsPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52445,6 +52526,10 @@ MonoBehaviour:
   damageFactor_cryo: 0
   damageFactor_electro: 0
   damageFactor_venom: 0
+  burnedBaseChance: 0
+  frozenBaseChance: 0
+  electrocutedBaseChance: 0
+  infectedBaseChance: 0
   physicalResist: 0
   fireResist: 0
   cryoResist: 0

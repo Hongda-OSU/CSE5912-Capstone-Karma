@@ -10,7 +10,9 @@ namespace CSE5912.PolyGamers
     {
         private PlayerSkill playerSkill;
 
-        private SkillTree skillTree_elements;
+        private SkillTree skillTree_element;
+
+
         private List<SkillTree> skillTreeList;
         public List<SkillTree> SkillTreeList { get { return skillTreeList; } }
 
@@ -42,10 +44,10 @@ namespace CSE5912.PolyGamers
 
             specificPanel = skillsPanel_elements.Q<VisualElement>("SkillSpecific");
 
-            skillTree_elements = new SkillTree_elements(skillsPanel_elements);
+            skillTree_element = new SkillTree_element(skillsPanel_elements);
 
             skillTreeList = new List<SkillTree>();
-            skillTreeList.Add(skillTree_elements);
+            skillTreeList.Add(skillTree_element);
         }
 
         private void Start()
@@ -54,7 +56,7 @@ namespace CSE5912.PolyGamers
 
             UpdateVisual();
 
-            foreach (var skillSlot in skillTree_elements.skillSlotList)
+            foreach (var skillSlot in skillTree_element.skillSlotList)
             {
                 skillSlot.slot.RegisterCallback<MouseDownEvent>(evt => SkillSlot_performed(skillSlot.slot));
             }
@@ -76,7 +78,7 @@ namespace CSE5912.PolyGamers
             string slotName = slot.name;
             if (slotName.Contains("MainSkill") || slotName.Contains("Skill_") || slotName.Contains("Buff_"))
             {
-                skill = skillTree_elements.FindSkillBySlot(slot);
+                skill = skillTree_element.FindSkillBySlot(slot);
 
                 selectedSkillSlot = slot;
             }
@@ -96,7 +98,7 @@ namespace CSE5912.PolyGamers
             }
             else 
             {
-                skillTree_elements.LevelUpSkill(slot);
+                skillTree_element.LevelUpSkill(slot);
             }
 
             UpdateVisual();
@@ -106,7 +108,7 @@ namespace CSE5912.PolyGamers
         {
             skillPointsLabel.text = "Skill Points: " + playerSkill.SkillPoints;
 
-            foreach (var skillSlot in skillTree_elements.skillSlotList)
+            foreach (var skillSlot in skillTree_element.skillSlotList)
             {
                 VisualElement slot = skillSlot.slot;
                 ApplySelectedVfx(slot, slot == selectedSkillSlot);
@@ -116,7 +118,7 @@ namespace CSE5912.PolyGamers
         private IEnumerator PopUpSkillSpecific(VisualElement slot)
         {
 
-            Skill skill = skillTree_elements.FindSkillBySlot(slot);
+            Skill skill = skillTree_element.FindSkillBySlot(slot);
 
             if (skill == null)
             {
@@ -143,5 +145,8 @@ namespace CSE5912.PolyGamers
 
             yield return StartCoroutine(FadeOut(specificPanel));
         }
+
+
+        public SkillTree SkillTree_element { get { return skillTree_element; } }
     }
 }

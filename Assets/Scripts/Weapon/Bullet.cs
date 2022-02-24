@@ -56,6 +56,7 @@ namespace CSE5912.PolyGamers
         {
             if (hit.transform.tag == "Enemy")
             {
+                PlayerManager.Instance.HitByBullet = hit.transform.GetComponent<Enemy>();
                 PlayerManager.Instance.PerformDamage(hit.transform.GetComponent<Enemy>(), hit.point);
             }
         }

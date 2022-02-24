@@ -186,7 +186,7 @@ Shader "GD/Particles/Distortion3"
 			}
 		}	
 	}
-	CustomEditor "ASEMaterialInspector"
+	//CustomEditor "ASEMaterialInspector"
 	
 	
 }

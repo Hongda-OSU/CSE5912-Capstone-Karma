@@ -6,6 +6,9 @@ namespace CSE5912.PolyGamers
 {
     public class Debuff
     {
+        private IDamageable source;
+        private IDamageable target;
+
         private int burned = 0;
         private int frozen = 0;
         private int electrocuted = 0;
@@ -24,7 +27,12 @@ namespace CSE5912.PolyGamers
             Infected,
         }
 
-        public Debuff() { }
+        public Debuff(IDamageable source, IDamageable target)
+        {
+            this.source = source;
+            this.target = target;
+        }
+
 
         public int GetDebuffStack(DebuffType type)
         {
@@ -42,6 +50,10 @@ namespace CSE5912.PolyGamers
             Debug.LogError("Error: Debuff type does not exist. ");
             return -1;
         }
+
+
+        public IDamageable Source { get { return source; } }
+        public IDamageable Target { get { return target; } }
 
         public int Burned { get { return burned; } set { burned = Mathf.Clamp(value, 0, maxBurned); } }
         public int Frozen { get { return frozen; } set { frozen = Mathf.Clamp(value, 0, maxFrozen); } }
