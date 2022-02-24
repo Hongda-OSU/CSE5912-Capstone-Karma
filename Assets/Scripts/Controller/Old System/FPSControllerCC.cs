@@ -47,6 +47,15 @@ namespace CSE5912.PolyGamers
         // Perform Dash with cool down
         private CooldownTimer cooldownTimer = new CooldownTimer(2f);
 
+        private static FPSControllerCC instance;
+        public static FPSControllerCC Instance { get { return instance; } }
+
+        private void Awake()
+        {
+            if (instance != null && instance != this)
+                Destroy(gameObject);
+            instance = this; 
+        }
         void Start()
         {
             characterController = GetComponent<CharacterController>();

@@ -34,6 +34,12 @@ namespace CSE5912.PolyGamers
             crosshair = root.Q<VisualElement>("Crosshair");
         }
 
+        private void Start()
+        {
+            CharacterController = FPSControllerCC.Instance.GetComponent<CharacterController>();
+            weaponManager = WeaponManager.Instance;
+        }
+
         private void Update()
         {
             bool isMoving = CharacterController.velocity.magnitude > 0;
