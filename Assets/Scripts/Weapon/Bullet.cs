@@ -55,12 +55,23 @@ namespace CSE5912.PolyGamers
 
         private void CheckDamgeEenemy(RaycastHit hit)
         {
-            if (hit.transform.tag == "Enemy")
+            hit.transform.TryGetComponent(out Enemy enemy);
+
+            if (enemy != null)
             {
-                PlayerManager.Instance.HitByBullet = hit.transform.GetComponent<Enemy>();
-                PlayerManager.Instance.PerformDamage(hit.transform.GetComponent<Enemy>(), hit.point);
                 if (!Penetrable)
                     Destroy(gameObject);
+
+                PlayerManager.Instance.HitByBullet = enemy;
+                PlayerManager.Instance.PerformDamage(enemy, hit.point);
+
+                // test
+                //enemy.Freeze();
+                //enemy.Frozen.StackUp();
+
+                //enemy.Burned.StackUp();
+                //enemy.Electrocuted.StackUp();
+                enemy.Infected.StackUp();
             }
         }
 

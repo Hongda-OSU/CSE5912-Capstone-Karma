@@ -1,6 +1,6 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/Styles/Hud.uss?fileID=7433441132597879392&amp;guid=ca36900cbf93cba4d99cfd34716a89b8&amp;type=3#Hud" />
-    <ui:VisualElement name="Background" style="flex-grow: 1; justify-content: flex-start; align-items: center;">
+    <ui:VisualElement name="Background" style="flex-grow: 0; justify-content: flex-start; align-items: center;">
         <ui:Label text="Detail" display-tooltip-when-elided="true" name="Detail" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/UiElement/Trajan%20Pro%20Regular%20SDF.asset?fileID=11400000&amp;guid=0821ecf0f29a62243aeeef3d0eb445c6&amp;type=2#Trajan Pro Regular SDF&apos;); color: rgb(255, 255, 255); font-size: 30px; margin-top: 30px; transition-duration: 0.15s;" />
         <ui:VisualElement name="MaxHealthBar" style="background-color: rgba(0, 15, 8, 0.78); width: 1000px; height: 20px; position: relative; flex-direction: row; left: auto; justify-content: center; transition-duration: 3s;">
             <ui:VisualElement name="HealthBar" style="position: absolute; width: 1000px; height: 20px; background-color: rgb(222, 29, 11); -unity-text-outline-color: rgb(0, 0, 0); left: auto; transition-duration: 3s;" />

@@ -4,20 +4,19 @@ using UnityEngine;
 
 namespace CSE5912.PolyGamers
 {
-    public class Debuff
+    public abstract class Debuff : MonoBehaviour
     {
-        private IDamageable source;
-        private IDamageable target;
+        [SerializeField] protected DebuffType type;
 
-        private int burned = 0;
-        private int frozen = 0;
-        private int electrocuted = 0;
-        private int infected = 0;
+        [SerializeField] protected int stack = 0;
+        [SerializeField] protected int maxStack = 5;
 
-        private int maxBurned = 5;
-        private int maxFrozen = 5;
-        private int maxElectrocuted = 5;
-        private int maxInfected = 5;
+        [SerializeField] protected float duration = 5f;
+        [SerializeField] protected float timeSince = 0f;
+
+        [SerializeField] protected Sprite icon;
+
+        [SerializeField] protected Enemy target;
 
         public enum DebuffType
         {
@@ -27,43 +26,29 @@ namespace CSE5912.PolyGamers
             Infected,
         }
 
-        public Debuff(IDamageable source, IDamageable target)
+        protected void Awake()
         {
-            this.source = source;
-            this.target = target;
+            target = transform.parent.GetComponent<Enemy>();
         }
 
-
-        public int GetDebuffStack(DebuffType type)
+        public void StackUp()
         {
-            switch (type)
+            // increment stack
+            stack = Mathf.Clamp(stack + 1, 0, maxStack);
+
+            // refresh duration
+            timeSince = 0f;
+
+            if (stack == 1)
             {
-                case DebuffType.Burned:
-                    return burned;
-                case DebuffType.Frozen:
-                    return frozen;
-                case DebuffType.Electrocuted:
-                    return electrocuted;
-                case DebuffType.Infected:
-                    return infected;
+                StartCoroutine(Perform());
             }
-            Debug.LogError("Error: Debuff type does not exist. ");
-            return -1;
         }
 
+        protected abstract IEnumerator Perform();
 
-        public IDamageable Source { get { return source; } }
-        public IDamageable Target { get { return target; } }
-
-        public int Burned { get { return burned; } set { burned = Mathf.Clamp(value, 0, maxBurned); } }
-        public int Frozen { get { return frozen; } set { frozen = Mathf.Clamp(value, 0, maxFrozen); } }
-        public int Electrocuted { get { return electrocuted; } set { Mathf.Clamp(value, 0, maxElectrocuted); } }
-        public int Infected { get { return infected; } set { infected = Mathf.Clamp(value, 0, maxInfected); } }
-
-
-        public int MaxBurned { get { return maxBurned; } set { maxBurned = value; } }
-        public int MaxFrozen { get { return maxFrozen; } set { MaxFrozen = value; } }
-        public int MaxElectrocuted { get { return maxElectrocuted; } set { maxElectrocuted = value; } }
-        public int MaxInfected { get { return maxInfected; } set { maxInfected = value; } }
+        public DebuffType Type { get { return type; } }
+        public int Stack { get { return stack; } }
+        public Sprite Icon { get { return icon; } }
     }
 }

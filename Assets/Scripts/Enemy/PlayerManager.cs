@@ -34,6 +34,8 @@ namespace CSE5912.PolyGamers
         public void PerformDamage(Enemy enemy, Vector3 position)
         {
             lastEnemyHit = enemy;
+            if (!enemy.IsAlive)
+                return;
 
             Firearms weapon = WeaponManager.Instance.CarriedWeapon;
 
@@ -43,12 +45,16 @@ namespace CSE5912.PolyGamers
             StartCoroutine(DamageNumber.Instance.DisplayDamageNumber(damage, position));
         }
 
-        public void PerformDamage(Enemy enemy, Vector3 position, Damage damage)
+        public void PerformDamage(Enemy enemy, Damage damage)
         {
             lastEnemyHit = enemy;
+            if (!enemy.IsAlive)
+                return;
 
             lastEnemyHit.TakeDamage(damage);
 
+            Renderer renderer = enemy.transform.GetComponentInChildren<Renderer>();
+            Vector3 position = enemy.transform.position + Vector3.up * renderer.bounds.size.y / 2;
             StartCoroutine(DamageNumber.Instance.DisplayDamageNumber(damage, position));
         }
 

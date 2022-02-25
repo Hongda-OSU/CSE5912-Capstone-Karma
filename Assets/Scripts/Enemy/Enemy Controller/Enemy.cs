@@ -18,10 +18,14 @@ namespace CSE5912.PolyGamers
         [SerializeField] protected float attackDamage;
         [SerializeField] protected float attackRange = 5f;
 
+        [SerializeField] protected float navMeshMoveSpeed = 0f;
         [SerializeField] protected bool isAlive = true;
         [SerializeField] protected bool isFrozen = false;
 
-        protected Debuff debuff;
+        protected Burned burned;
+        protected Frozen frozen;
+        protected Electrocuted electrocuted;
+        protected Infected infected;
 
         [Header("Damage")]
         [SerializeField] private float damageFactor_physical = 1f;
@@ -74,7 +78,12 @@ namespace CSE5912.PolyGamers
             animator = GetComponent<Animator>();
             agent = GetComponent<NavMeshAgent>();
 
-            debuff = new Debuff(PlayerStats.Instance, this);
+            agent.speed = navMeshMoveSpeed;
+
+            burned = GetComponentInChildren<Burned>();
+            frozen = GetComponentInChildren<Frozen>();
+            electrocuted = GetComponentInChildren<Electrocuted>();
+            infected = GetComponentInChildren<Infected>();
 
             damageFactor = new DamageFactor();
             damageFactor.SetDamageValues(damageFactor_physical, damageFactor_fire, damageFactor_cryo, damageFactor_electro, damageFactor_venom);
@@ -113,11 +122,17 @@ namespace CSE5912.PolyGamers
             // remove enemy from enemy list and destroy
         }
 
-        public int GetDebuffStack(Debuff.DebuffType type)
+        public void Freeze()
         {
-            return debuff.GetDebuffStack(type);
+            isFrozen = true;
+            agent.isStopped = true;
+            animator.speed = 0;
         }
-
+        public void SlowDown(float percentage)
+        {
+            agent.speed = navMeshMoveSpeed * (1 - percentage);
+            animator.speed = 1 - percentage;
+        }
 
         public DamageFactor GetDamageFactor()
         {
@@ -180,5 +195,16 @@ namespace CSE5912.PolyGamers
         public float AttackDamage { get { return attackDamage;} }
         public bool IsAttackedByPlayer { get { return isAttackedByPlayer; } }
         public bool IsAlive { get { return isAlive; } }
+
+        public float PhysicalResist { get { return physicalResist;} }
+        public float FireResist { get{ return fireResist;} }
+        public float CryoResist { get { return cryoResist;} }
+        public float ElectroResist { get { return electroResist;} }
+        public float VenomResist { get { return venomResist;} }
+
+        public Burned Burned { get { return burned; } }
+        public Frozen Frozen { get { return frozen; } }
+        public Electrocuted Electrocuted { get { return electrocuted; } }
+        public Infected Infected { get { return infected; } }
     }
 }

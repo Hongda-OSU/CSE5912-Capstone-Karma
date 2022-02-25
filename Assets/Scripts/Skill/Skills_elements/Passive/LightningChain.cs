@@ -32,10 +32,10 @@ namespace CSE5912.PolyGamers
                     StartCoroutine(DisplayVfx(first, second));
 
                     Damage damage = new Damage(baseDamage, Element.Type.Electro, PlayerStats.Instance, target);
-                    PlayerManager.Instance.PerformDamage(target, first, damage);
+                    PlayerManager.Instance.PerformDamage(target, damage);
 
                     damage = new Damage(baseDamage, Element.Type.Electro, PlayerStats.Instance, other.GetComponent<Enemy>());
-                    PlayerManager.Instance.PerformDamage(other.GetComponent<Enemy>(), second, damage);
+                    PlayerManager.Instance.PerformDamage(other.GetComponent<Enemy>(), damage);
 
                     PlayerManager.Instance.HitByBullet = null;
                     return;

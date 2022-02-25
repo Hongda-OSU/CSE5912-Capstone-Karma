@@ -17,6 +17,9 @@ namespace CSE5912.PolyGamers
         private VisualElement healthBar;
         private VisualElement maxHealthBar;
 
+        private VisualElement debuffs;
+        private List<DebuffSlot> debuffSlotList;
+
         private float prevHealth;
 
         private GameObject target;
@@ -31,6 +34,15 @@ namespace CSE5912.PolyGamers
             maxHealthBar = root.Q<VisualElement>("MaxHealthBar");
             healthBar = maxHealthBar.Q<VisualElement>("HealthBar");
 
+            debuffs = root.Q<VisualElement>("Debuffs");
+            debuffSlotList = new List<DebuffSlot>();
+            foreach (var child in debuffs.Children())
+            {
+                var slot = new DebuffSlot(child);
+                debuffSlotList.Add(slot);
+                slot.Clear();
+            }
+
             target = transform.parent.gameObject;
             pivot = gameObject;
             enemy = target.GetComponent<Enemy>();
@@ -41,14 +53,16 @@ namespace CSE5912.PolyGamers
         {
             currentCamera = WeaponManager.Instance.CarriedWeapon.GunCamera;
 
-            if (DisplayEnabled())
+            if (DisplayEnabled() && enemy.Health > 0)
             {
                 SetHealthBar();
+                SetDebuffs();
                 SetPosition();
             }
             else
             {
                 maxHealthBar.style.display = DisplayStyle.None;
+                debuffs.style.display = DisplayStyle.None;
             }
         }
 
@@ -78,7 +92,7 @@ namespace CSE5912.PolyGamers
             var width = widthPerUnit * enemy.MaxHealth;
 
             var planes = GeometryUtility.CalculateFrustumPlanes(currentCamera);
-            if (enemy.Health > 0 && GeometryUtility.TestPlanesAABB(planes, target.GetComponent<Collider>().bounds))
+            if (GeometryUtility.TestPlanesAABB(planes, target.GetComponent<Collider>().bounds))
             {
                 healthBar.style.display = DisplayStyle.Flex;
                 healthBar.style.width = width * enemy.Health / enemy.MaxHealth;
@@ -110,11 +124,22 @@ namespace CSE5912.PolyGamers
                 maxHealthBar.style.display = DisplayStyle.None;
             }
         }
+
+        private void SetDebuffs()
+        {
+            debuffs.style.display = DisplayStyle.Flex;
+
+            debuffSlotList[0].Display(enemy.Burned);
+            debuffSlotList[1].Display(enemy.Frozen);
+            debuffSlotList[2].Display(enemy.Electrocuted);
+            debuffSlotList[3].Display(enemy.Infected);
+        }
+
         private void SetPosition()
         {
             Vector2 newPosition = RuntimePanelUtils.CameraTransformWorldToPanel(maxHealthBar.panel, pivot.transform.position, currentCamera);
 
-            maxHealthBar.transform.position = new Vector2(newPosition.x - widthPerUnit * enemy.MaxHealth / 2, newPosition.y);
+            root.transform.position = new Vector2(newPosition.x - widthPerUnit * enemy.MaxHealth / 2, newPosition.y);
         }
 
         protected override IEnumerator FadeOut(VisualElement element)
@@ -123,5 +148,43 @@ namespace CSE5912.PolyGamers
             maxHealthBar.Remove(element);
         }
 
+
+        internal class DebuffSlot
+        {
+            private VisualElement slot;
+            private Label stack;
+
+            private Debuff debuff;
+
+            public DebuffSlot(VisualElement slot)
+            {
+                this.slot = slot;
+                stack = slot.Q<Label>("Stack");
+                slot.style.unityBackgroundScaleMode = ScaleMode.ScaleToFit;
+            }
+
+            public void Display(Debuff debuff)
+            {
+                if (debuff.Stack == 0)
+                {
+                    Clear();
+                    return;
+                }
+
+                slot.style.display = DisplayStyle.Flex;
+                
+                stack.text = debuff.Stack.ToString();
+
+                slot.style.backgroundImage = new StyleBackground(debuff.Icon);
+            }
+
+            public void Clear()
+            {
+                slot.style.display = DisplayStyle.None;
+                debuff = null;
+                slot.style.backgroundImage = null;
+            }
+
+        }
     }
 }
