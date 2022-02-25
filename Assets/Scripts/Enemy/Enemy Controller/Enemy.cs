@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 namespace CSE5912.PolyGamers
 {
-    public class Enemy : MonoBehaviour, IDamageable
+    public abstract class Enemy : MonoBehaviour, IDamageable
     {
         [Header("Enemy Properties")]
         [SerializeField] protected string enemyName;
@@ -55,11 +55,12 @@ namespace CSE5912.PolyGamers
         // todo
         //[SerializeField] private
 
-        [Header("Detection Range")]
+        [Header("Other")]
         [SerializeField] protected float viewRadius = 15f;
         [Range(0, 360)]
         [SerializeField] protected float viewAngle = 135f;
         [SerializeField] protected float closeDetectionRange = 3f;
+        [SerializeField] protected float timeToDestroy = 5f;
 
         protected bool foundTarget = false;
         protected bool isPlayingDeathAnimation = false;
@@ -71,12 +72,21 @@ namespace CSE5912.PolyGamers
         protected Transform player;
         protected Animator animator;
         protected NavMeshAgent agent;
+        protected Collider collider3d;
+
+        protected virtual void Update()
+        {
+            distanceToPlayer = Vector3.Distance(player.position, transform.position);
+            directionToPlayer = (player.position - transform.position).normalized;
+        }
 
         protected void Initialize()
         {
             player = PlayerManager.Instance.Player.transform;
+
             animator = GetComponent<Animator>();
             agent = GetComponent<NavMeshAgent>();
+            collider3d = GetComponent<Collider>();
 
             agent.speed = navMeshMoveSpeed;
 
@@ -105,7 +115,8 @@ namespace CSE5912.PolyGamers
 
             if (health <= 0)
             {
-                isAlive = false;
+                Die();
+
                 //test
                 DropWeapon();
                 DropAttachment();
@@ -120,7 +131,35 @@ namespace CSE5912.PolyGamers
         protected virtual void Die()
         {
             // remove enemy from enemy list and destroy
+            isAlive = false;
+            agent.isStopped = true;
+            
+            EnemyManager.Instance.EnemyList.Remove(gameObject);
+            collider3d.enabled = false;
+
+            Destroy(gameObject, timeToDestroy);
+
+            PlayDeathAnimation();
         }
+
+        protected void DropWeapon()
+        {
+            if (Random.value < dropWeaponChance)
+                return;
+
+            DropoffManager.Instance.DropWeapon(dropWeaponType, dropWeaponRarity, transform.position);
+        }
+
+        protected void DropAttachment()
+        {
+            if (Random.value < dropAttachmentChance)
+                return;
+
+            DropoffManager.Instance.DropAttachment(dropAttachmentType, dropAttachmentRarity, transform.position);
+        }
+
+
+
 
         public void Freeze()
         {
@@ -168,21 +207,6 @@ namespace CSE5912.PolyGamers
             return 0f;
         }
 
-        protected void DropWeapon()
-        {
-            if (Random.value < dropWeaponChance)
-                return;
-
-            DropoffManager.Instance.DropWeapon(dropWeaponType, dropWeaponRarity, transform.position);
-        }
-
-        protected void DropAttachment()
-        {
-            if (Random.value < dropAttachmentChance)
-                return;
-
-            DropoffManager.Instance.DropAttachment(dropAttachmentType, dropAttachmentRarity, transform.position);
-        }
 
         protected virtual void FaceTarget(Vector3 direction)
         {
@@ -194,6 +218,9 @@ namespace CSE5912.PolyGamers
         /*
          * used by animation event
          */
+
+        protected abstract void PlayDeathAnimation();
+
         protected virtual void Hit()
         {
 
@@ -226,5 +253,8 @@ namespace CSE5912.PolyGamers
         public Frozen Frozen { get { return frozen; } }
         public Electrocuted Electrocuted { get { return electrocuted; } }
         public Infected Infected { get { return infected; } }
+
+        public float DistanceToPlayer { get { return distanceToPlayer; } }
+        public Vector3 DirectionToPlayer { get { return directionToPlayer; } }
     }
 }

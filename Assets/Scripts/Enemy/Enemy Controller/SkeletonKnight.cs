@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 namespace CSE5912.PolyGamers
 {
-    public class SkeletonKnightControl : EliteEnemy
+    public class SkeletonKnight : EliteEnemy
     {
 
         protected override void PerformActions()
@@ -80,5 +80,9 @@ namespace CSE5912.PolyGamers
             }
         }
 
+        protected override void PlayDeathAnimation()
+        {
+            animator.SetTrigger("Die");
+        }
     }
 }

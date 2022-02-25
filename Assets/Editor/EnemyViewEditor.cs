@@ -5,7 +5,7 @@ using UnityEditor;
 
 namespace CSE5912.PolyGamers
 {
-    [CustomEditor(typeof(Goblin_2))]
+    [CustomEditor(typeof(ShieldGoblin))]
 
     public class EnemyViewEditor : Editor
     {
@@ -15,7 +15,7 @@ namespace CSE5912.PolyGamers
         void OnSceneGUI()
         {
             
-            Goblin_2 fow = (Goblin_2)target;
+            ShieldGoblin fow = (ShieldGoblin)target;
             Handles.color = Color.green;
             Vector3 viewAngleA = fow.DirFromAngle(-fow.GetViewAngle() / 2, false);
             Vector3 viewAngleB = fow.DirFromAngle(fow.GetViewAngle() / 2, false);

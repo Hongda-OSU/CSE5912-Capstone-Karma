@@ -5,23 +5,19 @@ using UnityEngine.AI;
 
 namespace CSE5912.PolyGamers
 {
-    public class Skeleton_1 : RegularEnemy
+    public class SkeletonCreep : RegularEnemy
     {
         private bool isAttacking = false;
 
         private bool wandering = false;
         private float wanderCounter = 10f;
 
-        void Update()
+        protected override void Update()
         {
-            distanceToPlayer = Vector3.Distance(player.position, transform.position);
-            directionToPlayer = (player.position - transform.position).normalized;
-         
-            if (health <= 0)
-            {
-                HandleDeath();
+            if (!isAlive)
                 return;
-            }
+
+            base.Update();
 
             if (canWander) {
                 HandleWander();
@@ -125,26 +121,8 @@ namespace CSE5912.PolyGamers
 
         }
 
-        protected override void HandleDeath()
-        {
-            if (!isPlayingDeathAnimation)
-            {
-                PlayDeathAnimation();
-                isPlayingDeathAnimation = true;
-            }
 
-            agent.isStopped = true;
-            
-            if ((animator.GetCurrentAnimatorStateInfo(0).IsName("Armed-Death1") ||
-                animator.GetCurrentAnimatorStateInfo(0).IsName("Unarmed-Death1")) &&
-                animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
-            {
-                Destroy(gameObject);
-            }
-            
-        }
-
-        private void PlayDeathAnimation()
+        protected override void PlayDeathAnimation()
         {
             float random = Random.value;
 

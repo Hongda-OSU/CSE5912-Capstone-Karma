@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 namespace CSE5912.PolyGamers
 {
-    public class Goblin_1 : RegularEnemy
+    public class SpearGoblin : RegularEnemy
     {
         private bool isMovingBack = false;
         private bool isMovingAroundPlayer = false;
@@ -14,18 +14,13 @@ namespace CSE5912.PolyGamers
         private bool readyToAttack = false;
         private float attackCoolDown = 5f;
 
-        void Update()
+        protected override void Update()
         {
-            distanceToPlayer = Vector3.Distance(player.position, transform.position);
-            directionToPlayer = (player.position - transform.position).normalized;
-
-            Debug.DrawRay(transform.position, directionToPlayer, Color.red);
-
-            if (health <= 0)
-            {
-                HandleDeath();
+            if (!isAlive)
                 return;
-            }
+
+            base.Update();
+
 
             if ((distanceToPlayer <= viewRadius && Vector3.Angle(transform.forward, directionToPlayer) < viewAngle / 2) ||
                 distanceToPlayer <= closeDetectionRange || isAttackedByPlayer)
@@ -110,25 +105,8 @@ namespace CSE5912.PolyGamers
             }
         }
 
-        protected override void HandleDeath()
-        {
-            if (!isPlayingDeathAnimation)
-            {
-                PlayDeathAnimation();
-                isPlayingDeathAnimation = true;
-            }
 
-            agent.isStopped = true;
-
-            if ((animator.GetCurrentAnimatorStateInfo(0).IsName("2Hand-Spear-Death1") ||
-                animator.GetCurrentAnimatorStateInfo(0).IsName("Shooting-Death1")) &&
-                animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
-            {
-                Destroy(gameObject);
-            }
-        }
-
-        private void PlayDeathAnimation()
+        protected override void PlayDeathAnimation()
         {
             float random = Random.value;
 

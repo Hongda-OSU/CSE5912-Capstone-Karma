@@ -14,6 +14,9 @@ namespace CSE5912.PolyGamers
 
         }
 
-
+        protected override void PlayDeathAnimation()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

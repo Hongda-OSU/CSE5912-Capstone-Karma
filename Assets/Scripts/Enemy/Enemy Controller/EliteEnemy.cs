@@ -5,15 +5,12 @@ using UnityEngine.AI;
 
 namespace CSE5912.PolyGamers
 {
-    public class EliteEnemy : Enemy
+    public abstract class EliteEnemy : Enemy
     {
         [Header("Behavior Parameters")]
         // max number of continuous attacks
         [SerializeField] protected int maxContinuousAttackNum = 3;
         protected int currentAttackNum = 0;
-
-        // if player is out of giveup distance, stop chasing
-        [SerializeField] protected float chasingDistance = 20f;
 
         // time interval between each attack
         [SerializeField] protected float timeBetweenAttack = 3f;
@@ -67,11 +64,12 @@ namespace CSE5912.PolyGamers
             animator.applyRootMotion = true;
         }
 
-        protected virtual void Update()
+        protected override void Update()
         {
-            distanceToPlayer = Vector3.Distance(player.position, transform.position);
+            if (!isAlive)
+                return;
 
-            directionToPlayer = (player.position - transform.position).normalized;
+            base.Update();
 
             isPlayerInAttackRange = distanceToPlayer < attackRange;
 
@@ -175,10 +173,9 @@ namespace CSE5912.PolyGamers
             bool isInViewDistance = distanceToPlayer <= viewRadius;
             bool isInViewAngle = Vector3.Angle(transform.forward, directionToPlayer) < viewAngle / 2;
             bool isInSafeDistance = distanceToPlayer <= closeDetectionRange;
-            bool isInChasingDistance = distanceToPlayer < chasingDistance;
 
-            playerDetected = (isInViewDistance && isInViewAngle || isInSafeDistance) && isInChasingDistance;
-
+            playerDetected = isInViewDistance && isInViewAngle || isInSafeDistance || isAttackedByPlayer;
+            Debug.Log(playerDetected);
 
             // increase aggro if player stays in safe distance
             if (isPlayerInSafeDistance && aggro < aggroThreshold)

@@ -21,8 +21,6 @@ namespace CSE5912.PolyGamers
             animator.applyRootMotion = false;
         }
 
-        protected abstract void HandleDeath();
-
         protected abstract void HandleWander();
 
         protected abstract void HandlePatrol();

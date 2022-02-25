@@ -53,7 +53,7 @@ namespace CSE5912.PolyGamers
         {
             currentCamera = WeaponManager.Instance.CarriedWeapon.GunCamera;
 
-            if (DisplayEnabled() && enemy.Health > 0)
+            if (DisplayEnabled() && enemy.IsAlive)
             {
                 SetHealthBar();
                 SetDebuffs();
@@ -72,14 +72,13 @@ namespace CSE5912.PolyGamers
             if (enemy.IsAttackedByPlayer)
                 maxDistance = distanceToDisplayIfAttacked;
 
-            float distance = Vector3.Distance(PlayerManager.Instance.Player.transform.position, transform.position);
-
+            float distance = enemy.DistanceToPlayer;
             GameObject player = PlayerManager.Instance.Player;
             RaycastHit hit;
 
             if (distance < maxDistance)
             {
-                if (Physics.Raycast(transform.position, (player.transform.position - transform.position), out hit, maxDistance))
+                if (Physics.Raycast(target.transform.position, enemy.DirectionToPlayer, out hit, maxDistance))
                 {
                     return hit.transform.gameObject == player;
                 }
@@ -139,7 +138,9 @@ namespace CSE5912.PolyGamers
         {
             Vector2 newPosition = RuntimePanelUtils.CameraTransformWorldToPanel(maxHealthBar.panel, pivot.transform.position, currentCamera);
 
-            root.transform.position = new Vector2(newPosition.x - widthPerUnit * enemy.MaxHealth / 2, newPosition.y);
+            root.transform.position = new Vector2(
+                newPosition.x - root.Q<VisualElement>("Root").resolvedStyle.width / 2, 
+                newPosition.y - root.Q<VisualElement>("Root").resolvedStyle.height);
         }
 
         protected override IEnumerator FadeOut(VisualElement element)

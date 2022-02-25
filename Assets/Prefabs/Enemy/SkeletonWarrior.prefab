@@ -585,7 +585,7 @@ GameObject:
   - component: {fileID: 5707662927310399090}
   - component: {fileID: 5707662927310399088}
   m_Layer: 0
-  m_Name: Skeleton(3)
+  m_Name: SkeletonWarrior
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -605,8 +605,8 @@ Transform:
   m_Children:
   - {fileID: 5707662928048183939}
   - {fileID: 5707662927081517262}
-  - {fileID: 6413448354624375203}
   - {fileID: 3479380067595421156}
+  - {fileID: 4220125136404595292}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -685,6 +685,7 @@ MonoBehaviour:
   maxHealth: 250
   attackDamage: 0
   attackRange: 5
+  navMeshMoveSpeed: 0
   isAlive: 1
   isFrozen: 0
   damageFactor_physical: 1
@@ -706,6 +707,7 @@ MonoBehaviour:
   viewRadius: 15
   viewAngle: 135
   closeDetectionRange: 3
+  timeToDestroy: 5
   canWander: 0
   wanderAreaNumber: 0
   canPatrol: 0
@@ -2941,7 +2943,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2435259149609635420, guid: 2fbf3cea75eda2d49b734f4b2eaac4b7, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2435259149609635420, guid: 2fbf3cea75eda2d49b734f4b2eaac4b7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2994,7 +2996,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2435259149609635420, guid: 2fbf3cea75eda2d49b734f4b2eaac4b7, type: 3}
   m_PrefabInstance: {fileID: 1261846788191095736}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &5707662927623418456
+--- !u!1001 &3216820341192800679
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -3003,11 +3005,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1600067033290767354, guid: fe351c298abe1694687a41ec85146c5e, type: 3}
       propertyPath: m_Name
-      value: HealthBar
+      value: EnemyHealthBar
       objectReference: {fileID: 0}
     - target: {fileID: 1600067033290767355, guid: fe351c298abe1694687a41ec85146c5e, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1600067033290767355, guid: fe351c298abe1694687a41ec85146c5e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3015,7 +3017,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1600067033290767355, guid: fe351c298abe1694687a41ec85146c5e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.335
+      value: 2.169
       objectReference: {fileID: 0}
     - target: {fileID: 1600067033290767355, guid: fe351c298abe1694687a41ec85146c5e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3051,8 +3053,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe351c298abe1694687a41ec85146c5e, type: 3}
---- !u!4 &6413448354624375203 stripped
+--- !u!4 &4220125136404595292 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1600067033290767355, guid: fe351c298abe1694687a41ec85146c5e, type: 3}
-  m_PrefabInstance: {fileID: 5707662927623418456}
+  m_PrefabInstance: {fileID: 3216820341192800679}
   m_PrefabAsset: {fileID: 0}

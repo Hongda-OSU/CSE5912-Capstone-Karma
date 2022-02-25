@@ -5,23 +5,17 @@ using UnityEngine.AI;
 
 namespace CSE5912.PolyGamers
 {
-    public class Skeleton_3 : RegularEnemy
+    public class SkeletonWarrior : RegularEnemy
     {
         private bool isAttacking = false;
 
-        void Update()
+        protected override void Update()
         {
-            distanceToPlayer = Vector3.Distance(player.position, transform.position);
-            directionToPlayer = (player.position - transform.position).normalized;
-
-            if (isFrozen)
+            if (!isAlive)
                 return;
 
-            if (health <= 0)
-            {
-                HandleDeath();
-                return;
-            }
+            base.Update();
+
 
             if ((distanceToPlayer <= viewRadius && Vector3.Angle(transform.forward, directionToPlayer) < viewAngle / 2) 
                 || distanceToPlayer <= closeDetectionRange || isAttackedByPlayer)
@@ -93,27 +87,8 @@ namespace CSE5912.PolyGamers
             }
         }
 
-        protected override void HandleDeath()
+        protected override void PlayDeathAnimation()
         {
-            if (!isPlayingDeathAnimation)
-            {
-                PlayDeathAnimation();
-                isPlayingDeathAnimation = true;
-            }
-
-            agent.isStopped = true;
-
-            if (animator.GetCurrentAnimatorStateInfo(0).IsName("2Hand-Axe-Death1") &&
-                animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
-            {
-                Destroy(gameObject);
-            }
-        }
-
-        private void PlayDeathAnimation()
-        {
-            float random = Random.value;
-
             animator.SetTrigger("Die_1");
         }
 

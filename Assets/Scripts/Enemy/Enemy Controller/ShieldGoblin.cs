@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace CSE5912.PolyGamers
 {
-    public class Goblin_2 : RegularEnemy
+    public class ShieldGoblin : RegularEnemy
     {
         private bool isAttacking = false;
 
@@ -15,13 +15,12 @@ namespace CSE5912.PolyGamers
 
         int m_CurrentWaypointIndex;
 
-        void Update()
+        protected override void Update()
         {
-            if (health <= 0)
-            {
-                HandleDeath();
+            if (!isAlive)
                 return;
-            }
+
+            base.Update();
 
             if (canPatrol)
             {
@@ -115,35 +114,7 @@ namespace CSE5912.PolyGamers
             }
         }
 
-        public override void TakeDamage(Damage damage)
-        {
-            health -= damage.ResolvedValue;
-
-            if (!isAttackedByPlayer)
-            {
-                isAttackedByPlayer = true;
-            }
-        }
-
-        protected override void HandleDeath()
-        {
-            if (!isPlayingDeathAnimation)
-            {
-                PlayDeathAnimation();
-                isPlayingDeathAnimation = true;
-            }
-
-            agent.isStopped = true;
-
-            if ((animator.GetCurrentAnimatorStateInfo(0).IsName("Shield-Death1") ||
-                animator.GetCurrentAnimatorStateInfo(0).IsName("Shooting-Death1")) &&
-                animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
-            {
-                Destroy(gameObject);
-            }
-        }
-
-        private void PlayDeathAnimation()
+        protected override void PlayDeathAnimation()
         {
             float random = Random.value;
 

@@ -4,26 +4,12 @@ using UnityEngine;
 
 namespace CSE5912.PolyGamers
 {
-    public class Skeleton_4 : RegularEnemy
+    public class Skeleton_4 : MonoBehaviour
     {
         void Update()
         {
         
         }
 
-        protected override void HandleDeath()
-        {
-
-        }
-
-        protected override void HandlePatrol()
-        {
-
-        }
-
-        protected override void HandleWander()
-        {
-
-        }
     }
 }
