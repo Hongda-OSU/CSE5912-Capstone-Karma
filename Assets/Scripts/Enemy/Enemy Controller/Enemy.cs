@@ -134,6 +134,26 @@ namespace CSE5912.PolyGamers
             animator.speed = 1 - percentage;
         }
 
+        public void StackDebuff(Element.Type type)
+        {
+            switch (type)
+            {
+                case Element.Type.Fire:
+                    burned.StackUp();
+                    break;
+                case Element.Type.Cryo:
+                    frozen.StackUp();
+                    break;
+                case Element.Type.Electro:
+                    electrocuted.StackUp();
+                    break;
+                case Element.Type.Venom:
+                    infected.StackUp();
+                    break;
+                default:
+                    break;
+            }
+        }
         public DamageFactor GetDamageFactor()
         {
             return damageFactor;

@@ -64,14 +64,7 @@ namespace CSE5912.PolyGamers
 
                 PlayerManager.Instance.HitByBullet = enemy;
                 PlayerManager.Instance.PerformDamage(enemy, hit.point);
-
-                // test
-                //enemy.Freeze();
-                //enemy.Frozen.StackUp();
-
-                //enemy.Burned.StackUp();
-                //enemy.Electrocuted.StackUp();
-                enemy.Infected.StackUp();
+                PlayerManager.Instance.StackDebuff(WeaponManager.Instance.CarriedWeapon.Element, enemy);
             }
         }
 

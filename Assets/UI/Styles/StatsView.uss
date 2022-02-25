@@ -16,7 +16,7 @@
 .Data {
     flex-grow: 0;
     -unity-font-definition: url('project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&guid=8f7da2db5416b234a88cdb420d609972&type=2#Futura SDF');
-    color: rgba(255, 255, 255, 255);
+    color: rgb(255, 255, 255);
     width: 112px;
     align-items: flex-start;
     -unity-text-align: upper-right;
@@ -24,6 +24,7 @@
 
 .DataRow {
     flex-direction: row;
+    height: 30px;
 }
 
 .StatLabel {
@@ -58,5 +59,5 @@
     -unity-font-definition: url('project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&guid=8f7da2db5416b234a88cdb420d609972&type=2#Futura SDF');
     bottom: 1px;
     transition-duration: 0.1s;
-    -unity-text-outline-color: rgba(255, 255, 255, 255);
+    -unity-text-outline-color: rgb(255, 255, 255);
 }

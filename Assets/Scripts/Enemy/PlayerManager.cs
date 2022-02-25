@@ -39,8 +39,8 @@ namespace CSE5912.PolyGamers
 
             Firearms weapon = WeaponManager.Instance.CarriedWeapon;
 
-            Damage damage = new Damage(weapon.Damage, weapon.Element, PlayerStats.Instance, lastEnemyHit);
-            lastEnemyHit.TakeDamage(damage);
+            Damage damage = new Damage(weapon.Damage, weapon.Element, PlayerStats.Instance, enemy);
+            enemy.TakeDamage(damage);
 
             StartCoroutine(DamageNumber.Instance.DisplayDamageNumber(damage, position));
         }
@@ -51,11 +51,17 @@ namespace CSE5912.PolyGamers
             if (!enemy.IsAlive)
                 return;
 
-            lastEnemyHit.TakeDamage(damage);
+            enemy.TakeDamage(damage);
 
             Renderer renderer = enemy.transform.GetComponentInChildren<Renderer>();
             Vector3 position = enemy.transform.position + Vector3.up * renderer.bounds.size.y / 2;
             StartCoroutine(DamageNumber.Instance.DisplayDamageNumber(damage, position));
+        }
+
+        public void StackDebuff(Element.Type type, Enemy enemy)
+        {
+            if (PlayerStats.Instance.DebuffStacks(type))
+                enemy.StackDebuff(type);
         }
 
         public GameObject Player { get { return player; } }

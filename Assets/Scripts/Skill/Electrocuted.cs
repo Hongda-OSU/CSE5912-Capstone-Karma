@@ -18,13 +18,20 @@ namespace CSE5912.PolyGamers
                 timeSince += deltaTime;
                 yield return new WaitForSeconds(deltaTime);
 
-                target.GetResist().Physical.Value = target.PhysicalResist * (1 - reductionPerStack * stack);
-                target.GetResist().Fire.Value = target.FireResist * (1 - reductionPerStack * stack);
-                target.GetResist().Cryo.Value = target.CryoResist * (1 - reductionPerStack * stack);
-                target.GetResist().Electro.Value = target.ElectroResist * (1 - reductionPerStack * stack);
-                target.GetResist().Venom.Value = target.VenomResist * (1 - reductionPerStack * stack);
+                SetResistValues();
             }
             stack = 0;
+            SetResistValues();
+        }
+
+        private void SetResistValues()
+        {
+            target.GetResist().Physical.Value = target.PhysicalResist * (1 - reductionPerStack * stack);
+            target.GetResist().Fire.Value = target.FireResist * (1 - reductionPerStack * stack);
+            target.GetResist().Cryo.Value = target.CryoResist * (1 - reductionPerStack * stack);
+            target.GetResist().Electro.Value = target.ElectroResist * (1 - reductionPerStack * stack);
+            target.GetResist().Venom.Value = target.VenomResist * (1 - reductionPerStack * stack);
+            Debug.Log(target.GetResist().Physical.Value + " " + reductionPerStack * stack + " " + stack);
         }
     }
 }

@@ -122,6 +122,36 @@ namespace CSE5912.PolyGamers
             return extraDamage;
         }
 
+        public bool DebuffStacks(Element.Type type)
+        {
+            switch (type)
+            {
+                case Element.Type.Physical:
+                    return false;
+
+                case Element.Type.Fire:
+                    if (Random.value < burnedBaseChance)
+                        return true;
+                    return false;
+
+                case Element.Type.Cryo:
+                    if (Random.value < frozenBaseChance)
+                        return true;
+                    return false;
+
+                case Element.Type.Electro:
+                    if (Random.value < electrocutedBaseChance)
+                        return true;
+                    return false;
+
+                case Element.Type.Venom:
+                    if (Random.value < infectedBaseChance)
+                        return true;
+                    return false;
+            }
+            return false;
+        }
+
         private void CheckAndUpgrade()
         {
             if (experience >= experienceToUpgrade)

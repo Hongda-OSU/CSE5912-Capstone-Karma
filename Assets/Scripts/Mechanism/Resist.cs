@@ -22,7 +22,7 @@ namespace CSE5912.PolyGamers
                 this.element = element;
             }
 
-            public float Value { get { return value; } set { if (value >= 0f) this.value = value; } }
+            public float Value { get { return value; } set { if (value < 0) value = 0f; this.value = value; } }
             public Element.Type Element { get { return element; } }
         }
 
