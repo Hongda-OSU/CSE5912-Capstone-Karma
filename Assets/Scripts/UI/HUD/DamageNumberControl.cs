@@ -6,20 +6,20 @@ using UnityEngine.UIElements;
 
 namespace CSE5912.PolyGamers
 {
-    public class DamageNumber : MonoBehaviour
+    public class DamageNumberControl : MonoBehaviour
     {
         [SerializeField] private GameObject numberPrefab;
 
-        [SerializeField] private int fontSize = 5;
-        [SerializeField] private int critFontSize = 7;
+        [SerializeField] private int fontSize = 2;
+        [SerializeField] private int critFontSize = 4;
 
         [SerializeField] private float floatingDistance = 1f;
         [SerializeField] private float popUpScale = 2f;
         [SerializeField] private float fadingTime = 0.15f;
         [SerializeField] private float displayTime = 1f;
 
-        private static DamageNumber instance;
-        public static DamageNumber Instance { get { return instance; } }
+        private static DamageNumberControl instance;
+        public static DamageNumberControl Instance { get { return instance; } }
         private void Awake()
         {
             if (instance != null && instance != this)

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 namespace CSE5912.PolyGamers
 {
@@ -46,12 +46,17 @@ namespace CSE5912.PolyGamers
                 inputSchemes.PlayerActions.Disable();
                 inputSchemes.FPSActions.Disable();
                 inputSchemes.UiActions.Enable();
+
+                PlayerHudPanelControl.Instance.Root.style.display = DisplayStyle.None;
             }
             else
             {
                 inputSchemes.PlayerActions.Enable();
                 inputSchemes.FPSActions.Enable();
+
+                PlayerHudPanelControl.Instance.Root.style.display = DisplayStyle.Flex;
             }
+            EnemyHealthBarControl.Instance.DisplayEnemyHealthBars(!isDisplayed);
 
             StartCoroutine(ingameMenu.GetComponent<IngameMenu>().DisplayMenu(isDisplayed));
         }

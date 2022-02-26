@@ -15,8 +15,8 @@
                 <ui:Label text="5" display-tooltip-when-elided="true" name="Stack" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); bottom: -15px; -unity-text-align: upper-center; -unity-text-outline-width: 0; background-color: rgba(0, 0, 0, 0.65);" />
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="MaxHealthBar" style="background-color: rgba(0, 15, 8, 0.78); width: 100px; height: 10px; position: relative; flex-direction: row; left: auto;">
-            <ui:VisualElement name="HealthBar" style="position: absolute; width: 100px; height: 10px; background-color: rgb(222, 29, 11); -unity-text-outline-color: rgb(0, 0, 0); left: auto;" />
+        <ui:VisualElement name="MaxHealthBar" style="background-color: rgba(0, 15, 8, 0.78); width: 100px; height: 10px; position: relative; flex-direction: row; left: auto; max-width: 400px;">
+            <ui:VisualElement name="HealthBar" style="position: absolute; width: 100px; height: 10px; background-color: rgb(222, 29, 11); -unity-text-outline-color: rgb(0, 0, 0); left: auto; max-width: 400px;" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

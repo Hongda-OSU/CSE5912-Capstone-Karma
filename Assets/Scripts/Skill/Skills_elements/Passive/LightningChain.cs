@@ -14,7 +14,10 @@ namespace CSE5912.PolyGamers
         [SerializeField] private float baseDamage = 10f;
         [SerializeField] private float damagePerLevel = 0.02f;
 
-
+        private void Awake()
+        {
+            vfx.GetComponentInParent<LineRenderer>().enabled = false;
+        }
         private void Update()
         {
             var target = PlayerManager.Instance.HitByBullet;

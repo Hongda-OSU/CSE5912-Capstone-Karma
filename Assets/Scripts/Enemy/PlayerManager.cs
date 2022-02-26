@@ -28,6 +28,7 @@ namespace CSE5912.PolyGamers
         private void Update()
         {
             playerCamera = WeaponManager.Instance.CarriedWeapon.GunCamera;
+
         }
 
 
@@ -42,7 +43,7 @@ namespace CSE5912.PolyGamers
             Damage damage = new Damage(weapon.Damage, weapon.Element, PlayerStats.Instance, enemy);
             enemy.TakeDamage(damage);
 
-            StartCoroutine(DamageNumber.Instance.DisplayDamageNumber(damage, position));
+            StartCoroutine(DamageNumberControl.Instance.DisplayDamageNumber(damage, position));
         }
 
         public void PerformDamage(Enemy enemy, Damage damage)
@@ -55,7 +56,7 @@ namespace CSE5912.PolyGamers
 
             Renderer renderer = enemy.transform.GetComponentInChildren<Renderer>();
             Vector3 position = enemy.transform.position + Vector3.up * renderer.bounds.size.y / 2;
-            StartCoroutine(DamageNumber.Instance.DisplayDamageNumber(damage, position));
+            StartCoroutine(DamageNumberControl.Instance.DisplayDamageNumber(damage, position));
         }
 
         public void StackDebuff(Element.Type type, Enemy enemy)

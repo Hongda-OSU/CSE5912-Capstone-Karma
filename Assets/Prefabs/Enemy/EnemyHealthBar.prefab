@@ -64,6 +64,6 @@ MonoBehaviour:
   uiDocument: {fileID: 0}
   fadingTime: 0.15
   currentCamera: {fileID: 0}
-  widthPerUnit: 1
+  width: 200
   distanceToDisplay: 10
   distanceToDisplayIfAttacked: 20

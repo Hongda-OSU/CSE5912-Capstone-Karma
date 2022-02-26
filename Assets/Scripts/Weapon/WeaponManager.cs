@@ -269,6 +269,12 @@ namespace CSE5912.PolyGamers
             // set up the correct gun animator
             fpsController.SetupAnimator(carriedWeapon.GunAnimator);
         }
+
+
+        public Vector3 GetShootDirection()
+        {
+            return carriedWeapon.transform.forward.normalized;
+        }
     }
 }
    

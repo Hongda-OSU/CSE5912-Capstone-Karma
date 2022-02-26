@@ -9,7 +9,7 @@ namespace CSE5912.PolyGamers
     {
         [SerializeField] private Camera currentCamera;
 
-        [SerializeField] private float widthPerUnit = 1f;
+        [SerializeField] private float width = 200f;
 
         [SerializeField] private float distanceToDisplay = 10f;
         [SerializeField] private float distanceToDisplayIfAttacked = 20f;
@@ -87,10 +87,8 @@ namespace CSE5912.PolyGamers
         }
         private void SetHealthBar()
         {
-
-            var width = widthPerUnit * enemy.MaxHealth;
-
             var planes = GeometryUtility.CalculateFrustumPlanes(currentCamera);
+
             if (GeometryUtility.TestPlanesAABB(planes, target.GetComponent<Collider>().bounds))
             {
                 healthBar.style.display = DisplayStyle.Flex;
@@ -100,20 +98,8 @@ namespace CSE5912.PolyGamers
                 maxHealthBar.style.width = width;
 
                 var deltaHealth = prevHealth - enemy.Health;
-                if (deltaHealth > 0)
-                {
-                    VisualElement deltaEffect = new VisualElement();
-                    maxHealthBar.Add(deltaEffect);
 
-                    deltaEffect.style.width = deltaHealth * widthPerUnit;
-                    deltaEffect.style.height = healthBar.resolvedStyle.height;
-                    deltaEffect.style.backgroundColor = Color.white;
-                    deltaEffect.style.left = enemy.Health * widthPerUnit;
-                    deltaEffect.style.position = Position.Absolute;
-
-                    StartCoroutine(FadeOut(deltaEffect));
-                }
-
+                DamagedEffect(deltaHealth);
 
                 prevHealth = enemy.Health;
             }
@@ -121,6 +107,23 @@ namespace CSE5912.PolyGamers
             {
                 healthBar.style.display = DisplayStyle.None;
                 maxHealthBar.style.display = DisplayStyle.None;
+            }
+        }
+
+        private void DamagedEffect(float deltaHealth)
+        {
+            if (deltaHealth > 0)
+            {
+                VisualElement deltaEffect = new VisualElement();
+                maxHealthBar.Add(deltaEffect);
+
+                deltaEffect.style.width = deltaHealth / enemy.MaxHealth * width;
+                deltaEffect.style.height = healthBar.resolvedStyle.height;
+                deltaEffect.style.backgroundColor = Color.white;
+                deltaEffect.style.left = enemy.Health / enemy.MaxHealth * width;
+                deltaEffect.style.position = Position.Absolute;
+
+                StartCoroutine(FadeOut(deltaEffect));
             }
         }
 
