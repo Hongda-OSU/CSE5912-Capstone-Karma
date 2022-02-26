@@ -10,16 +10,14 @@ namespace CSE5912.PolyGamers
         [Header("Behavior Parameters")]
         // max number of continuous attacks
         [SerializeField] protected int maxContinuousAttackNum = 3;
-        protected int currentAttackNum = 0;
+        [SerializeField] protected int currentAttackNum = 0;
 
         // time interval between each attack
         [SerializeField] protected float timeBetweenAttack = 3f;
-        protected float timeSinceAttack = 0f;
         protected bool isReadyToAttack = true;
 
         // time interval range between each action when waiting for next attack
-        [SerializeField] protected Vector2 timeRangeBetweenWaitActions = new Vector2(1, 2);
-        protected float timeSinceWaitAction = 1f;
+        [SerializeField] protected Vector2 timeBetweenWaitActions = new Vector2(1, 2);
 
         // if aggro > aggroThreshold, attack player anyway
         [SerializeField] protected float aggro = 0f;
@@ -77,6 +75,8 @@ namespace CSE5912.PolyGamers
             isPlayerInAttackRange = distanceToPlayer < attackRange;
 
             isPlayerInSafeDistance = distanceToPlayer < closeDetectionRange;
+
+            isReadyToAttack = currentAttackNum < Random.Range(maxContinuousAttackNum * 0.8f, maxContinuousAttackNum * 1.2f);
 
             CalculateAggro();
 
@@ -141,7 +141,6 @@ namespace CSE5912.PolyGamers
                 yield return new WaitForSeconds(Time.deltaTime);
 
                 agent.destination = directionToPlayer * -5f;
-                Debug.Log(directionToPlayer);
             }
 
             isRetreatFinished = true;
@@ -151,30 +150,10 @@ namespace CSE5912.PolyGamers
         {
             status = Status.Wait;
 
-            timeSinceWaitAction += Time.deltaTime;
-
-            float randomWaitTime = Random.Range(timeRangeBetweenWaitActions.x, timeRangeBetweenWaitActions.y);
-            if (timeSinceWaitAction >= randomWaitTime)
-            {
-                waitAction = Random.Range(-2, 4);
-                timeSinceWaitAction = 0f;
-
-                SetMove((Direction)waitAction);
-                bool roll = Random.value < 0.5f;
-                if (roll)
-                    SetRoll((Direction)waitAction);
-
-                return;
-            }
-
-            SetRoll(Direction.None);
-
-            FaceTarget(directionToPlayer);
-            agent.isStopped = false;
-
-            currentAttackNum = 0;
-
+            StartCoroutine(PerformActionsOnWaiting());
         }
+
+        protected abstract IEnumerator PerformActionsOnWaiting();
 
 
 
@@ -236,6 +215,15 @@ namespace CSE5912.PolyGamers
         {
             isAttacking = false;
             currentAttackNum++;
+        }
+
+        protected virtual IEnumerator CoolDown(float cooldown)
+        {
+            isReadyToAttack = false;
+
+            yield return new WaitForSeconds(cooldown);
+            
+            isReadyToAttack = true;
         }
 
 

@@ -80403,12 +80403,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 446325664}
     m_Modifications:
     - target: {fileID: 1182816256733115014, guid: ae1dd61e5d10fd44c92e65c052640c93, type: 3}
+      propertyPath: Vfx
+      value: 
+      objectReference: {fileID: 3812936826493804998, guid: 9f65dc2df012bcc43afe2173e376a2b5, type: 3}
+    - target: {fileID: 1182816256733115014, guid: ae1dd61e5d10fd44c92e65c052640c93, type: 3}
+      propertyPath: vfx
+      value: 
+      objectReference: {fileID: 3812936826493804998, guid: 9f65dc2df012bcc43afe2173e376a2b5, type: 3}
+    - target: {fileID: 1182816256733115014, guid: ae1dd61e5d10fd44c92e65c052640c93, type: 3}
       propertyPath: health
       value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 1182816256733115014, guid: ae1dd61e5d10fd44c92e65c052640c93, type: 3}
       propertyPath: isFrozen
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1182816256733115014, guid: ae1dd61e5d10fd44c92e65c052640c93, type: 3}
       propertyPath: maxHealth

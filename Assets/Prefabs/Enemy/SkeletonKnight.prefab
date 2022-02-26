@@ -2340,16 +2340,18 @@ MonoBehaviour:
   dropAttachmentChance: 0
   dropAttachmentType: 1
   dropAttachmentRarity: 4
+  rotateSpeed: 20
   viewRadius: 15
   viewAngle: 135
   closeDetectionRange: 3
   timeToDestroy: 5
-  maxContinuousAttackNum: 1
-  chasingDistance: 20
-  timeBetweenAttack: 3
-  timeRangeBetweenWaitActions: {x: 1, y: 2}
+  maxContinuousAttackNum: 3
+  currentAttackNum: 0
+  timeBetweenAttack: 2
+  timeBetweenWaitActions: {x: 1, y: 2}
   aggro: 0
   aggroThreshold: 2
+  maxRetreatTime: 2
 --- !u!1 &1182816256733187735
 GameObject:
   m_ObjectHideFlags: 0
