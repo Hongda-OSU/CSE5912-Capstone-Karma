@@ -15,6 +15,7 @@ namespace CSE5912.PolyGamers
         // time interval between each attack
         [SerializeField] protected float timeBetweenAttack = 3f;
         protected float timeSinceAttack = 0f;
+        protected bool isReadyToAttack = true;
 
         // time interval range between each action when waiting for next attack
         [SerializeField] protected Vector2 timeRangeBetweenWaitActions = new Vector2(1, 2);
@@ -24,6 +25,8 @@ namespace CSE5912.PolyGamers
         [SerializeField] protected float aggro = 0f;
         [SerializeField] protected float aggroThreshold = 2f;
 
+        [SerializeField] protected float maxRetreatTime = 3f;
+        protected bool isRetreatFinished = true;
 
         protected int waitAction = -1;
 
@@ -49,11 +52,11 @@ namespace CSE5912.PolyGamers
         // animation direction
         protected enum Direction
         {
-            forward,
-            backward,
-            left,
-            right,
-            none = -1,
+            Forward,
+            Backward,
+            Left,
+            Right,
+            None = -1,
         }
 
         protected virtual void Start()
@@ -87,25 +90,22 @@ namespace CSE5912.PolyGamers
          */
 
         // perform the whole action logic
-        protected virtual void PerformActions()
-        {
-
-        }
+        protected abstract void PerformActions();
 
         // actions
         protected virtual void Rest()
         {
             status = Status.Idle;
 
-            SetMove(Direction.none);
+            SetMove(Direction.None);
             SetAttack(-1);
-            SetRoll(Direction.none);
+            SetRoll(Direction.None);
         }
         protected virtual void MoveToPlayer()
         {
             status = Status.Moving;
 
-            SetMove(Direction.forward);
+            SetMove(Direction.Forward);
 
             FaceTarget(directionToPlayer);
             agent.SetDestination(player.position);
@@ -115,7 +115,7 @@ namespace CSE5912.PolyGamers
         {
             status = Status.Attacking;
 
-            SetMove(Direction.none);
+            SetMove(Direction.None);
 
             SetAttack(index);
         }
@@ -125,10 +125,26 @@ namespace CSE5912.PolyGamers
             status = Status.Retreating;
 
             SetAttack(-1);
-            SetMove(Direction.backward);
+            SetMove(Direction.Backward);
 
-            agent.destination = directionToPlayer * -5f;
+            StartCoroutine(MoveBack());
+        }
 
+        private IEnumerator MoveBack()
+        {
+            isRetreatFinished = false;
+
+            float timeSince = 0f;
+            while (timeSince < maxRetreatTime && isPlayerInAttackRange && status == Status.Retreating)
+            {
+                timeSince += Time.deltaTime;
+                yield return new WaitForSeconds(Time.deltaTime);
+
+                agent.destination = directionToPlayer * -5f;
+                Debug.Log(directionToPlayer);
+            }
+
+            isRetreatFinished = true;
         }
 
         protected virtual void PrepareForNextAttack()
@@ -151,7 +167,7 @@ namespace CSE5912.PolyGamers
                 return;
             }
 
-            SetRoll(Direction.none);
+            SetRoll(Direction.None);
 
             FaceTarget(directionToPlayer);
             agent.isStopped = false;
@@ -175,7 +191,6 @@ namespace CSE5912.PolyGamers
             bool isInSafeDistance = distanceToPlayer <= closeDetectionRange;
 
             playerDetected = isInViewDistance && isInViewAngle || isInSafeDistance || isAttackedByPlayer;
-            Debug.Log(playerDetected);
 
             // increase aggro if player stays in safe distance
             if (isPlayerInSafeDistance && aggro < aggroThreshold)
@@ -195,7 +210,7 @@ namespace CSE5912.PolyGamers
         protected virtual void SetMove(Direction dir)
         {
             animator.SetInteger("Move", (int)dir);
-            agent.isStopped = dir == Direction.none;
+            agent.isStopped = dir == Direction.None;
         }
 
         protected virtual void SetAttack(int index)

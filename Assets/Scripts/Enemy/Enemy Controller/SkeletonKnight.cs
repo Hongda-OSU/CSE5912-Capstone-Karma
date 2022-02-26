@@ -10,6 +10,8 @@ namespace CSE5912.PolyGamers
 
         protected override void PerformActions()
         {
+            FaceTarget(directionToPlayer);
+
             switch (status)
             {
                 case Status.Idle:
@@ -24,6 +26,7 @@ namespace CSE5912.PolyGamers
                     break;
 
                 case Status.Moving:
+
                     if (distanceToPlayer < closeDetectionRange)
                     {
                         Retreat();
@@ -44,7 +47,10 @@ namespace CSE5912.PolyGamers
                     break;
 
                 case Status.Retreating:
-                    if (aggro >= aggroThreshold || !isPlayerInAttackRange)
+                    if (!isRetreatFinished)
+                        break;
+
+                    else
                     {
                         if (currentAttackNum >= maxContinuousAttackNum)
                             PrepareForNextAttack();

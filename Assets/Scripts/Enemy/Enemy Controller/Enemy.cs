@@ -56,6 +56,7 @@ namespace CSE5912.PolyGamers
         //[SerializeField] private
 
         [Header("Other")]
+        [SerializeField] protected float rotateSpeed = 20f;
         [SerializeField] protected float viewRadius = 15f;
         [Range(0, 360)]
         [SerializeField] protected float viewAngle = 135f;
@@ -210,7 +211,7 @@ namespace CSE5912.PolyGamers
 
         protected virtual void FaceTarget(Vector3 direction)
         {
-            Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+            Quaternion lookRotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, directionToPlayer, rotateSpeed * Time.deltaTime, 0.0f));
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
         }
 

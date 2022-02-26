@@ -2617,11 +2617,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7203780589899866334}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 406d1c336cc189f45ba7a353bac81b57, type: 3}
+  m_Script: {fileID: 11500000, guid: 7f8b60e38d670e24d97e5df3a91a1bd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyName: Shield Goblin
-  level: 1
+  level: 0
   experience: 0
   health: 100
   maxHealth: 100
@@ -2635,19 +2635,20 @@ MonoBehaviour:
   damageFactor_cryo: 1
   damageFactor_electro: 1
   damageFactor_venom: 1
-  physicalResist: 35
-  fireResist: 20
-  cryoResist: 100
-  electroResist: 25
-  venomResist: 20
+  physicalResist: 0
+  fireResist: 0
+  cryoResist: 0
+  electroResist: 0
+  venomResist: 0
   dropWeaponChance: 0
   dropWeaponType: 0
   dropWeaponRarity: 4
   dropAttachmentChance: 0
   dropAttachmentType: 1
   dropAttachmentRarity: 4
+  rotateSpeed: 20
   viewRadius: 15
-  viewAngle: 100
+  viewAngle: 135
   closeDetectionRange: 3
   timeToDestroy: 5
   canWander: 0
