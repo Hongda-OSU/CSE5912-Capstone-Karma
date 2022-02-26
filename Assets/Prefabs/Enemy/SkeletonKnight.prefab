@@ -2343,7 +2343,7 @@ MonoBehaviour:
   rotateSpeed: 20
   viewRadius: 15
   viewAngle: 135
-  closeDetectionRange: 3
+  closeDetectionRange: 2
   timeToDestroy: 5
   maxContinuousAttackNum: 3
   currentAttackNum: 0

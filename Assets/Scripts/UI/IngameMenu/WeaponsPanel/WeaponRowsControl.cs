@@ -32,14 +32,14 @@ namespace CSE5912.PolyGamers
 
             rowList = new List<WeaponRow>();
 
-            for (int i = 0; i < weaponRows.childCount; i++)
-            {
-                rowList.Add(new WeaponRow(weaponRows.Q<VisualElement>("WeaponRow_" + i)));
-            }
         }
 
         private void Start()
         {
+            for (int i = 0; i < weaponRows.childCount; i++)
+            {
+                rowList.Add(new WeaponRow(weaponRows.Q<VisualElement>("WeaponRow_" + i)));
+            }
         }
 
         public WeaponRow GetWeaponRow(VisualElement row)

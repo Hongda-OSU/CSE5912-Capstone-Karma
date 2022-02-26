@@ -14,7 +14,8 @@ namespace CSE5912.PolyGamers
 
         protected override void PerformActions()
         {
-            FaceTarget(directionToPlayer);
+            if (playerDetected)
+                FaceTarget(directionToPlayer);
 
             switch (status)
             {
@@ -40,14 +41,25 @@ namespace CSE5912.PolyGamers
                     {
                         if (isPlayerInAttackRange)
                         {
-                            Attack(Random.Range(0, 2));
+                            Attack(Random.Range(0, 1));
                         }
-
                         else
                         {
                             MoveToPlayer();
                         }
                     }
+                    break;
+
+                case Status.Attacking:
+                    if (isFatigued)
+                    {
+                        PrepareForNextAttack();
+                    }
+                    else
+                    {
+                        status = Status.Moving;
+                    }
+
                     break;
 
                 case Status.Retreating:
@@ -56,31 +68,27 @@ namespace CSE5912.PolyGamers
 
                     else
                     {
-                        if (currentAttackNum >= maxContinuousAttackNum)
+                        if (isFatigued)
+                        {
                             PrepareForNextAttack();
+                        }
                         else
+                        {
                             MoveToPlayer();
+                        }
                     }
 
                     break;
-                case Status.Attacking:
-                    if (currentAttackNum >= maxContinuousAttackNum)
-                    {
-                        Retreat();
-                    }
-                    else
-                        status = Status.Moving;
 
-                    break;
-
-                case Status.Wait:
-                    if (isReadyToAttack)
+                case Status.Waiting:
+                    if (isReadyToAttack && !isFatigued)
                     {
-                        Rest();
+                        MoveToPlayer();
                     }
 
                     break;
             }
+            Debug.Log(status);
         }
 
 
@@ -89,7 +97,9 @@ namespace CSE5912.PolyGamers
             StartCoroutine(CoolDown(timeBetweenAttack));
 
             while (!isReadyToAttack)
+            {
                 yield return StartCoroutine(RandomAction());
+            }
 
             SetRoll(Direction.None);
 
@@ -97,21 +107,26 @@ namespace CSE5912.PolyGamers
             agent.isStopped = false;
 
             currentAttackNum = 0;
+            Debug.Log(currentAttackNum);
         }
 
         private IEnumerator RandomAction()
         {
-            float randomWaitTime = Random.Range(timeBetweenWaitActions.x, timeBetweenWaitActions.y);
-
-            yield return new WaitForSeconds(randomWaitTime);
-
             waitAction = Random.Range(-2, 4);
 
-            SetMove((Direction)waitAction);
             bool roll = Random.value < 0.5f;
             if (roll)
                 SetRoll((Direction)waitAction);
+
+            yield return new WaitForSeconds(Time.deltaTime);
+
+            SetMove((Direction)waitAction);
+            SetRoll(Direction.None);
+
+            float randomWaitTime = Random.Range(timeBetweenWaitActions.x, timeBetweenWaitActions.y);
+            yield return new WaitForSeconds(randomWaitTime);
         }
+
 
         protected override void PlayDeathAnimation()
         {

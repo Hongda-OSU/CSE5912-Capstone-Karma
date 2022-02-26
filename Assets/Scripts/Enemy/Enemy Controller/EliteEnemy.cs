@@ -15,6 +15,7 @@ namespace CSE5912.PolyGamers
         // time interval between each attack
         [SerializeField] protected float timeBetweenAttack = 3f;
         protected bool isReadyToAttack = true;
+        protected bool isFatigued = false;
 
         // time interval range between each action when waiting for next attack
         [SerializeField] protected Vector2 timeBetweenWaitActions = new Vector2(1, 2);
@@ -35,6 +36,7 @@ namespace CSE5912.PolyGamers
         protected bool isPlayerInAttackRange;
         protected bool isPlayerInSafeDistance;
 
+        protected bool isPlayingAttackAnim = false;
 
         // enemy status
         protected Status status = Status.Idle;
@@ -44,7 +46,7 @@ namespace CSE5912.PolyGamers
             Moving,
             Retreating,
             Attacking,
-            Wait,
+            Waiting,
         }
 
         // animation direction
@@ -76,7 +78,7 @@ namespace CSE5912.PolyGamers
 
             isPlayerInSafeDistance = distanceToPlayer < closeDetectionRange;
 
-            isReadyToAttack = currentAttackNum < Random.Range(maxContinuousAttackNum * 0.8f, maxContinuousAttackNum * 1.2f);
+            isFatigued = currentAttackNum >= maxContinuousAttackNum;
 
             CalculateAggro();
 
@@ -106,6 +108,7 @@ namespace CSE5912.PolyGamers
             status = Status.Moving;
 
             SetMove(Direction.Forward);
+            SetRoll(Direction.None);
 
             FaceTarget(directionToPlayer);
             agent.SetDestination(player.position);
@@ -144,11 +147,12 @@ namespace CSE5912.PolyGamers
             }
 
             isRetreatFinished = true;
+            status = Status.Idle;
         }
 
         protected virtual void PrepareForNextAttack()
         {
-            status = Status.Wait;
+            status = Status.Waiting;
 
             StartCoroutine(PerformActionsOnWaiting());
         }
@@ -207,14 +211,18 @@ namespace CSE5912.PolyGamers
         }
 
 
-        protected virtual void StartAttack()
+        private void AnimAttackStart()
         {
+
             isAttacking = true;
-        }
-        protected virtual void FinishAttack()
-        {
-            isAttacking = false;
             currentAttackNum++;
+        }
+
+        private void AnimAttackFinish()
+        {
+
+            isAttacking = false;
+            SetAttack(-1);
         }
 
         protected virtual IEnumerator CoolDown(float cooldown)
@@ -222,7 +230,7 @@ namespace CSE5912.PolyGamers
             isReadyToAttack = false;
 
             yield return new WaitForSeconds(cooldown);
-            
+
             isReadyToAttack = true;
         }
 

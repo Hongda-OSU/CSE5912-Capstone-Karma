@@ -29,7 +29,6 @@ namespace CSE5912.PolyGamers
 
         // test
         [SerializeField] Sprite[] attachmentIcons;
-        bool yes = false;
 
         private void Awake()
         {
