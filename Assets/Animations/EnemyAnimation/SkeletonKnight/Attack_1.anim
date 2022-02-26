@@ -94993,7 +94993,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 1
   m_Events:
   - time: 0.43333334
-    functionName: StartAttack
+    functionName: AnimAttackStart
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -95007,7 +95007,7 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0.8333333
-    functionName: FinishAttack
+    functionName: AnimAttackFinish
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
