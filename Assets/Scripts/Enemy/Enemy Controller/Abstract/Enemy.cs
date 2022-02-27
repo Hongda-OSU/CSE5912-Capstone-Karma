@@ -18,7 +18,7 @@ namespace CSE5912.PolyGamers
         [SerializeField] protected float attackDamage;
         [SerializeField] protected float attackRange = 5f;
 
-        [SerializeField] protected float navMeshMoveSpeed = 0f;
+        [SerializeField] protected float agentSpeed = 0f;
         [SerializeField] protected bool isAlive = true;
         [SerializeField] protected bool isFrozen = false;
 
@@ -89,7 +89,7 @@ namespace CSE5912.PolyGamers
             agent = GetComponent<NavMeshAgent>();
             collider3d = GetComponent<Collider>();
 
-            agent.speed = navMeshMoveSpeed;
+            agent.speed = agentSpeed;
 
             burned = GetComponentInChildren<Burned>();
             frozen = GetComponentInChildren<Frozen>();
@@ -170,7 +170,7 @@ namespace CSE5912.PolyGamers
         }
         public void SlowDown(float percentage)
         {
-            agent.speed = navMeshMoveSpeed * (1 - percentage);
+            agent.speed = agentSpeed * (1 - percentage);
             animator.speed = 1 - percentage;
         }
 

@@ -28427,6 +28427,7 @@ Transform:
   - {fileID: 2041489785}
   - {fileID: 897041143}
   - {fileID: 364116696}
+  - {fileID: 995210767}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -45422,6 +45423,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4523669074743316, guid: 1c16e1d984cabf046803d74c5d64f7dc, type: 3}
   m_PrefabInstance: {fileID: 992494581}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &995210767 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4501327666581360, guid: 98fa7bfa238773e46819603f117efaf1, type: 3}
+  m_PrefabInstance: {fileID: 1513310313}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &996770944
 GameObject:
   m_ObjectHideFlags: 0
@@ -56612,41 +56618,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a805f63ca8c742a44b7e77d9ded86b22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyName: Dummy
-  level: 0
-  experience: 0
-  health: 1000
-  maxHealth: 1000
-  attackDamage: 0
-  attackRange: 5
-  isAlive: 1
-  isFrozen: 0
-  damageFactor_physical: 1
-  damageFactor_fire: 1
-  damageFactor_cryo: 1
-  damageFactor_electro: 1
-  damageFactor_venom: 1
-  physicalResist: 0
-  fireResist: 0
-  cryoResist: 0
-  electroResist: 0
-  venomResist: 0
-  dropWeaponChance: 0
-  dropWeaponType: 0
-  dropWeaponRarity: 5
-  dropAttachmentChance: 0
-  dropAttachmentType: 1
-  dropAttachmentRarity: 4
-  viewRadius: 15
-  viewAngle: 135
-  closeDetectionRange: 3
-  maxContinuousAttackNum: 3
-  chasingDistance: 20
-  timeBetweenAttack: 3
-  timeRangeBetweenWaitActions: {x: 1, y: 2}
-  aggro: 0
-  aggroThreshold: 2
-  triggerDistance: 10
 --- !u!1 &1219942985
 GameObject:
   m_ObjectHideFlags: 0
@@ -70123,6 +70094,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4518786474902504, guid: 2d94fb0e095c1a944aae5f69bb751e23, type: 3}
   m_PrefabInstance: {fileID: 1512175480}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1513310313
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 588819818}
+    m_Modifications:
+    - target: {fileID: 1870912557112684, guid: 98fa7bfa238773e46819603f117efaf1, type: 3}
+      propertyPath: m_Name
+      value: EvilGod
+      objectReference: {fileID: 0}
+    - target: {fileID: 4501327666581360, guid: 98fa7bfa238773e46819603f117efaf1, type: 3}
+      propertyPath: m_RootOrder
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 4501327666581360, guid: 98fa7bfa238773e46819603f117efaf1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.6525474
+      objectReference: {fileID: 0}
+    - target: {fileID: 4501327666581360, guid: 98fa7bfa238773e46819603f117efaf1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.61034775
+      objectReference: {fileID: 0}
+    - target: {fileID: 4501327666581360, guid: 98fa7bfa238773e46819603f117efaf1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 11.009518
+      objectReference: {fileID: 0}
+    - target: {fileID: 4501327666581360, guid: 98fa7bfa238773e46819603f117efaf1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4501327666581360, guid: 98fa7bfa238773e46819603f117efaf1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4501327666581360, guid: 98fa7bfa238773e46819603f117efaf1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4501327666581360, guid: 98fa7bfa238773e46819603f117efaf1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4501327666581360, guid: 98fa7bfa238773e46819603f117efaf1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4501327666581360, guid: 98fa7bfa238773e46819603f117efaf1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4501327666581360, guid: 98fa7bfa238773e46819603f117efaf1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 98fa7bfa238773e46819603f117efaf1, type: 3}
 --- !u!1001 &1516496144
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -81719,13 +81747,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bc241bf046e66c4ebf6755d4a6df0e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberPrefab: {fileID: 1225028811085244809, guid: 2d86fbd11e621234eb1113f1fa41f57b, type: 3}
-  fontSize: 2
-  critFontSize: 4
-  floatingDistance: 1
-  popUpScale: 2
-  fadingTime: 0.15
-  displayTime: 1
 --- !u!1001 &1803808420
 PrefabInstance:
   m_ObjectHideFlags: 0

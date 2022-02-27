@@ -32,7 +32,7 @@ namespace CSE5912.PolyGamers
         }
 
 
-        public void PerformDamage(Enemy enemy, Vector3 position)
+        public void PerformBulletDamage(Enemy enemy, Vector3 position)
         {
             lastEnemyHit = enemy;
             if (!enemy.IsAlive)
@@ -46,7 +46,7 @@ namespace CSE5912.PolyGamers
             StartCoroutine(DamageNumberControl.Instance.DisplayDamageNumber(damage, position));
         }
 
-        public void PerformDamage(Enemy enemy, Damage damage)
+        public void PerformSkillDamage(Enemy enemy, Damage damage)
         {
             lastEnemyHit = enemy;
             if (!enemy.IsAlive)

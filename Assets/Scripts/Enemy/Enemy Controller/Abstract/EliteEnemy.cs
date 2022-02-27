@@ -100,15 +100,12 @@ namespace CSE5912.PolyGamers
             status = Status.Idle;
 
             SetMove(Direction.None);
-            SetAttack(-1);
-            SetRoll(Direction.None);
         }
         protected virtual void MoveToPlayer()
         {
             status = Status.Moving;
 
             SetMove(Direction.Forward);
-            SetRoll(Direction.None);
 
             FaceTarget(directionToPlayer);
             agent.SetDestination(player.position);
@@ -127,7 +124,6 @@ namespace CSE5912.PolyGamers
         {
             status = Status.Retreating;
 
-            SetAttack(-1);
             SetMove(Direction.Backward);
 
             StartCoroutine(MoveBack());
@@ -202,14 +198,18 @@ namespace CSE5912.PolyGamers
              * 4 attacks in total
              * -1 means stop attacking
              */
-            animator.SetInteger("Attack", index);
+            animator.SetTrigger("Attack_" + index);
         }
 
         protected virtual void SetRoll(Direction dir)
         {
-            animator.SetInteger("Roll", (int)dir);
+            animator.SetTrigger("Roll_" + dir.ToString());
         }
 
+        protected override void PlayDeathAnimation()
+        {
+            animator.SetTrigger("Die");
+        }
 
         private void AnimAttackStart()
         {

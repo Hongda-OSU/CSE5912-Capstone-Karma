@@ -63,7 +63,7 @@ namespace CSE5912.PolyGamers
                     Destroy(gameObject);
 
                 PlayerManager.Instance.HitByBullet = enemy;
-                PlayerManager.Instance.PerformDamage(enemy, hit.point);
+                PlayerManager.Instance.PerformBulletDamage(enemy, hit.point);
                 PlayerManager.Instance.StackDebuff(WeaponManager.Instance.CarriedWeapon.Element, enemy);
             }
         }

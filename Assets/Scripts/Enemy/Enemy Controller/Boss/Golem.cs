@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace CSE5912.PolyGamers
 {
-    public class Goelm : MonoBehaviour
+    public class Golem : MonoBehaviour
     {
         // Start is called before the first frame update
         void Start()

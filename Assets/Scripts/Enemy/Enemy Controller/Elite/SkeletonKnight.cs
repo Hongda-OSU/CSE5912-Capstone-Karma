@@ -100,8 +100,6 @@ namespace CSE5912.PolyGamers
                 yield return StartCoroutine(RandomAction());
             }
 
-            SetRoll(Direction.None);
-
             FaceTarget(directionToPlayer);
             agent.isStopped = false;
 
@@ -120,16 +118,9 @@ namespace CSE5912.PolyGamers
             yield return new WaitForSeconds(Time.deltaTime);
 
             SetMove((Direction)waitAction);
-            SetRoll(Direction.None);
 
             float randomWaitTime = Random.Range(timeBetweenWaitActions.x, timeBetweenWaitActions.y);
             yield return new WaitForSeconds(randomWaitTime);
-        }
-
-
-        protected override void PlayDeathAnimation()
-        {
-            animator.SetTrigger("Die");
         }
 
         //protected override void StartAttack()

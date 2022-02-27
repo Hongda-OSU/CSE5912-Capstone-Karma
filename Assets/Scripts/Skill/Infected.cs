@@ -18,7 +18,7 @@ namespace CSE5912.PolyGamers
                 yield return new WaitForSeconds(deltaTime);
 
                 Damage damage = new Damage(target.Health * currentHealthDamagePerStack * stack, Element.Type.Venom, PlayerStats.Instance, target);
-                PlayerManager.Instance.PerformDamage(target, damage);
+                PlayerManager.Instance.PerformSkillDamage(target, damage);
             }
             stack = 0;
         }

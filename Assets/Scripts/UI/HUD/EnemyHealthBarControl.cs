@@ -22,6 +22,9 @@ namespace CSE5912.PolyGamers
         {
             foreach (var child in EnemyManager.Instance.EnemyList)
             {
+                if (!child.activeSelf)
+                    continue;
+
                 var healthBar = child.GetComponentInChildren<EnemyHealthBar>();
 
                 if (enabled)

@@ -7,8 +7,15 @@ namespace CSE5912.PolyGamers
     public class EvilGod : EliteEnemy
     {
         [Header("Evil God")]
-        [SerializeField] private GameObject portalVfx;
+        [Header("Portal")]
+        [SerializeField] private GameObject portalPrefab;
         [SerializeField] private Transform portalPivot;
+
+        [Header("Lightning")]
+        [SerializeField] private GameObject lightningExplosionPrefab;
+        [SerializeField] private int lightningExplosionNumber = 20;
+        [SerializeField] private float lightningExplosionSpacing = 1f;
+        [SerializeField] private float lightningExplosionInterval = 0.1f;
 
         private bool isPerforming = false;
 
@@ -41,7 +48,8 @@ namespace CSE5912.PolyGamers
                     {
                         if (isPlayerInAttackRange)
                         {
-                            StartCoroutine(Blink(transform.position + directionToPlayer * -5f, 1f));
+                            StartCoroutine(Attack_LightningExplosion());
+                            //StartCoroutine(Blink(transform.position + directionToPlayer * -5f, 1f));
                         }
                         else
                         {
@@ -109,13 +117,13 @@ namespace CSE5912.PolyGamers
         {
             isPerforming = true;
 
+            GameObject portals = new GameObject("Portals");
 
-            var origin = Instantiate(portalVfx);
+            Rest();
+            var origin = Instantiate(portalPrefab, portals.transform);
             origin.transform.position = portalPivot.position;
-            origin.transform.rotation = Quaternion.Euler(portalVfx.transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z);
+            origin.transform.rotation = Quaternion.Euler(portalPrefab.transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z);
             Destroy(origin, delay + 1);
-
-            Debug.Log(transform.rotation + " " + transform.localRotation);
 
             yield return new WaitForSeconds(delay);
 
@@ -123,12 +131,59 @@ namespace CSE5912.PolyGamers
 
             yield return new WaitForSeconds(Time.deltaTime);
 
-            var target = Instantiate(portalVfx);
+            var target = Instantiate(portalPrefab, portals.transform);
             target.transform.position = portalPivot.position;
-            target.transform.rotation = Quaternion.Euler(portalVfx.transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z);
+            target.transform.rotation = Quaternion.Euler(portalPrefab.transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z);
             Destroy(target, delay + 1);
 
+            yield return new WaitForSeconds(delay);
 
+            Destroy(portals, 5f);
+
+            isPerforming = false;
+        }
+
+        private IEnumerator Attack_LightningExplosion()
+        {
+            SetAttack(0);
+            yield return null;
+        }
+        private void Shoot()
+        {
+            StartCoroutine(PerformLightningExplosion());
+        }
+        private IEnumerator PerformLightningExplosion()
+        {
+            isPerforming = true;
+            agent.speed = 0f;
+
+            var lightningExplosions = new GameObject("LightningExplosions");
+
+            float offset = lightningExplosionSpacing;
+
+            float damage = lightningExplosionPrefab.GetComponent<Damager_collision>().BaseDamage;
+
+            for (int i = 0; i < lightningExplosionNumber; i++)
+            {
+                GameObject vfx = Instantiate(lightningExplosionPrefab, lightningExplosions.transform);
+
+                vfx.GetComponent<Damager_collision>().Source = this;
+                vfx.GetComponent<Damager_collision>().BaseDamage = damage;
+
+                vfx.transform.position = transform.position + transform.forward * offset * (i + 1);
+
+                Destroy(vfx, 5f);
+
+                yield return new WaitForSeconds(lightningExplosionInterval);
+
+                if (vfx.GetComponent<Damager_collision>().IsPlayerHit)
+                {
+                    damage = 0f;
+                }
+            }
+            Destroy(lightningExplosions, 5f);
+
+            agent.speed = agentSpeed;
             isPerforming = false;
         }
         //protected override void StartAttack()
