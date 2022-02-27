@@ -1,19 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 namespace CSE5912.PolyGamers
 {
-    public class SkeletonKnight : EliteEnemy
+    public class EvilGod : EliteEnemy
     {
-        //[Header("Skeleton Knight")]
-        //[SerializeField] private GameObject fireBlade;
-        //[SerializeField] private float vfxSpeed = 10f;
-        //[SerializeField] private float vfxScale = 1f;
+        [Header("Evil God")]
+        [SerializeField] private GameObject portalVfx;
+        [SerializeField] private Transform portalPivot;
+
+        private bool isPerforming = false;
+
 
         protected override void PerformActions()
         {
+            if (isPerforming)
+                return;
+
             if (playerDetected)
                 FaceTarget(directionToPlayer);
 
@@ -32,16 +36,12 @@ namespace CSE5912.PolyGamers
 
                 case Status.Moving:
 
-                    if (distanceToPlayer < closeDetectionRange)
-                    {
-                        Retreat();
-                    }
 
                     if (!isAttacking)
                     {
                         if (isPlayerInAttackRange)
                         {
-                            Attack(Random.Range(0, 1));
+                            StartCoroutine(Blink(transform.position + directionToPlayer * -5f, 1f));
                         }
                         else
                         {
@@ -51,41 +51,14 @@ namespace CSE5912.PolyGamers
                     break;
 
                 case Status.Attacking:
-                    if (isFatigued)
-                    {
-                        PrepareForNextAttack();
-                    }
-                    else
-                    {
-                        status = Status.Moving;
-                    }
 
                     break;
 
                 case Status.Retreating:
-                    if (!isRetreatFinished)
-                        break;
-
-                    else
-                    {
-                        if (isFatigued)
-                        {
-                            PrepareForNextAttack();
-                        }
-                        else
-                        {
-                            MoveToPlayer();
-                        }
-                    }
 
                     break;
 
                 case Status.Waiting:
-                    if (isReadyToAttack && !isFatigued)
-                    {
-                        MoveToPlayer();
-                    }
-
                     break;
             }
         }
@@ -132,6 +105,32 @@ namespace CSE5912.PolyGamers
             animator.SetTrigger("Die");
         }
 
+        private IEnumerator Blink(Vector3 position, float delay)
+        {
+            isPerforming = true;
+
+
+            var origin = Instantiate(portalVfx);
+            origin.transform.position = portalPivot.position;
+            origin.transform.rotation = Quaternion.Euler(portalVfx.transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z);
+            Destroy(origin, delay + 1);
+
+            Debug.Log(transform.rotation + " " + transform.localRotation);
+
+            yield return new WaitForSeconds(delay);
+
+            transform.position = position;
+
+            yield return new WaitForSeconds(Time.deltaTime);
+
+            var target = Instantiate(portalVfx);
+            target.transform.position = portalPivot.position;
+            target.transform.rotation = Quaternion.Euler(portalVfx.transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z);
+            Destroy(target, delay + 1);
+
+
+            isPerforming = false;
+        }
         //protected override void StartAttack()
         //{
         //    base.StartAttack();
