@@ -17,6 +17,10 @@ namespace CSE5912.PolyGamers
         [SerializeField] private float lightningExplosionSpacing = 1f;
         [SerializeField] private float lightningExplosionInterval = 0.1f;
 
+        [Header("Shield")]
+        [SerializeField] private GameObject shieldPrefab;
+        private bool isShieldOn = false;
+
         private bool isPerforming = false;
 
 
@@ -48,7 +52,8 @@ namespace CSE5912.PolyGamers
                     {
                         if (isPlayerInAttackRange)
                         {
-                            StartCoroutine(Attack_LightningExplosion());
+                            //OpenShield();
+                            Attack_LightningExplosion();
                             //StartCoroutine(Blink(transform.position + directionToPlayer * -5f, 1f));
                         }
                         else
@@ -143,18 +148,14 @@ namespace CSE5912.PolyGamers
             isPerforming = false;
         }
 
-        private IEnumerator Attack_LightningExplosion()
+        private void Attack_LightningExplosion()
         {
             SetAttack(0);
-            yield return null;
-        }
-        private void Shoot()
-        {
-            StartCoroutine(PerformLightningExplosion());
-        }
-        private IEnumerator PerformLightningExplosion()
-        {
             isPerforming = true;
+        }
+        private IEnumerator LightningExplosion_performed()
+        {
+            isPerforming = false;
             agent.speed = 0f;
 
             var lightningExplosions = new GameObject("LightningExplosions");
@@ -184,7 +185,38 @@ namespace CSE5912.PolyGamers
             Destroy(lightningExplosions, 5f);
 
             agent.speed = agentSpeed;
+        }
+
+        private void OpenShield()
+        {
+            if (!isShieldOn)
+            {
+                animator.SetTrigger("Shield");
+                isPerforming = true;
+            }
+        }
+        private IEnumerator Shield_performed()
+        {
+            if (isShieldOn)
+                yield break;
+
+            isShieldOn = true;
             isPerforming = false;
+
+            GameObject energyShield = Instantiate(shieldPrefab, transform);
+            Shield shield = energyShield.GetComponent<Shield>();
+
+            while (isShieldOn)
+            {
+                yield return new WaitForSeconds(Time.deltaTime);
+
+                if (shield.TotalHealth <= 0)
+                {
+                    isShieldOn = false;
+                    Destroy(energyShield);
+                }
+            }
+
         }
         //protected override void StartAttack()
         //{

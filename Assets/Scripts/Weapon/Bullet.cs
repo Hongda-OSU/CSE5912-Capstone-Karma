@@ -13,6 +13,9 @@ namespace CSE5912.PolyGamers
         public GameObject ImpactPrefab;
         public ImpactAudioData impactAudioData;
 
+        public float damage;
+        public Element.Type elementType;
+
         void Start()
         {
             bulletTransform = transform;
@@ -30,7 +33,7 @@ namespace CSE5912.PolyGamers
                 (bulletTransform.position - prevPosition).magnitude)) return;
 
             // TODO:
-            CheckDamgeEenemy(hit);
+            CheckTargetHit(hit);
 
             // impact prefab
             if (hit.transform.tag != "Enemy")
@@ -53,18 +56,25 @@ namespace CSE5912.PolyGamers
             AudioSource.PlayClipAtPoint(tmp_AudioClip, hit.point);
         }
 
-        private void CheckDamgeEenemy(RaycastHit hit)
+        private void CheckTargetHit(RaycastHit hit)
         {
-            hit.transform.TryGetComponent(out Enemy enemy);
+            hit.transform.TryGetComponent(out IDamageable target);
+            if (target == null) 
+                return;
 
-            if (enemy != null)
+            if (!Penetrable)
+                Destroy(gameObject);
+
+            if (target is Enemy enemy)
             {
-                if (!Penetrable)
-                    Destroy(gameObject);
-
                 PlayerManager.Instance.HitByBullet = enemy;
                 PlayerManager.Instance.PerformBulletDamage(enemy, hit.point);
                 PlayerManager.Instance.StackDebuff(WeaponManager.Instance.CarriedWeapon.Element, enemy);
+            }
+            else if (target is Shield shield)
+            {
+                Damage damage = new Damage(this.damage, elementType, PlayerStats.Instance, shield);
+                PlayerManager.Instance.PerformBulletDamage(shield, damage, hit.point);
             }
         }
 

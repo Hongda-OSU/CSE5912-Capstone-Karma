@@ -71342,13 +71342,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1630861722973768964, guid: 98fa7bfa238773e46819603f117efaf1, type: 3}
-      propertyPath: attackRange
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3048358374080693735, guid: 98fa7bfa238773e46819603f117efaf1, type: 3}
-      propertyPath: m_StoppingDistance
-      value: 8
-      objectReference: {fileID: 0}
+      propertyPath: shieldPrefab
+      value: 
+      objectReference: {fileID: 134636, guid: 4872590f836f4b64ebda7e11c1bb3d0a, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98fa7bfa238773e46819603f117efaf1, type: 3}
 --- !u!1001 &1602137683
@@ -93712,18 +93708,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1110533165218009687, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1134557306127024411, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 1974986916604580742, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3914003179971651603, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -93771,18 +93755,6 @@ PrefabInstance:
     - target: {fileID: 3914003179971651613, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 3914003179971651613, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 4369238742308309042, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4463563017296859616, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}

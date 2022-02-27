@@ -1523,7 +1523,7 @@ MonoBehaviour:
   maxHealth: 1000
   attackDamage: 15
   attackRange: 15
-  navMeshMoveSpeed: 2
+  agentSpeed: 0
   isAlive: 1
   isFrozen: 0
   damageFactor_physical: 1
@@ -1557,7 +1557,7 @@ MonoBehaviour:
   portalPrefab: {fileID: 0}
   portalPivot: {fileID: 8311811498984973473}
   lightningExplosionPrefab: {fileID: 159846, guid: 09bd21ca17a7f194aa04b7eac4cfa893, type: 3}
-  lightningExplosionNumber: 20
+  lightningExplosionNumber: 30
   lightningExplosionSpacing: 1
   lightningExplosionInterval: 0.1
 --- !u!1 &1905241696832546

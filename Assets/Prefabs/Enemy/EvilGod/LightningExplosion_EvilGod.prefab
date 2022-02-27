@@ -4812,7 +4812,7 @@ GameObject:
   - component: {fileID: 11479686}
   - component: {fileID: -5109687923064600698}
   m_Layer: 0
-  m_Name: LightningExplosion
+  m_Name: LightningExplosion_EvilGod
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

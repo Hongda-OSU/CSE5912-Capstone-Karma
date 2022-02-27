@@ -329,6 +329,11 @@ namespace CSE5912.PolyGamers
             }
         }
 
+        //protected virtual void CreateBullet()
+        //{
+
+        //}
+
         public string WeaponName { get { return weaponName; } set { weaponName = value; } }
         public WeaponType Type { get { return weaponType; } } 
         public WeaponRarity Rarity { get { return rarity; } set { rarity = value; } }

@@ -40,6 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3914003179883955253}
+  - component: {fileID: 473044049593638664}
   - component: {fileID: 3914003179883955252}
   m_Layer: 8
   m_Name: Stats
@@ -63,6 +64,22 @@ Transform:
   m_Father: {fileID: 3914003179971651603}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &473044049593638664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3914003179883955254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7334376b3a7c92e47bfe5b6bc9709a32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shield_armor: 0
+  maxShield_armor: 100
+  shield_energy: 0
+  maxShield_energy: 100
 --- !u!114 &3914003179883955252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,10 +98,7 @@ MonoBehaviour:
   experienceToUpgrade: 668
   health: 25
   maxHealth: 100
-  shield_armor: 0
-  maxShield_armor: 100
-  shield_energy: 0
-  maxShield_energy: 100
+  shield: {fileID: 0}
   moveSpeedFactor: 0
   reloadSpeedFactor: 1
   critRate: 0
@@ -889,6 +903,10 @@ PrefabInstance:
     - target: {fileID: 1016950843055038975, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
       propertyPath: skillName
       value: Fire Mastery
+      objectReference: {fileID: 0}
+    - target: {fileID: 3258852430572098994, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4123112667914540131, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
       propertyPath: m_Name

@@ -96,6 +96,9 @@ namespace CSE5912.PolyGamers
             bulletScript.impactAudioData = impactAudioData;
             bulletScript.BulletSpeed = 100;
             bulletScript.Penetrable = BulletPenetrable;
+
+            bulletScript.damage = Damage;
+            bulletScript.elementType = Element;
             Destroy(bullet, 3);
         }
     }

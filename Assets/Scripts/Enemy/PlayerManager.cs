@@ -45,6 +45,12 @@ namespace CSE5912.PolyGamers
 
             StartCoroutine(DamageNumberControl.Instance.DisplayDamageNumber(damage, position));
         }
+        public void PerformBulletDamage(Shield shield, Damage damage, Vector3 position)
+        {
+            shield.TakeDamage(damage);
+
+            StartCoroutine(DamageNumberControl.Instance.DisplayDamageNumber(damage, position));
+        }
 
         public void PerformSkillDamage(Enemy enemy, Damage damage)
         {
@@ -57,6 +63,11 @@ namespace CSE5912.PolyGamers
             Renderer renderer = enemy.transform.GetComponentInChildren<Renderer>();
             Vector3 position = enemy.transform.position + Vector3.up * renderer.bounds.size.y / 2;
             StartCoroutine(DamageNumberControl.Instance.DisplayDamageNumber(damage, position));
+        }
+
+        public void PerformDamageOnShield(Shield shield, Damage damage)
+        {
+
         }
 
         public void StackDebuff(Element.Type type, Enemy enemy)

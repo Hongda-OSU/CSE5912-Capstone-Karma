@@ -15,10 +15,7 @@ namespace CSE5912.PolyGamers
         [Header("Durability")]
         [SerializeField] private float health = 100f;
         [SerializeField] private float maxHealth = 100f;
-        [SerializeField] private float shield_armor = 0f;
-        [SerializeField] private float maxShield_armor = 100f;
-        [SerializeField] private float shield_energy = 0f;
-        [SerializeField] private float maxShield_energy = 100f;
+        [SerializeField] private Shield shield;
 
         [Header("Agility")]
         [SerializeField] private float moveSpeedFactor = 1f;
@@ -71,6 +68,8 @@ namespace CSE5912.PolyGamers
             }
             instance = this;
 
+            shield = GetComponent<Shield>();
+
             damageFactor = new DamageFactor();
             damageFactor.SetDamageValues(damageFactor_physical, damageFactor_fire, damageFactor_cryo, damageFactor_electro, damageFactor_venom);
 
@@ -85,30 +84,9 @@ namespace CSE5912.PolyGamers
 
         public void TakeDamage(Damage damage)
         {
-            float value = damage.ResolvedValue;
+            shield.TakeDamage(damage);
 
-            // calculate overflowed damage on energy shield
-            float overflow_energy = shield_energy - value;
-            if (damage.Element == Element.Type.Electro && shield_energy > 0)
-            {
-                overflow_energy -= value * 0.5f;
-            }
-            shield_energy = Mathf.Clamp(overflow_energy, 0, maxShield_energy);
-            if (overflow_energy >= 0)
-                return;
-
-            // calculate overflowed damage on armor shield
-            float overflow_armor = shield_armor + overflow_energy;
-            if (damage.Element == Element.Type.Venom && shield_armor > 0)
-            {
-                overflow_armor -= overflow_energy * 0.5f;
-            }
-            shield_armor = Mathf.Clamp(overflow_armor, 0, maxShield_armor);
-            if (overflow_armor >= 0)
-                return;
-
-            // calculate final damage on health
-            Health += overflow_armor;
+            Health -= shield.Overflow;
         }
 
 
@@ -191,12 +169,12 @@ namespace CSE5912.PolyGamers
                     maxHealth += healthUp;
                     break;
                 case "Shield_armor":
-                    shield_armor += shieldUp;
-                    maxShield_armor += shieldUp;
+                    shield.Shield_armor += shieldUp;
+                    shield.MaxShield_armor += shieldUp;
                     break;
                 case "Shield_energy":
-                    shield_energy += shieldUp;
-                    maxShield_energy += shieldUp;
+                    shield.Shield_energy += shieldUp;
+                    shield.MaxShield_energy += shieldUp;
                     break;
                 case "CritRate":
                     critRate += critRateUp;
@@ -262,16 +240,17 @@ namespace CSE5912.PolyGamers
                 if (maxHealth < 0f)
                     maxHealth = 0f;
                 PlayerHealthBarControl.Instance.UpdateHealthBar();
-            } 
+            }
         }
+        public float Shield_armor { get { return shield.Shield_armor; } set { shield.Shield_armor = value; } }
+        public float MaxShield_armor { get { return shield.MaxShield_armor; } set { shield.MaxShield_armor = value; } }
+        public float Shield_energy { get { return shield.Shield_energy; } set { shield.Shield_energy = value; } }
+        public float MaxShield_energy { get { return shield.MaxShield_energy; } set { shield.Shield_energy = value; } }
+
         public int StatPoint { get { return statPoint; } }
         public int Level { get { return level; } }
         public float Experience { get { return experience; } set { experience = value; } }
         public float ExperienceToUpgrade { get { return experienceToUpgrade; } set { experienceToUpgrade = value; } }
-        public float Shield_armor {  get { return shield_armor; } set { shield_armor = value; } }
-        public float MaxShield_armor { get { return maxShield_armor; } set { maxShield_armor = value; } }
-        public float Shield_energy { get { return shield_energy; } set { shield_energy = value; } }
-        public float MaxShield_energy { get { return maxShield_energy; } set { shield_energy = value; } }
         public float CritDamageFactor { get { return critDamageFactor; } set { critDamageFactor = value; } }
         public float CritRate { get { return critRate; } set { critRate = Mathf.Clamp(value, 0f, 1f); } }
         public float MoveSpeedFactor { get { return moveSpeedFactor; } set { moveSpeedFactor = value; } }
