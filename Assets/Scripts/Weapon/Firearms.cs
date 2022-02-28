@@ -27,6 +27,16 @@ namespace CSE5912.PolyGamers
         {
             AK47,
             Glock18,
+            M16,
+            SCAR,
+            BERETTA,
+            P85,
+            HKP7,
+            MP7,
+            VZ61,
+            UZI,
+            P90,
+            MP5
         }
 
         [Header("WeaponEffect")]
