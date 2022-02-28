@@ -36,7 +36,8 @@ namespace CSE5912.PolyGamers
             VZ61,
             UZI,
             P90,
-            MP5
+            MP5,
+            BENELLI
         }
 
         [Header("WeaponEffect")]

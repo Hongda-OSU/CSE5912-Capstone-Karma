@@ -7723,8 +7723,8 @@ MonoBehaviour:
   BulletPrefab: {fileID: 1086664671600574, guid: 5953171a59c27394e9ad5cbb564affa8, type: 3}
   MuzzleParticle: {fileID: 826481333651874702}
   CastingParticle: {fileID: 5609508093069029783}
-  AmmoInMag: 42
-  MaxAmmoCarried: 7
+  AmmoInMag: 7
+  MaxAmmoCarried: 42
   FireRate: 7
   CurrentAmmo: 0
   ShootingAudioSource: {fileID: 3622579900223410929}
