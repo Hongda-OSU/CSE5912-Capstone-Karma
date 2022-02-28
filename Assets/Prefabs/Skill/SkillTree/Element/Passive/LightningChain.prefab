@@ -57,6 +57,6 @@ MonoBehaviour:
   displayTime: 0.3
   effectDistance: 10
   baseDamage: 10
-  damagePerLevel: 0.02
+  damagePerLevel: 10
   baseLightningNumber: 1
   lightningNumberPerLevel: 1

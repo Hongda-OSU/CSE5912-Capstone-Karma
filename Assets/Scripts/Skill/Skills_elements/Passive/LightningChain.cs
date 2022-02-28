@@ -13,7 +13,7 @@ namespace CSE5912.PolyGamers
         [SerializeField] private float effectDistance = 10f;
 
         [SerializeField] private float baseDamage = 10f;
-        [SerializeField] private float damagePerLevel = 0.02f;
+        [SerializeField] private float damagePerLevel = 10f;
 
         [SerializeField] private int baseLightningNumber = 1;
         [SerializeField] private int lightningNumberPerLevel = 1;
@@ -46,7 +46,7 @@ namespace CSE5912.PolyGamers
                 Enemy otherEnemy = inRange[index].GetComponent<Enemy>();
                 inRange.RemoveAt(index);
 
-                float damageOnTarget = baseDamage;
+                float damageOnTarget = baseDamage + damagePerLevel * (level - 1);
                 if (i > 0)
                     damageOnTarget = 0f;
 
