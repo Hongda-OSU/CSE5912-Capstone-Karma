@@ -74,6 +74,7 @@ namespace CSE5912.PolyGamers
 
             base.Update();
 
+
             isPlayerInAttackRange = distanceToPlayer < attackRange;
 
             isPlayerInSafeDistance = distanceToPlayer < closeDetectionRange;
@@ -81,6 +82,11 @@ namespace CSE5912.PolyGamers
             isFatigued = currentAttackNum >= maxContinuousAttackNum;
 
             CalculateAggro();
+
+            if (playerDetected)
+            {
+                FaceTarget(directionToPlayer);
+            }
 
             PerformActions();
         }
@@ -146,7 +152,7 @@ namespace CSE5912.PolyGamers
             status = Status.Idle;
         }
 
-        protected virtual void PrepareForNextAttack()
+        protected void PrepareForNextAttack()
         {
             status = Status.Waiting;
 
@@ -169,7 +175,10 @@ namespace CSE5912.PolyGamers
             bool isInViewAngle = Vector3.Angle(transform.forward, directionToPlayer) < viewAngle / 2;
             bool isInSafeDistance = distanceToPlayer <= closeDetectionRange;
 
-            playerDetected = isInViewDistance && isInViewAngle || isInSafeDistance || isAttackedByPlayer;
+            if (isInViewDistance && isInViewAngle || isInSafeDistance || isAttackedByPlayer)
+            {
+                playerDetected = true;
+            }
 
             // increase aggro if player stays in safe distance
             if (isPlayerInSafeDistance && aggro < aggroThreshold)

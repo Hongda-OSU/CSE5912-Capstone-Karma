@@ -80197,7 +80197,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 1
   m_Events:
   - time: 0.4612664
-    functionName: PerformLightningExplosion
+    functionName: LightningExplosion_performed
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

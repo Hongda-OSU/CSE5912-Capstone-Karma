@@ -16,10 +16,12 @@ namespace CSE5912.PolyGamers
         [SerializeField] private int lightningExplosionNumber = 20;
         [SerializeField] private float lightningExplosionSpacing = 1f;
         [SerializeField] private float lightningExplosionInterval = 0.1f;
+        private bool isLightningExplosionReady = true;
 
         [Header("Shield")]
         [SerializeField] private GameObject shieldPrefab;
         private bool isShieldOn = false;
+        private bool isShieldReady = true;
 
         private bool isPerforming = false;
 
@@ -29,15 +31,29 @@ namespace CSE5912.PolyGamers
             if (isPerforming)
                 return;
 
-            if (playerDetected)
-                FaceTarget(directionToPlayer);
+
+            if (health < maxHealth * 0.5f && isShieldReady)
+            {
+                OpenShield();
+                isShieldReady = false;
+            }
 
             switch (status)
             {
                 case Status.Idle:
                     if (playerDetected)
                     {
-                        MoveToPlayer();
+                        if (!isAttacking)
+                        {
+                            if (isPlayerInAttackRange)
+                            {
+                                Attack_LightningExplosion();
+                            }
+                            else
+                            {
+                                MoveToPlayer();
+                            }
+                        }
                     }
                     else
                     {
@@ -46,24 +62,19 @@ namespace CSE5912.PolyGamers
                     break;
 
                 case Status.Moving:
-
-
-                    if (!isAttacking)
-                    {
-                        if (isPlayerInAttackRange)
-                        {
-                            //OpenShield();
-                            Attack_LightningExplosion();
-                            //StartCoroutine(Blink(transform.position + directionToPlayer * -5f, 1f));
-                        }
-                        else
-                        {
-                            MoveToPlayer();
-                        }
-                    }
+                    status = Status.Idle;
                     break;
 
                 case Status.Attacking:
+                    if (isPlayerInSafeDistance)
+                    {
+                        StartCoroutine(Blink(transform.position + directionToPlayer * -attackRange, 1f));
+                    }
+                    else if (isFatigued)
+                    {
+                        PrepareForNextAttack();
+                    }
+                    status = Status.Idle;
 
                     break;
 
@@ -72,46 +83,25 @@ namespace CSE5912.PolyGamers
                     break;
 
                 case Status.Waiting:
+                    if (!isFatigued)
+                    {
+                        Rest();
+                    }
                     break;
             }
         }
 
-
+        protected override void MoveToPlayer()
+        {
+            base.MoveToPlayer();
+            StartCoroutine(Blink(PlayerManager.Instance.Player.transform.position - directionToPlayer * attackRange * 0.8f, 0.3f));
+        }
         protected override IEnumerator PerformActionsOnWaiting()
         {
-            StartCoroutine(CoolDown(timeBetweenAttack));
-
-            while (!isReadyToAttack)
-            {
-                yield return StartCoroutine(RandomAction());
-            }
-
-            SetRoll(Direction.None);
-
-            FaceTarget(directionToPlayer);
-            agent.isStopped = false;
-
+            Vector3 position = PlayerManager.Instance.Player.transform.position + directionToPlayer * attackRange;
+            yield return StartCoroutine(Blink(position, 1f));
             currentAttackNum = 0;
-            Debug.Log(currentAttackNum);
         }
-
-        private IEnumerator RandomAction()
-        {
-            waitAction = Random.Range(-2, 4);
-
-            bool roll = Random.value < 0.5f;
-            if (roll)
-                SetRoll((Direction)waitAction);
-
-            yield return new WaitForSeconds(Time.deltaTime);
-
-            SetMove((Direction)waitAction);
-            SetRoll(Direction.None);
-
-            float randomWaitTime = Random.Range(timeBetweenWaitActions.x, timeBetweenWaitActions.y);
-            yield return new WaitForSeconds(randomWaitTime);
-        }
-
 
         protected override void PlayDeathAnimation()
         {
@@ -124,7 +114,6 @@ namespace CSE5912.PolyGamers
 
             GameObject portals = new GameObject("Portals");
 
-            Rest();
             var origin = Instantiate(portalPrefab, portals.transform);
             origin.transform.position = portalPivot.position;
             origin.transform.rotation = Quaternion.Euler(portalPrefab.transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z);
@@ -150,13 +139,14 @@ namespace CSE5912.PolyGamers
 
         private void Attack_LightningExplosion()
         {
+            status = Status.Attacking;
             SetAttack(0);
+            currentAttackNum++;
             isPerforming = true;
         }
         private IEnumerator LightningExplosion_performed()
         {
             isPerforming = false;
-            agent.speed = 0f;
 
             var lightningExplosions = new GameObject("LightningExplosions");
 

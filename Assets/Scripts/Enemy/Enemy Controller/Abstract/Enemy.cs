@@ -79,6 +79,7 @@ namespace CSE5912.PolyGamers
         {
             distanceToPlayer = Vector3.Distance(player.position, transform.position);
             directionToPlayer = (player.position - transform.position).normalized;
+
         }
 
         protected void Initialize()

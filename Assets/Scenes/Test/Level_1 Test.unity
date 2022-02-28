@@ -71342,6 +71342,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1630861722973768964, guid: 98fa7bfa238773e46819603f117efaf1, type: 3}
+      propertyPath: agentSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1630861722973768964, guid: 98fa7bfa238773e46819603f117efaf1, type: 3}
+      propertyPath: rotateSpeed
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1630861722973768964, guid: 98fa7bfa238773e46819603f117efaf1, type: 3}
+      propertyPath: portalPrefab
+      value: 
+      objectReference: {fileID: 176220, guid: 5a0c923488fbf4e49a19e8abb282ea58, type: 3}
+    - target: {fileID: 1630861722973768964, guid: 98fa7bfa238773e46819603f117efaf1, type: 3}
       propertyPath: shieldPrefab
       value: 
       objectReference: {fileID: 134636, guid: 4872590f836f4b64ebda7e11c1bb3d0a, type: 3}
