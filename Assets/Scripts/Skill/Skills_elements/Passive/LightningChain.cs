@@ -6,7 +6,8 @@ namespace CSE5912.PolyGamers
 {
     public class LightningChain : Skill
     {
-        [SerializeField] private GameObject vfx;
+        [Header("Lightning Chain")]
+        [SerializeField] private GameObject lightningPrefab;
         [SerializeField] private float displayTime = 0.3f;
 
         [SerializeField] private float effectDistance = 10f;
@@ -14,43 +15,68 @@ namespace CSE5912.PolyGamers
         [SerializeField] private float baseDamage = 10f;
         [SerializeField] private float damagePerLevel = 0.02f;
 
-        private void Awake()
-        {
-            vfx.GetComponentInParent<LineRenderer>().enabled = false;
-        }
+        [SerializeField] private int baseLightningNumber = 1;
+        [SerializeField] private int lightningNumberPerLevel = 1;
+
         private void Update()
         {
             var target = PlayerManager.Instance.HitByBullet;
             if (!isReady || target == null || !target.IsAlive)
                 return;
 
-            foreach (var other in EnemyManager.Instance.EnemyList)
+
+            int lightningNum = baseLightningNumber + lightningNumberPerLevel * (level - 1);
+
+            List<GameObject> inRange = new List<GameObject>();
+
+
+            foreach (var enemy in EnemyManager.Instance.EnemyList)
             {
-                float distance = Vector3.Distance(target.gameObject.transform.position, other.transform.position);
-                if (distance < effectDistance)
+                float distance = Vector3.Distance(target.gameObject.transform.position, enemy.transform.position);
+                if (distance < effectDistance && enemy != target.gameObject)
                 {
-                    Vector3 first = target.transform.position + Vector3.up * target.GetComponentInChildren<Renderer>().bounds.size.y / 2;
-                    Vector3 second = other.transform.position + Vector3.up * other.GetComponentInChildren<Renderer>().bounds.size.y / 2;
-
-                    StartCoroutine(DisplayVfx(first, second));
-
-                    Damage damage = new Damage(baseDamage, Element.Type.Electro, PlayerStats.Instance, target);
-                    PlayerManager.Instance.PerformSkillDamage(target, damage);
-
-                    damage = new Damage(baseDamage, Element.Type.Electro, PlayerStats.Instance, other.GetComponent<Enemy>());
-                    PlayerManager.Instance.PerformSkillDamage(other.GetComponent<Enemy>(), damage);
-
-                    PlayerManager.Instance.HitByBullet = null;
-                    return;
+                    inRange.Add(enemy);
                 }
-
             }
+
+            Enemy targetEnemy = target.GetComponent<Enemy>();
+            for (int i = 0; i < lightningNum; i++)
+            {
+                int index = Random.Range(0, inRange.Count);
+                Enemy otherEnemy = inRange[index].GetComponent<Enemy>();
+                inRange.RemoveAt(index);
+
+                float damageOnTarget = baseDamage;
+                if (i > 0)
+                    damageOnTarget = 0f;
+
+                Perform(targetEnemy, otherEnemy, damageOnTarget);
+            }
+
 
         }
 
+        private void Perform(Enemy target, Enemy other, float damageOnTarget)
+        {
+
+            Vector3 first = target.transform.position + Vector3.up * target.GetComponentInChildren<Renderer>().bounds.size.y / 2;
+            Vector3 second = other.transform.position + Vector3.up * other.GetComponentInChildren<Renderer>().bounds.size.y / 2;
+
+            StartCoroutine(DisplayVfx(first, second));
+
+            Damage damage = new Damage(damageOnTarget, Element.Type.Electro, PlayerStats.Instance, target);
+            PlayerManager.Instance.PerformSkillDamage(target, damage);
+
+            damage = new Damage(baseDamage, Element.Type.Electro, PlayerStats.Instance, other.GetComponent<Enemy>());
+            PlayerManager.Instance.PerformSkillDamage(other.GetComponent<Enemy>(), damage);
+
+            PlayerManager.Instance.HitByBullet = null;
+        }
 
         private IEnumerator DisplayVfx(Vector3 first, Vector3 second)
         {
+            GameObject vfx = Instantiate(lightningPrefab);
+
             LineRenderer lineRenderer = vfx.GetComponentInParent<LineRenderer>();
 
             lineRenderer.enabled = true;
@@ -66,7 +92,7 @@ namespace CSE5912.PolyGamers
                 lineRenderer.SetPosition(1, second);
             }
 
-            lineRenderer.enabled = false;
+            Destroy(vfx);
         }
 
         public override bool LevelUp()

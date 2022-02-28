@@ -25,7 +25,10 @@ namespace CSE5912.PolyGamers
 
             enemyList = new List<GameObject>();
             foreach (Transform enemy in enemies.transform)
-                enemyList.Add(enemy.gameObject);
+            {
+                if (enemy.gameObject.activeSelf)
+                    enemyList.Add(enemy.gameObject);
+            }
         }
 
         public List<GameObject> GetEnemiesInView()

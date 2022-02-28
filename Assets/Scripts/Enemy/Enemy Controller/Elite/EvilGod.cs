@@ -14,7 +14,7 @@ namespace CSE5912.PolyGamers
         [Header("Lightning")]
         [SerializeField] private GameObject lightningExplosionPrefab;
         [SerializeField] private int lightningExplosionNumber = 20;
-        [SerializeField] private float lightningExplosionSpacing = 1f;
+        [SerializeField] private float lightningExplosionSpacing = 2f;
         [SerializeField] private float lightningExplosionInterval = 0.1f;
         private bool isLightningExplosionReady = true;
 
