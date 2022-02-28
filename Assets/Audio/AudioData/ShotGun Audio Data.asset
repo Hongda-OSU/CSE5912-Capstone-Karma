@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b62ad2ebe5edec641a9684fc52f9a989, type: 3}
-  m_Name: Benelli Audio Data
+  m_Name: ShotGun Audio Data
   m_EditorClassIdentifier: 
   ShootingAudio: {fileID: 8300000, guid: 38b450e2adcb6f542acc8c1d423bd8dc, type: 3}
   ReloadLeft: {fileID: 8300000, guid: 627283682cdb8784f9b8f4279751facf, type: 3}

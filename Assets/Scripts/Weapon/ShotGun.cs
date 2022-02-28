@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace CSE5912.PolyGamers
 {
-    public class BENELLI : Firearms
+    public class ShotGun : Firearms
     {
         // bullet hole effect
         public GameObject ImpactPrefab;

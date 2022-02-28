@@ -995,7 +995,7 @@ GameObject:
   - component: {fileID: 3799926116206751089}
   - component: {fileID: 3804936203109572184}
   m_Layer: 0
-  m_Name: BENELLI
+  m_Name: ShotGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
