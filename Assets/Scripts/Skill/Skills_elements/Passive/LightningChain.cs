@@ -21,7 +21,7 @@ namespace CSE5912.PolyGamers
         private void Update()
         {
             var target = PlayerManager.Instance.HitByBullet;
-            if (!isReady || target == null || !target.IsAlive)
+            if (!isLearned || target == null || !target.IsAlive)
                 return;
 
 
@@ -95,18 +95,18 @@ namespace CSE5912.PolyGamers
             Destroy(vfx);
         }
 
-        public override bool LevelUp()
-        {
-            bool result = base.LevelUp();
-            if (result)
-                isReady = true;
+        //public override bool LevelUp()
+        //{
+        //    bool result = base.LevelUp();
+        //    if (result)
+        //        isReady = true;
 
-            return result;
-        }
+        //    return result;
+        //}
 
-        public override void ResetLevel()
-        {
-            base.ResetLevel();
-        }
+        //public override void ResetLevel()
+        //{
+        //    base.ResetLevel();
+        //}
     }
 }

@@ -58,12 +58,13 @@ namespace CSE5912.PolyGamers
 
         private void CheckTargetHit(RaycastHit hit)
         {
+            if (!Penetrable)
+                Destroy(gameObject);
+
             hit.transform.TryGetComponent(out IDamageable target);
             if (target == null) 
                 return;
 
-            if (!Penetrable)
-                Destroy(gameObject);
 
             if (target is Enemy enemy)
             {

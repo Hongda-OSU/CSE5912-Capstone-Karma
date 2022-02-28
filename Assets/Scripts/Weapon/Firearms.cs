@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Events;
 
 namespace CSE5912.PolyGamers
 {
@@ -53,6 +54,9 @@ namespace CSE5912.PolyGamers
         // current gun animator
         internal Animator GunAnimator; 
         protected AnimatorStateInfo GunStateInfo;
+
+        public UnityEvent shootEvent;
+        public Bullet bulletFired;
         
         // Get current ammo and ammo left in mag 
         //public int GetCurrentAmmo => CurrentAmmo;
@@ -132,6 +136,8 @@ namespace CSE5912.PolyGamers
             GunCameraLocalOriginalRotation = GunCamera.transform.localRotation;
             GunCameraLocalOriginalPosition = GunCamera.transform.localPosition;
             doAimingCoroutine = DoAim();
+
+            shootEvent = new UnityEvent();
         }
 
         protected void Start()
@@ -166,7 +172,7 @@ namespace CSE5912.PolyGamers
         protected abstract void CameraLeanRight();
         protected abstract void StopCameraLean();
 
-        protected Vector3 CalculateBulletSpreadOffset()
+        public Vector3 CalculateBulletSpreadOffset()
         {
             // aimed => less bullet spread
             float spreadPercentage = SpreadAngle / (100 - GunCamera.fieldOfView);

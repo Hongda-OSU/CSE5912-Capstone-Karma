@@ -21,7 +21,6 @@ namespace CSE5912.PolyGamers
         protected string description;
 
         [SerializeField] protected float cooldown;
-        protected float timeSince = 0f;
         protected bool isReady = false;
 
         [SerializeField] protected SkillType type;
@@ -41,13 +40,7 @@ namespace CSE5912.PolyGamers
         {
             isReady = false;
 
-            while (timeSince < cooldown)
-            {
-                yield return new WaitForSeconds(Time.deltaTime);
-
-                timeSince += Time.deltaTime;
-            }
-            timeSince = 0f;
+            yield return new WaitForSeconds(cooldown);
 
             isReady = true;
         }
@@ -66,6 +59,8 @@ namespace CSE5912.PolyGamers
             if (level == 0 && playerSkill.SkillPoints >= learnCost)
             {
                 isLearned = true;
+                isReady = true;
+
                 playerSkill.SkillPoints -= learnCost;
                 level++;
             }
