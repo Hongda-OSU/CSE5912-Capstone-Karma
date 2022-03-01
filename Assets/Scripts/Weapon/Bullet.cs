@@ -71,6 +71,12 @@ namespace CSE5912.PolyGamers
                 PlayerManager.Instance.HitByBullet = enemy;
                 PlayerManager.Instance.PerformBulletDamage(enemy, hit.point);
                 PlayerManager.Instance.StackDebuff(WeaponManager.Instance.CarriedWeapon.Element, enemy);
+
+                // test
+                //enemy.StackDebuff(Element.Type.Fire);
+                //enemy.StackDebuff(Element.Type.Cryo);
+                //enemy.StackDebuff(Element.Type.Electro);
+                //enemy.StackDebuff(Element.Type.Venom);
             }
             else if (target is Shield shield)
             {
