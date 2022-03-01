@@ -39,6 +39,9 @@ namespace CSE5912.PolyGamers
                 }
             }
 
+            if (inRange.Count == 0)
+                return;
+
             Enemy targetEnemy = target.GetComponent<Enemy>();
             for (int i = 0; i < lightningNum; i++)
             {
