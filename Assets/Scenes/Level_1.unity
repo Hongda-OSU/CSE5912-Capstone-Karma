@@ -52591,10 +52591,7 @@ MonoBehaviour:
   experienceToUpgrade: 668
   health: 25
   maxHealth: 100
-  shield_armor: 0
-  maxShield_armor: 100
-  shield_energy: 0
-  maxShield_energy: 100
+  shield: {fileID: 0}
   moveSpeedFactor: 0
   reloadSpeedFactor: 1
   critRate: 0
