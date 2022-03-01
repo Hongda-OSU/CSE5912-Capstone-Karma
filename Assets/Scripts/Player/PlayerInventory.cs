@@ -41,6 +41,7 @@ namespace CSE5912.PolyGamers
             playerWeapons = new Firearms[maxNumOfWeapons];
             attachmentList = new List<Attachment>();
         }
+
         private void Start()
         {
             weaponsPanelControl = WeaponsPanelControl.Instance;
