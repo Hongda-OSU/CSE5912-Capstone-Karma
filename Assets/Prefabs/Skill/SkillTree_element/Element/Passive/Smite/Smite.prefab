@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4793492582233031140
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 770826871810859949}
+  - component: {fileID: -3938126011120566262}
+  m_Layer: 0
+  m_Name: Smite
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &770826871810859949
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4793492582233031140}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-3938126011120566262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4793492582233031140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 576ebb3a736d80e41a133efd2717a137, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: 
+  requiredSkill: {fileID: 0}
+  isLearned: 0
+  level: 0
+  maxLevel: 5
+  learnCost: 1
+  levelupCost: 1
+  cooldown: 1
+  type: 0
+  vfxPrefab: {fileID: 6590587692847928727, guid: 22cebc78d4f534d4db954fc31b0b4615, type: 3}
+  baseDamage: 200
+  damagePerLevel: 50
+  baseTargetNumber: 1
+  targetNumberPerLevel: 1
+  baseRadius: 10
+  radiusPerLevel: 3

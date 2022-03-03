@@ -7,7 +7,7 @@ namespace CSE5912.PolyGamers
     public class LightningChain : Skill
     {
         [Header("Lightning Chain")]
-        [SerializeField] private GameObject lightningPrefab;
+        [SerializeField] private GameObject vfxPrefab;
         [SerializeField] private float displayTime = 0.3f;
 
         [SerializeField] private float effectDistance = 10f;
@@ -92,7 +92,7 @@ namespace CSE5912.PolyGamers
 
         private IEnumerator DisplayVfx(Vector3 first, Vector3 second)
         {
-            GameObject vfx = Instantiate(lightningPrefab);
+            GameObject vfx = Instantiate(vfxPrefab);
 
             LineRenderer lineRenderer = vfx.GetComponentInParent<LineRenderer>();
 

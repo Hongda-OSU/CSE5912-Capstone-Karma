@@ -8,7 +8,7 @@ namespace CSE5912.PolyGamers
     {
 
         [Header("Lightning Bolt")]
-        [SerializeField] private GameObject lightningPrefab;
+        [SerializeField] private GameObject vfxPrefab;
         [SerializeField] private Vector3 pivot;
 
         [SerializeField] private float baseDamage = 10f;
@@ -53,7 +53,7 @@ namespace CSE5912.PolyGamers
 
         private IEnumerator Shoot(Vector3 position, Quaternion rotation)
         {
-            var vfx = Instantiate(lightningPrefab);
+            var vfx = Instantiate(vfxPrefab);
 
             vfx.GetComponent<LightningBoltDamager>().Owner = this;
 

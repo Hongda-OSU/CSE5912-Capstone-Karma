@@ -6,8 +6,8 @@ namespace CSE5912.PolyGamers
 {
     public class Detonation : Skill
     {
-        [Header("Lightning Chain")]
-        [SerializeField] private GameObject detonationPrefab;
+        [Header("Detonation")]
+        [SerializeField] private GameObject vfxPrefab;
 
         [SerializeField] private float triggerTime = 5f;
 
@@ -38,7 +38,7 @@ namespace CSE5912.PolyGamers
 
             yield return new WaitForSeconds(triggerTime);
 
-            GameObject vfx = Instantiate(detonationPrefab);
+            GameObject vfx = Instantiate(vfxPrefab);
             vfx.transform.localScale = Vector3.one * (1 + radiusPerLevel * (level - 1) / baseDamageRadius);
             vfx.transform.position = target.transform.position + Vector3.up * target.GetComponentInChildren<Renderer>().bounds.size.y / 2;
             Destroy(vfx, 5f);
@@ -57,7 +57,6 @@ namespace CSE5912.PolyGamers
                 float radius = baseDamageRadius + radiusPerLevel * (level - 1);
                 if (distance < radius && enemyObj != target.gameObject)
                 {
-                    Debug.Log(enemyObj.name);
                     damage = new Damage(dmg, Element.Type.Electro, PlayerStats.Instance, enemy);
                     PlayerManager.Instance.PerformSkillDamage(enemy, damage);
                 }
