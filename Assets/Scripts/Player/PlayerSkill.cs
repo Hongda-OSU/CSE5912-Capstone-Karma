@@ -35,6 +35,11 @@ namespace CSE5912.PolyGamers
             SkillsPanelControl.Instance.SkillTree_element.AssignBuff(6, skillTree_element.transform.GetComponentInChildren<ElectroMastery>());
             SkillsPanelControl.Instance.SkillTree_element.AssignBuff(7, skillTree_element.transform.GetComponentInChildren<VenomMastery>());
 
+            SkillsPanelControl.Instance.SkillTree_element.AssignBuff(8, skillTree_element.transform.GetComponentInChildren<FireIntellection>());
+            SkillsPanelControl.Instance.SkillTree_element.AssignBuff(9, skillTree_element.transform.GetComponentInChildren<CryoIntellection>());
+            SkillsPanelControl.Instance.SkillTree_element.AssignBuff(10, skillTree_element.transform.GetComponentInChildren<ElectroIntellection>());
+            SkillsPanelControl.Instance.SkillTree_element.AssignBuff(11, skillTree_element.transform.GetComponentInChildren<VenomIntellection>());
+
 
             SkillsPanelControl.Instance.SkillTree_element.AssignPassive(8, skillTree_element.GetComponentInChildren<LightningBolt>());
             SkillsPanelControl.Instance.SkillTree_element.AssignPassive(9, skillTree_element.GetComponentInChildren<LightningChain>());

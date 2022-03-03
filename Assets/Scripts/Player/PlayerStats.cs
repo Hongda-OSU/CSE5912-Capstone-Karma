@@ -261,6 +261,11 @@ namespace CSE5912.PolyGamers
         public float MoveSpeedFactor { get { return moveSpeedFactor; } set { moveSpeedFactor = value; } }
         public float ReloadSpeedFactor { get { return reloadSpeedFactor; } set { reloadSpeedFactor = value; } }
 
+        public float BurnedBaseChance { get { return burnedBaseChance; } set { burnedBaseChance = value; } }
+        public float FrozenBaseChance { get { return frozenBaseChance; } set { frozenBaseChance = value; } }
+        public float ElectrocutedBaseChance { get { return electrocutedBaseChance; } set { electrocutedBaseChance = value; } }
+        public float InfectedBaseChance { get { return infectedBaseChance; } set { infectedBaseChance = value; } }
+
         public float BurnedDamagePerStack { get { return burnedDamagePerStack; } set { burnedDamagePerStack = value; } }
         public float FrozenSlowdownPerStack { get { return frozenSlowdownPerStack;} set { frozenSlowdownPerStack = value; } }
         public float ElectrocutedResistReductionPerStack { get { return electrocutedResistReductionPerStack; } set { electrocutedResistReductionPerStack = value; } }
