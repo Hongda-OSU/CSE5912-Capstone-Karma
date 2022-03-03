@@ -48,7 +48,8 @@ namespace CSE5912.PolyGamers
         protected abstract IEnumerator Perform();
 
         public DebuffType Type { get { return type; } }
-        public int Stack { get { return stack; } }
+        public int Stack { get { return stack; } set { stack = value; } }
+        public int MaxStack { get { return maxStack; } set { maxStack = value; } }
         public Sprite Icon { get { return icon; } }
     }
 }

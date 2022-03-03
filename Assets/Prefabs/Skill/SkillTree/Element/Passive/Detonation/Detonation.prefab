@@ -9,8 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5124165378901497219}
+  - component: {fileID: -4003619851545580414}
   m_Layer: 0
-  m_Name: New Prefab
+  m_Name: Detonation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,3 +32,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-4003619851545580414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 533685688041145187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2f791e6dad7cbf4d9436c3154a5ab5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: Detonation
+  requiredSkill: {fileID: 0}
+  isLearned: 0
+  level: 0
+  maxLevel: 5
+  learnCost: 1
+  levelupCost: 1
+  cooldown: 0
+  type: 0
+  detonationPrefab: {fileID: 159846, guid: ad36e9febd5565c48b1d755011a8998e, type: 3}
+  triggerTime: 5
+  baseDamageRadius: 3
+  radiusPerLevel: 0.5
+  baseDamage: 200
+  damagePerLevel: 50

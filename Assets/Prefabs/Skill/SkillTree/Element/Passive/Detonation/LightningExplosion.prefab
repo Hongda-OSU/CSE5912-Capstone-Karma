@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 419924}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &19819072
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -4745,8 +4745,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cfa5589c3f27cd94dae6b9bf54fafafb, type: 2}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 1d89b3503167bb94d911ba60cb56b4f7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4807,11 +4806,11 @@ GameObject:
   m_Component:
   - component: {fileID: 419924}
   - component: {fileID: 8290756}
-  - component: {fileID: 19991716}
-  - component: {fileID: 19802316}
-  - component: {fileID: 11474416}
+  - component: {fileID: 19936062}
+  - component: {fileID: 19869518}
+  - component: {fileID: 11479686}
   m_Layer: 0
-  m_Name: GreenLightningImpact
+  m_Name: LightningExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4932,7 +4931,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!199 &19991716
+--- !u!199 &19936062
 ParticleSystemRenderer:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -4941,8 +4940,8 @@ ParticleSystemRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 159846}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
@@ -4953,8 +4952,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9a8c2e32dd4698b47b01acfe7f1d769a, type: 2}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 41461bd5eab69fb469cf3328bda1c657, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5005,7 +5003,7 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!198 &19802316
+--- !u!198 &19869518
 ParticleSystem:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5257,7 +5255,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3.2
+      scalar: 5
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -9737,7 +9735,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!114 &11474416
+--- !u!114 &11479686
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -11050,8 +11048,8 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.1764706, g: 1, b: 0, a: 1}
-        key1: {r: 0, g: 1, b: 0, a: 0}
+        key0: {r: 0, g: 1, b: 1, a: 1}
+        key1: {r: 0, g: 0, b: 1, a: 0}
         key2: {r: 0, g: 1, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -14519,7 +14517,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 5e71988081884334db5556ca5e77dcb0, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14602,7 +14599,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 419924}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &19849786
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -15835,7 +15832,7 @@ ParticleSystem:
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 0, g: 1, b: 0, a: 1}
+        key1: {r: 0, g: 1, b: 1, a: 1}
         key2: {r: 0, g: 0, b: 1, a: 1}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 1}
@@ -19248,8 +19245,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e90a9cd1e256e5c498b4fef7e3739908, type: 2}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 96e25441a01166c4ba2186b4e3492dea, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -19310,7 +19306,7 @@ GameObject:
   m_Component:
   - component: {fileID: 414754}
   - component: {fileID: 10856370}
-  - component: {fileID: 11478972}
+  - component: {fileID: 11418252}
   m_Layer: 0
   m_Name: Point light
   m_TagString: Untagged
@@ -19344,7 +19340,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0.034482718, g: 1, b: 0, a: 1}
+  m_Color: {r: 0, g: 0.91724133, b: 1, a: 1}
   m_Intensity: 4
   m_Range: 7
   m_SpotAngle: 30
@@ -19395,7 +19391,7 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &11478972
+--- !u!114 &11418252
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

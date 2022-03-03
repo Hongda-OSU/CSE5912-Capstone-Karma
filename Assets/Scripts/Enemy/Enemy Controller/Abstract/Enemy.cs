@@ -136,12 +136,17 @@ namespace CSE5912.PolyGamers
             isAlive = false;
             agent.isStopped = true;
             
-            EnemyManager.Instance.EnemyList.Remove(gameObject);
             collider3d.enabled = false;
 
-            Destroy(gameObject, timeToDestroy);
+            StartCoroutine(RemoveAndDestroy(gameObject, timeToDestroy));
 
             PlayDeathAnimation();
+        }
+        private IEnumerator RemoveAndDestroy(GameObject gameObject, float time)
+        {
+            yield return new WaitForSeconds(time);
+            EnemyManager.Instance.EnemyList.Remove(gameObject);
+            Destroy(gameObject);
         }
 
         protected void DropWeapon()

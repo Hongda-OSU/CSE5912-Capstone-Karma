@@ -44,6 +44,9 @@ namespace CSE5912.PolyGamers
 
             foreach (var enemy in EnemyManager.Instance.EnemyList)
             {
+                if (!enemy.GetComponent<Enemy>().IsAlive)
+                    continue;
+
                 float distance = Vector3.Distance(target.gameObject.transform.position, enemy.transform.position);
                 if (distance < effectDistance && enemy != target.gameObject)
                 {
