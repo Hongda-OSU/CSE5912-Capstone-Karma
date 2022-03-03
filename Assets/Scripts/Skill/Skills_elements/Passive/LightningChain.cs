@@ -12,6 +12,9 @@ namespace CSE5912.PolyGamers
 
         [SerializeField] private float effectDistance = 10f;
 
+        [SerializeField] private float baseChance = 0.3f;
+        [SerializeField] private float chancePerLevel = 0.1f;
+
         [SerializeField] private float baseDamage = 10f;
         [SerializeField] private float damagePerLevel = 10f;
 
@@ -24,6 +27,15 @@ namespace CSE5912.PolyGamers
             if (!isLearned || target == null || !target.IsAlive)
                 return;
 
+            if (target.Electrocuted.Stack == 0)
+                return;
+
+            float chance = baseChance + chancePerLevel * (level - 1);
+            if (Random.value > chance)
+            {
+                PlayerManager.Instance.HitByBullet = null;
+                return;
+            }
 
             int lightningNum = baseLightningNumber + lightningNumberPerLevel * (level - 1);
 
@@ -56,6 +68,7 @@ namespace CSE5912.PolyGamers
                 Perform(targetEnemy, otherEnemy, damageOnTarget);
             }
 
+            PlayerManager.Instance.HitByBullet = null;
 
         }
 
@@ -72,8 +85,6 @@ namespace CSE5912.PolyGamers
 
             damage = new Damage(baseDamage, Element.Type.Electro, PlayerStats.Instance, other.GetComponent<Enemy>());
             PlayerManager.Instance.PerformSkillDamage(other.GetComponent<Enemy>(), damage);
-
-            PlayerManager.Instance.HitByBullet = null;
         }
 
         private IEnumerator DisplayVfx(Vector3 first, Vector3 second)
