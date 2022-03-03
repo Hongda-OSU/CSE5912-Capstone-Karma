@@ -6,13 +6,13 @@ namespace CSE5912.PolyGamers
 {
     public class CryoMastery : Skill
     {
-        [SerializeField] private float percentageDamagePerLevel = 0.02f;
+        [SerializeField] private float slowPerLevel = 0.04f;
 
         public override bool LevelUp()
         {
             bool result = base.LevelUp();
             if (result)
-                PlayerStats.Instance.GetDamageFactor().Cryo.Value += percentageDamagePerLevel;
+                PlayerStats.Instance.FrozenSlowdownPerStack += slowPerLevel;
 
             return result;
         }
@@ -20,7 +20,9 @@ namespace CSE5912.PolyGamers
         public override void ResetLevel()
         {
             base.ResetLevel();
-            PlayerStats.Instance.GetDamageFactor().Cryo.Value -= percentageDamagePerLevel * level;
+            PlayerStats.Instance.FrozenSlowdownPerStack -= slowPerLevel * level;
         }
+
+        public float SlowPerLevel { get { return slowPerLevel; } }
     }
 }

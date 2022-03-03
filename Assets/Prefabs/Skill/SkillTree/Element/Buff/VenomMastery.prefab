@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2331614650446672037
+--- !u!1 &4569282563425803093
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7782477464249902105}
-  - component: {fileID: -3408770307858760400}
+  - component: {fileID: 7055113832101902221}
+  - component: {fileID: -2577167339427349328}
   m_Layer: 0
   m_Name: VenomMastery
   m_TagString: Untagged
@@ -17,13 +17,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7782477464249902105
+--- !u!4 &7055113832101902221
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2331614650446672037}
+  m_GameObject: {fileID: 4569282563425803093}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -32,16 +32,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-3408770307858760400
+--- !u!114 &-2577167339427349328
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2331614650446672037}
+  m_GameObject: {fileID: 4569282563425803093}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d9c244d9f037a44a8ae801030a3e298, type: 3}
+  m_Script: {fileID: 11500000, guid: e98425a39cf06c14796c16d3f22a768b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   skillName: Venom Mastery
@@ -53,4 +53,4 @@ MonoBehaviour:
   levelupCost: 1
   cooldown: 0
   type: 2
-  percentageDamagePerLevel: 0.02
+  damagePerLevel: 0.002

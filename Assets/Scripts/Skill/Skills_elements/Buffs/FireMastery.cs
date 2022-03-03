@@ -6,13 +6,13 @@ namespace CSE5912.PolyGamers
 {
     public class FireMastery : Skill
     {
-        [SerializeField] private float percentageDamagePerLevel = 0.02f;
+        [SerializeField] private float damagePerLevel = 5f;
 
         public override bool LevelUp()
         {
             bool result = base.LevelUp();
             if (result)
-                PlayerStats.Instance.GetDamageFactor().Fire.Value += percentageDamagePerLevel;
+                PlayerStats.Instance.BurnedDamagePerStack += damagePerLevel;
 
             return result;
         }
@@ -20,7 +20,9 @@ namespace CSE5912.PolyGamers
         public override void ResetLevel()
         {
             base.ResetLevel();
-            PlayerStats.Instance.GetDamageFactor().Fire.Value -= percentageDamagePerLevel * level;
+            PlayerStats.Instance.BurnedDamagePerStack -= damagePerLevel * level;
         }
+
+        public float DamagePerLevel { get { return damagePerLevel; } }
     }
 }

@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7782477464249902105}
-  - component: {fileID: -4124748402408063859}
+  - component: {fileID: -3408770307858760400}
   m_Layer: 0
-  m_Name: FireMastery
+  m_Name: VenomAscension
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-4124748402408063859
+--- !u!114 &-3408770307858760400
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,10 +41,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2331614650446672037}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f75e730a8ca6134ca2e8c2c3b9029fb, type: 3}
+  m_Script: {fileID: 11500000, guid: 5d9c244d9f037a44a8ae801030a3e298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: Fire Mastery
+  skillName: Venom Ascension
   requiredSkill: {fileID: 0}
   isLearned: 0
   level: 0
@@ -53,4 +53,4 @@ MonoBehaviour:
   levelupCost: 1
   cooldown: 0
   type: 2
-  damagePerLevel: 5
+  percentageDamagePerLevel: 0.02

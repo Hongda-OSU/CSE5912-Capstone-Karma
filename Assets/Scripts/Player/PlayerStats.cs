@@ -40,6 +40,11 @@ namespace CSE5912.PolyGamers
         [SerializeField] private float electrocutedBaseChance = 0f;
         [SerializeField] private float infectedBaseChance = 0f;
 
+        [SerializeField] private float burnedDamagePerStack = 10f;
+        [SerializeField] private float frozenSlowdownPerStack = 0.05f;
+        [SerializeField] private float electrocutedResistReductionPerStack = 0.05f;
+        [SerializeField] private float infectedCurrentHealthDamagePerStack = 0.01f;
+
         [Header("Resist")]
         [SerializeField] private float physicalResist = 0f;
         [SerializeField] private float fireResist = 0f;
@@ -255,6 +260,11 @@ namespace CSE5912.PolyGamers
         public float CritRate { get { return critRate; } set { critRate = Mathf.Clamp(value, 0f, 1f); } }
         public float MoveSpeedFactor { get { return moveSpeedFactor; } set { moveSpeedFactor = value; } }
         public float ReloadSpeedFactor { get { return reloadSpeedFactor; } set { reloadSpeedFactor = value; } }
+
+        public float BurnedDamagePerStack { get { return burnedDamagePerStack; } set { burnedDamagePerStack = value; } }
+        public float FrozenSlowdownPerStack { get { return frozenSlowdownPerStack;} set { frozenSlowdownPerStack = value; } }
+        public float ElectrocutedResistReductionPerStack { get { return electrocutedResistReductionPerStack; } set { electrocutedResistReductionPerStack = value; } }
+        public float InfectedCurrentHealthDamagePerStack { get { return infectedCurrentHealthDamagePerStack;} set { infectedCurrentHealthDamagePerStack = value; } }
 
         public float HealthUp { get { return healthUp; } }
         public float ShieldUp { get { return shieldUp; } }

@@ -25,10 +25,16 @@ namespace CSE5912.PolyGamers
 
         private void Start()
         {
-            SkillsPanelControl.Instance.SkillTree_element.AssignBuff(0, skillTree_element.transform.GetComponentInChildren<FireMastery>());
-            SkillsPanelControl.Instance.SkillTree_element.AssignBuff(1, skillTree_element.transform.GetComponentInChildren<CryoMastery>());
-            SkillsPanelControl.Instance.SkillTree_element.AssignBuff(2, skillTree_element.transform.GetComponentInChildren<ElectroMastery>());
-            SkillsPanelControl.Instance.SkillTree_element.AssignBuff(3, skillTree_element.transform.GetComponentInChildren<VenomMastery>());
+            SkillsPanelControl.Instance.SkillTree_element.AssignBuff(0, skillTree_element.transform.GetComponentInChildren<FireAscension>());
+            SkillsPanelControl.Instance.SkillTree_element.AssignBuff(1, skillTree_element.transform.GetComponentInChildren<CryoAscension>());
+            SkillsPanelControl.Instance.SkillTree_element.AssignBuff(2, skillTree_element.transform.GetComponentInChildren<ElectroAscension>());
+            SkillsPanelControl.Instance.SkillTree_element.AssignBuff(3, skillTree_element.transform.GetComponentInChildren<VenomAscension>());
+
+            SkillsPanelControl.Instance.SkillTree_element.AssignBuff(4, skillTree_element.transform.GetComponentInChildren<FireMastery>());
+            SkillsPanelControl.Instance.SkillTree_element.AssignBuff(5, skillTree_element.transform.GetComponentInChildren<CryoMastery>());
+            SkillsPanelControl.Instance.SkillTree_element.AssignBuff(6, skillTree_element.transform.GetComponentInChildren<ElectroMastery>());
+            SkillsPanelControl.Instance.SkillTree_element.AssignBuff(7, skillTree_element.transform.GetComponentInChildren<VenomMastery>());
+
 
             SkillsPanelControl.Instance.SkillTree_element.AssignPassive(8, skillTree_element.GetComponentInChildren<LightningBolt>());
             SkillsPanelControl.Instance.SkillTree_element.AssignPassive(9, skillTree_element.GetComponentInChildren<LightningChain>());

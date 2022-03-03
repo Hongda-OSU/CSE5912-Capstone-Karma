@@ -6,7 +6,6 @@ namespace CSE5912.PolyGamers
 {
     public class Electrocuted : Debuff
     {
-        [SerializeField] private float reductionPerStack = 0.05f;
         private float deltaTime = 0.1f;
 
 
@@ -26,12 +25,13 @@ namespace CSE5912.PolyGamers
 
         private void SetResistValues()
         {
-            target.GetResist().Physical.Value = target.PhysicalResist * (1 - reductionPerStack * stack);
-            target.GetResist().Fire.Value = target.FireResist * (1 - reductionPerStack * stack);
-            target.GetResist().Cryo.Value = target.CryoResist * (1 - reductionPerStack * stack);
-            target.GetResist().Electro.Value = target.ElectroResist * (1 - reductionPerStack * stack);
-            target.GetResist().Venom.Value = target.VenomResist * (1 - reductionPerStack * stack);
-            Debug.Log(target.GetResist().Physical.Value + " " + reductionPerStack * stack + " " + stack);
+            float final = 1 - PlayerStats.Instance.ElectrocutedResistReductionPerStack * stack;
+
+            target.GetResist().Physical.Value = target.PhysicalResist * final;
+            target.GetResist().Fire.Value = target.FireResist * final;
+            target.GetResist().Cryo.Value = target.CryoResist * final;
+            target.GetResist().Electro.Value = target.ElectroResist * final;
+            target.GetResist().Venom.Value = target.VenomResist * final;
         }
     }
 }

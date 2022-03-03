@@ -6,22 +6,13 @@ namespace CSE5912.PolyGamers
 {
     public class VenomMastery : Skill
     {
-        [SerializeField] private float percentageDamagePerLevel = 0.02f;
-
-        private void Update()
-        {
-            if (isReady)
-            {
-                PlayerStats.Instance.GetDamageFactor().Venom.Value += percentageDamagePerLevel;
-                isReady = false;
-            }
-        }
+        [SerializeField] private float damagePerLevel = 0.002f;
 
         public override bool LevelUp()
         {
             bool result = base.LevelUp();
             if (result)
-                isReady = true;
+                PlayerStats.Instance.InfectedCurrentHealthDamagePerStack += damagePerLevel;
 
             return result;
         }
@@ -29,7 +20,9 @@ namespace CSE5912.PolyGamers
         public override void ResetLevel()
         {
             base.ResetLevel();
-            PlayerStats.Instance.GetDamageFactor().Venom.Value -= percentageDamagePerLevel * level;
+            PlayerStats.Instance.InfectedCurrentHealthDamagePerStack -= damagePerLevel * level;
         }
+
+        public float DamagePerLevel { get { return damagePerLevel; } }
     }
 }

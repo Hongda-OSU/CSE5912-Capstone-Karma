@@ -7,7 +7,6 @@ namespace CSE5912.PolyGamers
     public class Infected : Debuff
     {
 
-        [SerializeField] private float currentHealthDamagePerStack = 0.01f;
         private float deltaTime = 1f;
 
         protected override IEnumerator Perform()
@@ -17,7 +16,9 @@ namespace CSE5912.PolyGamers
                 timeSince += deltaTime;
                 yield return new WaitForSeconds(deltaTime);
 
-                Damage damage = new Damage(target.Health * currentHealthDamagePerStack * stack, Element.Type.Venom, PlayerStats.Instance, target);
+                float final = PlayerStats.Instance.InfectedCurrentHealthDamagePerStack * stack;
+
+                Damage damage = new Damage(target.Health * final, Element.Type.Venom, PlayerStats.Instance, target);
                 PlayerManager.Instance.PerformSkillDamage(target, damage);
             }
             stack = 0;
