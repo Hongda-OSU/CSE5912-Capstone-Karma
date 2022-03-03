@@ -4,15 +4,24 @@ using UnityEngine;
 
 namespace CSE5912.PolyGamers
 {
-    public class FireMastery : Skill
+    public class VenomMastery : Skill
     {
         [SerializeField] private float percentageDamagePerLevel = 0.02f;
+
+        private void Update()
+        {
+            if (isReady)
+            {
+                PlayerStats.Instance.GetDamageFactor().Venom.Value += percentageDamagePerLevel;
+                isReady = false;
+            }
+        }
 
         public override bool LevelUp()
         {
             bool result = base.LevelUp();
             if (result)
-                PlayerStats.Instance.GetDamageFactor().Fire.Value += percentageDamagePerLevel;
+                isReady = true;
 
             return result;
         }
@@ -20,7 +29,7 @@ namespace CSE5912.PolyGamers
         public override void ResetLevel()
         {
             base.ResetLevel();
-            PlayerStats.Instance.GetDamageFactor().Fire.Value -= percentageDamagePerLevel * level;
+            PlayerStats.Instance.GetDamageFactor().Venom.Value -= percentageDamagePerLevel * level;
         }
     }
 }

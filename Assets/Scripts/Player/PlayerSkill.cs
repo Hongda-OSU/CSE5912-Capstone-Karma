@@ -25,10 +25,13 @@ namespace CSE5912.PolyGamers
 
         private void Start()
         {
-            SkillsPanelControl.Instance.SkillTree_element.AssignBuff(0, skillTree_element.transform.Find("Buff").Find("FireMastery").GetComponent<Skill>());
+            SkillsPanelControl.Instance.SkillTree_element.AssignBuff(0, skillTree_element.transform.GetComponentInChildren<FireMastery>());
+            SkillsPanelControl.Instance.SkillTree_element.AssignBuff(1, skillTree_element.transform.GetComponentInChildren<CryoMastery>());
+            SkillsPanelControl.Instance.SkillTree_element.AssignBuff(2, skillTree_element.transform.GetComponentInChildren<ElectroMastery>());
+            SkillsPanelControl.Instance.SkillTree_element.AssignBuff(3, skillTree_element.transform.GetComponentInChildren<VenomMastery>());
 
-            SkillsPanelControl.Instance.SkillTree_element.AssignPassive(8, skillTree_element.transform.Find("Passive").Find("LightningBolt").GetComponent<Skill>());
-            SkillsPanelControl.Instance.SkillTree_element.AssignPassive(9, skillTree_element.transform.Find("Passive").Find("LightningChain").GetComponent<Skill>());
+            SkillsPanelControl.Instance.SkillTree_element.AssignPassive(8, skillTree_element.GetComponentInChildren<LightningBolt>());
+            SkillsPanelControl.Instance.SkillTree_element.AssignPassive(9, skillTree_element.GetComponentInChildren<LightningChain>());
         }
 
         public int SkillPoints { get { return skillPoints; } set { skillPoints = value; } }

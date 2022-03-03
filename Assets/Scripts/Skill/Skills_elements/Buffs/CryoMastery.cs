@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace CSE5912.PolyGamers
 {
-    public class FireMastery : Skill
+    public class CryoMastery : Skill
     {
         [SerializeField] private float percentageDamagePerLevel = 0.02f;
 
@@ -12,7 +12,7 @@ namespace CSE5912.PolyGamers
         {
             bool result = base.LevelUp();
             if (result)
-                PlayerStats.Instance.GetDamageFactor().Fire.Value += percentageDamagePerLevel;
+                PlayerStats.Instance.GetDamageFactor().Cryo.Value += percentageDamagePerLevel;
 
             return result;
         }
@@ -20,7 +20,7 @@ namespace CSE5912.PolyGamers
         public override void ResetLevel()
         {
             base.ResetLevel();
-            PlayerStats.Instance.GetDamageFactor().Fire.Value -= percentageDamagePerLevel * level;
+            PlayerStats.Instance.GetDamageFactor().Cryo.Value -= percentageDamagePerLevel * level;
         }
     }
 }
