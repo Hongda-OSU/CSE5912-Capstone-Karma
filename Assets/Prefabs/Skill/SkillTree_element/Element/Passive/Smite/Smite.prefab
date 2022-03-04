@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 576ebb3a736d80e41a133efd2717a137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: 
+  skillName: Smite
   requiredSkill: {fileID: 0}
   isLearned: 0
   level: 0

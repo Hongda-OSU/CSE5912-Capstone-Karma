@@ -255,6 +255,7 @@ namespace CSE5912.PolyGamers
         public float AttackDamage { get { return attackDamage;} }
         public bool IsAttackedByPlayer { get { return isAttackedByPlayer; } }
         public bool IsAlive { get { return isAlive; } }
+        public bool IsFrozen { get { return isFrozen; } }
 
         public float PhysicalResist { get { return physicalResist;} }
         public float FireResist { get{ return fireResist;} }

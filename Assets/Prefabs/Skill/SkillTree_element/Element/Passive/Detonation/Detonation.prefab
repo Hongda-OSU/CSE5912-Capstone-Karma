@@ -53,7 +53,7 @@ MonoBehaviour:
   levelupCost: 1
   cooldown: 0
   type: 0
-  detonationPrefab: {fileID: 159846, guid: ad36e9febd5565c48b1d755011a8998e, type: 3}
+  vfxPrefab: {fileID: 159846, guid: ad36e9febd5565c48b1d755011a8998e, type: 3}
   triggerTime: 5
   baseDamageRadius: 3
   radiusPerLevel: 0.5

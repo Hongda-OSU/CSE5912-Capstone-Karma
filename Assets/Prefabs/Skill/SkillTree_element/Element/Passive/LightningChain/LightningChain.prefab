@@ -53,9 +53,11 @@ MonoBehaviour:
   levelupCost: 1
   cooldown: 0
   type: 0
-  lightningPrefab: {fileID: 3808331006093793215, guid: 7dc820c199c816443b6a171c5b3f0cd9, type: 3}
+  vfxPrefab: {fileID: 3808331006093793215, guid: 7dc820c199c816443b6a171c5b3f0cd9, type: 3}
   displayTime: 0.3
   effectDistance: 10
+  baseChance: 0.3
+  chancePerLevel: 0.1
   baseDamage: 10
   damagePerLevel: 10
   baseLightningNumber: 1
