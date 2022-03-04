@@ -12,25 +12,20 @@ namespace CSE5912.PolyGamers
         private bool wandering = false;
         private float wanderCounter = 10f;
 
-        protected override void Update()
+        protected override void PerformActions()
         {
-            if (!isAlive)
-                return;
-
-            base.Update();
-
-            if (canWander) {
+            if (canWander)
+            {
                 HandleWander();
                 return;
             }
-            
 
-            if ((distanceToPlayer <= viewRadius && Vector3.Angle(transform.forward, directionToPlayer) < viewAngle / 2) 
+
+            if ((distanceToPlayer <= viewRadius && Vector3.Angle(transform.forward, directionToPlayer) < viewAngle / 2)
                 || distanceToPlayer <= closeDetectionRange || isAttackedByPlayer)
             {
                 foundTarget = true;
                 agent.isStopped = false;
-                agent.speed = 3f;
                 agent.stoppingDistance = 2f;
                 animator.SetBool("FoundPlayer", true);
 
@@ -73,11 +68,13 @@ namespace CSE5912.PolyGamers
             {
                 foundTarget = false;
                 animator.SetBool("FoundPlayer", false);
-                if (!canWander) {
+                if (!canWander)
+                {
                     agent.isStopped = true;
                 }
-            }     
+            }
         }
+
 
         protected override void Hit() {
             float damageAmount;           

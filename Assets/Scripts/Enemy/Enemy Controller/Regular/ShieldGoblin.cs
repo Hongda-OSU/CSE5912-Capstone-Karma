@@ -15,13 +15,8 @@ namespace CSE5912.PolyGamers
 
         int m_CurrentWaypointIndex;
 
-        protected override void Update()
+        protected override void PerformActions()
         {
-            if (!isAlive)
-                return;
-
-            base.Update();
-
             if (canPatrol)
             {
                 HandlePatrol();
@@ -41,7 +36,6 @@ namespace CSE5912.PolyGamers
                 FaceTarget(directionToPlayer);
                 agent.SetDestination(player.position);
                 agent.stoppingDistance = 2f;
-                agent.speed = 3f;
 
                 ResetAttackAnimationTriggers();
 
@@ -53,7 +47,7 @@ namespace CSE5912.PolyGamers
                 }
                 else
                 {
-                    animator.SetBool("InAttackRange", false);                   
+                    animator.SetBool("InAttackRange", false);
                 }
 
                 if (!(animator.GetCurrentAnimatorStateInfo(0).IsName("Mace-Attack-R1") ||
@@ -72,7 +66,7 @@ namespace CSE5912.PolyGamers
                     agent.isStopped = false;
                 }
             }
-            else 
+            else
             {
                 foundTarget = false;
                 animator.SetBool("FoundPlayer", false);

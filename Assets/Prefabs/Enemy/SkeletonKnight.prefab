@@ -2321,7 +2321,7 @@ MonoBehaviour:
   maxHealth: 100
   attackDamage: 30
   attackRange: 5
-  navMeshMoveSpeed: 0
+  agentSpeed: 3
   isAlive: 1
   isFrozen: 0
   damageFactor_physical: 1

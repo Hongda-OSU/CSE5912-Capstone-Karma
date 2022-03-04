@@ -69,10 +69,10 @@ namespace CSE5912.PolyGamers
 
         protected override void Update()
         {
-            if (!isAlive)
-                return;
-
             base.Update();
+
+            if (!isAlive || isFrozen)
+                return;
 
 
             isPlayerInAttackRange = distanceToPlayer < attackRange;

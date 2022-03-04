@@ -55,8 +55,7 @@ namespace CSE5912.PolyGamers
 
             if (DisplayEnabled() && enemy.IsAlive)
             {
-                SetHealthBar();
-                SetDebuffs();
+                Display();
                 SetPosition();
             }
             else
@@ -85,12 +84,13 @@ namespace CSE5912.PolyGamers
             }
             return false;
         }
-        private void SetHealthBar()
+        private void Display()
         {
             var planes = GeometryUtility.CalculateFrustumPlanes(currentCamera);
 
             if (GeometryUtility.TestPlanesAABB(planes, target.GetComponent<Collider>().bounds))
             {
+                // health bar
                 healthBar.style.display = DisplayStyle.Flex;
                 healthBar.style.width = width * enemy.Health / enemy.MaxHealth;
 
@@ -102,11 +102,22 @@ namespace CSE5912.PolyGamers
                 DamagedEffect(deltaHealth);
 
                 prevHealth = enemy.Health;
+
+
+                // debuff
+                debuffs.style.display = DisplayStyle.Flex;
+
+                debuffSlotList[0].Display(enemy.Burned);
+                debuffSlotList[1].Display(enemy.Frozen);
+                debuffSlotList[2].Display(enemy.Electrocuted);
+                debuffSlotList[3].Display(enemy.Infected);
             }
             else
             {
                 healthBar.style.display = DisplayStyle.None;
                 maxHealthBar.style.display = DisplayStyle.None;
+
+                debuffs.style.display = DisplayStyle.None;
             }
         }
 
@@ -125,16 +136,6 @@ namespace CSE5912.PolyGamers
 
                 StartCoroutine(FadeOut(deltaEffect));
             }
-        }
-
-        private void SetDebuffs()
-        {
-            debuffs.style.display = DisplayStyle.Flex;
-
-            debuffSlotList[0].Display(enemy.Burned);
-            debuffSlotList[1].Display(enemy.Frozen);
-            debuffSlotList[2].Display(enemy.Electrocuted);
-            debuffSlotList[3].Display(enemy.Infected);
         }
 
         private void SetPosition()

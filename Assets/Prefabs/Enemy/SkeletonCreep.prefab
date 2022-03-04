@@ -1378,7 +1378,7 @@ MonoBehaviour:
   maxHealth: 100
   attackDamage: 10
   attackRange: 2
-  navMeshMoveSpeed: 0
+  agentSpeed: 3
   isAlive: 1
   isFrozen: 0
   damageFactor_physical: 1
@@ -1397,6 +1397,7 @@ MonoBehaviour:
   dropAttachmentChance: 0
   dropAttachmentType: 1
   dropAttachmentRarity: 4
+  rotateSpeed: 20
   viewRadius: 15
   viewAngle: 135
   closeDetectionRange: 3

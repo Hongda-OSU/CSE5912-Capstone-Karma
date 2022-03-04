@@ -9,15 +9,11 @@ namespace CSE5912.PolyGamers
     {
         private bool isAttacking = false;
 
-        protected override void Update()
+
+        protected override void PerformActions()
         {
-            if (!isAlive)
-                return;
 
-            base.Update();
-
-
-            if ((distanceToPlayer <= viewRadius && Vector3.Angle(transform.forward, directionToPlayer) < viewAngle / 2) 
+            if ((distanceToPlayer <= viewRadius && Vector3.Angle(transform.forward, directionToPlayer) < viewAngle / 2)
                 || distanceToPlayer <= closeDetectionRange || isAttackedByPlayer)
             {
                 agent.isStopped = false;
@@ -25,7 +21,6 @@ namespace CSE5912.PolyGamers
 
                 FaceTarget(directionToPlayer);
                 agent.SetDestination(player.position);
-                agent.speed = 3f;
 
                 ResetAttackAnimationTriggers();
 

@@ -7,20 +7,14 @@ namespace CSE5912.PolyGamers
 {
     public class SkeletonSlave : RegularEnemy
     {
-        protected override void Update()
+        protected override void PerformActions()
         {
-            if (!isAlive)
-                return;
-
-            base.Update();
-
             if ((distanceToPlayer <= viewRadius && Vector3.Angle(transform.forward, directionToPlayer) < viewAngle / 2)
-                || distanceToPlayer <= closeDetectionRange || isAttackedByPlayer)
+                   || distanceToPlayer <= closeDetectionRange || isAttackedByPlayer)
             {
                 foundTarget = true;
                 agent.isStopped = false;
                 animator.SetBool("Run", true);
-                agent.speed = 7f;
 
                 FaceTarget(directionToPlayer);
 
@@ -63,7 +57,6 @@ namespace CSE5912.PolyGamers
                 agent.speed = 2f;
             }
         }
-
         protected override void Hit()
         {
             float damageAmount;

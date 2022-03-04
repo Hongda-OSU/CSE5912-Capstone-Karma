@@ -77,6 +77,8 @@ namespace CSE5912.PolyGamers
 
         protected virtual void Update()
         {
+            //Freeze(isFrozen);
+
             distanceToPlayer = Vector3.Distance(player.position, transform.position);
             directionToPlayer = (player.position - transform.position).normalized;
 
@@ -168,16 +170,20 @@ namespace CSE5912.PolyGamers
 
 
 
-        public void Freeze()
+        public void Freeze(bool enabled)
         {
-            isFrozen = true;
-            agent.isStopped = true;
-            animator.speed = 0;
+            isFrozen = enabled;
+            agent.isStopped = enabled;
+            agent.speed = enabled ? 0 : agentSpeed;
+            animator.speed = enabled ? 0 : 1;
         }
         public void SlowDown(float percentage)
         {
-            agent.speed = agentSpeed * (1 - percentage);
-            animator.speed = 1 - percentage;
+            if (!isFrozen)
+            {
+                agent.speed = agentSpeed * (1 - percentage);
+                animator.speed = 1 - percentage;
+            }
         }
 
         public void StackDebuff(Element.Type type)
