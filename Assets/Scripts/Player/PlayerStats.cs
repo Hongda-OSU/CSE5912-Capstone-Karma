@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace CSE5912.PolyGamers
 {
@@ -61,6 +62,8 @@ namespace CSE5912.PolyGamers
         [SerializeField] private float damageUp = 0.03f;
         [SerializeField] private float resistUp = 30f;
 
+        private UnityEvent takeDamageEvent;
+
         private static PlayerStats instance;
         public static PlayerStats Instance { get { return instance; } }
 
@@ -80,6 +83,8 @@ namespace CSE5912.PolyGamers
 
             resist = new Resist();
             resist.SetValues(physicalResist, fireResist, cryoResist, electroResist, venomResist);
+
+            takeDamageEvent = new UnityEvent();
         }
 
         private void Update()
@@ -92,6 +97,8 @@ namespace CSE5912.PolyGamers
             shield.TakeDamage(damage);
 
             Health -= shield.Overflow;
+
+            takeDamageEvent.Invoke();
         }
 
 
@@ -277,5 +284,7 @@ namespace CSE5912.PolyGamers
         public float CritDamageUp { get { return critDamageUp; } }
         public float DamageUp { get { return damageUp; } }
         public float ResistUp { get { return resistUp; } }
+
+        public UnityEvent TakeDamageEvent { get { return takeDamageEvent; } }
     }
 }

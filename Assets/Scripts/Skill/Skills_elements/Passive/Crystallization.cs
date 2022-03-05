@@ -35,7 +35,7 @@ namespace CSE5912.PolyGamers
             enemy.Freeze(true);
 
             float dmg = baseDamage + damagePerLevel * (level - 1);
-            Damage damage = new Damage(dmg, Element.Type.Electro, PlayerStats.Instance, enemy);
+            Damage damage = new Damage(dmg, Element.Type.Cryo, PlayerStats.Instance, enemy);
             PlayerManager.Instance.PerformSkillDamage(enemy, damage);
 
             GameObject vfx = Instantiate(vfxPrefab);
