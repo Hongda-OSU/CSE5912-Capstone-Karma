@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2648276681574761042}
   - component: {fileID: -3862724103690201927}
   m_Layer: 0
-  m_Name: FrostBloodline
+  m_Name: Iceborn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd5a17d8ca46b6e4abfec6586a23c3e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: 
+  skillName: Iceborn
   requiredSkill: {fileID: 0}
   isLearned: 0
   level: 0

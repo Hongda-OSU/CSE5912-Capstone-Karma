@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &129828
+--- !u!1 &6948851303605454656
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,56 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 423208}
-  - component: {fileID: 11448976}
+  - component: {fileID: 3515204038907677412}
+  - component: {fileID: 288997174487502689}
   m_Layer: 0
-  m_Name: LaserStaticBlue
+  m_Name: Eternity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &423208
+--- !u!4 &3515204038907677412
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 129828}
+  m_GameObject: {fileID: 6948851303605454656}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.2, y: 4.93, z: -10.19}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &11448976
+--- !u!114 &288997174487502689
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 129828}
+  m_GameObject: {fileID: 6948851303605454656}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58f77d5ff8f9f9f4e80d11470fc13043, type: 3}
+  m_Script: {fileID: 11500000, guid: c50d16cc2c06f994fbb0993b5bfdbf0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  beamLineRendererPrefab: {fileID: 113598, guid: 9bc40fcd7e707f149b47aa3fbb1773df, type: 3}
-  beamStartPrefab: {fileID: 108584, guid: 9b0245240330cec41893d8611880df8d, type: 3}
-  beamEndPrefab: {fileID: 131904, guid: 16d8536db6f4c8e469e7c0929758624d, type: 3}
-  alwaysOn: 1
-  beamCollides: 1
-  beamLength: 125
-  beamEndOffset: 0
-  textureScrollSpeed: 15
-  textureLengthScale: 5
+  skillName: Eternity
+  requiredSkill: {fileID: 0}
+  isLearned: 0
+  level: 0
+  maxLevel: 5
+  learnCost: 1
+  levelupCost: 1
+  cooldown: 30
+  type: 0
+  vfxPrefab: {fileID: 1233254026376546, guid: 18c8e0f4d69e6c14388e4d06bf4cad1a, type: 3}
+  baseTime: 5
+  timePerLevel: 1
+  baseRadius: 5
+  radiusPerLevel: 1
+  baseHeal: 0.3
+  healPerLevel: 0.1
+  triggerHealthPercentage: 0.3

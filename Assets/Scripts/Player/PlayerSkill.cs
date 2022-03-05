@@ -42,8 +42,9 @@ namespace CSE5912.PolyGamers
 
 
             SkillsPanelControl.Instance.SkillTree_element.AssignPassive(4, skillTree_element.GetComponentInChildren<Crystallization>());
-            SkillsPanelControl.Instance.SkillTree_element.AssignPassive(5, skillTree_element.GetComponentInChildren<FrostBloodline>());
+            SkillsPanelControl.Instance.SkillTree_element.AssignPassive(5, skillTree_element.GetComponentInChildren<Iceborn>());
             SkillsPanelControl.Instance.SkillTree_element.AssignPassive(6, skillTree_element.GetComponentInChildren<FrostBite>());
+            SkillsPanelControl.Instance.SkillTree_element.AssignPassive(7, skillTree_element.GetComponentInChildren<Eternity>());
 
             SkillsPanelControl.Instance.SkillTree_element.AssignPassive(8, skillTree_element.GetComponentInChildren<LightningBolt>());
             SkillsPanelControl.Instance.SkillTree_element.AssignPassive(9, skillTree_element.GetComponentInChildren<LightningChain>());

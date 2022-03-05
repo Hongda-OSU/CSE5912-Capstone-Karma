@@ -38,10 +38,13 @@ namespace CSE5912.PolyGamers
             float dmg = baseDamage + damagePerLevel * (level - 1);
             foreach (var target in EnemyManager.Instance.EnemyList)
             {
+                Enemy enemy = target.GetComponent<Enemy>();
+                if (!enemy.IsAlive)
+                    continue;
+
                 float distance = Vector3.Distance(target.transform.position, target.transform.position);
                 if (distance < radius)
                 {
-                    Enemy enemy = target.GetComponent<Enemy>();
                     Damage damage = new Damage(dmg, Element.Type.Cryo, PlayerStats.Instance, enemy);
                     PlayerManager.Instance.PerformSkillDamage(enemy, damage);
                     enemy.Frozen.StackUp();

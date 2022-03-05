@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace CSE5912.PolyGamers
 {
-    public class FrostBloodline : Skill
+    public class Iceborn : Skill
     {
 
-        [Header("Frost Bloodline")]
+        [Header("Iceborn")]
         [SerializeField] private GameObject vfxPrefab;
 
         [SerializeField] private float baseRevive = 0.05f;
