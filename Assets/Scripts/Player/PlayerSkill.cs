@@ -42,6 +42,9 @@ namespace CSE5912.PolyGamers
 
 
             SkillsPanelControl.Instance.SkillTree_element.AssignPassive(0, skillTree_element.GetComponentInChildren<Incendiary>());
+            SkillsPanelControl.Instance.SkillTree_element.AssignPassive(1, skillTree_element.GetComponentInChildren<Inferno>());
+            SkillsPanelControl.Instance.SkillTree_element.AssignPassive(2, skillTree_element.GetComponentInChildren<FireWave>());
+            SkillsPanelControl.Instance.SkillTree_element.AssignPassive(3, skillTree_element.GetComponentInChildren<LivingFlame>());
 
             SkillsPanelControl.Instance.SkillTree_element.AssignPassive(4, skillTree_element.GetComponentInChildren<Crystallization>());
             SkillsPanelControl.Instance.SkillTree_element.AssignPassive(5, skillTree_element.GetComponentInChildren<Iceborn>());
@@ -52,6 +55,11 @@ namespace CSE5912.PolyGamers
             SkillsPanelControl.Instance.SkillTree_element.AssignPassive(9, skillTree_element.GetComponentInChildren<LightningChain>());
             SkillsPanelControl.Instance.SkillTree_element.AssignPassive(10, skillTree_element.GetComponentInChildren<Detonation>());
             SkillsPanelControl.Instance.SkillTree_element.AssignPassive(11, skillTree_element.GetComponentInChildren<Smite>());
+
+            SkillsPanelControl.Instance.SkillTree_element.AssignPassive(12, skillTree_element.GetComponentInChildren<Pandemic>());
+            SkillsPanelControl.Instance.SkillTree_element.AssignPassive(13, skillTree_element.GetComponentInChildren<Fester>());
+            SkillsPanelControl.Instance.SkillTree_element.AssignPassive(14, skillTree_element.GetComponentInChildren<Perish>());
+            SkillsPanelControl.Instance.SkillTree_element.AssignPassive(15, skillTree_element.GetComponentInChildren<MixedInfection>());
         }
 
         public int SkillPoints { get { return skillPoints; } set { skillPoints = value; } }
