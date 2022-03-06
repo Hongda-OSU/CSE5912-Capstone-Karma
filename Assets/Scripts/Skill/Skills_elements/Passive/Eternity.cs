@@ -64,7 +64,6 @@ namespace CSE5912.PolyGamers
                     if (distance < radius)
                     {
                         enemy.Frozen.StackUp();
-                        Debug.Log(1);
                     }
                 }
             }

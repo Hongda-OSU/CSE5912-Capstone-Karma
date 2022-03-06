@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 namespace CSE5912.PolyGamers
 {
@@ -15,6 +16,15 @@ namespace CSE5912.PolyGamers
 
         public float damage;
         public Element.Type elementType;
+
+        public UnityEvent hitEvent;
+        public Vector3 hitPosition;
+
+
+        private void Awake()
+        {
+            hitEvent = new UnityEvent();
+        }
 
         void Start()
         {
@@ -58,8 +68,12 @@ namespace CSE5912.PolyGamers
 
         private void CheckTargetHit(RaycastHit hit)
         {
+            hitPosition = hit.point;
+
             if (!Penetrable)
                 Destroy(gameObject);
+
+            hitEvent.Invoke();
 
             hit.transform.TryGetComponent(out IDamageable target);
             if (target == null) 

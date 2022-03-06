@@ -41,6 +41,8 @@ namespace CSE5912.PolyGamers
             SkillsPanelControl.Instance.SkillTree_element.AssignBuff(11, skillTree_element.transform.GetComponentInChildren<VenomIntellection>());
 
 
+            SkillsPanelControl.Instance.SkillTree_element.AssignPassive(0, skillTree_element.GetComponentInChildren<Incendiary>());
+
             SkillsPanelControl.Instance.SkillTree_element.AssignPassive(4, skillTree_element.GetComponentInChildren<Crystallization>());
             SkillsPanelControl.Instance.SkillTree_element.AssignPassive(5, skillTree_element.GetComponentInChildren<Iceborn>());
             SkillsPanelControl.Instance.SkillTree_element.AssignPassive(6, skillTree_element.GetComponentInChildren<FrostBite>());
