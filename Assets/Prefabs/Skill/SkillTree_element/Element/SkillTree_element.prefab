@@ -537,6 +537,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c45d428a0665b0748821ac133acfc19f, type: 3}
+--- !u!114 &4823999113057736717 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7164922239445104600, guid: c45d428a0665b0748821ac133acfc19f, type: 3}
+  m_PrefabInstance: {fileID: 2421990412994539477}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aeb34278f978bc044a73ca55bd730107, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &6543841445033300593 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8884694337863073188, guid: c45d428a0665b0748821ac133acfc19f, type: 3}
@@ -549,6 +560,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3614815603160900602}
     m_Modifications:
+    - target: {fileID: -917632903399135132, guid: 415ce0b7a69dc3d4496302b82af76b33, type: 3}
+      propertyPath: incendiary
+      value: 
+      objectReference: {fileID: 4823999113057736717}
     - target: {fileID: 2037621674739659883, guid: 415ce0b7a69dc3d4496302b82af76b33, type: 3}
       propertyPath: m_Name
       value: Inferno

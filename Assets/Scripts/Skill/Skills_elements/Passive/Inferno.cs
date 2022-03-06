@@ -6,6 +6,16 @@ namespace CSE5912.PolyGamers
 {
     public class Inferno : Skill
     {
+        [SerializeField] Incendiary incendiary;
+        public override bool LevelUp()
+        {
+            bool result = base.LevelUp();
 
+            if (level == 1)
+            {
+                incendiary.AllowSpreadToEnemy();
+            }
+            return result;
+        }
     }
 }
