@@ -16,6 +16,8 @@ namespace CSE5912.PolyGamers
         public float baseTime = 5f;
         public float timePerLevel = 1f;
 
+        private Bullet prevBullet;
+
         private void Update()
         {
             if (!isLearned)
@@ -23,13 +25,24 @@ namespace CSE5912.PolyGamers
 
             var bullet = WeaponManager.Instance.CarriedWeapon.bulletFired;
             if (bullet == null)
+            {
+                prevBullet = null;
                 return;
+            }
 
-            bullet.hitEvent.AddListener(delegate { Perform(bullet); });
+            if (bullet != prevBullet)
+            {
+                bullet.hitEvent.AddListener(delegate { CreateFlame(bullet); });
+                prevBullet = bullet;
+            }
         }
 
-        private void Perform(Bullet bullet)
+        private void CreateFlame(Bullet bullet)
         {
+            bullet.targetHit.TryGetComponent(out Enemy enemy);
+            if (enemy != null)
+                return;
+
             GameObject vfx = Instantiate(vfxPrefab);
             vfx.transform.position = bullet.hitPosition;
 

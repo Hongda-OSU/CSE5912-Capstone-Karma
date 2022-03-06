@@ -18,6 +18,7 @@ namespace CSE5912.PolyGamers
         public Element.Type elementType;
 
         public UnityEvent hitEvent;
+        public GameObject targetHit;
         public Vector3 hitPosition;
 
 
@@ -69,9 +70,7 @@ namespace CSE5912.PolyGamers
         private void CheckTargetHit(RaycastHit hit)
         {
             hitPosition = hit.point;
-
-            if (!Penetrable)
-                Destroy(gameObject);
+            targetHit = hit.transform.gameObject;
 
             hitEvent.Invoke();
 
@@ -97,6 +96,9 @@ namespace CSE5912.PolyGamers
                 Damage damage = new Damage(this.damage, elementType, PlayerStats.Instance, shield);
                 PlayerManager.Instance.PerformBulletDamage(shield, damage, hit.point);
             }
+
+            if (!Penetrable)
+                Destroy(gameObject);
         }
 
     }
