@@ -426,6 +426,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 3614815603160900602}
     m_Modifications:
     - target: {fileID: -6905159060795142877, guid: 5ffba7e464510da4585f2f89f2c8db98, type: 3}
+      propertyPath: incendiary
+      value: 
+      objectReference: {fileID: 4823999113057736717}
+    - target: {fileID: -6905159060795142877, guid: 5ffba7e464510da4585f2f89f2c8db98, type: 3}
       propertyPath: requiredSkill
       value: 
       objectReference: {fileID: 1803135099923796885}

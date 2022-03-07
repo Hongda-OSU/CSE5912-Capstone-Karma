@@ -6,9 +6,34 @@ namespace CSE5912.PolyGamers
 {
     public class IncendiaryFireDamager : MonoBehaviour
     {
-        [SerializeField] float radius = 0.75f;
-        [SerializeField] float timeSince = 0f;
+        [SerializeField] private float radius = 0.75f;
+        [SerializeField] private float timeSince = 0f;
+        public LivingFlame livingFlame;
 
+        private void Update()
+        {
+            if (livingFlame == null)
+                return;
+
+            Enemy closest = null;
+            foreach (var obj in EnemyManager.Instance.EnemyList)
+            {
+                var enemy = obj.GetComponent<Enemy>();
+                if (enemy == null || !enemy.IsAlive)
+                    continue;
+
+                float distance = Vector3.Distance(transform.position, obj.transform.position);
+                if (distance > livingFlame.radius)
+                    continue;
+                else if (closest == null || distance < Vector3.Distance(transform.position, closest.transform.position))
+                    closest = enemy;
+            }
+            if (closest == null)
+                return;
+
+            Vector3 position = closest.transform.position + Vector3.up * closest.GetComponentInChildren<Renderer>().bounds.size.y / 2;
+            transform.position = Vector3.MoveTowards(transform.position, position, 5f * Time.deltaTime);
+        }
         public IEnumerator Perform(Incendiary incendiary, float time, bool spreadToEnemy, Enemy enemyToSpread)
         {
             while (timeSince < time)

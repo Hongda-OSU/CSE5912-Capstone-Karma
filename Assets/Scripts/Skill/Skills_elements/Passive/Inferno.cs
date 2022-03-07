@@ -6,6 +6,7 @@ namespace CSE5912.PolyGamers
 {
     public class Inferno : Skill
     {
+        [Header("Inferno")]
         [SerializeField] Incendiary incendiary;
         public override bool LevelUp()
         {
