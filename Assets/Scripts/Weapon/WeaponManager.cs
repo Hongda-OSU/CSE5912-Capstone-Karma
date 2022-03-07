@@ -74,6 +74,7 @@ namespace CSE5912.PolyGamers
 
         void Update()
         {
+            Debug.Log(carriedWeapon.name);
             MainWeapon = PlayerInventory.Instance.PlayerWeapons[0];
             SecondaryWeapon = PlayerInventory.Instance.PlayerWeapons[1];
 

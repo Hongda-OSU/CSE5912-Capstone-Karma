@@ -99,6 +99,8 @@ namespace CSE5912.PolyGamers
 
             bulletScript.damage = Damage;
             bulletScript.elementType = Element;
+            shootEvent.Invoke();
+            bulletFired = bulletScript;
             Destroy(bullet, 3);
         }
     }
