@@ -8,35 +8,56 @@ namespace CSE5912.PolyGamers
     {
         [SerializeField] private float radius = 0.75f;
         [SerializeField] private float timeSince = 0f;
+
+        public Incendiary incendiary;
+
+        public float baseTime = 0f;
         public LivingFlame livingFlame;
+
+        private Enemy closest;
 
         private void Update()
         {
-            if (livingFlame == null)
+            if (incendiary == null || livingFlame == null)
                 return;
 
-            Enemy closest = null;
-            foreach (var obj in EnemyManager.Instance.EnemyList)
-            {
-                var enemy = obj.GetComponent<Enemy>();
-                if (enemy == null || !enemy.IsAlive)
-                    continue;
-
-                float distance = Vector3.Distance(transform.position, obj.transform.position);
-                if (distance > livingFlame.radius)
-                    continue;
-                else if (closest == null || distance < Vector3.Distance(transform.position, closest.transform.position))
-                    closest = enemy;
-            }
             if (closest == null)
-                return;
+            {
+                foreach (var obj in EnemyManager.Instance.EnemyList)
+                {
+                    var enemy = obj.GetComponent<Enemy>();
+                    if (enemy == null || !enemy.IsAlive)
+                        continue;
+
+                    bool enemyExist = incendiary.enemyToStack.ContainsKey(enemy);
+                    if (enemyExist && incendiary.enemyToStack[enemy] >= livingFlame.Stack)
+                        continue;
+                    else if (!enemyExist)
+                        incendiary.enemyToStack.Add(enemy, 0);
+
+                    float distance = Vector3.Distance(transform.position, obj.transform.position);
+                    if (distance > livingFlame.radius)
+                        continue;
+                    else if (closest == null || distance < Vector3.Distance(transform.position, closest.transform.position))
+                        closest = enemy;
+
+                }
+
+                if (closest == null)
+                    return;
+                incendiary.enemyToStack[closest]++;
+            }
 
             Vector3 position = closest.transform.position + Vector3.up * closest.GetComponentInChildren<Renderer>().bounds.size.y / 2;
             transform.position = Vector3.MoveTowards(transform.position, position, 5f * Time.deltaTime);
         }
+
         public IEnumerator Perform(Incendiary incendiary, float time, bool spreadToEnemy, Enemy enemyToSpread)
         {
-            while (timeSince < time)
+            this.incendiary = incendiary;
+
+            float totalTime = baseTime + time;
+            while (timeSince < totalTime)
             {
                 timeSince += 1f;
                 yield return new WaitForSeconds(1f);
@@ -72,6 +93,12 @@ namespace CSE5912.PolyGamers
             if (enemyToSpread != null)
                 incendiary.burningEnemyList.Remove(enemyToSpread);
 
+            else if (closest != null)
+            {
+                incendiary.enemyToStack[closest]--;
+                if (incendiary.enemyToStack[closest] < 0)
+                    Debug.Log("Error < 0");
+            }
             Destroy(gameObject);
         }
         

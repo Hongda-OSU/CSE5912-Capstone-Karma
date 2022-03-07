@@ -20,12 +20,15 @@ namespace CSE5912.PolyGamers
 
         public List<Enemy> burningEnemyList;
 
+        public Dictionary<Enemy, int> enemyToStack;
+
         private Bullet prevBullet;
         private LivingFlame livingFlame;
 
         private void Awake()
         {
             burningEnemyList = new List<Enemy>();
+            enemyToStack = new Dictionary<Enemy, int>();
         }
 
         private void Update()
@@ -56,9 +59,12 @@ namespace CSE5912.PolyGamers
             GameObject vfx = Instantiate(vfxPrefab);
             vfx.transform.position = bullet.hitPosition;
 
+            vfx.GetComponent<IncendiaryFireDamager>().livingFlame = livingFlame;
+            vfx.GetComponent<IncendiaryFireDamager>().baseTime = livingFlame.Time;
+
             float time = baseTime + timePerLevel * (level - 1);
             StartCoroutine(vfx.GetComponent<IncendiaryFireDamager>().Perform(this, time, spreadToEnemy, null));
-            vfx.GetComponent<IncendiaryFireDamager>().livingFlame = livingFlame;
+
         }
         public void CreateFlame(Enemy enemy)
         {
@@ -66,7 +72,6 @@ namespace CSE5912.PolyGamers
 
             float time = baseTime + timePerLevel * (level - 1);
             StartCoroutine(vfx.GetComponent<IncendiaryFireDamager>().Perform(this, time, spreadToEnemy, enemy));
-            vfx.GetComponent<IncendiaryFireDamager>().livingFlame = livingFlame;
         }
 
         public void PerformDamage(Enemy enemy)
