@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace CSE5912.PolyGamers
 {
-    public class FrostBite : Skill
+    public class Frostbite : Skill
     {
 
-        [Header("FrostBite")]
+        [Header("Frostbite")]
         [SerializeField] private GameObject vfxPrefab;
 
         [SerializeField] private float baseDamage = 20f;
@@ -28,27 +28,27 @@ namespace CSE5912.PolyGamers
 
             StartCoolingdown();
 
-            float radius = baseRadius + radiusPerLevel * (level - 1);
+            float hitRadius = baseRadius + radiusPerLevel * (level - 1);
 
             GameObject vfx = Instantiate(vfxPrefab);
             vfx.transform.position = PlayerManager.Instance.Player.transform.position;
-            vfx.transform.localScale = Vector3.one * radius / 6f; // hard coded
+            vfx.transform.localScale = Vector3.one * hitRadius / 8f; // hard coded
             Destroy(vfx, 1f);
 
+            Vector3 position = new Vector3(vfx.transform.position.x, vfx.transform.position.y, vfx.transform.position.z + vfx.transform.localScale.z / 2);
+
+            Collider[] hitColliders = Physics.OverlapSphere(position, hitRadius);
+
             float dmg = baseDamage + damagePerLevel * (level - 1);
-            foreach (var target in EnemyManager.Instance.EnemyList)
+            foreach (var hitCollider in hitColliders)
             {
-                Enemy enemy = target.GetComponent<Enemy>();
-                if (!enemy.IsAlive)
+                hitCollider.TryGetComponent(out Enemy enemy);
+                if (enemy == null || !enemy.IsAlive)
                     continue;
 
-                float distance = Vector3.Distance(target.transform.position, target.transform.position);
-                if (distance < radius)
-                {
-                    Damage damage = new Damage(dmg, Element.Type.Cryo, PlayerStats.Instance, enemy);
-                    PlayerManager.Instance.PerformSkillDamage(enemy, damage);
-                    enemy.Frozen.StackUp();
-                }
+                Damage damage = new Damage(dmg, Element.Type.Cryo, PlayerStats.Instance, enemy);
+                PlayerManager.Instance.PerformSkillDamage(enemy, damage);
+                enemy.Frozen.StackUp();
             }
         }
     }

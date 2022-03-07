@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7336312129208206919}
   - component: {fileID: 2497002142576524595}
   m_Layer: 0
-  m_Name: FrostBite
+  m_Name: Frostbite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ee4996143a13e4787d2d163dc4cbda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: FrostBite
+  skillName: Frostbite
   requiredSkill: {fileID: 0}
   isLearned: 0
   level: 0

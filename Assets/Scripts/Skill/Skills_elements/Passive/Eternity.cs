@@ -36,15 +36,17 @@ namespace CSE5912.PolyGamers
 
             StartCoolingdown();
 
-            float radius = baseRadius + radiusPerLevel * (level - 1);
+            float hitRadius = baseRadius + radiusPerLevel * (level - 1);
 
             GameObject vfx = Instantiate(vfxPrefab);
             var position = PlayerManager.Instance.Player.transform.position;
             vfx.transform.position = new Vector3(position.x, position.y - 1f, position.z); // hard coded
-            vfx.transform.localScale = Vector3.one * radius / 0.9f; // hard coded
+            vfx.transform.localScale = Vector3.one * hitRadius / 0.9f; // hard coded
 
             float heal = baseHeal + healPerLevel * (level - 1);
             PlayerStats.Instance.Health += heal * PlayerStats.Instance.MaxHealth;
+
+            Vector3 hitPosition = vfx.transform.position;
 
             float timeSince = 0f;
             float totalTime = baseTime + timePerLevel * (level - 1);
@@ -53,18 +55,15 @@ namespace CSE5912.PolyGamers
                 timeSince += 1f;
                 yield return new WaitForSeconds(1f);
 
-                foreach (var enemyObj in EnemyManager.Instance.EnemyList)
+                Collider[] hitColliders = Physics.OverlapSphere(hitPosition, hitRadius);
+
+                foreach (var hitCollider in hitColliders)
                 {
-                    var enemy = enemyObj.GetComponent<Enemy>();
-                    if (!enemy.IsAlive)
+                    hitCollider.TryGetComponent(out Enemy enemy);
+                    if (enemy == null || !enemy.IsAlive)
                         continue;
 
-                    float distance = Vector3.Distance(vfx.gameObject.transform.position, enemyObj.transform.position);
-
-                    if (distance < radius)
-                    {
-                        enemy.Frozen.StackUp();
-                    }
+                    enemy.Frozen.StackUp();
                 }
             }
             Destroy(vfx);

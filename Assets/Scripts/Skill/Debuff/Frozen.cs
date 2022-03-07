@@ -20,5 +20,13 @@ namespace CSE5912.PolyGamers
             }
             stack = 0;
         }
+
+        public override void StackUp()
+        {
+            if (target.IsFrozen)
+                return;
+
+            base.StackUp();
+        }
     }
 }

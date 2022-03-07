@@ -31,7 +31,7 @@ namespace CSE5912.PolyGamers
             target = transform.parent.GetComponent<Enemy>();
         }
 
-        public void StackUp()
+        public virtual void StackUp()
         {
             // increment stack
             stack = Mathf.Clamp(stack + 1, 0, maxStack);

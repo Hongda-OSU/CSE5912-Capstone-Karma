@@ -14653,7 +14653,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5707662927310399088, guid: 47f39721465973542b5744de74cf2abe, type: 3}
       propertyPath: isFrozen
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5707662927310399088, guid: 47f39721465973542b5744de74cf2abe, type: 3}
       propertyPath: attackRange
@@ -32994,7 +32994,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5707662927310399088, guid: 47f39721465973542b5744de74cf2abe, type: 3}
       propertyPath: isFrozen
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5707662927310399088, guid: 47f39721465973542b5744de74cf2abe, type: 3}
       propertyPath: attackRange
@@ -37523,7 +37523,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5707662927310399088, guid: 47f39721465973542b5744de74cf2abe, type: 3}
       propertyPath: isFrozen
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5707662927310399088, guid: 47f39721465973542b5744de74cf2abe, type: 3}
       propertyPath: attackRange
@@ -57272,7 +57272,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5707662927310399088, guid: 47f39721465973542b5744de74cf2abe, type: 3}
       propertyPath: isFrozen
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5707662927310399088, guid: 47f39721465973542b5744de74cf2abe, type: 3}
       propertyPath: attackRange
@@ -93631,6 +93631,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1168154998370106846, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: m_Name
+      value: Frostbite
+      objectReference: {fileID: 0}
     - target: {fileID: 3914003179883955252, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
       propertyPath: burnedBaseChance
       value: 1
@@ -93701,11 +93705,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4369238742308309045, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
       propertyPath: damage
-      value: 0
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4369238742308309045, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
       propertyPath: element
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4795709119780073540, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: m_Name
+      value: Ignite
       objectReference: {fileID: 0}
     - target: {fileID: 7188849728855957638, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
       propertyPath: m_Layer

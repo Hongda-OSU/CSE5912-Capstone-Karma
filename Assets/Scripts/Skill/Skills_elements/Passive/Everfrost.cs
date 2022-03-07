@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace CSE5912.PolyGamers
 {
-    public class Crystallization : Skill
+    public class Everfrost : Skill
     {
-        [Header("Crystallization")]
+        [Header("Everfrost")]
         [SerializeField] private GameObject vfxPrefab;
 
         [SerializeField] private float baseDamage = 20f;
@@ -17,23 +17,21 @@ namespace CSE5912.PolyGamers
 
         private void Update()
         {
-            var target = PlayerManager.Instance.HitByBullet;
-            if (!isLearned || !isReady || target == null || !target.IsAlive)
+            if (!isLearned)
                 return;
 
-            var frozen = target.GetComponentInChildren<Frozen>();
-            if (frozen.Stack < frozen.MaxStack)
-                return;
+            foreach (var obj in EnemyManager.Instance.EnemyList)
+            {
+                var enemy = obj.GetComponent<Enemy>();
+                if (enemy.Frozen.Stack < enemy.Frozen.MaxStack || enemy.IsFrozen)
+                    continue;
 
-            StartCoroutine(Perform(target.GetComponent<Enemy>()));
+                Perform(enemy);
+            }
         }
 
-        private IEnumerator Perform(Enemy enemy)
+        private void Perform(Enemy enemy)
         {
-            isReady = false;
-
-            enemy.Freeze(true);
-
             float dmg = baseDamage + damagePerLevel * (level - 1);
             Damage damage = new Damage(dmg, Element.Type.Cryo, PlayerStats.Instance, enemy);
             PlayerManager.Instance.PerformSkillDamage(enemy, damage);
@@ -43,12 +41,10 @@ namespace CSE5912.PolyGamers
 
             float frozenTime = baseFrozenTime + frozenTimePerLevel * (level - 1);
 
-            yield return StartCoroutine(vfx.GetComponent<IceControl>().WaitFor(frozenTime));
+            StartCoroutine(enemy.Freeze(frozenTime));
+            StartCoroutine(vfx.GetComponent<IceControl>().WaitFor(frozenTime));
 
             Destroy(vfx, 5f);
-            enemy.Freeze(false);
-            enemy.Frozen.Stack = 0;
-            isReady = true;
         }
     }
 }

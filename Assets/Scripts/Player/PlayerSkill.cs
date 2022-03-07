@@ -43,12 +43,12 @@ namespace CSE5912.PolyGamers
 
             SkillsPanelControl.Instance.SkillTree_element.AssignPassive(0, skillTree_element.GetComponentInChildren<Incendiary>());
             SkillsPanelControl.Instance.SkillTree_element.AssignPassive(1, skillTree_element.GetComponentInChildren<Inferno>());
-            SkillsPanelControl.Instance.SkillTree_element.AssignPassive(2, skillTree_element.GetComponentInChildren<FireWave>());
+            SkillsPanelControl.Instance.SkillTree_element.AssignPassive(2, skillTree_element.GetComponentInChildren<Ignite>());
             SkillsPanelControl.Instance.SkillTree_element.AssignPassive(3, skillTree_element.GetComponentInChildren<LivingFlame>());
 
-            SkillsPanelControl.Instance.SkillTree_element.AssignPassive(4, skillTree_element.GetComponentInChildren<Crystallization>());
+            SkillsPanelControl.Instance.SkillTree_element.AssignPassive(4, skillTree_element.GetComponentInChildren<Everfrost>());
             SkillsPanelControl.Instance.SkillTree_element.AssignPassive(5, skillTree_element.GetComponentInChildren<Iceborn>());
-            SkillsPanelControl.Instance.SkillTree_element.AssignPassive(6, skillTree_element.GetComponentInChildren<FrostBite>());
+            SkillsPanelControl.Instance.SkillTree_element.AssignPassive(6, skillTree_element.GetComponentInChildren<Frostbite>());
             SkillsPanelControl.Instance.SkillTree_element.AssignPassive(7, skillTree_element.GetComponentInChildren<Eternity>());
 
             SkillsPanelControl.Instance.SkillTree_element.AssignPassive(8, skillTree_element.GetComponentInChildren<LightningBolt>());

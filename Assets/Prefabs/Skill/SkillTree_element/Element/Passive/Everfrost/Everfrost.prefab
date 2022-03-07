@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3667750013696680977}
   - component: {fileID: 119192483520232989}
   m_Layer: 0
-  m_Name: Crystallization
+  m_Name: Everfrost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26b762342377c144c8007c20cb9dd7ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: Crystallization
+  skillName: Everfrost
   requiredSkill: {fileID: 0}
   isLearned: 0
   level: 0

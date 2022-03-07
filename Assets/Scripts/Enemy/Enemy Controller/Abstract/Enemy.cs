@@ -169,13 +169,21 @@ namespace CSE5912.PolyGamers
 
 
 
-
-        public void Freeze(bool enabled)
+        public IEnumerator Freeze(float time)
         {
-            isFrozen = enabled;
-            agent.isStopped = enabled;
-            agent.speed = enabled ? 0 : agentSpeed;
-            animator.speed = enabled ? 0 : 1;
+            isFrozen = true;
+            agent.isStopped = true;
+            agent.speed = 0 ;
+            animator.speed = 0;
+
+            yield return new WaitForSeconds(time);
+
+            isFrozen = false;
+            agent.isStopped = false;
+            agent.speed = agentSpeed;
+            animator.speed = 1;
+
+            frozen.Stack = 0;
         }
         public void SlowDown(float percentage)
         {

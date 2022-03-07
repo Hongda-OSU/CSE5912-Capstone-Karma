@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3639210235765799709}
   - component: {fileID: 7423231206889721285}
   m_Layer: 0
-  m_Name: FireWave
+  m_Name: Ignite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea9e3f6ae10db0542a5ffbac8337c416, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: Fire Wave
+  skillName: Ignite
   requiredSkill: {fileID: 0}
   isLearned: 0
   level: 0
@@ -53,3 +53,8 @@ MonoBehaviour:
   levelupCost: 1
   cooldown: 0
   type: 0
+  vfxPrefab: {fileID: 169654, guid: bdad641456c94554c99692658e1cd28f, type: 3}
+  baseDamage: 50
+  damagePerLevel: 20
+  baseRadius: 1
+  radiusPerLevel: 0.5
