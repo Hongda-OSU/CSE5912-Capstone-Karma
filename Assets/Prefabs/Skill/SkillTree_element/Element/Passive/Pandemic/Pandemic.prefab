@@ -51,5 +51,10 @@ MonoBehaviour:
   maxLevel: 5
   learnCost: 1
   levelupCost: 1
-  cooldown: 0
+  cooldown: 10
   type: 0
+  vfxPrefab: {fileID: 1699914565062994, guid: b819e30d021bab94b99c236edcd20128, type: 3}
+  baseTime: 8
+  timePerLevel: 2
+  baseRadius: 3
+  radiusPerLevel: 0.5
