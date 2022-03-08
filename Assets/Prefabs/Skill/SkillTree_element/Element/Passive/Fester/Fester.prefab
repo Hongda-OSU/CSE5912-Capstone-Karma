@@ -53,3 +53,8 @@ MonoBehaviour:
   levelupCost: 1
   cooldown: 0
   type: 0
+  vfxPrefab: {fileID: 1407402442211574, guid: 1d4dd7bf796cb374fb1c5b2c1b779fac, type: 3}
+  triggerTime: 20
+  timePerLevel: 1
+  baseDamage: 0.1
+  damagePerLevel: 0.01

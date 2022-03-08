@@ -48179,7 +48179,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5707662927310399088, guid: 47f39721465973542b5744de74cf2abe, type: 3}
       propertyPath: venomResist
-      value: 0
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 5707662927310399088, guid: 47f39721465973542b5744de74cf2abe, type: 3}
       propertyPath: attackDamage

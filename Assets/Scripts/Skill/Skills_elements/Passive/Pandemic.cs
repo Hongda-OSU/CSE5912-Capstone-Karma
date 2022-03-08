@@ -10,7 +10,7 @@ namespace CSE5912.PolyGamers
         [Header("Pandemic")]
         [SerializeField] private GameObject vfxPrefab;
 
-        [SerializeField] private float baseTime = 8f;
+        [SerializeField] private float baseTime = 10f;
         [SerializeField] private float timePerLevel = 2f;
 
         [SerializeField] private float baseRadius = 3f;
