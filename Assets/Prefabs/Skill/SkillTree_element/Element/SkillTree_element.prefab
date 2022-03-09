@@ -652,7 +652,7 @@ PrefabInstance:
     - target: {fileID: 288997174487502689, guid: 879d8c533f530c2488ecec85f9574d3d, type: 3}
       propertyPath: requiredSkill
       value: 
-      objectReference: {fileID: 7712347289747498913}
+      objectReference: {fileID: 0}
     - target: {fileID: 3515204038907677412, guid: 879d8c533f530c2488ecec85f9574d3d, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -1051,7 +1051,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3614815603160900602}
     m_Modifications:
-    - target: {fileID: 2497002142576524595, guid: b637f44244ab4504686db9ffb54e3985, type: 3}
+    - target: {fileID: 6269788425803089672, guid: b637f44244ab4504686db9ffb54e3985, type: 3}
+      propertyPath: skillName
+      value: Frostbite
+      objectReference: {fileID: 0}
+    - target: {fileID: 6269788425803089672, guid: b637f44244ab4504686db9ffb54e3985, type: 3}
       propertyPath: requiredSkill
       value: 
       objectReference: {fileID: 8584508729298648141}
@@ -1110,17 +1114,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7336312129208206919, guid: b637f44244ab4504686db9ffb54e3985, type: 3}
   m_PrefabInstance: {fileID: 5305487508534008466}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7712347289747498913 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2497002142576524595, guid: b637f44244ab4504686db9ffb54e3985, type: 3}
-  m_PrefabInstance: {fileID: 5305487508534008466}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55ee4996143a13e4787d2d163dc4cbda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &6297303089325035652
 PrefabInstance:
   m_ObjectHideFlags: 0

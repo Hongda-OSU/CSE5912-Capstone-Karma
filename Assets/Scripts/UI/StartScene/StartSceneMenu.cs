@@ -67,7 +67,7 @@ namespace CSE5912.PolyGamers
         // load the main game scene
         private void StartGameButtonPressed()
         {
-            SceneManager.LoadScene(gameScenePath);
+            SceneLoader.Instance.LoadLevel(root, gameScenePath);
         }
 
         // open option menu
