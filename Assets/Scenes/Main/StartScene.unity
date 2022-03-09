@@ -132,7 +132,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 12476026}
-  - component: {fileID: 12476025}
   - component: {fileID: 12476027}
   m_Layer: 5
   m_Name: StartSceneMenu
@@ -141,22 +140,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &12476025
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 12476024}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PanelSettings: {fileID: 11400000, guid: a4af836ef534dcd4ea0527dcac4682a7, type: 2}
-  m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 9197481963319205126, guid: 2d77c88d10413e445b5d5ea425ce1358, type: 3}
-  m_SortingOrder: 0
 --- !u!4 &12476026
 Transform:
   m_ObjectHideFlags: 0
@@ -184,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2ebb77e0f536bf43ba8661771f4e778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiDocument: {fileID: 12476025}
+  uiDocument: {fileID: 0}
   fadingTime: 0.15
   gameScenePath: Scenes/GameScene
 --- !u!1 &133912062
@@ -280,6 +263,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 246230257}
+  - component: {fileID: 246230258}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -303,3 +287,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &246230258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 246230256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: a4af836ef534dcd4ea0527dcac4682a7, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: 2d77c88d10413e445b5d5ea425ce1358, type: 3}
+  m_SortingOrder: 0
