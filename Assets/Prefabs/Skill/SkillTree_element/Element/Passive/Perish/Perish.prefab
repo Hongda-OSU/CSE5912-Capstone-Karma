@@ -53,3 +53,6 @@ MonoBehaviour:
   levelupCost: 1
   cooldown: 0
   type: 0
+  vfxPrefab: {fileID: 106912, guid: 45c617cb2ad10b0418407cffa3e28107, type: 3}
+  baseTriggerHealth: 0.05
+  triggerHealthPerLevel: 0.015
