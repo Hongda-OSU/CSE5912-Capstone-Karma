@@ -27,5 +27,7 @@ namespace CSE5912.PolyGamers
             stack = 0;
             timeLasted = 0f;
         }
+
+        public float Duration { get { return duration; } set { duration = value; } }
     }
 }

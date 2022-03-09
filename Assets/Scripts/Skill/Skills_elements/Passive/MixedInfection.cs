@@ -13,6 +13,8 @@ namespace CSE5912.PolyGamers
         [SerializeField] private int baseMaxStack = 6;
         [SerializeField] private int maxStackPerLevel = 1;
 
+        [SerializeField] private float baseTime = 6f;
+        [SerializeField] private float timePerLevel = 1f;
 
         private void Update()
         {
@@ -31,6 +33,9 @@ namespace CSE5912.PolyGamers
 
             int max = baseMaxStack + maxStackPerLevel * (level - 1);
             target.Infected.MaxStack = max;
+
+            float time = baseTime + timePerLevel * (level - 1);
+            target.Infected.Duration = time;
         }
     }
 }
