@@ -13,7 +13,7 @@ namespace CSE5912.PolyGamers
         {
             while (timeSince < duration)
             {
-                if (stack == maxStack)
+                if (stack >= 5)
                     timeLasted += deltaTime;
 
                 timeSince += deltaTime;

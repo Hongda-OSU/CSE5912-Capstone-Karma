@@ -53,3 +53,6 @@ MonoBehaviour:
   levelupCost: 1
   cooldown: 0
   type: 0
+  vfxPrefab: {fileID: 3727503644008407994, guid: 593c1e7e3baa7714797de0794e4fa5ef, type: 3}
+  baseMaxStack: 6
+  maxStackPerLevel: 1
