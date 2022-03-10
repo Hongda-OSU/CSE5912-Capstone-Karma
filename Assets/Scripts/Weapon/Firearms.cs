@@ -157,13 +157,20 @@ namespace CSE5912.PolyGamers
             attachments = new Attachment[PlayerInventory.Instance.MaxNumOfAttachmentsPerWeapon];
         }
 
-        protected virtual void Update()
+        private void OnEnable()
         {
-            weaponBonus.Perform(true);
+            PerformBonus(true);
         }
         private void OnDisable()
         {
-            weaponBonus.Perform(false);
+            PerformBonus(false);
+        }
+        private void PerformBonus(bool enabled)
+        {
+            weaponBonus.Perform(enabled);
+            foreach (var attachment in attachments)
+                if (attachment != null)
+                    attachment.PerformBonus(enabled);
         }
 
         public void Attack()
@@ -328,7 +335,7 @@ namespace CSE5912.PolyGamers
             RemoveAttachment(attachments[index]);
 
             attachments[index] = attachment;
-            attachment.AttachedTo = this;
+            attachment.AttachTo(this);
         }
 
         public void RemoveAttachment(Attachment target)
@@ -341,7 +348,7 @@ namespace CSE5912.PolyGamers
                 if (attachments[i] == target)
                 {
                     attachments[i] = null;
-                    target.AttachedTo = null;
+                    target.AttachTo(null);
                 }
             }
         }

@@ -31,21 +31,29 @@ namespace CSE5912.PolyGamers
             Divine = 4,
         }
 
+        public void AttachTo(Firearms weapon)
+        {
+            if (weapon == WeaponManager.Instance.CarriedWeapon)
+            {
+                PerformBonus(true);
+            }
+            else
+            {
+                PerformBonus(false);
+            }
+            attachedTo = weapon;
+        }
 
-        //protected virtual void Update()
-        //{
-        //    attachmentBonus.Perform(true);
-        //}
-        //private void OnDisable()
-        //{
-        //    attachmentBonus.Perform(false);
-        //}
+        public void PerformBonus(bool enabled)
+        {
+            attachmentBonus.Perform(enabled);
+        }
 
 
         public string AttachmentName { get { return attachmentName; } set { attachmentName = value; } }
         public AttachmentType Type { get { return attachmentType; } set { attachmentType = value; } }
         public AttachmentRarity Rarity { get { return rarity; } set { rarity = value; } }
-        public Firearms AttachedTo { get { return attachedTo; } set { attachedTo = value; } }
+        public Firearms AttachedTo { get { return attachedTo; } }
         public AttachmentBonus Bonus { get { return attachmentBonus; } set { attachmentBonus = value; } }
         public Sprite IconImage { get { return iconImage; } set { iconImage = value; } }
     }
