@@ -34,7 +34,7 @@ namespace CSE5912.PolyGamers
             if (!isLearned || !isReady)
                 yield break;
 
-            StartCoolingdown();
+            isReady = false;
 
             GameObject vfx = Instantiate(vfxPrefab, PlayerManager.Instance.Player.transform);
             Destroy(vfx, 5f);
@@ -44,6 +44,8 @@ namespace CSE5912.PolyGamers
             yield return new WaitForSeconds(duration);
 
             BuffPlayer(false);
+
+            StartCoolingdown();
         }
 
         private void BuffPlayer(bool enabled)

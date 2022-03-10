@@ -8,7 +8,11 @@ namespace CSE5912.PolyGamers
 {
     public class SceneLoader : UI
     {
+        [SerializeField] private Sprite image;
+
         private VisualElement loadingScreen;
+
+        private VisualElement loadingImage;
 
         private VisualElement loadingBar;
         private VisualElement progressBar;
@@ -28,6 +32,10 @@ namespace CSE5912.PolyGamers
 
             loadingScreen = root.Q<VisualElement>("LoadingScreen");
 
+            loadingImage = root.Q<VisualElement>("LoadingImage");
+            loadingImage.style.backgroundImage = new StyleBackground(image);
+            loadingImage.style.unityBackgroundScaleMode = ScaleMode.ScaleToFit;
+
             loadingBar = root.Q<VisualElement>("LoadingBar");
             loadingBar.style.width = barWidth;
 
@@ -37,22 +45,33 @@ namespace CSE5912.PolyGamers
             root.style.display = DisplayStyle.None;
         }
 
-        public void LoadLevel(VisualElement from, string sceneName)
+        // test
+        private void Update()
         {
-            StartCoroutine(LoadAsync(from, sceneName));
+
+            if (Input.GetKeyDown(KeyCode.M))
+            {
+                LoadLevel("Scenes/Main/Level_2_test");
+            }
         }
 
-        private IEnumerator LoadAsync(VisualElement from, string sceneName)
+        public void LoadLevel(string sceneName)
+        {
+            StartCoroutine(LoadAsync(sceneName));
+        }
+
+        private IEnumerator LoadAsync(string sceneName)
         {
             if (isLoading)
                 yield break;
 
             isLoading = true;
 
-            root.style.display = DisplayStyle.Flex;
-            loadingScreen.style.display= DisplayStyle.None;
+            loadingScreen.style.display = DisplayStyle.None;
 
-            yield return StartCoroutine(FadeTo(from, loadingScreen));
+            yield return StartCoroutine(FadeIn(root));
+
+            yield return StartCoroutine(FadeIn(loadingScreen));
 
             AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
 
@@ -66,6 +85,8 @@ namespace CSE5912.PolyGamers
 
                 yield return null;
             }
+
+            root.style.display = DisplayStyle.None;
 
             isLoading = false;
         }
