@@ -326,7 +326,7 @@ namespace CSE5912.PolyGamers
 
                 description = "Ammo +" + Math.Round(value * 100, 1) + "%";
 
-                int ammo = WeaponManager.Instance.CarriedWeapon.AmmoInMag;
+                int ammo = weapon.AmmoInMag;
                 if (enabled)
                 {
                     weapon.AmmoInMag = (int)Mathf.Floor(ammo * (1 + value));

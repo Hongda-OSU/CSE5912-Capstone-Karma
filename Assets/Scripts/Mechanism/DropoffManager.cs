@@ -89,6 +89,23 @@ namespace CSE5912.PolyGamers
             return dropoff;
         }
 
+        public GameObject CreateDropoffFromWeapon(Firearms weapon, Vector3 position)
+        {
+            GameObject dropoff = null;
+            foreach (var drop in weaponDropoffList)
+            {
+                if (drop.GetComponent<FirearmsItem>().Type == weapon.Type)
+                {
+                    dropoff = Instantiate(drop, position, Quaternion.identity);
+                    dropoff.transform.SetParent(transform);
+                }
+            }
+            
+            dropoff.GetComponent<FirearmsItem>().Setup(weapon);
+
+            return dropoff;
+        }
+
         public GameObject DropAttachment(Attachment.AttachmentType type, Attachment.AttachmentRarity rarity, Vector3 position)
         {
             GameObject dropoff;
@@ -113,6 +130,15 @@ namespace CSE5912.PolyGamers
             dropoff.GetComponent<AttachmentItem>().Attachment.transform.SetParent(transform);
 
             return dropoff;
+        }
+
+
+        public void ClearDropoffs()
+        {
+            foreach (Transform child in transform)
+            {
+                Destroy(child.gameObject);
+            }
         }
     }
 }

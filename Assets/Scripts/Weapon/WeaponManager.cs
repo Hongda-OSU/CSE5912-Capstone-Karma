@@ -223,7 +223,8 @@ namespace CSE5912.PolyGamers
 
             PlayerInventory.Instance.AddWeapon(weapon);
 
-            baseItem.gameObject.SetActive(false);
+            //baseItem.gameObject.SetActive(false);
+            Destroy(baseItem.gameObject);
 
             weapon.gameObject.transform.SetParent(weaponCollection.transform, false);
 
@@ -244,10 +245,7 @@ namespace CSE5912.PolyGamers
 
         private void DropWeapon(Firearms weapon, Vector3 position)
         {
-            FirearmsItem item = weapon.firearmsItem;
-
-            item.gameObject.SetActive(true);
-            item.transform.position = position;
+            DropoffManager.Instance.CreateDropoffFromWeapon(weapon, position);
 
             PlayerInventory.Instance.RemoveWeapon(weapon);
         }
