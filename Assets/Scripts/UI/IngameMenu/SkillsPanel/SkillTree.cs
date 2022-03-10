@@ -101,5 +101,10 @@ namespace CSE5912.PolyGamers
             buffSlotList[index].skill = skill;
         }
 
+        public void AssignMain(Skill skill)
+        {
+            mainSkill.skill = skill;
+        }
+
     }
 }

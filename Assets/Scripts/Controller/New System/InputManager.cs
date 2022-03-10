@@ -65,5 +65,8 @@ namespace CSE5912.PolyGamers
             inputSchemes.PlayerActions.Disable();
             inputSchemes.FPSActions.Disable();
         }
+
+
+        public InputActions InputSchemes { get { return inputSchemes; } }
     }
 }

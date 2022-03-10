@@ -25,6 +25,8 @@ namespace CSE5912.PolyGamers
 
         private void Start()
         {
+            SkillsPanelControl.Instance.SkillTree_element.AssignMain(skillTree_element.transform.GetComponentInChildren<Epiphany>());
+
             SkillsPanelControl.Instance.SkillTree_element.AssignBuff(0, skillTree_element.transform.GetComponentInChildren<FireAscension>());
             SkillsPanelControl.Instance.SkillTree_element.AssignBuff(1, skillTree_element.transform.GetComponentInChildren<CryoAscension>());
             SkillsPanelControl.Instance.SkillTree_element.AssignBuff(2, skillTree_element.transform.GetComponentInChildren<ElectroAscension>());

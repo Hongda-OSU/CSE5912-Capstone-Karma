@@ -82,7 +82,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""BulletTime"",
+                    ""name"": ""MainSkill"",
                     ""type"": ""Value"",
                     ""id"": ""90b9f2aa-7e8a-45cb-b03f-4fad355a6163"",
                     ""expectedControlType"": ""Button"",
@@ -227,7 +227,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""BulletTime"",
+                    ""action"": ""MainSkill"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -562,7 +562,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         m_PlayerActions_Crouch = m_PlayerActions.FindAction("Crouch", throwIfNotFound: true);
         m_PlayerActions_Sprint = m_PlayerActions.FindAction("Sprint", throwIfNotFound: true);
         m_PlayerActions_Dash = m_PlayerActions.FindAction("Dash", throwIfNotFound: true);
-        m_PlayerActions_BulletTime = m_PlayerActions.FindAction("BulletTime", throwIfNotFound: true);
+        m_PlayerActions_MainSkill = m_PlayerActions.FindAction("MainSkill", throwIfNotFound: true);
         m_PlayerActions_PickUp = m_PlayerActions.FindAction("PickUp", throwIfNotFound: true);
         m_PlayerActions_Inspect = m_PlayerActions.FindAction("Inspect", throwIfNotFound: true);
         // FPSActions
@@ -648,7 +648,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerActions_Crouch;
     private readonly InputAction m_PlayerActions_Sprint;
     private readonly InputAction m_PlayerActions_Dash;
-    private readonly InputAction m_PlayerActions_BulletTime;
+    private readonly InputAction m_PlayerActions_MainSkill;
     private readonly InputAction m_PlayerActions_PickUp;
     private readonly InputAction m_PlayerActions_Inspect;
     public struct PlayerActionsActions
@@ -661,7 +661,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         public InputAction @Crouch => m_Wrapper.m_PlayerActions_Crouch;
         public InputAction @Sprint => m_Wrapper.m_PlayerActions_Sprint;
         public InputAction @Dash => m_Wrapper.m_PlayerActions_Dash;
-        public InputAction @BulletTime => m_Wrapper.m_PlayerActions_BulletTime;
+        public InputAction @MainSkill => m_Wrapper.m_PlayerActions_MainSkill;
         public InputAction @PickUp => m_Wrapper.m_PlayerActions_PickUp;
         public InputAction @Inspect => m_Wrapper.m_PlayerActions_Inspect;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
@@ -691,9 +691,9 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 @Dash.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnDash;
                 @Dash.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnDash;
                 @Dash.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnDash;
-                @BulletTime.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnBulletTime;
-                @BulletTime.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnBulletTime;
-                @BulletTime.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnBulletTime;
+                @MainSkill.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnMainSkill;
+                @MainSkill.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnMainSkill;
+                @MainSkill.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnMainSkill;
                 @PickUp.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnPickUp;
                 @PickUp.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnPickUp;
                 @PickUp.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnPickUp;
@@ -722,9 +722,9 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 @Dash.started += instance.OnDash;
                 @Dash.performed += instance.OnDash;
                 @Dash.canceled += instance.OnDash;
-                @BulletTime.started += instance.OnBulletTime;
-                @BulletTime.performed += instance.OnBulletTime;
-                @BulletTime.canceled += instance.OnBulletTime;
+                @MainSkill.started += instance.OnMainSkill;
+                @MainSkill.performed += instance.OnMainSkill;
+                @MainSkill.canceled += instance.OnMainSkill;
                 @PickUp.started += instance.OnPickUp;
                 @PickUp.performed += instance.OnPickUp;
                 @PickUp.canceled += instance.OnPickUp;
@@ -905,7 +905,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         void OnCrouch(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
-        void OnBulletTime(InputAction.CallbackContext context);
+        void OnMainSkill(InputAction.CallbackContext context);
         void OnPickUp(InputAction.CallbackContext context);
         void OnInspect(InputAction.CallbackContext context);
     }

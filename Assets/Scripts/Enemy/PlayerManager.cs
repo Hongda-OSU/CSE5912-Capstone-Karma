@@ -65,11 +65,6 @@ namespace CSE5912.PolyGamers
             StartCoroutine(DamageNumberControl.Instance.DisplayDamageNumber(damage, position));
         }
 
-        public void PerformDamageOnShield(Shield shield, Damage damage)
-        {
-
-        }
-
         public void StackDebuff(Element.Type type, Enemy enemy)
         {
             if (PlayerStats.Instance.DebuffStacks(type))
