@@ -11,6 +11,7 @@ namespace CSE5912.PolyGamers
         [SerializeField] private string gameScenePath;
 
         private VisualElement mainMenuPanel;
+        private VisualElement audioPanel;
 
         private Button startGameButton;
         private Button optionsButton;
@@ -32,6 +33,11 @@ namespace CSE5912.PolyGamers
 
             mainMenuPanel = root.Q<VisualElement>("MainMenuPanel");
             optionsPanel = root.Q<VisualElement>("OptionsPanel");
+            audioPanel = root.Q<VisualElement>("AudioPanel");
+
+            mainMenuPanel.style.display = DisplayStyle.Flex;
+            optionsPanel.style.display = DisplayStyle.None;
+            audioPanel.style.display = DisplayStyle.None;
         }
 
         private void Start()
@@ -87,7 +93,7 @@ namespace CSE5912.PolyGamers
 
         private void AudioButtonPressed()
         {
-            // todo - load audio ui screen
+            StartCoroutine(FadeTo(optionsPanel, audioPanel));
         }
 
         private void KeybindingsButtonPressed()

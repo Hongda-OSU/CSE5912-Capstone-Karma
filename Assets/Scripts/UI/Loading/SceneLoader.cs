@@ -57,7 +57,8 @@ namespace CSE5912.PolyGamers
 
         public void LoadLevel(string sceneName)
         {
-            DropoffManager.Instance.ClearDropoffs();
+            if (DropoffManager.Instance != null)
+                DropoffManager.Instance.ClearDropoffs();
 
             StartCoroutine(LoadAsync(sceneName));
         }
