@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace CSE5912.PolyGamers
 {
-    public class UZI : Firearms
+    public class SCAR : Firearms
     {
         // bullet hole effect
         public GameObject ImpactPrefab;
@@ -38,7 +38,7 @@ namespace CSE5912.PolyGamers
             GunAnimator.Play("Fire", isAiming ? 1 : 0, 0);
             // play shooting audio
             ShootingAudioSource.clip = WeaponAudioData.ShootingAudio;
-            ShootingAudioSource.Play();
+            ShootingAudioSource.PlayOneShot(ShootingAudioSource.clip);
             // create bullet
             CreateBullet();
             CastingParticle.Play();

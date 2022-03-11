@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace CSE5912.PolyGamers
 {
-    public class MP7 : Firearms
+    public class Glock : Firearms
     {
         // bullet hole effect
         public GameObject ImpactPrefab;
@@ -13,7 +13,7 @@ namespace CSE5912.PolyGamers
         private Quaternion ControllerLocalOriginalRotation;
         private Vector3 ControllerLocalOriginalPosition;
         private FPSMouseLook fpsMouseLook;
-        public bool BulletPenetrable = true;
+        public bool BulletPenetrable = false;
 
         protected override void Awake()
         {
@@ -27,39 +27,31 @@ namespace CSE5912.PolyGamers
 
         protected override void Shoot()
         {
-            // not ammo in mag, return
+            // same logic in AK47
             if (CurrentAmmo <= 0) return;
-            // keep fire rate
             if (!IsAllowShooting()) return;
             MuzzleParticle.Play();
-            // decrease ammo in mag
             CurrentAmmo -= 1;
-            // determine which Fire animation should be play, aiming layer => 1, base layer => 0
             GunAnimator.Play("Fire", isAiming ? 1 : 0, 0);
-            // play shooting audio
             ShootingAudioSource.clip = WeaponAudioData.ShootingAudio;
-            ShootingAudioSource.Play();
-            // create bullet
+            ShootingAudioSource.PlayOneShot(ShootingAudioSource.clip);
             CreateBullet();
             CastingParticle.Play();
-            // enable different recoil between aimed and not aimed
             if (isAiming)
                 fpsMouseLook.FiringWithRecoilAimed();
             else
                 fpsMouseLook.FiringWithRecoil();
-            // calculate IsAllowShooting
             LastFireTime = Time.time;
         }
 
         protected override void Reload()
         {
             GunAnimator.SetLayerWeight(2, 1);
-            // if current ammo is 0, play "ReloadOutOf", else, "ReloadLeft"
             GunAnimator.SetTrigger(CurrentAmmo > 0 ? "ReloadLeft" : "ReloadOutOf");
-            // reload audio
+
             ReloadingAudioSource.clip = CurrentAmmo > 0 ? WeaponAudioData.ReloadLeft : WeaponAudioData.ReloadOutOf;
             ReloadingAudioSource.Play();
-            // coroutine for reload animation
+
             if (reloadAmmoCheckerCoroutine == null)
             {
                 reloadAmmoCheckerCoroutine = CheckReloadAmmoAnimationEnd();
@@ -73,8 +65,6 @@ namespace CSE5912.PolyGamers
                 StartCoroutine(reloadAmmoCheckerCoroutine);
             }
         }
-
-        // camera leaning use gun camera(rotation) and current gameobject(rotation and position)
 
         protected override void StopCameraLean()
         {
@@ -99,11 +89,8 @@ namespace CSE5912.PolyGamers
 
         protected void CreateBullet()
         {
-            // create bullet 
             GameObject bullet = Instantiate(BulletPrefab, MuzzlePoint.position, MuzzlePoint.rotation);
-            // add scattering to bullet
             bullet.transform.eulerAngles += CalculateBulletSpreadOffset();
-            // pass the needed component for bullet
             var bulletScript = bullet.AddComponent<Bullet>();
             bulletScript.ImpactPrefab = ImpactPrefab;
             bulletScript.impactAudioData = impactAudioData;
@@ -112,10 +99,10 @@ namespace CSE5912.PolyGamers
 
             bulletScript.damage = Damage;
             bulletScript.elementType = Element;
+            Destroy(bullet, 3);
+
             shootEvent.Invoke();
             bulletFired = bulletScript;
-            // destroy bullet in 3s
-            Destroy(bullet, 3);
         }
     }
 }

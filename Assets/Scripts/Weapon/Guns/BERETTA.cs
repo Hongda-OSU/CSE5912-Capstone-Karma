@@ -34,7 +34,7 @@ namespace CSE5912.PolyGamers
             CurrentAmmo -= 1;
             GunAnimator.Play("Fire", isAiming ? 1 : 0, 0);
             ShootingAudioSource.clip = WeaponAudioData.ShootingAudio;
-            ShootingAudioSource.Play();
+            ShootingAudioSource.PlayOneShot(ShootingAudioSource.clip);
             CreateBullet();
             CastingParticle.Play();
             if (isAiming)
