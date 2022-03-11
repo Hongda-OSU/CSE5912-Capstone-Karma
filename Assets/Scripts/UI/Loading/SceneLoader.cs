@@ -53,6 +53,7 @@ namespace CSE5912.PolyGamers
             {
                 LoadLevel("Scenes/Main/Level_2_test");
             }
+
         }
 
         public void LoadLevel(string sceneName)
