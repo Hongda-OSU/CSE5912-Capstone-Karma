@@ -15,6 +15,7 @@ namespace CSE5912.PolyGamers
         private Label detail;
         private VisualElement healthBar;
         private VisualElement maxHealthBar;
+        private bool displayHealthBar = false;
 
         private float prevHealth;
 
@@ -34,10 +35,14 @@ namespace CSE5912.PolyGamers
             enemy = target.GetComponent<Enemy>();
         }
 
+        public void DisplayHealthBar(bool enabled)
+        {
+            displayHealthBar = enabled;
+        }
 
         private void LateUpdate()
         {
-            if (DisplayEnabled())
+            if (displayHealthBar)
             {
                 //StartCoroutine(TriggerEffect());
                 SetHealthBar();
