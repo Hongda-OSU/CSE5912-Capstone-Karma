@@ -202,6 +202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiDocument: {fileID: 12476028}
   fadingTime: 0.15
+  mixer: {fileID: 24100000, guid: 16ed322527a09094c845f7f2988eff06, type: 2}
 --- !u!1 &133912062
 GameObject:
   m_ObjectHideFlags: 0

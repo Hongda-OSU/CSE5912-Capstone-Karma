@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.Audio;
 
 namespace CSE5912.PolyGamers
 {
@@ -32,6 +33,8 @@ namespace CSE5912.PolyGamers
 
         }
 
+        [SerializeField] private AudioMixer mixer;
+
         private VisualElement audioPanel;
 
         private VolumeControl master;
@@ -54,6 +57,7 @@ namespace CSE5912.PolyGamers
             AssignCallback(music);
             AssignCallback(effect);
         }
+
         private void AssignCallback(VolumeControl volumeControl)
         {
             var thresholdList = volumeControl.thresholdList;
@@ -64,6 +68,7 @@ namespace CSE5912.PolyGamers
                 thresholdList[i].RegisterCallback<MouseOutEvent>(evt => volumeControl.isMouseHovering = false);
             }
         }
+
         private IEnumerator SetVolume(VolumeControl volumeControl, int magnitude)
         {
             if (volumeControl.isMouseHovering)
@@ -73,10 +78,16 @@ namespace CSE5912.PolyGamers
 
             while (volumeControl.isMouseHovering)
             {
-                var volume = volumeControl.volume;
                 if (Input.GetMouseButton(0))
                 {
-                    volume.style.width = magnitude / 10f * volume.parent.resolvedStyle.width;
+                    var value = magnitude / 10f;
+                    var volume = volumeControl.volume;
+
+                    volume.style.width = value * volume.parent.resolvedStyle.width;
+
+                    volumeControl.magnitude.text = magnitude.ToString();
+
+                    mixer.SetFloat(volumeControl.label.text, Mathf.Log(value) * 20f);
                 }
 
                 yield return new WaitForSeconds(Time.deltaTime);
