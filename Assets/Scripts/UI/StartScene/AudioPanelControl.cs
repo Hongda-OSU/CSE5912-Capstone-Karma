@@ -40,6 +40,9 @@ namespace CSE5912.PolyGamers
         private VolumeControl master;
         private VolumeControl music;
         private VolumeControl effect;
+
+        private Button backButton;
+
         private void Awake()
         {
             Initialize();
@@ -49,6 +52,8 @@ namespace CSE5912.PolyGamers
             master = new VolumeControl(audioPanel.Q<VisualElement>("Master"));
             music = new VolumeControl(audioPanel.Q<VisualElement>("Music"));
             effect = new VolumeControl(audioPanel.Q<VisualElement>("Effect"));
+
+            backButton = audioPanel.Q<Button>("Back");
         }
 
         private void Start()
@@ -56,6 +61,12 @@ namespace CSE5912.PolyGamers
             AssignCallback(master);
             AssignCallback(music);
             AssignCallback(effect);
+
+            SetVolume(master, 10);
+            SetVolume(music, 10);
+            SetVolume(effect, 7);
+
+            backButton.clicked += BackButtonPressed;
         }
 
         private void AssignCallback(VolumeControl volumeControl)
@@ -64,12 +75,12 @@ namespace CSE5912.PolyGamers
             for (int i = 0; i < thresholdList.Count; i++)
             {
                 int magnitude = i;
-                thresholdList[i].RegisterCallback<MouseOverEvent>(evt => StartCoroutine(SetVolume(volumeControl, magnitude)));
+                thresholdList[i].RegisterCallback<MouseOverEvent>(evt => StartCoroutine(OnMouseHover(volumeControl, magnitude)));
                 thresholdList[i].RegisterCallback<MouseOutEvent>(evt => volumeControl.isMouseHovering = false);
             }
         }
 
-        private IEnumerator SetVolume(VolumeControl volumeControl, int magnitude)
+        private IEnumerator OnMouseHover(VolumeControl volumeControl, int magnitude)
         {
             if (volumeControl.isMouseHovering)
                 yield break;
@@ -80,18 +91,28 @@ namespace CSE5912.PolyGamers
             {
                 if (Input.GetMouseButton(0))
                 {
-                    var value = magnitude / 10f;
-                    var volume = volumeControl.volume;
-
-                    volume.style.width = value * volume.parent.resolvedStyle.width;
-
-                    volumeControl.magnitude.text = magnitude.ToString();
-
-                    mixer.SetFloat(volumeControl.label.text, Mathf.Log(value) * 20f);
+                    SetVolume(volumeControl, magnitude);
                 }
 
                 yield return new WaitForSeconds(Time.deltaTime);
             }
+        }
+
+        private void SetVolume(VolumeControl volumeControl, int magnitude)
+        {
+            var value = Mathf.Clamp(magnitude / 10f, 0.01f, 1f);
+            var volume = volumeControl.volume;
+
+            volume.style.width = value * 400f;
+
+            volumeControl.magnitude.text = magnitude.ToString();
+
+            mixer.SetFloat(volumeControl.label.text, Mathf.Log(value) * 20f);
+        }
+
+        private void BackButtonPressed()
+        {
+            StartCoroutine(FadeTo(audioPanel, root.Q<VisualElement>("OptionsPanel")));
         }
     }
 }
