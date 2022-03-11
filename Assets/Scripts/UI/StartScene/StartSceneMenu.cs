@@ -10,6 +10,8 @@ namespace CSE5912.PolyGamers
     {
         [SerializeField] private string gameScenePath;
 
+        [SerializeField] private AudioSource clickSound;
+
         private VisualElement mainMenuPanel;
         private VisualElement audioPanel;
 
@@ -74,12 +76,14 @@ namespace CSE5912.PolyGamers
         private void StartGameButtonPressed()
         {
             SceneLoader.Instance.LoadLevel(gameScenePath);
+            clickSound.Play();
         }
 
         // open option menu
         private void OptionsButtonPressed()
         {
             StartCoroutine(FadeTo(mainMenuPanel, optionsPanel));
+            clickSound.Play();
         }
 
         // quit the game
@@ -88,12 +92,14 @@ namespace CSE5912.PolyGamers
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
 #endif
+            clickSound.Play();
             Application.Quit();
         }
 
         private void AudioButtonPressed()
         {
             StartCoroutine(FadeTo(optionsPanel, audioPanel));
+            clickSound.Play();
         }
 
         private void KeybindingsButtonPressed()
@@ -110,6 +116,7 @@ namespace CSE5912.PolyGamers
         private void BackButtonPressed()
         {
             StartCoroutine(FadeTo(optionsPanel, mainMenuPanel));
+            clickSound.Play();
         }
     }
 }
