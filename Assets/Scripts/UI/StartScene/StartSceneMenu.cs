@@ -10,6 +10,7 @@ namespace CSE5912.PolyGamers
     {
         [SerializeField] private string gameScenePath;
 
+        [SerializeField] private AudioSource bgm;
         [SerializeField] private AudioSource clickSound;
 
         private VisualElement mainMenuPanel;
@@ -75,8 +76,21 @@ namespace CSE5912.PolyGamers
         // load the main game scene
         private void StartGameButtonPressed()
         {
+            StartCoroutine(FadeOutBgm());
             SceneLoader.Instance.LoadLevel(gameScenePath);
             clickSound.Play();
+        }
+        private IEnumerator FadeOutBgm()
+        {
+            float timeSince = 0f;
+            float fadeoutTime = 0.5f;
+            while (timeSince < fadeoutTime)
+            {
+                timeSince += Time.deltaTime;
+                yield return new WaitForSeconds(Time.deltaTime);
+
+                bgm.volume = fadeoutTime - timeSince;
+            }
         }
 
         // open option menu
