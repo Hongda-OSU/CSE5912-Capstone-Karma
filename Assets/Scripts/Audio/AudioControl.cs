@@ -39,23 +39,5 @@ namespace CSE5912.PolyGamers
             mainAudio.clip = clip;
             mainAudio.Play();
         }
-        private void PlayerMusic(AudioClip clip)
-        {
-            mainAudio.volume = 1f;
-            mainAudio.clip = clip;
-            mainAudio.Play();
-        }
-        private IEnumerator FadeOutCurrentMusic()
-        {
-            float timeSince = 0f;
-            float fadeoutTime = 0.5f;
-            while (timeSince < fadeoutTime)
-            {
-                timeSince += Time.deltaTime;
-                yield return new WaitForSeconds(Time.deltaTime);
-
-                mainAudio.volume = fadeoutTime - timeSince;
-            }
-        }
     }
 }
