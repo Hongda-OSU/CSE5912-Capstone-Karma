@@ -508,7 +508,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
             ""id"": ""bfe2ef66-7088-47b2-a9b0-99b74f34dc2f"",
             ""actions"": [
                 {
-                    ""name"": ""OpenMenu"",
+                    ""name"": ""IngameMenu"",
                     ""type"": ""Button"",
                     ""id"": ""2601910a-ff6c-40d0-a112-c64ec5ab17b8"",
                     ""expectedControlType"": ""Button"",
@@ -524,6 +524,15 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""EscapeMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""b0913f52-4199-4d26-be07-0331edc1e8a8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -534,7 +543,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""OpenMenu"",
+                    ""action"": ""IngameMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -546,6 +555,17 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Scroll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""95e5dc2b-e10a-4411-b84f-d5a2d607f1a6"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EscapeMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -581,8 +601,9 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         m_FPSActions_SwitchToQuinaryWeapon = m_FPSActions.FindAction("SwitchToQuinaryWeapon", throwIfNotFound: true);
         // UiActions
         m_UiActions = asset.FindActionMap("UiActions", throwIfNotFound: true);
-        m_UiActions_OpenMenu = m_UiActions.FindAction("OpenMenu", throwIfNotFound: true);
+        m_UiActions_IngameMenu = m_UiActions.FindAction("IngameMenu", throwIfNotFound: true);
         m_UiActions_Scroll = m_UiActions.FindAction("Scroll", throwIfNotFound: true);
+        m_UiActions_EscapeMenu = m_UiActions.FindAction("EscapeMenu", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -860,14 +881,16 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
     // UiActions
     private readonly InputActionMap m_UiActions;
     private IUiActionsActions m_UiActionsActionsCallbackInterface;
-    private readonly InputAction m_UiActions_OpenMenu;
+    private readonly InputAction m_UiActions_IngameMenu;
     private readonly InputAction m_UiActions_Scroll;
+    private readonly InputAction m_UiActions_EscapeMenu;
     public struct UiActionsActions
     {
         private @InputActions m_Wrapper;
         public UiActionsActions(@InputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @OpenMenu => m_Wrapper.m_UiActions_OpenMenu;
+        public InputAction @IngameMenu => m_Wrapper.m_UiActions_IngameMenu;
         public InputAction @Scroll => m_Wrapper.m_UiActions_Scroll;
+        public InputAction @EscapeMenu => m_Wrapper.m_UiActions_EscapeMenu;
         public InputActionMap Get() { return m_Wrapper.m_UiActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -877,22 +900,28 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         {
             if (m_Wrapper.m_UiActionsActionsCallbackInterface != null)
             {
-                @OpenMenu.started -= m_Wrapper.m_UiActionsActionsCallbackInterface.OnOpenMenu;
-                @OpenMenu.performed -= m_Wrapper.m_UiActionsActionsCallbackInterface.OnOpenMenu;
-                @OpenMenu.canceled -= m_Wrapper.m_UiActionsActionsCallbackInterface.OnOpenMenu;
+                @IngameMenu.started -= m_Wrapper.m_UiActionsActionsCallbackInterface.OnIngameMenu;
+                @IngameMenu.performed -= m_Wrapper.m_UiActionsActionsCallbackInterface.OnIngameMenu;
+                @IngameMenu.canceled -= m_Wrapper.m_UiActionsActionsCallbackInterface.OnIngameMenu;
                 @Scroll.started -= m_Wrapper.m_UiActionsActionsCallbackInterface.OnScroll;
                 @Scroll.performed -= m_Wrapper.m_UiActionsActionsCallbackInterface.OnScroll;
                 @Scroll.canceled -= m_Wrapper.m_UiActionsActionsCallbackInterface.OnScroll;
+                @EscapeMenu.started -= m_Wrapper.m_UiActionsActionsCallbackInterface.OnEscapeMenu;
+                @EscapeMenu.performed -= m_Wrapper.m_UiActionsActionsCallbackInterface.OnEscapeMenu;
+                @EscapeMenu.canceled -= m_Wrapper.m_UiActionsActionsCallbackInterface.OnEscapeMenu;
             }
             m_Wrapper.m_UiActionsActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @OpenMenu.started += instance.OnOpenMenu;
-                @OpenMenu.performed += instance.OnOpenMenu;
-                @OpenMenu.canceled += instance.OnOpenMenu;
+                @IngameMenu.started += instance.OnIngameMenu;
+                @IngameMenu.performed += instance.OnIngameMenu;
+                @IngameMenu.canceled += instance.OnIngameMenu;
                 @Scroll.started += instance.OnScroll;
                 @Scroll.performed += instance.OnScroll;
                 @Scroll.canceled += instance.OnScroll;
+                @EscapeMenu.started += instance.OnEscapeMenu;
+                @EscapeMenu.performed += instance.OnEscapeMenu;
+                @EscapeMenu.canceled += instance.OnEscapeMenu;
             }
         }
     }
@@ -926,7 +955,8 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
     }
     public interface IUiActionsActions
     {
-        void OnOpenMenu(InputAction.CallbackContext context);
+        void OnIngameMenu(InputAction.CallbackContext context);
         void OnScroll(InputAction.CallbackContext context);
+        void OnEscapeMenu(InputAction.CallbackContext context);
     }
 }

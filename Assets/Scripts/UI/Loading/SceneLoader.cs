@@ -51,20 +51,20 @@ namespace CSE5912.PolyGamers
 
             if (Input.GetKeyDown(KeyCode.M))
             {
-                LoadLevel("Scenes/Main/Level_2_test");
+                LoadLevel(2);
             }
 
         }
 
-        public void LoadLevel(string sceneName)
+        public void LoadLevel(int sceneIndex)
         {
             if (DropoffManager.Instance != null)
                 DropoffManager.Instance.ClearDropoffs();
 
-            StartCoroutine(LoadAsync(sceneName));
+            StartCoroutine(LoadAsync(sceneIndex));
         }
 
-        private IEnumerator LoadAsync(string sceneName)
+        private IEnumerator LoadAsync(int sceneIndex)
         {
             if (isLoading)
                 yield break;
@@ -77,17 +77,33 @@ namespace CSE5912.PolyGamers
 
             yield return StartCoroutine(FadeIn(loadingScreen));
 
-            AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
 
             progressBar.style.width = 0f;
 
-            while (!operation.isDone)
+            bool isReady = false;
+            float timeSince = 0f;
+            float time = IngameAudioControl.Instance.FadeoutTime;
+            while (!isReady)
             {
-                float progress = Mathf.Clamp01(operation.progress / 0.9f);
+                if (timeSince >= time)
+                    isReady = true;
+
+                float progress = timeSince / time * 0.5f;
 
                 progressBar.style.width = progress * barWidth;
 
-                yield return null;
+                timeSince += Time.deltaTime;
+                yield return new WaitForSeconds(Time.deltaTime);
+            }
+
+            AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
+            while (!operation.isDone)
+            {
+                float progress = Mathf.Clamp01(operation.progress / 0.9f) * 0.25f + 0.75f;
+
+                progressBar.style.width = progress * barWidth;
+
+                yield return new WaitForSeconds(Time.deltaTime);
             }
 
             root.style.display = DisplayStyle.None;

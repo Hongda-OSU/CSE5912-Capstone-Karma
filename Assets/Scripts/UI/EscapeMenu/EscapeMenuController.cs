@@ -5,15 +5,15 @@ using UnityEngine.UIElements;
 
 namespace CSE5912.PolyGamers
 {
-    public class IngameMenuController : MonoBehaviour
+    public class EscapeMenuController : MonoBehaviour
     {
 
-        private IngameMenu ingameMenu;
+        private EscapeMenu escapeMenu;
 
         public bool isDisplayed = false;
 
-        private static IngameMenuController instance;
-        public static IngameMenuController Instance { get { return instance; } }
+        private static EscapeMenuController instance;
+        public static EscapeMenuController Instance { get { return instance; } }
 
 
         private void Awake()
@@ -27,17 +27,15 @@ namespace CSE5912.PolyGamers
 
         private void Start()
         {
-            ingameMenu = IngameMenu.Instance;
+            escapeMenu = EscapeMenu.Instance;
         }
 
         public void SwitchActive(InputActions inputSchemes)
         {
-            if (!ingameMenu.GetComponent<IngameMenu>().IsFadingComplete)
+            if (!escapeMenu.GetComponent<EscapeMenu>().IsFadingComplete)
                 return;
 
             isDisplayed = !isDisplayed;
-
-            WeaponsPanelControl.Instance.ResetPanel();
 
             PostProcessingController.Instance.SetBlurryCameraView(isDisplayed);
 
@@ -58,7 +56,7 @@ namespace CSE5912.PolyGamers
             }
             EnemyHealthBarControl.Instance.DisplayEnemyHealthBars(!isDisplayed);
 
-            StartCoroutine(ingameMenu.GetComponent<IngameMenu>().DisplayMenu(isDisplayed));
+            StartCoroutine(escapeMenu.GetComponent<EscapeMenu>().DisplayMenu(isDisplayed));
         }
 
     }

@@ -330,6 +330,7 @@ MonoBehaviour:
   rarity: 1
   damage: 0
   element: 0
+  BulletPenetrable: 0
   MuzzlePoint: {fileID: 8001524344595978275}
   CasingPoint: {fileID: 8001524345088332082}
   BulletPrefab: {fileID: 1086664671600574, guid: 5953171a59c27394e9ad5cbb564affa8, type: 3}
@@ -358,7 +359,6 @@ MonoBehaviour:
   firearmsItem: {fileID: 0}
   ImpactPrefab: {fileID: 1879272669879180, guid: 7bef351ddc33ae044b671a7664396a20, type: 3}
   impactAudioData: {fileID: 11400000, guid: a4453f74fe5729140b9af202c367f21d, type: 2}
-  BulletPenetrable: 0
 --- !u!1 &837845098396444027
 GameObject:
   m_ObjectHideFlags: 0

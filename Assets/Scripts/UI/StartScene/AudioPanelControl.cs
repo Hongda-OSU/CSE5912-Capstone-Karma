@@ -69,6 +69,7 @@ namespace CSE5912.PolyGamers
             backButton.clicked += BackButtonPressed;
         }
 
+
         private void AssignCallback(VolumeControl volumeControl)
         {
             var thresholdList = volumeControl.thresholdList;

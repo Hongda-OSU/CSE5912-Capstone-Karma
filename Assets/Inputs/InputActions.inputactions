@@ -486,7 +486,7 @@
             "id": "bfe2ef66-7088-47b2-a9b0-99b74f34dc2f",
             "actions": [
                 {
-                    "name": "OpenMenu",
+                    "name": "IngameMenu",
                     "type": "Button",
                     "id": "2601910a-ff6c-40d0-a112-c64ec5ab17b8",
                     "expectedControlType": "Button",
@@ -502,6 +502,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "EscapeMenu",
+                    "type": "Button",
+                    "id": "b0913f52-4199-4d26-be07-0331edc1e8a8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -512,7 +521,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "OpenMenu",
+                    "action": "IngameMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -524,6 +533,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Scroll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "95e5dc2b-e10a-4411-b84f-d5a2d607f1a6",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "EscapeMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

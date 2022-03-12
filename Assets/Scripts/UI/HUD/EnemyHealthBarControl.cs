@@ -25,7 +25,9 @@ namespace CSE5912.PolyGamers
                 if (!child.activeSelf)
                     continue;
 
-                var healthBar = child.GetComponentInChildren<EnemyHealthBar>();
+                UI healthBar = child.GetComponentInChildren<EnemyHealthBar>();
+                if (healthBar == null)
+                    healthBar = child.GetComponentInChildren<BossInformation>();
 
                 if (enabled)
                     healthBar.Root.style.display = DisplayStyle.Flex;

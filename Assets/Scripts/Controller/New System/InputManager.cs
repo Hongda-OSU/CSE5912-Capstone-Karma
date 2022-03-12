@@ -5,7 +5,8 @@ namespace CSE5912.PolyGamers
 {
     public class InputManager : MonoBehaviour
     {
-        private OpenMenuHandler openMenuHandler;
+        private OpenIngameMenuHandler openIngameMenuHandler;
+        private OpenEscapeMenuHandler openEscapeMenuHandler;
         private ScrollHandler scrollHandler;
 
         private InputActions inputSchemes;
@@ -40,7 +41,8 @@ namespace CSE5912.PolyGamers
 
         void Start()
         {
-            openMenuHandler = new OpenMenuHandler(inputSchemes, IngameMenuController.Instance);
+            openIngameMenuHandler = new OpenIngameMenuHandler(inputSchemes);
+            openEscapeMenuHandler = new OpenEscapeMenuHandler(inputSchemes);
             scrollHandler = new ScrollHandler(inputSchemes, WeaponsPanelControl.Instance);
         }
 

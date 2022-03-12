@@ -8,7 +8,7 @@ namespace CSE5912.PolyGamers
 {
     public class StartSceneMenu : UI
     {
-        [SerializeField] private string gameScenePath;
+        [SerializeField] private int gameSceneIndex;
 
         [SerializeField] private AudioSource bgm;
         [SerializeField] private AudioSource clickSound;
@@ -30,8 +30,16 @@ namespace CSE5912.PolyGamers
         //private Button languageButton;
         private Button backButton;
 
+
+        private static StartSceneMenu instance;
+        public static StartSceneMenu Instance { get { return instance; } }
+
         private void Awake()
         {
+            if (instance != null && instance != this)
+                Destroy(gameObject);
+            instance = this;
+
             Initialize();
 
             mainMenuPanel = root.Q<VisualElement>("MainMenuPanel");
@@ -77,8 +85,9 @@ namespace CSE5912.PolyGamers
         private void StartGameButtonPressed()
         {
             StartCoroutine(FadeOutBgm());
-            SceneLoader.Instance.LoadLevel(gameScenePath);
+            SceneLoader.Instance.LoadLevel(gameSceneIndex);
             clickSound.Play();
+            root.style.display = DisplayStyle.None;
         }
         private IEnumerator FadeOutBgm()
         {

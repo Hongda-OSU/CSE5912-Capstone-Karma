@@ -28,7 +28,7 @@ namespace CSE5912.PolyGamers
         {
             bossInformation.DisplayHealthBar(true);
 
-            AudioControl.Instance.TransitionToMusic(bossMusic);
+            IngameAudioControl.Instance.TransitionToMusic(bossMusic);
         }
     }
 }
