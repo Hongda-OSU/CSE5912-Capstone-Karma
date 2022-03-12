@@ -49,6 +49,7 @@ namespace CSE5912.PolyGamers
             // impact prefab
             if (hit.transform.tag != "Enemy" && hit.transform.tag != "Player")
             {
+
                 var tmp_BulletEffect =
                     Instantiate(ImpactPrefab,
                         hit.point,
@@ -69,6 +70,9 @@ namespace CSE5912.PolyGamers
 
         private void CheckTargetHit(RaycastHit hit)
         {
+            if (!Penetrable)
+                Destroy(gameObject);
+
             hitPosition = hit.point;
             targetHit = hit.transform.gameObject;
 
@@ -84,12 +88,6 @@ namespace CSE5912.PolyGamers
                 PlayerManager.Instance.HitByBullet = enemy;
                 PlayerManager.Instance.PerformBulletDamage(enemy, hit.point);
                 PlayerManager.Instance.StackDebuff(WeaponManager.Instance.CarriedWeapon.Element, enemy);
-
-                // test
-                //enemy.StackDebuff(Element.Type.Fire);
-                //enemy.StackDebuff(Element.Type.Cryo);
-                //enemy.StackDebuff(Element.Type.Electro);
-                //enemy.StackDebuff(Element.Type.Venom);
             }
             else if (target is Shield shield)
             {
@@ -97,8 +95,6 @@ namespace CSE5912.PolyGamers
                 PlayerManager.Instance.PerformBulletDamage(shield, damage, hit.point);
             }
 
-            if (!Penetrable)
-                Destroy(gameObject);
         }
 
     }

@@ -15671,7 +15671,7 @@ AudioSource:
   m_GameObject: {fileID: 5920479355840996773}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 2278350589391119314, guid: 16ed322527a09094c845f7f2988eff06, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -15767,7 +15767,7 @@ AudioSource:
   m_GameObject: {fileID: 5920479355840996773}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 2278350589391119314, guid: 16ed322527a09094c845f7f2988eff06, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -15871,6 +15871,7 @@ MonoBehaviour:
   rarity: 0
   damage: 5
   element: 0
+  BulletPenetrable: 0
   MuzzlePoint: {fileID: 4300899043351599720}
   CasingPoint: {fileID: 5918545268053729359}
   BulletPrefab: {fileID: 1086664671600574, guid: 5953171a59c27394e9ad5cbb564affa8, type: 3}
@@ -15880,6 +15881,10 @@ MonoBehaviour:
   MaxAmmoCarried: 200
   FireRate: 14
   CurrentAmmo: 0
+  shootEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  bulletFired: {fileID: 0}
   ShootingAudioSource: {fileID: 5983503529494305417}
   ReloadingAudioSource: {fileID: 5983544693625368523}
   WeaponAudioData: {fileID: 11400000, guid: b976843b5dd46404d9044293adecc20c, type: 2}
@@ -15895,7 +15900,6 @@ MonoBehaviour:
   firearmsItem: {fileID: 0}
   ImpactPrefab: {fileID: 1879272669879180, guid: 7bef351ddc33ae044b671a7664396a20, type: 3}
   impactAudioData: {fileID: 11400000, guid: 77d82378f50d24793accd21a66000c94, type: 2}
-  BulletPenetrable: 1
 --- !u!1 &5920504179956189259
 GameObject:
   m_ObjectHideFlags: 0

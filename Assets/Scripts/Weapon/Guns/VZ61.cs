@@ -13,7 +13,6 @@ namespace CSE5912.PolyGamers
         private Quaternion ControllerLocalOriginalRotation;
         private Vector3 ControllerLocalOriginalPosition;
         private FPSMouseLook fpsMouseLook;
-        public bool BulletPenetrable = true;
 
         protected override void Awake()
         {

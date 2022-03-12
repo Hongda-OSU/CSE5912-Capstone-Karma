@@ -25977,7 +25977,7 @@ AudioSource:
   m_GameObject: {fileID: 6767761926317476123}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 2278350589391119314, guid: 16ed322527a09094c845f7f2988eff06, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.55
@@ -26073,7 +26073,7 @@ AudioSource:
   m_GameObject: {fileID: 6767761926317476123}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 2278350589391119314, guid: 16ed322527a09094c845f7f2988eff06, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -26186,6 +26186,10 @@ MonoBehaviour:
   MaxAmmoCarried: 32
   FireRate: 5
   CurrentAmmo: 0
+  shootEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  bulletFired: {fileID: 0}
   ShootingAudioSource: {fileID: 6767761926317476135}
   ReloadingAudioSource: {fileID: 6767761926317476135}
   WeaponAudioData: {fileID: 11400000, guid: 571751b02e0e14122bea17d011d37143, type: 2}

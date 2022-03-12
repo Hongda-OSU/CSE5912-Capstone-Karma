@@ -14,6 +14,7 @@ namespace CSE5912.PolyGamers
         [SerializeField] private WeaponRarity rarity = WeaponRarity.Common;
         [SerializeField] private float damage = 0f;
         [SerializeField] private Element.Type element;
+        public bool BulletPenetrable = false;
         private WeaponBonus weaponBonus;
 
         public enum WeaponRarity
