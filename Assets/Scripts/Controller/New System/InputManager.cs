@@ -9,10 +9,7 @@ namespace CSE5912.PolyGamers
         private OpenEscapeMenuHandler openEscapeMenuHandler;
         private ScrollHandler scrollHandler;
 
-        private InputActions inputSchemes;
-        private FPSControllerCC fpsController;
-        private FPSMouseLook fpsMouseLook;
-        private WeaponManager weaponManager;
+        private static InputActions inputSchemes;
 
         private static InputManager instance;
         public static InputManager Instance { get { return instance; } }
@@ -22,25 +19,26 @@ namespace CSE5912.PolyGamers
                 Destroy(gameObject);
             instance = this;
 
-            inputSchemes = new InputActions();
-            fpsController = FindObjectOfType<FPSControllerCC>();
-            fpsMouseLook = FindObjectOfType<FPSMouseLook>();
-            weaponManager = FindObjectOfType<WeaponManager>();
-            weaponManager.inputSchemes = inputSchemes;
+            if (inputSchemes == null)
+                inputSchemes = new InputActions();
 
-            inputSchemes.PlayerActions.Jump.performed += ctx => fpsController.PerformJump();
-            inputSchemes.PlayerActions.Crouch.performed += ctx => fpsController.PerformCrouch();
-            inputSchemes.PlayerActions.Dash.performed += ctx => fpsController.PerformDash();
-            inputSchemes.PlayerActions.Inspect.performed += ctx => fpsController.PerformInspect();
-            inputSchemes.PlayerActions.Sprint.performed += ctx => fpsController.DoSprint();
-            inputSchemes.PlayerActions.Sprint.canceled += ctx => fpsController.DoSprint();
-            inputSchemes.FPSActions.Reload.performed += ctx => weaponManager.StartReloadAmmo();
-            inputSchemes.FPSActions.Aim.performed += ctx => weaponManager.StartAiming();
-            inputSchemes.FPSActions.Aim.canceled += ctx => weaponManager.StopAiming();
+            
         }
 
         void Start()
         {
+            WeaponManager.Instance.inputSchemes = inputSchemes;
+
+            inputSchemes.PlayerActions.Jump.performed += ctx => FPSControllerCC.Instance.PerformJump();
+            inputSchemes.PlayerActions.Crouch.performed += ctx => FPSControllerCC.Instance.PerformCrouch();
+            inputSchemes.PlayerActions.Dash.performed += ctx => FPSControllerCC.Instance.PerformDash();
+            inputSchemes.PlayerActions.Inspect.performed += ctx => FPSControllerCC.Instance.PerformInspect();
+            inputSchemes.PlayerActions.Sprint.performed += ctx => FPSControllerCC.Instance.DoSprint();
+            inputSchemes.PlayerActions.Sprint.canceled += ctx => FPSControllerCC.Instance.DoSprint();
+            inputSchemes.FPSActions.Reload.performed += ctx => WeaponManager.Instance.StartReloadAmmo();
+            inputSchemes.FPSActions.Aim.performed += ctx => WeaponManager.Instance.StartAiming();
+            inputSchemes.FPSActions.Aim.canceled += ctx => WeaponManager.Instance.StopAiming();
+
             openIngameMenuHandler = new OpenIngameMenuHandler(inputSchemes);
             openEscapeMenuHandler = new OpenEscapeMenuHandler(inputSchemes);
             scrollHandler = new ScrollHandler(inputSchemes, WeaponsPanelControl.Instance);
@@ -48,12 +46,12 @@ namespace CSE5912.PolyGamers
 
         void Update()
         {
-            fpsController.ProcessMove(inputSchemes.PlayerActions.Move.ReadValue<Vector2>());
+            FPSControllerCC.Instance.ProcessMove(inputSchemes.PlayerActions.Move.ReadValue<Vector2>());
         }
 
         void LateUpdate()
         {
-            fpsMouseLook.ProcessLook(inputSchemes.PlayerActions.Look.ReadValue<Vector2>());
+            FPSMouseLook.Instance.ProcessLook(inputSchemes.PlayerActions.Look.ReadValue<Vector2>());
         }
 
         void OnEnable()
