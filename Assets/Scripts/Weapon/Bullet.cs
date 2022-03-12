@@ -47,7 +47,7 @@ namespace CSE5912.PolyGamers
             CheckTargetHit(hit);
 
             // impact prefab
-            if (hit.transform.tag != "Enemy")
+            if (hit.transform.tag != "Enemy" && hit.transform.tag != "Player")
             {
                 var tmp_BulletEffect =
                     Instantiate(ImpactPrefab,
