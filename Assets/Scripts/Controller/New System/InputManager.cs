@@ -13,6 +13,7 @@ namespace CSE5912.PolyGamers
 
         private static InputManager instance;
         public static InputManager Instance { get { return instance; } }
+
         void Awake()
         {
             if (instance != null && instance != this)
@@ -21,8 +22,6 @@ namespace CSE5912.PolyGamers
 
             if (inputSchemes == null)
                 inputSchemes = new InputActions();
-
-            
         }
 
         void Start()

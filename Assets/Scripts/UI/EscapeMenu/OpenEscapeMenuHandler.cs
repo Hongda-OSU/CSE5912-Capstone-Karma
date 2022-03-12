@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 namespace CSE5912.PolyGamers
 {
@@ -19,6 +20,12 @@ namespace CSE5912.PolyGamers
 
         void OpenMenu_performed(InputAction.CallbackContext obj)
         {
+            if (IngameMenu.Instance.Root.style.display == DisplayStyle.Flex)
+            {
+                IngameMenuController.Instance.SwitchActive();
+                return;
+            }
+
             EscapeMenuController.Instance.SwitchActive(inputSchemes);
         }
     }

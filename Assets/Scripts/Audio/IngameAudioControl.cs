@@ -19,7 +19,12 @@ namespace CSE5912.PolyGamers
             instance = this;
         }
 
-        public IEnumerator FadeOutBgm()
+        public void SmoothMusicVolume(float volume)
+        {
+            StartCoroutine(FadeBgm(volume));
+        }
+
+        private IEnumerator FadeBgm(float volume)
         {
             float timeSince = 0f;
             while (timeSince < fadeoutTime)
@@ -27,7 +32,7 @@ namespace CSE5912.PolyGamers
                 timeSince += Time.deltaTime;
                 yield return new WaitForSecondsRealtime(Time.deltaTime);
 
-                mainAudio.volume = fadeoutTime - timeSince;
+                mainAudio.volume = Mathf.Lerp(mainAudio.volume, volume, timeSince);
             }
         }
 
@@ -38,7 +43,7 @@ namespace CSE5912.PolyGamers
 
         private IEnumerator FadeAndPlay(AudioClip clip)
         {
-            yield return StartCoroutine(FadeOutBgm());
+            yield return StartCoroutine(FadeBgm(0f));
 
             mainAudio.volume = 1f;
             mainAudio.clip = clip;

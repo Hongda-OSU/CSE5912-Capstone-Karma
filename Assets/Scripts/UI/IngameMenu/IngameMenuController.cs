@@ -12,6 +12,8 @@ namespace CSE5912.PolyGamers
 
         public bool isDisplayed = false;
 
+        InputActions inputSchemes;
+
         private static IngameMenuController instance;
         public static IngameMenuController Instance { get { return instance; } }
 
@@ -30,7 +32,12 @@ namespace CSE5912.PolyGamers
             ingameMenu = IngameMenu.Instance;
         }
 
-        public void SwitchActive(InputActions inputSchemes)
+        public void Initialize(InputActions inputSchemes)
+        {
+            this.inputSchemes = inputSchemes;
+        }
+
+        public void SwitchActive()
         {
             if (!ingameMenu.GetComponent<IngameMenu>().IsFadingComplete)
                 return;

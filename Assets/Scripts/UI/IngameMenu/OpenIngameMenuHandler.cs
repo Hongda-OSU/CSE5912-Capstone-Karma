@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 namespace CSE5912.PolyGamers
 {
@@ -15,11 +16,16 @@ namespace CSE5912.PolyGamers
 
             inputSchemes.UiActions.IngameMenu.performed += OpenMenu_performed;
             inputSchemes.UiActions.IngameMenu.Enable();
+
+            IngameMenuController.Instance.Initialize(inputSchemes);
         }
 
         void OpenMenu_performed(InputAction.CallbackContext obj)
         {
-            IngameMenuController.Instance.SwitchActive(inputSchemes);
+            if (EscapeMenu.Instance.Root.style.display == DisplayStyle.Flex)
+                return;
+
+            IngameMenuController.Instance.SwitchActive();
         }
     }
 }
