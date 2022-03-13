@@ -19,8 +19,8 @@ TagManager:
   - Blur
   - Water
   - UI
-  - 
-  - 
+  - BlockBullet
+  - Enemy
   - Player
   - Gun
   - Item

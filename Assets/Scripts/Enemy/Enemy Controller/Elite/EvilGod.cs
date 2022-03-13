@@ -25,7 +25,12 @@ namespace CSE5912.PolyGamers
 
         private bool isPerforming = false;
 
+        protected override void Start()
+        {
+            base.Start();
 
+            animator.applyRootMotion = false;
+        }
         protected override void PerformActions()
         {
             if (isPerforming)
@@ -208,29 +213,5 @@ namespace CSE5912.PolyGamers
             }
 
         }
-        //protected override void StartAttack()
-        //{
-        //    base.StartAttack();
-
-        //    StartCoroutine(DisplayVfx());
-        //}
-        //private IEnumerator DisplayVfx()
-        //{
-        //    Vector3 forward = transform.forward;
-
-        //    GameObject vfx = Instantiate(fireBlade);
-        //    vfx.transform.position = transform.position + Vector3.up * 2;
-        //    vfx.transform.LookAt(forward);
-        //    vfx.transform.localScale = Vector3.one * vfxScale;
-
-        //    float timeSince = 0f;
-        //    while (timeSince < 10f)
-        //    {
-        //        timeSince += Time.deltaTime;
-        //        yield return new WaitForSeconds(Time.deltaTime);
-
-        //        vfx.transform.position += forward * vfxSpeed * Time.deltaTime;
-        //    }
-        //}
     }
 }

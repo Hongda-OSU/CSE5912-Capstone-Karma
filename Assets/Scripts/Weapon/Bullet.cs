@@ -47,7 +47,7 @@ namespace CSE5912.PolyGamers
             CheckTargetHit(hit);
 
             // impact prefab
-            if (hit.transform.tag != "Enemy" && hit.transform.tag != "Player")
+            if (hit.transform.gameObject.layer == LayerMask.NameToLayer("BlockBullet"))
             {
 
                 var tmp_BulletEffect =
@@ -70,7 +70,9 @@ namespace CSE5912.PolyGamers
 
         private void CheckTargetHit(RaycastHit hit)
         {
-            if (!Penetrable)
+            var layer = hit.transform.gameObject.layer;
+            bool isBlocked = layer == LayerMask.NameToLayer("BlockBullet") || layer == LayerMask.NameToLayer("Enemy");
+            if (!Penetrable && isBlocked)
                 Destroy(gameObject);
 
             hitPosition = hit.point;
