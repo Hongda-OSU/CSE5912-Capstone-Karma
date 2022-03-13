@@ -7,13 +7,15 @@ namespace CSE5912.PolyGamers
 {
     public class BossArea : MonoBehaviour
     {
+        [SerializeField] private float areaRadius = 20f;
         [SerializeField] private BossInformation bossInformation;
         [SerializeField] private AudioClip bossMusic;
-        private Collider areaTrigger;
+        private SphereCollider triggerCollider;
 
         private void Awake()
         {
-            areaTrigger = GetComponent<Collider>();
+            triggerCollider = GetComponent<SphereCollider>();
+            triggerCollider.radius = areaRadius;
         }
 
         private void OnTriggerEnter(Collider other)

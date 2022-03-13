@@ -14,10 +14,19 @@ namespace CSE5912.PolyGamers
         [Header("Lightning Explosion")]
         [SerializeField] private GameObject lightningExplosionPrefab;
         [SerializeField] private int lightningExplosionNumber = 20;
+        [SerializeField] private float lightningExplostionRange = 15f;
         [SerializeField] private float lightningExplosionSpacing = 2f;
         [SerializeField] private float lightningExplosionInterval = 0.1f;
         [SerializeField] private float lightningExplosionCooldown = 5f;
         private bool isLightningExplosionReady = true;
+
+        [Header("Lightning Missile")]
+        [SerializeField] private GameObject lightningMissilePrefab;
+        [SerializeField] private Transform lightningMissilePivot;
+        [SerializeField] private float lightningMissileRange = 20f;
+        [SerializeField] private float lightningMissileSpeed = 10f;
+        [SerializeField] private float lightningMissileCooldown = 1f;
+        private bool isLightningMissileReady = true;
 
         [Header("Shield")]
         [SerializeField] private GameObject shieldPrefab;
@@ -146,18 +155,57 @@ namespace CSE5912.PolyGamers
 
         private void Attack()
         {
-            Attack_LightningExplosion();
+            Attack_lightningExplosion();
+            Attack_lightningMissile();
 
             status = Status.Attacking;
         }
 
-        private void Attack_LightningExplosion()
+        private void Attack_lightningMissile()
         {
-            if (!isLightningExplosionReady)
+            if (!isLightningMissileReady)
+                return;
+            if (distanceToPlayer > lightningMissileRange)
                 return;
 
             status = Status.Attacking;
             SetAttack(0);
+            //currentAttackNum++;
+            isPerforming = true;
+        }
+        private IEnumerator LightningMissile_performed()
+        {
+            isPerforming = false;
+
+            GameObject vfx = Instantiate(lightningMissilePrefab);
+            vfx.transform.position = lightningMissilePivot.position;
+            vfx.transform.LookAt(PlayerManager.Instance.Player.transform);
+
+            var damager = vfx.GetComponent<Damager_collision>();
+            float damage = damager.BaseDamage;
+
+            vfx.GetComponent<Damager_collision>().Source = this;
+            vfx.GetComponent<Damager_collision>().BaseDamage = damage;
+
+            while (!damager.IsPlayerHit)
+            {
+                yield return new WaitForSeconds(Time.deltaTime);
+
+                vfx.transform.position += vfx.transform.forward * lightningMissileSpeed * Time.deltaTime;
+            }
+            Destroy(vfx);
+        }
+
+
+        private void Attack_lightningExplosion()
+        {
+            if (!isLightningExplosionReady)
+                return;
+            if (distanceToPlayer > lightningExplostionRange)
+                return;
+
+            status = Status.Attacking;
+            SetAttack(1);
             currentAttackNum++;
             isPerforming = true;
         }
@@ -173,6 +221,8 @@ namespace CSE5912.PolyGamers
 
             float damage = lightningExplosionPrefab.GetComponent<Damager_collision>().BaseDamage;
 
+            Vector3 position = transform.position;
+            Vector3 direction = transform.forward;
             for (int i = 0; i < lightningExplosionNumber; i++)
             {
                 GameObject vfx = Instantiate(lightningExplosionPrefab, lightningExplosions.transform);
@@ -180,7 +230,7 @@ namespace CSE5912.PolyGamers
                 vfx.GetComponent<Damager_collision>().Source = this;
                 vfx.GetComponent<Damager_collision>().BaseDamage = damage;
 
-                vfx.transform.position = transform.position + transform.forward * offset * (i + 1);
+                vfx.transform.position = position + direction * offset * (i + 1);
 
                 Destroy(vfx, 5f);
 
@@ -196,6 +246,8 @@ namespace CSE5912.PolyGamers
             yield return new WaitForSeconds(lightningExplosionCooldown);
             isLightningExplosionReady = true;
         }
+
+        
 
         private void OpenShield()
         {

@@ -4,8 +4,7 @@ using UnityEngine;
 
 namespace CSE5912.PolyGamers
 {
-    public abstract class EnemySkill : Skill
+    public abstract class EnemySkill
     {
-        public abstract void Perform();
     }
 }
