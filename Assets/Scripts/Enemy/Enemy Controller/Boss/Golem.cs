@@ -4,15 +4,26 @@ using UnityEngine;
 
 namespace CSE5912.PolyGamers
 {
-    public class Golem : MonoBehaviour
+    public class Golem : EliteEnemy
     {
-        // Start is called before the first frame update
+        protected override void PerformActions()
+        {
+            
+        }
+
+        protected override IEnumerator PerformActionsOnWaiting()
+        {
+            FaceTarget(directionToPlayer);
+            agent.isStopped = false;
+
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
+
         void Start()
         {
         
         }
 
-        // Update is called once per frame
         void Update()
         {
         
