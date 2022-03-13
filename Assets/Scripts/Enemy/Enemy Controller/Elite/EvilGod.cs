@@ -11,11 +11,12 @@ namespace CSE5912.PolyGamers
         [SerializeField] private GameObject portalPrefab;
         [SerializeField] private Transform portalPivot;
 
-        [Header("Lightning")]
+        [Header("Lightning Explosion")]
         [SerializeField] private GameObject lightningExplosionPrefab;
         [SerializeField] private int lightningExplosionNumber = 20;
         [SerializeField] private float lightningExplosionSpacing = 2f;
         [SerializeField] private float lightningExplosionInterval = 0.1f;
+        [SerializeField] private float lightningExplosionCooldown = 5f;
         private bool isLightningExplosionReady = true;
 
         [Header("Shield")]
@@ -31,6 +32,7 @@ namespace CSE5912.PolyGamers
 
             animator.applyRootMotion = false;
         }
+
         protected override void PerformActions()
         {
             if (isPerforming)
@@ -52,7 +54,7 @@ namespace CSE5912.PolyGamers
                         {
                             if (isPlayerInAttackRange)
                             {
-                                Attack_LightningExplosion();
+                                Attack();
                             }
                             else
                             {
@@ -142,8 +144,18 @@ namespace CSE5912.PolyGamers
             isPerforming = false;
         }
 
+        private void Attack()
+        {
+            Attack_LightningExplosion();
+
+            status = Status.Attacking;
+        }
+
         private void Attack_LightningExplosion()
         {
+            if (!isLightningExplosionReady)
+                return;
+
             status = Status.Attacking;
             SetAttack(0);
             currentAttackNum++;
@@ -152,6 +164,8 @@ namespace CSE5912.PolyGamers
         private IEnumerator LightningExplosion_performed()
         {
             isPerforming = false;
+
+            isLightningExplosionReady = false;
 
             var lightningExplosions = new GameObject("LightningExplosions");
 
@@ -179,7 +193,8 @@ namespace CSE5912.PolyGamers
             }
             Destroy(lightningExplosions, 5f);
 
-            agent.speed = agentSpeed;
+            yield return new WaitForSeconds(lightningExplosionCooldown);
+            isLightningExplosionReady = true;
         }
 
         private void OpenShield()

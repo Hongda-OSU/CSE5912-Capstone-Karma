@@ -69,7 +69,7 @@ namespace CSE5912.PolyGamers
             }
         }
 
-        public Skill FindSkillBySlot(VisualElement slot)
+        public PlayerSkill FindSkillBySlot(VisualElement slot)
         {
             foreach (var skillSlot in skillSlotList)
             {
@@ -92,16 +92,16 @@ namespace CSE5912.PolyGamers
             }
         }
 
-        public void AssignPassive(int index, Skill skill)
+        public void AssignPassive(int index, PlayerSkill skill)
         {
             passiveSlotList[index].skill = skill;
         }
-        public void AssignBuff(int index, Skill skill)
+        public void AssignBuff(int index, PlayerSkill skill)
         {
             buffSlotList[index].skill = skill;
         }
 
-        public void AssignMain(Skill skill)
+        public void AssignMain(PlayerSkill skill)
         {
             mainSkill.skill = skill;
         }

@@ -92,7 +92,6 @@ namespace CSE5912.PolyGamers
         }
 
 
-
         /*
          *  enemy actions
          */

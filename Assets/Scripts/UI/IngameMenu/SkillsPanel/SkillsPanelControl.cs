@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
-using static CSE5912.PolyGamers.Skill;
+using static CSE5912.PolyGamers.PlayerSkill;
 
 namespace CSE5912.PolyGamers
 {
     public class SkillsPanelControl : UI
     {
-        private PlayerSkill playerSkill;
+        private PlayerSkillTree playerSkill;
 
         private SkillTree skillTree_element;
 
@@ -52,7 +52,7 @@ namespace CSE5912.PolyGamers
 
         private void Start()
         {
-            playerSkill = PlayerSkill.Instance;
+            playerSkill = PlayerSkillTree.Instance;
 
             UpdateVisual();
 
@@ -71,9 +71,9 @@ namespace CSE5912.PolyGamers
             UpdateVisual();
         }
 
-        private Skill SelectSkillSlot(VisualElement slot)
+        private PlayerSkill SelectSkillSlot(VisualElement slot)
         {
-            Skill skill = null;
+            PlayerSkill skill = null;
 
             string slotName = slot.name;
             if (slotName.Contains("MainSkill") || slotName.Contains("Skill_") || slotName.Contains("Buff_"))
@@ -118,7 +118,7 @@ namespace CSE5912.PolyGamers
         private IEnumerator PopUpSkillSpecific(VisualElement slot)
         {
 
-            Skill skill = skillTree_element.FindSkillBySlot(slot);
+            PlayerSkill skill = skillTree_element.FindSkillBySlot(slot);
 
             if (skill == null)
             {

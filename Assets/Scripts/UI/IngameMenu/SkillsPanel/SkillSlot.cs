@@ -10,7 +10,7 @@ namespace CSE5912.PolyGamers
         public VisualElement slot;
         public VisualElement icon;
         public List<VisualElement> indicatorList;
-        public Skill skill;
+        public PlayerSkill skill;
 
         public SkillSlot(VisualElement skillSlot)
         {
