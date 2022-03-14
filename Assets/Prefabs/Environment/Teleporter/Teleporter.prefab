@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 888570573}
   - component: {fileID: 176542633}
   - component: {fileID: 176542634}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Teleporter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -343,7 +343,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2896988145014827659}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FinalPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -374,7 +374,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2809263505112969910}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: StartPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -405,7 +405,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 343194848240221918}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PowerPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}

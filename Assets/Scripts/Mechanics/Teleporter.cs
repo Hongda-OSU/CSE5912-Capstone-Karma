@@ -8,7 +8,8 @@ namespace CSE5912.PolyGamers
     {
         [SerializeField] private Transform target;
 
-        [SerializeField] private float animationTime = 5f;
+        [SerializeField] private float risingTime = 3f;
+        [SerializeField] private float shootingTime = 4.5f;
 
         [SerializeField] private AudioSource risingSound;
         [SerializeField] private AudioSource shootingSound;
@@ -49,10 +50,10 @@ namespace CSE5912.PolyGamers
                 return;
 
             if (InputManager.Instance.InputSchemes.PlayerActions.Interact.triggered)
-                StartCoroutine(TeleportPlayer(target.position));
+                StartCoroutine(TeleportPlayer());
         }
 
-        private IEnumerator TeleportPlayer(Vector3 position)
+        private IEnumerator TeleportPlayer()
         {
             isUsed = true;
 
@@ -62,8 +63,14 @@ namespace CSE5912.PolyGamers
             portal.transform.position = player.transform.position - Vector3.up * 5f;
 
             GameStateController.Instance.SetGameState(GameStateController.GameState.Loading);
+            player.GetComponent<CharacterController>().enabled = false;
             yield return new WaitForSeconds(3f);
-            player.transform.position = position;
+                
+            player.transform.position = target.transform.position;
+            FPSMouseLook.Instance.ResetLook();
+
+            player.GetComponent<CharacterController>().enabled = true;
+
             GameStateController.Instance.SetGameState(GameStateController.GameState.InGame);
 
             Destroy(portal, 1f);
@@ -81,9 +88,9 @@ namespace CSE5912.PolyGamers
             Vector3 endPosition = finalPivot.position;
 
             float timeSince = 0f;
-            while (timeSince < animationTime)
+            while (timeSince < risingTime)
             {
-                transform.position = Vector3.Slerp(startPosition, endPosition, timeSince / animationTime);
+                transform.position = Vector3.Slerp(startPosition, endPosition, timeSince / risingTime);
 
                 timeSince += Time.deltaTime;
                 yield return new WaitForSeconds(Time.deltaTime);
@@ -93,7 +100,7 @@ namespace CSE5912.PolyGamers
             GameObject power = Instantiate(powerPrefab);
             power.transform.position = powerPivot.position;
 
-            yield return new WaitForSeconds(4.5f);
+            yield return new WaitForSeconds(shootingTime);
 
             meshFilter.mesh = activeMesh;
             shootingSound.Play();

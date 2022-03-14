@@ -101,6 +101,9 @@ namespace CSE5912.PolyGamers
 
         public void ProcessMove(Vector2 movementInput)
         {
+            if (!characterController.enabled)
+                return;
+
             horizontalInput = movementInput.x;
             verticalInput = movementInput.y;
             movementDirection =

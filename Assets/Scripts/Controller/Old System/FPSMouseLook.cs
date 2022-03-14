@@ -64,6 +64,13 @@ namespace CSE5912.PolyGamers
             cameraTransform.rotation = Quaternion.Euler(cameraRotation.x, cameraRotation.y, 0);
         }
 
+        public void ResetLook()
+        {
+            cameraRotation = Vector2.zero;
+            characterTransform.rotation = Quaternion.identity;
+            cameraTransform.rotation = Quaternion.identity;
+        }
+
         private void CalculateRecoilOffset()
         {
             currentRecoilTime += Time.deltaTime;
