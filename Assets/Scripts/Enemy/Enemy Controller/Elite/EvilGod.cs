@@ -26,12 +26,6 @@ namespace CSE5912.PolyGamers
             blink = GetComponentInChildren<Blink_evilGod>();
         }
 
-        protected override void Start()
-        {
-            base.Start();
-
-            animator.applyRootMotion = false;
-        }
 
         protected override void PerformActions()
         {
@@ -101,7 +95,16 @@ namespace CSE5912.PolyGamers
 
         public override void TriggerBossFight()
         {
+            isInvincible = true;
+            animator.applyRootMotion = true;
+            animator.SetTrigger("Awake");
+        }
+
+        private void AwakeAnimationComplete()
+        {
+            isInvincible = false;
             isBossFightTriggered = true;
+            animator.applyRootMotion = false;
         }
 
         protected override void MoveToPlayer()

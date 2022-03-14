@@ -18,6 +18,13 @@ namespace CSE5912.PolyGamers
             instance = this;
         }
 
+        public void Play(AudioClip clip)
+        {
+            mainAudio.volume = 1f;
+            mainAudio.clip = clip;
+            mainAudio.Play();
+        }
+
         public void SmoothMusicVolume(float volume)
         {
             StartCoroutine(FadeBgm(volume));
@@ -49,5 +56,6 @@ namespace CSE5912.PolyGamers
             mainAudio.Play();
         }
 
+        public AudioSource MainAudio { get { return mainAudio; } }
     }
 }

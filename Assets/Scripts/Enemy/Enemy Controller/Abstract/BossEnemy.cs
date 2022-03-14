@@ -15,5 +15,7 @@ namespace CSE5912.PolyGamers
             base.CalculateAggro();
             playerDetected = isBossFightTriggered;
         }
+
+        public bool IsBossFightTriggered { get { return playerDetected; } }
     }
 }

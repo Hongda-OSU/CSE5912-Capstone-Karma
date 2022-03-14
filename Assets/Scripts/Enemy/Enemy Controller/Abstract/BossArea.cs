@@ -10,6 +10,9 @@ namespace CSE5912.PolyGamers
         [SerializeField] private float areaRadius = 20f;
         [SerializeField] private BossEnemy enemy;
         [SerializeField] private AudioClip bossMusic;
+        [SerializeField] private float triggerDelay = 3f;
+
+        private bool isTriggered = false;
         private SphereCollider triggerCollider;
 
         private void Awake()
@@ -21,19 +24,29 @@ namespace CSE5912.PolyGamers
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.transform.tag != "Player")
+            if (other.transform.tag != "Player" || isTriggered)
                 return;
 
-            TriggerBossFight();
+            isTriggered = true;
+            StartCoroutine(TriggerBossFight());
         }
 
-        private void TriggerBossFight()
+        private IEnumerator TriggerBossFight()
         {
+            IngameAudioControl.Instance.SmoothMusicVolume(0f);
+
+            yield return new WaitForSeconds(triggerDelay);
+
             enemy.TriggerBossFight();
 
+            while (!enemy.IsBossFightTriggered)
+            {
+                yield return new WaitForSeconds(Time.deltaTime);
+            }
+            IngameAudioControl.Instance.Play(bossMusic);
             enemy.gameObject.GetComponentInChildren<BossInformation>().DisplayHealthBar(true);
-
-            IngameAudioControl.Instance.TransitionToMusic(bossMusic);
         }
+
+
     }
 }

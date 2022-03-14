@@ -21,6 +21,7 @@ namespace CSE5912.PolyGamers
         [SerializeField] protected float agentSpeed = 0f;
         [SerializeField] protected bool isAlive = true;
         [SerializeField] protected bool isFrozen = false;
+        public bool isInvincible = false;
 
         protected Burned burned;
         protected Frozen frozen;
@@ -107,7 +108,7 @@ namespace CSE5912.PolyGamers
 
         public virtual void TakeDamage(Damage damage)
         {
-            if (!isAlive)
+            if (!isAlive || isInvincible)
             {
                 return;
             }
