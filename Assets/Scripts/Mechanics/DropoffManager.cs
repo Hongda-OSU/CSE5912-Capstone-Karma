@@ -51,7 +51,7 @@ namespace CSE5912.PolyGamers
                 if (baseWeapon.GetComponent<Firearms>().Type == type)
                 {
                     weaponObj = Instantiate(baseWeapon);
-                    weaponObj.transform.SetParent(transform);
+                    weaponObj.transform.SetParent(transform, false);
                 }
             }
             if (weaponObj == null)
@@ -80,7 +80,7 @@ namespace CSE5912.PolyGamers
                     Vector3 offset = new Vector3(Random.Range(-dropPositionVariance.x, dropPositionVariance.x), 0, Random.Range(-dropPositionVariance.y, dropPositionVariance.y));
                     pos += offset;
                     dropoff = Instantiate(drop, pos, Quaternion.identity);
-                    dropoff.transform.SetParent(transform);
+                    dropoff.transform.SetParent(transform, true);
                 }
             }
 
@@ -97,10 +97,10 @@ namespace CSE5912.PolyGamers
                 if (drop.GetComponent<FirearmsItem>().Type == weapon.Type)
                 {
                     dropoff = Instantiate(drop, position, Quaternion.identity);
-                    dropoff.transform.SetParent(transform);
+                    dropoff.transform.SetParent(transform, true);
                 }
             }
-            
+
             dropoff.GetComponent<FirearmsItem>().Setup(weapon);
 
             return dropoff;
@@ -126,8 +126,8 @@ namespace CSE5912.PolyGamers
             dropoff = Instantiate(randomAttachment, pos, Quaternion.identity);
             dropoff.GetComponent<AttachmentItem>().Setup(rarity);
 
-            dropoff.transform.SetParent(transform);
-            dropoff.GetComponent<AttachmentItem>().Attachment.transform.SetParent(transform);
+            dropoff.transform.SetParent(transform, true);
+            dropoff.GetComponent<AttachmentItem>().Attachment.transform.SetParent(transform, true);
 
             return dropoff;
         }
