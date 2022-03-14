@@ -13,7 +13,7 @@ namespace CSE5912.PolyGamers
 
         [SerializeField] private GameObject impactPrefab;
 
-        public override IEnumerator Perform()
+        public IEnumerator Perform()
         {
             StartCoolingdown();
 
@@ -26,12 +26,15 @@ namespace CSE5912.PolyGamers
             var damager = vfx.GetComponent<Damager_collision>();
             damager.Initialize(enemy);
 
-            while (damager.Hit == null && vfx != null)
+            while (vfx != null && damager.Hit == null)
             {
                 vfx.transform.position += vfx.transform.forward * speed * Time.deltaTime;
 
                 yield return new WaitForSeconds(Time.deltaTime);
             }
+
+            if (vfx == null)
+                yield break;
 
             GameObject impact = Instantiate(impactPrefab);
             impact.GetComponent<Damager_collision>().Initialize(enemy);

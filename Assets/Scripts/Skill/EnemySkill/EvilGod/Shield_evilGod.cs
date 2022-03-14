@@ -9,7 +9,7 @@ namespace CSE5912.PolyGamers
         [SerializeField] private GameObject shieldPrefab;
         [SerializeField] private float triggerHealthPercentage = 0.5f;
 
-        public override IEnumerator Perform()
+        public IEnumerator Perform()
         {
             isReady = false;
 

@@ -13,7 +13,6 @@ namespace CSE5912.PolyGamers
             StartCoolingdown();
         }
 
-        public abstract IEnumerator Perform();
         public abstract bool IsPerformingAllowed();
     }
 }

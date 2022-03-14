@@ -30,9 +30,60 @@ Transform:
   m_Children:
   - {fileID: 1163624572}
   - {fileID: 1079582234}
+  - {fileID: 460007838}
+  - {fileID: 1230739602}
   m_Father: {fileID: 4501327666581360}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &460007837
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 460007838}
+  - component: {fileID: 460007839}
+  m_Layer: 7
+  m_Name: Shield
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &460007838
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 460007837}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 192375470}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &460007839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 460007837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a51a46bff5836904e92fb638f85d8909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 0
+  isReady: 0
+  enemy: {fileID: 1630861722973768964}
+  shieldPrefab: {fileID: 134636, guid: 4872590f836f4b64ebda7e11c1bb3d0a, type: 3}
+  triggerHealthPercentage: 0.5
 --- !u!1 &1079582233
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,6 +188,55 @@ MonoBehaviour:
   speed: 50
   attackRange: 15
   impactPrefab: {fileID: 191726, guid: 4937c80a8b4cbdd4497ab7e3c94b0efb, type: 3}
+--- !u!1 &1230739601
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1230739602}
+  - component: {fileID: 1230739603}
+  m_Layer: 7
+  m_Name: Blink
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1230739602
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1230739601}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 192375470}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1230739603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1230739601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c00d30fc09311045bc710751d1bcc64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 0
+  isReady: 0
+  enemy: {fileID: 1630861722973768964}
+  prefab: {fileID: 140812, guid: 946ed79503b95e640beeddd00c0719a9, type: 3}
+  pivot: {fileID: 4820863658913512}
 --- !u!1 &1015261642189294
 GameObject:
   m_ObjectHideFlags: 0
@@ -1695,7 +1795,6 @@ MonoBehaviour:
   maxRetreatTime: 3
   portalPrefab: {fileID: 140812, guid: 946ed79503b95e640beeddd00c0719a9, type: 3}
   portalPivot: {fileID: 8311811498984973473}
-  shieldPrefab: {fileID: 134636, guid: 4872590f836f4b64ebda7e11c1bb3d0a, type: 3}
 --- !u!1 &1905241696832546
 GameObject:
   m_ObjectHideFlags: 0

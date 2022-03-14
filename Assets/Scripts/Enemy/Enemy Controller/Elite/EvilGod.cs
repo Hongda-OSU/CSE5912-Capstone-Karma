@@ -14,6 +14,7 @@ namespace CSE5912.PolyGamers
         private LightningMissile_evilGod lightningMissile;
         private LightningExplosion_evilGod lightningExplosion;
         private Shield_evilGod shield;
+        private Blink_evilGod blink;
 
 
         private bool isPerforming = false;
@@ -23,6 +24,7 @@ namespace CSE5912.PolyGamers
             lightningMissile = GetComponentInChildren<LightningMissile_evilGod>();
             lightningExplosion = GetComponentInChildren<LightningExplosion_evilGod>();
             shield = GetComponentInChildren<Shield_evilGod>();
+            blink = GetComponentInChildren<Blink_evilGod>();
         }
 
         protected override void Start()
@@ -73,7 +75,7 @@ namespace CSE5912.PolyGamers
                 case Status.Attacking:
                     if (isPlayerInSafeDistance)
                     {
-                        StartCoroutine(Blink(transform.position + directionToPlayer * -attackRange));
+                        Blink(transform.position + directionToPlayer * -attackRange);
                     }
                     else if (isFatigued)
                     {
@@ -99,13 +101,14 @@ namespace CSE5912.PolyGamers
         protected override void MoveToPlayer()
         {
             base.MoveToPlayer();
-            StartCoroutine(Blink(PlayerManager.Instance.Player.transform.position - directionToPlayer * attackRange * 0.8f));
+            Blink(PlayerManager.Instance.Player.transform.position - directionToPlayer * attackRange * 0.8f);
         }
         protected override IEnumerator PerformActionsOnWaiting()
         {
             Vector3 position = PlayerManager.Instance.Player.transform.position + directionToPlayer * attackRange;
-            yield return StartCoroutine(Blink(position));
+            Blink(position);
             currentAttackNum = 0;
+            yield return null;
         }
 
         protected override void PlayDeathAnimation()
@@ -113,27 +116,9 @@ namespace CSE5912.PolyGamers
             animator.SetTrigger("Die");
         }
 
-        private IEnumerator Blink(Vector3 position)
+        private void Blink(Vector3 position)
         {
-            isPerforming = true;
-
-            GameObject portals = new GameObject("Portals");
-
-            var origin = Instantiate(portalPrefab, portals.transform);
-            origin.transform.position = portalPivot.position;
-            Destroy(origin, 5f);
-
-            transform.position = position;
-
-            yield return new WaitForSeconds(Time.deltaTime);
-
-            var target = Instantiate(portalPrefab, portals.transform);
-            target.transform.position = portalPivot.position;
-            Destroy(target, 5f);
-
-            Destroy(portals, 5f);
-
-            isPerforming = false;
+            StartCoroutine(blink.Perform(position));
         }
 
         private void Attack()
@@ -166,6 +151,9 @@ namespace CSE5912.PolyGamers
         {
             if (!lightningExplosion.IsPerformingAllowed())
                 return;
+
+            Vector3 position = PlayerManager.Instance.Player.transform.position + directionToPlayer * attackRange;
+            Blink(position);
 
             status = Status.Attacking;
             SetAttack(1);
