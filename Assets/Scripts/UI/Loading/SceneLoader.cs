@@ -9,6 +9,7 @@ namespace CSE5912.PolyGamers
     public class SceneLoader : UI
     {
         [SerializeField] private Sprite image;
+        [SerializeField] private float fadeoutTime = 0.5f;
 
         private VisualElement loadingScreen;
 
@@ -82,7 +83,7 @@ namespace CSE5912.PolyGamers
 
             bool isReady = false;
             float timeSince = 0f;
-            float time = IngameAudioControl.Instance.FadeoutTime;
+            float time = fadeoutTime;
             while (!isReady)
             {
                 if (timeSince >= time)
@@ -110,5 +111,7 @@ namespace CSE5912.PolyGamers
 
             isLoading = false;
         }
+
+        public float FadeoutTime { get { return fadeoutTime; } }
     }
 }

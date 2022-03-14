@@ -18,6 +18,7 @@ namespace CSE5912.PolyGamers
             Destroy(origin, 5f);
 
             enemy.transform.position = position;
+            enemy.transform.LookAt(enemy.DirectionToPlayer);
 
             yield return new WaitForSeconds(Time.deltaTime);
 

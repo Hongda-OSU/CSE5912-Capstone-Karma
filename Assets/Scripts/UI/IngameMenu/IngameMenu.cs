@@ -82,16 +82,10 @@ namespace CSE5912.PolyGamers
             isFadingComplete = false;
             if (!enabled)
             {
-                UnityEngine.Cursor.visible = false;
-                UnityEngine.Cursor.lockState = CursorLockMode.Locked;
-
                 yield return StartCoroutine(FadeOut(root));
             }
             else
             {
-                UnityEngine.Cursor.visible = true;
-                UnityEngine.Cursor.lockState = CursorLockMode.None;
-
                 yield return StartCoroutine(FadeIn(root));
             }
             isFadingComplete = true;

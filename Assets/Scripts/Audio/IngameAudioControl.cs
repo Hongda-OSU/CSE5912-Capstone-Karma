@@ -7,7 +7,6 @@ namespace CSE5912.PolyGamers
     public class IngameAudioControl : MonoBehaviour
     {
         [SerializeField] private AudioSource mainAudio;
-        [SerializeField] private float fadeoutTime = 0.5f;
 
         private static IngameAudioControl instance;
         public static IngameAudioControl Instance { get { return instance; } }
@@ -27,7 +26,7 @@ namespace CSE5912.PolyGamers
         private IEnumerator FadeBgm(float volume)
         {
             float timeSince = 0f;
-            while (timeSince < fadeoutTime)
+            while (timeSince < SceneLoader.Instance.FadeoutTime)
             {
                 timeSince += Time.deltaTime;
                 yield return new WaitForSecondsRealtime(Time.deltaTime);
@@ -50,7 +49,5 @@ namespace CSE5912.PolyGamers
             mainAudio.Play();
         }
 
-
-        public float FadeoutTime { get { return fadeoutTime; } }
     }
 }

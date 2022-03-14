@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 6615771459190495525}
   - component: {fileID: 6615771459190495547}
   - component: {fileID: 6615771459190495544}
+  - component: {fileID: 178917607}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -110,6 +111,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainAudio: {fileID: 4599161197706867103}
   fadeoutTime: 0.5
+--- !u!114 &178917607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6615771459190495524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f787c665d86d9104d860894323bf2e68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
 --- !u!1 &6615771460806367146
 GameObject:
   m_ObjectHideFlags: 0

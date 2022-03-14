@@ -50,16 +50,13 @@ namespace CSE5912.PolyGamers
 
             if (isDisplayed)
             {
-                inputSchemes.PlayerActions.Disable();
-                inputSchemes.FPSActions.Disable();
-                inputSchemes.UiActions.Enable();
+                GameStateController.Instance.SetGameState(GameStateController.GameState.InMenu);
 
                 PlayerHudPanelControl.Instance.Root.style.display = DisplayStyle.None;
             }
             else
             {
-                inputSchemes.PlayerActions.Enable();
-                inputSchemes.FPSActions.Enable();
+                GameStateController.Instance.SetGameState(GameStateController.GameState.InGame);
 
                 PlayerHudPanelControl.Instance.Root.style.display = DisplayStyle.Flex;
             }
