@@ -73,7 +73,10 @@ namespace CSE5912.PolyGamers
             var layer = hit.transform.gameObject.layer;
             bool isBlocked = layer == LayerMask.NameToLayer("BlockBullet") || layer == LayerMask.NameToLayer("Enemy");
             if (!Penetrable && isBlocked)
+            {
+                Debug.Log(hit.transform.name);
                 Destroy(gameObject);
+            }
 
             hitPosition = hit.point;
             targetHit = hit.transform.gameObject;
