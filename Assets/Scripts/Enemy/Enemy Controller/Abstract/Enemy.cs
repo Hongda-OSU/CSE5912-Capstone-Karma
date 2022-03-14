@@ -63,6 +63,7 @@ namespace CSE5912.PolyGamers
         [SerializeField] protected float closeDetectionRange = 3f;
         [SerializeField] protected float timeToDestroy = 5f;
 
+        public bool playerDetected = false;
         protected bool foundTarget = false;
         protected bool isPlayingDeathAnimation = false;
         protected bool isAttackedByPlayer = false;

@@ -31,8 +31,6 @@ namespace CSE5912.PolyGamers
 
         protected bool isAttacking = false;
 
-        protected bool playerDetected = false;
-
         protected bool isPlayerInAttackRange;
         protected bool isPlayerInSafeDistance;
 

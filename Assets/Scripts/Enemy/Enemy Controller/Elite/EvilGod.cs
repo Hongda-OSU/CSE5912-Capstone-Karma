@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace CSE5912.PolyGamers
 {
-    public class EvilGod : EliteEnemy
+    public class EvilGod : BossEnemy
     {
         [Header("Evil God")]
         [Header("Portal")]
@@ -15,8 +15,7 @@ namespace CSE5912.PolyGamers
         private LightningExplosion_evilGod lightningExplosion;
         private Shield_evilGod shield;
         private Blink_evilGod blink;
-
-
+        
         private bool isPerforming = false;
 
         private void Awake()
@@ -100,6 +99,11 @@ namespace CSE5912.PolyGamers
             }
         }
 
+        public override void TriggerBossFight()
+        {
+            isBossFightTriggered = true;
+        }
+
         protected override void MoveToPlayer()
         {
             base.MoveToPlayer();
@@ -117,6 +121,9 @@ namespace CSE5912.PolyGamers
         {
             animator.SetTrigger("Die");
         }
+
+
+
 
         private void Blink(Vector3 position)
         {
@@ -138,7 +145,7 @@ namespace CSE5912.PolyGamers
 
             status = Status.Attacking;
             SetAttack(0);
-            //currentAttackNum++;
+            currentAttackNum++;
             isPerforming = true;
         }
         private IEnumerator LightningMissile_performed()

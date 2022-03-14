@@ -8,13 +8,14 @@ namespace CSE5912.PolyGamers
     public class BossArea : MonoBehaviour
     {
         [SerializeField] private float areaRadius = 20f;
-        [SerializeField] private BossInformation bossInformation;
+        [SerializeField] private BossEnemy enemy;
         [SerializeField] private AudioClip bossMusic;
         private SphereCollider triggerCollider;
 
         private void Awake()
         {
-            triggerCollider = GetComponent<SphereCollider>();
+            triggerCollider = gameObject.AddComponent<SphereCollider>();
+            triggerCollider.isTrigger = true;
             triggerCollider.radius = areaRadius;
         }
 
@@ -28,7 +29,9 @@ namespace CSE5912.PolyGamers
 
         private void TriggerBossFight()
         {
-            bossInformation.DisplayHealthBar(true);
+            enemy.TriggerBossFight();
+
+            enemy.gameObject.GetComponentInChildren<BossInformation>().DisplayHealthBar(true);
 
             IngameAudioControl.Instance.TransitionToMusic(bossMusic);
         }

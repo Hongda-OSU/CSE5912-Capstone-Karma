@@ -46,7 +46,7 @@ namespace CSE5912.PolyGamers
 
         public override bool IsPerformingAllowed()
         {
-            return isReady && enemy.DistanceToPlayer <= attackRange;
+            return isReady && enemy.playerDetected;
         }
     }
 }
