@@ -74,7 +74,6 @@ namespace CSE5912.PolyGamers
             bool isBlocked = layer == LayerMask.NameToLayer("BlockBullet") || layer == LayerMask.NameToLayer("Enemy");
             if (!Penetrable && isBlocked)
             {
-                Debug.Log(hit.transform.name);
                 Destroy(gameObject);
             }
 

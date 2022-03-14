@@ -50,6 +50,8 @@ namespace CSE5912.PolyGamers
                 case Status.Idle:
                     if (playerDetected)
                     {
+                        FaceTarget(directionToPlayer);
+
                         if (!isAttacking)
                         {
                             if (isPlayerInAttackRange)

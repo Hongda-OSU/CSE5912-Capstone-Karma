@@ -77,8 +77,6 @@ namespace CSE5912.PolyGamers
 
         protected virtual void Update()
         {
-            //Freeze(isFrozen);
-
             distanceToPlayer = Vector3.Distance(player.position, transform.position);
             directionToPlayer = (player.position - transform.position).normalized;
 

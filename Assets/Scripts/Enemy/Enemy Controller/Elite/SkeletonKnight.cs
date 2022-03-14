@@ -22,6 +22,7 @@ namespace CSE5912.PolyGamers
                 case Status.Idle:
                     if (playerDetected)
                     {
+                        FaceTarget(directionToPlayer);
                         MoveToPlayer();
                     }
                     else

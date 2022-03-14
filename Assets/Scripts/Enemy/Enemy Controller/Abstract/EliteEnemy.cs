@@ -83,11 +83,6 @@ namespace CSE5912.PolyGamers
 
             CalculateAggro();
 
-            if (playerDetected)
-            {
-                FaceTarget(directionToPlayer);
-            }
-
             PerformActions();
         }
 
