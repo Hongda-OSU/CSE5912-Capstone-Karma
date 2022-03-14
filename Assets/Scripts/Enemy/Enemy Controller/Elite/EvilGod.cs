@@ -154,9 +154,6 @@ namespace CSE5912.PolyGamers
             if (!lightningExplosion.IsPerformingAllowed())
                 return;
 
-            Vector3 position = PlayerManager.Instance.Player.transform.position + directionToPlayer * attackRange;
-            Blink(position);
-
             status = Status.Attacking;
             SetAttack(1);
             currentAttackNum++;
@@ -166,6 +163,10 @@ namespace CSE5912.PolyGamers
         {
             isPerforming = false;
 
+            Vector3 position = PlayerManager.Instance.Player.transform.position + directionToPlayer * attackRange;
+            Blink(position);
+
+            yield return new WaitForSeconds(Time.deltaTime);
             yield return StartCoroutine(lightningExplosion.Perform());
         }
 
