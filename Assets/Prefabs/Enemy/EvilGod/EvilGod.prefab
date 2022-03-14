@@ -32,6 +32,7 @@ Transform:
   - {fileID: 1079582234}
   - {fileID: 460007838}
   - {fileID: 1230739602}
+  - {fileID: 1013244928}
   m_Father: {fileID: 4501327666581360}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -60,7 +61,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 460007837}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.96, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -84,6 +85,62 @@ MonoBehaviour:
   enemy: {fileID: 1630861722973768964}
   shieldPrefab: {fileID: 134636, guid: 4872590f836f4b64ebda7e11c1bb3d0a, type: 3}
   triggerHealthPercentage: 0.5
+  pivot: {fileID: 4820863658913512}
+--- !u!1 &1013244927
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1013244928}
+  - component: {fileID: 1013244929}
+  m_Layer: 7
+  m_Name: LightningStorm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1013244928
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013244927}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 192375470}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1013244929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013244927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cc0602c3d9729248b135e2a2af7d357, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 20
+  isReady: 0
+  enemy: {fileID: 1630861722973768964}
+  lightningPrefab: {fileID: 6590587692847928727, guid: 37ce8026459c76c489573df772131203, type: 3}
+  electricityPrefab: {fileID: 129598, guid: 27c2ce822c992304a9d0197976c8c4fc, type: 3}
+  triggerHealthPercentage: 0.7
+  numberOfWaves: 5
+  timeBetweenWaves: 2
+  warningTime: 1
+  number: 30
+  radius: 30
 --- !u!1 &1079582233
 GameObject:
   m_ObjectHideFlags: 0
@@ -1699,7 +1756,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: e8b31dd0fa6fee84297fb0eb671e4ee0, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -1764,6 +1821,7 @@ MonoBehaviour:
   agentSpeed: 0
   isAlive: 1
   isFrozen: 0
+  isInvincible: 0
   damageFactor_physical: 1
   damageFactor_fire: 1
   damageFactor_cryo: 1
@@ -1781,10 +1839,11 @@ MonoBehaviour:
   dropAttachmentType: 1
   dropAttachmentRarity: 4
   rotateSpeed: 50
-  viewRadius: 20
-  viewAngle: 135
+  viewRadius: 1000
+  viewAngle: 360
   closeDetectionRange: 3
   timeToDestroy: 5
+  playerDetected: 0
   maxContinuousAttackNum: 3
   currentAttackNum: 0
   timeBetweenAttack: 3
@@ -1792,6 +1851,7 @@ MonoBehaviour:
   aggro: 0
   aggroThreshold: 2
   maxRetreatTime: 3
+  isBossFightTriggered: 0
   portalPrefab: {fileID: 140812, guid: 946ed79503b95e640beeddd00c0719a9, type: 3}
   portalPivot: {fileID: 8311811498984973473}
 --- !u!1 &1905241696832546

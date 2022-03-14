@@ -8,12 +8,13 @@ namespace CSE5912.PolyGamers
     {
         [SerializeField] private GameObject shieldPrefab;
         [SerializeField] private float triggerHealthPercentage = 0.5f;
+        [SerializeField] private Transform pivot;
 
         public IEnumerator Perform()
         {
             isReady = false;
 
-            GameObject energyShield = Instantiate(shieldPrefab, transform);
+            GameObject energyShield = Instantiate(shieldPrefab, pivot);
             Shield shield = energyShield.GetComponent<Shield>();
 
             while (true)

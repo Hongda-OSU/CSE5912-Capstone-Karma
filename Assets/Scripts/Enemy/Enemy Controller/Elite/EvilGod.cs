@@ -13,6 +13,7 @@ namespace CSE5912.PolyGamers
 
         private LightningMissile_evilGod lightningMissile;
         private LightningExplosion_evilGod lightningExplosion;
+        private LightningStorm_evilGod lightningStorm;
         private Shield_evilGod shield;
         private Blink_evilGod blink;
         
@@ -22,6 +23,8 @@ namespace CSE5912.PolyGamers
         {
             lightningMissile = GetComponentInChildren<LightningMissile_evilGod>();
             lightningExplosion = GetComponentInChildren<LightningExplosion_evilGod>();
+            lightningStorm = GetComponentInChildren<LightningStorm_evilGod>();
+
             shield = GetComponentInChildren<Shield_evilGod>();
             blink = GetComponentInChildren<Blink_evilGod>();
         }
@@ -135,6 +138,7 @@ namespace CSE5912.PolyGamers
 
         private void Attack()
         {
+            Attack_lightningStorm();
             Attack_lightningExplosion();
             Attack_lightningMissile();
 
@@ -180,6 +184,31 @@ namespace CSE5912.PolyGamers
             yield return StartCoroutine(lightningExplosion.Perform());
         }
 
+
+        private void Attack_lightningStorm()
+        {
+            if (!lightningStorm.IsPerformingAllowed())
+                return;
+
+            status = Status.Attacking;
+            SetAttack(2);
+            currentAttackNum++;
+            isPerforming = true;
+
+            Vector3 position = PlayerManager.Instance.Player.transform.position + directionToPlayer;
+            Blink(position);
+        }
+        private IEnumerator LightningStorm_performed()
+        {
+            animator.speed = 0f;
+
+
+            yield return new WaitForSeconds(Time.deltaTime);
+            yield return StartCoroutine(lightningStorm.Perform());
+
+            animator.speed = 1f;
+            isPerforming = false;
+        }
 
 
         private void OpenShield()
