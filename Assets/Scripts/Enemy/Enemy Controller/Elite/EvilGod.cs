@@ -11,29 +11,19 @@ namespace CSE5912.PolyGamers
         [SerializeField] private GameObject portalPrefab;
         [SerializeField] private Transform portalPivot;
 
-        [Header("Lightning Explosion")]
-        [SerializeField] private GameObject lightningExplosionPrefab;
-        [SerializeField] private int lightningExplosionNumber = 20;
-        [SerializeField] private float lightningExplostionRange = 15f;
-        [SerializeField] private float lightningExplosionSpacing = 2f;
-        [SerializeField] private float lightningExplosionInterval = 0.1f;
-        [SerializeField] private float lightningExplosionCooldown = 5f;
-        private bool isLightningExplosionReady = true;
+        private LightningMissile_evilGod lightningMissile;
+        private LightningExplosion_evilGod lightningExplosion;
+        private Shield_evilGod shield;
 
-        [Header("Lightning Missile")]
-        [SerializeField] private GameObject lightningMissilePrefab;
-        [SerializeField] private Transform lightningMissilePivot;
-        [SerializeField] private float lightningMissileRange = 20f;
-        [SerializeField] private float lightningMissileSpeed = 10f;
-        [SerializeField] private float lightningMissileCooldown = 1f;
-        private bool isLightningMissileReady = true;
-
-        [Header("Shield")]
-        [SerializeField] private GameObject shieldPrefab;
-        private bool isShieldOn = false;
-        private bool isShieldReady = true;
 
         private bool isPerforming = false;
+
+        private void Awake()
+        {
+            lightningMissile = GetComponentInChildren<LightningMissile_evilGod>();
+            lightningExplosion = GetComponentInChildren<LightningExplosion_evilGod>();
+            shield = GetComponentInChildren<Shield_evilGod>();
+        }
 
         protected override void Start()
         {
@@ -48,10 +38,9 @@ namespace CSE5912.PolyGamers
                 return;
 
 
-            if (health < maxHealth * 0.5f && isShieldReady)
+            if (shield.IsPerformingAllowed())
             {
                 OpenShield();
-                isShieldReady = false;
             }
 
             switch (status)
@@ -84,7 +73,7 @@ namespace CSE5912.PolyGamers
                 case Status.Attacking:
                     if (isPlayerInSafeDistance)
                     {
-                        StartCoroutine(Blink(transform.position + directionToPlayer * -attackRange, 1f));
+                        StartCoroutine(Blink(transform.position + directionToPlayer * -attackRange));
                     }
                     else if (isFatigued)
                     {
@@ -110,12 +99,12 @@ namespace CSE5912.PolyGamers
         protected override void MoveToPlayer()
         {
             base.MoveToPlayer();
-            StartCoroutine(Blink(PlayerManager.Instance.Player.transform.position - directionToPlayer * attackRange * 0.8f, 0.3f));
+            StartCoroutine(Blink(PlayerManager.Instance.Player.transform.position - directionToPlayer * attackRange * 0.8f));
         }
         protected override IEnumerator PerformActionsOnWaiting()
         {
             Vector3 position = PlayerManager.Instance.Player.transform.position + directionToPlayer * attackRange;
-            yield return StartCoroutine(Blink(position, 1f));
+            yield return StartCoroutine(Blink(position));
             currentAttackNum = 0;
         }
 
@@ -124,7 +113,7 @@ namespace CSE5912.PolyGamers
             animator.SetTrigger("Die");
         }
 
-        private IEnumerator Blink(Vector3 position, float delay)
+        private IEnumerator Blink(Vector3 position)
         {
             isPerforming = true;
 
@@ -132,10 +121,7 @@ namespace CSE5912.PolyGamers
 
             var origin = Instantiate(portalPrefab, portals.transform);
             origin.transform.position = portalPivot.position;
-            origin.transform.rotation = Quaternion.Euler(portalPrefab.transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z);
-            Destroy(origin, delay + 1);
-
-            yield return new WaitForSeconds(delay);
+            Destroy(origin, 5f);
 
             transform.position = position;
 
@@ -143,10 +129,7 @@ namespace CSE5912.PolyGamers
 
             var target = Instantiate(portalPrefab, portals.transform);
             target.transform.position = portalPivot.position;
-            target.transform.rotation = Quaternion.Euler(portalPrefab.transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z);
-            Destroy(target, delay + 1);
-
-            yield return new WaitForSeconds(delay);
+            Destroy(target, 5f);
 
             Destroy(portals, 5f);
 
@@ -163,9 +146,7 @@ namespace CSE5912.PolyGamers
 
         private void Attack_lightningMissile()
         {
-            if (!isLightningMissileReady)
-                return;
-            if (distanceToPlayer > lightningMissileRange)
+            if (!lightningMissile.IsPerformingAllowed())
                 return;
 
             status = Status.Attacking;
@@ -177,31 +158,13 @@ namespace CSE5912.PolyGamers
         {
             isPerforming = false;
 
-            GameObject vfx = Instantiate(lightningMissilePrefab);
-            vfx.transform.position = lightningMissilePivot.position;
-            vfx.transform.LookAt(PlayerManager.Instance.Player.transform);
-
-            var damager = vfx.GetComponent<Damager_collision>();
-            float damage = damager.BaseDamage;
-
-            vfx.GetComponent<Damager_collision>().Source = this;
-            vfx.GetComponent<Damager_collision>().BaseDamage = damage;
-
-            while (!damager.IsPlayerHit)
-            {
-                yield return new WaitForSeconds(Time.deltaTime);
-
-                vfx.transform.position += vfx.transform.forward * lightningMissileSpeed * Time.deltaTime;
-            }
-            Destroy(vfx);
+            yield return StartCoroutine(lightningMissile.Perform());
         }
 
 
         private void Attack_lightningExplosion()
         {
-            if (!isLightningExplosionReady)
-                return;
-            if (distanceToPlayer > lightningExplostionRange)
+            if (!lightningExplosion.IsPerformingAllowed())
                 return;
 
             status = Status.Attacking;
@@ -213,72 +176,22 @@ namespace CSE5912.PolyGamers
         {
             isPerforming = false;
 
-            isLightningExplosionReady = false;
-
-            var lightningExplosions = new GameObject("LightningExplosions");
-
-            float offset = lightningExplosionSpacing;
-
-            float damage = lightningExplosionPrefab.GetComponent<Damager_collision>().BaseDamage;
-
-            Vector3 position = transform.position;
-            Vector3 direction = transform.forward;
-            for (int i = 0; i < lightningExplosionNumber; i++)
-            {
-                GameObject vfx = Instantiate(lightningExplosionPrefab, lightningExplosions.transform);
-
-                vfx.GetComponent<Damager_collision>().Source = this;
-                vfx.GetComponent<Damager_collision>().BaseDamage = damage;
-
-                vfx.transform.position = position + direction * offset * (i + 1);
-
-                Destroy(vfx, 5f);
-
-                yield return new WaitForSeconds(lightningExplosionInterval);
-
-                if (vfx.GetComponent<Damager_collision>().IsPlayerHit)
-                {
-                    damage = 0f;
-                }
-            }
-            Destroy(lightningExplosions, 5f);
-
-            yield return new WaitForSeconds(lightningExplosionCooldown);
-            isLightningExplosionReady = true;
+            yield return StartCoroutine(lightningExplosion.Perform());
         }
 
-        
+
 
         private void OpenShield()
         {
-            if (!isShieldOn)
-            {
-                animator.SetTrigger("Shield");
-                isPerforming = true;
-            }
+            animator.SetTrigger("Shield");
+            isPerforming = true;
+
         }
         private IEnumerator Shield_performed()
         {
-            if (isShieldOn)
-                yield break;
-
-            isShieldOn = true;
             isPerforming = false;
 
-            GameObject energyShield = Instantiate(shieldPrefab, transform);
-            Shield shield = energyShield.GetComponent<Shield>();
-
-            while (isShieldOn)
-            {
-                yield return new WaitForSeconds(Time.deltaTime);
-
-                if (shield.TotalHealth <= 0)
-                {
-                    isShieldOn = false;
-                    Destroy(energyShield);
-                }
-            }
-
+            yield return StartCoroutine(shield.Perform());
         }
     }
 }

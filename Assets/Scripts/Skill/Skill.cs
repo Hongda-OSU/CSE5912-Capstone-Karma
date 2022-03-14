@@ -7,7 +7,7 @@ namespace CSE5912.PolyGamers
     public abstract class Skill : MonoBehaviour
     {
         [SerializeField] protected float cooldown;
-        protected bool isReady = false;
+        [SerializeField] protected bool isReady = false;
 
         protected void StartCoolingdown()
         {

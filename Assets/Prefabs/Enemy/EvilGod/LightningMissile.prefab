@@ -23934,4 +23934,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseDamage: 10
-  type: 0
+  type: 3
