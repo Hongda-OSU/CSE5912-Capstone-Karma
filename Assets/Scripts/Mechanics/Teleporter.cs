@@ -8,6 +8,9 @@ namespace CSE5912.PolyGamers
     {
         [SerializeField] private float animationTime = 5f;
 
+        [SerializeField] private AudioSource risingSound;
+        [SerializeField] private AudioSource shootingSound;
+
         [SerializeField] private Transform finalPivot;
         [SerializeField] private Transform startPivot;
         [SerializeField] private Transform powerPivot;
@@ -43,6 +46,8 @@ namespace CSE5912.PolyGamers
             GameObject circle = Instantiate(circlePrefab);
             circle.transform.position = startPivot.position;
 
+            risingSound.Play();
+
             Vector3 startPosition = transform.position;
             Vector3 endPosition = finalPivot.position;
 
@@ -54,13 +59,15 @@ namespace CSE5912.PolyGamers
                 timeSince += Time.deltaTime;
                 yield return new WaitForSeconds(Time.deltaTime);
             }
+            risingSound.Stop();
 
             GameObject power = Instantiate(powerPrefab);
             power.transform.position = powerPivot.position;
 
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(4.5f);
 
             meshFilter.mesh = activeMesh;
+            shootingSound.Play();
 
             Destroy(circle, 5f);
             Destroy(power, 5f);
