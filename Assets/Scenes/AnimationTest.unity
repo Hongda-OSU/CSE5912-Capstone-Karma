@@ -7705,6 +7705,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3703c04d07e3a2040bd09c5a248c54a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyName: Goelm
+  level: 0
+  experience: 0
+  health: 1500
+  maxHealth: 1500
+  attackDamage: 50
+  attackRange: 6.5
+  agentSpeed: 0
+  isAlive: 1
+  isFrozen: 0
+  damageFactor_physical: 1
+  damageFactor_fire: 1
+  damageFactor_cryo: 1
+  damageFactor_electro: 1
+  damageFactor_venom: 1
+  physicalResist: 0
+  fireResist: 0
+  cryoResist: 0
+  electroResist: 0
+  venomResist: 0
+  dropWeaponChance: 0
+  dropWeaponType: 0
+  dropWeaponRarity: 4
+  dropAttachmentChance: 0
+  dropAttachmentType: 1
+  dropAttachmentRarity: 4
+  rotateSpeed: 20
+  viewRadius: 30
+  viewAngle: 360
+  closeDetectionRange: 3
+  timeToDestroy: 5
+  maxContinuousAttackNum: 10
+  currentAttackNum: 0
+  timeBetweenAttack: 3
+  timeBetweenWaitActions: {x: 1, y: 2}
+  aggro: 0
+  aggroThreshold: 2
+  maxRetreatTime: 3
 --- !u!195 &4281082087200268862
 NavMeshAgent:
   m_ObjectHideFlags: 0
