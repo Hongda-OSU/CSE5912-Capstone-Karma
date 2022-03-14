@@ -6,6 +6,8 @@ namespace CSE5912.PolyGamers
 {
     public class Teleporter : MonoBehaviour
     {
+        [SerializeField] private Transform target;
+
         [SerializeField] private float animationTime = 5f;
 
         [SerializeField] private AudioSource risingSound;
@@ -19,10 +21,11 @@ namespace CSE5912.PolyGamers
         [SerializeField] private Mesh activeMesh;
 
         [SerializeField] private GameObject powerPrefab;
-
         [SerializeField] private GameObject circlePrefab;
+        [SerializeField] private GameObject portalPrefab;
 
         private bool isActivated = false;
+        private bool isUsed = false;
 
         private MeshFilter meshFilter;
 
@@ -38,7 +41,33 @@ namespace CSE5912.PolyGamers
                 return;
 
             StartCoroutine(PlayActivateAnimation());
-            isActivated = true;
+
+        }
+        private void OnTriggerStay(Collider other)
+        {
+            if (other.tag != "Player" || !isActivated || isUsed)
+                return;
+
+            if (InputManager.Instance.InputSchemes.PlayerActions.Interact.triggered)
+                StartCoroutine(TeleportPlayer(target.position));
+        }
+
+        private IEnumerator TeleportPlayer(Vector3 position)
+        {
+            isUsed = true;
+
+            var player = PlayerManager.Instance.Player;
+
+            GameObject portal = Instantiate(portalPrefab);
+            portal.transform.position = player.transform.position - Vector3.up * 5f;
+
+            GameStateController.Instance.SetGameState(GameStateController.GameState.Loading);
+            yield return new WaitForSeconds(3f);
+            player.transform.position = position;
+            GameStateController.Instance.SetGameState(GameStateController.GameState.InGame);
+
+            Destroy(portal, 1f);
+            isUsed = false;
         }
 
         private IEnumerator PlayActivateAnimation()
@@ -71,6 +100,8 @@ namespace CSE5912.PolyGamers
 
             Destroy(circle, 5f);
             Destroy(power, 5f);
+
+            isActivated = true;
         }
 
     }

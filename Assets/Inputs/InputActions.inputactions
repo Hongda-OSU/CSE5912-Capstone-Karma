@@ -69,18 +69,18 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "PickUp",
+                    "name": "Inspect",
                     "type": "Button",
-                    "id": "7e0a325f-3901-4f9f-ab39-ab51ad813cbc",
+                    "id": "7ca46670-0dbc-4087-a4d8-2eafe392b3c4",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Inspect",
+                    "name": "Interact",
                     "type": "Button",
-                    "id": "7ca46670-0dbc-4087-a4d8-2eafe392b3c4",
+                    "id": "82285f13-b19d-49a3-8ea0-64644bb43afa",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -211,23 +211,23 @@
                 },
                 {
                     "name": "",
-                    "id": "99525d8e-007e-4cc0-af54-ba8ca11100e1",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "PickUp",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "b28d9833-a792-4a0c-8595-6bf6078e785e",
                     "path": "<Keyboard>/l",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Inspect",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1b519a22-b91f-44fc-adf2-a88839b1702c",
+                    "path": "<Keyboard>/t",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

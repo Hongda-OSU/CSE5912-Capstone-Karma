@@ -193,7 +193,7 @@ namespace CSE5912.PolyGamers
                 ItemPeekControl.Instance.PeekItem(item);
 
                 // player pick up weapon by pressing E
-                if (inputSchemes.PlayerActions.PickUp.triggered)
+                if (inputSchemes.PlayerActions.Interact.triggered)
                 {
                     // get the item component of type BaseItem, if it exists
                     if (hasItem)

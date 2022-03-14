@@ -91,18 +91,18 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""PickUp"",
+                    ""name"": ""Inspect"",
                     ""type"": ""Button"",
-                    ""id"": ""7e0a325f-3901-4f9f-ab39-ab51ad813cbc"",
+                    ""id"": ""7ca46670-0dbc-4087-a4d8-2eafe392b3c4"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Inspect"",
+                    ""name"": ""Interact"",
                     ""type"": ""Button"",
-                    ""id"": ""7ca46670-0dbc-4087-a4d8-2eafe392b3c4"",
+                    ""id"": ""82285f13-b19d-49a3-8ea0-64644bb43afa"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -233,23 +233,23 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""99525d8e-007e-4cc0-af54-ba8ca11100e1"",
-                    ""path"": ""<Keyboard>/e"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""PickUp"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""b28d9833-a792-4a0c-8595-6bf6078e785e"",
                     ""path"": ""<Keyboard>/l"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Inspect"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1b519a22-b91f-44fc-adf2-a88839b1702c"",
+                    ""path"": ""<Keyboard>/t"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -583,8 +583,8 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         m_PlayerActions_Sprint = m_PlayerActions.FindAction("Sprint", throwIfNotFound: true);
         m_PlayerActions_Dash = m_PlayerActions.FindAction("Dash", throwIfNotFound: true);
         m_PlayerActions_MainSkill = m_PlayerActions.FindAction("MainSkill", throwIfNotFound: true);
-        m_PlayerActions_PickUp = m_PlayerActions.FindAction("PickUp", throwIfNotFound: true);
         m_PlayerActions_Inspect = m_PlayerActions.FindAction("Inspect", throwIfNotFound: true);
+        m_PlayerActions_Interact = m_PlayerActions.FindAction("Interact", throwIfNotFound: true);
         // FPSActions
         m_FPSActions = asset.FindActionMap("FPSActions", throwIfNotFound: true);
         m_FPSActions_Shoot = m_FPSActions.FindAction("Shoot", throwIfNotFound: true);
@@ -670,8 +670,8 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerActions_Sprint;
     private readonly InputAction m_PlayerActions_Dash;
     private readonly InputAction m_PlayerActions_MainSkill;
-    private readonly InputAction m_PlayerActions_PickUp;
     private readonly InputAction m_PlayerActions_Inspect;
+    private readonly InputAction m_PlayerActions_Interact;
     public struct PlayerActionsActions
     {
         private @InputActions m_Wrapper;
@@ -683,8 +683,8 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         public InputAction @Sprint => m_Wrapper.m_PlayerActions_Sprint;
         public InputAction @Dash => m_Wrapper.m_PlayerActions_Dash;
         public InputAction @MainSkill => m_Wrapper.m_PlayerActions_MainSkill;
-        public InputAction @PickUp => m_Wrapper.m_PlayerActions_PickUp;
         public InputAction @Inspect => m_Wrapper.m_PlayerActions_Inspect;
+        public InputAction @Interact => m_Wrapper.m_PlayerActions_Interact;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -715,12 +715,12 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 @MainSkill.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnMainSkill;
                 @MainSkill.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnMainSkill;
                 @MainSkill.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnMainSkill;
-                @PickUp.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnPickUp;
-                @PickUp.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnPickUp;
-                @PickUp.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnPickUp;
                 @Inspect.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnInspect;
                 @Inspect.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnInspect;
                 @Inspect.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnInspect;
+                @Interact.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnInteract;
             }
             m_Wrapper.m_PlayerActionsActionsCallbackInterface = instance;
             if (instance != null)
@@ -746,12 +746,12 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 @MainSkill.started += instance.OnMainSkill;
                 @MainSkill.performed += instance.OnMainSkill;
                 @MainSkill.canceled += instance.OnMainSkill;
-                @PickUp.started += instance.OnPickUp;
-                @PickUp.performed += instance.OnPickUp;
-                @PickUp.canceled += instance.OnPickUp;
                 @Inspect.started += instance.OnInspect;
                 @Inspect.performed += instance.OnInspect;
                 @Inspect.canceled += instance.OnInspect;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
         }
     }
@@ -935,8 +935,8 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         void OnSprint(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
         void OnMainSkill(InputAction.CallbackContext context);
-        void OnPickUp(InputAction.CallbackContext context);
         void OnInspect(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
     public interface IFPSActionsActions
     {

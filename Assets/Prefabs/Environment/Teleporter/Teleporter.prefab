@@ -130,6 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 135b37dc228615042941910d7493c012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
   animationTime: 3
   risingSound: {fileID: 176542634}
   shootingSound: {fileID: 176542633}
@@ -140,6 +141,7 @@ MonoBehaviour:
   activeMesh: {fileID: 4300000, guid: 41262656d08176543b3e04c83eea9cef, type: 3}
   powerPrefab: {fileID: 1740513464688192, guid: 1e447e8e8f2e4344e86f5c69418c380e, type: 3}
   circlePrefab: {fileID: 1231247210357622, guid: dafab92fc5d2f88439c6a0b06996f852, type: 3}
+  portalPrefab: {fileID: 1881552412633134, guid: 3ad9deb72dad7c640958ecf68366e065, type: 3}
 --- !u!82 &176542633
 AudioSource:
   m_ObjectHideFlags: 0
