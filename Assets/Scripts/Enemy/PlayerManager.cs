@@ -35,7 +35,7 @@ namespace CSE5912.PolyGamers
         public void PerformBulletDamage(Enemy enemy, Vector3 position)
         {
             lastEnemyHit = enemy;
-            if (!enemy.IsAlive)
+            if (!enemy.IsAlive || enemy.isInvincible)
                 return;
 
             Firearms weapon = WeaponManager.Instance.CarriedWeapon;
@@ -55,7 +55,7 @@ namespace CSE5912.PolyGamers
         public void PerformSkillDamage(Enemy enemy, Damage damage)
         {
             lastEnemyHit = enemy;
-            if (!enemy.IsAlive)
+            if (!enemy.IsAlive || enemy.isInvincible)
                 return;
 
             enemy.TakeDamage(damage);

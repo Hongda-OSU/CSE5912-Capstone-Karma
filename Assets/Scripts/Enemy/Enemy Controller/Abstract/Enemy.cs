@@ -258,7 +258,7 @@ namespace CSE5912.PolyGamers
         public string EnemyName { get { return enemyName; } }
         public int Level { get { return level; } }
         public float Experience { get { return experience;} }
-        public float Health { get { return health;} }
+        public float Health { get { return Mathf.Clamp(health, 0, maxHealth);} }
         public float MaxHealth { get { return maxHealth;} }
         public float AttackDamage { get { return attackDamage;} }
         public bool IsAttackedByPlayer { get { return isAttackedByPlayer; } }

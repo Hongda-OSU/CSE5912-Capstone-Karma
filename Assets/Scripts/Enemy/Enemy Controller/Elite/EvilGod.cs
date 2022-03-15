@@ -7,16 +7,17 @@ namespace CSE5912.PolyGamers
     public class EvilGod : BossEnemy
     {
         [Header("Evil God")]
-        [Header("Portal")]
-        [SerializeField] private GameObject portalPrefab;
-        [SerializeField] private Transform portalPivot;
+
+        [SerializeField] private float dodgeChance = 0.5f;
 
         private LightningMissile_evilGod lightningMissile;
         private LightningExplosion_evilGod lightningExplosion;
         private LightningStorm_evilGod lightningStorm;
         private Shield_evilGod shield;
         private Blink_evilGod blink;
-        
+
+        private Bullet prevBullet;
+
         private bool isPerforming = false;
 
         private void Awake()
@@ -32,9 +33,11 @@ namespace CSE5912.PolyGamers
 
         protected override void PerformActions()
         {
-            if (isPerforming)
+            if (isPerforming || !isBossFightTriggered)
                 return;
 
+            if (Random.value < dodgeChance)
+                Dodge();
 
             if (shield.IsPerformingAllowed())
             {
@@ -130,7 +133,21 @@ namespace CSE5912.PolyGamers
 
 
 
+        private void Dodge()
+        {
+            bool isFired = WeaponManager.Instance.isFiring && prevBullet != WeaponManager.Instance.CarriedWeapon.bulletFired;
+            prevBullet = WeaponManager.Instance.CarriedWeapon.bulletFired;
 
+            if (!isFired || !Physics.Raycast(player.position, WeaponManager.Instance.GetShootDirection(), out RaycastHit hit, 1000))
+                return;
+
+            var offset = Vector3.right * GetComponent<Collider>().bounds.size.x;
+            if (Random.value < 0.5f)
+                offset = -offset;
+
+            var position = transform.position + offset;
+            Blink(position);
+        }
         private void Blink(Vector3 position)
         {
             StartCoroutine(blink.Perform(position));
@@ -197,6 +214,8 @@ namespace CSE5912.PolyGamers
 
             Vector3 position = PlayerManager.Instance.Player.transform.position + directionToPlayer;
             Blink(position);
+
+            isInvincible = true;
         }
         private IEnumerator LightningStorm_performed()
         {
@@ -208,6 +227,7 @@ namespace CSE5912.PolyGamers
 
             animator.speed = 1f;
             isPerforming = false;
+            isInvincible = false;
         }
 
 
