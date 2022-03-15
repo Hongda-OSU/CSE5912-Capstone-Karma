@@ -121,10 +121,10 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0.7921569, b: 0.24313726, a: 1}
-      key1: {r: 1, g: 0.7921569, b: 0.24313726, a: 0.29411766}
-      key2: {r: 1, g: 0.7921569, b: 0.24313726, a: 0.29411766}
-      key3: {r: 1, g: 0.7921569, b: 0.24313726, a: 0.29411766}
+      key0: {r: 0.24313724, g: 0.60090923, b: 1, a: 1}
+      key1: {r: 0.24313724, g: 0.7417742, b: 1, a: 0.29411766}
+      key2: {r: 0.24313724, g: 0.8712239, b: 1, a: 0.29411766}
+      key3: {r: 0.24313724, g: 0.9021148, b: 1, a: 0.29411766}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
@@ -4989,7 +4989,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: a67df17391c315142b37a14f9dffc5a1, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
