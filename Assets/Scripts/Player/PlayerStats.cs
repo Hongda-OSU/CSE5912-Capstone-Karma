@@ -100,7 +100,10 @@ namespace CSE5912.PolyGamers
 
             takeDamageEvent.Invoke();
         }
-
+        public void HitBack(Vector3 dir, float force)
+        {
+            FPSControllerCC.Instance.AddImpact(dir, force);
+        }
 
         public float ComputeExtraDamage(float baseValue)
         {

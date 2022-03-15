@@ -10,6 +10,7 @@ namespace CSE5912.PolyGamers
     {
         [SerializeField] private float baseDamage;
         [SerializeField] private Element.Type type;
+        [SerializeField] private bool hitBack = false;
         private Enemy enemy;
         private bool isPlayerHit = false;
         private GameObject hit;
@@ -36,6 +37,8 @@ namespace CSE5912.PolyGamers
             Damage damage = new Damage(baseDamage, type, enemy, target);
             
             target.TakeDamage(damage);
+            if (hitBack)
+                target.HitBack((target.transform.position - transform.position).normalized, damage.ResolvedValue);
 
             isPlayerHit = true;
         }
