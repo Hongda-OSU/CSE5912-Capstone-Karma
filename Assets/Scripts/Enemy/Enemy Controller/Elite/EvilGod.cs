@@ -214,22 +214,16 @@ namespace CSE5912.PolyGamers
             currentAttackNum++;
             isPerforming = true;
 
-            Vector3 position = PlayerManager.Instance.Player.transform.position + directionToPlayer;
+            Vector3 position = PlayerManager.Instance.Player.transform.position + directionToPlayer * 2f;
             Blink(position);
 
             isInvincible = true;
         }
         private IEnumerator LightningStorm_performed()
         {
-            animator.speed = 0f;
-
-
-            yield return new WaitForSeconds(Time.deltaTime);
-            yield return StartCoroutine(lightningStorm.Perform());
-
-            animator.speed = 1f;
             isPerforming = false;
-            isInvincible = false;
+
+            yield return StartCoroutine(lightningStorm.Perform());
         }
 
 

@@ -21,6 +21,7 @@ namespace CSE5912.PolyGamers
 
         public IEnumerator Perform()
         {
+            StartCoolingdown();
             for (int j = 0; j < numberOfWaves; j++)
             {
                 yield return new WaitForSeconds(timeBetweenWaves);
@@ -29,7 +30,6 @@ namespace CSE5912.PolyGamers
                     StartCoroutine(SummonLightning());
                 }
             }
-            StartCoolingdown();
         }
 
         private IEnumerator SummonLightning()
