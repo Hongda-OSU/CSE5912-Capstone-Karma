@@ -273,6 +273,9 @@ namespace CSE5912.PolyGamers
 
         private void AttachmentSlot_performed(VisualElement attachmentSlot)
         {
+            if (weaponRowsControl.FindWeaponByRow(attachmentSlot.parent) == null)
+                return;
+
             StartCoroutine(PopUpAttachmentInventory(attachmentSlot));
 
             Attachment attachment = weaponRowsControl.GetEquippedAttachment(attachmentSlot);

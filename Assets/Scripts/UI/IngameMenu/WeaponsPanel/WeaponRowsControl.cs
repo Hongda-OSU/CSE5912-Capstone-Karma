@@ -38,9 +38,6 @@ namespace CSE5912.PolyGamers
             }
         }
 
-        private void Start()
-        {
-        }
 
         public WeaponRow GetWeaponRow(VisualElement row)
         {
