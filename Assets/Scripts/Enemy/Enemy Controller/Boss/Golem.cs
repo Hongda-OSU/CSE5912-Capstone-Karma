@@ -6,9 +6,16 @@ namespace CSE5912.PolyGamers
 {
     public class Golem : EliteEnemy
     {
-        [Header("Attack Effects")]
-        [SerializeField] private GameObject prefab;
-        [SerializeField] private Transform pivot;
+        [Header("Shardstone Shooting")]
+        [SerializeField] private GameObject prefab_1;
+        [SerializeField] private Transform pivot_1;
+
+        [Header("Shockwave")]
+        [SerializeField] private GameObject prefab_2;
+        [SerializeField] private Transform pivot_2;
+
+        [Header("Vine")]
+        [SerializeField] private GameObject prefab_3;
 
         protected override void PerformActions()
         {
@@ -29,19 +36,27 @@ namespace CSE5912.PolyGamers
                 case Status.Moving:                 
                     if (!isAttacking)
                     {
-                        if (isPlayerInAttackRange && distanceToPlayer > closeDetectionRange)
+                        isPlayingAttackAnim = true;
+
+                        if (Vector3.Distance(player.position, pivot_1.position) <= 12f && Vector3.Distance(player.position, pivot_1.position) >= 10f)
                         {
-                            int attackNum = Random.Range(1, 3);
-                            Attack(attackNum);
-                            isPlayingAttackAnim = true;
+                            Attack(1);                          
+                        }
+                        else if (isPlayerInAttackRange && distanceToPlayer > closeDetectionRange)
+                        {
+                            Attack(2);
                         }
                         else if (distanceToPlayer <= closeDetectionRange)
                         {
                             Attack(3);
-                            isPlayingAttackAnim = true;
                         }
-                        else 
+                        else if (distanceToPlayer <= 20f && Vector3.Distance(player.position, pivot_1.position) > 12f)
                         {
+                            Attack(4);
+                        }
+                        else
+                        {
+                            isPlayingAttackAnim = false;
                             MoveToPlayer();
                         }
                     }
@@ -53,7 +68,8 @@ namespace CSE5912.PolyGamers
                     {
                         
                         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Sword_Attack_1") ||
-                            animator.GetCurrentAnimatorStateInfo(0).IsName("Sword_Attack_2")) {
+                            animator.GetCurrentAnimatorStateInfo(0).IsName("Sword_Attack_2") ||
+                            animator.GetCurrentAnimatorStateInfo(0).IsName("Attack_4")) {
                             FaceTarget(directionToPlayer);
                         }
                         
@@ -62,12 +78,14 @@ namespace CSE5912.PolyGamers
                             animator.GetCurrentAnimatorStateInfo(0).IsName("Attack_Stomp_2") ||
                             animator.GetCurrentAnimatorStateInfo(0).IsName("Attack_1") ||
                             animator.GetCurrentAnimatorStateInfo(0).IsName("Sword_Attack_1") ||
-                            animator.GetCurrentAnimatorStateInfo(0).IsName("Sword_Attack_2")))
+                            animator.GetCurrentAnimatorStateInfo(0).IsName("Sword_Attack_2") ||
+                            animator.GetCurrentAnimatorStateInfo(0).IsName("Attack_4")))
                         {
                             isPlayingAttackAnim = false;
                             animator.ResetTrigger("Attack_1");
                             animator.ResetTrigger("Attack_2");
                             animator.ResetTrigger("Attack_3");
+                            animator.ResetTrigger("Attack_4");
                         }
                     }
                     else 
@@ -101,6 +119,48 @@ namespace CSE5912.PolyGamers
             agent.isStopped = false;
 
             yield return new WaitForSeconds(Time.deltaTime);
+        }
+
+        public void ShardstoneShooting() {
+            GameObject vfx_1 = Instantiate(prefab_1);
+            GameObject vfx_2 = Instantiate(prefab_1);
+            GameObject vfx_3 = Instantiate(prefab_1);
+
+            vfx_1.transform.position = pivot_1.position;
+            vfx_2.transform.position = pivot_1.position;
+            vfx_3.transform.position = pivot_1.position;
+
+            Vector3 angle_1 = DirFromAngle(30f, false) * 10f;
+            Vector3 angle_2 = DirFromAngle(330f, false) * 10f;
+
+            vfx_1.transform.LookAt(new Vector3(PlayerManager.Instance.Player.transform.position.x, 0f, PlayerManager.Instance.Player.transform.position.z) + angle_1);
+            vfx_2.transform.LookAt(new Vector3(PlayerManager.Instance.Player.transform.position.x, 0f, PlayerManager.Instance.Player.transform.position.z));
+            vfx_3.transform.LookAt(new Vector3(PlayerManager.Instance.Player.transform.position.x, 0f, PlayerManager.Instance.Player.transform.position.z) + angle_2);
+
+            Destroy(vfx_1, 4f);
+            Destroy(vfx_2, 4f);
+            Destroy(vfx_3, 4f);
+        }
+
+        public void Shockwave() {
+            GameObject vfx = Instantiate(prefab_2);
+            vfx.transform.position = new Vector3(PlayerManager.Instance.Player.transform.position.x, 0f, PlayerManager.Instance.Player.transform.position.z);
+            //vfx.transform.LookAt(new Vector3(PlayerManager.Instance.Player.transform.position.x, 0f, PlayerManager.Instance.Player.transform.position.z));
+
+            Destroy(vfx, 4f);
+        }
+
+        public void Vine() { 
+        
+        }
+
+        private Vector3 DirFromAngle(float angleInDegrees, bool angleIsGlobal)
+        {
+            if (!angleIsGlobal)
+            {
+                angleInDegrees += transform.eulerAngles.y;
+            }
+            return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
         }
 
         /*
