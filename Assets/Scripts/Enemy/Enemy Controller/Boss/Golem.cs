@@ -6,6 +6,10 @@ namespace CSE5912.PolyGamers
 {
     public class Golem : EliteEnemy
     {
+        [Header("Attack Effects")]
+        [SerializeField] private GameObject prefab;
+        [SerializeField] private Transform pivot;
+
         protected override void PerformActions()
         {
             switch (status) 
