@@ -21,6 +21,7 @@ namespace CSE5912.PolyGamers
             Bullet = 0,
             Scope = 1,
             Casing = 2,
+            Rune = 3,
         }
         public enum AttachmentRarity
         {

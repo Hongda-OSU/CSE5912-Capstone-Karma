@@ -45,6 +45,7 @@ namespace CSE5912.PolyGamers
             {
                 attachmentSlots[i] = weaponRow.Q<VisualElement>("Attachment_" + i);
                 attachmentSlots[i].style.unityBackgroundImageTintColor = Color.clear;
+                attachmentSlots[i].style.unityBackgroundScaleMode = ScaleMode.ScaleToFit;
 
                 attachmentIconSlots[i] = attachmentSlots[i].Q<VisualElement>("AttachmentIcon");
             }

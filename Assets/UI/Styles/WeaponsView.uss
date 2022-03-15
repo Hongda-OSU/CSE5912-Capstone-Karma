@@ -19,6 +19,12 @@
     background-color: rgba(0, 0, 0, 0.65);
 }
 
+.AttachmentIcon {
+    flex-grow: 0;
+    width: 83.5px;
+    height: 122px;
+}
+
 .WeaponSlot {
     background-color: rgba(0, 0, 0, 0);
     width: 375px;
@@ -80,7 +86,7 @@
     align-items: center;
     width: 125px;
     background-image: url('project://database/Assets/UI/VFX/Framing.png?fileID=2800000&guid=80fd7e667798045488d21ee46c1808d3&type=3#Framing');
-    height: 125px;
+    height: auto;
 }
 
 .InventoryRow {
@@ -89,14 +95,6 @@
     flex-direction: row;
     height: 30px;
     top: 0;
-}
-
-.AttachmentIcon {
-    flex-grow: 0.75;
-    flex-shrink: 0.75;
-    width: 75%;
-    height: 75%;
-    transition-duration: 0.15s;
 }
 
 .PageIndicator {

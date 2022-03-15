@@ -233,22 +233,30 @@ namespace CSE5912.PolyGamers
             foreach (var inventorySlot in attachmentInventoryControl.slotList)
             {
                 VisualElement slot = inventorySlot.slot;
+
+                var icon = slot.Q<VisualElement>("AttachmentIcon");
+                Color tint = icon.resolvedStyle.unityBackgroundImageTintColor;
+
+                tint.a = 1f;
+                icon.style.unityBackgroundImageTintColor = tint;
+                slot.style.backgroundColor = Color.clear;
+
                 if (inventorySlot.attachment == null)
                 {
                     ApplySelectedVfx(slot, false);
-                    slot.style.backgroundColor = Color.clear;
                 }
                 else
                 {
                     ApplySelectedVfx(slot, inventorySlot.attachment == selectedAttachment);
 
-                    if (inventorySlot.attachment.AttachedTo != null)
+                    if (inventorySlot.attachment.Type != type)
+                    {
+                        tint.a = 0.25f;
+                        icon.style.unityBackgroundImageTintColor = tint;
+                    }
+                    else if (inventorySlot.attachment.AttachedTo != null)
                     {
                         slot.style.backgroundColor = Color.gray;
-                    }
-                    else
-                    {
-                        slot.style.backgroundColor = Color.clear;
                     }
                 }
             }
@@ -323,7 +331,8 @@ namespace CSE5912.PolyGamers
             {
 
                 Attachment attachment = attachmentInventoryControl.FindAttachmentBySlot(attachmentInventorySlot);
-                if (attachment == null)
+                var type = GetAttachmentType(selectedEquippedAttachmentSlot);
+                if (attachment == null || attachment.Type != type)
                     return;
 
                 selectedAttachment = null;
