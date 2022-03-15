@@ -88,7 +88,15 @@ namespace CSE5912.PolyGamers
 
         protected void CreateBullet()
         {
-            GameObject bullet = Instantiate(BulletPrefab, MuzzlePoint.position, MuzzlePoint.rotation);
+            Quaternion bulletRot = MuzzlePoint.rotation;
+            // fake bullet rotation when running
+            if (FPSControllerCC.Instance.IsSprint)
+            {
+                Quaternion playerRot = GameObject.FindObjectOfType<FPSControllerCC>().transform.localRotation;
+                Quaternion mouseRot = GameObject.FindObjectOfType<FPSMouseLook>().transform.localRotation;
+                bulletRot = playerRot * mouseRot;
+            }
+            GameObject bullet = Instantiate(BulletPrefab, MuzzlePoint.position, bulletRot);
             bullet.transform.eulerAngles += CalculateBulletSpreadOffset();
             var bulletScript = bullet.AddComponent<Bullet>();
             bulletScript.ImpactPrefab = ImpactPrefab;

@@ -234,5 +234,7 @@ namespace CSE5912.PolyGamers
         {
             characterAnimator = aniamtor;
         }
+
+        public bool IsSprint => isSprinted;
     }
 }
