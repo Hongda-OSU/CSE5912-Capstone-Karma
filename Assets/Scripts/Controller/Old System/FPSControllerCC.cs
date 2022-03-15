@@ -164,7 +164,11 @@ namespace CSE5912.PolyGamers
         public void PerformInspect()
         {
             if (characterAnimator)
+            {
                 characterAnimator.SetTrigger("Inspect");
+                //WeaponSkinManager.Instance.ChangeCurrentWeaponSkin();
+            }
+               
         }
 
         // Handle Sprint
