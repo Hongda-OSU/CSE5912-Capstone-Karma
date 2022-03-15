@@ -26,7 +26,7 @@ namespace CSE5912.PolyGamers
         public void ChangeCurrentWeaponSkin()
         {
             //weaponSkins[counter].mainTextureScale = new Vector2(Random.Range(40f, 80f), Random.Range(40f, 80f));
-            //WeaponManager.Instance.CarriedWeapon.transform.Find("arms/handgun_01").GetComponent<Renderer>().material = weaponSkins[counter];
+            //WeaponManager.Instance.CarriedWeapon.transform.Find("arms/WeaponSkin").GetComponent<Renderer>().material = weaponSkins[counter];
             counter++;
             if (counter >= count)
                 counter = 0;
