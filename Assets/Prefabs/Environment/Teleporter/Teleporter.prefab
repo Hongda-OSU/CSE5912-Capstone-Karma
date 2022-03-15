@@ -12,8 +12,6 @@ GameObject:
   - component: {fileID: 33894907222936390}
   - component: {fileID: 23141838779330174}
   - component: {fileID: 64248403375087004}
-  - component: {fileID: 4285959272887788577}
-  - component: {fileID: 888570573}
   - component: {fileID: 176542633}
   - component: {fileID: 176542634}
   m_Layer: 6
@@ -38,6 +36,7 @@ Transform:
   - {fileID: 2809263505112969910}
   - {fileID: 2896988145014827659}
   - {fileID: 343194848240221918}
+  - {fileID: 1484688348997807071}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -105,43 +104,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 43982816642226738, guid: d96cfb3e2262b3c438d1f1d79dd08cd4, type: 2}
---- !u!135 &4285959272887788577
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1462680479123874}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 10
-  m_Center: {x: -0.0002001524, y: 3.258909, z: -0.000010967255}
---- !u!114 &888570573
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1462680479123874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 135b37dc228615042941910d7493c012, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  animationTime: 3
-  risingSound: {fileID: 176542634}
-  shootingSound: {fileID: 176542633}
-  finalPivot: {fileID: 2896988145014827659}
-  startPivot: {fileID: 2809263505112969910}
-  powerPivot: {fileID: 343194848240221918}
-  inactiveMesh: {fileID: 4300000, guid: ce695642ae6a90b47bd778afbe4a507e, type: 3}
-  activeMesh: {fileID: 4300000, guid: 41262656d08176543b3e04c83eea9cef, type: 3}
-  powerPrefab: {fileID: 1740513464688192, guid: 1e447e8e8f2e4344e86f5c69418c380e, type: 3}
-  circlePrefab: {fileID: 1231247210357622, guid: dafab92fc5d2f88439c6a0b06996f852, type: 3}
-  portalPrefab: {fileID: 1881552412633134, guid: 3ad9deb72dad7c640958ecf68366e065, type: 3}
 --- !u!82 &176542633
 AudioSource:
   m_ObjectHideFlags: 0
@@ -334,6 +296,78 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &3617034931598163254
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1484688348997807071}
+  - component: {fileID: 4637189227378041080}
+  - component: {fileID: 8677138632370803872}
+  m_Layer: 0
+  m_Name: TriggerArea
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1484688348997807071
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3617034931598163254}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4895872985307090}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &4637189227378041080
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3617034931598163254}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 10
+  m_Center: {x: 0, y: 3, z: 0}
+--- !u!114 &8677138632370803872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3617034931598163254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 135b37dc228615042941910d7493c012, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  risingTime: 3
+  shootingTime: 4.5
+  risingSound: {fileID: 176542634}
+  shootingSound: {fileID: 176542633}
+  finalPivot: {fileID: 2896988145014827659}
+  startPivot: {fileID: 2809263505112969910}
+  powerPivot: {fileID: 343194848240221918}
+  inactiveMesh: {fileID: 4300000, guid: ce695642ae6a90b47bd778afbe4a507e, type: 3}
+  activeMesh: {fileID: 4300000, guid: 41262656d08176543b3e04c83eea9cef, type: 3}
+  powerPrefab: {fileID: 1740513464688192, guid: 1e447e8e8f2e4344e86f5c69418c380e, type: 3}
+  circlePrefab: {fileID: 1231247210357622, guid: dafab92fc5d2f88439c6a0b06996f852, type: 3}
+  portalPrefab: {fileID: 1881552412633134, guid: 3ad9deb72dad7c640958ecf68366e065, type: 3}
+  meshFilter: {fileID: 33894907222936390}
 --- !u!1 &3791728203255702053
 GameObject:
   m_ObjectHideFlags: 0

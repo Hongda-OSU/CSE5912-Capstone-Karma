@@ -28,12 +28,14 @@ namespace CSE5912.PolyGamers
         private bool isActivated = false;
         private bool isUsed = false;
 
-        private MeshFilter meshFilter;
+        [SerializeField] private MeshFilter meshFilter;
+
+        private Transform teleporter;
 
         private void Awake()
         {
-            meshFilter = GetComponent<MeshFilter>();
             meshFilter.mesh = inactiveMesh;
+            teleporter = transform.parent;
         }
 
         private void OnTriggerEnter(Collider other)
@@ -84,13 +86,13 @@ namespace CSE5912.PolyGamers
 
             risingSound.Play();
 
-            Vector3 startPosition = transform.position;
+            Vector3 startPosition = teleporter.transform.position;
             Vector3 endPosition = finalPivot.position;
 
             float timeSince = 0f;
             while (timeSince < risingTime)
             {
-                transform.position = Vector3.Slerp(startPosition, endPosition, timeSince / risingTime);
+                teleporter.transform.position = Vector3.Slerp(startPosition, endPosition, timeSince / risingTime);
 
                 timeSince += Time.deltaTime;
                 yield return new WaitForSeconds(Time.deltaTime);
