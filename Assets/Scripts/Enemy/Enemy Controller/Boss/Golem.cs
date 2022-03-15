@@ -8,10 +8,6 @@ namespace CSE5912.PolyGamers
     {
         protected override void PerformActions()
         {
-            /*
-            if (playerDetected && !isPlayingAttackAnim)
-                FaceTarget(directionToPlayer);
-            */
             switch (status) 
             {
                 case Status.Idle:
@@ -26,19 +22,18 @@ namespace CSE5912.PolyGamers
 
                     break;
 
-                case Status.Moving:
-                    //isPlayingAttackAnim = false;                   
-
+                case Status.Moving:                 
                     if (!isAttacking)
                     {
                         if (isPlayerInAttackRange && distanceToPlayer > closeDetectionRange)
                         {
-                            Attack(1);
+                            int attackNum = Random.Range(1, 3);
+                            Attack(attackNum);
                             isPlayingAttackAnim = true;
                         }
                         else if (distanceToPlayer <= closeDetectionRange)
                         {
-                            Attack(2);
+                            Attack(3);
                             isPlayingAttackAnim = true;
                         }
                         else 
@@ -52,13 +47,23 @@ namespace CSE5912.PolyGamers
                 case Status.Attacking:                   
                     if (isPlayingAttackAnim)
                     {
+                        
+                        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Sword_Attack_1") ||
+                            animator.GetCurrentAnimatorStateInfo(0).IsName("Sword_Attack_2")) {
+                            FaceTarget(directionToPlayer);
+                        }
+                        
+
                         if (!(animator.GetCurrentAnimatorStateInfo(0).IsName("Attack_Stomp_1") ||
                             animator.GetCurrentAnimatorStateInfo(0).IsName("Attack_Stomp_2") ||
-                            animator.GetCurrentAnimatorStateInfo(0).IsName("Attack_1")))
+                            animator.GetCurrentAnimatorStateInfo(0).IsName("Attack_1") ||
+                            animator.GetCurrentAnimatorStateInfo(0).IsName("Sword_Attack_1") ||
+                            animator.GetCurrentAnimatorStateInfo(0).IsName("Sword_Attack_2")))
                         {
                             isPlayingAttackAnim = false;
                             animator.ResetTrigger("Attack_1");
                             animator.ResetTrigger("Attack_2");
+                            animator.ResetTrigger("Attack_3");
                         }
                     }
                     else 
