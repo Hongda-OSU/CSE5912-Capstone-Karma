@@ -33,11 +33,13 @@ namespace CSE5912.PolyGamers
                     {
                         if (isPlayerInAttackRange && distanceToPlayer > closeDetectionRange)
                         {
-                            Attack(1);                          
+                            Attack(1);
+                            isPlayingAttackAnim = true;
                         }
                         else if (distanceToPlayer <= closeDetectionRange)
                         {
                             Attack(2);
+                            isPlayingAttackAnim = true;
                         }
                         else 
                         {
@@ -47,16 +49,28 @@ namespace CSE5912.PolyGamers
 
                     break;
 
-                case Status.Attacking:
-                    //isPlayingAttackAnim = true;
-
-                    if (isFatigued)
+                case Status.Attacking:                   
+                    if (isPlayingAttackAnim)
                     {
-                        PrepareForNextAttack();
+                        if (!(animator.GetCurrentAnimatorStateInfo(0).IsName("Attack_Stomp_1") ||
+                            animator.GetCurrentAnimatorStateInfo(0).IsName("Attack_Stomp_2") ||
+                            animator.GetCurrentAnimatorStateInfo(0).IsName("Attack_1")))
+                        {
+                            isPlayingAttackAnim = false;
+                            animator.ResetTrigger("Attack_1");
+                            animator.ResetTrigger("Attack_2");
+                        }
                     }
-                    else
+                    else 
                     {
-                        status = Status.Moving;
+                        if (isFatigued)
+                        {
+                            PrepareForNextAttack();
+                        }
+                        else
+                        {
+                            status = Status.Moving;
+                        }
                     }
 
                     break;
