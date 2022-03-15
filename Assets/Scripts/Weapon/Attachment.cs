@@ -18,9 +18,9 @@ namespace CSE5912.PolyGamers
 
         public enum AttachmentType
         {
-            Bullet,
-            Scope,
-            Casing,
+            Bullet = 0,
+            Scope = 1,
+            Casing = 2,
         }
         public enum AttachmentRarity
         {

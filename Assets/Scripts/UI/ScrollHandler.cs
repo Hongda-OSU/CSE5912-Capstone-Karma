@@ -30,7 +30,7 @@ namespace CSE5912.PolyGamers
                 step = -1;
 
             WeaponsPanelControl.Instance.FlipInventoryPage(step);
-            WeaponsPanelControl.Instance.UpdateSlotsVisual();
+            WeaponsPanelControl.Instance.UpdateInterface();
         }
     }
 }

@@ -64,6 +64,9 @@ MonoBehaviour:
   uiDocument: {fileID: 0}
   fadingTime: 0.15
   currentCamera: {fileID: 0}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 321
   width: 200
   distanceToDisplay: 10
   distanceToDisplayIfAttacked: 20

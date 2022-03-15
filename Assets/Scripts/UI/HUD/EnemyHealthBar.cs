@@ -8,6 +8,7 @@ namespace CSE5912.PolyGamers
     public class EnemyHealthBar : UI
     {
         [SerializeField] private Camera currentCamera;
+        [SerializeField] private LayerMask layerMask;
 
         [SerializeField] private float width = 200f;
 
@@ -77,7 +78,7 @@ namespace CSE5912.PolyGamers
 
             if (distance < maxDistance)
             {
-                if (Physics.Raycast(target.transform.position, enemy.DirectionToPlayer, out hit, maxDistance))
+                if (Physics.Raycast(target.transform.position, enemy.DirectionToPlayer, out hit, maxDistance, layerMask))
                 {
                     return hit.transform.gameObject == player;
                 }

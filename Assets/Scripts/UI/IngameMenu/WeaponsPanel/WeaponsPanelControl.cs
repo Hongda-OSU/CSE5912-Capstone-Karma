@@ -75,7 +75,7 @@ namespace CSE5912.PolyGamers
 
                 foreach (var attachmentSlot in weaponRow.attachmentSlots)
                 {
-                    attachmentSlot.RegisterCallback<MouseDownEvent>(evt => EquippedAttachmentSlot_performed(attachmentSlot));
+                    attachmentSlot.RegisterCallback<MouseDownEvent>(evt => AttachmentSlot_performed(attachmentSlot));
                 }
             }
 
@@ -99,7 +99,7 @@ namespace CSE5912.PolyGamers
 
             Attachment inventoryAttachment = SelectInventoryAttachment(slot);
 
-            UpdateSlotsVisual();
+            UpdateInterface();
         }
 
         private Firearms SelectWeapon(VisualElement slot)
@@ -193,7 +193,13 @@ namespace CSE5912.PolyGamers
             }
         }
 
-        public void UpdateSlotsVisual()
+        public void UpdateInterface()
+        {
+            UpdateRowInterface();
+            UpdateInventoryInterface();
+        }
+
+        private void UpdateRowInterface()
         {
 
             foreach (var row in weaponRowsControl.rowList)
@@ -219,6 +225,10 @@ namespace CSE5912.PolyGamers
                     ApplySelectedVfx(attachmentSlot, attachmentSlot == selectedEquippedAttachmentSlot);
                 }
             }
+        }
+        private void UpdateInventoryInterface()
+        {
+            var type = GetAttachmentType(selectedEquippedAttachmentSlot);
 
             foreach (var inventorySlot in attachmentInventoryControl.slotList)
             {
@@ -242,9 +252,7 @@ namespace CSE5912.PolyGamers
                     }
                 }
             }
-
         }
-
 
 
         /*
@@ -263,7 +271,7 @@ namespace CSE5912.PolyGamers
 
         }
 
-        private void EquippedAttachmentSlot_performed(VisualElement attachmentSlot)
+        private void AttachmentSlot_performed(VisualElement attachmentSlot)
         {
             StartCoroutine(PopUpAttachmentInventory(attachmentSlot));
 
@@ -336,7 +344,7 @@ namespace CSE5912.PolyGamers
 
                 selectedAttachmentInventorySlot = null;
 
-                UpdateSlotsVisual();
+                UpdateInterface();
 
                 StartCoroutine(PopOffAttachmentInventory());
                 StartCoroutine(PopOffSpecific());
@@ -352,7 +360,7 @@ namespace CSE5912.PolyGamers
 
         private IEnumerator PopUpAttachmentInventory(VisualElement attachmentSlot)
         {
-            UpdateSlotsVisual();
+            UpdateInterface();
 
             VisualElement attachmentsInventory = attachmentInventoryControl.attachmentsInventory;
 
@@ -396,7 +404,7 @@ namespace CSE5912.PolyGamers
                 selectedEquippedAttachmentSlot = null;
                 selectedAttachment = null;
 
-                UpdateSlotsVisual();
+                UpdateInterface();
             }
             yield return null;
         }
@@ -557,13 +565,18 @@ namespace CSE5912.PolyGamers
         {
             selectedWeaponSlot = null;
 
-            UpdateSlotsVisual();
+            UpdateInterface();
 
             yield return StartCoroutine(FadeOut(specificPanel));
 
             specificPanel.style.opacity = 0f;
         }
 
+
+        private Attachment.AttachmentType GetAttachmentType(VisualElement slot)
+        {
+            return (Attachment.AttachmentType)weaponRowsControl.GetAttachmentSlotIndex(selectedEquippedAttachmentSlot);
+        }
 
         public Dictionary<Firearms.WeaponRarity, Color> WeaponRarityToColor { get { return weaponRarityToColor; } }
         public Dictionary<Attachment.AttachmentRarity, Color> AttachmentRarityToColor { get { return attachmentRarityToColor; } }
