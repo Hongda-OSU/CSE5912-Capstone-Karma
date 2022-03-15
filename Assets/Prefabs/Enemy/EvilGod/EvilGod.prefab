@@ -1852,8 +1852,7 @@ MonoBehaviour:
   aggroThreshold: 2
   maxRetreatTime: 3
   isBossFightTriggered: 0
-  portalPrefab: {fileID: 140812, guid: 946ed79503b95e640beeddd00c0719a9, type: 3}
-  portalPivot: {fileID: 8311811498984973473}
+  dodgeChance: 0.5
 --- !u!1 &1905241696832546
 GameObject:
   m_ObjectHideFlags: 0

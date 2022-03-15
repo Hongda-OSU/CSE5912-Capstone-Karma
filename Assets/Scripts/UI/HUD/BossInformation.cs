@@ -114,7 +114,10 @@ namespace CSE5912.PolyGamers
 
 
             prevHealth = enemy.Health;
-
+        }
+        public void Fadeout()
+        {
+            StartCoroutine(FadeOut(root));
         }
     }
 }

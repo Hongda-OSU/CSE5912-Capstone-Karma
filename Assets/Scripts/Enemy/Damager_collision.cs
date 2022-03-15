@@ -31,7 +31,6 @@ namespace CSE5912.PolyGamers
 
             if (enemy == null)
             {
-                Debug.LogError("Enemy of Damager_collision " + name + " is not set.");
                 return;
             }
             Damage damage = new Damage(baseDamage, type, enemy, target);

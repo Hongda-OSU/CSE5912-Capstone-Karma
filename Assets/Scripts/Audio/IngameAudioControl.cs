@@ -56,6 +56,17 @@ namespace CSE5912.PolyGamers
             mainAudio.Play();
         }
 
+        public void SmoothStopMusic()
+        {
+            StartCoroutine(FadeAndPause());
+        }
+
+        private IEnumerator FadeAndPause()
+        {
+            yield return StartCoroutine(FadeBgm(0f));
+
+            mainAudio.Pause();
+        }
         public AudioSource MainAudio { get { return mainAudio; } }
     }
 }

@@ -28,6 +28,8 @@ namespace CSE5912.PolyGamers
 
             shield = GetComponentInChildren<Shield_evilGod>();
             blink = GetComponentInChildren<Blink_evilGod>();
+
+            isInvincible = true;
         }
 
 
