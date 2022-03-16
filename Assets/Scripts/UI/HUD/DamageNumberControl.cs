@@ -28,6 +28,8 @@ namespace CSE5912.PolyGamers
             }
             instance = this;
 
+            var go = Instantiate(numberPrefab);
+            Destroy(go);
         }
 
         public IEnumerator DisplayDamageNumber(Damage damage, Vector3 position)

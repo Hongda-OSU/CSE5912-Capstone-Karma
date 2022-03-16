@@ -24,6 +24,13 @@ namespace CSE5912.PolyGamers
                 Destroy(gameObject);
             instance = this;
 
+
+            var go = Instantiate(baseWeaponPrefabs.gameObject);
+            Destroy(go);
+
+            go = Instantiate(dropoffPrefabs.gameObject);
+            Destroy(go);
+
             baseWeaponList = new List<GameObject>();
             foreach (Transform weapon in baseWeaponPrefabs.transform)
             {

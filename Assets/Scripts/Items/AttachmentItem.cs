@@ -21,7 +21,7 @@ namespace CSE5912.PolyGamers
             attachment.Type = type;
             attachment.Rarity = rarity;
             attachment.IconImage = iconImage;
-            Setup(rarity);
+            //Setup(rarity);
         }
 
         public void Setup(Attachment.AttachmentRarity rarity)
