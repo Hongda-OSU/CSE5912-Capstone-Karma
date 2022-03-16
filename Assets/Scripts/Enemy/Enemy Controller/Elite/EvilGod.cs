@@ -196,7 +196,7 @@ namespace CSE5912.PolyGamers
         {
             isPerforming = false;
 
-            Vector3 position = PlayerManager.Instance.Player.transform.position + directionToPlayer * attackRange;
+            Vector3 position = PlayerManager.Instance.Player.transform.position + directionToPlayer * attackRange / 2;
             Blink(position);
 
             yield return new WaitForSeconds(Time.deltaTime);
@@ -221,8 +221,6 @@ namespace CSE5912.PolyGamers
         }
         private IEnumerator LightningStorm_performed()
         {
-            isPerforming = false;
-
             yield return StartCoroutine(lightningStorm.Perform());
         }
 
@@ -238,6 +236,11 @@ namespace CSE5912.PolyGamers
             isPerforming = false;
 
             yield return StartCoroutine(shield.Perform());
+        }
+
+        private void DonePerforming()
+        {
+            isPerforming = false;
         }
     }
 }

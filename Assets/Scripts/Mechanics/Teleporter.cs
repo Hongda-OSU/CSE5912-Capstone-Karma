@@ -25,6 +25,7 @@ namespace CSE5912.PolyGamers
         [SerializeField] private GameObject circlePrefab;
         [SerializeField] private GameObject portalPrefab;
 
+        private bool isInitialized = false;
         private bool isActivated = false;
         private bool isUsed = false;
 
@@ -40,8 +41,10 @@ namespace CSE5912.PolyGamers
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.tag != "Player" || isActivated)
+            if (other.tag != "Player" || isActivated || isInitialized)
                 return;
+
+            isInitialized = true;
 
             StartCoroutine(PlayActivateAnimation());
 
