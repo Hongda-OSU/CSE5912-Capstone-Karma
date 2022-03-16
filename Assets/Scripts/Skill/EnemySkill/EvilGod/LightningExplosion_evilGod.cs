@@ -30,6 +30,8 @@ namespace CSE5912.PolyGamers
                 GameObject vfx = Instantiate(prefab, lightningExplosions.transform);
                 vfx.GetComponent<Damager_collision>().Initialize(enemy);
 
+                vfx.GetComponent<Damager_collision>().BaseDamage = damage;
+
                 vfx.transform.position = position + direction * offset * (i + 1);
 
                 Destroy(vfx, 5f);

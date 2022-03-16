@@ -118,11 +118,15 @@ namespace CSE5912.PolyGamers
         protected override void MoveToPlayer()
         {
             base.MoveToPlayer();
-            Blink(PlayerManager.Instance.Player.transform.position - directionToPlayer * attackRange * 0.8f);
+
+            Vector3 position = PlayerManager.Instance.Player.transform.position + 
+                Quaternion.AngleAxis(Random.Range(0f, 360f), Vector3.up) * directionToPlayer * Random.Range(3f, attackRange * 0.8f);
+
+            Blink(position);
         }
         protected override IEnumerator PerformActionsOnWaiting()
         {
-            Vector3 position = PlayerManager.Instance.Player.transform.position + directionToPlayer * attackRange;
+            Vector3 position = PlayerManager.Instance.Player.transform.position + Quaternion.AngleAxis(Random.Range(0f, 135f), Vector3.up) * directionToPlayer * attackRange;
             Blink(position);
             currentAttackNum = 0;
             yield return null;
@@ -176,9 +180,10 @@ namespace CSE5912.PolyGamers
         }
         private IEnumerator LightningMissile_performed()
         {
-            isPerforming = false;
+            StartCoroutine(lightningMissile.Perform());
 
-            yield return StartCoroutine(lightningMissile.Perform());
+            yield return new WaitForSeconds(1f);
+            isPerforming = false;
         }
 
 
@@ -194,12 +199,12 @@ namespace CSE5912.PolyGamers
         }
         private IEnumerator LightningExplosion_performed()
         {
-            isPerforming = false;
-
-            Vector3 position = PlayerManager.Instance.Player.transform.position + directionToPlayer * attackRange / 2;
+            Vector3 position = PlayerManager.Instance.Player.transform.position + Quaternion.AngleAxis(Random.Range(0f, 135f), Vector3.up) * directionToPlayer * attackRange / 2;
             Blink(position);
 
             yield return new WaitForSeconds(Time.deltaTime);
+            isPerforming = false;
+
             yield return StartCoroutine(lightningExplosion.Perform());
         }
 
@@ -214,7 +219,7 @@ namespace CSE5912.PolyGamers
             currentAttackNum++;
             isPerforming = true;
 
-            Vector3 position = PlayerManager.Instance.Player.transform.position + directionToPlayer * 2f;
+            Vector3 position = PlayerManager.Instance.Player.transform.position + directionToPlayer * 5f;
             Blink(position);
 
             isInvincible = true;
