@@ -13,6 +13,8 @@ namespace CSE5912.PolyGamers
         private LightningMissile_evilGod lightningMissile;
         private LightningExplosion_evilGod lightningExplosion;
         private LightningStorm_evilGod lightningStorm;
+        private Barrage_evilGod barrage;
+
         private Shield_evilGod shield;
         private Blink_evilGod blink;
 
@@ -25,6 +27,7 @@ namespace CSE5912.PolyGamers
             lightningMissile = GetComponentInChildren<LightningMissile_evilGod>();
             lightningExplosion = GetComponentInChildren<LightningExplosion_evilGod>();
             lightningStorm = GetComponentInChildren<LightningStorm_evilGod>();
+            barrage = GetComponentInChildren<Barrage_evilGod>();
 
             shield = GetComponentInChildren<Shield_evilGod>();
             blink = GetComponentInChildren<Blink_evilGod>();
@@ -163,6 +166,7 @@ namespace CSE5912.PolyGamers
         {
             Attack_lightningStorm();
             Attack_lightningExplosion();
+            Attack_barrage();
             Attack_lightningMissile();
 
             status = Status.Attacking;
@@ -213,6 +217,7 @@ namespace CSE5912.PolyGamers
         {
             if (!lightningStorm.IsPerformingAllowed())
                 return;
+            Debug.Log(lightningStorm.IsPerformingAllowed());
 
             status = Status.Attacking;
             SetAttack(2);
@@ -222,11 +227,29 @@ namespace CSE5912.PolyGamers
             Vector3 position = PlayerManager.Instance.Player.transform.position + directionToPlayer * 5f;
             Blink(position);
 
-            isInvincible = true;
         }
         private IEnumerator LightningStorm_performed()
         {
             yield return StartCoroutine(lightningStorm.Perform());
+        }
+
+        private void Attack_barrage()
+        {
+            if (!barrage.IsPerformingAllowed())
+                return;
+
+            status = Status.Attacking;
+            SetAttack(3);
+            currentAttackNum++;
+            isPerforming = true;
+
+            Vector3 position = PlayerManager.Instance.Player.transform.position + directionToPlayer * attackRange * 0.8f;
+            Blink(position);
+        }
+
+        private IEnumerator Barrage_performed()
+        {
+            yield return StartCoroutine(barrage.Perform());
         }
 
 
@@ -247,5 +270,6 @@ namespace CSE5912.PolyGamers
         {
             isPerforming = false;
         }
+
     }
 }

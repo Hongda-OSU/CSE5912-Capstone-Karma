@@ -5,24 +5,38 @@ using UnityEngine;
 namespace CSE5912.PolyGamers
 {
 
-    [RequireComponent(typeof(Collider))]
+    [RequireComponent(typeof(SphereCollider))]
     public class Damager_collision : MonoBehaviour
     {
         [SerializeField] private float baseDamage;
         [SerializeField] private Element.Type type;
         [SerializeField] private bool hitBack = false;
+        [SerializeField] private LayerMask layerMask;
+
         private Enemy enemy;
         private bool isPlayerHit = false;
-        private GameObject hit;
+        private GameObject objectHit;
+
+        private SphereCollider collider3d;
 
         private void Awake()
         {
-            GetComponent<Collider>().isTrigger = true;    
+            GetComponent<Collider>().isTrigger = true;
+            collider3d = GetComponent<SphereCollider>();
         }
 
+        private void Update()
+        {
+
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, collider3d.radius, layerMask);
+
+            if (hitColliders.Length == 0)
+                return;
+
+            objectHit = hitColliders[0].gameObject;
+        }
         private void OnTriggerEnter(Collider other)
         {
-            hit = other.gameObject;
             if (other.gameObject.layer != LayerMask.NameToLayer("Player") || isPlayerHit)
                 return;
 
@@ -52,6 +66,6 @@ namespace CSE5912.PolyGamers
         public float BaseDamage { get { return baseDamage; } set { baseDamage = value; } }
         public Element.Type Type { get { return type; } set { type = value; } }
         public bool IsPlayerHit { get { return isPlayerHit; } }
-        public GameObject Hit { get { return hit; } }
+        public GameObject Hit { get { return objectHit; } }
     }
 }

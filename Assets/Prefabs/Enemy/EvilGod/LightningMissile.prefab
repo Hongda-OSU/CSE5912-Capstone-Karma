@@ -23919,7 +23919,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.31
+  m_Radius: 0.65
   m_Center: {x: 0, y: 0.00000047683716, z: -0.00000047683716}
 --- !u!114 &3854344979100945399
 MonoBehaviour:
@@ -23935,3 +23935,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseDamage: 10
   type: 3
+  hitBack: 0
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 320
