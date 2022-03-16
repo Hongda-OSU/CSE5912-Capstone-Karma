@@ -149,6 +149,9 @@ namespace CSE5912.PolyGamers
             GunCameraLocalOriginalPosition = GunCamera.transform.localPosition;
             doAimingCoroutine = DoAim();
 
+            var go = Instantiate(BulletPrefab);
+            Destroy(go);
+
             shootEvent = new UnityEvent();
         }
 
