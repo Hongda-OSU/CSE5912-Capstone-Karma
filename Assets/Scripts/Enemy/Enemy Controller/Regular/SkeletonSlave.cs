@@ -54,7 +54,7 @@ namespace CSE5912.PolyGamers
                 foundTarget = false;
                 agent.isStopped = true;
                 animator.SetBool("Run", false);
-                agent.speed = 2f;
+                //agent.speed = 2f;
             }
         }
         protected override void Hit()

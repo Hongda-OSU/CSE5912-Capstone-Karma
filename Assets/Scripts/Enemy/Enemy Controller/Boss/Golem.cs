@@ -12,10 +12,11 @@ namespace CSE5912.PolyGamers
 
         [Header("Shockwave")]
         [SerializeField] private GameObject prefab_2;
-        [SerializeField] private Transform pivot_2;
 
         [Header("Vine")]
         [SerializeField] private GameObject prefab_3;
+        [SerializeField] private GameObject prefab_4;
+
 
         protected override void PerformActions()
         {
@@ -46,7 +47,7 @@ namespace CSE5912.PolyGamers
                         {
                             Attack(2);
                         }
-                        else if (distanceToPlayer <= closeDetectionRange)
+                        else if (distanceToPlayer <= 5f)
                         {
                             Attack(3);
                         }
@@ -69,7 +70,7 @@ namespace CSE5912.PolyGamers
                         
                         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Sword_Attack_1") ||
                             animator.GetCurrentAnimatorStateInfo(0).IsName("Sword_Attack_2") ||
-                            animator.GetCurrentAnimatorStateInfo(0).IsName("Attack_4")) {
+                            animator.GetCurrentAnimatorStateInfo(0).IsName("Attack_1")) {
                             FaceTarget(directionToPlayer);
                         }
                         
@@ -130,6 +131,7 @@ namespace CSE5912.PolyGamers
             vfx_2.transform.position = pivot_1.position;
             vfx_3.transform.position = pivot_1.position;
 
+
             Vector3 angle_1 = DirFromAngle(30f, false) * 10f;
             Vector3 angle_2 = DirFromAngle(330f, false) * 10f;
 
@@ -144,17 +146,49 @@ namespace CSE5912.PolyGamers
 
         public void Shockwave() {
             GameObject vfx = Instantiate(prefab_2);
-            vfx.transform.position = new Vector3(PlayerManager.Instance.Player.transform.position.x, 0f, PlayerManager.Instance.Player.transform.position.z);
+            vfx.transform.position = new Vector3(transform.position.x, -0.5f, transform.position.z);
             //vfx.transform.LookAt(new Vector3(PlayerManager.Instance.Player.transform.position.x, 0f, PlayerManager.Instance.Player.transform.position.z));
 
+            Destroy(vfx, 2f);
+        }
+
+        public void Vine() {
+            GameObject vfx = Instantiate(prefab_3);
+            GameObject dust = Instantiate(prefab_4);
+            vfx.transform.position = new Vector3(PlayerManager.Instance.Player.transform.position.x, 0f, PlayerManager.Instance.Player.transform.position.z);
+            dust.transform.position = pivot_1.position;
+
             Destroy(vfx, 4f);
+            Destroy(dust, 2f);
         }
 
-        public void Vine() { 
-        
+                // These codes below are used by Eiditor for testing purpose.
+        public Transform GetTransform()
+        {
+            return transform;
         }
 
-        private Vector3 DirFromAngle(float angleInDegrees, bool angleIsGlobal)
+        public float GetViewAngle()
+        {
+            return viewAngle;
+        }
+
+        public float GetViewRadius()
+        {
+            return viewRadius;
+        }
+
+        public float GetCloseDetectionDistance()
+        {
+            return closeDetectionRange;
+        }
+
+        public bool FoundTarget()
+        {
+            return foundTarget;
+        }
+
+        public Vector3 DirFromAngle(float angleInDegrees, bool angleIsGlobal)
         {
             if (!angleIsGlobal)
             {
