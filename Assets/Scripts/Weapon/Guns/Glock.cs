@@ -93,10 +93,10 @@ namespace CSE5912.PolyGamers
             // fake bullet when running
             if (FPSControllerCC.Instance.IsSprint)
             {
-                Quaternion playerRot = GameObject.FindObjectOfType<FPSControllerCC>().transform.localRotation;
+                Quaternion playerRot = PlayerManager.Instance.Player.transform.localRotation;
                 Quaternion mouseRot = GameObject.FindObjectOfType<FPSMouseLook>().transform.localRotation; 
                 bulletRot = playerRot * mouseRot;
-                bulletPos = GameObject.FindObjectOfType<FPSControllerCC>().transform.position;
+                bulletPos = PlayerManager.Instance.Player.transform.position;
             }
             GameObject bullet = Instantiate(BulletPrefab, bulletPos, bulletRot);
             bullet.transform.eulerAngles += CalculateBulletSpreadOffset();
