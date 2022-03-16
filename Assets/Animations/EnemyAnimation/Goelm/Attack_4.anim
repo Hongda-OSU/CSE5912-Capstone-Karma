@@ -85480,7 +85480,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 2.6666667
-    functionName: ShardstoneShooting
+    functionName: Vine
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
