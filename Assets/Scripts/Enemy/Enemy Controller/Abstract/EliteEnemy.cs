@@ -199,7 +199,8 @@ namespace CSE5912.PolyGamers
              * 4 attacks in total
              * -1 means stop attacking
              */
-            animator.SetTrigger("Attack_" + index);
+            var trigger = "Attack_" + index;
+            animator.SetTrigger(trigger);
         }
 
         protected virtual void SetRoll(Direction dir)

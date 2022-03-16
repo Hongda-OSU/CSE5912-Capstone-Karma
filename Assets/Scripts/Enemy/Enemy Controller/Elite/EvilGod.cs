@@ -164,10 +164,17 @@ namespace CSE5912.PolyGamers
 
         private void Attack()
         {
-            Attack_lightningStorm();
-            Attack_lightningExplosion();
-            Attack_barrage();
-            Attack_lightningMissile();
+            if (lightningStorm.IsPerformingAllowed())
+                Attack_lightningStorm();
+
+            else if (lightningExplosion.IsPerformingAllowed())
+                Attack_lightningExplosion();
+
+            else if (barrage.IsPerformingAllowed())
+                Attack_barrage();
+
+            else if (lightningMissile.IsPerformingAllowed())
+                Attack_lightningMissile();
 
             status = Status.Attacking;
         }
@@ -217,7 +224,6 @@ namespace CSE5912.PolyGamers
         {
             if (!lightningStorm.IsPerformingAllowed())
                 return;
-            Debug.Log(lightningStorm.IsPerformingAllowed());
 
             status = Status.Attacking;
             SetAttack(2);

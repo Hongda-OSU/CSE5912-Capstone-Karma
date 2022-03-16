@@ -9,7 +9,7 @@ namespace CSE5912.PolyGamers
         [SerializeField] protected float cooldown;
         [SerializeField] protected bool isReady = false;
 
-        protected void StartCoolingdown()
+        public void StartCoolingdown()
         {
             StartCoroutine(CoolDown());
         }
