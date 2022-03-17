@@ -173,7 +173,7 @@
                 <ui:VisualElement name="AttachmentInventorySlots" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0.65); align-items: center; justify-content: flex-start;">
                     <ui:VisualElement name="AttachmentInventoryRow_0" class="InventoryRow" style="height: 30px; top: auto; width: 590px;">
                         <ui:VisualElement name="AttachmentInventorySlot_0" class="InventorySlot">
-                            <ui:VisualElement name="AttachmentIcon" class="AttachmentIcon" style="background-image: url(&apos;project://database/Assets/UI/VFX/UI/Misc_Icons_Spritesheet/Misc_Icons_Spritesheet.png?fileID=21300032&amp;guid=cfb5b9a722516ae4586bad26c20d19a1&amp;type=3#scope_02_icon&apos;); -unity-background-image-tint-color: rgb(255, 255, 255); background-color: rgba(0, 0, 0, 0); -unity-background-scale-mode: scale-to-fit;" />
+                            <ui:VisualElement name="AttachmentIcon" class="AttachmentIcon" style="background-image: url(&apos;project://database/Assets/UI/VFX/UI/Misc_Icons_Spritesheet/Misc_Icons_Spritesheet.png?fileID=21300032&amp;guid=cfb5b9a722516ae4586bad26c20d19a1&amp;type=3#scope_02_icon&apos;); -unity-background-image-tint-color: rgb(255, 255, 255); background-color: rgba(0, 0, 0, 0);" />
                         </ui:VisualElement>
                         <ui:VisualElement name="AttachmentInventorySlot_1" class="InventorySlot">
                             <ui:VisualElement name="AttachmentIcon" class="AttachmentIcon" />

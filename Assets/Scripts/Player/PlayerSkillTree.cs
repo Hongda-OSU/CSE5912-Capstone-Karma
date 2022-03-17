@@ -64,6 +64,11 @@ namespace CSE5912.PolyGamers
             SkillsPanelControl.Instance.SkillTree_element.AssignPassive(15, skillTree_element.GetComponentInChildren<MixedInfection>());
         }
 
+        public void TryActivateSetSkill(Firearms weapon)
+        {
+
+        }
+
         public int SkillPoints { get { return skillPoints; } set { skillPoints = value; } }
     }
 }

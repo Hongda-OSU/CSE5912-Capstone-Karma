@@ -21,16 +21,12 @@ namespace CSE5912.PolyGamers
         [SerializeField] private float boltTimeGap = 0.1f;
         [SerializeField] private Vector3 offset;
 
-        private Bullet prevBullet;
-
         private void Update()
         {
-            var bullet = WeaponManager.Instance.CarriedWeapon.bulletFired;
-            if (bullet != null && bullet != prevBullet)
+            if (WeaponManager.Instance.CarriedWeapon.WasBulletFiredThisFrame())
             {
-                StartCoroutine(Perform(bullet.transform));
+                StartCoroutine(Perform(WeaponManager.Instance.CarriedWeapon.bulletFired.transform));
             }
-            prevBullet = bullet;
         }
         private IEnumerator Perform(Transform point)
         {

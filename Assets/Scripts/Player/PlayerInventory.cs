@@ -14,7 +14,7 @@ namespace CSE5912.PolyGamers
 
         [SerializeField] private Firearms defaultWeapon;
 
-        [SerializeField] private GameObject attachmentParent;
+        [SerializeField] private GameObject attachmentCollection;
 
         private WeaponsPanelControl weaponsPanelControl;
         private AttachmentInventoryControl attachmentInventoryControl;
@@ -26,9 +26,6 @@ namespace CSE5912.PolyGamers
 
         private static PlayerInventory instance;
         public static PlayerInventory Instance { get { return instance; } }
-
-        // test
-        [SerializeField] Sprite[] attachmentIcons;
 
         private void Awake()
         {
@@ -47,11 +44,6 @@ namespace CSE5912.PolyGamers
             weaponsPanelControl = WeaponsPanelControl.Instance;
             attachmentInventoryControl = AttachmentInventoryControl.Instance;
             AddWeapon(defaultWeapon);
-        }
-
-        private void Update()
-        {
-
         }
 
 
@@ -84,7 +76,7 @@ namespace CSE5912.PolyGamers
         public void AddAttachment(Attachment attachment)
         {
             attachmentList.Add(attachment);
-            attachment.transform.SetParent(attachmentParent.transform);
+            attachment.transform.SetParent(attachmentCollection.transform);
 
             UpdateAll();
         }

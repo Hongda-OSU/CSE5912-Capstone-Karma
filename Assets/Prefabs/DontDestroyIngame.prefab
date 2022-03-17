@@ -297,6 +297,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropoffPrefabs: {fileID: 5462706830677207849, guid: ee9a25d632bfda54ebbe6728c1008e59, type: 3}
   baseWeaponPrefabs: {fileID: 7251913148741228827, guid: bd3ddd63cf494f5449f65f60951e8b77, type: 3}
+  dropHeight: 0
   dropPositionVariance: {x: 1, y: 1}
 --- !u!1001 &6615771458777951276
 PrefabInstance:
@@ -470,10 +471,6 @@ PrefabInstance:
     - target: {fileID: 1132428565656182083, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3914003179907011757, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
-      propertyPath: maxNumOfWeapons
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3914003179971651603, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
       propertyPath: m_RootOrder

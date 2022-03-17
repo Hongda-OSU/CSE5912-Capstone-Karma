@@ -1381,6 +1381,7 @@ MonoBehaviour:
   agentSpeed: 3
   isAlive: 1
   isFrozen: 0
+  isInvincible: 0
   damageFactor_physical: 1
   damageFactor_fire: 1
   damageFactor_cryo: 1
@@ -1391,17 +1392,20 @@ MonoBehaviour:
   cryoResist: 50
   electroResist: 100
   venomResist: 150
-  dropWeaponChance: 0
-  dropWeaponType: 0
-  dropWeaponRarity: 4
-  dropAttachmentChance: 0
-  dropAttachmentType: 1
-  dropAttachmentRarity: 4
+  dropWeaponChance: 1
+  dropWeaponNumber: 1
+  dropWeaponTypes: 00000000
+  dropWeaponRarities: 00000000
+  dropAttachmentChance: 1
+  dropAttachmentNumber: 3
+  dropAttachmentTypes: 000000000100000002000000
+  dropAttachmentRarities: 04000000
   rotateSpeed: 20
   viewRadius: 15
   viewAngle: 135
   closeDetectionRange: 3
   timeToDestroy: 5
+  playerDetected: 0
   canWander: 0
   wanderAreaNumber: 0
   canPatrol: 0

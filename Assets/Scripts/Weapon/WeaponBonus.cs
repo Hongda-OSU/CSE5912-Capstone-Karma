@@ -77,11 +77,6 @@ namespace CSE5912.PolyGamers
             private static float valueVariance = 0.3f;
 
             private static float elementDamageBonus = 0.042f;
-            private static float critDamageBonus = 0.06f;
-            private static float critRateBonus = 0.12f;
-            private static float ammoBonus = 0.2f;
-            private static float recoilReductionBonus = 0.15f;
-            private static float spreadReductionBonus = 0.15f;
             private static float fireRateBonus = 0.05f;
 
             //internal enum 
@@ -98,11 +93,6 @@ namespace CSE5912.PolyGamers
                     IncreaseDamage_cryo,
                     IncreaseDamage_electro,
                     IncreaseDamage_venom,
-                    IncreaseCritDamage,
-                    IncreaseCritRate,
-                    IncreaseAmmo,
-                    DecreaseRecoil,
-                    DecreaseSpread,
                     IncreaseFireRate,
                 };
             }
@@ -261,125 +251,6 @@ namespace CSE5912.PolyGamers
                     isReady = true;
                 }
             }
-
-
-            internal void IncreaseCritDamage(bool enabled)
-            {
-                if (enabled != isReady)
-                    return;
-
-                if (!isInitialized)
-                {
-                    value = ResolveValue(critDamageBonus);
-                    isInitialized = true;
-                }
-
-                description = "Critical Damage +" + Math.Round(value * 100, 1) + "%";
-
-                if (enabled)
-                {
-                    PlayerStats.Instance.CritDamageFactor += value;
-                    isReady = false;
-                }
-                else
-                {
-                    PlayerStats.Instance.CritDamageFactor -= value;
-                    isReady = true;
-                }
-            }
-
-            internal void IncreaseCritRate(bool enabled)
-            {
-                if (enabled != isReady)
-                    return;
-
-                if (!isInitialized)
-                {
-                    value = ResolveValue(critRateBonus);
-                    isInitialized = true;
-                }
-
-                description = "Critical Rate +" + Math.Round(value * 100, 1) + "%";
-
-                if (enabled)
-                {
-                    PlayerStats.Instance.CritRate += value;
-                    isReady = false;
-                }
-                else
-                {
-                    PlayerStats.Instance.CritRate -= value;
-                    isReady = true;
-                }
-            }
-
-            internal void IncreaseAmmo(bool enabled)
-            {
-                if (enabled != isReady)
-                    return;
-
-                if (!isInitialized)
-                {
-                    value = ResolveValue(ammoBonus);
-                    isInitialized = true;
-                }
-
-                description = "Ammo +" + Math.Round(value * 100, 1) + "%";
-
-                int ammo = weapon.AmmoInMag;
-                if (enabled)
-                {
-                    weapon.AmmoInMag = (int)Mathf.Floor(ammo * (1 + value));
-                    weapon.CurrentAmmo = weapon.AmmoInMag;
-                    isReady = false;
-                }
-            }
-
-            internal void DecreaseRecoil(bool enabled)
-            {
-                if (enabled != isReady)
-                    return;
-
-                if (!isInitialized)
-                {
-                    value = ResolveValue(recoilReductionBonus);
-                    isInitialized = true;
-                }
-
-                description = "Recoil -" + Math.Round(value * 100, 1) + "%";
-
-                if (enabled)
-                {
-                    FPSMouseLook.Instance.RecoilScale *= 1 - value;
-                    isReady = false;
-                }
-                else
-                {
-                    FPSMouseLook.Instance.RecoilScale /= 1 - value;
-                    isReady = true;
-                }
-            }
-
-            internal void DecreaseSpread(bool enabled)
-            {
-                if (enabled != isReady)
-                    return;
-
-                if (!isInitialized)
-                {
-                    value = ResolveValue(spreadReductionBonus);
-                    isInitialized = true;
-                }
-
-                description = "Spread -" + Math.Round(value * 100, 1) + "%";
-
-                if (enabled)
-                {
-                    weapon.SpreadAngle *= 1 - value;
-                    isReady = false;
-                }
-            }
-
 
             internal void IncreaseFireRate(bool enabled)
             {

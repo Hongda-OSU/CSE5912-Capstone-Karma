@@ -132,8 +132,8 @@ namespace CSE5912.PolyGamers
         //}
         internal bool isAttached;
 
-        // Firearms singleton
-        //public static Firearms Instance { get; private set; }
+
+        private Bullet prevBullet;
 
         protected virtual void Awake()
         {
@@ -175,6 +175,19 @@ namespace CSE5912.PolyGamers
             foreach (var attachment in attachments)
                 if (attachment != null)
                     attachment.PerformBonus(enabled);
+        }
+
+        public void IncreaseReloadSpeed(float speed)
+        {
+            var current = GunAnimator.GetFloat("ReloadSpeed");
+            GunAnimator.SetFloat("ReloadSpeed", current + speed);
+        }
+
+        public bool WasBulletFiredThisFrame()
+        {
+            bool shoot = WeaponManager.Instance.isFiring && prevBullet != bulletFired;
+            prevBullet = bulletFired;
+            return shoot;
         }
 
         public void Attack()

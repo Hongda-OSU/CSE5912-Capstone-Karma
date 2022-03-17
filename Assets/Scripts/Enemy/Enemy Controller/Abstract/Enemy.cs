@@ -46,11 +46,14 @@ namespace CSE5912.PolyGamers
 
         [Header("Random Dropoff")]
         [SerializeField] private float dropWeaponChance;
-        [SerializeField] private Firearms.WeaponType dropWeaponType = Firearms.WeaponType.AK47;
-        [SerializeField] private Firearms.WeaponRarity dropWeaponRarity = Firearms.WeaponRarity.Divine;
+        [SerializeField] private int dropWeaponNumber = 1;
+        [SerializeField] private Firearms.WeaponType[] dropWeaponTypes;
+        [SerializeField] private Firearms.WeaponRarity[] dropWeaponRarities;
+
         [SerializeField] private float dropAttachmentChance;
-        [SerializeField] private Attachment.AttachmentType dropAttachmentType = Attachment.AttachmentType.Scope;
-        [SerializeField] private Attachment.AttachmentRarity dropAttachmentRarity = Attachment.AttachmentRarity.Divine;
+        [SerializeField] private int dropAttachmentNumber = 1;
+        [SerializeField] private Attachment.AttachmentType[] dropAttachmentTypes;
+        [SerializeField] private Attachment.AttachmentRarity[] dropAttachmentRarities;
 
         [Header("Certain Dropoff")]
         // todo
@@ -153,18 +156,30 @@ namespace CSE5912.PolyGamers
 
         protected void DropWeapon()
         {
-            if (Random.value < dropWeaponChance)
-                return;
+            for (int i = 0; i < dropWeaponNumber; i++)
+            {
+                if (Random.value > dropWeaponChance)
+                    continue;
 
-            DropoffManager.Instance.DropWeapon(dropWeaponType, dropWeaponRarity, transform.position);
+                var type = dropWeaponTypes[Random.Range(0, dropWeaponTypes.Length)];
+                var rarity = dropWeaponRarities[Random.Range(0, dropWeaponRarities.Length)];
+
+                DropoffManager.Instance.DropWeapon(type, rarity, transform.position);
+            }
         }
 
         protected void DropAttachment()
         {
-            if (Random.value < dropAttachmentChance)
-                return;
+            for (int i = 0; i < dropAttachmentNumber; i++)
+            {
+                if (Random.value > dropAttachmentChance)
+                    continue;
 
-            DropoffManager.Instance.DropAttachment(dropAttachmentType, dropAttachmentRarity, transform.position);
+                var type = dropAttachmentTypes[Random.Range(0, dropAttachmentTypes.Length)];
+                var rarity = dropAttachmentRarities[Random.Range(0, dropAttachmentRarities.Length)];
+
+                DropoffManager.Instance.DropAttachment(type, rarity, transform.position);
+            }
         }
 
 

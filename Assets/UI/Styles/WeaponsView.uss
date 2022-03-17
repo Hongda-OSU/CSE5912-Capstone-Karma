@@ -23,6 +23,7 @@
     flex-grow: 0;
     width: 83.5px;
     height: 122px;
+    -unity-background-scale-mode: scale-to-fit;
 }
 
 .WeaponSlot {

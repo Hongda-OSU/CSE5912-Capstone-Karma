@@ -6,26 +6,30 @@ namespace CSE5912.PolyGamers
 {
     public class AttachmentItem : BaseItem
     {
+        [SerializeField] private Attachment.AttachmentSet set;
         [SerializeField] private Attachment.AttachmentType type;
         [SerializeField] private Attachment.AttachmentRarity rarity;
         [SerializeField] private Sprite iconImage;
         private Attachment attachment;
         private AttachmentBonus bonus;
 
-        private void Awake()
+        //private void Awake()
+        //{
+        //    //Setup(rarity);
+        //}
+
+        public void Setup(Attachment.AttachmentRarity rarity)
         {
             CurrentItemType = ItemType.Attachment;
 
             GameObject obj = new GameObject();
             attachment = obj.AddComponent<Attachment>();
+
+            attachment.Set = set;
             attachment.Type = type;
             attachment.Rarity = rarity;
             attachment.IconImage = iconImage;
-            //Setup(rarity);
-        }
 
-        public void Setup(Attachment.AttachmentRarity rarity)
-        {
             attachment.Rarity = rarity;
             bonus = new AttachmentBonus(attachment);
             attachment.Bonus = bonus;

@@ -18,8 +18,6 @@ namespace CSE5912.PolyGamers
         private Shield_evilGod shield;
         private Blink_evilGod blink;
 
-        private Bullet prevBullet;
-
         private bool isPerforming = false;
 
         private void Awake()
@@ -144,10 +142,7 @@ namespace CSE5912.PolyGamers
 
         private void Dodge()
         {
-            bool isFired = WeaponManager.Instance.isFiring && prevBullet != WeaponManager.Instance.CarriedWeapon.bulletFired;
-            prevBullet = WeaponManager.Instance.CarriedWeapon.bulletFired;
-
-            if (!isFired || !Physics.Raycast(player.position, WeaponManager.Instance.GetShootDirection(), out RaycastHit hit, 1000))
+            if (!WeaponManager.Instance.CarriedWeapon.WasBulletFiredThisFrame() || !Physics.Raycast(player.position, WeaponManager.Instance.GetShootDirection(), out RaycastHit hit, 1000))
                 return;
 
             var offset = Vector3.right * GetComponent<Collider>().bounds.size.x;

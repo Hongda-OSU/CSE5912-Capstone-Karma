@@ -9,8 +9,11 @@ namespace CSE5912.PolyGamers
     {
         private Attachment attachment;
 
-        private List<int> availableBonusIndex;
-        private List<Bonus> bonusList;
+        private Bonus bonus;
+
+        private PlayerSkill setBonus;
+
+
         public AttachmentBonus(Attachment attachment)
         {
             this.attachment = attachment; 
@@ -19,40 +22,26 @@ namespace CSE5912.PolyGamers
 
         public void Initialize()
         {
-            attachment.AttachmentName = attachment.Rarity.ToString() + attachment.Type;
+            var type = attachment.Type;
+            // to-do
+            attachment.AttachmentName = attachment.Rarity.ToString() + type;
 
-            bonusList = new List<Bonus>();
-            for (int i = 0; i < (int)attachment.Rarity + 1; i++)
-            {
-                Bonus bonus = new Bonus(attachment);
-                if (i == 0)
-                {
-                    availableBonusIndex = new List<int>();
-                    for (int j = 0; j < Bonus.bonusFunctionList.Count; j++)
-                    {
-                        availableBonusIndex.Add(j);
-                    }
-                }
+            bonus = new Bonus(attachment);
 
-                int index = availableBonusIndex[UnityEngine.Random.Range(0, availableBonusIndex.Count)];
-                bonus.AssignBonusFunction(index);
-                availableBonusIndex.Remove(index);
+            var list = bonus.typeToFunctionList[type];
+            bonus.AssignBonusFunction(type, UnityEngine.Random.Range(0, list.Count));
 
-                bonusList.Add(bonus);
-            }
         }
 
         public void Perform(bool enabled)
         {
-            foreach (var bonus in bonusList)
                 bonus.Perform(enabled);
         }
 
         public List<string> GetBonusDescriptionList()
         {
             var list = new List<string>();
-            foreach(var bonus in bonusList)
-                list.Add(bonus.Description);
+            list.Add(bonus.Description);
             return list;
         }
 
@@ -69,19 +58,26 @@ namespace CSE5912.PolyGamers
             private bool isReady;
             private bool isInitialized = false;
 
-            private BonusFunction bonusFunction;
-            internal static List<BonusFunction> bonusFunctionList;
+            internal BonusFunction bonusFunction;
+
+            internal Dictionary<Attachment.AttachmentType, List<BonusFunction>> typeToFunctionList;
+
+            internal static List<BonusFunction> bulletBonusList;
+            internal static List<BonusFunction> scopeBonusList;
+            internal static List<BonusFunction> casingBonusList;
+            //internal static List<BonusFunction> runeBonusList;
 
             private static float factorPerLevel = 0.5f;
             private static float valueVariance = 0.3f;
 
-            private static float elementDamageBonus = 0.042f;
             private static float critDamageBonus = 0.06f;
             private static float critRateBonus = 0.12f;
-            private static float ammoBonus = 0.2f;
+
             private static float recoilReductionBonus = 0.15f;
             private static float spreadReductionBonus = 0.15f;
-            private static float fireRateBonus = 0.05f;
+
+            private static float ammoBonus = 0.2f;
+            private static float reloadSpeedBonus = 0.1f;
 
             //internal enum 
             internal Bonus(Attachment attachment)
@@ -90,25 +86,36 @@ namespace CSE5912.PolyGamers
                 level = (int)attachment.Rarity + 1;
                 isReady = true;
 
-                bonusFunctionList = new List<BonusFunction>()
-                { 
-                    IncreaseDamage_physical, 
-                    IncreaseDamage_fire, 
-                    IncreaseDamage_cryo,
-                    IncreaseDamage_electro,
-                    IncreaseDamage_venom,
+                bulletBonusList = new List<BonusFunction>()
+                {
                     IncreaseCritDamage,
                     IncreaseCritRate,
-                    IncreaseAmmo,
+                };
+
+                scopeBonusList = new List<BonusFunction>()
+                {
                     DecreaseRecoil,
                     DecreaseSpread,
-                    IncreaseFireRate,
                 };
+
+                casingBonusList = new List<BonusFunction>()
+                {
+                    IncreaseAmmo,
+                    IncreaseReloadSpeed,
+                };
+
+                
+
+                typeToFunctionList = new Dictionary<Attachment.AttachmentType, List<BonusFunction>>();
+                typeToFunctionList.Add(Attachment.AttachmentType.Bullet, bulletBonusList);
+                typeToFunctionList.Add(Attachment.AttachmentType.Scope, scopeBonusList);
+                typeToFunctionList.Add(Attachment.AttachmentType.Casing, casingBonusList);
+                //typeToFunctionList.Add(Attachment.AttachmentType.Rune, )
             }
 
-            internal void AssignBonusFunction(int index)
+            internal void AssignBonusFunction(Attachment.AttachmentType type, int index)
             {
-                var func = bonusFunctionList[index];
+                var func = typeToFunctionList[type][index];
 
                 func(true);
                 func(false);
@@ -134,132 +141,6 @@ namespace CSE5912.PolyGamers
             /*
              *  Regular Bonuses
              */
-
-            internal void IncreaseDamage_physical(bool enabled)
-            {
-                if (enabled != isReady)
-                    return;
-
-                if (!isInitialized)
-                {
-                    value = ResolveValue(elementDamageBonus);
-                    isInitialized = true;
-                }
-
-                description = "Physical Damage +" + Math.Round(value * 100, 1) + "%";
-
-                if (enabled)
-                {
-                    PlayerStats.Instance.GetDamageFactor().Physical.Value += value;
-                    isReady = false;
-                }
-                else
-                {
-                    PlayerStats.Instance.GetDamageFactor().Physical.Value -= value;
-                    isReady = true;
-                }
-            }
-
-            internal void IncreaseDamage_fire(bool enabled)
-            {
-                if (enabled != isReady)
-                    return;
-
-                if (!isInitialized)
-                {
-                    value = ResolveValue(elementDamageBonus);
-                    isInitialized = true;
-                }
-
-                description = "Fire Damage +" + Math.Round(value * 100, 1) + "%";
-
-                if (enabled)
-                {
-                    PlayerStats.Instance.GetDamageFactor().Fire.Value += value;
-                    isReady = false;
-                }
-                else
-                {
-                    PlayerStats.Instance.GetDamageFactor().Fire.Value -= value;
-                    isReady = true;
-                }
-            }
-
-
-            internal void IncreaseDamage_cryo(bool enabled)
-            {
-                if (enabled != isReady)
-                    return;
-
-                if (!isInitialized)
-                {
-                    value = ResolveValue(elementDamageBonus);
-                    isInitialized = true;
-                }
-
-                description = "Cryo Damage +" + Math.Round(value * 100, 1) + "%";
-
-                if (enabled)
-                {
-                    PlayerStats.Instance.GetDamageFactor().Cryo.Value += value;
-                    isReady = false;
-                }
-                else
-                {
-                    PlayerStats.Instance.GetDamageFactor().Cryo.Value -= value;
-                    isReady = true;
-                }
-            }
-
-            internal void IncreaseDamage_electro(bool enabled)
-            {
-                if (enabled != isReady)
-                    return;
-
-                if (!isInitialized)
-                {
-                    value = ResolveValue(elementDamageBonus);
-                    isInitialized = true;
-                }
-
-                description = "Electro Damage +" + Math.Round(value * 100, 1) + "%";
-
-                if (enabled)
-                {
-                    PlayerStats.Instance.GetDamageFactor().Electro.Value += value;
-                    isReady = false;
-                }
-                else
-                {
-                    PlayerStats.Instance.GetDamageFactor().Electro.Value -= value;
-                    isReady = true;
-                }
-            }
-
-            internal void IncreaseDamage_venom(bool enabled)
-            {
-                if (enabled != isReady)
-                    return;
-
-                if (!isInitialized)
-                {
-                    value = ResolveValue(elementDamageBonus);
-                    isInitialized = true;
-                }
-
-                description = "Venom Damage +" + Math.Round(value * 100, 1) + "%";
-
-                if (enabled)
-                {
-                    PlayerStats.Instance.GetDamageFactor().Venom.Value += value;
-                    isReady = false;
-                }
-                else
-                {
-                    PlayerStats.Instance.GetDamageFactor().Venom.Value -= value;
-                    isReady = true;
-                }
-            }
 
 
             internal void IncreaseCritDamage(bool enabled)
@@ -389,27 +270,27 @@ namespace CSE5912.PolyGamers
             }
 
 
-            internal void IncreaseFireRate(bool enabled)
+            internal void IncreaseReloadSpeed(bool enabled)
             {
                 if (enabled != isReady)
                     return;
 
                 if (!isInitialized)
                 {
-                    value = ResolveValue(fireRateBonus);
+                    value = ResolveValue(reloadSpeedBonus);
                     isInitialized = true;
                 }
 
-                description = "Fire Rate +" + Math.Round(value * 100, 1) + "%";
+                description = "Reload Speed +" + Math.Round(value * 100, 1) + "%";
 
                 if (enabled)
                 {
-                    WeaponManager.Instance.CarriedWeapon.FireRate *= (1 + value);
+                    WeaponManager.Instance.CarriedWeapon.IncreaseReloadSpeed(value);
                     isReady = false;
                 }
                 else
                 {
-                    WeaponManager.Instance.CarriedWeapon.FireRate /= (1 + value);
+                    WeaponManager.Instance.CarriedWeapon.IncreaseReloadSpeed(-value);
                     isReady = true;
                 }
             }

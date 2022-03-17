@@ -7,6 +7,7 @@ namespace CSE5912.PolyGamers
     public class Attachment : MonoBehaviour
     {
         [SerializeField] private string attachmentName;
+        [SerializeField] private AttachmentSet attachmentSet;
         [SerializeField] private AttachmentType attachmentType;
         [SerializeField] private AttachmentRarity rarity = AttachmentRarity.Common;
         [SerializeField] private Firearms attachedTo;
@@ -16,6 +17,12 @@ namespace CSE5912.PolyGamers
         [Header("UI related")]
         private Sprite iconImage;
 
+        public enum AttachmentSet
+        {
+            A,
+            B,
+            C,
+        }
         public enum AttachmentType
         {
             Bullet = 0,
@@ -34,14 +41,7 @@ namespace CSE5912.PolyGamers
 
         public void AttachTo(Firearms weapon)
         {
-            if (weapon == WeaponManager.Instance.CarriedWeapon)
-            {
-                PerformBonus(true);
-            }
-            else
-            {
-                PerformBonus(false);
-            }
+            PerformBonus(weapon == WeaponManager.Instance.CarriedWeapon);
             attachedTo = weapon;
         }
 
@@ -52,6 +52,7 @@ namespace CSE5912.PolyGamers
 
 
         public string AttachmentName { get { return attachmentName; } set { attachmentName = value; } }
+        public AttachmentSet Set { get { return attachmentSet; } set { attachmentSet = value; } }
         public AttachmentType Type { get { return attachmentType; } set { attachmentType = value; } }
         public AttachmentRarity Rarity { get { return rarity; } set { rarity = value; } }
         public Firearms AttachedTo { get { return attachedTo; } }
