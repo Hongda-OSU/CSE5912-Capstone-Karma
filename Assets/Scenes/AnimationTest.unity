@@ -219,6 +219,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 991290155}
   playerCamera: {fileID: 0}
+  playerArms: {fileID: 0}
 --- !u!4 &114287490
 Transform:
   m_ObjectHideFlags: 0
@@ -8114,6 +8115,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1184338990863705753}
   - component: {fileID: 1238334387842864427}
+  - component: {fileID: 1238334387842864428}
   m_Layer: 0
   m_Name: ExplosiveSkeleton
   m_TagString: Untagged
@@ -8495,6 +8497,57 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1238334387842864428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187625452119857017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a1b3b9e36da4e44a0354137ba51fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyName: Explosive Skeleton
+  level: 0
+  experience: 0
+  health: 120
+  maxHealth: 120
+  attackDamage: 0
+  attackRange: 5
+  agentSpeed: 2
+  isAlive: 1
+  isFrozen: 0
+  isInvincible: 0
+  damageFactor_physical: 1
+  damageFactor_fire: 1
+  damageFactor_cryo: 1
+  damageFactor_electro: 1
+  damageFactor_venom: 1
+  physicalResist: 0
+  fireResist: 0
+  cryoResist: 0
+  electroResist: 0
+  venomResist: 0
+  dropWeaponChance: 0
+  dropWeaponType: 0
+  dropWeaponRarity: 4
+  dropAttachmentChance: 0
+  dropAttachmentType: 1
+  dropAttachmentRarity: 4
+  rotateSpeed: 50
+  viewRadius: 15
+  viewAngle: 135
+  closeDetectionRange: 3
+  timeToDestroy: 5
+  playerDetected: 0
+  canWander: 0
+  wanderAreaNumber: 0
+  canPatrol: 0
+  waypoints: []
+  effect: {fileID: 2497963346703946159, guid: 3020924a5ebb5ba4788273f5b5a9af20, type: 3}
+  barrel: {fileID: 5845281667075668257}
 --- !u!137 &1267285643022268769
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
