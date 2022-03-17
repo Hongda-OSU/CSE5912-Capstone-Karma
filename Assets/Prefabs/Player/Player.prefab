@@ -231,6 +231,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1134557306127024411}
   playerCamera: {fileID: 1152709272731825391}
+  playerArms: {fileID: 1133501889183404093}
 --- !u!1 &3914003180910380896
 GameObject:
   m_ObjectHideFlags: 0
@@ -780,6 +781,11 @@ PrefabInstance:
 --- !u!4 &1132428565656182083 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4172133018842139838, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
+  m_PrefabInstance: {fileID: 3914003181359763965}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1133501889183404093 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4173241263680668096, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
   m_PrefabInstance: {fileID: 3914003181359763965}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1134349978256518575 stripped

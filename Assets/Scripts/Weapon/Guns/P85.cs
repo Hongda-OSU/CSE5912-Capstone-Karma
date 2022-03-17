@@ -94,7 +94,7 @@ namespace CSE5912.PolyGamers
             if (FPSControllerCC.Instance.IsSprint)
             {
                 Quaternion playerRot = PlayerManager.Instance.Player.transform.localRotation;
-                Quaternion mouseRot = GameObject.FindObjectOfType<FPSMouseLook>().transform.localRotation;
+                Quaternion mouseRot = PlayerManager.Instance.PlayerArms.transform.localRotation;
                 bulletRot = playerRot * mouseRot;
                 bulletPos = PlayerManager.Instance.Player.transform.position;
             }

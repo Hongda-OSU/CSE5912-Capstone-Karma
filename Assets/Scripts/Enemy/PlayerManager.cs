@@ -8,6 +8,7 @@ namespace CSE5912.PolyGamers
     {
         [SerializeField] private GameObject player;
         [SerializeField] private Camera playerCamera;
+        [SerializeField] private GameObject playerArms;
 
         private Enemy hitByBullet;
 
@@ -72,6 +73,7 @@ namespace CSE5912.PolyGamers
         }
 
         public GameObject Player { get { return player; } }
+        public GameObject PlayerArms { get { return playerArms; } }
         public Camera PlayerCamera { get { return playerCamera; } }
         public Enemy LastEnemyHit { get { return lastEnemyHit; } }
         public Enemy HitByBullet { get { return hitByBullet; } set { hitByBullet = value; } } 
