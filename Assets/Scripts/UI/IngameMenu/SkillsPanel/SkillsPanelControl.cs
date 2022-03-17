@@ -8,7 +8,7 @@ namespace CSE5912.PolyGamers
 {
     public class SkillsPanelControl : UI
     {
-        private PlayerSkillTree playerSkill;
+        private PlayerSkillManager playerSkill;
 
         private SkillTree skillTree_element;
 
@@ -52,7 +52,7 @@ namespace CSE5912.PolyGamers
 
         private void Start()
         {
-            playerSkill = PlayerSkillTree.Instance;
+            playerSkill = PlayerSkillManager.Instance;
 
             UpdateVisual();
 

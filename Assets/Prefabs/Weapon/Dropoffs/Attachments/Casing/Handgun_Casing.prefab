@@ -116,6 +116,7 @@ MonoBehaviour:
   outline: {fileID: 5365168431077571084}
   indicator: {fileID: 761794825925665420}
   opacity: 0.3
+  set: 1
   type: 2
   rarity: 0
   iconImage: {fileID: 21300016, guid: cfb5b9a722516ae4586bad26c20d19a1, type: 3}

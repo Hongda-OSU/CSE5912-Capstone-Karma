@@ -11,9 +11,6 @@ namespace CSE5912.PolyGamers
 
         private Bonus bonus;
 
-        private PlayerSkill setBonus;
-
-
         public AttachmentBonus(Attachment attachment)
         {
             this.attachment = attachment; 

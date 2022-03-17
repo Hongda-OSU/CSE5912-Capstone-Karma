@@ -24,14 +24,15 @@ namespace CSE5912.PolyGamers
         [SerializeField] protected SkillType type;
         public enum SkillType
         {
-            passive,
-            main,
-            buff,
+            Passive,
+            Main,
+            Buff,
+            SetSkill,
         }
 
         public virtual bool LevelUp()
         {
-            PlayerSkillTree playerSkill = PlayerSkillTree.Instance;
+            PlayerSkillManager playerSkill = PlayerSkillManager.Instance;
 
             if (level >= maxLevel)
                 return false;
@@ -57,7 +58,7 @@ namespace CSE5912.PolyGamers
 
         public virtual void ResetLevel()
         {
-            PlayerSkillTree.Instance.SkillPoints += learnCost + levelupCost * (level - 1);
+            PlayerSkillManager.Instance.SkillPoints += learnCost + levelupCost * (level - 1);
             isReady = false;
             isLearned = false;
             level = 0;

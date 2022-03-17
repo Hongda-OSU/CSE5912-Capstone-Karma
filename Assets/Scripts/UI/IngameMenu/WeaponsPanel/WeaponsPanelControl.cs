@@ -331,36 +331,44 @@ namespace CSE5912.PolyGamers
             {
 
                 Attachment attachment = attachmentInventoryControl.FindAttachmentBySlot(attachmentInventorySlot);
-                var type = GetAttachmentType(selectedEquippedAttachmentSlot);
-                if (attachment == null || attachment.Type != type)
-                    return;
 
-                selectedAttachment = null;
+                EquipAttachment(attachment);
 
-                Firearms weapon = attachment.AttachedTo;
-                if (weapon != null)
-                {
-                    weapon.RemoveAttachment(attachment);
-                }
-
-                WeaponRow weaponRow = weaponRowsControl.GetWeaponRow(selectedEquippedAttachmentSlot.parent);
-
-                Firearms newWeapon = weaponRow.weapon;
-
-                int index = weaponRowsControl.GetAttachmentSlotIndex(selectedEquippedAttachmentSlot);
-                newWeapon.SetAttachment(attachment, index);
-
-                weaponRow.attachmentIconSlots[index].style.backgroundImage = new StyleBackground(attachment.IconImage);
-                weaponRow.attachmentIconSlots[index].style.unityBackgroundImageTintColor = Instance.AttachmentRarityToColor[attachment.Rarity];
-                weaponRow.attachmentIconSlots[index].style.unityBackgroundScaleMode = ScaleMode.ScaleToFit;
-
-                selectedAttachmentInventorySlot = null;
 
                 UpdateInterface();
 
                 StartCoroutine(PopOffAttachmentInventory());
                 StartCoroutine(PopOffSpecific());
             }
+        }
+
+        private void EquipAttachment(Attachment attachment)
+        {
+            var type = GetAttachmentType(selectedEquippedAttachmentSlot);
+            if (attachment == null || attachment.Type != type)
+                return;
+
+            selectedAttachment = null;
+
+            Firearms weapon = attachment.AttachedTo;
+            if (weapon != null)
+            {
+                weapon.RemoveAttachment(attachment);
+            }
+
+            WeaponRow weaponRow = weaponRowsControl.GetWeaponRow(selectedEquippedAttachmentSlot.parent);
+
+            Firearms newWeapon = weaponRow.weapon;
+
+            int index = weaponRowsControl.GetAttachmentSlotIndex(selectedEquippedAttachmentSlot);
+            newWeapon.SetAttachment(attachment, index);
+            PlayerSkillManager.Instance.TryActivateSetSkill();
+
+            weaponRow.attachmentIconSlots[index].style.backgroundImage = new StyleBackground(attachment.IconImage);
+            weaponRow.attachmentIconSlots[index].style.unityBackgroundImageTintColor = Instance.AttachmentRarityToColor[attachment.Rarity];
+            weaponRow.attachmentIconSlots[index].style.unityBackgroundScaleMode = ScaleMode.ScaleToFit;
+
+            selectedAttachmentInventorySlot = null;
         }
 
         public void FlipInventoryPage(int steps)

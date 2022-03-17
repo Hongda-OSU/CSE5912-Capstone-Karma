@@ -163,6 +163,8 @@ namespace CSE5912.PolyGamers
                 carriedWeapon = MainWeapon;
                 carriedWeapon.gameObject.SetActive(true);
                 fpsController.SetupAnimator(carriedWeapon.GunAnimator);
+
+                PlayerSkillManager.Instance.TryActivateSetSkill();
             }
             // 1. switch to secondary weapon by pressing Alpha2
             else if (inputSchemes.FPSActions.SwitchToSecondaryWeapon.triggered
@@ -176,7 +178,10 @@ namespace CSE5912.PolyGamers
                 carriedWeapon = SecondaryWeapon;
                 carriedWeapon.gameObject.SetActive(true);
                 fpsController.SetupAnimator(carriedWeapon.GunAnimator);
+
+                PlayerSkillManager.Instance.TryActivateSetSkill();
             }
+
         }
 
         private void CheckItem()
