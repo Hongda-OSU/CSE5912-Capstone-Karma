@@ -1,25 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 namespace CSE5912.PolyGamers
 {
     public class Attachment : MonoBehaviour
     {
+        [SerializeField] private Firearms attachedTo;
+
         [SerializeField] private string attachmentName;
-        [SerializeField] private AttachmentSet attachmentSet;
         [SerializeField] private AttachmentType attachmentType;
         [SerializeField] private AttachmentRarity rarity = AttachmentRarity.Common;
-        [SerializeField] private Firearms attachedTo;
+        [SerializeField] private AttachmentSet attachmentSet;
+
         private AttachmentBonus attachmentBonus;
 
         // UI related
         [Header("UI related")]
         private Sprite iconImage;
 
+        // only divine trigger set effect
         public enum AttachmentSet
         {
-            A,
+            QuantumBreak,
             B,
             C,
         }
@@ -58,5 +62,8 @@ namespace CSE5912.PolyGamers
         public Firearms AttachedTo { get { return attachedTo; } }
         public AttachmentBonus Bonus { get { return attachmentBonus; } set { attachmentBonus = value; } }
         public Sprite IconImage { get { return iconImage; } set { iconImage = value; } }
+
+
     }
+
 }

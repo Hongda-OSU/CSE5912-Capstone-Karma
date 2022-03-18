@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace CSE5912.PolyGamers
 {
-    public class SetA : PlayerSkill
+    public class QuantumBreak : PlayerSkill
     {
         [Header("")]
         [SerializeField] private float triggerHealthPercentage = 0.3f;

@@ -66,19 +66,20 @@ namespace CSE5912.PolyGamers
             SkillsPanelControl.Instance.SkillTree_element.AssignPassive(15, skillTree_element.GetComponentInChildren<MixedInfection>());
 
 
-            setToSkill.Add(Attachment.AttachmentSet.A, attachmentSetSkills.GetComponentInChildren<SetA>());
+            setToSkill.Add(Attachment.AttachmentSet.QuantumBreak, attachmentSetSkills.GetComponentInChildren<QuantumBreak>());
         }
 
         public void TryActivateSetSkill()
         {
             var weapon = WeaponManager.Instance.CarriedWeapon;
-            Attachment.AttachmentSet set = Attachment.AttachmentSet.A;
+            Attachment.AttachmentSet set = Attachment.AttachmentSet.QuantumBreak;
 
-            // the 4th attachment is rune. 
+            // the last attachment is rune.
+            // only divine attachments trigger set skills
             for (int i = 0; i < weapon.Attachments.Length - 1; i++)
             {
                 var attachment = weapon.Attachments[i];
-                if (attachment == null)
+                if (attachment == null || attachment.Rarity != Attachment.AttachmentRarity.Divine)
                     return;
                 if (i == 0)
                     set = attachment.Set;
