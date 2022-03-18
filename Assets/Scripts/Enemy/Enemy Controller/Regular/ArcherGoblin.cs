@@ -1,14 +1,20 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 namespace CSE5912.PolyGamers
 {
     public class ArcherGoblin : EliteEnemy
     {
+        [SerializeField] private GameObject arrowVFX;
+        [SerializeField] private GameObject arrow;
+        private int counter = 0;
+
         protected override void PerformActions()
         {
             if (playerDetected)
                 FaceTarget(directionToPlayer);
+
             switch (status)
             {
                 case Status.Idle:
@@ -24,99 +30,96 @@ namespace CSE5912.PolyGamers
                     break;
 
                 case Status.Moving:
-                    if (distanceToPlayer < closeDetectionRange)
-                    {
-                        Retreat();
-                    }
+                    //if (distanceToPlayer < closeDetectionRange)
+                    //{
+                    //    Retreat();
+                    //}
 
                     if (!isAttacking)
                     {
-                        if (isPlayerInAttackRange)
+                        isPlayingAttackAnim = true;
+                        
+                        if (isPlayerInAttackRange && distanceToPlayer > closeDetectionRange)
                         {
-                            Attack(0);
+                            Attack(1);
                         }
-                        else
+                        else if (distanceToPlayer <= 15f && distanceToPlayer > attackRange)
                         {
+                            Attack(2);
+                        }
+                        else if (distanceToPlayer > 15f)
+                        {
+                            isPlayingAttackAnim = false;
                             MoveToPlayer();
                         }
                     }
                     break;
-            
+
                 case Status.Attacking:
-                    if (isFatigued)
+                    if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !animator.IsInTransition(0))
                     {
-                        PrepareForNextAttack();
+                        Debug.Log("Finished");
                     }
-                    else
-                    {
-                        status = Status.Moving;
-                    }
-
+                    status = Status.Moving;
                     break;
 
-                case Status.Retreating:
-                    if (!isRetreatFinished)
-                        break;
-
-                    else
-                    {
-                        if (isFatigued)
-                        {
-                            PrepareForNextAttack();
-                        }
-                        else
-                        {
-                            MoveToPlayer();
-                        }
-                    }
-
-                    break;
 
                 case Status.Waiting:
-                    if (isReadyToAttack && !isFatigued)
+                    if (isReadyToAttack)
                     {
                         MoveToPlayer();
                     }
-
                     break;
             }
         }
 
         protected override IEnumerator PerformActionsOnWaiting()
         {
-            StartCoroutine(CoolDown(timeBetweenAttack));
-
-            while (!isReadyToAttack)
-            {
-                yield return StartCoroutine(RandomAction());
-            }
-
             FaceTarget(directionToPlayer);
             agent.isStopped = false;
 
-            currentAttackNum = 0;
-            Debug.Log(currentAttackNum);
-        }
-
-        private IEnumerator RandomAction()
-        {
-            waitAction = Random.Range(-2, 4);
-
-            bool roll = Random.value < 0.5f;
-            if (roll)
-                SetRoll((Direction)waitAction);
-
             yield return new WaitForSeconds(Time.deltaTime);
-
-            SetMove((Direction)waitAction);
-
-            float randomWaitTime = Random.Range(timeBetweenWaitActions.x, timeBetweenWaitActions.y);
-            yield return new WaitForSeconds(randomWaitTime);
         }
 
         private void Shoot()
         {
+            if (counter == 3)
+                TrippleShooting();
+            else
+            {
+                GameObject vfx = Instantiate(arrowVFX, transform.position + transform.forward + new Vector3(0, 0.8f, 0), Quaternion.identity);
+                // arrow follow player direction
+                vfx.transform.LookAt(PlayerManager.Instance.Player.transform.position);
+                Destroy(vfx, 5f);
+            }
+            counter++;
+        }
 
+        private void TrippleShooting()
+        {
+            GameObject vfx1 = Instantiate(arrowVFX, transform.position + transform.forward + new Vector3(0, 0.8f, 0), Quaternion.identity);
+            GameObject vfx2 = Instantiate(arrowVFX, transform.position + transform.forward + new Vector3(0, 0.8f, 0), Quaternion.identity);
+            GameObject vfx3 = Instantiate(arrowVFX, transform.position + transform.forward + new Vector3(0, 0.8f, 0), Quaternion.identity);
+
+            Vector3 angle_1 = DirFromAngle(30f, false) * 10f;
+            Vector3 angle_2 = DirFromAngle(330f, false) * 10f;
+
+            vfx1.transform.LookAt(PlayerManager.Instance.Player.transform.position + angle_1);
+            vfx2.transform.LookAt(PlayerManager.Instance.Player.transform.position);
+            vfx3.transform.LookAt(PlayerManager.Instance.Player.transform.position + angle_2);
+            Destroy(vfx1, 5f);
+            Destroy(vfx2, 5f);
+            Destroy(vfx3, 5f);
+            counter = 0;
+        }
+
+        public Vector3 DirFromAngle(float angleInDegrees, bool angleIsGlobal)
+        {
+            if (!angleIsGlobal)
+            {
+                angleInDegrees += transform.eulerAngles.y;
+            }
+            return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
         }
     }
 }
