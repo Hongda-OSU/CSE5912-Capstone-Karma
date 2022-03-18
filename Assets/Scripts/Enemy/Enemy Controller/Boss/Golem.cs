@@ -39,7 +39,7 @@ namespace CSE5912.PolyGamers
                     {
                         isPlayingAttackAnim = true;
 
-                        if (Vector3.Distance(player.position, pivot_1.position) <= 12f && Vector3.Distance(player.position, pivot_1.position) >= 10f)
+                        if (Vector3.Distance(player.position, pivot_1.position) <= 40f && Vector3.Distance(player.position, pivot_1.position) >= 30f)
                         {
                             Attack(1);                          
                         }
@@ -47,11 +47,11 @@ namespace CSE5912.PolyGamers
                         {
                             Attack(2);
                         }
-                        else if (distanceToPlayer <= 5f)
+                        else if (distanceToPlayer <= 15f)
                         {
                             Attack(3);
                         }
-                        else if (distanceToPlayer <= 20f && Vector3.Distance(player.position, pivot_1.position) > 12f)
+                        else if (distanceToPlayer <= 70f && Vector3.Distance(player.position, pivot_1.position) > 30f)
                         {
                             Attack(4);
                         }
