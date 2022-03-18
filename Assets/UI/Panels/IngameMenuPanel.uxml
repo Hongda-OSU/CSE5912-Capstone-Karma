@@ -150,7 +150,7 @@
                             <ui:Label text="Common" display-tooltip-when-elided="true" name="Data" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); font-size: 12px;" />
                         </ui:VisualElement>
                     </ui:VisualElement>
-                    <ui:VisualElement name="Bonus">
+                    <ui:VisualElement name="Bonus" style="margin-bottom: 36px;">
                         <ui:VisualElement name="BonusRow" class="SpecificRow" style="justify-content: center;">
                             <ui:Label text="Physical Damage +4.2%" display-tooltip-when-elided="true" name="Data" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); font-size: 12px;" />
                         </ui:VisualElement>
@@ -167,9 +167,13 @@
                             <ui:Label text="Physical Damage +4.2%" display-tooltip-when-elided="true" name="Data" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); font-size: 12px;" />
                         </ui:VisualElement>
                     </ui:VisualElement>
+                    <ui:VisualElement name="Set" style="border-left-color: rgba(0, 0, 0, 0); border-right-color: rgba(0, 0, 0, 0); border-top-color: rgba(255, 255, 255, 0.65); border-bottom-color: rgba(0, 0, 0, 0); border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; padding-top: 0; margin-top: 0; width: 298px; align-items: center; margin-left: 0; margin-right: 0; margin-bottom: 0;">
+                        <ui:Label text="Quantum Break" display-tooltip-when-elided="true" name="SetName" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); font-size: 16px; align-items: stretch;" />
+                        <ui:Label text="Description" display-tooltip-when-elided="true" name="Description" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); font-size: 12px;" />
+                    </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement>
-            <ui:VisualElement name="AttachmentInventory" style="flex-grow: 1; height: 480px; width: 600px; border-left-color: rgba(255, 255, 255, 0); border-right-color: rgba(255, 255, 255, 0); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; align-items: stretch; position: absolute; display: flex; top: 130px; flex-direction: row; background-color: rgba(0, 0, 0, 0); left: 18px;">
+            <ui:VisualElement name="AttachmentInventory" style="flex-grow: 1; height: 480px; width: 600px; border-left-color: rgba(255, 255, 255, 0); border-right-color: rgba(255, 255, 255, 0); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; align-items: stretch; position: absolute; display: none; top: 130px; flex-direction: row; background-color: rgba(0, 0, 0, 0); left: 18px;">
                 <ui:VisualElement name="AttachmentInventorySlots" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0.65); align-items: center; justify-content: flex-start;">
                     <ui:VisualElement name="AttachmentInventoryRow_0" class="InventoryRow" style="height: 30px; top: auto; width: 590px;">
                         <ui:VisualElement name="AttachmentInventorySlot_0" class="InventorySlot">

@@ -13,6 +13,9 @@ namespace CSE5912.PolyGamers
         [SerializeField] private GameObject attachmentSetSkills;
         private Dictionary<Attachment.AttachmentSet, PlayerSkill> setToSkill = new Dictionary<Attachment.AttachmentSet, PlayerSkill>();
 
+        private PlayerSkill mainSkill;
+
+
         private static PlayerSkillManager instance;
         public static PlayerSkillManager Instance { get { return instance; } }
 
@@ -67,11 +70,44 @@ namespace CSE5912.PolyGamers
 
 
             setToSkill.Add(Attachment.AttachmentSet.QuantumBreak, attachmentSetSkills.GetComponentInChildren<QuantumBreak>());
+            setToSkill.Add(Attachment.AttachmentSet.B, attachmentSetSkills.GetComponentInChildren<SetSkillB>());
+            setToSkill.Add(Attachment.AttachmentSet.C, attachmentSetSkills.GetComponentInChildren<SetSkillC>());
+        }
+
+        public void SetMainSkill(PlayerSkill skill)
+        {
+            if (skill.Type != PlayerSkill.SkillType.Main)
+                Debug.LogError("Error: skill type is not Main. ");
+
+            mainSkill = skill;
+            SkillInformationControl.Instance.SetupMainSkill(mainSkill);
+        }
+        public PlayerSkill GetSetSkill(Attachment.AttachmentSet set)
+        {
+            return setToSkill[set];
         }
 
         public void TryActivateSetSkill()
         {
             var weapon = WeaponManager.Instance.CarriedWeapon;
+            if (IsSetSkillActivatable(weapon))
+            {
+                var set = weapon.Attachments[0].Set;
+                foreach (var kvp in setToSkill)
+                {
+                    if (kvp.Key == set)
+                    {
+                        kvp.Value.LevelUp();
+                    }
+                    else
+                    {
+                        kvp.Value.ResetLevel();
+                    }
+                }
+            }
+        }
+        public bool IsSetSkillActivatable(Firearms weapon)
+        {
             Attachment.AttachmentSet set = Attachment.AttachmentSet.QuantumBreak;
 
             // the last attachment is rune.
@@ -80,28 +116,19 @@ namespace CSE5912.PolyGamers
             {
                 var attachment = weapon.Attachments[i];
                 if (attachment == null || attachment.Rarity != Attachment.AttachmentRarity.Divine)
-                    return;
+                    return false;
                 if (i == 0)
                     set = attachment.Set;
 
                 if (attachment.Set != set)
-                    return;
+                    return false;
             }
-
-            foreach (var kvp in setToSkill)
-            {
-                if (kvp.Key == set)
-                {
-                    kvp.Value.LevelUp();
-                }
-                else
-                {
-                    kvp.Value.ResetLevel();
-                }
-            }
+            return true;
         }
 
 
+
         public int SkillPoints { get { return skillPoints; } set { skillPoints = value; } }
+        public PlayerSkill MainSkill { get { return mainSkill; } }
     }
 }

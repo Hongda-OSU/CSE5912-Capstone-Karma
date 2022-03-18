@@ -551,6 +551,7 @@ namespace CSE5912.PolyGamers
             VisualElement title = specificPanel.Q<VisualElement>("AttachmentSpecific").Q<VisualElement>("Title");
             VisualElement specific = specificPanel.Q<VisualElement>("AttachmentSpecific").Q<VisualElement>("Specific");
             VisualElement bonus = specificPanel.Q<VisualElement>("AttachmentSpecific").Q<VisualElement>("Bonus");
+            VisualElement set = specificPanel.Q<VisualElement>("AttachmentSpecific").Q<VisualElement>("Set");
 
 
             title.Q<Label>("Name").text = attachment.AttachmentName;
@@ -560,6 +561,25 @@ namespace CSE5912.PolyGamers
 
             specific.Q<VisualElement>("Rarity").Q<Label>("Data").text = attachment.Rarity.ToString();
             specific.Q<VisualElement>("Rarity").Q<Label>("Data").style.color = color;
+
+            if (attachment.Rarity == Attachment.AttachmentRarity.Divine)
+            {
+                var setSkill = attachment.SetSkill;
+
+                set.Q<Label>("SetName").text = setSkill.Name;
+
+                var description = set.Q<Label>("Description");
+                description.text = setSkill.GetSpecific();
+
+                if (setSkill.Level > 0)
+                {
+                    description.style.color = setSkill.UiColor;
+                }
+                else
+                {
+                    description.style.color = Color.white;
+                }
+            }
 
             var list = attachment.Bonus.GetBonusDescriptionList();
             int num = 0;

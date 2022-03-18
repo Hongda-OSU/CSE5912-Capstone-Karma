@@ -25,9 +25,11 @@ namespace CSE5912.PolyGamers
             attachment.Rarity = rarity;
             attachment.IconImage = iconImage;
 
-            attachment.Rarity = rarity;
             bonus = new AttachmentBonus(attachment);
             attachment.Bonus = bonus;
+
+            attachment.SetSkill = PlayerSkillManager.Instance.GetSetSkill(set);
+
             attachment.gameObject.name = attachment.AttachmentName;
 
             SetupVfx(WeaponsPanelControl.Instance.AttachmentRarityToColor[rarity]);

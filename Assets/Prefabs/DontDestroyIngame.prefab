@@ -143,7 +143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldown: 60
   isReady: 0
-  skillName: 
+  skillName: Quantum Break
   requiredSkill: {fileID: 0}
   isLearned: 0
   level: 0

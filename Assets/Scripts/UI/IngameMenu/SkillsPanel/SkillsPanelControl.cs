@@ -10,6 +10,8 @@ namespace CSE5912.PolyGamers
     {
         private PlayerSkillManager playerSkill;
 
+        private SkillTree currentSkillTree;
+
         private SkillTree skillTree_element;
 
 
@@ -61,6 +63,8 @@ namespace CSE5912.PolyGamers
                 skillSlot.slot.RegisterCallback<MouseDownEvent>(evt => SkillSlot_performed(skillSlot.slot));
             }
 
+            //
+            currentSkillTree = skillTree_element;
         }
 
 
@@ -126,7 +130,7 @@ namespace CSE5912.PolyGamers
             }
             else if (selectedSkillSlot != slot)
             {
-                PopUpSpecific(skill.BuildSpecific());
+                PopUpSpecific(skill.GetSpecific());
             }
         }
 
@@ -147,6 +151,7 @@ namespace CSE5912.PolyGamers
         }
 
 
+        public SkillTree CurrentSkillTree { get { return currentSkillTree; } }
         public SkillTree SkillTree_element { get { return skillTree_element; } }
     }
 }
