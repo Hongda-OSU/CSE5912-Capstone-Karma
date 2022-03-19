@@ -573,7 +573,7 @@ namespace CSE5912.PolyGamers
 
                 if (setSkill.Level > 0)
                 {
-                    description.style.color = setSkill.UiColor;
+                    description.style.color = Color.red;
                 }
                 else
                 {

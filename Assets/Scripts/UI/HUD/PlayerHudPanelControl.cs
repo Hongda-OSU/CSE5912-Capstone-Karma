@@ -25,6 +25,7 @@ namespace CSE5912.PolyGamers
             CrosshairContorl.Instance.Display(true);
             PlayerHealthBarControl.Instance.Display(true);
             WeaponInformationControl.Instance.Display(true);
+            SkillInformationControl.Instance.Display(true);
             //ItemPeekControl.Instance.Display(false);
         }
 

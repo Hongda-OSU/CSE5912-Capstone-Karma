@@ -14,7 +14,7 @@ namespace CSE5912.PolyGamers
         private Dictionary<Attachment.AttachmentSet, PlayerSkill> setToSkill = new Dictionary<Attachment.AttachmentSet, PlayerSkill>();
 
         private PlayerSkill mainSkill;
-
+        private PlayerSkill setSkill;
 
         private static PlayerSkillManager instance;
         public static PlayerSkillManager Instance { get { return instance; } }
@@ -98,6 +98,7 @@ namespace CSE5912.PolyGamers
                     if (kvp.Key == set)
                     {
                         kvp.Value.LevelUp();
+                        setSkill = kvp.Value;
                     }
                     else
                     {
@@ -105,6 +106,11 @@ namespace CSE5912.PolyGamers
                     }
                 }
             }
+            else
+            {
+                setSkill = null;
+            }
+            SkillInformationControl.Instance.SetupSetSkill(setSkill);
         }
         public bool IsSetSkillActivatable(Firearms weapon)
         {

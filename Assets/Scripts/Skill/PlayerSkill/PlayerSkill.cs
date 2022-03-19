@@ -18,7 +18,7 @@ namespace CSE5912.PolyGamers
         [SerializeField] protected int learnCost = 1;
         [SerializeField] protected int levelupCost = 1;
 
-        [SerializeField] protected Color uiColor;
+        [SerializeField] protected Sprite icon;
 
         protected string description;
 
@@ -86,7 +86,7 @@ namespace CSE5912.PolyGamers
         public bool IsLeanred { get { return isLearned; } }
         public int Level { get { return level; } }
         public SkillType Type { get { return type; } }
-        public Color UiColor { get { return UiColor; } }
+        public Sprite Icon { get { return icon; } }
 
     }
 }

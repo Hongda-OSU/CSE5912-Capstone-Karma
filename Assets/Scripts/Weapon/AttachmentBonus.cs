@@ -62,7 +62,7 @@ namespace CSE5912.PolyGamers
             internal static List<BonusFunction> bulletBonusList;
             internal static List<BonusFunction> scopeBonusList;
             internal static List<BonusFunction> casingBonusList;
-            //internal static List<BonusFunction> runeBonusList;
+            internal static List<BonusFunction> runeBonusList;
 
             private static float factorPerLevel = 0.5f;
             private static float valueVariance = 0.3f;
@@ -101,13 +101,19 @@ namespace CSE5912.PolyGamers
                     IncreaseReloadSpeed,
                 };
 
+                runeBonusList = new List<BonusFunction>()
+                {
+                    ExtremeDamage_fire,
+
+                };
+
                 
 
                 typeToFunctionList = new Dictionary<Attachment.AttachmentType, List<BonusFunction>>();
                 typeToFunctionList.Add(Attachment.AttachmentType.Bullet, bulletBonusList);
                 typeToFunctionList.Add(Attachment.AttachmentType.Scope, scopeBonusList);
                 typeToFunctionList.Add(Attachment.AttachmentType.Casing, casingBonusList);
-                //typeToFunctionList.Add(Attachment.AttachmentType.Rune, )
+                typeToFunctionList.Add(Attachment.AttachmentType.Rune, runeBonusList);
             }
 
             internal void AssignBonusFunction(Attachment.AttachmentType type, int index)
@@ -136,9 +142,8 @@ namespace CSE5912.PolyGamers
 
 
             /*
-             *  Regular Bonuses
+             *  Bullet
              */
-
 
             internal void IncreaseCritDamage(bool enabled)
             {
@@ -190,6 +195,11 @@ namespace CSE5912.PolyGamers
                 }
             }
 
+
+            /*
+             *  Casing
+             */
+
             internal void IncreaseAmmo(bool enabled)
             {
                 if (enabled != isReady)
@@ -216,30 +226,35 @@ namespace CSE5912.PolyGamers
                 }
             }
 
-            internal void DecreaseRecoil(bool enabled)
+            internal void IncreaseReloadSpeed(bool enabled)
             {
                 if (enabled != isReady)
                     return;
 
                 if (!isInitialized)
                 {
-                    value = ResolveValue(recoilReductionBonus);
+                    value = ResolveValue(reloadSpeedBonus);
                     isInitialized = true;
                 }
 
-                description = "Recoil -" + Math.Round(value * 100, 1) + "%";
+                description = "Reload Speed +" + Math.Round(value * 100, 1) + "%";
 
                 if (enabled)
                 {
-                    FPSMouseLook.Instance.RecoilScale *= 1 - value;
+                    WeaponManager.Instance.CarriedWeapon.IncreaseReloadSpeed(value);
                     isReady = false;
                 }
                 else
                 {
-                    FPSMouseLook.Instance.RecoilScale /= 1 - value;
+                    WeaponManager.Instance.CarriedWeapon.IncreaseReloadSpeed(-value);
                     isReady = true;
                 }
             }
+
+
+            /*
+             *  Scope
+             */
 
             internal void DecreaseSpread(bool enabled)
             {
@@ -267,27 +282,57 @@ namespace CSE5912.PolyGamers
             }
 
 
-            internal void IncreaseReloadSpeed(bool enabled)
+            internal void DecreaseRecoil(bool enabled)
             {
                 if (enabled != isReady)
                     return;
 
                 if (!isInitialized)
                 {
-                    value = ResolveValue(reloadSpeedBonus);
+                    value = ResolveValue(recoilReductionBonus);
                     isInitialized = true;
                 }
 
-                description = "Reload Speed +" + Math.Round(value * 100, 1) + "%";
+                description = "Recoil -" + Math.Round(value * 100, 1) + "%";
 
                 if (enabled)
                 {
-                    WeaponManager.Instance.CarriedWeapon.IncreaseReloadSpeed(value);
+                    FPSMouseLook.Instance.RecoilScale *= 1 - value;
                     isReady = false;
                 }
                 else
                 {
-                    WeaponManager.Instance.CarriedWeapon.IncreaseReloadSpeed(-value);
+                    FPSMouseLook.Instance.RecoilScale /= 1 - value;
+                    isReady = true;
+                }
+            }
+
+
+            /*
+             *  Rune
+             */
+
+            internal void ExtremeDamage_fire(bool enabled)
+            {
+                if (enabled != isReady)
+                    return;
+
+                if (!isInitialized)
+                {
+                    value = ResolveValue(recoilReductionBonus);
+                    isInitialized = true;
+                }
+
+                description = "Recoil -" + Math.Round(value * 100, 1) + "%";
+
+                if (enabled)
+                {
+                    FPSMouseLook.Instance.RecoilScale *= 1 - value;
+                    isReady = false;
+                }
+                else
+                {
+                    FPSMouseLook.Instance.RecoilScale /= 1 - value;
                     isReady = true;
                 }
             }

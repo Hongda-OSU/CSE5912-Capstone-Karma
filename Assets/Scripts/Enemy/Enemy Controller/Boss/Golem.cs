@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace CSE5912.PolyGamers
 {
-    public class Golem : EliteEnemy
+    public class Golem : BossEnemy
     {
         [Header("Shardstone Shooting")]
         [SerializeField] private GameObject prefab_1;
@@ -112,7 +112,13 @@ namespace CSE5912.PolyGamers
                     break;
             }
         }
-        
+
+        public override void TriggerBossFight()
+        {
+            isInvincible = true;
+            animator.applyRootMotion = true;
+            //animator.SetTrigger("Awake");
+        }
 
         protected override IEnumerator PerformActionsOnWaiting()
         {
