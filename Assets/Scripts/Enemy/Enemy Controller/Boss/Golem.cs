@@ -141,9 +141,9 @@ namespace CSE5912.PolyGamers
             Vector3 angle_1 = DirFromAngle(30f, false) * 10f;
             Vector3 angle_2 = DirFromAngle(330f, false) * 10f;
 
-            vfx_1.transform.LookAt(new Vector3(PlayerManager.Instance.Player.transform.position.x, 0f, PlayerManager.Instance.Player.transform.position.z) + angle_1);
-            vfx_2.transform.LookAt(new Vector3(PlayerManager.Instance.Player.transform.position.x, 0f, PlayerManager.Instance.Player.transform.position.z));
-            vfx_3.transform.LookAt(new Vector3(PlayerManager.Instance.Player.transform.position.x, 0f, PlayerManager.Instance.Player.transform.position.z) + angle_2);
+            vfx_1.transform.LookAt(new Vector3(PlayerManager.Instance.Player.transform.position.x, PlayerManager.Instance.Player.transform.position.y - 2f, PlayerManager.Instance.Player.transform.position.z) + angle_1);
+            vfx_2.transform.LookAt(new Vector3(PlayerManager.Instance.Player.transform.position.x, PlayerManager.Instance.Player.transform.position.y - 2f, PlayerManager.Instance.Player.transform.position.z));
+            vfx_3.transform.LookAt(new Vector3(PlayerManager.Instance.Player.transform.position.x, PlayerManager.Instance.Player.transform.position.y - 2f, PlayerManager.Instance.Player.transform.position.z) + angle_2);
 
             Destroy(vfx_1, 4f);
             Destroy(vfx_2, 4f);
@@ -161,7 +161,7 @@ namespace CSE5912.PolyGamers
         public void Vine() {
             GameObject vfx = Instantiate(prefab_3);
             GameObject dust = Instantiate(prefab_4);
-            vfx.transform.position = new Vector3(PlayerManager.Instance.Player.transform.position.x, 0f, PlayerManager.Instance.Player.transform.position.z);
+            vfx.transform.position = new Vector3(PlayerManager.Instance.Player.transform.position.x, PlayerManager.Instance.Player.transform.position.y - 1f, PlayerManager.Instance.Player.transform.position.z);
             dust.transform.position = pivot_1.position;
 
             Destroy(vfx, 4f);
