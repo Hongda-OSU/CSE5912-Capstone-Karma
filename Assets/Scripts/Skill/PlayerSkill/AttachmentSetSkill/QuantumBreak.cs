@@ -6,7 +6,7 @@ namespace CSE5912.PolyGamers
 {
     public class QuantumBreak : PlayerSkill
     {
-        [Header("")]
+        [Header("Quantum Break")]
         [SerializeField] private float triggerHealthPercentage = 0.3f;
 
         [SerializeField] private float duration = 8f;

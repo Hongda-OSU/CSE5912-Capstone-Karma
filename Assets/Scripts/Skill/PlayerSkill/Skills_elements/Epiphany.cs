@@ -76,7 +76,7 @@ namespace CSE5912.PolyGamers
 
             if (result)
             {
-                timeSince = cooldown;
+                timeSincePerformed = cooldown;
                 PlayerSkillManager.Instance.SetMainSkill(this);
             }
 

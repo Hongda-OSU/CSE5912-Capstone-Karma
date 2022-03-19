@@ -177,11 +177,17 @@ namespace CSE5912.PolyGamers
                     attachment.PerformBonus(enabled);
         }
 
+        private void PerformMeleeAttack()
+        {
+            MeleeAttack.Instance.Perform();
+        }
+
         public void IncreaseReloadSpeed(float speed)
         {
             var current = GunAnimator.GetFloat("ReloadSpeed");
             GunAnimator.SetFloat("ReloadSpeed", current + speed);
         }
+
 
         public bool WasBulletFiredThisFrame()
         {

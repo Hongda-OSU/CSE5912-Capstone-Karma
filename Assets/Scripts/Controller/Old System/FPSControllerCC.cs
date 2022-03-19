@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
+
 namespace CSE5912.PolyGamers
 {
     public class FPSControllerCC : MonoBehaviour
@@ -32,7 +34,7 @@ namespace CSE5912.PolyGamers
 
         private bool isCrouched;
         private bool isSprinted;
-        private bool isDashPressed;
+        //private bool isDashPressed;
 
         private float controllerHeight;
         private float horizontalInput, verticalInput;
@@ -43,11 +45,14 @@ namespace CSE5912.PolyGamers
         private const float const_maxCoyoteTime = 0.1f;
 
         private WaitForSeconds waitOneSeconds = new WaitForSeconds(0.1f);
-        [SerializeField] private ParticleSystem forwardDashParticle;
-        [SerializeField] private ParticleSystem backwardDashParticle;
+        //[SerializeField] private ParticleSystem forwardDashParticle;
+        //[SerializeField] private ParticleSystem backwardDashParticle;
 
-        // Perform Dash with cool down
-        private CooldownTimer cooldownTimer = new CooldownTimer(2f);
+        //// Perform Dash with cool down
+        //private CooldownTimer cooldownTimer = new CooldownTimer(2f);
+
+        public UnityEvent meleeEvent = new UnityEvent();
+
 
         private static FPSControllerCC instance;
         public static FPSControllerCC Instance { get { return instance; } }
@@ -83,24 +88,24 @@ namespace CSE5912.PolyGamers
             else
                 coyoteTime += Time.deltaTime;
 
-            if (isDashPressed)
-            {
-                currentSpeed = DashSpeed;
-                isDashPressed = false;
-            }
-            else
-            {
+            //if (isDashPressed)
+            //{
+            //    currentSpeed = DashSpeed;
+            //    isDashPressed = false;
+            //}
+            //else
+            //{
                 // determine current speed;
                 if (isCrouched)
                     currentSpeed = isSprinted ? SprintingSpeedWhenCrouched : WalkSpeedWhenCrouched;
                 else
                     currentSpeed = isSprinted ? SprintingSpeed : WalkSpeed;
-            }
+            //}
             HandleAnimation();
 
-            // skill cool down
-            if (cooldownTimer.IsActive)
-                cooldownTimer.Update(Time.deltaTime);
+            //// skill cool down
+            //if (cooldownTimer.IsActive)
+            //    cooldownTimer.Update(Time.deltaTime);
         }
 
         public void AddImpact(Vector3 dir, float force)
@@ -166,15 +171,25 @@ namespace CSE5912.PolyGamers
         }
 
         // Perform Dash
-        public void PerformDash()
+        //public void PerformDash()
+        //{
+        //    // Dashing when running
+        //    if (isGrounded() && velocity > 5.0f && Math.Abs(horizontalInput) != 1)
+        //    {
+        //        if (cooldownTimer.IsActive) return;
+        //        cooldownTimer.Start();
+        //        isDashPressed = true;
+        //        PlayDashParticle();
+        //    }
+        //}
+
+        public void PerformMelee()
         {
-            // Dashing when running
-            if (isGrounded() && velocity > 5.0f && Math.Abs(horizontalInput) != 1)
+
+            if (characterAnimator)
             {
-                if (cooldownTimer.IsActive) return;
-                cooldownTimer.Start();
-                isDashPressed = true;
-                PlayDashParticle();
+                characterAnimator.SetTrigger("KnifeAttack");
+                meleeEvent.Invoke();
             }
         }
 
@@ -214,21 +229,21 @@ namespace CSE5912.PolyGamers
             }
         }
 
-        private void PlayDashParticle()
-        {
-            // Only forward and backward dash, but could do left and right
-            if (verticalInput > 0 && Math.Abs(horizontalInput) <= verticalInput)
-            {
-                forwardDashParticle.Play();
-                return;
-            }
-            if (verticalInput < 0 && Math.Abs(horizontalInput) <= Math.Abs(verticalInput))
-            {
-                backwardDashParticle.Play();
-                return;
-            }
-            forwardDashParticle.Play();
-        }
+        //private void PlayDashParticle()
+        //{
+        //    // Only forward and backward dash, but could do left and right
+        //    if (verticalInput > 0 && Math.Abs(horizontalInput) <= verticalInput)
+        //    {
+        //        forwardDashParticle.Play();
+        //        return;
+        //    }
+        //    if (verticalInput < 0 && Math.Abs(horizontalInput) <= Math.Abs(verticalInput))
+        //    {
+        //        backwardDashParticle.Play();
+        //        return;
+        //    }
+        //    forwardDashParticle.Play();
+        //}
 
         internal void SetupAnimator(Animator aniamtor)
         {
@@ -236,5 +251,7 @@ namespace CSE5912.PolyGamers
         }
 
         public bool IsSprint => isSprinted;
+        public CharacterController CharacterController => characterController;
+        public Animator animator => characterAnimator;
     }
 }

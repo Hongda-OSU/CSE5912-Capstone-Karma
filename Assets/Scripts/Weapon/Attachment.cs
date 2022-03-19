@@ -25,7 +25,7 @@ namespace CSE5912.PolyGamers
         public enum AttachmentSet
         {
             QuantumBreak,
-            B,
+            HollowKnight,
             C,
         }
         public enum AttachmentType

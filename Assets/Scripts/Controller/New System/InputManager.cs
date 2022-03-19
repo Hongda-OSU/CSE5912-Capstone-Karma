@@ -30,13 +30,15 @@ namespace CSE5912.PolyGamers
 
             inputSchemes.PlayerActions.Jump.performed += ctx => FPSControllerCC.Instance.PerformJump();
             inputSchemes.PlayerActions.Crouch.performed += ctx => FPSControllerCC.Instance.PerformCrouch();
-            inputSchemes.PlayerActions.Dash.performed += ctx => FPSControllerCC.Instance.PerformDash();
+            //inputSchemes.PlayerActions.Dash.performed += ctx => FPSControllerCC.Instance.PerformDash();
             inputSchemes.PlayerActions.Inspect.performed += ctx => FPSControllerCC.Instance.PerformInspect();
             inputSchemes.PlayerActions.Sprint.performed += ctx => FPSControllerCC.Instance.DoSprint();
             inputSchemes.PlayerActions.Sprint.canceled += ctx => FPSControllerCC.Instance.DoSprint();
             inputSchemes.FPSActions.Reload.performed += ctx => WeaponManager.Instance.StartReloadAmmo();
             inputSchemes.FPSActions.Aim.performed += ctx => WeaponManager.Instance.StartAiming();
             inputSchemes.FPSActions.Aim.canceled += ctx => WeaponManager.Instance.StopAiming();
+            inputSchemes.FPSActions.KnifeAttack.performed += ctx => FPSControllerCC.Instance.PerformMelee();
+
 
             openIngameMenuHandler = new OpenIngameMenuHandler(inputSchemes);
             openEscapeMenuHandler = new OpenEscapeMenuHandler(inputSchemes);

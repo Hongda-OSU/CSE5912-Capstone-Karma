@@ -70,7 +70,7 @@ namespace CSE5912.PolyGamers
 
 
             setToSkill.Add(Attachment.AttachmentSet.QuantumBreak, attachmentSetSkills.GetComponentInChildren<QuantumBreak>());
-            setToSkill.Add(Attachment.AttachmentSet.B, attachmentSetSkills.GetComponentInChildren<SetSkillB>());
+            setToSkill.Add(Attachment.AttachmentSet.HollowKnight, attachmentSetSkills.GetComponentInChildren<HollowKnight>());
             setToSkill.Add(Attachment.AttachmentSet.C, attachmentSetSkills.GetComponentInChildren<SetSkillC>());
         }
 

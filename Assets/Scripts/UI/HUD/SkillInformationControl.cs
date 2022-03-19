@@ -54,7 +54,7 @@ namespace CSE5912.PolyGamers
             if (mainSkill == null)
                 return;
 
-            mainSkillIconShade.style.height = Mathf.Lerp(mainSkillIconSize, 0f, mainSkill.TimeSince / mainSkill.Cooldown);
+            mainSkillIconShade.style.height = Mathf.Lerp(mainSkillIconSize, 0f, mainSkill.TimeSincePerformed / mainSkill.Cooldown);
         }
         // need to be re-written if new skill trees are added to the game
         public void SetupMainSkill(PlayerSkill mainSkill)
@@ -76,7 +76,7 @@ namespace CSE5912.PolyGamers
             if (setSkill == null)
                 return;
 
-            setSkillIconShade.style.height = Mathf.Lerp(setSkillIconSize, 0f, setSkill.TimeSince / setSkill.Cooldown);
+            setSkillIconShade.style.height = Mathf.Lerp(setSkillIconSize, 0f, setSkill.TimeSincePerformed / setSkill.Cooldown);
         }
         public void SetupSetSkill(PlayerSkill setSkill)
         {
@@ -87,6 +87,22 @@ namespace CSE5912.PolyGamers
 
             setSkillIcon.style.backgroundImage = new StyleBackground(setSkill.Icon);
             setSkillIcon.style.unityBackgroundScaleMode = ScaleMode.ScaleToFit;
+        }
+
+
+
+        public override void Display(bool enabled)
+        {
+            if (enabled)
+            {
+                mainSkillIcon.style.display = DisplayStyle.Flex;
+                setSkillIcon.style.display = DisplayStyle.Flex;
+            }
+            else
+            {
+                mainSkillIcon.style.display = DisplayStyle.None;
+                setSkillIcon.style.display = DisplayStyle.None;
+            }
         }
     }
 }
