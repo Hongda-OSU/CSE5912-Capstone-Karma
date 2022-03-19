@@ -155,7 +155,7 @@ namespace CSE5912.PolyGamers
         }
 
 
-        internal class DebuffSlot
+        public class DebuffSlot
         {
             private VisualElement slot;
             private Label stack;

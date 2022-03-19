@@ -17,6 +17,9 @@ namespace CSE5912.PolyGamers
         private VisualElement maxHealthBar;
         private bool displayHealthBar = false;
 
+        private VisualElement debuffs;
+        private List<EnemyHealthBar.DebuffSlot> debuffSlotList;
+
         private float prevHealth;
 
         private GameObject target;
@@ -33,6 +36,15 @@ namespace CSE5912.PolyGamers
 
             target = transform.parent.gameObject;
             enemy = target.GetComponent<Enemy>();
+
+            debuffs = root.Q<VisualElement>("Debuffs");
+            debuffSlotList = new List<EnemyHealthBar.DebuffSlot>();
+            foreach (var child in debuffs.Children())
+            {
+                var slot = new EnemyHealthBar.DebuffSlot(child);
+                debuffSlotList.Add(slot);
+                slot.Clear();
+            }
         }
 
         public void DisplayHealthBar(bool enabled)
@@ -82,6 +94,15 @@ namespace CSE5912.PolyGamers
             maxHealthBar.style.display = DisplayStyle.Flex;
             maxHealthBar.style.width = width;
 
+
+            // debuff
+            debuffs.style.display = DisplayStyle.Flex;
+
+            debuffSlotList[0].Display(enemy.Burned);
+            debuffSlotList[1].Display(enemy.Frozen);
+            debuffSlotList[2].Display(enemy.Electrocuted);
+            debuffSlotList[3].Display(enemy.Infected);
+
             var deltaHealth = prevHealth - enemy.Health;
             if (deltaHealth > 0)
             {
@@ -110,6 +131,7 @@ namespace CSE5912.PolyGamers
                 deltaEffect_left.style.position = Position.Absolute;
 
                 StartCoroutine(FadeOut(deltaEffect_left));
+
             }
 
 
