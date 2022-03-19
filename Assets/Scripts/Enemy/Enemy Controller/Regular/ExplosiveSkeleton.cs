@@ -21,38 +21,36 @@ namespace CSE5912.PolyGamers
                 agent.isStopped = false;
                 animator.SetBool("PlayerDetected", true);
 
-                if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Sit-Idle")) 
-                {
-                    FaceTarget(directionToPlayer);
-
-                    if (distanceToPlayer < closeDetectionRange)
-                    {
-                        if (!exploded) 
-                        {
-                            Explode();
-                        }
-                    }
-                }
+                FaceTarget(directionToPlayer);
 
                 if (distanceToPlayer < attackRange)
                 {
                     // Inside attacking range, attack player.                
                     animator.SetBool("PlayerInAttackRange", true);
-                    agent.speed = agentSpeed * 3f;
+                    agent.speed = agentSpeed * 4f;
                 }
                 else
                 {
                     // Outside attacking range.
                     animator.SetBool("PlayerInAttackRange", false);
-                    agent.SetDestination(player.position);
                     agent.speed = agentSpeed;
+                }
+
+                agent.SetDestination(player.position);
+
+                if (distanceToPlayer < closeDetectionRange)
+                {
+                    if (!exploded)
+                    {
+                        Explode();
+                    }
                 }
             }
             else
             {
                 foundTarget = false;
                 agent.isStopped = true;
-                animator.SetBool("Run", false);
+                animator.SetBool("PlayerDetected", false);
             }
         }
 
@@ -75,7 +73,7 @@ namespace CSE5912.PolyGamers
             GameObject vfx = Instantiate(effect);
             vfx.transform.position = new Vector3(transform.position.x, -0.5f, transform.position.z);
 
-            if (DistanceToPlayer < 5f) 
+            if (DistanceToPlayer < 3f) 
             {
                 Damage damage = new Damage(attackDamage, Element.Type.Fire, this, PlayerStats.Instance);
                 PlayerStats.Instance.TakeDamage(damage);
