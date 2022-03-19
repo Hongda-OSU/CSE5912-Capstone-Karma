@@ -64,9 +64,9 @@ namespace CSE5912.PolyGamers
                             animator.SetTrigger("DodgeRight");
                         }
                     }
-                    else if (distanceToPlayer <= 12f && distanceToPlayer > attackRange)
+                    else if (distanceToPlayer <= 14f && distanceToPlayer > 12f)
                     {
-                        if (counter == 0)
+                        if (counter == 1)
                         {
                             if(Random.value > 0.3f)
                                 animator.SetTrigger("RollForward");
