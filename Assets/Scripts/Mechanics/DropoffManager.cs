@@ -76,6 +76,7 @@ namespace CSE5912.PolyGamers
             weapon.Rarity = rarity;
             WeaponBonus weaponBonus = new WeaponBonus(weapon);
             weapon.Bonus = weaponBonus;
+            weapon.Element = (Element.Type)Random.Range(0, 5);
 
             weapon.gameObject.SetActive(false);
 
