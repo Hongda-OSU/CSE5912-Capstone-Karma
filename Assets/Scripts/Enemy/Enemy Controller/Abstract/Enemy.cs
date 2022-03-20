@@ -149,7 +149,7 @@ namespace CSE5912.PolyGamers
 
             PlayDeathAnimation();
         }
-        private IEnumerator RemoveAndDestroy(GameObject gameObject, float time)
+        protected IEnumerator RemoveAndDestroy(GameObject gameObject, float time)
         {
             yield return new WaitForSeconds(time);
             EnemyManager.Instance.EnemyList.Remove(gameObject);

@@ -135,6 +135,8 @@ namespace CSE5912.PolyGamers
 
         protected override void PlayDeathAnimation()
         {
+            animator.applyRootMotion = true;
+
             animator.SetTrigger("Die");
         }
 

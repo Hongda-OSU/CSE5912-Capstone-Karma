@@ -824,6 +824,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainAudio: {fileID: 4599161197706867103}
+  bossDefeated: {fileID: 804455283}
 --- !u!114 &178917607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1094,6 +1095,22 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3914003179883955252, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: burnedBaseChance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3914003179883955252, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: frozenBaseChance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3914003179883955252, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: infectedBaseChance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3914003179883955252, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: electrocutedBaseChance
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3914003179907011757, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
       propertyPath: attachmentCollection
       value: 
@@ -1112,7 +1129,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3914003179971651603, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 61.65
+      value: 11.16
       objectReference: {fileID: 0}
     - target: {fileID: 3914003179971651603, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
       propertyPath: m_LocalRotation.w

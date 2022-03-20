@@ -8,6 +8,8 @@ namespace CSE5912.PolyGamers
     {
         [SerializeField] private AudioSource mainAudio;
 
+        [SerializeField] private AudioSource bossDefeated;
+
         private static IngameAudioControl instance;
         public static IngameAudioControl Instance { get { return instance; } }
 
@@ -23,6 +25,11 @@ namespace CSE5912.PolyGamers
             mainAudio.volume = 1f;
             mainAudio.clip = clip;
             mainAudio.Play();
+        }
+
+        public void PlayBossDefeated()
+        {
+            bossDefeated.Play();
         }
 
         public void SmoothMusicVolume(float volume)
