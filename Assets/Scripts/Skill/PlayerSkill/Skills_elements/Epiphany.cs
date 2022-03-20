@@ -70,17 +70,5 @@ namespace CSE5912.PolyGamers
             PlayerStats.Instance.InfectedBaseChance += chance;
         }
 
-        public override bool LevelUp()
-        {
-            bool result = base.LevelUp();
-
-            if (result)
-            {
-                timeSincePerformed = cooldown;
-                PlayerSkillManager.Instance.SetMainSkill(this);
-            }
-
-            return result;
-        }
     }
 }

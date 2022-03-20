@@ -82,6 +82,7 @@ namespace CSE5912.PolyGamers
             mainSkill = skill;
             SkillInformationControl.Instance.SetupMainSkill(mainSkill);
         }
+
         public PlayerSkill GetSetSkill(Attachment.AttachmentSet set)
         {
             return setToSkill[set];

@@ -137,6 +137,8 @@ namespace CSE5912.PolyGamers
 
         protected virtual void Die()
         {
+            PlayerStats.Instance.GetExperience(experience);
+
             // remove enemy from enemy list and destroy
             isAlive = false;
             agent.isStopped = true;

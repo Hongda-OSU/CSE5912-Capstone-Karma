@@ -29,8 +29,8 @@ namespace CSE5912.PolyGamers
             isReady = true;
         }
 
-        public float Cooldown { get { return cooldown; } }
-        public float TimeSincePerformed { get { return timeSincePerformed; } }
+        public float Cooldown { get { return cooldown; } set { cooldown = value; } }
+        public float TimeSincePerformed { get { return timeSincePerformed; } set { timeSincePerformed = value; } }
         public bool IsReady { get { return isReady; } }
 
     }

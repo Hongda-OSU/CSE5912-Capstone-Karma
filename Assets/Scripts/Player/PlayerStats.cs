@@ -12,6 +12,7 @@ namespace CSE5912.PolyGamers
         [SerializeField] private int level = 1;
         [SerializeField] private float experience = 0;
         [SerializeField] private float experienceToUpgrade = 668;
+        [SerializeField] private float experienceMultiplier = 1f;
 
         [Header("Durability")]
         [SerializeField] private float health = 100f;
@@ -161,6 +162,11 @@ namespace CSE5912.PolyGamers
             }
         }
 
+        public void GetExperience(float value)
+        {
+            experience += value * experienceMultiplier;
+        }
+
         public void ResetFactors()
         {
             moveSpeedFactor = 1f;
@@ -268,6 +274,7 @@ namespace CSE5912.PolyGamers
         public int Level { get { return level; } }
         public float Experience { get { return experience; } set { experience = value; } }
         public float ExperienceToUpgrade { get { return experienceToUpgrade; } set { experienceToUpgrade = value; } }
+        public float ExperienceMultiplier { get { return experienceMultiplier; } set { experienceMultiplier = value; } }
         public float CritDamageFactor { get { return critDamageFactor; } set { critDamageFactor = value; } }
         public float CritRate { get { return critRate; } set { critRate = Mathf.Clamp(value, 0f, 1f); } }
         public float MoveSpeedFactor { get { return moveSpeedFactor; } set { moveSpeedFactor = value; } }
