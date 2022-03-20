@@ -32,7 +32,7 @@ namespace CSE5912.PolyGamers
 
         public void Perform(bool enabled)
         {
-                bonus.Perform(enabled);
+            bonus.Perform(enabled);
         }
 
         public List<string> GetBonusDescriptionList()
@@ -128,6 +128,9 @@ namespace CSE5912.PolyGamers
 
             internal void Perform(bool enabled)
             {
+                if (enabled != isReady)
+                    return;
+
                 bonusFunction(enabled);
             }
 
@@ -147,9 +150,6 @@ namespace CSE5912.PolyGamers
 
             internal void IncreaseCritDamage(bool enabled)
             {
-                if (enabled != isReady)
-                    return;
-
                 if (!isInitialized)
                 {
                     value = ResolveValue(critDamageBonus);
@@ -172,9 +172,6 @@ namespace CSE5912.PolyGamers
 
             internal void IncreaseCritRate(bool enabled)
             {
-                if (enabled != isReady)
-                    return;
-
                 if (!isInitialized)
                 {
                     value = ResolveValue(critRateBonus);
@@ -202,9 +199,6 @@ namespace CSE5912.PolyGamers
 
             internal void IncreaseAmmo(bool enabled)
             {
-                if (enabled != isReady)
-                    return;
-
                 if (!isInitialized)
                 {
                     value = ResolveValue(ammoBonus);
@@ -228,9 +222,6 @@ namespace CSE5912.PolyGamers
 
             internal void IncreaseReloadSpeed(bool enabled)
             {
-                if (enabled != isReady)
-                    return;
-
                 if (!isInitialized)
                 {
                     value = ResolveValue(reloadSpeedBonus);
@@ -258,9 +249,6 @@ namespace CSE5912.PolyGamers
 
             internal void DecreaseSpread(bool enabled)
             {
-                if (enabled != isReady)
-                    return;
-
                 if (!isInitialized)
                 {
                     value = ResolveValue(spreadReductionBonus);
@@ -284,9 +272,6 @@ namespace CSE5912.PolyGamers
 
             internal void DecreaseRecoil(bool enabled)
             {
-                if (enabled != isReady)
-                    return;
-
                 if (!isInitialized)
                 {
                     value = ResolveValue(recoilReductionBonus);
@@ -314,9 +299,6 @@ namespace CSE5912.PolyGamers
 
             internal void ExtremeDamage_fire(bool enabled)
             {
-                if (enabled != isReady)
-                    return;
-
                 if (!isInitialized)
                 {
                     value = ResolveValue(recoilReductionBonus);

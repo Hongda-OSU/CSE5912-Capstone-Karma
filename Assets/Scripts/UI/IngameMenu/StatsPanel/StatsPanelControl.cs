@@ -39,7 +39,7 @@ namespace CSE5912.PolyGamers
         {
             foreach (var kvp in nameToRow)
             {
-                if (kvp.Key != "Level" && kvp.Key != "Experience")
+                if (kvp.Key != "Level" && kvp.Key != "Experience" && kvp.Key != "StatPoint")
                     kvp.Value.levelupButton.clicked += delegate { PlayerStats.Instance.LevelUpStat(kvp.Key); };
             }
         }
@@ -54,7 +54,7 @@ namespace CSE5912.PolyGamers
             var stats = PlayerStats.Instance;
             foreach (var row in nameToRow.Values)
             {
-                if (row.row.name != "Level" && row.row.name != "Experience")
+                if (row.row.name != "Level" && row.row.name != "Experience" && row.row.name != "StatPoint")
                 {
                     var button = row.levelupButton;
                     if (stats.StatPoint == 0)

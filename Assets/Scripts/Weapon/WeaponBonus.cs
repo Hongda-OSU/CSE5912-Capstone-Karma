@@ -78,6 +78,7 @@ namespace CSE5912.PolyGamers
 
             private static float elementDamageBonus = 0.042f;
             private static float fireRateBonus = 0.05f;
+            private static float meleeDamageBonus = 0.5f;
 
             //internal enum 
             internal Bonus(Firearms weapon)
@@ -109,6 +110,9 @@ namespace CSE5912.PolyGamers
 
             internal void Perform(bool enabled)
             {
+                if (enabled != isReady)
+                    return;
+
                 bonusFunction(enabled);
             }
 
@@ -128,9 +132,6 @@ namespace CSE5912.PolyGamers
 
             internal void IncreaseDamage_physical(bool enabled)
             {
-                if (enabled != isReady)
-                    return;
-
                 if (!isInitialized)
                 {
                     value = ResolveValue(elementDamageBonus);
@@ -153,9 +154,6 @@ namespace CSE5912.PolyGamers
 
             internal void IncreaseDamage_fire(bool enabled)
             {
-                if (enabled != isReady)
-                    return;
-
                 if (!isInitialized)
                 {
                     value = ResolveValue(elementDamageBonus);
@@ -179,9 +177,6 @@ namespace CSE5912.PolyGamers
 
             internal void IncreaseDamage_cryo(bool enabled)
             {
-                if (enabled != isReady)
-                    return;
-
                 if (!isInitialized)
                 {
                     value = ResolveValue(elementDamageBonus);
@@ -204,9 +199,6 @@ namespace CSE5912.PolyGamers
 
             internal void IncreaseDamage_electro(bool enabled)
             {
-                if (enabled != isReady)
-                    return;
-
                 if (!isInitialized)
                 {
                     value = ResolveValue(elementDamageBonus);
@@ -229,9 +221,6 @@ namespace CSE5912.PolyGamers
 
             internal void IncreaseDamage_venom(bool enabled)
             {
-                if (enabled != isReady)
-                    return;
-
                 if (!isInitialized)
                 {
                     value = ResolveValue(elementDamageBonus);
@@ -254,9 +243,6 @@ namespace CSE5912.PolyGamers
 
             internal void IncreaseFireRate(bool enabled)
             {
-                if (enabled != isReady)
-                    return;
-
                 if (!isInitialized)
                 {
                     value = ResolveValue(fireRateBonus);
@@ -269,6 +255,33 @@ namespace CSE5912.PolyGamers
                 {
                     weapon.FireRate *= 1 + value;
                     isReady = false;
+                }
+                else
+                {
+                    weapon.FireRate /= 1 + value;
+                    isReady = true;
+                }
+            }
+
+            internal void IncreaseMeleeDamage(bool enabled)
+            {
+                if (!isInitialized)
+                {
+                    value = ResolveValue(meleeDamageBonus);
+                    isInitialized = true;
+                }
+
+                description = "Melee damage +" + Math.Round(value * 100, 1) + "%";
+
+                if (enabled)
+                {
+                    MeleeAttack.Instance.IncreaseDamage(value);
+                    isReady = false;
+                }
+                else
+                {
+                    MeleeAttack.Instance.IncreaseDamage(-value);
+                    isReady = true;
                 }
             }
 

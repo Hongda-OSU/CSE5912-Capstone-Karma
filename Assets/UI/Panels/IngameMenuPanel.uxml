@@ -9,7 +9,7 @@
             <ui:Toggle label="Stats" name="Stats" focusable="false" class="MyToggle CatButton" />
             <ui:Toggle label="Skills" name="Skills" focusable="false" class="MyToggle CatButton" />
         </ui:GroupBox>
-        <ui:VisualElement name="WeaponsPanel" style="height: 800px; width: 1600px; flex-grow: 0; flex-direction: row; top: auto; left: 80px; background-color: rgba(0, 0, 0, 0); align-items: flex-start; justify-content: flex-start; display: flex;">
+        <ui:VisualElement name="WeaponsPanel" style="height: 800px; width: 1600px; flex-grow: 0; flex-direction: row; top: auto; left: 80px; background-color: rgba(0, 0, 0, 0); align-items: flex-start; justify-content: flex-start; display: none;">
             <ui:VisualElement name="WeaponRows" style="flex-grow: 1; width: 650px; align-items: stretch; justify-content: flex-start; display: flex;">
                 <ui:VisualElement name="WeaponRow_0" class="Slot" style="display: flex;">
                     <ui:VisualElement name="Weapon" class="WeaponSlot">
@@ -282,7 +282,7 @@
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="StatsPanel" style="height: 800px; width: 1680px; flex-grow: 0; flex-direction: column; top: auto; left: 80px; background-color: rgba(0, 0, 0, 0); align-items: flex-start; justify-content: flex-start; display: none; overflow: visible;">
+        <ui:VisualElement name="StatsPanel" style="height: 800px; width: 1680px; flex-grow: 0; flex-direction: column; top: auto; left: 80px; background-color: rgba(0, 0, 0, 0); align-items: flex-start; justify-content: flex-start; display: flex; overflow: visible;">
             <ui:VisualElement name="Mods" style="height: 797px; width: 518px; flex-grow: 1; display: none;">
                 <ui:VisualElement name="Slot_0" class="ItemSlot ModSlot" style="height: auto;">
                     <ui:VisualElement name="ModIcon" style="background-color: rgba(0, 0, 0, 0); width: auto; border-left-color: rgba(255, 255, 255, 0); border-right-color: rgb(255, 255, 255); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px; flex-grow: 1;" />
@@ -405,7 +405,6 @@
                 <ui:VisualElement name="StatPoint" class="DataRow">
                     <ui:Label text="Stat Point" display-tooltip-when-elided="true" name="Label" class="StatLabel" style="color: rgb(255, 255, 255); width: auto; font-size: 30px;" />
                     <ui:Label text="10" name="Data" class="Data" style="left: auto; -unity-text-align: upper-center; font-size: 30px;" />
-                    <ui:Button text="+" display-tooltip-when-elided="true" name="LevelUp" class="LevelUp" style="display: none;" />
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
@@ -413,7 +412,7 @@
             <ui:Label text="Skill Points:" display-tooltip-when-elided="true" name="SkillPoints" style="height: 64px; width: 165px; -unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); font-size: 23px;" />
             <ui:VisualElement name="SkillTree_elements" style="flex-grow: 1; width: 979px; height: 600px; opacity: 1; justify-content: space-around; align-items: center; flex-direction: row;">
                 <ui:VisualElement name="MainSkill" class="MainSkillSlot">
-                    <ui:VisualElement name="SkillIcon" class="SkillIcon" style="flex-grow: 0; background-image: url(&apos;project://database/Assets/UI/VFX/SkillIcons/Elements/Epiphany.jpg?fileID=2800000&amp;guid=5236d2fc24f170e4c97d93d8c827bf08&amp;type=3#Epiphany&apos;); -unity-background-image-tint-color: rgb(255, 255, 255); width: 100px; height: 100px; overflow: visible; -unity-background-scale-mode: stretch-to-fill; top: 9px; margin-top: 0; margin-bottom: 0; border-left-width: 1px; border-right-width: 1px; border-top-width: 1px; border-bottom-width: 1px; border-left-color: rgb(71, 43, 99); border-right-color: rgb(71, 43, 99); border-top-color: rgb(71, 43, 99); border-bottom-color: rgb(71, 43, 99);" />
+                    <ui:VisualElement name="SkillIcon" class="SkillIcon" style="flex-grow: 0; background-image: url(&apos;project://database/Assets/UI/VFX/SkillIcons/Elements/Epiphany.jpg?fileID=21300000&amp;guid=bc4e66f60cc61964db4058ead8f6e1bb&amp;type=3#Epiphany&apos;); -unity-background-image-tint-color: rgb(255, 255, 255); width: 100px; height: 100px; overflow: visible; -unity-background-scale-mode: stretch-to-fill; top: 9px; margin-top: 0; margin-bottom: 0; border-left-width: 1px; border-right-width: 1px; border-top-width: 1px; border-bottom-width: 1px; border-left-color: rgb(71, 43, 99); border-right-color: rgb(71, 43, 99); border-top-color: rgb(71, 43, 99); border-bottom-color: rgb(71, 43, 99);" />
                     <ui:VisualElement name="LevelIndicator" style="flex-direction: row; height: 24px; width: 92px; align-items: center; justify-content: center;">
                         <ui:VisualElement name="Indicator_0" class="LevelIndicator" style="display: flex; width: 8px; height: 8px; margin-left: 4px; margin-right: 4px;" />
                         <ui:VisualElement name="Indicator_1" class="LevelIndicator" style="width: 8px; height: 8px; margin-left: 4px; margin-right: 4px; border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px;" />
