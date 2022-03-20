@@ -15,7 +15,7 @@ namespace CSE5912.PolyGamers
         public float WalkSpeed;
         public float SprintingSpeedWhenCrouched;
         public float WalkSpeedWhenCrouched;
-        public float DashSpeed;
+        //public float DashSpeed;
         // determine player current speed
         private float currentSpeed;
 

@@ -681,7 +681,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b8545002719d6146a9d0f342606c88e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 0
+  cooldown: 0.3
   timeSincePerformed: 0
   isReady: 1
   skillName: Melee Attack
@@ -698,6 +698,9 @@ MonoBehaviour:
   extraSpeed: 0
   range: 1
   isEnabled: 1
+  meleeEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!65 &1708189873
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1537,6 +1540,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6725730049476075925, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+    - {fileID: 473044049593638664, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
 --- !u!1 &6085753847091595438 stripped
 GameObject:

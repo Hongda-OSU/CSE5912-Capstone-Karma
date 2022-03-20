@@ -39,6 +39,9 @@ namespace CSE5912.PolyGamers
                 availableBonusIndex.Remove(index);
 
                 bonusList.Add(bonus);
+
+                if (availableBonusIndex.Count == 0)
+                    break;
             }
         }
 
@@ -77,9 +80,14 @@ namespace CSE5912.PolyGamers
             private static float valueVariance = 0.3f;
 
             private static float elementDamageBonus = 0.042f;
+            private static float elementResistBonus = 20f;
             private static float fireRateBonus = 0.05f;
             private static float meleeDamageBonus = 0.5f;
             private static float meleeSpeedBonus = 0.2f;
+            private static float moveSpeedBonus = 0.1f;
+            private static float experienceBonus = 0.3f;
+            private static float mainSkillCooldownBonus = 0.1f;
+
 
             //internal enum 
             internal Bonus(Firearms weapon)
@@ -93,11 +101,19 @@ namespace CSE5912.PolyGamers
                     //IncreaseDamage_physical, 
                     //IncreaseDamage_fire, 
                     //IncreaseDamage_cryo,
-                    IncreaseDamage_electro,
-                    IncreaseDamage_venom,
-                    IncreaseFireRate,
-                    IncreaseMeleeDamage,
-                    IncreaseMeleeSpeed,
+                    //IncreaseDamage_electro,
+                    //IncreaseDamage_venom,
+
+                    IncreaseResist_physical,
+                    IncreaseResist_fire,
+                    IncreaseResist_cryo,
+                    IncreaseResist_electro,
+                    IncreaseResist_venom,
+
+                    //IncreaseFireRate,
+
+                    //IncreaseMeleeDamage,
+                    //IncreaseMeleeSpeed,
                 };
             }
 
@@ -240,6 +256,114 @@ namespace CSE5912.PolyGamers
                 else
                 {
                     PlayerStats.Instance.GetDamageFactor().Venom.Value -= value;
+                    isReady = true;
+                }
+            }
+
+            internal void IncreaseResist_physical(bool enabled)
+            {
+                if (!isInitialized)
+                {
+                    value = ResolveValue(elementResistBonus);
+                    isInitialized = true;
+                }
+
+                description = "Physical Resist +" + Math.Round(value, 1);
+
+                if (enabled)
+                {
+                    PlayerStats.Instance.GetResist().Physical.Value += value;
+                    isReady = false;
+                }
+                else
+                {
+                    PlayerStats.Instance.GetResist().Physical.Value -= value;
+                    isReady = true;
+                }
+            }
+
+            internal void IncreaseResist_fire(bool enabled)
+            {
+                if (!isInitialized)
+                {
+                    value = ResolveValue(elementResistBonus);
+                    isInitialized = true;
+                }
+
+                description = "Fire Resist +" + Math.Round(value, 1);
+
+                if (enabled)
+                {
+                    PlayerStats.Instance.GetResist().Fire.Value += value;
+                    isReady = false;
+                }
+                else
+                {
+                    PlayerStats.Instance.GetResist().Fire.Value -= value;
+                    isReady = true;
+                }
+            }
+
+            internal void IncreaseResist_cryo(bool enabled)
+            {
+                if (!isInitialized)
+                {
+                    value = ResolveValue(elementResistBonus);
+                    isInitialized = true;
+                }
+
+                description = "Cryo Resist +" + Math.Round(value, 1);
+
+                if (enabled)
+                {
+                    PlayerStats.Instance.GetResist().Cryo.Value += value;
+                    isReady = false;
+                }
+                else
+                {
+                    PlayerStats.Instance.GetResist().Cryo.Value -= value;
+                    isReady = true;
+                }
+            }
+            internal void IncreaseResist_electro(bool enabled)
+            {
+                if (!isInitialized)
+                {
+                    value = ResolveValue(elementResistBonus);
+                    isInitialized = true;
+                }
+
+                description = "Electro Resist +" + Math.Round(value, 1);
+
+                if (enabled)
+                {
+                    PlayerStats.Instance.GetResist().Electro.Value += value;
+                    isReady = false;
+                }
+                else
+                {
+                    PlayerStats.Instance.GetResist().Electro.Value -= value;
+                    isReady = true;
+                }
+            }
+            internal void IncreaseResist_venom(bool enabled)
+            {
+                if (!isInitialized)
+                {
+                    value = ResolveValue(elementResistBonus);
+                    isInitialized = true;
+                }
+
+                description = "Venom Resist +" + Math.Round(value, 1);
+
+                if (enabled)
+                {
+                    PlayerStats.Instance.GetResist().Venom.Value += value;
+                    isReady = false;
+                }
+                else
+                {
+                    PlayerStats.Instance.GetResist().Venom.Value -= value;
                     isReady = true;
                 }
             }

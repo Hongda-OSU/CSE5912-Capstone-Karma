@@ -16,7 +16,7 @@ namespace CSE5912.PolyGamers
         [Header("Durability")]
         [SerializeField] private float health = 100f;
         [SerializeField] private float maxHealth = 100f;
-        [SerializeField] private Shield shield;
+        //[SerializeField] private Shield shield;
 
         [Header("Agility")]
         [SerializeField] private float moveSpeedFactor = 1f;
@@ -56,7 +56,7 @@ namespace CSE5912.PolyGamers
 
         [Header("Stats Up per Level")]
         [SerializeField] private float healthUp = 10f;
-        [SerializeField] private float shieldUp = 10f;
+        //[SerializeField] private float shieldUp = 10f;
         [SerializeField] private float critRateUp = 0.02f;
         [SerializeField] private float critDamageUp = 0.05f;
         [SerializeField] private float damageUp = 0.03f;
@@ -76,7 +76,7 @@ namespace CSE5912.PolyGamers
             }
             instance = this;
 
-            shield = GetComponent<Shield>();
+            //shield = GetComponent<Shield>();
 
             damageFactor = new DamageFactor();
             damageFactor.SetDamageValues(damageFactor_physical, damageFactor_fire, damageFactor_cryo, damageFactor_electro, damageFactor_venom);
@@ -94,9 +94,11 @@ namespace CSE5912.PolyGamers
 
         public void TakeDamage(Damage damage)
         {
-            shield.TakeDamage(damage);
+            //shield.TakeDamage(damage);
 
-            Health -= shield.Overflow;
+            //Health -= shield.Overflow;
+
+            Health -= damage.ResolvedValue;
 
             takeDamageEvent.Invoke();
         }
@@ -183,14 +185,14 @@ namespace CSE5912.PolyGamers
                     health += healthUp;
                     maxHealth += healthUp;
                     break;
-                case "Shield_armor":
-                    shield.Shield_armor += shieldUp;
-                    shield.MaxShield_armor += shieldUp;
-                    break;
-                case "Shield_energy":
-                    shield.Shield_energy += shieldUp;
-                    shield.MaxShield_energy += shieldUp;
-                    break;
+                //case "Shield_armor":
+                //    shield.Shield_armor += shieldUp;
+                //    shield.MaxShield_armor += shieldUp;
+                //    break;
+                //case "Shield_energy":
+                //    shield.Shield_energy += shieldUp;
+                //    shield.MaxShield_energy += shieldUp;
+                //    break;
                 case "CritRate":
                     critRate += critRateUp;
                     break;
@@ -257,10 +259,10 @@ namespace CSE5912.PolyGamers
                 PlayerHealthBarControl.Instance.UpdateHealthBar();
             }
         }
-        public float Shield_armor { get { return shield.Shield_armor; } set { shield.Shield_armor = value; } }
-        public float MaxShield_armor { get { return shield.MaxShield_armor; } set { shield.MaxShield_armor = value; } }
-        public float Shield_energy { get { return shield.Shield_energy; } set { shield.Shield_energy = value; } }
-        public float MaxShield_energy { get { return shield.MaxShield_energy; } set { shield.Shield_energy = value; } }
+        //public float Shield_armor { get { return shield.Shield_armor; } set { shield.Shield_armor = value; } }
+        //public float MaxShield_armor { get { return shield.MaxShield_armor; } set { shield.MaxShield_armor = value; } }
+        //public float Shield_energy { get { return shield.Shield_energy; } set { shield.Shield_energy = value; } }
+        //public float MaxShield_energy { get { return shield.MaxShield_energy; } set { shield.Shield_energy = value; } }
 
         public int StatPoint { get { return statPoint; } }
         public int Level { get { return level; } }
@@ -282,7 +284,7 @@ namespace CSE5912.PolyGamers
         public float InfectedCurrentHealthDamagePerStack { get { return infectedCurrentHealthDamagePerStack;} set { infectedCurrentHealthDamagePerStack = value; } }
 
         public float HealthUp { get { return healthUp; } }
-        public float ShieldUp { get { return shieldUp; } }
+        //public float ShieldUp { get { return shieldUp; } }
         public float CritRateUp { get { return critRateUp; } }
         public float CritDamageUp { get { return critDamageUp; } }
         public float DamageUp { get { return damageUp; } }

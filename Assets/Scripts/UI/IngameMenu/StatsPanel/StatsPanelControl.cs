@@ -80,8 +80,8 @@ namespace CSE5912.PolyGamers
             SetData("StatPoint", stats.StatPoint.ToString());
 
             SetData("Health", Mathf.Ceil(stats.Health) + " / " + Mathf.Ceil(stats.MaxHealth));
-            SetData("Shield_armor", Mathf.Ceil(stats.Shield_armor) + " / " + Mathf.Ceil(stats.MaxShield_armor));
-            SetData("Shield_energy", Mathf.Ceil(stats.Shield_energy) + " / " + Mathf.Ceil(stats.MaxShield_energy));
+            //SetData("Shield_armor", Mathf.Ceil(stats.Shield_armor) + " / " + Mathf.Ceil(stats.MaxShield_armor));
+            //SetData("Shield_energy", Mathf.Ceil(stats.Shield_energy) + " / " + Mathf.Ceil(stats.MaxShield_energy));
 
             SetData("CritRate", Math.Round((stats.CritRate * 100), 1) + "%");
             SetData("CritDamage", Math.Round(((1f + stats.CritDamageFactor) * 100), 1) + "%");
@@ -110,7 +110,8 @@ namespace CSE5912.PolyGamers
 
             float resistValue = resist.FindResisByElement(element).Value;
 
-            SetData(name, resistValue.ToString());
+            var value = Math.Round(resistValue, 1);
+            SetData(name, value.ToString());
             nameToRow[name].data.text += "(" + Mathf.Ceil(Damage.PercentageReduced(resistValue) * 100) + "% reduced)";
         }
 
