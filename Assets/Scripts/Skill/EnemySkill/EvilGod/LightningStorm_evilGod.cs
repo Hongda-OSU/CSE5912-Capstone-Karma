@@ -8,6 +8,7 @@ namespace CSE5912.PolyGamers
     {
         [SerializeField] private GameObject lightningPrefab;
         [SerializeField] private GameObject electricityPrefab;
+        [SerializeField] private GameObject missilePrefab;
 
         [SerializeField] private float triggerHealthPercentage = 0.7f;
 
@@ -17,6 +18,8 @@ namespace CSE5912.PolyGamers
         [SerializeField] private float warningTime = 1f;
         [SerializeField] private int number = 30;
         [SerializeField] private float radius = 30f;
+
+        private List<GameObject> missileList = new List<GameObject>();
 
 
         public IEnumerator Perform()
@@ -52,10 +55,23 @@ namespace CSE5912.PolyGamers
 
             var damager = lightning.GetComponent<Damager_collision>();
             damager.Initialize(enemy);
+
+
+            GameObject missile = Instantiate(missilePrefab);
+
+            missile.transform.position = position;
+
+            damager = missile.GetComponent<Damager_collision>();
+            damager.Initialize(enemy);
+
+            missileList.Add(missile);
         }
+
         public override bool IsPerformingAllowed()
         {
             return isReady && enemy.playerDetected && enemy.Health <= enemy.MaxHealth * triggerHealthPercentage;
         }
+
+        public List<GameObject> MissileList { get { return missileList; } }
     }
 }

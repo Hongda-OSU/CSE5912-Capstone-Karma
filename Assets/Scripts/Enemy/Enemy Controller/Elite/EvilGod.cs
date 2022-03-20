@@ -165,7 +165,7 @@ namespace CSE5912.PolyGamers
             else if (lightningExplosion.IsPerformingAllowed())
                 Attack_lightningExplosion();
 
-            else if (barrage.IsPerformingAllowed())
+            else if (barrage.IsPerformingAllowed() && lightningStorm.MissileList.Count > 0)
                 Attack_barrage();
 
             else if (lightningMissile.IsPerformingAllowed())
@@ -250,7 +250,7 @@ namespace CSE5912.PolyGamers
 
         private IEnumerator Barrage_performed()
         {
-            yield return StartCoroutine(barrage.Perform());
+            yield return StartCoroutine(barrage.Perform(lightningStorm.MissileList));
         }
 
 

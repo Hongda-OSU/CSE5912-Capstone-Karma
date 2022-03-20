@@ -66,6 +66,6 @@ namespace CSE5912.PolyGamers
         public float BaseDamage { get { return baseDamage; } set { baseDamage = value; } }
         public Element.Type Type { get { return type; } set { type = value; } }
         public bool IsPlayerHit { get { return isPlayerHit; } }
-        public GameObject Hit { get { return objectHit; } }
+        public GameObject Hit { get { return objectHit; } set { objectHit = value; } }
     }
 }

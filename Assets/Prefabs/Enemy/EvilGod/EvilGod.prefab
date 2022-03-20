@@ -30,10 +30,10 @@ Transform:
   m_Children:
   - {fileID: 1163624572}
   - {fileID: 1079582234}
-  - {fileID: 460007838}
-  - {fileID: 1230739602}
   - {fileID: 1013244928}
   - {fileID: 1630690319}
+  - {fileID: 460007838}
+  - {fileID: 1230739602}
   m_Father: {fileID: 4501327666581360}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -67,7 +67,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 192375470}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &460007839
 MonoBehaviour:
@@ -82,6 +82,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 0
+  timeSincePerformed: 0
   isReady: 0
   enemy: {fileID: 1630861722973768964}
   shieldPrefab: {fileID: 134636, guid: 4872590f836f4b64ebda7e11c1bb3d0a, type: 3}
@@ -117,7 +118,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 192375470}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1013244929
 MonoBehaviour:
@@ -132,12 +133,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 20
+  timeSincePerformed: 0
   isReady: 0
   enemy: {fileID: 1630861722973768964}
   lightningPrefab: {fileID: 6590587692847928727, guid: 37ce8026459c76c489573df772131203, type: 3}
   electricityPrefab: {fileID: 129598, guid: 27c2ce822c992304a9d0197976c8c4fc, type: 3}
+  missilePrefab: {fileID: 180268, guid: 2532962bb8467674cb5e097e001d8ce9, type: 3}
   triggerHealthPercentage: 0.7
-  numberOfWaves: 5
+  numberOfWaves: 1
   timeBetweenWaves: 2
   warningTime: 1
   number: 30
@@ -187,6 +190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 5
+  timeSincePerformed: 0
   isReady: 0
   enemy: {fileID: 1630861722973768964}
   prefab: {fileID: 159846, guid: 09bd21ca17a7f194aa04b7eac4cfa893, type: 3}
@@ -239,6 +243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 1
+  timeSincePerformed: 0
   isReady: 0
   enemy: {fileID: 1630861722973768964}
   prefab: {fileID: 180268, guid: 2532962bb8467674cb5e097e001d8ce9, type: 3}
@@ -277,7 +282,7 @@ Transform:
   m_Children:
   - {fileID: 8311811498984973473}
   m_Father: {fileID: 192375470}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1230739603
 MonoBehaviour:
@@ -292,6 +297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 0
+  timeSincePerformed: 0
   isReady: 0
   enemy: {fileID: 1630861722973768964}
   prefab: {fileID: 140812, guid: 946ed79503b95e640beeddd00c0719a9, type: 3}
@@ -327,7 +333,7 @@ Transform:
   m_Children:
   - {fileID: 1815077942}
   m_Father: {fileID: 192375470}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1630690320
 MonoBehaviour:
@@ -342,6 +348,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 15
+  timeSincePerformed: 0
   isReady: 0
   enemy: {fileID: 1630861722973768964}
   prefab: {fileID: 180268, guid: 2532962bb8467674cb5e097e001d8ce9, type: 3}
@@ -349,7 +356,7 @@ MonoBehaviour:
   pivotBias: 5
   number: 15
   speed: 50
-  timeBetweenAttack: 0.1
+  timeBetweenAttack: 0.05
   directionBias: 2
   impactPrefab: {fileID: 191726, guid: 4937c80a8b4cbdd4497ab7e3c94b0efb, type: 3}
   triggerHealthPercentage: 0.7
@@ -1922,11 +1929,13 @@ MonoBehaviour:
   electroResist: 0
   venomResist: 0
   dropWeaponChance: 0
-  dropWeaponType: 0
-  dropWeaponRarity: 4
+  dropWeaponNumber: 1
+  dropWeaponTypes: 
+  dropWeaponRarities: 
   dropAttachmentChance: 0
-  dropAttachmentType: 1
-  dropAttachmentRarity: 4
+  dropAttachmentNumber: 1
+  dropAttachmentTypes: 
+  dropAttachmentRarities: 
   rotateSpeed: 50
   viewRadius: 1000
   viewAngle: 360
