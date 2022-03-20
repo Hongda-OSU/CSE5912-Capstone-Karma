@@ -61,7 +61,9 @@ namespace CSE5912.PolyGamers
         {
             Initialize();
 
-            agent.isStopped = true;
+            if (agent.isOnNavMesh)
+                agent.isStopped = true;
+
             animator.applyRootMotion = true;
         }
 

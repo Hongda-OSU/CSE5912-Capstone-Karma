@@ -23,22 +23,31 @@ namespace CSE5912.PolyGamers
 
         bool isFalling = false;
 
+        protected override void Start()
+        {
+            base.Start(); transform.position = new Vector3(transform.position.x, 1200f, transform.position.z);
+        }
         protected override void PerformActions()
         {
+            if (isFalling)
+            {
+                transform.position = new Vector3(transform.position.x, transform.position.y - 500f * Time.deltaTime, transform.position.z);
+
+                if (transform.position.y <= 9f)
+                {
+                    isFalling = false;
+                    animator.SetTrigger("Land");
+                }
+
+            }
+
+            if (!isBossFightTriggered)
+                return;
+
             switch (status) 
             {
                 case Status.Idle:
 
-                    if (isFalling) 
-                    {
-                        transform.position = new Vector3(transform.position.x, transform.position.y - 500f * Time.deltaTime, transform.position.z);
-
-                        if (transform.position.y <= 9f) 
-                        {
-                            isFalling = false;
-                            animator.SetTrigger("Land");
-                        }
-                    }
 
                     if (playerDetected)
                     {

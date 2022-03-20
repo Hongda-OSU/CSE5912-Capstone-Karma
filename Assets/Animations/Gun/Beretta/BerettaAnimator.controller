@@ -561,13 +561,13 @@ AnimatorState:
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
   m_Mirror: 0
-  m_SpeedParameterActive: 0
+  m_SpeedParameterActive: 1
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400036, guid: 20d5945209bdc804891f29a868e7d4b0, type: 3}
+  m_Motion: {fileID: 7400000, guid: 5af410d47971dee47a5a777f8309a8f2, type: 2}
   m_Tag: 
-  m_SpeedParameter: 
+  m_SpeedParameter: MeleeSpeed
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 

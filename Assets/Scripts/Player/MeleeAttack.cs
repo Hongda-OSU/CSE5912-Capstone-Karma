@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace CSE5912.PolyGamers
 {
@@ -13,6 +14,7 @@ namespace CSE5912.PolyGamers
         [SerializeField] private float range = 1f;
         [SerializeField] private bool isEnabled = true;
 
+        public UnityEvent meleeEvent = new UnityEvent();
 
         private static MeleeAttack instance;
         public static MeleeAttack Instance { get { return instance; } }
@@ -26,8 +28,21 @@ namespace CSE5912.PolyGamers
 
         public void Perform()
         {
+            if (!isReady)
+                return;
+
+            StartCoolingdown();
+
+            FPSControllerCC.Instance.animator.SetTrigger("KnifeAttack");
+            meleeEvent.Invoke();
+        }
+
+        public void PerformDamage()
+        {
             if (!isEnabled)
                 return;
+
+            StartCoolingdown();
 
             var position = transform.position + WeaponManager.Instance.GetShootDirection() * range / 2;
             var size = new Vector3(range, range, range);
@@ -46,17 +61,6 @@ namespace CSE5912.PolyGamers
         }
 
 
-        public void IncreaseDamage(float damage)
-        {
-            baseDamage += damage;
-        }
-        public void IncreaseAttackSpeed(float speed)
-        {
-            var animator = WeaponManager.Instance.CarriedWeapon.GunAnimator;
-
-            var current = animator.GetFloat("ReloadSpeed");
-            animator.SetFloat("ReloadSpeed", current + speed);
-        }
         //public void IncreaseAttackRange(float range)
         //{
         //    sphereCollider.radius += range;
@@ -65,5 +69,7 @@ namespace CSE5912.PolyGamers
 
         public bool IsEnabled { get { return isEnabled; } set { isEnabled = value; } }
         public Element.Type ElementType { get { return elementType; } }
+        public float BaseDamage { get { return baseDamage; } set { baseDamage = value; } }
+        public float Cooldown { get { return cooldown; } set { cooldown = value; } }
     }
 }

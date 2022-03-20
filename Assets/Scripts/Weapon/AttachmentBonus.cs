@@ -232,12 +232,12 @@ namespace CSE5912.PolyGamers
 
                 if (enabled)
                 {
-                    WeaponManager.Instance.CarriedWeapon.IncreaseReloadSpeed(value);
+                    WeaponManager.Instance.CarriedWeapon.ReloadSpeed *= 1 + value;
                     isReady = false;
                 }
                 else
                 {
-                    WeaponManager.Instance.CarriedWeapon.IncreaseReloadSpeed(-value);
+                    WeaponManager.Instance.CarriedWeapon.ReloadSpeed /= 1 + value;
                     isReady = true;
                 }
             }

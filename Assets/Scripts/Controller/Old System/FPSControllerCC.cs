@@ -51,7 +51,6 @@ namespace CSE5912.PolyGamers
         //// Perform Dash with cool down
         //private CooldownTimer cooldownTimer = new CooldownTimer(2f);
 
-        public UnityEvent meleeEvent = new UnityEvent();
 
 
         private static FPSControllerCC instance;
@@ -183,15 +182,6 @@ namespace CSE5912.PolyGamers
         //    }
         //}
 
-        public void PerformMelee()
-        {
-
-            if (characterAnimator)
-            {
-                characterAnimator.SetTrigger("KnifeAttack");
-                meleeEvent.Invoke();
-            }
-        }
 
         public void PerformInspect()
         {

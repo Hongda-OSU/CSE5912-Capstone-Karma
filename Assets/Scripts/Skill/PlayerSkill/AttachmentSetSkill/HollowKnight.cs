@@ -27,7 +27,7 @@ namespace CSE5912.PolyGamers
             player = PlayerManager.Instance.Player;
             cc = FPSControllerCC.Instance.CharacterController;
 
-            FPSControllerCC.Instance.meleeEvent.AddListener(Perform);
+            MeleeAttack.Instance.meleeEvent.AddListener(Perform);
         }
 
         private void FixedUpdate()

@@ -79,6 +79,7 @@ namespace CSE5912.PolyGamers
             private static float elementDamageBonus = 0.042f;
             private static float fireRateBonus = 0.05f;
             private static float meleeDamageBonus = 0.5f;
+            private static float meleeSpeedBonus = 0.2f;
 
             //internal enum 
             internal Bonus(Firearms weapon)
@@ -89,12 +90,14 @@ namespace CSE5912.PolyGamers
 
                 bonusFunctionList = new List<BonusFunction>()
                 { 
-                    IncreaseDamage_physical, 
-                    IncreaseDamage_fire, 
-                    IncreaseDamage_cryo,
+                    //IncreaseDamage_physical, 
+                    //IncreaseDamage_fire, 
+                    //IncreaseDamage_cryo,
                     IncreaseDamage_electro,
                     IncreaseDamage_venom,
                     IncreaseFireRate,
+                    IncreaseMeleeDamage,
+                    IncreaseMeleeSpeed,
                 };
             }
 
@@ -275,15 +278,41 @@ namespace CSE5912.PolyGamers
 
                 if (enabled)
                 {
-                    MeleeAttack.Instance.IncreaseDamage(value);
+                    MeleeAttack.Instance.BaseDamage *= 1 + value;
                     isReady = false;
                 }
                 else
                 {
-                    MeleeAttack.Instance.IncreaseDamage(-value);
+                    MeleeAttack.Instance.BaseDamage /= 1 + value;
                     isReady = true;
                 }
             }
+
+            internal void IncreaseMeleeSpeed(bool enabled)
+            {
+                if (!isInitialized)
+                {
+                    value = ResolveValue(meleeSpeedBonus);
+                    isInitialized = true;
+                }
+
+                description = "Melee speed +" + Math.Round(value * 100, 1) + "%";
+
+                if (enabled)
+                {
+                    WeaponManager.Instance.CarriedWeapon.MeleeSpeed *= 1 + value;
+                    MeleeAttack.Instance.Cooldown /= 1 + value;
+                    isReady = false;
+                }
+                else
+                {
+                    WeaponManager.Instance.CarriedWeapon.MeleeSpeed /= 1 + value;
+                    MeleeAttack.Instance.Cooldown *= 1 + value;
+                    isReady = true;
+                }
+            }
+
+
 
             public string Description { get { return description; } }
         } 

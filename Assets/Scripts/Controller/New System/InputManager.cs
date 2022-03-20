@@ -37,7 +37,7 @@ namespace CSE5912.PolyGamers
             inputSchemes.FPSActions.Reload.performed += ctx => WeaponManager.Instance.StartReloadAmmo();
             inputSchemes.FPSActions.Aim.performed += ctx => WeaponManager.Instance.StartAiming();
             inputSchemes.FPSActions.Aim.canceled += ctx => WeaponManager.Instance.StopAiming();
-            inputSchemes.FPSActions.KnifeAttack.performed += ctx => FPSControllerCC.Instance.PerformMelee();
+            inputSchemes.FPSActions.KnifeAttack.performed += ctx => MeleeAttack.Instance.Perform();
 
 
             openIngameMenuHandler = new OpenIngameMenuHandler(inputSchemes);

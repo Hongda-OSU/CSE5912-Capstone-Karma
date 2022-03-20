@@ -137,7 +137,6 @@ namespace CSE5912.PolyGamers
 
         protected virtual void Awake()
         {
-            weaponBonus = new WeaponBonus(this);
             // set up current ammo
             CurrentAmmo = AmmoInMag; 
             CurrentMaxAmmoCarried = MaxAmmoCarried;
@@ -152,6 +151,7 @@ namespace CSE5912.PolyGamers
             var go = Instantiate(BulletPrefab);
             Destroy(go);
 
+            weaponBonus = new WeaponBonus(this);
             shootEvent = new UnityEvent();
         }
 
@@ -159,6 +159,7 @@ namespace CSE5912.PolyGamers
         {
             // define how many attachments one gun could have (4)
             attachments = new Attachment[PlayerInventory.Instance.MaxNumOfAttachmentsPerWeapon];
+
         }
 
         private void OnEnable()
@@ -179,13 +180,7 @@ namespace CSE5912.PolyGamers
 
         private void PerformMeleeAttack()
         {
-            MeleeAttack.Instance.Perform();
-        }
-
-        public void IncreaseReloadSpeed(float speed)
-        {
-            var current = GunAnimator.GetFloat("ReloadSpeed");
-            GunAnimator.SetFloat("ReloadSpeed", current + speed);
+            MeleeAttack.Instance.PerformDamage();
         }
 
 
@@ -388,5 +383,8 @@ namespace CSE5912.PolyGamers
         public Element.Type Element { get { return element; } }
         public WeaponBonus Bonus { get { return weaponBonus; } set { weaponBonus = value; } }
         public Sprite IconImage { get { return iconImage; } }
+
+        public float ReloadSpeed { get { return GunAnimator.GetFloat("ReloadSpeed"); } set { GunAnimator.SetFloat("ReloadSpeed", value); } }
+        public float MeleeSpeed { get { return GunAnimator.GetFloat("MeleeSpeed"); } set { GunAnimator.SetFloat("MeleeSpeed", value); } }
     }
 }

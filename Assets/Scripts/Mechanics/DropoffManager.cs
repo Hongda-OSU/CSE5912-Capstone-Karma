@@ -25,7 +25,9 @@ namespace CSE5912.PolyGamers
                 Destroy(gameObject);
             instance = this;
 
-
+        }
+        private void Start()
+        {
             var preInstWeapon = Instantiate(baseWeaponPrefabs);
             Destroy(preInstWeapon);
 
