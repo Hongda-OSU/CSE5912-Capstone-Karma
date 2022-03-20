@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace CSE5912.PolyGamers
 {
@@ -17,12 +18,28 @@ namespace CSE5912.PolyGamers
         [SerializeField] private GameObject prefab_3;
         [SerializeField] private GameObject prefab_4;
 
+        [Header("Landing")]
+        [SerializeField] private GameObject prefab_5;
+
+        bool isFalling = false;
 
         protected override void PerformActions()
         {
             switch (status) 
             {
                 case Status.Idle:
+
+                    if (isFalling) 
+                    {
+                        transform.position = new Vector3(transform.position.x, transform.position.y - 500f * Time.deltaTime, transform.position.z);
+
+                        if (transform.position.y <= 9f) 
+                        {
+                            isFalling = false;
+                            animator.SetTrigger("Land");
+                        }
+                    }
+
                     if (playerDetected)
                     {
                         MoveToPlayer();
@@ -116,8 +133,17 @@ namespace CSE5912.PolyGamers
         public override void TriggerBossFight()
         {
             isInvincible = true;
-            animator.applyRootMotion = true;
-            //animator.SetTrigger("Awake");
+            agent.enabled = false;
+            animator.SetTrigger("Awake");
+            isFalling = true;
+        }
+
+        private void AwakeAnimationComplete()
+        {
+            isInvincible = false;
+            agent.enabled = true;
+            isBossFightTriggered = true;
+            isFalling = false;
         }
 
         protected override IEnumerator PerformActionsOnWaiting()
@@ -161,11 +187,17 @@ namespace CSE5912.PolyGamers
         public void Vine() {
             GameObject vfx = Instantiate(prefab_3);
             GameObject dust = Instantiate(prefab_4);
-            vfx.transform.position = new Vector3(PlayerManager.Instance.Player.transform.position.x, PlayerManager.Instance.Player.transform.position.y - 1f, PlayerManager.Instance.Player.transform.position.z);
+            vfx.transform.position = new Vector3(PlayerManager.Instance.Player.transform.position.x, PlayerManager.Instance.Player.transform.position.y - 2f, PlayerManager.Instance.Player.transform.position.z);
             dust.transform.position = pivot_1.position;
 
             Destroy(vfx, 4f);
             Destroy(dust, 2f);
+        }
+
+        public void Landing() {
+            GameObject vfx = Instantiate(prefab_5);
+            vfx.transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
+            Destroy(vfx, 4f);
         }
 
                 // These codes below are used by Eiditor for testing purpose.
