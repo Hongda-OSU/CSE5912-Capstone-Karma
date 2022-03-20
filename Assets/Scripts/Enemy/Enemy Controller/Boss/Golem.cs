@@ -25,15 +25,19 @@ namespace CSE5912.PolyGamers
 
         protected override void Start()
         {
-            base.Start(); transform.position = new Vector3(transform.position.x, 1200f, transform.position.z);
+            base.Start();
+            transform.position = new Vector3(transform.position.x, 1200f, transform.position.z);
         }
         protected override void PerformActions()
         {
             if (isFalling)
             {
-                transform.position = new Vector3(transform.position.x, transform.position.y - 500f * Time.deltaTime, transform.position.z);
+                //transform.position = new Vector3(transform.position.x, transform.position.y - 500f * Time.deltaTime, transform.position.z);
 
-                if (transform.position.y <= 9f)
+                var target = new Vector3(transform.position.x, 4f, transform.position.z);
+                transform.position = Vector3.MoveTowards(transform.position, target, 500f * Time.deltaTime);
+
+                if (transform.position.y <= 4f)
                 {
                     isFalling = false;
                     animator.SetTrigger("Land");
