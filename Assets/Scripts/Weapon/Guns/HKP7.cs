@@ -91,7 +91,7 @@ namespace CSE5912.PolyGamers
             Quaternion bulletRot = MuzzlePoint.rotation;
             Vector3 bulletPos = MuzzlePoint.position;
             // fake bullet when running
-            if (FPSControllerCC.Instance.IsSprint)
+            if (FPSControllerCC.Instance.IsSprint && !WeaponManager.Instance.isAiming)
             {
                 Quaternion playerRot = PlayerManager.Instance.Player.transform.localRotation;
                 Quaternion mouseRot = PlayerManager.Instance.PlayerArms.transform.localRotation;
