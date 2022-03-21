@@ -87,6 +87,19 @@ namespace CSE5912.PolyGamers
 
         }
 
+        public void ResetEnemy()
+        {
+            health = maxHealth;
+            isAlive = true;
+            isFrozen = false;
+            isInvincible = false;
+
+            burned.ResetDebuff();
+            frozen.ResetDebuff();
+            electrocuted.ResetDebuff();
+            infected.ResetDebuff();
+        }
+
         protected void Initialize()
         {
             player = PlayerManager.Instance.Player.transform;
@@ -145,15 +158,14 @@ namespace CSE5912.PolyGamers
             
             collider3d.enabled = false;
 
-            StartCoroutine(RemoveAndDestroy(gameObject, timeToDestroy));
+            StartCoroutine(WaitAndDiable(gameObject, timeToDestroy));
 
             PlayDeathAnimation();
         }
-        protected IEnumerator RemoveAndDestroy(GameObject gameObject, float time)
+        protected IEnumerator WaitAndDiable(GameObject gameObject, float time)
         {
             yield return new WaitForSeconds(time);
-            EnemyManager.Instance.EnemyList.Remove(gameObject);
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
 
         protected void DropWeapon()

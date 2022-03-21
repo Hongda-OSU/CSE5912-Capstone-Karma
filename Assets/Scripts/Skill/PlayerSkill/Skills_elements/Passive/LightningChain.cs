@@ -39,20 +39,21 @@ namespace CSE5912.PolyGamers
 
             int lightningNum = baseLightningNumber + lightningNumberPerLevel * (level - 1);
 
+            var position = target.transform.position + Vector3.up * target.GetComponentInChildren<Renderer>().bounds.size.y / 2;
+            var size = new Vector3(effectDistance, effectDistance, effectDistance);
+
+            Collider[] hitColliders = Physics.OverlapBox(position, size);
+
             List<GameObject> inRange = new List<GameObject>();
-
-
-            foreach (var enemy in EnemyManager.Instance.EnemyList)
+            foreach (var hitCollider in hitColliders)
             {
-                if (!enemy.GetComponent<Enemy>().IsAlive)
+                hitCollider.TryGetComponent(out Enemy enemy);
+                if (enemy == null || !enemy.IsAlive)
                     continue;
 
-                float distance = Vector3.Distance(target.gameObject.transform.position, enemy.transform.position);
-                if (distance < effectDistance && enemy != target.gameObject)
-                {
-                    inRange.Add(enemy);
-                }
+                inRange.Add(enemy.gameObject);
             }
+
 
             if (inRange.Count == 0)
                 return;

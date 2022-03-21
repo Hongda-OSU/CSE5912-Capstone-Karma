@@ -31,6 +31,12 @@ namespace CSE5912.PolyGamers
             target = transform.parent.GetComponent<Enemy>();
         }
 
+        public void ResetDebuff()
+        {
+            stack = 0;
+            timeSince = 0f;
+        }
+
         public virtual void StackUp()
         {
             // increment stack

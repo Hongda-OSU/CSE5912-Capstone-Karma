@@ -31,6 +31,15 @@ namespace CSE5912.PolyGamers
             }
         }
 
+        public void ResetEnemiesInScene()
+        {
+            foreach (GameObject enemy in enemyList)
+            {
+                enemy.SetActive(true);
+                enemy.GetComponent<Enemy>().ResetEnemy();
+            }
+        }
+
         public List<GameObject> GetEnemiesInView()
         {
             List<GameObject> result = new List<GameObject>();

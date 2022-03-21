@@ -36,7 +36,7 @@ namespace CSE5912.PolyGamers
 
         protected void DeathAnimationComplete()
         {
-            StartCoroutine(RemoveAndDestroy(gameObject, 0f));
+            StartCoroutine(WaitAndDiable(gameObject, 0f));
 
             GameObject vfx = Instantiate(bossDeathVfxPrefab);
             vfx.transform.position = transform.position + Vector3.up * GetComponentInChildren<Renderer>().bounds.size.y / 2;
