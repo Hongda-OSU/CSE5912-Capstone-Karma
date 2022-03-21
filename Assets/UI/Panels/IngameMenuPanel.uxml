@@ -317,6 +317,16 @@
                     <ui:Label text="25 / 100" name="Data" class="Data" />
                     <ui:Button text="+" display-tooltip-when-elided="true" name="LevelUp" class="LevelUp" />
                 </ui:VisualElement>
+                <ui:VisualElement name="Shield_armor" class="DataRow">
+                    <ui:Label text="Armor Shield" display-tooltip-when-elided="true" name="Label" class="StatLabel" style="color: rgb(255, 255, 255);" />
+                    <ui:Label text="25 / 100" name="Data" class="Data" />
+                    <ui:Button text="+" display-tooltip-when-elided="true" name="LevelUp" class="LevelUp" />
+                </ui:VisualElement>
+                <ui:VisualElement name="Shield_energy" class="DataRow">
+                    <ui:Label text="Energy Shield" display-tooltip-when-elided="true" name="Label" class="StatLabel" style="color: rgb(255, 255, 255);" />
+                    <ui:Label text="25 / 100" name="Data" class="Data" />
+                    <ui:Button text="+" display-tooltip-when-elided="true" name="LevelUp" class="LevelUp" />
+                </ui:VisualElement>
                 <ui:VisualElement name="Margin" class="DataRow">
                     <ui:Label display-tooltip-when-elided="true" name="Label" class="StatLabel" style="color: rgb(255, 255, 255);" />
                 </ui:VisualElement>

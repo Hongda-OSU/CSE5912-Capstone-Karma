@@ -70,6 +70,5 @@ namespace CSE5912.PolyGamers
         public bool IsEnabled { get { return isEnabled; } set { isEnabled = value; } }
         public Element.Type ElementType { get { return elementType; } }
         public float BaseDamage { get { return baseDamage; } set { baseDamage = value; } }
-        public float Cooldown { get { return cooldown; } set { cooldown = value; } }
     }
 }

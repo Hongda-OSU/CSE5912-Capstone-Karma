@@ -130,7 +130,7 @@ namespace CSE5912.PolyGamers
             movementDirection =
                 characterTransform.TransformDirection(new Vector3(horizontalInput, 0, verticalInput));
             // (1) first Move() that handle player movement
-            characterController.Move(currentSpeed * Time.deltaTime * movementDirection);
+            characterController.Move(currentSpeed * PlayerStats.Instance.MoveSpeedFactor * Time.deltaTime * movementDirection);
             velocity = GetVeloctiy(characterController.velocity);
             // (2) second Move() that apply gravity to player
             playerVelocity.y -= Gravity * Time.deltaTime;
@@ -206,6 +206,9 @@ namespace CSE5912.PolyGamers
                 velocity /= (float)Math.Sqrt(2);
             if (characterAnimator)
                 characterAnimator.SetFloat("Velocity", velocity, 0.25f, Time.deltaTime);
+
+            characterAnimator.SetFloat("ReloadSpeed", PlayerStats.Instance.ReloadSpeedFactor);
+            characterAnimator.SetFloat("MeleeSpeed", PlayerStats.Instance.MeleeSpeedFactor);
         }
 
         IEnumerator DoCrouch(float targetHeight)

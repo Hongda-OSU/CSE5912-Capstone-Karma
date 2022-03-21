@@ -17,11 +17,12 @@ namespace CSE5912.PolyGamers
         [Header("Durability")]
         [SerializeField] private float health = 100f;
         [SerializeField] private float maxHealth = 100f;
-        //[SerializeField] private Shield shield;
+        [SerializeField] private Shield shield;
 
         [Header("Agility")]
         [SerializeField] private float moveSpeedFactor = 1f;
         [SerializeField] private float reloadSpeedFactor = 1f;
+        [SerializeField] private float meleeSpeedFactor = 1f;
 
         [Header("Critical")]
         [Range(0f, 1f)]
@@ -57,7 +58,7 @@ namespace CSE5912.PolyGamers
 
         [Header("Stats Up per Level")]
         [SerializeField] private float healthUp = 10f;
-        //[SerializeField] private float shieldUp = 10f;
+        [SerializeField] private float shieldUp = 10f;
         [SerializeField] private float critRateUp = 0.02f;
         [SerializeField] private float critDamageUp = 0.05f;
         [SerializeField] private float damageUp = 0.03f;
@@ -77,7 +78,7 @@ namespace CSE5912.PolyGamers
             }
             instance = this;
 
-            //shield = GetComponent<Shield>();
+            shield = GetComponent<Shield>();
 
             damageFactor = new DamageFactor();
             damageFactor.SetDamageValues(damageFactor_physical, damageFactor_fire, damageFactor_cryo, damageFactor_electro, damageFactor_venom);
@@ -95,11 +96,11 @@ namespace CSE5912.PolyGamers
 
         public void TakeDamage(Damage damage)
         {
-            //shield.TakeDamage(damage);
+            shield.TakeDamage(damage);
 
-            //Health -= shield.Overflow;
+            Health -= shield.Overflow;
 
-            Health -= damage.ResolvedValue;
+            //Health -= damage.ResolvedValue;
 
             takeDamageEvent.Invoke();
         }
@@ -191,14 +192,14 @@ namespace CSE5912.PolyGamers
                     health += healthUp;
                     maxHealth += healthUp;
                     break;
-                //case "Shield_armor":
-                //    shield.Shield_armor += shieldUp;
-                //    shield.MaxShield_armor += shieldUp;
-                //    break;
-                //case "Shield_energy":
-                //    shield.Shield_energy += shieldUp;
-                //    shield.MaxShield_energy += shieldUp;
-                //    break;
+                case "Shield_armor":
+                    shield.Shield_armor += shieldUp;
+                    shield.MaxShield_armor += shieldUp;
+                    break;
+                case "Shield_energy":
+                    shield.Shield_energy += shieldUp;
+                    shield.MaxShield_energy += shieldUp;
+                    break;
                 case "CritRate":
                     critRate += critRateUp;
                     break;
@@ -253,7 +254,6 @@ namespace CSE5912.PolyGamers
             set 
             {
                 health = Mathf.Clamp(value, 0, maxHealth);
-                PlayerHealthBarControl.Instance.UpdateHealthBar();
             } 
         }
         public float MaxHealth { get { return maxHealth; } 
@@ -262,13 +262,13 @@ namespace CSE5912.PolyGamers
                 maxHealth = value;
                 if (maxHealth < 0f)
                     maxHealth = 0f;
-                PlayerHealthBarControl.Instance.UpdateHealthBar();
             }
         }
-        //public float Shield_armor { get { return shield.Shield_armor; } set { shield.Shield_armor = value; } }
-        //public float MaxShield_armor { get { return shield.MaxShield_armor; } set { shield.MaxShield_armor = value; } }
-        //public float Shield_energy { get { return shield.Shield_energy; } set { shield.Shield_energy = value; } }
-        //public float MaxShield_energy { get { return shield.MaxShield_energy; } set { shield.Shield_energy = value; } }
+
+        public float Shield_armor { get { return shield.Shield_armor; } set { shield.Shield_armor = Mathf.Clamp(value, 0f, MaxShield_armor); } }
+        public float MaxShield_armor { get { return shield.MaxShield_armor; } set { shield.MaxShield_armor = value; } }
+        public float Shield_energy { get { return shield.Shield_energy; } set { shield.Shield_energy = Mathf.Clamp(value, 0f, MaxShield_energy); } }
+        public float MaxShield_energy { get { return shield.MaxShield_energy; } set { shield.MaxShield_energy = value; } }
 
         public int StatPoint { get { return statPoint; } }
         public int Level { get { return level; } }
@@ -277,8 +277,10 @@ namespace CSE5912.PolyGamers
         public float ExperienceMultiplier { get { return experienceMultiplier; } set { experienceMultiplier = value; } }
         public float CritDamageFactor { get { return critDamageFactor; } set { critDamageFactor = value; } }
         public float CritRate { get { return critRate; } set { critRate = Mathf.Clamp(value, 0f, 1f); } }
+
         public float MoveSpeedFactor { get { return moveSpeedFactor; } set { moveSpeedFactor = value; } }
         public float ReloadSpeedFactor { get { return reloadSpeedFactor; } set { reloadSpeedFactor = value; } }
+        public float MeleeSpeedFactor { get { return meleeSpeedFactor; } set { meleeSpeedFactor = value; } }
 
         public float BurnedBaseChance { get { return burnedBaseChance; } set { burnedBaseChance = value; } }
         public float FrozenBaseChance { get { return frozenBaseChance; } set { frozenBaseChance = value; } }
@@ -291,7 +293,7 @@ namespace CSE5912.PolyGamers
         public float InfectedCurrentHealthDamagePerStack { get { return infectedCurrentHealthDamagePerStack;} set { infectedCurrentHealthDamagePerStack = value; } }
 
         public float HealthUp { get { return healthUp; } }
-        //public float ShieldUp { get { return shieldUp; } }
+        public float ShieldUp { get { return shieldUp; } }
         public float CritRateUp { get { return critRateUp; } }
         public float CritDamageUp { get { return critDamageUp; } }
         public float DamageUp { get { return damageUp; } }

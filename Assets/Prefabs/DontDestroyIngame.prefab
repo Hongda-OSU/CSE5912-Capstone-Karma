@@ -1091,9 +1091,29 @@ PrefabInstance:
       propertyPath: type
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1082636342024462559, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: isReady
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1082636342024462559, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: isLearned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1082636342024462559, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: learnCost
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1082636342024462559, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: levelupCost
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1132428565656182083, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3914003179883955252, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: moveSpeedFactor
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3914003179883955252, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
       propertyPath: burnedBaseChance
@@ -1612,6 +1632,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3914003179971651603, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
   m_PrefabInstance: {fileID: 6615771459377584275}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7898931324766248101 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3914003179883955254, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+  m_PrefabInstance: {fileID: 6615771459377584275}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3302887819601688399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7898931324766248101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7334376b3a7c92e47bfe5b6bc9709a32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shield_armor: 0
+  maxShield_armor: 100
+  shield_energy: 0
+  maxShield_energy: 100
 --- !u!1 &7898931325629468211 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3914003179805071008, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}

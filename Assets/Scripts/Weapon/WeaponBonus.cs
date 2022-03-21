@@ -429,13 +429,13 @@ namespace CSE5912.PolyGamers
 
                 if (enabled)
                 {
-                    WeaponManager.Instance.CarriedWeapon.MeleeSpeed *= 1 + value;
+                    PlayerStats.Instance.MeleeSpeedFactor *= 1 + value;
                     MeleeAttack.Instance.Cooldown *= 1 - value;
                     isReady = false;
                 }
                 else
                 {
-                    WeaponManager.Instance.CarriedWeapon.MeleeSpeed /= 1 + value;
+                    PlayerStats.Instance.MeleeSpeedFactor /= 1 + value;
                     MeleeAttack.Instance.Cooldown /= 1 - value;
                     isReady = true;
                 }
@@ -453,18 +453,12 @@ namespace CSE5912.PolyGamers
 
                 if (enabled)
                 {
-                    FPSControllerCC.Instance.WalkSpeed *= 1 + value;
-                    FPSControllerCC.Instance.WalkSpeedWhenCrouched *= 1 + value;
-                    FPSControllerCC.Instance.SprintingSpeed *= 1 + value;
-                    FPSControllerCC.Instance.SprintingSpeedWhenCrouched *= 1 + value;
+                    PlayerStats.Instance.MoveSpeedFactor *= 1 + value;
                     isReady = false;
                 }
                 else
                 {
-                    FPSControllerCC.Instance.WalkSpeed /= 1 + value;
-                    FPSControllerCC.Instance.WalkSpeedWhenCrouched /= 1 + value;
-                    FPSControllerCC.Instance.SprintingSpeed /= 1 + value;
-                    FPSControllerCC.Instance.SprintingSpeedWhenCrouched /= 1 + value;
+                    PlayerStats.Instance.MoveSpeedFactor /= 1 + value;
                     isReady = true;
                 }
             }

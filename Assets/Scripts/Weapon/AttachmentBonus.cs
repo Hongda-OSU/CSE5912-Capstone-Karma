@@ -76,6 +76,7 @@ namespace CSE5912.PolyGamers
             private static float ammoBonus = 0.2f;
             private static float reloadSpeedBonus = 0.1f;
 
+
             //internal enum 
             internal Bonus(Attachment attachment)
             {
@@ -103,7 +104,13 @@ namespace CSE5912.PolyGamers
 
                 runeBonusList = new List<BonusFunction>()
                 {
-                    ExtremeDamage_fire,
+                    HighDamageLowResist,
+                    HighSpeedLowDamage,
+                    HighCritChanceLowCritDamage,
+                    HealthToShield,
+                    //Tank,
+                    //Vampire,
+                    //BulletLoan,
 
                 };
 
@@ -232,12 +239,12 @@ namespace CSE5912.PolyGamers
 
                 if (enabled)
                 {
-                    WeaponManager.Instance.CarriedWeapon.ReloadSpeed *= 1 + value;
+                    PlayerStats.Instance.ReloadSpeedFactor *= 1 + value;
                     isReady = false;
                 }
                 else
                 {
-                    WeaponManager.Instance.CarriedWeapon.ReloadSpeed /= 1 + value;
+                    PlayerStats.Instance.ReloadSpeedFactor /= 1 + value;
                     isReady = true;
                 }
             }
@@ -297,27 +304,133 @@ namespace CSE5912.PolyGamers
              *  Rune
              */
 
-            internal void ExtremeDamage_fire(bool enabled)
+            internal void HighDamageLowResist(bool enabled)
             {
-                if (!isInitialized)
-                {
-                    value = ResolveValue(recoilReductionBonus);
-                    isInitialized = true;
-                }
+                float damage = 2f;
+                float resist = 200f;
 
-                description = "Recoil -" + Math.Round(value * 100, 1) + "%";
+                description = 
+                    "All damages *" + damage +
+                    "All resists -" + resist;
 
                 if (enabled)
                 {
-                    FPSMouseLook.Instance.RecoilScale *= 1 - value;
+                    PlayerStats.Instance.GetDamageFactor().Physical.Value *= damage;
+                    PlayerStats.Instance.GetDamageFactor().Fire.Value *= damage;
+                    PlayerStats.Instance.GetDamageFactor().Cryo.Value *= damage;
+                    PlayerStats.Instance.GetDamageFactor().Electro.Value *= damage;
+                    PlayerStats.Instance.GetDamageFactor().Venom.Value *= damage;
+
+                    PlayerStats.Instance.GetResist().Physical.Value += resist;
+                    PlayerStats.Instance.GetResist().Fire.Value += resist;
+                    PlayerStats.Instance.GetResist().Cryo.Value += resist;
+                    PlayerStats.Instance.GetResist().Electro.Value += resist;
+                    PlayerStats.Instance.GetResist().Venom.Value += resist;
+
                     isReady = false;
                 }
                 else
                 {
-                    FPSMouseLook.Instance.RecoilScale /= 1 - value;
+                    PlayerStats.Instance.GetDamageFactor().Physical.Value /= damage;
+                    PlayerStats.Instance.GetDamageFactor().Fire.Value /= damage;
+                    PlayerStats.Instance.GetDamageFactor().Cryo.Value /= damage;
+                    PlayerStats.Instance.GetDamageFactor().Electro.Value /= damage;
+                    PlayerStats.Instance.GetDamageFactor().Venom.Value /= damage;
+
+                    PlayerStats.Instance.GetResist().Physical.Value -= resist;
+                    PlayerStats.Instance.GetResist().Fire.Value -= resist;
+                    PlayerStats.Instance.GetResist().Cryo.Value -= resist;
+                    PlayerStats.Instance.GetResist().Electro.Value -= resist;
+                    PlayerStats.Instance.GetResist().Venom.Value -= resist;
                     isReady = true;
                 }
             }
+
+            internal void HighSpeedLowDamage(bool enabled)
+            {
+                float speed = 2f;
+                float damage = 0.5f;
+
+                description =
+                    "Speed *" + speed +
+                    "All damages *" + damage;
+
+                if (enabled)
+                {
+                    PlayerStats.Instance.MoveSpeedFactor *= speed;
+
+                    PlayerStats.Instance.GetResist().Physical.Value *= damage;
+                    PlayerStats.Instance.GetResist().Fire.Value *= damage;
+                    PlayerStats.Instance.GetResist().Cryo.Value *= damage;
+                    PlayerStats.Instance.GetResist().Electro.Value *= damage;
+                    PlayerStats.Instance.GetResist().Venom.Value *= damage;
+
+                    isReady = false;
+                }
+                else
+                {
+                    PlayerStats.Instance.MoveSpeedFactor /= speed;
+
+                    PlayerStats.Instance.GetResist().Physical.Value /= damage;
+                    PlayerStats.Instance.GetResist().Fire.Value /= damage;
+                    PlayerStats.Instance.GetResist().Cryo.Value /= damage;
+                    PlayerStats.Instance.GetResist().Electro.Value /= damage;
+                    PlayerStats.Instance.GetResist().Venom.Value /= damage;
+
+                    isReady = true;
+                }
+            }
+
+            internal void HighCritChanceLowCritDamage(bool enabled)
+            {
+                float chance = 2f;
+                float damage = 0.5f;
+
+                description =
+                    "Crit chance *" + chance +
+                    "Crit damage *" + damage;
+
+                if (enabled)
+                {
+                    PlayerStats.Instance.CritRate *= chance;
+                    PlayerStats.Instance.CritDamageFactor *= damage;
+
+                    isReady = false;
+                }
+                else
+                {
+                    PlayerStats.Instance.CritRate /= chance;
+                    PlayerStats.Instance.CritDamageFactor /= damage;
+
+                    isReady = true;
+                }
+            }
+
+            internal void HealthToShield(bool enabled)
+            {
+                float chance = 2f;
+                float damage = 0.5f;
+
+                description =
+                    "Crit chance *" + chance +
+                    "Crit damage *" + damage;
+
+                if (enabled)
+                {
+                    PlayerStats.Instance.CritRate *= chance;
+                    PlayerStats.Instance.CritDamageFactor *= damage;
+
+                    isReady = false;
+                }
+                else
+                {
+                    PlayerStats.Instance.CritRate /= chance;
+                    PlayerStats.Instance.CritDamageFactor /= damage;
+
+                    isReady = true;
+                }
+            }
+
 
             public string Description { get { return description; } }
         } 

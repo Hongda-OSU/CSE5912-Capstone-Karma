@@ -384,7 +384,5 @@ namespace CSE5912.PolyGamers
         public WeaponBonus Bonus { get { return weaponBonus; } set { weaponBonus = value; } }
         public Sprite IconImage { get { return iconImage; } }
 
-        public float ReloadSpeed { get { return GunAnimator.GetFloat("ReloadSpeed"); } set { GunAnimator.SetFloat("ReloadSpeed", value); } }
-        public float MeleeSpeed { get { return GunAnimator.GetFloat("MeleeSpeed"); } set { GunAnimator.SetFloat("MeleeSpeed", value); } }
     }
 }
