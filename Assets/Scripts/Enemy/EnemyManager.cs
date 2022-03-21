@@ -35,6 +35,7 @@ namespace CSE5912.PolyGamers
         {
             foreach (GameObject enemy in enemyList)
             {
+                enemy.SetActive(false);
                 enemy.SetActive(true);
                 enemy.GetComponent<Enemy>().ResetEnemy();
             }

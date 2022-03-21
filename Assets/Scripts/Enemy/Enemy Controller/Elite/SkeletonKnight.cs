@@ -105,7 +105,6 @@ namespace CSE5912.PolyGamers
             agent.isStopped = false;
 
             currentAttackNum = 0;
-            Debug.Log(currentAttackNum);
         }
 
         private IEnumerator RandomAction()

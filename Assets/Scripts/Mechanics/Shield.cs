@@ -35,6 +35,12 @@ namespace CSE5912.PolyGamers
             UpdateArmor();
         }
 
+        public void ResetShield()
+        {
+            shield_energy = maxShield_energy;
+            shield_armor = maxShield_armor;
+        }
+
         private void UpdateEnergy()
         {
             var delta = Time.deltaTime;
@@ -91,7 +97,10 @@ namespace CSE5912.PolyGamers
             shield_energy = Mathf.Clamp(overflow_energy, 0, maxShield_energy);
             timeSinceDamaged = 0f;
             if (overflow_energy >= 0)
+            {
+                overflow = 0f;
                 return;
+            }
 
             // calculate overflowed damage on armor shield
             float overflow_armor = shield_armor + overflow_energy;
@@ -101,7 +110,10 @@ namespace CSE5912.PolyGamers
             }
             shield_armor = Mathf.Clamp(overflow_armor, 0, maxShield_armor);
             if (overflow_armor >= 0)
+            {
+                overflow = 0f;
                 return;
+            }
 
             overflow = -overflow_armor;
         }

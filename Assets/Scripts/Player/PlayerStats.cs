@@ -103,7 +103,26 @@ namespace CSE5912.PolyGamers
             //Health -= damage.ResolvedValue;
 
             takeDamageEvent.Invoke();
+
+            if (health <= 0)
+            {
+                Die();
+            }
         }
+
+        public void Die()
+        {
+            Respawn();
+            EnemyManager.Instance.ResetEnemiesInScene();
+            RespawnManager.Instance.RespawnPlayerToLast();
+        }
+
+        private void Respawn()
+        {
+            health = maxHealth;
+            shield.ResetShield();
+        }
+
         public void HitBack(Vector3 dir, float force)
         {
             FPSControllerCC.Instance.AddImpact(dir, force);

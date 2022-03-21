@@ -69,12 +69,14 @@ namespace CSE5912.PolyGamers
 
         public bool playerDetected = false;
         protected bool foundTarget = false;
-        protected bool isPlayingDeathAnimation = false;
         protected bool isAttackedByPlayer = false;
+
+        protected bool isPlayingDeathAnimation = false;
 
         protected float distanceToPlayer;
         protected Vector3 directionToPlayer;
 
+        protected Vector3 startPosition;
         protected Transform player;
         protected Animator animator;
         protected NavMeshAgent agent;
@@ -89,6 +91,8 @@ namespace CSE5912.PolyGamers
 
         public void ResetEnemy()
         {
+            transform.position = startPosition;
+
             health = maxHealth;
             isAlive = true;
             isFrozen = false;
@@ -98,6 +102,11 @@ namespace CSE5912.PolyGamers
             frozen.ResetDebuff();
             electrocuted.ResetDebuff();
             infected.ResetDebuff();
+
+            collider3d.enabled = true;
+            playerDetected = false;
+            foundTarget = false;
+            isAttackedByPlayer = false;
         }
 
         protected void Initialize()
@@ -120,6 +129,8 @@ namespace CSE5912.PolyGamers
 
             resist = new Resist();
             resist.SetValues(physicalResist, fireResist, cryoResist, electroResist, venomResist);
+
+            startPosition = transform.position;
         }
 
         public virtual void TakeDamage(Damage damage)
@@ -158,11 +169,11 @@ namespace CSE5912.PolyGamers
             
             collider3d.enabled = false;
 
-            StartCoroutine(WaitAndDiable(gameObject, timeToDestroy));
+            StartCoroutine(WaitAndDisable(gameObject, timeToDestroy));
 
             PlayDeathAnimation();
         }
-        protected IEnumerator WaitAndDiable(GameObject gameObject, float time)
+        protected IEnumerator WaitAndDisable(GameObject gameObject, float time)
         {
             yield return new WaitForSeconds(time);
             gameObject.SetActive(false);

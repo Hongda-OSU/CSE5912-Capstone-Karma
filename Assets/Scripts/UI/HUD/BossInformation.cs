@@ -25,7 +25,7 @@ namespace CSE5912.PolyGamers
         private GameObject target;
         private Enemy enemy;
 
-        private void Awake()
+        private void OnEnable()
         {
             uiDocument = GetComponent<UIDocument>();
             Initialize();

@@ -207,6 +207,9 @@ namespace CSE5912.PolyGamers
 
         protected virtual void SetRoll(Direction dir)
         {
+            if (dir == Direction.None)
+                return;
+
             animator.SetTrigger("Roll_" + dir.ToString());
         }
 
@@ -226,7 +229,7 @@ namespace CSE5912.PolyGamers
         {
 
             isAttacking = false;
-            SetAttack(-1);
+            //SetAttack(-1);
         }
 
         protected virtual IEnumerator CoolDown(float cooldown)

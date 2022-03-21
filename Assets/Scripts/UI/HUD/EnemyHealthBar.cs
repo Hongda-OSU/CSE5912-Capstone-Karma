@@ -15,19 +15,20 @@ namespace CSE5912.PolyGamers
         [SerializeField] private float distanceToDisplay = 10f;
         [SerializeField] private float distanceToDisplayIfAttacked = 20f;
 
-        private VisualElement healthBar;
-        private VisualElement maxHealthBar;
+        [SerializeField] private VisualElement healthBar;
+        [SerializeField] private VisualElement maxHealthBar;
 
         private VisualElement debuffs;
         private List<DebuffSlot> debuffSlotList;
 
         private float prevHealth;
 
-        private GameObject target;
-        private GameObject pivot;
-        private Enemy enemy;
+        [SerializeField] private GameObject target;
+        [SerializeField] private GameObject pivot;
+        [SerializeField] private Enemy enemy;
 
-        private void Awake()
+
+        private void OnEnable()
         {
             uiDocument = GetComponent<UIDocument>();
             Initialize();
@@ -43,7 +44,6 @@ namespace CSE5912.PolyGamers
                 debuffSlotList.Add(slot);
                 slot.Clear();
             }
-
             target = transform.parent.gameObject;
             pivot = gameObject;
             enemy = target.GetComponent<Enemy>();
@@ -52,6 +52,9 @@ namespace CSE5912.PolyGamers
 
         private void LateUpdate()
         {
+            if (!target.activeSelf)
+                return;
+
             currentCamera = WeaponManager.Instance.CarriedWeapon.GunCamera;
 
             if (DisplayEnabled() && enemy.IsAlive)
@@ -78,7 +81,9 @@ namespace CSE5912.PolyGamers
 
             if (distance < maxDistance)
             {
-                if (Physics.Raycast(target.transform.position, enemy.DirectionToPlayer, out hit, maxDistance, layerMask))
+                var pos = target.transform.position + Vector3.up * target.GetComponentInChildren<Renderer>().bounds.size.y;
+                var dir = (PlayerManager.Instance.Player.transform.position - pos).normalized;
+                if (Physics.Raycast(pos, dir, out hit, maxDistance, layerMask))
                 {
                     return hit.transform.gameObject == player;
                 }
