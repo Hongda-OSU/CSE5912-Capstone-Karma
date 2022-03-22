@@ -69,8 +69,8 @@ namespace CSE5912.PolyGamers
             SkillsPanelControl.Instance.SkillTree_element.AssignPassive(15, skillTree_element.GetComponentInChildren<MixedInfection>());
 
 
-            setToSkill.Add(Attachment.AttachmentSet.QuantumBreak, attachmentSetSkills.GetComponentInChildren<QuantumBreak>());
-            setToSkill.Add(Attachment.AttachmentSet.HollowKnight, attachmentSetSkills.GetComponentInChildren<HollowKnight>());
+            setToSkill.Add(Attachment.AttachmentSet.AtomBreak, attachmentSetSkills.GetComponentInChildren<AtomBreak>());
+            setToSkill.Add(Attachment.AttachmentSet.VoidKnight, attachmentSetSkills.GetComponentInChildren<VoidKnight>());
             setToSkill.Add(Attachment.AttachmentSet.C, attachmentSetSkills.GetComponentInChildren<SetSkillC>());
         }
 
@@ -116,7 +116,7 @@ namespace CSE5912.PolyGamers
         }
         public bool IsSetSkillActivatable(Firearms weapon)
         {
-            Attachment.AttachmentSet set = Attachment.AttachmentSet.QuantumBreak;
+            Attachment.AttachmentSet set = Attachment.AttachmentSet.AtomBreak;
 
             // the last attachment is rune.
             // only divine attachments trigger set skills

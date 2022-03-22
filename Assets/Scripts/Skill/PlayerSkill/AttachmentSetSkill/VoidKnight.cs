@@ -5,9 +5,9 @@ using UnityEngine.InputSystem;
 
 namespace CSE5912.PolyGamers
 {
-    public class HollowKnight : PlayerSkill
+    public class VoidKnight : PlayerSkill
     {
-        [Header("Hollow Knight")]
+        [Header("Void Knight")]
         [SerializeField] private float distance;
         [SerializeField] private float speed;
         [SerializeField] private float baseDamage;

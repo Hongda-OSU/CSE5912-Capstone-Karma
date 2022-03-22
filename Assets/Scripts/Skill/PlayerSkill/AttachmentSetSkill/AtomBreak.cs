@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace CSE5912.PolyGamers
 {
-    public class QuantumBreak : PlayerSkill
+    public class AtomBreak : PlayerSkill
     {
-        [Header("Quantum Break")]
+        [Header("Atom Break")]
         [SerializeField] private float triggerHealthPercentage = 0.3f;
 
         [SerializeField] private float duration = 8f;

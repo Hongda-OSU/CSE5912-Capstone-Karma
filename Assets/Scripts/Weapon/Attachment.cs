@@ -24,8 +24,8 @@ namespace CSE5912.PolyGamers
         // only divine trigger set effect
         public enum AttachmentSet
         {
-            QuantumBreak,
-            HollowKnight,
+            AtomBreak,
+            VoidKnight,
             C,
         }
         public enum AttachmentType
