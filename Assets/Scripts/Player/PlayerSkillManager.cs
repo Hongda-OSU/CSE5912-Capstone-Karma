@@ -80,6 +80,7 @@ namespace CSE5912.PolyGamers
                 Debug.LogError("Error: skill type is not Main. ");
 
             mainSkill = skill;
+            mainSkill.TimeSincePerformed = mainSkill.Cooldown;
             SkillInformationControl.Instance.SetupMainSkill(mainSkill);
         }
 

@@ -70,5 +70,16 @@ namespace CSE5912.PolyGamers
             PlayerStats.Instance.InfectedBaseChance += chance;
         }
 
+        public override bool LevelUp()
+        {
+            var result = base.LevelUp();
+
+            if (result)
+            {
+                PlayerSkillManager.Instance.SetMainSkill(this);
+            }
+
+            return result;
+        }
     }
 }

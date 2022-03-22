@@ -60,7 +60,8 @@ namespace CSE5912.PolyGamers
             vfx.transform.position = bullet.hitPosition;
 
             vfx.GetComponent<IncendiaryFireDamager>().livingFlame = livingFlame;
-            vfx.GetComponent<IncendiaryFireDamager>().baseTime = livingFlame.Time;
+            if (livingFlame != null)
+                vfx.GetComponent<IncendiaryFireDamager>().baseTime = livingFlame.Time;
 
             float time = baseTime + timePerLevel * (level - 1);
             StartCoroutine(vfx.GetComponent<IncendiaryFireDamager>().Perform(this, time, spreadToEnemy, null));
