@@ -6,7 +6,7 @@ namespace CSE5912.PolyGamers
     public class Glock : Firearms
     {
         // bullet hole effect
-        public GameObject ImpactPrefab;
+        //public GameObject ImpactPrefab;
         public ImpactAudioData impactAudioData;
         private IEnumerator reloadAmmoCheckerCoroutine;
 

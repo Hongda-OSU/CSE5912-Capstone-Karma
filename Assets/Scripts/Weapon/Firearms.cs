@@ -50,7 +50,7 @@ namespace CSE5912.PolyGamers
         public GameObject BulletPrefab;
         public ParticleSystem MuzzleParticle;
         public ParticleSystem CastingParticle;
-
+        public GameObject ImpactPrefab;
 
         [Header("WeaponInfo")]
         // predefined ammo per mag (AK: 30, Glock: 8)

@@ -886,6 +886,7 @@ MonoBehaviour:
   baseWeaponPrefabs: {fileID: 7251913148741228827, guid: bd3ddd63cf494f5449f65f60951e8b77, type: 3}
   dropHeight: 0.5
   dropPositionVariance: {x: 1, y: 1}
+  bulletEffects: {fileID: 8927461515793233272, guid: 8b057be69c210d242bb9783de5ed5635, type: 3}
 --- !u!1001 &6615771458777951276
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1649,10 +1650,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7334376b3a7c92e47bfe5b6bc9709a32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shield_armor: 0
-  maxShield_armor: 100
   shield_energy: 0
   maxShield_energy: 100
+  timeSinceDamaged: 0
+  timeToRestore: 5
+  restoreSpeed: 10
+  elementalDamageReduction: 0.75
+  shield_armor: 0
+  maxShield_armor: 100
+  physicalDamageReduction: 0.5
+  resistBonus: 0.1
 --- !u!1 &7898931325629468211 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3914003179805071008, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}

@@ -507,6 +507,7 @@ MonoBehaviour:
   BulletPrefab: {fileID: 1086664671600574, guid: 5953171a59c27394e9ad5cbb564affa8, type: 3}
   MuzzleParticle: {fileID: 799612945754302791}
   CastingParticle: {fileID: 7113265239488083261}
+  ImpactPrefab: {fileID: 1879272669879180, guid: 7bef351ddc33ae044b671a7664396a20, type: 3}
   AmmoInMag: 40
   MaxAmmoCarried: 200
   FireRate: 13
@@ -528,7 +529,6 @@ MonoBehaviour:
   iconImage: {fileID: 21300028, guid: ce679aa762875164cb3718b2eaa85abc, type: 3}
   attachments: []
   firearmsItem: {fileID: 0}
-  ImpactPrefab: {fileID: 1879272669879180, guid: 7bef351ddc33ae044b671a7664396a20, type: 3}
   impactAudioData: {fileID: 11400000, guid: 77d82378f50d24793accd21a66000c94, type: 2}
 --- !u!1 &32314033969212668
 GameObject:
@@ -3595,7 +3595,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.01
-  far clip plane: 1000
+  far clip plane: 5000
   field of view: 55
   orthographic: 0
   orthographic size: 5
