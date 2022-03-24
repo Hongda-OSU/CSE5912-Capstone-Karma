@@ -47,11 +47,6 @@ namespace CSE5912.PolyGamers
             }
         }
 
-        public void DisplayHealthBar(bool enabled)
-        {
-            displayHealthBar = enabled;
-        }
-
         private void LateUpdate()
         {
             if (displayHealthBar)
@@ -65,6 +60,16 @@ namespace CSE5912.PolyGamers
                 healthBar.style.width = 0f;
                 root.style.display = DisplayStyle.None;
             }
+        }
+
+        public override void Display(bool enabled)
+        {
+            displayHealthBar = enabled;
+
+            root.style.display = enabled ? DisplayStyle.Flex : DisplayStyle.None;
+            //healthBar.style.display = DisplayStyle.Flex;
+            //maxHealthBar.style.display = DisplayStyle.Flex;
+            //debuffs.style.display = DisplayStyle.Flex;
         }
 
         private bool DisplayEnabled()
@@ -84,19 +89,15 @@ namespace CSE5912.PolyGamers
         }
         private void SetHealthBar()
         {
-            root.style.display = DisplayStyle.Flex;
 
             detail.text = enemy.EnemyName;
 
-            healthBar.style.display = DisplayStyle.Flex;
             healthBar.style.width = width * enemy.Health / enemy.MaxHealth;
 
-            maxHealthBar.style.display = DisplayStyle.Flex;
             maxHealthBar.style.width = width;
 
 
             // debuff
-            debuffs.style.display = DisplayStyle.Flex;
 
             debuffSlotList[0].Display(enemy.Burned);
             debuffSlotList[1].Display(enemy.Frozen);

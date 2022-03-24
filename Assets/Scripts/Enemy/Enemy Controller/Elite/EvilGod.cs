@@ -109,11 +109,24 @@ namespace CSE5912.PolyGamers
             animator.SetTrigger("Awake");
         }
 
-        private void AwakeAnimationComplete()
+        protected override void AwakeAnimationComplete()
         {
             isInvincible = false;
             isBossFightTriggered = true;
             animator.applyRootMotion = false;
+            isPerforming = false;
+        }
+
+        public override void ResetEnemy()
+        {
+            base.ResetEnemy();
+            isBossFightTriggered = false;
+
+            lightningMissile.IsReady = true;
+            lightningExplosion.IsReady = true;
+            lightningStorm.IsReady = true;
+            barrage.IsReady = true;
+            blink.IsReady = true;
         }
 
         protected override void MoveToPlayer()

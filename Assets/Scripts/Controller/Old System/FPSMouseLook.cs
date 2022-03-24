@@ -24,6 +24,8 @@ namespace CSE5912.PolyGamers
         private float currentRecoilTime;
         private Vector2 currentRecoil;
 
+        public bool stopProcessingLook = false;
+
         // CameraShake 
         private CameraShake cameraShake;
 
@@ -44,6 +46,9 @@ namespace CSE5912.PolyGamers
 
         public void ProcessLook(Vector2 lookInput)
         {
+            if (stopProcessingLook)
+                return;
+
             var tmp_MouseX = lookInput.x;
             var tmp_MouseY = lookInput.y;
 

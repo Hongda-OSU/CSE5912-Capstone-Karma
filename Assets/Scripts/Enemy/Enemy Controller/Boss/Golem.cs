@@ -151,7 +151,7 @@ namespace CSE5912.PolyGamers
             isFalling = true;
         }
 
-        private void AwakeAnimationComplete()
+        protected override void AwakeAnimationComplete()
         {
             isInvincible = false;
             agent.enabled = true;

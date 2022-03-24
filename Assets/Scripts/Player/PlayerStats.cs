@@ -15,6 +15,7 @@ namespace CSE5912.PolyGamers
         [SerializeField] private float experienceMultiplier = 1f;
 
         [Header("Durability")]
+        [SerializeField] private bool isAlive = true;
         [SerializeField] private float health = 100f;
         [SerializeField] private float maxHealth = 100f;
         [SerializeField] private Shield shield;
@@ -110,15 +111,19 @@ namespace CSE5912.PolyGamers
             }
         }
 
-        public void Die()
+        private void Die()
         {
-            Respawn();
-            EnemyManager.Instance.ResetEnemiesInScene();
+            if (!isAlive)
+                return;
+
+            isAlive = false;
             RespawnManager.Instance.RespawnPlayerToLast();
         }
 
-        private void Respawn()
+        public void Respawn()
         {
+            isAlive = true;
+
             health = maxHealth;
             shield.ResetShield();
         }

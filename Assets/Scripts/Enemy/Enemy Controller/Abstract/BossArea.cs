@@ -42,6 +42,16 @@ namespace CSE5912.PolyGamers
             StartCoroutine(TriggerBossFight());
         }
 
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.transform.tag != "Player" || !isTriggered)
+                return;
+
+            isTriggered = false;
+            //IngameAudioControl.Instance.Play(bossMusic);
+            enemy.gameObject.GetComponentInChildren<BossInformation>().Display(false);
+        }
+
         private IEnumerator TriggerBossFight()
         {
             IngameAudioControl.Instance.SmoothStopMusic();
@@ -55,7 +65,7 @@ namespace CSE5912.PolyGamers
                 yield return new WaitForSeconds(Time.deltaTime);
             }
             IngameAudioControl.Instance.Play(bossMusic);
-            enemy.gameObject.GetComponentInChildren<BossInformation>().DisplayHealthBar(true);
+            enemy.gameObject.GetComponentInChildren<BossInformation>().Display(true);
         }
 
 

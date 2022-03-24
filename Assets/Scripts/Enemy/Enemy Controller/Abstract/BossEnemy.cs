@@ -12,6 +12,7 @@ namespace CSE5912.PolyGamers
         [SerializeField] private GameObject bossDeathVfxPrefab;
 
         public abstract void TriggerBossFight();
+        protected abstract void AwakeAnimationComplete();
 
         protected override void CalculateAggro()
         {

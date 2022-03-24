@@ -51,6 +51,8 @@ namespace CSE5912.PolyGamers
         public ParticleSystem MuzzleParticle;
         public ParticleSystem CastingParticle;
         public GameObject ImpactPrefab;
+        private GameObject arms;
+
 
         [Header("WeaponInfo")]
         // predefined ammo per mag (AK: 30, Glock: 8)
@@ -148,6 +150,16 @@ namespace CSE5912.PolyGamers
             GunCameraLocalOriginalPosition = GunCamera.transform.localPosition;
             doAimingCoroutine = DoAim();
 
+            foreach (Transform child in transform)
+            {
+                if (child.name == "arms")
+                {
+                    arms = child.gameObject;
+                }
+            }
+            if (arms == null)
+                Debug.LogError("arms not found");
+
             var go = Instantiate(BulletPrefab);
             Destroy(go);
 
@@ -189,6 +201,11 @@ namespace CSE5912.PolyGamers
             bool shoot = WeaponManager.Instance.isFiring && prevBullet != bulletFired;
             prevBullet = bulletFired;
             return shoot;
+        }
+
+        public void Display(bool enabled)
+        {
+            arms.SetActive(enabled);
         }
 
         public void Attack()

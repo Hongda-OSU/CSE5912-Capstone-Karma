@@ -77,6 +77,10 @@ namespace CSE5912.PolyGamers
         protected Vector3 directionToPlayer;
 
         protected Vector3 startPosition;
+        protected Quaternion startRotation;
+        protected Vector3 startScale;
+
+
         protected Transform player;
         protected Animator animator;
         protected NavMeshAgent agent;
@@ -89,9 +93,11 @@ namespace CSE5912.PolyGamers
 
         }
 
-        public void ResetEnemy()
+        public virtual void ResetEnemy()
         {
             transform.position = startPosition;
+            transform.rotation = startRotation;
+            transform.localScale = startScale;
 
             health = maxHealth;
             isAlive = true;
@@ -107,6 +113,7 @@ namespace CSE5912.PolyGamers
             playerDetected = false;
             foundTarget = false;
             isAttackedByPlayer = false;
+
         }
 
         protected void Initialize()
@@ -131,6 +138,8 @@ namespace CSE5912.PolyGamers
             resist.SetValues(physicalResist, fireResist, cryoResist, electroResist, venomResist);
 
             startPosition = transform.position;
+            startRotation = transform.rotation;
+            startScale = transform.localScale;
         }
 
         public virtual void TakeDamage(Damage damage)
@@ -271,7 +280,11 @@ namespace CSE5912.PolyGamers
 
         protected virtual void FaceTarget(Vector3 direction)
         {
-            Quaternion lookRotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, directionToPlayer, rotateSpeed * Time.deltaTime, 0.0f));
+            var lookPosition = Vector3.RotateTowards(transform.forward, directionToPlayer, rotateSpeed * Time.deltaTime, 0.0f);
+            lookPosition.y = 0f;
+
+            Quaternion lookRotation = Quaternion.LookRotation(lookPosition);
+
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
         }
 
@@ -318,5 +331,7 @@ namespace CSE5912.PolyGamers
 
         public float DistanceToPlayer { get { return distanceToPlayer; } }
         public Vector3 DirectionToPlayer { get { return directionToPlayer; } }
+
+        public Vector3 StartPosition { get { return startPosition; } }
     }
 }
