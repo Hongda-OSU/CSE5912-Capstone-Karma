@@ -67,14 +67,18 @@ namespace CSE5912.PolyGamers
             GameObject portal = Instantiate(portalPrefab);
             portal.transform.position = player.transform.position - Vector3.up * 5f;
 
+            FPSControllerCC.Instance.AllowMoving(false);
+
             GameStateController.Instance.SetGameState(GameStateController.GameState.Loading);
-            player.GetComponent<CharacterController>().enabled = false;
+
+
             yield return new WaitForSeconds(3f);
                 
+
             player.transform.position = target.transform.position;
             FPSMouseLook.Instance.ResetLook();
 
-            player.GetComponent<CharacterController>().enabled = true;
+            FPSControllerCC.Instance.AllowMoving(true);
 
             GameStateController.Instance.SetGameState(GameStateController.GameState.InGame);
 

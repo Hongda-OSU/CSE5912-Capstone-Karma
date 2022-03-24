@@ -32,6 +32,8 @@ namespace CSE5912.PolyGamers
         // player velocity before perform second Move()
         private float velocity;
 
+        private bool isMovingAllowed = true;
+
         private bool isCrouched;
         private bool isSprinted;
         //private bool isDashPressed;
@@ -50,6 +52,7 @@ namespace CSE5912.PolyGamers
 
         //// Perform Dash with cool down
         //private CooldownTimer cooldownTimer = new CooldownTimer(2f);
+
 
 
 
@@ -201,14 +204,26 @@ namespace CSE5912.PolyGamers
 
         private void HandleAnimation()
         {
-            // walk animation when press both W and A/D
-            if (Math.Abs(horizontalInput) > 0 && Math.Abs(verticalInput) > 0 && !isSprinted)
-                velocity /= (float)Math.Sqrt(2);
-            if (characterAnimator)
-                characterAnimator.SetFloat("Velocity", velocity, 0.25f, Time.deltaTime);
+            if (isMovingAllowed)
+            {
+                // walk animation when press both W and A/D
+                if (Math.Abs(horizontalInput) > 0 && Math.Abs(verticalInput) > 0 && !isSprinted)
+                    velocity /= (float)Math.Sqrt(2);
+                if (characterAnimator)
+                    characterAnimator.SetFloat("Velocity", velocity, 0.25f, Time.deltaTime);
 
-            characterAnimator.SetFloat("ReloadSpeed", PlayerStats.Instance.ReloadSpeedFactor);
-            characterAnimator.SetFloat("MeleeSpeed", PlayerStats.Instance.MeleeSpeedFactor);
+                characterAnimator.SetFloat("ReloadSpeed", PlayerStats.Instance.ReloadSpeedFactor);
+                characterAnimator.SetFloat("MeleeSpeed", PlayerStats.Instance.MeleeSpeedFactor);
+            }
+            else
+            {
+                characterAnimator.SetFloat("Velocity", 0f, 0.25f, Time.deltaTime);
+            }
+        }
+        public void AllowMoving(bool enabled)
+        {
+            isMovingAllowed = enabled; 
+            GetComponent<CharacterController>().enabled = enabled;
         }
 
         IEnumerator DoCrouch(float targetHeight)
