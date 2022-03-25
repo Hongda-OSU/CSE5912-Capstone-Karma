@@ -9775,7 +9775,8 @@ GameObject:
   - component: {fileID: 671316011293377929}
   - component: {fileID: 828693056432633405}
   - component: {fileID: 830326077473745239}
-  - component: {fileID: 2693942647853715645}
+  - component: {fileID: 3431353149968260182}
+  - component: {fileID: 5377413425563967732}
   m_Layer: 1
   m_Name: BlackSoulPoint
   m_TagString: Untagged
@@ -14586,7 +14587,7 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &2693942647853715645
+--- !u!114 &3431353149968260182
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14595,7 +14596,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 668452988796817149}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5331116d1ce429a4cacd920a93d0b3c8, type: 3}
+  m_Script: {fileID: 11500000, guid: 4edf9850ce37a6d49beea6d855e59e45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isActivated: 0
+  experience: 0
+  pickUpVfxPrefab: {fileID: 988757988809306081, guid: 781b1d1c81dc51f4f84bce9920dc448b, type: 3}
+  statUp: 20
+  duration: 30
+--- !u!135 &5377413425563967732
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 668452988796817149}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 0}

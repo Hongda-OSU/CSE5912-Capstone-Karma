@@ -8,9 +8,31 @@ namespace CSE5912.PolyGamers
     {
         [Header("Black Soul")]
         [SerializeField] private GameObject blackSoulPointPrefab;
-        [SerializeField] private float buffMultiplier = 1.2f;
+        [SerializeField] private float statUp = 0.2f;
+        [SerializeField] private float duration = 30f;
 
+        private GameObject originSoulPoint;
 
+        public override bool LevelUp()
+        {
+            var result = base.LevelUp();
 
+            if (result)
+            {
+                originSoulPoint = RespawnManager.Instance.soulPointPrefab;
+
+                blackSoulPointPrefab.GetComponent<BlackSoulPoint>().statUp = statUp;
+                blackSoulPointPrefab.GetComponent<BlackSoulPoint>().duration = duration;
+                RespawnManager.Instance.soulPointPrefab = blackSoulPointPrefab;
+            }
+
+            return result;
+        }
+
+        public override void ResetLevel()
+        {
+            base.ResetLevel();
+            RespawnManager.Instance.soulPointPrefab = originSoulPoint;
+        }
     }
 }

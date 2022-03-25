@@ -26,7 +26,8 @@ namespace CSE5912.PolyGamers
         {
             AtomBreak,
             VoidKnight,
-            C,
+            Sergeant76,
+            BlackSoul,
         }
         public enum AttachmentType
         {

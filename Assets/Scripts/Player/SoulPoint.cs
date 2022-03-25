@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace CSE5912.PolyGamers
 {
@@ -9,9 +10,10 @@ namespace CSE5912.PolyGamers
         [SerializeField] private float experience;
         [SerializeField] private GameObject pickUpVfxPrefab;
 
-        public void Initialize(float experience)
+        private void Awake()
         {
-            this.experience = experience;
+            experience = PlayerStats.Instance.Experience;
+            PlayerStats.Instance.Experience = 0f;
         }
 
         private void OnTriggerEnter(Collider other)
@@ -25,8 +27,8 @@ namespace CSE5912.PolyGamers
 
             GameObject vfx = Instantiate(pickUpVfxPrefab);
             vfx.transform.position = transform.position;
-
             Destroy(vfx, 10f);
         }
+
     }
 }

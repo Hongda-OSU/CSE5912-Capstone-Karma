@@ -71,7 +71,8 @@ namespace CSE5912.PolyGamers
 
             setToSkill.Add(Attachment.AttachmentSet.AtomBreak, attachmentSetSkills.GetComponentInChildren<AtomBreak>());
             setToSkill.Add(Attachment.AttachmentSet.VoidKnight, attachmentSetSkills.GetComponentInChildren<VoidKnight>());
-            setToSkill.Add(Attachment.AttachmentSet.C, attachmentSetSkills.GetComponentInChildren<Sergeant76>());
+            setToSkill.Add(Attachment.AttachmentSet.Sergeant76, attachmentSetSkills.GetComponentInChildren<Sergeant76>());
+            setToSkill.Add(Attachment.AttachmentSet.BlackSoul, attachmentSetSkills.GetComponentInChildren<BlackSoul>());
         }
 
         public void SetMainSkill(PlayerSkill skill)

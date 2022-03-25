@@ -13,7 +13,7 @@ namespace CSE5912.PolyGamers
         [SerializeField] private GameObject deathVfxPrefab;
         [SerializeField] private float timeToRespawn = 8f;
 
-        [SerializeField] private GameObject soulPointPrefab;
+        public GameObject soulPointPrefab;
         private Camera deathCamera;
 
 
@@ -87,7 +87,6 @@ namespace CSE5912.PolyGamers
         {
             GameObject soul = Instantiate(soulPointPrefab);
             soul.transform.position = position;
-            soul.GetComponent<SoulPoint>().Initialize(PlayerStats.Instance.Experience);
             PlayerStats.Instance.Experience = 0f;
         }
 
