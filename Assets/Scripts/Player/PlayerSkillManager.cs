@@ -71,7 +71,7 @@ namespace CSE5912.PolyGamers
 
             setToSkill.Add(Attachment.AttachmentSet.AtomBreak, attachmentSetSkills.GetComponentInChildren<AtomBreak>());
             setToSkill.Add(Attachment.AttachmentSet.VoidKnight, attachmentSetSkills.GetComponentInChildren<VoidKnight>());
-            setToSkill.Add(Attachment.AttachmentSet.C, attachmentSetSkills.GetComponentInChildren<ssss>());
+            setToSkill.Add(Attachment.AttachmentSet.C, attachmentSetSkills.GetComponentInChildren<Sergeant76>());
         }
 
         public void SetMainSkill(PlayerSkill skill)
