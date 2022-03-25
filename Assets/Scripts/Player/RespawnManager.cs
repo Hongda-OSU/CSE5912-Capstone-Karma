@@ -12,6 +12,8 @@ namespace CSE5912.PolyGamers
 
         [SerializeField] private GameObject deathVfxPrefab;
         [SerializeField] private float timeToRespawn = 8f;
+
+        [SerializeField] private GameObject soulPointPrefab;
         private Camera deathCamera;
 
 
@@ -38,6 +40,7 @@ namespace CSE5912.PolyGamers
         {
             var player = PlayerManager.Instance.Player;
             var currWeapon = WeaponManager.Instance.CarriedWeapon;
+            var deathPosition = player.transform.position;
 
             //EnemyManager.Instance.FreezeAll();
 
@@ -74,6 +77,18 @@ namespace CSE5912.PolyGamers
 
             PlayerStats.Instance.Respawn();
             EnemyManager.Instance.ResetEnemiesInScene();
+
+            yield return new WaitForSeconds(Time.deltaTime);
+
+            CreateSoulPoint(deathPosition);
+        }
+
+        private void CreateSoulPoint(Vector3 position)
+        {
+            GameObject soul = Instantiate(soulPointPrefab);
+            soul.transform.position = position;
+            soul.GetComponent<SoulPoint>().Initialize(PlayerStats.Instance.Experience);
+            PlayerStats.Instance.Experience = 0f;
         }
 
         public RespawnPoint CurrentRespawnPoint { get { return currentRespawnPoint; } set { currentRespawnPoint = value; } }
