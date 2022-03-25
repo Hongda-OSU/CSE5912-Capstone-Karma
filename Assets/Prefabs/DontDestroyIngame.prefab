@@ -317,9 +317,9 @@ MonoBehaviour:
   levelupCost: 0
   icon: {fileID: 0}
   type: 3
-  startSpeed: 30
-  maxSpeed: 0
-  acceleration: 0
+  speed: 30
+  acceleration: 1
+  distance: 100
 --- !u!1 &698742160
 GameObject:
   m_ObjectHideFlags: 0

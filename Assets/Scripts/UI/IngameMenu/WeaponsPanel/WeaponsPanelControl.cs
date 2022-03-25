@@ -570,7 +570,8 @@ namespace CSE5912.PolyGamers
                 Debug.Log(setSkill.Name);
 
                 var description = set.Q<Label>("Description");
-                description.text = setSkill.GetSpecific();
+                //description.text = setSkill.GetSpecific();
+                Debug.Log("To-do");
 
                 if (setSkill.Level > 0)
                 {

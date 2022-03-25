@@ -7,6 +7,7 @@ namespace CSE5912.PolyGamers
     public class EnemyManager : MonoBehaviour
     {
         [SerializeField] private GameObject enemies;
+        [SerializeField] private LayerMask layerMask;
 
         private List<GameObject> enemyList;
 
@@ -14,6 +15,7 @@ namespace CSE5912.PolyGamers
         private static EnemyManager instance;
         public static EnemyManager Instance { get { return instance; } }
 
+        
         private void Awake()
         {
             if (instance != null && instance != this)
@@ -40,7 +42,7 @@ namespace CSE5912.PolyGamers
             }
         }
 
-        public List<GameObject> GetEnemiesInView()
+        public List<GameObject> GetEnemiesInView(float distance)
         {
             List<GameObject> result = new List<GameObject>();
 
@@ -49,7 +51,13 @@ namespace CSE5912.PolyGamers
             {
                 if (enemy != null && enemy.tag == "Enemy" && GeometryUtility.TestPlanesAABB(planes, enemy.GetComponent<Collider>().bounds))
                 {
-                    result.Add(enemy);
+                    var pos = enemy.transform.position + Vector3.up * enemy.GetComponentInChildren<Renderer>().bounds.size.y / 2;
+                    var dir = (PlayerManager.Instance.Player.transform.position - pos).normalized;
+                    if (Physics.Raycast(pos, dir, out RaycastHit hit, distance, layerMask))
+                    {
+                        if (hit.transform.gameObject == PlayerManager.Instance.Player)
+                            result.Add(enemy);
+                    }
                 }
             }
             return result;

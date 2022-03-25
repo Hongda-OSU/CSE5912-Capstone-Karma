@@ -6,9 +6,11 @@ namespace CSE5912.PolyGamers
 {
     public class Sergeant76 : PlayerSkill
     {
-        [SerializeField] private float startSpeed;
-        [SerializeField] private float maxSpeed;
+        [Header("Sergeant 76")]
+        [SerializeField] private float speed;
         [SerializeField] private float acceleration;
+        [SerializeField] private float distance;
+
 
         private void Update()
         {
@@ -19,12 +21,12 @@ namespace CSE5912.PolyGamers
             {
                 var bullet = WeaponManager.Instance.CarriedWeapon.bulletFired;
 
-                StartCoroutine(Perform(bullet, LockTarget().transform));
+                StartCoroutine(Perform(bullet, LockTarget()));
             }
         }
         private GameObject LockTarget()
-        {
-            var enemyList = EnemyManager.Instance.GetEnemiesInView();
+        { 
+            var enemyList = EnemyManager.Instance.GetEnemiesInView(distance);
 
             float min = -1f;
             GameObject target = null;
@@ -43,17 +45,16 @@ namespace CSE5912.PolyGamers
             }
             return target;
         }
-        private IEnumerator Perform(Bullet bullet, Transform target)
+        private IEnumerator Perform(Bullet bullet, GameObject target)
         {
-            float speed = startSpeed;
-
             bullet.BulletSpeed = speed;
 
-            while (bullet != null)
+            while (bullet != null && target != null)
             {
-                var position = target.position + Vector3.up * target.GetComponentInChildren<Renderer>().bounds.size.y / 2;
+                var position = target.transform.position + Vector3.up * target.GetComponentInChildren<Renderer>().bounds.size.y / 2;
 
-                bullet.transform.LookAt(position);
+                bullet.Direction += (position - bullet.transform.position) * acceleration * Time.deltaTime;
+                bullet.Direction.Normalize();
 
                 yield return new WaitForSeconds(Time.deltaTime);
             }

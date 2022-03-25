@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace CSE5912.PolyGamers
 {
-    public class PlayerSkill : Skill
+    public abstract class PlayerSkill : Skill
     {
         [SerializeField] protected string skillName;
 
@@ -66,19 +66,8 @@ namespace CSE5912.PolyGamers
             level = 0;
         }
 
-        // todo - change to abstract
-        public virtual string GetSpecific()
-        {
-            string specific =
-                "Name: " + skillName +
-                "\nType: " + type.ToString() +
-                "\nDescription: " + description;
-
-            if (requiredSkill != null)
-                specific += "\nRequire: " + requiredSkill.skillName;
-
-            return specific;
-        }
+        // todo
+        //public abstract string GetSpecific();
 
 
         public string Name { get { return skillName; } }
