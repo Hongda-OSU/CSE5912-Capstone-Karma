@@ -35,7 +35,11 @@ namespace CSE5912.PolyGamers
             float damageFactorValue = damageFactor.FindDamageFactorByElement(element).Value;
             float resistValue = resist.FindResisByElement(element).Value;
 
-            return rawValue * (1 + damageFactorValue) * (1 - PercentageReduced(resistValue));
+            float result = rawValue * (1 + damageFactorValue) * (1 - PercentageReduced(resistValue));
+            if (result < 0f)
+                result = 0f;
+
+            return result;
         }
 
         public static float PercentageReduced(float resistValue)

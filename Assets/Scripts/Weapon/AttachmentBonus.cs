@@ -107,7 +107,7 @@ namespace CSE5912.PolyGamers
                     HighDamageLowResist,
                     HighSpeedLowDamage,
                     HighCritChanceLowCritDamage,
-                    HealthToShield,
+                    //HealthToShield,
                     //Tank,
                     //Vampire,
                     //BulletLoan,
@@ -306,20 +306,20 @@ namespace CSE5912.PolyGamers
 
             internal void HighDamageLowResist(bool enabled)
             {
-                float damage = 2f;
+                float damage = 1f;
                 float resist = 200f;
 
-                description = 
-                    "All damages *" + damage +
+                description =
+                    "All damages +" + damage * 100 + "%" +
                     "All resists -" + resist;
 
                 if (enabled)
                 {
-                    PlayerStats.Instance.GetDamageFactor().Physical.Value *= damage;
-                    PlayerStats.Instance.GetDamageFactor().Fire.Value *= damage;
-                    PlayerStats.Instance.GetDamageFactor().Cryo.Value *= damage;
-                    PlayerStats.Instance.GetDamageFactor().Electro.Value *= damage;
-                    PlayerStats.Instance.GetDamageFactor().Venom.Value *= damage;
+                    PlayerStats.Instance.GetDamageFactor().Physical.Value += damage;
+                    PlayerStats.Instance.GetDamageFactor().Fire.Value += damage;
+                    PlayerStats.Instance.GetDamageFactor().Cryo.Value += damage;
+                    PlayerStats.Instance.GetDamageFactor().Electro.Value += damage;
+                    PlayerStats.Instance.GetDamageFactor().Venom.Value += damage;
 
                     PlayerStats.Instance.GetResist().Physical.Value += resist;
                     PlayerStats.Instance.GetResist().Fire.Value += resist;
@@ -331,11 +331,11 @@ namespace CSE5912.PolyGamers
                 }
                 else
                 {
-                    PlayerStats.Instance.GetDamageFactor().Physical.Value /= damage;
-                    PlayerStats.Instance.GetDamageFactor().Fire.Value /= damage;
-                    PlayerStats.Instance.GetDamageFactor().Cryo.Value /= damage;
-                    PlayerStats.Instance.GetDamageFactor().Electro.Value /= damage;
-                    PlayerStats.Instance.GetDamageFactor().Venom.Value /= damage;
+                    PlayerStats.Instance.GetDamageFactor().Physical.Value -= damage;
+                    PlayerStats.Instance.GetDamageFactor().Fire.Value -= damage;
+                    PlayerStats.Instance.GetDamageFactor().Cryo.Value -= damage;
+                    PlayerStats.Instance.GetDamageFactor().Electro.Value -= damage;
+                    PlayerStats.Instance.GetDamageFactor().Venom.Value -= damage;
 
                     PlayerStats.Instance.GetResist().Physical.Value -= resist;
                     PlayerStats.Instance.GetResist().Fire.Value -= resist;
@@ -348,34 +348,34 @@ namespace CSE5912.PolyGamers
 
             internal void HighSpeedLowDamage(bool enabled)
             {
-                float speed = 2f;
+                float speed = 1f;
                 float damage = 0.5f;
 
                 description =
-                    "Speed *" + speed +
-                    "All damages *" + damage;
+                    "Speed +" + speed * 100 + "%" +
+                    "All damages -" + damage * 100 + "%";
 
                 if (enabled)
                 {
-                    PlayerStats.Instance.MoveSpeedFactor *= speed;
+                    PlayerStats.Instance.MoveSpeedFactor += speed;
 
-                    PlayerStats.Instance.GetResist().Physical.Value *= damage;
-                    PlayerStats.Instance.GetResist().Fire.Value *= damage;
-                    PlayerStats.Instance.GetResist().Cryo.Value *= damage;
-                    PlayerStats.Instance.GetResist().Electro.Value *= damage;
-                    PlayerStats.Instance.GetResist().Venom.Value *= damage;
+                    PlayerStats.Instance.GetDamageFactor().Physical.Value -= damage;
+                    PlayerStats.Instance.GetDamageFactor().Fire.Value -= damage;
+                    PlayerStats.Instance.GetDamageFactor().Cryo.Value -= damage;
+                    PlayerStats.Instance.GetDamageFactor().Electro.Value -= damage;
+                    PlayerStats.Instance.GetDamageFactor().Venom.Value -= damage;
 
                     isReady = false;
                 }
                 else
                 {
-                    PlayerStats.Instance.MoveSpeedFactor /= speed;
+                    PlayerStats.Instance.MoveSpeedFactor -= speed;
 
-                    PlayerStats.Instance.GetResist().Physical.Value /= damage;
-                    PlayerStats.Instance.GetResist().Fire.Value /= damage;
-                    PlayerStats.Instance.GetResist().Cryo.Value /= damage;
-                    PlayerStats.Instance.GetResist().Electro.Value /= damage;
-                    PlayerStats.Instance.GetResist().Venom.Value /= damage;
+                    PlayerStats.Instance.GetDamageFactor().Physical.Value += damage;
+                    PlayerStats.Instance.GetDamageFactor().Fire.Value += damage;
+                    PlayerStats.Instance.GetDamageFactor().Cryo.Value += damage;
+                    PlayerStats.Instance.GetDamageFactor().Electro.Value += damage;
+                    PlayerStats.Instance.GetDamageFactor().Venom.Value += damage;
 
                     isReady = true;
                 }
@@ -383,53 +383,53 @@ namespace CSE5912.PolyGamers
 
             internal void HighCritChanceLowCritDamage(bool enabled)
             {
-                float chance = 2f;
+                float chance = 0.5f;
                 float damage = 0.5f;
 
                 description =
-                    "Crit chance *" + chance +
-                    "Crit damage *" + damage;
+                    "Crit chance +" + chance * 100 + "%" +
+                    "Crit damage -" + damage * 100 + "%";
 
                 if (enabled)
                 {
-                    PlayerStats.Instance.CritRate *= chance;
-                    PlayerStats.Instance.CritDamageFactor *= damage;
+                    PlayerStats.Instance.CritRate += chance;
+                    PlayerStats.Instance.CritDamageFactor -= damage;
 
                     isReady = false;
                 }
                 else
                 {
-                    PlayerStats.Instance.CritRate /= chance;
-                    PlayerStats.Instance.CritDamageFactor /= damage;
+                    PlayerStats.Instance.CritRate -= chance;
+                    PlayerStats.Instance.CritDamageFactor += damage;
 
                     isReady = true;
                 }
             }
 
-            internal void HealthToShield(bool enabled)
-            {
-                float chance = 2f;
-                float damage = 0.5f;
+            //internal void HealthToShield(bool enabled)
+            //{
+            //    float chance = 2f;
+            //    float damage = 0.5f;
 
-                description =
-                    "Crit chance *" + chance +
-                    "Crit damage *" + damage;
+            //    description =
+            //        "Crit chance *" + chance +
+            //        "Crit damage *" + damage;
 
-                if (enabled)
-                {
-                    PlayerStats.Instance.CritRate *= chance;
-                    PlayerStats.Instance.CritDamageFactor *= damage;
+            //    if (enabled)
+            //    {
+            //        PlayerStats.Instance.CritRate *= chance;
+            //        PlayerStats.Instance.CritDamageFactor *= damage;
 
-                    isReady = false;
-                }
-                else
-                {
-                    PlayerStats.Instance.CritRate /= chance;
-                    PlayerStats.Instance.CritDamageFactor /= damage;
+            //        isReady = false;
+            //    }
+            //    else
+            //    {
+            //        PlayerStats.Instance.CritRate /= chance;
+            //        PlayerStats.Instance.CritDamageFactor /= damage;
 
-                    isReady = true;
-                }
-            }
+            //        isReady = true;
+            //    }
+            //}
 
 
             public string Description { get { return description; } }
