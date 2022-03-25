@@ -6,7 +6,6 @@ namespace CSE5912.PolyGamers
 {
     public class EnemyManager : MonoBehaviour
     {
-        [SerializeField] private Camera playerCamera;
         [SerializeField] private GameObject enemies;
 
         private List<GameObject> enemyList;
@@ -45,7 +44,7 @@ namespace CSE5912.PolyGamers
         {
             List<GameObject> result = new List<GameObject>();
 
-            var planes = GeometryUtility.CalculateFrustumPlanes(playerCamera);
+            var planes = GeometryUtility.CalculateFrustumPlanes(WeaponManager.Instance.CarriedWeapon.GunCamera);
             foreach (GameObject enemy in enemyList)
             {
                 if (enemy != null && enemy.tag == "Enemy" && GeometryUtility.TestPlanesAABB(planes, enemy.GetComponent<Collider>().bounds))

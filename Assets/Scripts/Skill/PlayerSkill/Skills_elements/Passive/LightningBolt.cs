@@ -23,7 +23,7 @@ namespace CSE5912.PolyGamers
 
         private void Update()
         {
-            if (WeaponManager.Instance.CarriedWeapon.WasBulletFiredThisFrame())
+            if (WeaponManager.Instance.CarriedWeapon.wasBulletFiredThisFrame)
             {
                 StartCoroutine(Perform(WeaponManager.Instance.CarriedWeapon.bulletFired.transform));
             }

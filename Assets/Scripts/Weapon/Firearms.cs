@@ -132,7 +132,7 @@ namespace CSE5912.PolyGamers
         //    public float GunCameraFovWhenAttached;
         //    public Vector3 GunCameraPosition;
         //}
-        internal bool isAttached;
+        public bool wasBulletFiredThisFrame = false;
 
 
         private Bullet prevBullet;
@@ -196,11 +196,18 @@ namespace CSE5912.PolyGamers
         }
 
 
-        public bool WasBulletFiredThisFrame()
+        public bool UpdateBulletFired()
         {
             bool shoot = WeaponManager.Instance.isFiring && prevBullet != bulletFired;
+
             prevBullet = bulletFired;
+
             return shoot;
+        }
+
+        private void Update()
+        {
+            wasBulletFiredThisFrame = UpdateBulletFired();
         }
 
         public void Display(bool enabled)

@@ -6,6 +6,7 @@ namespace CSE5912.PolyGamers
     public class Bullet : MonoBehaviour
     {
         public float BulletSpeed;
+        public Vector3 Direction;
         public bool Penetrable;
         private Transform bulletTransform;
         // track bullet position
@@ -31,12 +32,16 @@ namespace CSE5912.PolyGamers
         {
             bulletTransform = transform;
             prevPosition = bulletTransform.position;
+            Direction = bulletTransform.forward;
         }
         void Update()
         {
             prevPosition = bulletTransform.position;
 
-            bulletTransform.Translate(0, 0, BulletSpeed * Time.deltaTime);
+            //bulletTransform.Translate(0, 0, BulletSpeed * Time.deltaTime);
+            Direction.Normalize();
+
+            transform.position += Direction * BulletSpeed * Time.deltaTime;
 
             if (!Physics.Raycast(prevPosition,
                 (bulletTransform.position - prevPosition).normalized,

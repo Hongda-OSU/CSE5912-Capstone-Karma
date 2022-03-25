@@ -157,7 +157,7 @@ namespace CSE5912.PolyGamers
 
         private void Dodge()
         {
-            if (!WeaponManager.Instance.CarriedWeapon.WasBulletFiredThisFrame() || !Physics.Raycast(player.position, WeaponManager.Instance.GetShootDirection(), out RaycastHit hit, 1000))
+            if (!WeaponManager.Instance.CarriedWeapon.wasBulletFiredThisFrame || !Physics.Raycast(player.position, WeaponManager.Instance.GetShootDirection(), out RaycastHit hit, 1000))
                 return;
 
             var offset = Vector3.right * GetComponent<Collider>().bounds.size.x;
