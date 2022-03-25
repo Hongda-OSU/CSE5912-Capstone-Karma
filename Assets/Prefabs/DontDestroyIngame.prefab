@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 193064548}
   - component: {fileID: 193064549}
   m_Layer: 8
-  m_Name: QuantumBreak
+  m_Name: AtomBreak
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -144,7 +144,7 @@ MonoBehaviour:
   cooldown: 60
   timeSincePerformed: 0
   isReady: 0
-  skillName: Quantum Break
+  skillName: Atom Break
   requiredSkill: {fileID: 0}
   isLearned: 0
   level: 0
@@ -174,9 +174,9 @@ GameObject:
   m_Component:
   - component: {fileID: 431484532}
   - component: {fileID: 431484534}
-  - component: {fileID: 431484533}
+  - component: {fileID: 1374157010}
   m_Layer: 8
-  m_Name: C
+  m_Name: Sergeant76
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -293,7 +293,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &431484533
+--- !u!114 &1374157010
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -302,21 +302,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 431484531}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3c4a198638fad74eab157d414cedce4, type: 3}
+  m_Script: {fileID: 11500000, guid: c459dbf7be1f8bb4aa2de34787af3b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 0
   timeSincePerformed: 0
   isReady: 0
-  skillName: 
+  skillName: Sergeant 76
   requiredSkill: {fileID: 0}
   isLearned: 0
   level: 0
-  maxLevel: 5
-  learnCost: 1
-  levelupCost: 1
-  icon: {fileID: 21300000, guid: 9249fb82a2e46ca4f8e065ef50130acf, type: 3}
-  type: 0
+  maxLevel: 1
+  learnCost: 0
+  levelupCost: 0
+  icon: {fileID: 0}
+  type: 3
+  startSpeed: 30
+  maxSpeed: 0
+  acceleration: 0
 --- !u!1 &698742160
 GameObject:
   m_ObjectHideFlags: 0
@@ -329,7 +332,7 @@ GameObject:
   - component: {fileID: 698742163}
   - component: {fileID: 698742162}
   m_Layer: 8
-  m_Name: HollowKnight
+  m_Name: VoidKnight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -461,7 +464,7 @@ MonoBehaviour:
   cooldown: 0
   timeSincePerformed: 0
   isReady: 0
-  skillName: Hollow Knight
+  skillName: Void Knight
   requiredSkill: {fileID: 0}
   isLearned: 0
   level: 0
