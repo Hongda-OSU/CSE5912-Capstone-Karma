@@ -665,8 +665,13 @@ MonoBehaviour:
   pullSpeed: 5
   radius: 6
   duration: 5
+  onGroundOffsetY: 1.5
   jumpHeight: 8
+  isDoubleJumped: 0
   wasJumpingLastFrame: 0
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 81
 --- !u!1 &1416963878
 GameObject:
   m_ObjectHideFlags: 0
