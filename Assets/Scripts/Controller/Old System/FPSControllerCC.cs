@@ -166,8 +166,6 @@ namespace CSE5912.PolyGamers
         {
             // calculate jump height
             playerVelocity.y = Mathf.Sqrt(height * Gravity * 2f);
-            if (characterAnimator)
-                characterAnimator.SetTrigger("Jump");
         }
 
         // Perform Crouch
@@ -206,9 +204,10 @@ namespace CSE5912.PolyGamers
         }
 
         // Handle Sprint
-        public void DoSprint()
+        public void DoSprint(bool enabled)
         {
-            isSprinted = !isSprinted;
+            isSprinted = enabled;
+            animator.SetBool("IsRunning", enabled);
         }
 
         private void HandleAnimation()
@@ -223,6 +222,7 @@ namespace CSE5912.PolyGamers
 
                 characterAnimator.SetFloat("ReloadSpeed", PlayerStats.Instance.ReloadSpeedFactor);
                 characterAnimator.SetFloat("MeleeSpeed", PlayerStats.Instance.MeleeSpeedFactor);
+                characterAnimator.SetBool("IsJumping", isJumping);
             }
             else
             {

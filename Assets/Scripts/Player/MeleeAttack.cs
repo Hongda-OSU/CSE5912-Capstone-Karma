@@ -65,8 +65,8 @@ namespace CSE5912.PolyGamers
             timeSincePerformed = 0f;
             while (timeSincePerformed < cooldown / PlayerStats.Instance.MeleeSpeedFactor)
             {
-                timeSincePerformed += Time.deltaTime;
-                yield return new WaitForSeconds(Time.deltaTime);
+                timeSincePerformed += Time.unscaledDeltaTime;
+                yield return new WaitForSeconds(Time.unscaledDeltaTime);
             }
 
             isReady = true;
