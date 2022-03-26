@@ -26,7 +26,7 @@ namespace CSE5912.PolyGamers
                 return;
             }
 
-            EscapeMenuController.Instance.SwitchActive(inputSchemes);
+            EscapeMenuController.Instance.SwitchActive();
         }
     }
 }

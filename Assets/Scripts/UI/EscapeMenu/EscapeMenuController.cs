@@ -30,7 +30,7 @@ namespace CSE5912.PolyGamers
             escapeMenu = EscapeMenu.Instance;
         }
 
-        public void SwitchActive(InputActions inputSchemes)
+        public void SwitchActive()
         {
             if (!escapeMenu.GetComponent<EscapeMenu>().IsFadingComplete)
                 return;

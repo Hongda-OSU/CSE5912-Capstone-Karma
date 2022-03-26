@@ -30,6 +30,14 @@ namespace CSE5912.PolyGamers
         {
             if (enabled)
             {
+                if (IngameMenu.Instance.Root.style.display == DisplayStyle.Flex)
+                {
+                    IngameMenuController.Instance.SwitchActive();
+                }
+                if (EscapeMenu.Instance.Root.style.display == DisplayStyle.Flex)
+                {
+                    EscapeMenuController.Instance.SwitchActive();
+                }
                 PlayerHudPanelControl.Instance.Root.style.display = DisplayStyle.None;
                 StartCoroutine(FadeIn(root));
             }
