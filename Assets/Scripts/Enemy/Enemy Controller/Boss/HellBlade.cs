@@ -6,8 +6,9 @@ namespace CSE5912.PolyGamers
 {
     public class HellBlade : BossEnemy
     {
-        [Header("Great Sword")]      
+        [Header("2nd Phase Prefabs")]      
         [SerializeField] private GameObject greatSword;
+        [SerializeField] private GameObject blackFire;
 
         protected override void PerformActions()
         {
