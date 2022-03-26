@@ -8,13 +8,13 @@
         <ui:VisualElement name="Bars" style="position: absolute; left: 50px; bottom: 50px; flex-grow: 0; width: 700px; height: 450px;">
             <ui:VisualElement name="Health" style="left: 50px; bottom: 50px; position: absolute; width: 200px; height: 30px; flex-direction: row; justify-content: flex-start; align-items: stretch;">
                 <ui:VisualElement name="Icon" style="position: absolute; width: 20px; height: 20px; background-image: url(&apos;project://database/Assets/UI/VFX/HealthIcon.png?fileID=2800000&amp;guid=9cc2526fdb46ba84995ea946483bf22a&amp;type=3#HealthIcon&apos;); -unity-background-image-tint-color: rgb(76, 255, 98);" />
-                <ui:VisualElement name="MaxHealthBar" style="position: absolute; width: 200px; height: 20px; left: 30px; bottom: auto; background-color: rgba(0, 15, 8, 0.78); opacity: 1;">
+                <ui:VisualElement name="MaxHealthBar" style="position: absolute; width: 200px; height: 20px; left: 30px; bottom: auto; background-color: rgba(0, 15, 8, 0.78); opacity: 1; min-width: 0;">
                     <ui:VisualElement name="Current" style="width: 200px; height: 20px; background-color: rgb(41, 178, 65); border-left-color: rgba(25, 113, 119, 0.72); border-right-color: rgba(25, 113, 119, 0.72); border-top-color: rgba(25, 113, 119, 0.72); border-bottom-color: rgba(25, 113, 119, 0.72); border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; opacity: 1; max-width: 800px; min-width: 0;" />
                 </ui:VisualElement>
-                <ui:VisualElement name="MaxArmorBar" style="position: absolute; width: 40px; height: 5px; left: 30px; bottom: 35px; background-color: rgba(0, 15, 8, 0.78); opacity: 1; max-width: 800px; min-width: 40px;">
+                <ui:VisualElement name="MaxArmorBar" style="position: absolute; width: 40px; height: 5px; left: 30px; bottom: 35px; background-color: rgba(0, 15, 8, 0.78); opacity: 1; max-width: none; min-width: 0;">
                     <ui:VisualElement name="Current" style="width: 40px; height: 20px; background-color: rgb(178, 164, 41); border-left-color: rgba(25, 113, 119, 0.72); border-right-color: rgba(25, 113, 119, 0.72); border-top-color: rgba(25, 113, 119, 0.72); border-bottom-color: rgba(25, 113, 119, 0.72); border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; opacity: 1;" />
                 </ui:VisualElement>
-                <ui:VisualElement name="MaxEnergyBar" style="position: absolute; width: 40px; height: 5px; left: 30px; bottom: 45px; background-color: rgba(0, 15, 8, 0.78); opacity: 1; max-width: 800px; min-width: 40px;">
+                <ui:VisualElement name="MaxEnergyBar" style="position: absolute; width: 40px; height: 5px; left: 30px; bottom: 45px; background-color: rgba(0, 15, 8, 0.78); opacity: 1; max-width: none; min-width: 0;">
                     <ui:VisualElement name="Current" style="width: 40px; height: 20px; background-color: rgb(41, 175, 178); border-left-color: rgba(25, 113, 119, 0.72); border-right-color: rgba(25, 113, 119, 0.72); border-top-color: rgba(25, 113, 119, 0.72); border-bottom-color: rgba(25, 113, 119, 0.72); border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; opacity: 1;" />
                 </ui:VisualElement>
             </ui:VisualElement>

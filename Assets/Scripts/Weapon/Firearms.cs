@@ -182,7 +182,7 @@ namespace CSE5912.PolyGamers
         {
             PerformBonus(false);
         }
-        private void PerformBonus(bool enabled)
+        public void PerformBonus(bool enabled)
         {
             weaponBonus.Perform(enabled);
             foreach (var attachment in attachments)
@@ -223,7 +223,7 @@ namespace CSE5912.PolyGamers
         protected bool IsAllowShooting()
         {
             // check if able to shoot
-            return Time.time - LastFireTime > 1 / FireRate;
+            return Time.time - LastFireTime > 1 / FireRate * PlayerStats.Instance.FireRateFactor;
         }
 
         protected abstract void Shoot();

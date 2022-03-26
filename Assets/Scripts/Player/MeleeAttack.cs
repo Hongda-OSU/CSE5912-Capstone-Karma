@@ -31,7 +31,7 @@ namespace CSE5912.PolyGamers
             if (!isReady)
                 return;
 
-            StartCoolingdown();
+            StartCoroutine(CoolDown());
 
             FPSControllerCC.Instance.animator.SetTrigger("KnifeAttack");
             meleeEvent.Invoke();
@@ -41,8 +41,6 @@ namespace CSE5912.PolyGamers
         {
             if (!isEnabled)
                 return;
-
-            StartCoolingdown();
 
             var position = transform.position + WeaponManager.Instance.GetShootDirection() * range / 2;
             var size = new Vector3(range, range, range);
@@ -55,9 +53,23 @@ namespace CSE5912.PolyGamers
                 if (enemy == null || !enemy.IsAlive)
                     continue;
 
-                var damage = new Damage(baseDamage, elementType, PlayerStats.Instance, enemy);
+                var damage = new Damage(baseDamage * PlayerStats.Instance.MeleeDamageFactor, elementType, PlayerStats.Instance, enemy);
                 PlayerManager.Instance.PerformSkillDamage(enemy, damage);
             }
+        }
+
+        private IEnumerator CoolDown()
+        {
+            isReady = false;
+
+            timeSincePerformed = 0f;
+            while (timeSincePerformed < cooldown / PlayerStats.Instance.MeleeSpeedFactor)
+            {
+                timeSincePerformed += Time.deltaTime;
+                yield return new WaitForSeconds(Time.deltaTime);
+            }
+
+            isReady = true;
         }
 
 

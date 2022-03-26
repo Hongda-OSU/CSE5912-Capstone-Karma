@@ -17,7 +17,7 @@ namespace CSE5912.PolyGamers
         public float WalkSpeedWhenCrouched;
         //public float DashSpeed;
         // determine player current speed
-        private float currentSpeed;
+        [SerializeField] private float currentSpeed;
 
         [Header("Physics")]
         [SerializeField] private float mass = 3f;
@@ -28,7 +28,7 @@ namespace CSE5912.PolyGamers
 
         private Transform characterTransform;
         private Vector3 movementDirection;
-        private Vector3 playerVelocity;
+        public Vector3 playerVelocity;
         // player velocity before perform second Move()
         private float velocity;
 
@@ -36,6 +36,7 @@ namespace CSE5912.PolyGamers
 
         private bool isCrouched;
         private bool isSprinted;
+        [SerializeField] private bool isJumping;
         //private bool isDashPressed;
 
         private float controllerHeight;
@@ -139,7 +140,10 @@ namespace CSE5912.PolyGamers
             playerVelocity.y -= Gravity * Time.deltaTime;
             // player grounded => stick with ground
             if (isGrounded() && playerVelocity.y < 0f)
+            {
                 playerVelocity.y = -2f;
+                isJumping = false;
+            }
             characterController.Move(playerVelocity * Time.deltaTime);
         }
 
@@ -154,11 +158,16 @@ namespace CSE5912.PolyGamers
         {
             if (isGrounded())
             {
-                // calculate jump height
-                playerVelocity.y = Mathf.Sqrt(JumpHeight * Gravity * 2f);
-                if (characterAnimator)
-                    characterAnimator.SetTrigger("Jump");
+                Jump(JumpHeight);
+                isJumping = true;
             }
+        }
+        public void Jump(float height)
+        {
+            // calculate jump height
+            playerVelocity.y = Mathf.Sqrt(height * Gravity * 2f);
+            if (characterAnimator)
+                characterAnimator.SetTrigger("Jump");
         }
 
         // Perform Crouch
@@ -261,5 +270,7 @@ namespace CSE5912.PolyGamers
         public bool IsSprint => isSprinted;
         public CharacterController CharacterController => characterController;
         public Animator animator => characterAnimator;
+
+        public bool IsJumping { get { return isJumping; } }
     }
 }

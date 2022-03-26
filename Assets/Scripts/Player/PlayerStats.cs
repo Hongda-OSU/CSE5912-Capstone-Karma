@@ -23,6 +23,10 @@ namespace CSE5912.PolyGamers
         [Header("Agility")]
         [SerializeField] private float moveSpeedFactor = 1f;
         [SerializeField] private float reloadSpeedFactor = 1f;
+        [SerializeField] private float fireRateFactor = 1f;
+
+        [Header("Melee")]
+        [SerializeField] private float meleeDamageFactor = 1f;
         [SerializeField] private float meleeSpeedFactor = 1f;
 
         [Header("Critical")]
@@ -304,6 +308,9 @@ namespace CSE5912.PolyGamers
 
         public float MoveSpeedFactor { get { return moveSpeedFactor; } set { moveSpeedFactor = value; } }
         public float ReloadSpeedFactor { get { return reloadSpeedFactor; } set { reloadSpeedFactor = value; } }
+        public float FireRateFactor { get { return fireRateFactor; } set { fireRateFactor = value; } }
+
+        public float MeleeDamageFactor { get { return meleeDamageFactor; } set { meleeDamageFactor = value; } }
         public float MeleeSpeedFactor { get { return meleeSpeedFactor; } set { meleeSpeedFactor = value; } }
 
         public float BurnedBaseChance { get { return burnedBaseChance; } set { burnedBaseChance = value; } }

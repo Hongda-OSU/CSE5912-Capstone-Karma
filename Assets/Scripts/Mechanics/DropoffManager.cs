@@ -110,10 +110,11 @@ namespace CSE5912.PolyGamers
                 return null;
             }
 
-
+            // awake > onenable > assign
             var weapon = weaponObj.GetComponent<Firearms>();
 
             weapon.Rarity = rarity;
+            weapon.PerformBonus(false);
             WeaponBonus weaponBonus = new WeaponBonus(weapon);
             weapon.Bonus = weaponBonus;
             weapon.Element = (Element.Type)Random.Range(0, 5);

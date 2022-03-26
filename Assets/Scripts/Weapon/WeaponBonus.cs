@@ -68,6 +68,7 @@ namespace CSE5912.PolyGamers
             private Firearms weapon;
 
             private float value;
+
             private int level;
             internal string description = "None";
             private bool isReady;
@@ -98,24 +99,24 @@ namespace CSE5912.PolyGamers
 
                 bonusFunctionList = new List<BonusFunction>()
                 {
-                    IncreaseDamage_physical,
-                    IncreaseDamage_fire,
-                    IncreaseDamage_cryo,
-                    IncreaseDamage_electro,
-                    IncreaseDamage_venom,
+                    //IncreaseDamage_physical,
+                    //IncreaseDamage_fire,
+                    //IncreaseDamage_cryo,
+                    //IncreaseDamage_electro,
+                    //IncreaseDamage_venom,
 
-                    IncreaseResist_physical,
-                    IncreaseResist_fire,
-                    IncreaseResist_cryo,
-                    IncreaseResist_electro,
-                    IncreaseResist_venom,
+                    //IncreaseResist_physical,
+                    //IncreaseResist_fire,
+                    //IncreaseResist_cryo,
+                    //IncreaseResist_electro,
+                    //IncreaseResist_venom,
 
-                    IncreaseFireRate,
+                    //IncreaseFireRate,
 
-                    IncreaseMeleeDamage,
-                    IncreaseMeleeSpeed,
+                    //IncreaseMeleeDamage,
+                    //IncreaseMeleeSpeed,
 
-                    IncreaseMoveSpeed,
+                    //IncreaseMoveSpeed,
 
                     IncreaseExperience,
 
@@ -378,19 +379,20 @@ namespace CSE5912.PolyGamers
                 if (!isInitialized)
                 {
                     value = ResolveValue(fireRateBonus);
-                    isInitialized = true;
+                    description = "Fire Rate +" + Math.Round(value * 100, 1) + "%";
+
+                  isInitialized = true;
                 }
 
-                description = "Fire Rate +" + Math.Round(value * 100, 1) + "%";
 
                 if (enabled)
                 {
-                    weapon.FireRate *= 1 + value;
+                    PlayerStats.Instance.FireRateFactor += value;
                     isReady = false;
                 }
                 else
                 {
-                    weapon.FireRate /= 1 + value;
+                    PlayerStats.Instance.FireRateFactor -= value;
                     isReady = true;
                 }
             }
@@ -400,43 +402,44 @@ namespace CSE5912.PolyGamers
                 if (!isInitialized)
                 {
                     value = ResolveValue(meleeDamageBonus);
+                    description = "Melee damage +" + Math.Round(value * 100, 1) + "%";
+
                     isInitialized = true;
                 }
 
-                description = "Melee damage +" + Math.Round(value * 100, 1) + "%";
 
                 if (enabled)
                 {
-                    MeleeAttack.Instance.BaseDamage *= 1 + value;
+                    PlayerStats.Instance.MeleeDamageFactor += value;
                     isReady = false;
                 }
                 else
                 {
-                    MeleeAttack.Instance.BaseDamage /= 1 + value;
+                    PlayerStats.Instance.MeleeDamageFactor -= value;
                     isReady = true;
                 }
             }
 
+            // potential bug
             internal void IncreaseMeleeSpeed(bool enabled)
             {
                 if (!isInitialized)
                 {
                     value = ResolveValue(meleeSpeedBonus);
+                    description = "Melee speed +" + Math.Round(value * 100, 1) + "%";
+
                     isInitialized = true;
                 }
 
-                description = "Melee speed +" + Math.Round(value * 100, 1) + "%";
 
                 if (enabled)
                 {
-                    PlayerStats.Instance.MeleeSpeedFactor *= 1 + value;
-                    MeleeAttack.Instance.Cooldown *= 1 - value;
+                    PlayerStats.Instance.MeleeSpeedFactor += value;
                     isReady = false;
                 }
                 else
                 {
-                    PlayerStats.Instance.MeleeSpeedFactor /= 1 + value;
-                    MeleeAttack.Instance.Cooldown /= 1 - value;
+                    PlayerStats.Instance.MeleeSpeedFactor -= value;
                     isReady = true;
                 }
             }
@@ -446,19 +449,20 @@ namespace CSE5912.PolyGamers
                 if (!isInitialized)
                 {
                     value = ResolveValue(moveSpeedBonus);
+                    description = "Move speed +" + Math.Round(value * 100, 1) + "%";
+
                     isInitialized = true;
                 }
 
-                description = "Move speed +" + Math.Round(value * 100, 1) + "%";
 
                 if (enabled)
                 {
-                    PlayerStats.Instance.MoveSpeedFactor *= 1 + value;
+                    PlayerStats.Instance.MoveSpeedFactor += value;
                     isReady = false;
                 }
                 else
                 {
-                    PlayerStats.Instance.MoveSpeedFactor /= 1 + value;
+                    PlayerStats.Instance.MoveSpeedFactor -= value;
                     isReady = true;
                 }
             }
@@ -468,19 +472,20 @@ namespace CSE5912.PolyGamers
                 if (!isInitialized)
                 {
                     value = ResolveValue(experienceBonus);
+                    description = "Experience gain +" + Math.Round(value * 100, 1) + "%";
+
                     isInitialized = true;
                 }
 
-                description = "Experience gain +" + Math.Round(value * 100, 1) + "%";
 
                 if (enabled)
                 {
-                    PlayerStats.Instance.ExperienceMultiplier *= 1 + value;
+                    PlayerStats.Instance.ExperienceMultiplier += value;
                     isReady = false;
                 }
                 else
                 {
-                    PlayerStats.Instance.ExperienceMultiplier /= 1 + value;
+                    PlayerStats.Instance.ExperienceMultiplier -= value;
                     isReady = true;
                 }
             }
