@@ -4,10 +4,11 @@ using UnityEngine;
 
 namespace CSE5912.PolyGamers
 {
-    public class HellBlade : EliteEnemy
+    public class HellBlade : BossEnemy
     {
-        [Header("Great Sword")]      
+        [Header("2nd Phase Prefabs")]      
         [SerializeField] private GameObject greatSword;
+        [SerializeField] private GameObject blackFire;
 
         protected override void PerformActions()
         {
@@ -20,6 +21,18 @@ namespace CSE5912.PolyGamers
             agent.isStopped = false;
 
             yield return new WaitForSeconds(Time.deltaTime);
+        }
+
+        public override void TriggerBossFight()
+        {
+            isInvincible = true;
+            animator.SetTrigger("Awake");
+        }
+
+        protected override void AwakeAnimationComplete()
+        {
+            isInvincible = false;
+            isBossFightTriggered = true;
         }
     }
 }
