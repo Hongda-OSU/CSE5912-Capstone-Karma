@@ -17655,7 +17655,7 @@ Animator:
   m_Avatar: {fileID: 9000000, guid: e5e1aebe4e6b40743ab0be078564260a, type: 3}
   m_Controller: {fileID: 9100000, guid: 02ea1829906805d4cba4e76ea10359d7, type: 2}
   m_CullingMode: 1
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -17900,6 +17900,7 @@ MonoBehaviour:
   iconImage: {fileID: 21300022, guid: ce679aa762875164cb3718b2eaa85abc, type: 3}
   attachments: []
   firearmsItem: {fileID: 0}
+  wasBulletFiredThisFrame: 0
   impactAudioData: {fileID: 11400000, guid: 77d82378f50d24793accd21a66000c94, type: 2}
 --- !u!1 &7428677475624543645
 GameObject:

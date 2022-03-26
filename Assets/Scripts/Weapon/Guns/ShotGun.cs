@@ -48,7 +48,7 @@ namespace CSE5912.PolyGamers
             else
                 fpsMouseLook.FiringWithRecoil();
             // calculate IsAllowShooting
-            LastFireTime = Time.time;
+            LastFireTime = Time.unscaledTime;
         }
 
         protected override void Reload()
@@ -78,23 +78,23 @@ namespace CSE5912.PolyGamers
 
         protected override void StopCameraLean()
         {
-            transform.localRotation = Quaternion.Slerp(transform.localRotation, ControllerLocalOriginalRotation, SlerpTime * Time.deltaTime);
-            transform.localPosition = Vector3.Slerp(transform.localPosition, ControllerLocalOriginalPosition, SlerpTime * Time.deltaTime);
-            GunCamera.transform.localRotation = Quaternion.Slerp(GunCamera.transform.localRotation, GunCameraLocalOriginalRotation, SlerpTime * Time.deltaTime);
+            transform.localRotation = Quaternion.Slerp(transform.localRotation, ControllerLocalOriginalRotation, SlerpTime * Time.unscaledDeltaTime);
+            transform.localPosition = Vector3.Slerp(transform.localPosition, ControllerLocalOriginalPosition, SlerpTime * Time.unscaledDeltaTime);
+            GunCamera.transform.localRotation = Quaternion.Slerp(GunCamera.transform.localRotation, GunCameraLocalOriginalRotation, SlerpTime * Time.unscaledDeltaTime);
         }
 
         protected override void CameraLeftLean()
         {
-            transform.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.Euler(0, 0, SlerpAngle), SlerpTime * Time.deltaTime);
-            transform.localPosition = Vector3.Slerp(transform.localPosition, new Vector3(-SlerpDistance, 0, 0), SlerpTime * Time.deltaTime);
-            GunCamera.transform.localRotation = Quaternion.Slerp(GunCamera.transform.localRotation, Quaternion.Euler(90, SlerpAngle, 0), SlerpTime * Time.deltaTime);
+            transform.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.Euler(0, 0, SlerpAngle), SlerpTime * Time.unscaledDeltaTime);
+            transform.localPosition = Vector3.Slerp(transform.localPosition, new Vector3(-SlerpDistance, 0, 0), SlerpTime * Time.unscaledDeltaTime);
+            GunCamera.transform.localRotation = Quaternion.Slerp(GunCamera.transform.localRotation, Quaternion.Euler(90, SlerpAngle, 0), SlerpTime * Time.unscaledDeltaTime);
         }
 
         protected override void CameraLeanRight()
         {
-            transform.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.Euler(0, 0, -SlerpAngle), SlerpTime * Time.deltaTime);
-            transform.localPosition = Vector3.Slerp(transform.localPosition, new Vector3(SlerpDistance, 0, 0), SlerpTime * Time.deltaTime);
-            GunCamera.transform.localRotation = Quaternion.Slerp(GunCamera.transform.localRotation, Quaternion.Euler(90, -SlerpAngle, 0), SlerpTime * Time.deltaTime);
+            transform.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.Euler(0, 0, -SlerpAngle), SlerpTime * Time.unscaledDeltaTime);
+            transform.localPosition = Vector3.Slerp(transform.localPosition, new Vector3(SlerpDistance, 0, 0), SlerpTime * Time.unscaledDeltaTime);
+            GunCamera.transform.localRotation = Quaternion.Slerp(GunCamera.transform.localRotation, Quaternion.Euler(90, -SlerpAngle, 0), SlerpTime * Time.unscaledDeltaTime);
         }
 
         protected void CreateBullet()

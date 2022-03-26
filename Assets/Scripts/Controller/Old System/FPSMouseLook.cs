@@ -52,8 +52,8 @@ namespace CSE5912.PolyGamers
             var tmp_MouseX = lookInput.x;
             var tmp_MouseY = lookInput.y;
 
-            cameraRotation.x -= tmp_MouseY * MouseSensitivity * Time.deltaTime;
-            cameraRotation.y += tmp_MouseX * MouseSensitivity * Time.deltaTime;
+            cameraRotation.x -= tmp_MouseY * MouseSensitivity * Time.unscaledDeltaTime;
+            cameraRotation.y += tmp_MouseX * MouseSensitivity * Time.unscaledDeltaTime;
 
             CalculateRecoilOffset();
 
@@ -78,7 +78,7 @@ namespace CSE5912.PolyGamers
 
         private void CalculateRecoilOffset()
         {
-            currentRecoilTime += Time.deltaTime;
+            currentRecoilTime += Time.unscaledDeltaTime;
             float tmp_RecoilFraction = currentRecoilTime / RecoilFadeOutTime;
             float tmp_RecoilValue = RecoilCurve.Evaluate(tmp_RecoilFraction);
             currentRecoil = Vector2.Lerp(Vector2.zero, currentRecoil, tmp_RecoilValue);

@@ -22,10 +22,10 @@ namespace CSE5912.PolyGamers
 
         void Update()
         {
-            cameraShakeUtility.UpdateSpring(Time.deltaTime, Vector3.zero);
+            cameraShakeUtility.UpdateSpring(Time.unscaledDeltaTime, Vector3.zero);
             cameraSpringTransform.localRotation = Quaternion.Slerp(cameraSpringTransform.localRotation,
                 Quaternion.Euler(cameraShakeUtility.Values),
-                Time.deltaTime * SpringSpeed);
+                Time.unscaledDeltaTime * SpringSpeed);
         }
 
         public void StartCameraSpring()

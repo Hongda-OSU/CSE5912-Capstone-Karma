@@ -79,17 +79,17 @@ namespace CSE5912.PolyGamers
         {
             // apply the impact force:
             if (impact.magnitude > 0.2)
-                characterController.Move(impact * Time.deltaTime);
+                characterController.Move(impact * Time.unscaledDeltaTime);
 
             // consumes the impact energy each cycle:
-            impact = Vector3.Lerp(impact, Vector3.zero, 5 * Time.deltaTime);
+            impact = Vector3.Lerp(impact, Vector3.zero, 5 * Time.unscaledDeltaTime);
 
             currentSpeed = WalkSpeed;
             // faking isGrounded
             if (characterController.isGrounded)
                 coyoteTime = 0;
             else
-                coyoteTime += Time.deltaTime;
+                coyoteTime += Time.unscaledDeltaTime;
 
             //if (isDashPressed)
             //{
@@ -134,17 +134,17 @@ namespace CSE5912.PolyGamers
             movementDirection =
                 characterTransform.TransformDirection(new Vector3(horizontalInput, 0, verticalInput));
             // (1) first Move() that handle player movement
-            characterController.Move(currentSpeed * PlayerStats.Instance.MoveSpeedFactor * Time.deltaTime * movementDirection);
+            characterController.Move(currentSpeed * PlayerStats.Instance.MoveSpeedFactor * Time.unscaledDeltaTime * movementDirection);
             velocity = GetVeloctiy(characterController.velocity);
             // (2) second Move() that apply gravity to player
-            playerVelocity.y -= Gravity * Time.deltaTime;
+            playerVelocity.y -= Gravity * Time.unscaledDeltaTime;
             // player grounded => stick with ground
             if (isGrounded() && playerVelocity.y < 0f)
             {
                 playerVelocity.y = -2f;
                 isJumping = false;
             }
-            characterController.Move(playerVelocity * Time.deltaTime);
+            characterController.Move(playerVelocity * Time.unscaledDeltaTime);
         }
 
         private float GetVeloctiy(Vector3 velocityHolder)
@@ -219,14 +219,14 @@ namespace CSE5912.PolyGamers
                 if (Math.Abs(horizontalInput) > 0 && Math.Abs(verticalInput) > 0 && !isSprinted)
                     velocity /= (float)Math.Sqrt(2);
                 if (characterAnimator)
-                    characterAnimator.SetFloat("Velocity", velocity, 0.25f, Time.deltaTime);
+                    characterAnimator.SetFloat("Velocity", velocity, 0.25f, Time.unscaledDeltaTime);
 
                 characterAnimator.SetFloat("ReloadSpeed", PlayerStats.Instance.ReloadSpeedFactor);
                 characterAnimator.SetFloat("MeleeSpeed", PlayerStats.Instance.MeleeSpeedFactor);
             }
             else
             {
-                characterAnimator.SetFloat("Velocity", 0f, 0.25f, Time.deltaTime);
+                characterAnimator.SetFloat("Velocity", 0f, 0.25f, Time.unscaledDeltaTime);
             }
         }
         public void AllowMoving(bool enabled)
@@ -241,7 +241,7 @@ namespace CSE5912.PolyGamers
             while (Math.Abs(characterController.height - targetHeight) > 0.05f)
             {
                 characterController.height =
-                    Mathf.Lerp(characterController.height, targetHeight, Time.deltaTime * 10);
+                    Mathf.Lerp(characterController.height, targetHeight, Time.unscaledDeltaTime * 10);
                 yield return null;
             }
         }

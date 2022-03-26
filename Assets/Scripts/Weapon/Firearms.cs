@@ -223,7 +223,7 @@ namespace CSE5912.PolyGamers
         protected bool IsAllowShooting()
         {
             // check if able to shoot
-            return Time.time - LastFireTime > 1 / FireRate * PlayerStats.Instance.FireRateFactor;
+            return Time.unscaledTime - LastFireTime > 1 / FireRate * PlayerStats.Instance.FireRateFactor;
         }
 
         protected abstract void Shoot();
@@ -294,7 +294,7 @@ namespace CSE5912.PolyGamers
                 GunCamera.fieldOfView = Mathf.SmoothDamp(GunCamera.fieldOfView,
                         isAiming ? FOVWhenAimed : GunCameraOriginFOV,
                         ref tmp_RefGunCameraFOV,
-                        Time.deltaTime * 2);
+                        Time.unscaledDeltaTime * 2);
 
                 //TODO: check attachment, if true, smooth transit gun camera position to (0,-0.2f,0.03f)
                 //if (isAttached)
