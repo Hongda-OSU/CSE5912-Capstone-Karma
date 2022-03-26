@@ -828,8 +828,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   respawnPoints: {fileID: 0}
   currentRespawnPoint: {fileID: 0}
+  currentSoulPoint: {fileID: 0}
   deathVfxPrefab: {fileID: 988757988809306081, guid: b12173f9aa021f74bb26ff04c4dff436, type: 3}
-  timeToRespawn: 8
+  timeToRespawn: 3
   soulPointPrefab: {fileID: 668452988796817149, guid: d974c747b0da9d744af131f871deb7e8, type: 3}
 --- !u!20 &1791497989
 Camera:
@@ -1125,6 +1126,10 @@ PrefabInstance:
     - target: {fileID: 2176107720314240904, guid: 6403c749e9886f94198a7863d0d6a642, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3656687582603243502, guid: 6403c749e9886f94198a7863d0d6a642, type: 3}
+      propertyPath: fadingTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4078243330117800145, guid: 6403c749e9886f94198a7863d0d6a642, type: 3}
       propertyPath: weaponManager

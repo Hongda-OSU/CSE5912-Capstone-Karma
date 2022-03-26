@@ -10,6 +10,8 @@ namespace CSE5912.PolyGamers
         private List<RespawnPoint> respawnPointList;
         [SerializeField] private RespawnPoint currentRespawnPoint;
 
+        [SerializeField] private GameObject currentSoulPoint;
+
         [SerializeField] private GameObject deathVfxPrefab;
         [SerializeField] private float timeToRespawn = 8f;
 
@@ -88,6 +90,11 @@ namespace CSE5912.PolyGamers
             GameObject soul = Instantiate(soulPointPrefab);
             soul.transform.position = position;
             PlayerStats.Instance.Experience = 0f;
+
+            if (currentSoulPoint != null)
+                Destroy(currentSoulPoint);
+
+            currentSoulPoint = soul;
         }
 
         public RespawnPoint CurrentRespawnPoint { get { return currentRespawnPoint; } set { currentRespawnPoint = value; } }
