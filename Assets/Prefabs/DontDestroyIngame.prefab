@@ -605,6 +605,68 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &939211911
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 939211912}
+  - component: {fileID: 939211913}
+  m_Layer: 8
+  m_Name: Leviathan
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &939211912
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 939211911}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1416963879}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &939211913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 939211911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 054ce877ccf10ca458be455b068fedac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 5
+  timeSincePerformed: 0
+  isReady: 0
+  skillName: Leviathan
+  requiredSkill: {fileID: 0}
+  isLearned: 0
+  level: 0
+  maxLevel: 1
+  learnCost: 0
+  levelupCost: 0
+  icon: {fileID: 0}
+  type: 3
+  blackHolePrefab: {fileID: 1236643204216662, guid: 2697853bd9f90e44cab6eef818c68daa, type: 3}
+  pullSpeed: 5
+  radius: 6
+  duration: 5
+  jumpHeight: 8
+  wasJumpingLastFrame: 0
 --- !u!1 &1416963878
 GameObject:
   m_ObjectHideFlags: 0
@@ -637,6 +699,7 @@ Transform:
   - {fileID: 698742161}
   - {fileID: 431484532}
   - {fileID: 2051531522}
+  - {fileID: 939211912}
   m_Father: {fileID: 7898931326692614132}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -858,17 +921,18 @@ MonoBehaviour:
   cooldown: 0
   timeSincePerformed: 0
   isReady: 0
-  skillName: 
+  skillName: Black Soul
   requiredSkill: {fileID: 0}
   isLearned: 0
   level: 0
-  maxLevel: 5
-  learnCost: 1
-  levelupCost: 1
+  maxLevel: 1
+  learnCost: 0
+  levelupCost: 0
   icon: {fileID: 0}
-  type: 0
+  type: 3
   blackSoulPointPrefab: {fileID: 668452988796817149, guid: 906d5ffc57c66e844b633e5e3651b8aa, type: 3}
-  buffMultiplier: 1.2
+  statUp: 20
+  duration: 30
 --- !u!1 &2447045659279533477
 GameObject:
   m_ObjectHideFlags: 0
@@ -1266,11 +1330,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1132428565656182083, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.25
+      value: 9.18
       objectReference: {fileID: 0}
     - target: {fileID: 1132428565656182083, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.59
+      value: 62.63
       objectReference: {fileID: 0}
     - target: {fileID: 3914003179883955252, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
       propertyPath: moveSpeedFactor

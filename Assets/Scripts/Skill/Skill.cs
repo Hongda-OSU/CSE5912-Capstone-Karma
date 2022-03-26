@@ -10,7 +10,7 @@ namespace CSE5912.PolyGamers
         [SerializeField] protected float timeSincePerformed;
         [SerializeField] protected bool isReady = false;
 
-        public void StartCoolingdown()
+        public virtual void StartCoolingdown()
         {
             StartCoroutine(CoolDown());
         }

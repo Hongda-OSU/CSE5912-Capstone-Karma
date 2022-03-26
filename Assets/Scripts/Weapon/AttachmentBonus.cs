@@ -239,12 +239,12 @@ namespace CSE5912.PolyGamers
 
                 if (enabled)
                 {
-                    PlayerStats.Instance.ReloadSpeedFactor *= 1 + value;
+                    PlayerStats.Instance.ReloadSpeedFactor += value;
                     isReady = false;
                 }
                 else
                 {
-                    PlayerStats.Instance.ReloadSpeedFactor /= 1 + value;
+                    PlayerStats.Instance.ReloadSpeedFactor -= value;
                     isReady = true;
                 }
             }
@@ -259,19 +259,21 @@ namespace CSE5912.PolyGamers
                 if (!isInitialized)
                 {
                     value = ResolveValue(spreadReductionBonus);
+                    description = "Spread -" + Math.Round(value * 100, 1) + "%";
+                    value *= WeaponManager.Instance.CarriedWeapon.SpreadAngle;
+
                     isInitialized = true;
                 }
 
-                description = "Spread -" + Math.Round(value * 100, 1) + "%";
 
                 if (enabled)
                 {
-                    WeaponManager.Instance.CarriedWeapon.SpreadAngle *= (1 - value);
+                    WeaponManager.Instance.CarriedWeapon.SpreadAngle -= value;
                     isReady = false;
                 }
                 else
                 {
-                    WeaponManager.Instance.CarriedWeapon.SpreadAngle /= (1 - value);
+                    WeaponManager.Instance.CarriedWeapon.SpreadAngle += value;
                     isReady = true;
                 }
             }
@@ -282,19 +284,21 @@ namespace CSE5912.PolyGamers
                 if (!isInitialized)
                 {
                     value = ResolveValue(recoilReductionBonus);
+                    description = "Recoil -" + Math.Round(value * 100, 1) + "%";
+                    value *= FPSMouseLook.Instance.RecoilScale;
+
                     isInitialized = true;
                 }
 
-                description = "Recoil -" + Math.Round(value * 100, 1) + "%";
 
                 if (enabled)
                 {
-                    FPSMouseLook.Instance.RecoilScale *= 1 - value;
+                    FPSMouseLook.Instance.RecoilScale -= value;
                     isReady = false;
                 }
                 else
                 {
-                    FPSMouseLook.Instance.RecoilScale /= 1 - value;
+                    FPSMouseLook.Instance.RecoilScale += value;
                     isReady = true;
                 }
             }
@@ -309,7 +313,7 @@ namespace CSE5912.PolyGamers
                 float damage = 1f;
                 float resist = 200f;
 
-                description =
+                description = 
                     "All damages +" + damage * 100 + "%" +
                     "All resists -" + resist;
 
@@ -387,7 +391,7 @@ namespace CSE5912.PolyGamers
                 float damage = 0.5f;
 
                 description =
-                    "Crit chance +" + chance * 100 + "%" +
+                    "Crit chance +" + chance * 100 + "%" + 
                     "Crit damage -" + damage * 100 + "%";
 
                 if (enabled)
