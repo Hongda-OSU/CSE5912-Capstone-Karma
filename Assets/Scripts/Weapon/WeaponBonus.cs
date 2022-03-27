@@ -99,11 +99,11 @@ namespace CSE5912.PolyGamers
 
                 bonusFunctionList = new List<BonusFunction>()
                 {
-                    //IncreaseDamage_physical,
-                    //IncreaseDamage_fire,
-                    //IncreaseDamage_cryo,
-                    //IncreaseDamage_electro,
-                    //IncreaseDamage_venom,
+                    IncreaseDamage_physical,
+                    IncreaseDamage_fire,
+                    IncreaseDamage_cryo,
+                    IncreaseDamage_electro,
+                    IncreaseDamage_venom,
 
                     //IncreaseResist_physical,
                     //IncreaseResist_fire,
@@ -118,7 +118,7 @@ namespace CSE5912.PolyGamers
 
                     //IncreaseMoveSpeed,
 
-                    IncreaseExperience,
+                    //IncreaseExperience,
 
                 };
             }
@@ -185,7 +185,7 @@ namespace CSE5912.PolyGamers
                     isInitialized = true;
                 }
 
-                description = "Fire Damage +" + Math.Round(value * 100, 1) + "%";
+                description = RichTextHelper.WrapInColor("Fire Damage", Element.Type.Fire) + " +" + Math.Round(value * 100, 1) + "%";
 
                 if (enabled)
                 {

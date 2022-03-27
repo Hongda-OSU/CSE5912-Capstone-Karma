@@ -567,7 +567,6 @@ namespace CSE5912.PolyGamers
                 var setSkill = attachment.SetSkill;
 
                 set.Q<Label>("SetName").text = setSkill.Name;
-                Debug.Log(setSkill.Name);
 
                 var description = set.Q<Label>("Description");
                 //description.text = setSkill.GetSpecific();
