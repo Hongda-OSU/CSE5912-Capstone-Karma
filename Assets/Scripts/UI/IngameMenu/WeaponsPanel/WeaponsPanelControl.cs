@@ -508,8 +508,8 @@ namespace CSE5912.PolyGamers
             specific.Q<VisualElement>("Damage").Q<Label>("Data").text = weapon.Damage.ToString();
 
             //specific.Q<VisualElement>("Element").Q<Label>("Label").style.color = rarityToColor[weapon.Rarity];
-            specific.Q<VisualElement>("Element").Q<Label>("Data").text = weapon.Element.ToString();
-            specific.Q<VisualElement>("Element").Q<Label>("Data").style.color = Element.Instance.TypeToColor[weapon.Element];
+            specific.Q<VisualElement>("Element").Q<Label>("Data").text = RichTextHelper.WrapInColor(weapon.Element.ToString(), weapon.Element);
+            //specific.Q<VisualElement>("Element").Q<Label>("Data").style.color = Element.Instance.TypeToColor[weapon.Element];
 
             //specific.Q<VisualElement>("Ammo").Q<Label>("Label").style.color = rarityToColor[weapon.Rarity];
             specific.Q<VisualElement>("Ammo").Q<Label>("Data").text = weapon.AmmoInMag.ToString();

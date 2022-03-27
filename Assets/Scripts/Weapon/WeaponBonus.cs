@@ -105,20 +105,20 @@ namespace CSE5912.PolyGamers
                     IncreaseDamage_electro,
                     IncreaseDamage_venom,
 
-                    //IncreaseResist_physical,
-                    //IncreaseResist_fire,
-                    //IncreaseResist_cryo,
-                    //IncreaseResist_electro,
-                    //IncreaseResist_venom,
+                    IncreaseResist_physical,
+                    IncreaseResist_fire,
+                    IncreaseResist_cryo,
+                    IncreaseResist_electro,
+                    IncreaseResist_venom,
 
-                    //IncreaseFireRate,
+                    IncreaseFireRate,
 
-                    //IncreaseMeleeDamage,
-                    //IncreaseMeleeSpeed,
+                    IncreaseMeleeDamage,
+                    IncreaseMeleeSpeed,
 
-                    //IncreaseMoveSpeed,
+                    IncreaseMoveSpeed,
 
-                    //IncreaseExperience,
+                    IncreaseExperience,
 
                 };
             }
@@ -185,7 +185,7 @@ namespace CSE5912.PolyGamers
                     isInitialized = true;
                 }
 
-                description = RichTextHelper.WrapInColor("Fire Damage", Element.Type.Fire) + " +" + Math.Round(value * 100, 1) + "%";
+                description = RichTextHelper.WrapInColor("Fire", Element.Type.Fire) + " Damage +" + Math.Round(value * 100, 1) + "%";
 
                 if (enabled)
                 {
@@ -208,7 +208,7 @@ namespace CSE5912.PolyGamers
                     isInitialized = true;
                 }
 
-                description = "Cryo Damage +" + Math.Round(value * 100, 1) + "%";
+                description = RichTextHelper.WrapInColor("Cryo", Element.Type.Cryo) + " Damage +" + Math.Round(value * 100, 1) + "%";
 
                 if (enabled)
                 {
@@ -230,7 +230,7 @@ namespace CSE5912.PolyGamers
                     isInitialized = true;
                 }
 
-                description = "Electro Damage +" + Math.Round(value * 100, 1) + "%";
+                description = RichTextHelper.WrapInColor("Electro", Element.Type.Electro) + " Damage +" + Math.Round(value * 100, 1) + "%";
 
                 if (enabled)
                 {
@@ -252,7 +252,7 @@ namespace CSE5912.PolyGamers
                     isInitialized = true;
                 }
 
-                description = "Venom Damage +" + Math.Round(value * 100, 1) + "%";
+                description = RichTextHelper.WrapInColor("Venom", Element.Type.Venom) + " Damage +" + Math.Round(value * 100, 1) + "%";
 
                 if (enabled)
                 {
@@ -296,7 +296,7 @@ namespace CSE5912.PolyGamers
                     isInitialized = true;
                 }
 
-                description = "Fire Resist +" + Math.Round(value, 1);
+                description = RichTextHelper.WrapInColor("Fire", Element.Type.Fire) + " Resist +" + Math.Round(value, 1);
 
                 if (enabled)
                 {
@@ -318,7 +318,7 @@ namespace CSE5912.PolyGamers
                     isInitialized = true;
                 }
 
-                description = "Cryo Resist +" + Math.Round(value, 1);
+                description = RichTextHelper.WrapInColor("Cryo", Element.Type.Cryo) + " Resist +" + Math.Round(value, 1);
 
                 if (enabled)
                 {
@@ -339,7 +339,7 @@ namespace CSE5912.PolyGamers
                     isInitialized = true;
                 }
 
-                description = "Electro Resist +" + Math.Round(value, 1);
+                description = RichTextHelper.WrapInColor("Electro", Element.Type.Electro) + " Resist +" + Math.Round(value, 1);
 
                 if (enabled)
                 {
@@ -360,7 +360,7 @@ namespace CSE5912.PolyGamers
                     isInitialized = true;
                 }
 
-                description = "Venom Resist +" + Math.Round(value, 1);
+                description = RichTextHelper.WrapInColor("Venom", Element.Type.Venom) + " Resist +" + Math.Round(value, 1);
 
                 if (enabled)
                 {

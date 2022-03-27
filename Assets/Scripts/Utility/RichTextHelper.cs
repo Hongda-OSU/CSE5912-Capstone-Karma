@@ -10,7 +10,7 @@ namespace CSE5912.PolyGamers
         {
             string colorInHtml = ColorUtility.ToHtmlStringRGBA(color);
 
-            string result = "<color = " + colorInHtml + ">" + content + "</color>";
+            string result = "<color=#" + colorInHtml + ">" + content + "</color>";
 
             return result;
         }
@@ -18,7 +18,7 @@ namespace CSE5912.PolyGamers
         {
             string colorInHtml = ColorUtility.ToHtmlStringRGBA(Element.Instance.TypeToColor[type]);
 
-            string result = "<color = " + colorInHtml + ">" + content + "</color>";
+            string result = "<color=#" + colorInHtml + ">" + content + "</color>";
 
             return result;
         }

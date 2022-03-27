@@ -28,6 +28,7 @@ namespace CSE5912.PolyGamers
             VoidKnight,
             Sergeant76,
             BlackSoul,
+            Leviathan,
         }
         public enum AttachmentType
         {
