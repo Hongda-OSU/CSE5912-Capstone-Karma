@@ -8,6 +8,7 @@ namespace CSE5912.PolyGamers
     {
         [SerializeField] private Transform target;
 
+
         [SerializeField] private float risingTime = 3f;
         [SerializeField] private float shootingTime = 4.5f;
 
@@ -55,10 +56,10 @@ namespace CSE5912.PolyGamers
                 return;
 
             if (InputManager.Instance.InputSchemes.PlayerActions.Interact.triggered)
-                StartCoroutine(TeleportPlayer());
+                StartCoroutine(TeleportPlayer(target.position));
         }
 
-        private IEnumerator TeleportPlayer()
+        private IEnumerator TeleportPlayer(Vector3 to)
         {
             isUsed = true;
 
@@ -76,6 +77,7 @@ namespace CSE5912.PolyGamers
                 
 
             player.transform.position = target.transform.position;
+            player.transform.position = to;
             FPSMouseLook.Instance.ResetLook();
 
             FPSControllerCC.Instance.AllowMoving(true);
@@ -84,6 +86,11 @@ namespace CSE5912.PolyGamers
 
             Destroy(portal, 1f);
             isUsed = false;
+        }
+
+        public IEnumerator TeleportBack()
+        {
+            yield return StartCoroutine(TeleportPlayer(transform.position + transform.forward * 2f));
         }
 
         private IEnumerator PlayActivateAnimation()

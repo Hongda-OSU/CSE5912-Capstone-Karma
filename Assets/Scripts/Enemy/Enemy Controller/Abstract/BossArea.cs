@@ -7,31 +7,49 @@ namespace CSE5912.PolyGamers
 {
     public class BossArea : MonoBehaviour
     {
-        [SerializeField] private float areaRadius = 20f;
         [SerializeField] private BossEnemy enemy;
         [SerializeField] private AudioClip bossMusic;
         [SerializeField] private float triggerDelay = 3f;
 
-        private bool isTriggered = false;
-        //private bool isEnded = false;
+        [SerializeField] private Teleporter teleporter;
+
+        [SerializeField] private bool isBossDefeated = false;
+        [SerializeField] private bool isEnded = false;
+
+        [SerializeField] private bool isTriggered = false;
+
         private SphereCollider triggerCollider;
 
         private void Awake()
         {
-            triggerCollider = gameObject.AddComponent<SphereCollider>();
+            triggerCollider = GetComponent<SphereCollider>();
             triggerCollider.isTrigger = true;
-            triggerCollider.radius = areaRadius;
         }
 
-        //private void Update()
-        //{
-        //    if (enemy.IsAlive || isEnded)
-        //        return;
+        private void OnTriggerStay(Collider other)
+        {
+            if (other.transform.tag != "Player"  || isEnded || enemy.IsAlive)
+                return;
 
-        //    isEnded = true; 
-        //    enemy.GetComponentInChildren<BossInformation>().Fadeout();
-        //    IngameAudioControl.Instance.MainAudio.Stop();
-        //}
+            if (enemy.IsBossFightTriggered && !enemy.IsAlive)
+            {
+                isBossDefeated = true;
+            }
+
+            if (isBossDefeated && InputManager.Instance.InputSchemes.PlayerActions.Interact.WasPressedThisFrame())
+            {
+                StartCoroutine(TeleportBack());
+            }
+        }
+        private IEnumerator TeleportBack()
+        {
+
+            isEnded = true;
+
+            yield return StartCoroutine(teleporter.TeleportBack());
+
+            isEnded = false;
+        }
 
         private void OnTriggerEnter(Collider other)
         {
@@ -48,6 +66,7 @@ namespace CSE5912.PolyGamers
                 return;
 
             isTriggered = false;
+            isEnded = false;
             //IngameAudioControl.Instance.Play(bossMusic);
             enemy.gameObject.GetComponentInChildren<BossInformation>().Display(false);
         }
