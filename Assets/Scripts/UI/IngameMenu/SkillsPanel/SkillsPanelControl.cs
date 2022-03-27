@@ -63,10 +63,17 @@ namespace CSE5912.PolyGamers
                 skillSlot.slot.RegisterCallback<MouseDownEvent>(evt => SkillSlot_performed(skillSlot.slot));
             }
 
+            ResetPanel();
             //
             currentSkillTree = skillTree_element;
         }
 
+        public void ResetPanel()
+        {
+            selectedSkillSlot = null;
+            UpdateVisual();
+            StartCoroutine(PopOffSpecific());
+        }
 
         private void SelectSlot(VisualElement slot)
         {
@@ -130,14 +137,16 @@ namespace CSE5912.PolyGamers
             }
             else if (selectedSkillSlot != slot)
             {
-                //PopUpSpecific(skill.GetSpecific());
+                PopUpSpecific(skill);
                 Debug.Log("To-do");
             }
         }
 
-        private void PopUpSpecific(string specific)
+        private void PopUpSpecific(PlayerSkill skill)
         {
-            specificPanel.Q<Label>("Specific").text = specific;
+            specificPanel.Q<Label>("Name").text = skill.Name;
+            specificPanel.Q<Label>("Type").text = skill.Type.ToString();
+            specificPanel.Q<Label>("Description").text = "to-do";
 
             specificPanel.style.opacity = 1f;
             specificPanel.style.display = DisplayStyle.Flex;
@@ -148,7 +157,8 @@ namespace CSE5912.PolyGamers
 
             selectedSkillSlot = null;
 
-            yield return StartCoroutine(FadeOut(specificPanel));
+            specificPanel.style.opacity = 0f;
+            yield return null;
         }
 
 

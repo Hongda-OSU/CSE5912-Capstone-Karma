@@ -282,7 +282,7 @@
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="StatsPanel" style="height: 800px; width: 1680px; flex-grow: 0; flex-direction: column; top: auto; left: 80px; background-color: rgba(0, 0, 0, 0); align-items: flex-start; justify-content: flex-start; display: flex; overflow: visible;">
+        <ui:VisualElement name="StatsPanel" style="height: 800px; width: 1680px; flex-grow: 0; flex-direction: column; top: auto; left: 80px; background-color: rgba(0, 0, 0, 0); align-items: flex-start; justify-content: flex-start; display: none; overflow: visible;">
             <ui:VisualElement name="Mods" style="height: 797px; width: 518px; flex-grow: 1; display: none;">
                 <ui:VisualElement name="Slot_0" class="ItemSlot ModSlot" style="height: auto;">
                     <ui:VisualElement name="ModIcon" style="background-color: rgba(0, 0, 0, 0); width: auto; border-left-color: rgba(255, 255, 255, 0); border-right-color: rgb(255, 255, 255); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px; flex-grow: 1;" />
@@ -408,7 +408,7 @@
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="SkillsPanel" style="height: 800px; width: 1756px; flex-grow: 0; flex-direction: row; top: auto; left: 80px; background-color: rgba(0, 0, 0, 0); align-items: flex-start; justify-content: flex-start; display: none;">
+        <ui:VisualElement name="SkillsPanel" style="height: 800px; width: 1756px; flex-grow: 0; flex-direction: row; top: auto; left: 80px; background-color: rgba(0, 0, 0, 0); align-items: flex-start; justify-content: flex-start; display: flex;">
             <ui:Label text="Skill Points:" display-tooltip-when-elided="true" name="SkillPoints" style="height: 64px; width: 165px; -unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); font-size: 23px;" />
             <ui:VisualElement name="SkillTree_elements" style="flex-grow: 1; width: 979px; height: 600px; opacity: 1; justify-content: space-around; align-items: center; flex-direction: row;">
                 <ui:VisualElement name="MainSkill" class="MainSkillSlot">
@@ -724,8 +724,14 @@
                     </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement>
-            <ui:VisualElement name="SkillSpecific" style="flex-grow: 1; height: 600px; width: 401px; background-color: rgba(0, 0, 0, 0.65); justify-content: space-around; border-left-color: rgb(75, 76, 73); border-right-color: rgb(75, 76, 73); border-top-color: rgb(75, 76, 73); border-bottom-color: rgb(75, 76, 73); border-left-width: 1px; border-right-width: 1px; border-top-width: 1px; border-bottom-width: 1px;">
-                <ui:Label text="Description&#10;" display-tooltip-when-elided="true" name="Specific" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); font-size: 12px; color: rgb(255, 255, 255); height: 470px;" />
+            <ui:VisualElement name="SkillSpecific" style="flex-grow: 1; height: 530px; width: 460px; border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(75, 76, 73); border-bottom-color: rgb(255, 255, 255); border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; align-items: center; display: flex; background-color: rgba(0, 0, 0, 0.65); left: auto; top: 50px; position: relative; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px; transition-duration: 0s;">
+                <ui:VisualElement name="Specific" style="width: 460px; height: 530px; align-items: center; display: flex;">
+                    <ui:VisualElement name="Title" style="height: 80px; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 1px; border-left-color: rgba(255, 255, 255, 0.65); border-right-color: rgba(255, 255, 255, 0.65); border-top-color: rgba(255, 255, 255, 0.65); border-bottom-color: rgba(255, 255, 255, 0.65); width: 298px;">
+                        <ui:Label text="Name" display-tooltip-when-elided="true" name="Name" style="flex-grow: 1; width: auto; -unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); font-size: 20px; white-space: normal; height: auto; -unity-text-align: upper-center; padding-bottom: 0;" />
+                        <ui:Label text="Type" display-tooltip-when-elided="true" name="Type" style="flex-grow: 1; width: auto; -unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); font-size: 12px; white-space: normal; height: auto; -unity-text-align: upper-center; padding-bottom: 0;" />
+                    </ui:VisualElement>
+                    <ui:Label text="Description" display-tooltip-when-elided="true" name="Description" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); background-color: rgba(255, 255, 255, 0); color: rgb(255, 255, 255);" />
+                </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>

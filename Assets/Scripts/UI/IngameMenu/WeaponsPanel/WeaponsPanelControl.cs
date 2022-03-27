@@ -178,6 +178,7 @@ namespace CSE5912.PolyGamers
         public void ResetPanel()
         {
             selectedWeapon = null;
+            UpdateInterface();
             StartCoroutine(PopOffAttachmentInventory());
             StartCoroutine(PopOffSpecific());
         }

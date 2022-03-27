@@ -127,6 +127,8 @@ namespace CSE5912.PolyGamers
                 StartCoroutine(FadeTo(currentPanel, skillsPanel));
                 currentPanel = skillsPanel;
                 UpdateToggles(skillsToggle);
+
+                SkillsPanelControl.Instance.ResetPanel();
             }
             else if (!skillsToggle.value && currentPanel == skillsPanel)
                 skillsToggle.value = true;

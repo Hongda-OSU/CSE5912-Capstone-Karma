@@ -45,6 +45,7 @@ namespace CSE5912.PolyGamers
             isDisplayed = !isDisplayed;
 
             WeaponsPanelControl.Instance.ResetPanel();
+            SkillsPanelControl.Instance.ResetPanel();
 
             PostProcessingController.Instance.SetBlurryCameraView(isDisplayed);
 
