@@ -5,6 +5,7 @@ namespace CSE5912.PolyGamers
 {
     public class InputManager : MonoBehaviour
     {
+        //[SerializeField]
         private OpenIngameMenuHandler openIngameMenuHandler;
         private OpenEscapeMenuHandler openEscapeMenuHandler;
         private ScrollHandler scrollHandler;

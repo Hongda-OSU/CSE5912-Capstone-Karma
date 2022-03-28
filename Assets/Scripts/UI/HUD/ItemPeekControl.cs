@@ -7,10 +7,6 @@ namespace CSE5912.PolyGamers
 {
     public class ItemPeekControl : UI
     {
-        [SerializeField] private float peekScale = 1f;
-        [SerializeField] private float xOffset = 0f;
-        [SerializeField] private float yOffset = 0f;
-
         private VisualElement weaponPeekPanel;
         private VisualElement attachmentPeekPanel;
 
@@ -53,22 +49,14 @@ namespace CSE5912.PolyGamers
         {
             weaponPeekPanel.style.display = DisplayStyle.Flex;
 
-            weaponPeekPanel.style.scale = new Scale(Vector3.one * peekScale);
-
             StylizePanel(weaponPeekPanel, weapon);
-
-            SetPosition(weaponPeekPanel);
         }
 
         private void PeekAttachment(Attachment attachment)
         {
             attachmentPeekPanel.style.display = DisplayStyle.Flex;
 
-            attachmentPeekPanel.style.scale = new Scale(Vector3.one * peekScale);
-
             StylizePanel(attachmentPeekPanel, attachment);
-
-            SetPosition(attachmentPeekPanel);
         }
 
         public void Clear()
@@ -77,11 +65,6 @@ namespace CSE5912.PolyGamers
 
             root.Q<VisualElement>("WeaponPeek").style.display = DisplayStyle.None;
             attachmentPeekPanel.style.display = DisplayStyle.None;
-        }
-
-        private void SetPosition(VisualElement element)
-        {
-            element.transform.position = new Vector2(Screen.width / 2 + xOffset, Screen.height / 2 + yOffset);
         }
 
         private void StylizePanel(VisualElement panel, Firearms weapon)
