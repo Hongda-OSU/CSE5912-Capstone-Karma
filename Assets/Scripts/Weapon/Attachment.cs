@@ -21,6 +21,8 @@ namespace CSE5912.PolyGamers
         [Header("UI related")]
         private Sprite iconImage;
 
+        private string citation;
+
         // only divine trigger set effect
         public enum AttachmentSet
         {
@@ -46,6 +48,17 @@ namespace CSE5912.PolyGamers
             Divine = 4,
         }
 
+        public void Initialize(AttachmentType type, AttachmentRarity rarity, AttachmentSet set, AttachmentBonus bonus, Sprite image, string citation)
+        {
+            attachmentType = type;
+            this.rarity = rarity;
+            attachmentSet = set;
+            attachmentBonus = bonus;
+            iconImage = image;
+            this.citation = citation;
+
+            setSkill = PlayerSkillManager.Instance.GetSetSkill(set);
+        }
         public void AttachTo(Firearms weapon)
         {
             PerformBonus(weapon == WeaponManager.Instance.CarriedWeapon);
@@ -68,7 +81,7 @@ namespace CSE5912.PolyGamers
         public PlayerSkill SetSkill { get { return setSkill; } set { setSkill = value; } }
         public Sprite IconImage { get { return iconImage; } set { iconImage = value; } }
 
-
+        public string Citation { get { return "\"" + citation + "\""; } }
     }
 
 }

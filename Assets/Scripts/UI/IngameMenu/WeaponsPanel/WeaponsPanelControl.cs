@@ -553,7 +553,18 @@ namespace CSE5912.PolyGamers
             VisualElement specific = specificPanel.Q<VisualElement>("AttachmentSpecific").Q<VisualElement>("Specific");
             VisualElement bonus = specificPanel.Q<VisualElement>("AttachmentSpecific").Q<VisualElement>("Bonus");
             VisualElement set = specificPanel.Q<VisualElement>("AttachmentSpecific").Q<VisualElement>("Set");
+            VisualElement text = specificPanel.Q<VisualElement>("AttachmentSpecific").Q<VisualElement>("Text");
 
+            if (attachment.Rarity != Attachment.AttachmentRarity.Divine)
+            {
+                set.style.display = DisplayStyle.None;
+                text.style.display = DisplayStyle.None;
+            }
+            else
+            {
+                set.style.display = DisplayStyle.Flex;
+                text.style.display = DisplayStyle.Flex;
+            }
 
             title.Q<Label>("Name").text = attachment.AttachmentName;
             title.Q<Label>("Name").style.color = color;
@@ -562,6 +573,8 @@ namespace CSE5912.PolyGamers
 
             specific.Q<VisualElement>("Rarity").Q<Label>("Data").text = attachment.Rarity.ToString();
             specific.Q<VisualElement>("Rarity").Q<Label>("Data").style.color = color;
+
+            text.Q<Label>("Citation").text = attachment.Citation;
 
             if (attachment.Rarity == Attachment.AttachmentRarity.Divine)
             {

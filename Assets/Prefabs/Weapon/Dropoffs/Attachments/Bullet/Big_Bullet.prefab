@@ -121,6 +121,7 @@ MonoBehaviour:
   iconImage: {fileID: 21300010, guid: 04e6792f470c37741aa02ec74be1777b, type: 3}
   type: 0
   set: 0
+  citation: 
 --- !u!114 &8057359097553529103
 MonoBehaviour:
   m_ObjectHideFlags: 0
