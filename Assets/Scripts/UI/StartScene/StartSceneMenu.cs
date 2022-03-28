@@ -22,6 +22,7 @@ namespace CSE5912.PolyGamers
 
 
         private VisualElement optionsPanel;
+        private VisualElement creditsPanel;
 
         private Button audioButton;
         private Button KeybindingsButton;
@@ -45,10 +46,12 @@ namespace CSE5912.PolyGamers
             mainMenuPanel = root.Q<VisualElement>("MainMenuPanel");
             optionsPanel = root.Q<VisualElement>("OptionsPanel");
             audioPanel = root.Q<VisualElement>("AudioPanel");
+            creditsPanel = root.Q<VisualElement>("CreditsPanel");
 
             mainMenuPanel.style.display = DisplayStyle.Flex;
             optionsPanel.style.display = DisplayStyle.None;
             audioPanel.style.display = DisplayStyle.None;
+            creditsPanel.style.display = DisplayStyle.None;
         }
 
         private void Start()
@@ -132,7 +135,10 @@ namespace CSE5912.PolyGamers
 
         private void CreditsButtonPressed()
         {
-            // todo - load credits screen
+            StartCoroutine(FadeTo(optionsPanel, creditsPanel));
+            clickSound.Play();
+
+            CreditsPanelControl.Instance.StartDisplay();
         }
 
         // go back to previous UI
