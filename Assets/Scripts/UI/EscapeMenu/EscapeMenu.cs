@@ -39,8 +39,8 @@ namespace CSE5912.PolyGamers
             audioPanel = root.Q<VisualElement>("AudioPanel");
 
             root.style.display = DisplayStyle.None;
-            optionsPanel.style.display = DisplayStyle.Flex;
-            audioPanel.style.display = DisplayStyle.None;
+
+            ResetPanel();
         }
 
         private void Start()
@@ -58,6 +58,14 @@ namespace CSE5912.PolyGamers
 
         }
 
+        private void ResetPanel()
+        {
+            optionsPanel.style.display = DisplayStyle.Flex;
+            optionsPanel.style.opacity = 1f;
+
+            audioPanel.style.display = DisplayStyle.None;
+        }
+
         public IEnumerator DisplayMenu(bool enabled)
         {
             if (!isFadingComplete)
@@ -67,6 +75,7 @@ namespace CSE5912.PolyGamers
             if (!enabled)
             {
                 yield return StartCoroutine(FadeOut(root));
+                ResetPanel();
             }
             else
             {
