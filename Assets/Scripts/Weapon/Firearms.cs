@@ -306,11 +306,11 @@ namespace CSE5912.PolyGamers
                     {
                         case WeaponType.AK47:
                             if (currentAttachment.AttachmentRealName == "Scope Carbine A")
-                                aimingTo = new Vector3(0, -0.2f, 0.0255f);
+                                aimingTo = new Vector3(0, -0.2f, 0.0251f);
                             else if (currentAttachment.AttachmentRealName == "Scope Holo A")
-                                aimingTo = new Vector3(0, -0.2f, 0.0285f);
+                                aimingTo = new Vector3(0, -0.2f, 0.0281f);
                             else if (currentAttachment.AttachmentRealName == "Scope RedDotOuter A")
-                                aimingTo = new Vector3(0, -0.2f, 0.035f);
+                                aimingTo = new Vector3(0, -0.2f, 0.03f);
                             GunCamera.transform.localPosition = Vector3.SmoothDamp(GunCamera.transform.localPosition,
                                 isAiming ? aimingTo : GunCameraLocalOriginalPosition,
                                 ref tmp_RefGunCameraPosition,
