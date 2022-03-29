@@ -45,6 +45,8 @@ namespace CSE5912.PolyGamers
 
             audioSource.PlayOneShot(clipIn);
 
+            FPSControllerCC.Instance.velocityMultiplier *= slowTimeScale;
+
             float timeSince = 0f;
             while (timeSince < fadingTime)
             {
@@ -76,6 +78,8 @@ namespace CSE5912.PolyGamers
             }
 
             StartCoolingdown();
+
+            FPSControllerCC.Instance.velocityMultiplier /= slowTimeScale;
         }
 
     }

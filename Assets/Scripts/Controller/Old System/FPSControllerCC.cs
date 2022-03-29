@@ -19,6 +19,8 @@ namespace CSE5912.PolyGamers
         // determine player current speed
         [SerializeField] private float currentSpeed;
 
+        public float velocityMultiplier = 1f;
+
         [Header("Physics")]
         [SerializeField] private float mass = 3f;
         private Vector3 impact = Vector3.zero;
@@ -150,7 +152,7 @@ namespace CSE5912.PolyGamers
         private float GetVeloctiy(Vector3 velocityHolder)
         {
             velocityHolder.y = 0;
-            return velocityHolder.magnitude;
+            return velocityHolder.magnitude * velocityMultiplier;
         }
 
         // Perform Jump
