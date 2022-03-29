@@ -5,7 +5,6 @@ namespace CSE5912.PolyGamers
 {
     public class InputManager : MonoBehaviour
     {
-        //[SerializeField]
         private OpenIngameMenuHandler openIngameMenuHandler;
         private OpenEscapeMenuHandler openEscapeMenuHandler;
         private ScrollHandler scrollHandler;
@@ -31,7 +30,6 @@ namespace CSE5912.PolyGamers
 
             inputSchemes.PlayerActions.Jump.performed += ctx => FPSControllerCC.Instance.PerformJump();
             inputSchemes.PlayerActions.Crouch.performed += ctx => FPSControllerCC.Instance.PerformCrouch();
-            //inputSchemes.PlayerActions.Dash.performed += ctx => FPSControllerCC.Instance.PerformDash();
             inputSchemes.PlayerActions.Inspect.performed += ctx => FPSControllerCC.Instance.PerformInspect();
             inputSchemes.PlayerActions.Sprint.performed += ctx => FPSControllerCC.Instance.DoSprint(true);
             inputSchemes.PlayerActions.Sprint.canceled += ctx => FPSControllerCC.Instance.DoSprint(false);

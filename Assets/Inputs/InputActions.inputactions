@@ -51,15 +51,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Dash",
-                    "type": "Button",
-                    "id": "d488b0da-5da7-424a-8137-7f27a3cd917f",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "MainSkill",
                     "type": "Value",
                     "id": "90b9f2aa-7e8a-45cb-b03f-4fad355a6163",
@@ -78,9 +69,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Interact",
+                    "name": "PickUp",
                     "type": "Button",
                     "id": "82285f13-b19d-49a3-8ea0-64644bb43afa",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Teleport",
+                    "type": "Button",
+                    "id": "6f7779a5-f2e2-4348-9a8d-2c7217a39ac4",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -189,17 +189,6 @@
                 },
                 {
                     "name": "",
-                    "id": "36b23889-e051-40a6-9fc9-fc528f07308a",
-                    "path": "<Keyboard>/v",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Dash",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "064ce952-9776-4c7e-beb2-9ed41ec4f2a7",
                     "path": "<Keyboard>/f",
                     "interactions": "",
@@ -227,7 +216,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Interact",
+                    "action": "PickUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "01012b61-397c-44c2-aabc-5e8cea9fcfb8",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Teleport",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

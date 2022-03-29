@@ -61,6 +61,9 @@ namespace CSE5912.PolyGamers
 
         public void Clear()
         {
+            if (prevItem != null)
+                TipsControl.Instance.PopOffTip();
+
             prevItem = null;
 
             root.Q<VisualElement>("WeaponPeek").style.display = DisplayStyle.None;

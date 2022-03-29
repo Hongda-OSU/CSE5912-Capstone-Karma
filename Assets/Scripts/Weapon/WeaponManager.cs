@@ -197,8 +197,8 @@ namespace CSE5912.PolyGamers
 
                 TipsControl.Instance.PopUpTip("T", "Pick up");
 
-                // player pick up weapon by pressing E
-                if (inputSchemes.PlayerActions.Interact.triggered)
+                // player pick up weapon by pressing T
+                if (inputSchemes.PlayerActions.PickUp.triggered)
                 {
                     // get the item component of type BaseItem, if it exists
                     if (hasItem)
@@ -211,7 +211,7 @@ namespace CSE5912.PolyGamers
             else
             {
                 ItemPeekControl.Instance.Clear();
-                TipsControl.Instance.PopOffTip();
+                //TipsControl.Instance.PopOffTip();
             }
         }
 

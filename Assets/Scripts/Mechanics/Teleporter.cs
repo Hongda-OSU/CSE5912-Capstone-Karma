@@ -55,8 +55,21 @@ namespace CSE5912.PolyGamers
             if (other.tag != "Player" || !isActivated || isUsed)
                 return;
 
-            if (InputManager.Instance.InputSchemes.PlayerActions.Interact.triggered)
+            TipsControl.Instance.PopUpTip("Z", "Teleport");
+
+            if (InputManager.Instance.InputSchemes.PlayerActions.Teleport.triggered)
+            {
                 StartCoroutine(TeleportPlayer(target.position));
+                TipsControl.Instance.PopOffTip();
+            }
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.tag != "Player" || !isActivated || isUsed)
+                return;
+
+            TipsControl.Instance.PopOffTip();
         }
 
         private IEnumerator TeleportPlayer(Vector3 to)

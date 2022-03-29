@@ -26,21 +26,6 @@ namespace CSE5912.PolyGamers
             triggerCollider.isTrigger = true;
         }
 
-        private void OnTriggerStay(Collider other)
-        {
-            if (other.transform.tag != "Player"  || isEnded || enemy.IsAlive)
-                return;
-
-            if (enemy.IsBossFightTriggered && !enemy.IsAlive)
-            {
-                isBossDefeated = true;
-            }
-
-            if (isBossDefeated && InputManager.Instance.InputSchemes.PlayerActions.Interact.WasPressedThisFrame())
-            {
-                StartCoroutine(TeleportBack());
-            }
-        }
         private IEnumerator TeleportBack()
         {
 
@@ -60,10 +45,31 @@ namespace CSE5912.PolyGamers
             StartCoroutine(TriggerBossFight());
         }
 
+        private void OnTriggerStay(Collider other)
+        {
+            if (other.transform.tag != "Player" || isEnded || enemy.IsAlive)
+                return;
+
+            if (enemy.IsBossFightTriggered && !enemy.IsAlive)
+            {
+                isBossDefeated = true;
+            }
+
+            TipsControl.Instance.PopUpTip("Z", "Teleport");
+
+            if (isBossDefeated && InputManager.Instance.InputSchemes.PlayerActions.Teleport.WasPressedThisFrame())
+            {
+                StartCoroutine(TeleportBack());
+                TipsControl.Instance.PopOffTip();
+            }
+        }
+
         private void OnTriggerExit(Collider other)
         {
             if (other.transform.tag != "Player" || !isTriggered)
                 return;
+
+            TipsControl.Instance.PopOffTip();
 
             isTriggered = false;
             isEnded = false;

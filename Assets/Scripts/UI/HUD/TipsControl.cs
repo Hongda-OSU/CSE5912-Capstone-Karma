@@ -10,6 +10,7 @@ namespace CSE5912.PolyGamers
         [SerializeField] private bool isDisplayed = false;
 
         private VisualElement tips;
+
         private Label key;
         private Label action;
 

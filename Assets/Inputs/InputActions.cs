@@ -73,15 +73,6 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Dash"",
-                    ""type"": ""Button"",
-                    ""id"": ""d488b0da-5da7-424a-8137-7f27a3cd917f"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""MainSkill"",
                     ""type"": ""Value"",
                     ""id"": ""90b9f2aa-7e8a-45cb-b03f-4fad355a6163"",
@@ -100,9 +91,18 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Interact"",
+                    ""name"": ""PickUp"",
                     ""type"": ""Button"",
                     ""id"": ""82285f13-b19d-49a3-8ea0-64644bb43afa"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Teleport"",
+                    ""type"": ""Button"",
+                    ""id"": ""6f7779a5-f2e2-4348-9a8d-2c7217a39ac4"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -211,17 +211,6 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""36b23889-e051-40a6-9fc9-fc528f07308a"",
-                    ""path"": ""<Keyboard>/v"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Dash"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""064ce952-9776-4c7e-beb2-9ed41ec4f2a7"",
                     ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
@@ -249,7 +238,18 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Interact"",
+                    ""action"": ""PickUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""01012b61-397c-44c2-aabc-5e8cea9fcfb8"",
+                    ""path"": ""<Keyboard>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Teleport"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -581,10 +581,10 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         m_PlayerActions_Jump = m_PlayerActions.FindAction("Jump", throwIfNotFound: true);
         m_PlayerActions_Crouch = m_PlayerActions.FindAction("Crouch", throwIfNotFound: true);
         m_PlayerActions_Sprint = m_PlayerActions.FindAction("Sprint", throwIfNotFound: true);
-        m_PlayerActions_Dash = m_PlayerActions.FindAction("Dash", throwIfNotFound: true);
         m_PlayerActions_MainSkill = m_PlayerActions.FindAction("MainSkill", throwIfNotFound: true);
         m_PlayerActions_Inspect = m_PlayerActions.FindAction("Inspect", throwIfNotFound: true);
-        m_PlayerActions_Interact = m_PlayerActions.FindAction("Interact", throwIfNotFound: true);
+        m_PlayerActions_PickUp = m_PlayerActions.FindAction("PickUp", throwIfNotFound: true);
+        m_PlayerActions_Teleport = m_PlayerActions.FindAction("Teleport", throwIfNotFound: true);
         // FPSActions
         m_FPSActions = asset.FindActionMap("FPSActions", throwIfNotFound: true);
         m_FPSActions_Shoot = m_FPSActions.FindAction("Shoot", throwIfNotFound: true);
@@ -668,10 +668,10 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerActions_Jump;
     private readonly InputAction m_PlayerActions_Crouch;
     private readonly InputAction m_PlayerActions_Sprint;
-    private readonly InputAction m_PlayerActions_Dash;
     private readonly InputAction m_PlayerActions_MainSkill;
     private readonly InputAction m_PlayerActions_Inspect;
-    private readonly InputAction m_PlayerActions_Interact;
+    private readonly InputAction m_PlayerActions_PickUp;
+    private readonly InputAction m_PlayerActions_Teleport;
     public struct PlayerActionsActions
     {
         private @InputActions m_Wrapper;
@@ -681,10 +681,10 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_PlayerActions_Jump;
         public InputAction @Crouch => m_Wrapper.m_PlayerActions_Crouch;
         public InputAction @Sprint => m_Wrapper.m_PlayerActions_Sprint;
-        public InputAction @Dash => m_Wrapper.m_PlayerActions_Dash;
         public InputAction @MainSkill => m_Wrapper.m_PlayerActions_MainSkill;
         public InputAction @Inspect => m_Wrapper.m_PlayerActions_Inspect;
-        public InputAction @Interact => m_Wrapper.m_PlayerActions_Interact;
+        public InputAction @PickUp => m_Wrapper.m_PlayerActions_PickUp;
+        public InputAction @Teleport => m_Wrapper.m_PlayerActions_Teleport;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -709,18 +709,18 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 @Sprint.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnSprint;
                 @Sprint.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnSprint;
                 @Sprint.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnSprint;
-                @Dash.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnDash;
-                @Dash.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnDash;
-                @Dash.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnDash;
                 @MainSkill.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnMainSkill;
                 @MainSkill.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnMainSkill;
                 @MainSkill.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnMainSkill;
                 @Inspect.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnInspect;
                 @Inspect.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnInspect;
                 @Inspect.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnInspect;
-                @Interact.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnInteract;
-                @Interact.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnInteract;
-                @Interact.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnInteract;
+                @PickUp.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnPickUp;
+                @PickUp.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnPickUp;
+                @PickUp.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnPickUp;
+                @Teleport.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnTeleport;
+                @Teleport.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnTeleport;
+                @Teleport.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnTeleport;
             }
             m_Wrapper.m_PlayerActionsActionsCallbackInterface = instance;
             if (instance != null)
@@ -740,18 +740,18 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 @Sprint.started += instance.OnSprint;
                 @Sprint.performed += instance.OnSprint;
                 @Sprint.canceled += instance.OnSprint;
-                @Dash.started += instance.OnDash;
-                @Dash.performed += instance.OnDash;
-                @Dash.canceled += instance.OnDash;
                 @MainSkill.started += instance.OnMainSkill;
                 @MainSkill.performed += instance.OnMainSkill;
                 @MainSkill.canceled += instance.OnMainSkill;
                 @Inspect.started += instance.OnInspect;
                 @Inspect.performed += instance.OnInspect;
                 @Inspect.canceled += instance.OnInspect;
-                @Interact.started += instance.OnInteract;
-                @Interact.performed += instance.OnInteract;
-                @Interact.canceled += instance.OnInteract;
+                @PickUp.started += instance.OnPickUp;
+                @PickUp.performed += instance.OnPickUp;
+                @PickUp.canceled += instance.OnPickUp;
+                @Teleport.started += instance.OnTeleport;
+                @Teleport.performed += instance.OnTeleport;
+                @Teleport.canceled += instance.OnTeleport;
             }
         }
     }
@@ -933,10 +933,10 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnCrouch(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
-        void OnDash(InputAction.CallbackContext context);
         void OnMainSkill(InputAction.CallbackContext context);
         void OnInspect(InputAction.CallbackContext context);
-        void OnInteract(InputAction.CallbackContext context);
+        void OnPickUp(InputAction.CallbackContext context);
+        void OnTeleport(InputAction.CallbackContext context);
     }
     public interface IFPSActionsActions
     {
