@@ -117,10 +117,15 @@ MonoBehaviour:
   outline: {fileID: 1496213525996577868}
   indicator: {fileID: 8930810168917339182}
   opacity: 0.3
-  set: 2
-  type: 1
-  rarity: 0
   iconImage: {fileID: 21300034, guid: 04e6792f470c37741aa02ec74be1777b, type: 3}
+  type: 1
+  set: 2
+  citation: "Technically speaking, intellegent \nweapons do not actually need any
+    scope,\nsince aiming is always not required \nby those automatically tracking
+    bullets. \nThe scope was often used for giving  \nsupplemental optical adjustments
+    for the \naiming AI to perform better. Despite its\nsupporting functionality,
+    the scope is\nnormally the most expensive component\non any intelligent weapon
+    system.\n"
 --- !u!114 &1496213525996577868
 MonoBehaviour:
   m_ObjectHideFlags: 0

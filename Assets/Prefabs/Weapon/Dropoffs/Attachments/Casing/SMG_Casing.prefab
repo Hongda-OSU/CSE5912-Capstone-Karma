@@ -116,10 +116,14 @@ MonoBehaviour:
   outline: {fileID: 6999133787408769904}
   indicator: {fileID: 234100912767892172}
   opacity: 0.3
-  set: 2
-  type: 2
-  rarity: 0
   iconImage: {fileID: 21300018, guid: 04e6792f470c37741aa02ec74be1777b, type: 3}
+  type: 2
+  set: 2
+  citation: "The unexpected popularity of the recent \nclassical super hero film,
+    Sergeant 76, has \ndrawn massive attention in the society. \nWhile a lot of fans
+    praise it to be the best \nsuper hero movie in the past 20 years, \nmany people
+    have the concern that \nintelligent weapons might not be \nappropriate to appear
+    on the screen, due \nto how dangerous and accessible they are."
 --- !u!114 &6999133787408769904
 MonoBehaviour:
   m_ObjectHideFlags: 0

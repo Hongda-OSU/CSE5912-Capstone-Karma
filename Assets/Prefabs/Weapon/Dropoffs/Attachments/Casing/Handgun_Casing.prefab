@@ -116,10 +116,14 @@ MonoBehaviour:
   outline: {fileID: 5365168431077571084}
   indicator: {fileID: 761794825925665420}
   opacity: 0.3
-  set: 1
-  type: 2
-  rarity: 0
   iconImage: {fileID: 21300016, guid: cfb5b9a722516ae4586bad26c20d19a1, type: 3}
+  type: 2
+  set: 1
+  citation: "After the message spread out secretly, \nmany nobles and civilians outside
+    the \nfortress had ideas about the king's \ndisappearing. The main gate was shutted
+    \na year ago, and the fortress was closely \nguarded by those iron knights. It
+    must \nbe those shadows: only those phantom \nvoid knights could audience with
+    the \nking at this point. The omen came true."
 --- !u!114 &5365168431077571084
 MonoBehaviour:
   m_ObjectHideFlags: 0
