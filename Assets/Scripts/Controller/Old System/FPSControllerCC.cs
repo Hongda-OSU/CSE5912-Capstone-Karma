@@ -35,6 +35,7 @@ namespace CSE5912.PolyGamers
         private float velocity;
 
         private bool isMovingAllowed = true;
+        public bool isMoving = false;
 
         private bool isCrouched;
         private bool isSprinted;
@@ -147,6 +148,8 @@ namespace CSE5912.PolyGamers
                 isJumping = false;
             }
             characterController.Move(playerVelocity * Time.unscaledDeltaTime);
+
+            isMoving = horizontalInput > 0 || verticalInput > 0;
         }
 
         private float GetVeloctiy(Vector3 velocityHolder)

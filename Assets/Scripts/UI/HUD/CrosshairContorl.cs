@@ -42,32 +42,40 @@ namespace CSE5912.PolyGamers
 
         private void Update()
         {
-            bool isMoving = CharacterController.velocity.magnitude > 0;
+            bool isMoving = FPSControllerCC.Instance.isMoving;
+            Debug.Log(isMoving);
 
             crosshair.style.display = DisplayStyle.Flex;
+            if (weaponManager.isAiming)
+                crosshair.style.display = DisplayStyle.None;
 
-            if (weaponManager.CarriedWeapon.CurrentAmmo > 0)
+            if (weaponManager.CarriedWeapon.CurrentAmmo == 0)
+            {
+                currentSize = Mathf.Lerp(currentSize, OriginalSize, Time.deltaTime * speed);
+            }
+            else if (weaponManager.CarriedWeapon.CurrentAmmo > 0)
             {
                 // if player is moving without aiming or shooting, then crosshair become more bigger
-                if (isMoving && !weaponManager.isAiming && !weaponManager.isFiring)
+                if (isMoving && !weaponManager.isFiring)
                     currentSize = Mathf.Lerp(currentSize, MaxSize, Time.deltaTime * speed);
 
                 // if player is moving without aiming but shooting, then crosshair become bigger
-                else if (isMoving && !weaponManager.isAiming && !weaponManager.isFiring)
+                else if (isMoving && weaponManager.isFiring)
                     currentSize = Mathf.Lerp(currentSize, (MaxSize + FiringSize) / 2, Time.deltaTime * speed);
 
                 // if player is shooting without aiming, then crosshair become smaller
-                else if (weaponManager.isFiring && !weaponManager.isAiming)
-                    currentSize = Mathf.Lerp(currentSize, FiringSize, Time.deltaTime * speed);
+                else if (weaponManager.isFiring)
+                {
+                    if (weaponManager.CarriedWeapon.shootingType == Firearms.ShootingType.Continued)
+                        currentSize = Mathf.Lerp(currentSize, FiringSize, Time.deltaTime * speed);
+                    else
+                        currentSize = Mathf.Lerp(currentSize, FiringSize, 0.5f);
+                }
 
-                // if player is aiming, then crosshair become more smaller
-                else if (weaponManager.isAiming)
-                    crosshair.style.display = DisplayStyle.None;
+                else
+                    currentSize = Mathf.Lerp(currentSize, OriginalSize, Time.deltaTime * speed);
             }
 
-            // else, change to original size
-            else
-                currentSize = Mathf.Lerp(currentSize, OriginalSize, Time.deltaTime * speed);
             
             crosshair.style.width = currentSize;
             crosshair.style.height = currentSize;
