@@ -48,16 +48,19 @@ namespace CSE5912.PolyGamers
             Divine = 4,
         }
 
-        public void Initialize(AttachmentType type, AttachmentRarity rarity, AttachmentSet set, AttachmentBonus bonus, Sprite image, string citation)
+        public void Initialize(AttachmentType type, AttachmentRarity rarity, Sprite image, string citation)
         {
             attachmentType = type;
             this.rarity = rarity;
-            attachmentSet = set;
-            attachmentBonus = bonus;
             iconImage = image;
             this.citation = citation;
 
-            setSkill = PlayerSkillManager.Instance.GetSetSkill(set);
+            var values = System.Enum.GetValues(typeof(AttachmentSet));
+            attachmentSet = (AttachmentSet)Random.Range(0, values.Length);
+
+            attachmentBonus = new AttachmentBonus(this);
+
+            setSkill = PlayerSkillManager.Instance.GetSetSkill(attachmentSet);
         }
         public void AttachTo(Firearms weapon)
         {

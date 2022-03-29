@@ -211,7 +211,6 @@ namespace CSE5912.PolyGamers
 
                 var type = dropAttachmentTypes[Random.Range(0, dropAttachmentTypes.Length)];
                 var rarity = dropAttachmentRarities[Random.Range(0, dropAttachmentRarities.Length)];
-
                 DropoffManager.Instance.DropAttachment(type, rarity, transform.position);
             }
         }

@@ -576,15 +576,14 @@ namespace CSE5912.PolyGamers
 
             text.Q<Label>("Citation").text = attachment.Citation;
 
-            if (attachment.Rarity == Attachment.AttachmentRarity.Divine)
+            if (attachment.Rarity == Attachment.AttachmentRarity.Divine && attachment.Type != Attachment.AttachmentType.Rune)
             {
                 var setSkill = attachment.SetSkill;
 
                 set.Q<Label>("SetName").text = setSkill.Name;
 
                 var description = set.Q<Label>("Description");
-                //description.text = setSkill.GetSpecific();
-                Debug.Log("To-do");
+                description.text = setSkill.Description;
 
                 if (setSkill.Level > 0)
                 {
@@ -594,6 +593,10 @@ namespace CSE5912.PolyGamers
                 {
                     description.style.color = Color.white;
                 }
+            }
+            else
+            {
+                set.style.display = DisplayStyle.None;
             }
 
             var list = attachment.Bonus.GetBonusDescriptionList();

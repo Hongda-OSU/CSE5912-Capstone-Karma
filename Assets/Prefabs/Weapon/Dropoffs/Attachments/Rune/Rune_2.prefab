@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1973232118183577338}
   - component: {fileID: 7723061538969400814}
   m_Layer: 10
-  m_Name: Rune Red
+  m_Name: Rune_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1696176167392918}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
@@ -117,9 +117,8 @@ MonoBehaviour:
   outline: {fileID: 7723061538969400814}
   indicator: {fileID: 5718859055052913509}
   opacity: 0.3
-  iconImage: {fileID: 21300016, guid: cfb5b9a722516ae4586bad26c20d19a1, type: 3}
+  iconImage: {fileID: 21300000, guid: 33a6203d7c3a9244ba0e334f4fe0ac3a, type: 3}
   type: 3
-  set: 0
   citation: 
 --- !u!114 &7723061538969400814
 MonoBehaviour:

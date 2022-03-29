@@ -75,6 +75,9 @@ namespace CSE5912.PolyGamers
                 else
                     currentSize = Mathf.Lerp(currentSize, OriginalSize, Time.deltaTime * speed);
             }
+
+            crosshair.style.width = currentSize;
+            crosshair.style.height = currentSize;
         }
 
         public override void Display(bool enabled)

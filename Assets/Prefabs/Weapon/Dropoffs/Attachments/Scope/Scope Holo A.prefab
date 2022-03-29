@@ -203,7 +203,7 @@ MonoBehaviour:
   opacity: 0.3
   iconImage: {fileID: 21300036, guid: cfb5b9a722516ae4586bad26c20d19a1, type: 3}
   type: 1
-  set: 1
+  set: 0
   citation: "Starting from the ancient era of the \ndwarfs, strange tales had spreaded
     \non this land for hundred and hundred \nyears. It said that a mighty kingdom
     \nwould fall in the night that the moon \nlight disappear. The Mother of \nThousands

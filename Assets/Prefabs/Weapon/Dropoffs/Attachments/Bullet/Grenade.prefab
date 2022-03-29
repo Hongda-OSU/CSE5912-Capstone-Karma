@@ -120,7 +120,7 @@ MonoBehaviour:
   opacity: 0.3
   iconImage: {fileID: 21300024, guid: 04e6792f470c37741aa02ec74be1777b, type: 3}
   type: 0
-  set: 1
+  set: 0
   citation: "Those creatures were all shadows that had \nvoid floating in their veins.
     That was one \nreason why those fearsome assasins were \ncalled as the bloodless
     knights before the fell \nof the Felixia Dynasty. The other reason, as \nyou

@@ -118,7 +118,7 @@ MonoBehaviour:
   opacity: 0.3
   iconImage: {fileID: 21300018, guid: 04e6792f470c37741aa02ec74be1777b, type: 3}
   type: 2
-  set: 2
+  set: 0
   citation: "The unexpected popularity of the recent \nclassical super hero film,
     Sergeant 76, has \ndrawn massive attention in the society. \nWhile a lot of fans
     praise it to be the best \nsuper hero movie in the past 20 years, \nmany people
