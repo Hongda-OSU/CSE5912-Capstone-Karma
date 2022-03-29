@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5186a25dd4bb59544bc6dc16ba85bf57, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 16923a3edc220904b877f69ae08aca4f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -201,10 +201,9 @@ MonoBehaviour:
   outline: {fileID: 5997346900154765777}
   indicator: {fileID: 7927953489009502390}
   opacity: 0.3
-  set: 1
-  type: 1
-  rarity: 0
   iconImage: {fileID: 21300036, guid: cfb5b9a722516ae4586bad26c20d19a1, type: 3}
+  type: 1
+  set: 1
 --- !u!114 &5997346900154765777
 MonoBehaviour:
   m_ObjectHideFlags: 0

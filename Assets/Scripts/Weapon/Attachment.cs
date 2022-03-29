@@ -13,9 +13,9 @@ namespace CSE5912.PolyGamers
         [SerializeField] private AttachmentType attachmentType;
         [SerializeField] private AttachmentRarity rarity = AttachmentRarity.Common;
         [SerializeField] private AttachmentSet attachmentSet;
-
         private AttachmentBonus attachmentBonus;
         private PlayerSkill setSkill;
+        [SerializeField] private string attachmentRealName;
 
         // UI related
         [Header("UI related")]
@@ -80,8 +80,8 @@ namespace CSE5912.PolyGamers
         public AttachmentBonus Bonus { get { return attachmentBonus; } set { attachmentBonus = value; } }
         public PlayerSkill SetSkill { get { return setSkill; } set { setSkill = value; } }
         public Sprite IconImage { get { return iconImage; } set { iconImage = value; } }
-
         public string Citation { get { return "\"" + citation + "\""; } }
+        public string AttachmentRealName { get { return attachmentRealName; } set { attachmentRealName = value; } }
     }
 
 }

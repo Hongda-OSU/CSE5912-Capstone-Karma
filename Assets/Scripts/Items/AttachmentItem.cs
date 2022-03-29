@@ -19,9 +19,15 @@ namespace CSE5912.PolyGamers
         public void Setup(Attachment.AttachmentRarity rarity)
         {
             CurrentItemType = ItemType.Attachment;
-
+           
             GameObject obj = new GameObject();
             attachment = obj.AddComponent<Attachment>();
+            // set attachment real name
+            attachment.AttachmentRealName = this.gameObject.name.Replace("(Clone)", "");
+            attachment.Set = set;
+            attachment.Type = type;
+            attachment.Rarity = rarity;
+            attachment.IconImage = iconImage;
 
             bonus = new AttachmentBonus(attachment);
             attachment.SetSkill = PlayerSkillManager.Instance.GetSetSkill(set);
