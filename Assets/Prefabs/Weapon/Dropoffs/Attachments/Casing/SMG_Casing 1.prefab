@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1671728472992284
+--- !u!1 &1358023822058836
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,50 +8,50 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4078504651081978}
-  - component: {fileID: 33949446604971366}
-  - component: {fileID: 23236665427758348}
-  - component: {fileID: 5342505332272467479}
-  - component: {fileID: 1697463863646062658}
-  - component: {fileID: 6699346991721726290}
+  - component: {fileID: 4073111260013142}
+  - component: {fileID: 33717655042484802}
+  - component: {fileID: 23234819843376988}
+  - component: {fileID: 8860922996659324684}
+  - component: {fileID: 4916482397480518849}
+  - component: {fileID: 6999133787408769904}
   m_Layer: 10
-  m_Name: Assault_Rifle_Casing
+  m_Name: SMG_Casing 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4078504651081978
+--- !u!4 &4073111260013142
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1671728472992284}
+  m_GameObject: {fileID: 1358023822058836}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7499899861118786138}
+  - {fileID: 3479494797051230604}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &33949446604971366
+--- !u!33 &33717655042484802
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1671728472992284}
-  m_Mesh: {fileID: 4300000, guid: e6bc63738e5adcd45a0bb2b197a2d5c4, type: 3}
---- !u!23 &23236665427758348
+  m_GameObject: {fileID: 1358023822058836}
+  m_Mesh: {fileID: 4300000, guid: d75798717c9d08141b9cd63d3f498b9b, type: 3}
+--- !u!23 &23234819843376988
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1671728472992284}
+  m_GameObject: {fileID: 1358023822058836}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -87,50 +87,50 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5342505332272467479
+--- !u!65 &8860922996659324684
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1671728472992284}
+  m_GameObject: {fileID: 1358023822058836}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.1, y: 0.2, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1697463863646062658
+--- !u!114 &4916482397480518849
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1671728472992284}
+  m_GameObject: {fileID: 1358023822058836}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f331ea9f2051a59498176f6e64aee75d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentItemType: 1
-  outline: {fileID: 6699346991721726290}
-  indicator: {fileID: 6585081443551910170}
+  outline: {fileID: 6999133787408769904}
+  indicator: {fileID: 234100912767892172}
   opacity: 0.3
-  iconImage: {fileID: 21300022, guid: cfb5b9a722516ae4586bad26c20d19a1, type: 3}
+  iconImage: {fileID: 21300018, guid: 04e6792f470c37741aa02ec74be1777b, type: 3}
   type: 2
-  set: 3
-  citation: "I understand your doubts about what \nyou saw, since the creed we hold
-    prohibits \nus from questioning the absolute objectivity \nof time. But the important
-    part is, when we \nare travelling at a different time compares \nto the world
-    around us, we can see the \nuniverse around us at a new level of detail \nand
-    objectivity."
---- !u!114 &6699346991721726290
+  set: 4
+  citation: "The unexpected popularity of the recent \nclassical super hero film,
+    Sergeant 76, has \ndrawn massive attention in the society. \nWhile a lot of fans
+    praise it to be the best \nsuper hero movie in the past 20 years, \nmany people
+    have the concern that \nintelligent weapons might not be \nappropriate to appear
+    on the screen, due \nto how dangerous and accessible they are."
+--- !u!114 &6999133787408769904
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1671728472992284}
+  m_GameObject: {fileID: 1358023822058836}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
@@ -142,12 +142,12 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!1001 &3015657796610390323
+--- !u!1001 &8179836463973341925
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 4078504651081978}
+    m_TransformParent: {fileID: 4073111260013142}
     m_Modifications:
     - target: {fileID: 532338285268525001, guid: 3d14a5bd8be1f3b48a11039f3fb678b9, type: 3}
       propertyPath: m_Name
@@ -211,13 +211,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d14a5bd8be1f3b48a11039f3fb678b9, type: 3}
---- !u!120 &6585081443551910170 stripped
+--- !u!120 &234100912767892172 stripped
 LineRenderer:
   m_CorrespondingSourceObject: {fileID: 8267250361072672809, guid: 3d14a5bd8be1f3b48a11039f3fb678b9, type: 3}
-  m_PrefabInstance: {fileID: 3015657796610390323}
+  m_PrefabInstance: {fileID: 8179836463973341925}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &7499899861118786138 stripped
+--- !u!4 &3479494797051230604 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4741511926878954345, guid: 3d14a5bd8be1f3b48a11039f3fb678b9, type: 3}
-  m_PrefabInstance: {fileID: 3015657796610390323}
+  m_PrefabInstance: {fileID: 8179836463973341925}
   m_PrefabAsset: {fileID: 0}

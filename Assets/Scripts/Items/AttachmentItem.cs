@@ -8,6 +8,7 @@ namespace CSE5912.PolyGamers
     {
         [SerializeField] private Sprite iconImage;
         [SerializeField] private Attachment.AttachmentType type;
+        [SerializeField] private Attachment.AttachmentSet set;
 
         [TextArea(5, 10)]
         [SerializeField] private string citation;
@@ -34,7 +35,7 @@ namespace CSE5912.PolyGamers
 
             attachment.gameObject.name = attachment.AttachmentName;
 
-            attachment.Initialize(type, rarity, iconImage, citation);
+            attachment.Initialize(type, rarity, set, iconImage, citation);
 
             SetupVfx(WeaponsPanelControl.Instance.AttachmentRarityToColor[rarity]);
         }

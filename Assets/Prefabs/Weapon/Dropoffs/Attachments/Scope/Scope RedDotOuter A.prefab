@@ -119,7 +119,7 @@ MonoBehaviour:
   opacity: 0.3
   iconImage: {fileID: 21300034, guid: 04e6792f470c37741aa02ec74be1777b, type: 3}
   type: 1
-  set: 0
+  set: 2
   citation: "Technically speaking, intellegent \nweapons do not actually need any
     scope,\nsince aiming is always not required \nby those automatically tracking
     bullets. \nThe scope was often used for giving  \nsupplemental optical adjustments

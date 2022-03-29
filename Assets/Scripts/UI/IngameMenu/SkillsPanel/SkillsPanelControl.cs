@@ -138,7 +138,6 @@ namespace CSE5912.PolyGamers
             else if (selectedSkillSlot != slot)
             {
                 PopUpSpecific(skill);
-                Debug.Log("To-do");
             }
         }
 

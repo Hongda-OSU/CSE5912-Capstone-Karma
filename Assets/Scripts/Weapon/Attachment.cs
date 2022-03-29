@@ -48,15 +48,13 @@ namespace CSE5912.PolyGamers
             Divine = 4,
         }
 
-        public void Initialize(AttachmentType type, AttachmentRarity rarity, Sprite image, string citation)
+        public void Initialize(AttachmentType type, AttachmentRarity rarity, AttachmentSet set, Sprite image, string citation)
         {
             attachmentType = type;
             this.rarity = rarity;
+            attachmentSet = set;
             iconImage = image;
             this.citation = citation;
-
-            var values = System.Enum.GetValues(typeof(AttachmentSet));
-            attachmentSet = (AttachmentSet)Random.Range(0, values.Length);
 
             attachmentBonus = new AttachmentBonus(this);
 
