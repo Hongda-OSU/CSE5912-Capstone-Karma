@@ -120,6 +120,10 @@ MonoBehaviour:
   iconImage: {fileID: 21300030, guid: 04e6792f470c37741aa02ec74be1777b, type: 3}
   type: 1
   set: 0
+  citation: "I remember what Master taught us, \nand I agree with it. We must be
+    aware \nof our ignorance, standing under the \ngrandeur galactic dome, for our
+    eyes \nare yet to open. That is exactly why \nI am exploring with these prohibited
+    \ntechniques: they might be the last hope \nfor opening our eyes."
 --- !u!114 &3484439512392026361
 MonoBehaviour:
   m_ObjectHideFlags: 0
