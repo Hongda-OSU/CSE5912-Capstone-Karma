@@ -267,10 +267,18 @@ namespace CSE5912.PolyGamers
         {
             // disable current carried weapon if exist
             if (carriedWeapon)
+            {
+                carriedWeapon.isAiming = false;
+                carriedWeapon.IsHoldingTrigger = false;
+                carriedWeapon.isReloading = false;
                 carriedWeapon.gameObject.SetActive(false);
+            }
             // swap to target weapon and set up gun animator
             carriedWeapon = targetWeapon;
             carriedWeapon.gameObject.SetActive(true);
+            carriedWeapon.isAiming = false;
+            carriedWeapon.IsHoldingTrigger = false;
+            carriedWeapon.isReloading = false;
             // set up the correct gun animator
             fpsController.SetupAnimator(carriedWeapon.GunAnimator);
         }
