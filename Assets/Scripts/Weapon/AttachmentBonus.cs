@@ -315,7 +315,7 @@ namespace CSE5912.PolyGamers
 
                 description = 
                     "All damages +" + damage * 100 + "%" +
-                    "All resists -" + resist;
+                    "\nAll resists -" + resist;
 
                 if (enabled)
                 {
@@ -357,7 +357,7 @@ namespace CSE5912.PolyGamers
 
                 description =
                     "Speed +" + speed * 100 + "%" +
-                    "All damages -" + damage * 100 + "%";
+                    "\nAll damages -" + damage * 100 + "%";
 
                 if (enabled)
                 {
@@ -392,7 +392,7 @@ namespace CSE5912.PolyGamers
 
                 description =
                     "Crit chance +" + chance * 100 + "%" + 
-                    "Crit damage -" + damage * 100 + "%";
+                    "\nCrit damage -" + damage * 100 + "%";
 
                 if (enabled)
                 {

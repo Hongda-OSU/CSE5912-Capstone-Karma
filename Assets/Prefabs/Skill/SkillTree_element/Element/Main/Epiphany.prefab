@@ -44,6 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b93f7de8e366f334bb88b5953e95234a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cooldown: 120
+  timeSincePerformed: 0
+  isReady: 0
   skillName: Epiphany
   requiredSkill: {fileID: 0}
   isLearned: 0
@@ -51,9 +54,12 @@ MonoBehaviour:
   maxLevel: 1
   learnCost: 1
   levelupCost: 1
-  cooldown: 120
+  icon: {fileID: 0}
   type: 0
+  description: 
   vfxPrefab: {fileID: 127026, guid: 931562e98536d3b4c8b7fd8e45821875, type: 3}
   duration: 15
   damageUp: 0.25
   chanceUp: 0.25
+  buffVfxPrefab: {fileID: 1747586400421602, guid: a1278b1a78ae94a4f876463c071ba0d2, type: 3}
+  buffPositionPath: Armature/arm_L/lower_arm_L/hand_L/finger_01_L/finger_02_L

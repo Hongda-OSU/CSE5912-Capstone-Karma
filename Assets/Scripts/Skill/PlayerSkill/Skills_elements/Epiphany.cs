@@ -16,7 +16,12 @@ namespace CSE5912.PolyGamers
         [SerializeField] private float damageUp = 0.25f;
         [SerializeField] private float chanceUp = 0.25f;
 
+        [SerializeField] private GameObject buffVfxPrefab;
+        [SerializeField] private string buffPositionPath;
+
         private InputAction action;
+
+        private Firearms buffedWeapon;
 
         private void Start()
         {
@@ -36,17 +41,33 @@ namespace CSE5912.PolyGamers
 
             isReady = false;
 
+            buffedWeapon = WeaponManager.Instance.CarriedWeapon;
+
             GameObject vfx = Instantiate(vfxPrefab, PlayerManager.Instance.Player.transform);
             Destroy(vfx, 5f);
 
             BuffPlayer(true);
+            GameObject buffVfx = Instantiate(buffVfxPrefab, WeaponManager.Instance.CarriedWeapon.transform.Find(buffPositionPath), false);
 
-            yield return new WaitForSeconds(duration);
+            float timeSince = 0f;
+            while (timeSince < duration)
+            {
+                timeSince += Time.deltaTime;
+                yield return new WaitForSeconds(Time.deltaTime);
+
+                if (WeaponManager.Instance.CarriedWeapon != buffedWeapon)
+                {
+                    timeSince = duration;
+                }
+            }
+            buffedWeapon = null;
 
             BuffPlayer(false);
+            Destroy(buffVfx);
 
             StartCoolingdown();
         }
+
 
         private void BuffPlayer(bool enabled)
         {
