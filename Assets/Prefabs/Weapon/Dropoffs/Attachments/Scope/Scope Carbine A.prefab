@@ -117,9 +117,9 @@ MonoBehaviour:
   outline: {fileID: 3484439512392026361}
   indicator: {fileID: 5483521657120820121}
   opacity: 0.3
-  type: 1
-  rarity: 0
   iconImage: {fileID: 21300030, guid: 04e6792f470c37741aa02ec74be1777b, type: 3}
+  type: 1
+  set: 0
 --- !u!114 &3484439512392026361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,7 +164,7 @@ Transform:
   m_GameObject: {fileID: 1676417016644015382}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.005, y: 0.005, z: 0.005}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3987669300611822146}
@@ -211,7 +211,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ad28c66c9c982644f982fbfcce59bb94, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 111b5a2a2d3fefe4c956ba24fbb03ec3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -150,12 +150,11 @@ namespace CSE5912.PolyGamers
         {
             // 1. switch to main weapon by pressing Alpha1
             // 2. Cannot switch to itself or main weapon is not exist
-            // 3. Cannot switch weapon when aiming or shooting
+            // 3. Cannot switch weapon when aiming
             if (inputSchemes.FPSActions.SwitchToMainWeapon.triggered 
                 && carriedWeapon != MainWeapon
                 && MainWeapon != null
-                && !carriedWeapon.isAiming
-                && !carriedWeapon.IsHoldingTrigger)
+                && !carriedWeapon.isAiming)
             {
                 ResetTriggers();
                 // active main weapon and set up the corresponding gun animator for fps controller
@@ -168,10 +167,9 @@ namespace CSE5912.PolyGamers
             }
             // 1. switch to secondary weapon by pressing Alpha2
             else if (inputSchemes.FPSActions.SwitchToSecondaryWeapon.triggered
-                     && carriedWeapon != SecondaryWeapon 
-                     && !carriedWeapon.isAiming 
-                     && SecondaryWeapon != null &&
-                     !carriedWeapon.IsHoldingTrigger)
+                     && carriedWeapon != SecondaryWeapon
+                     && SecondaryWeapon != null
+                     && !carriedWeapon.isAiming)
             {
                 ResetTriggers();
                 carriedWeapon.gameObject.SetActive(false);
@@ -197,6 +195,8 @@ namespace CSE5912.PolyGamers
 
                 ItemPeekControl.Instance.PeekItem(item);
 
+                TipsControl.Instance.PopUpTip("T", "Pick up");
+
                 // player pick up weapon by pressing E
                 if (inputSchemes.PlayerActions.Interact.triggered)
                 {
@@ -211,6 +211,7 @@ namespace CSE5912.PolyGamers
             else
             {
                 ItemPeekControl.Instance.Clear();
+                TipsControl.Instance.PopOffTip();
             }
         }
 
@@ -255,10 +256,11 @@ namespace CSE5912.PolyGamers
             PlayerInventory.Instance.RemoveWeapon(weapon);
         }
 
-        // allow weapon switching during reloading
+        // allow weapon switching during reloading or shooting
         private void ResetTriggers()
         {
             carriedWeapon.isReloading = false;
+            carriedWeapon.IsHoldingTrigger = false;
         }
 
         public void SetupCarriedWeapon(Firearms targetWeapon)

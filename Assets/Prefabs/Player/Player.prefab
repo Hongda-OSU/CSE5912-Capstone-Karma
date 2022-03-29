@@ -81,8 +81,11 @@ MonoBehaviour:
   timeSinceDamaged: 0
   timeToRestore: 5
   restoreSpeed: 10
+  elementalDamageReduction: 0.75
   shield_armor: 0
   maxShield_armor: 20
+  physicalDamageReduction: 0.5
+  resistBonus: 0.1
 --- !u!114 &3914003179883955252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,6 +103,7 @@ MonoBehaviour:
   experience: 0
   experienceToUpgrade: 668
   experienceMultiplier: 1
+  isAlive: 1
   health: 25
   maxHealth: 100
   shield: {fileID: 0}
@@ -860,22 +864,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4174719190247411942, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
   m_PrefabInstance: {fileID: 3914003181359763965}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3914003179978266601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1134557306127024411}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be183a6264cb268428ee515422128efb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Grenade: {fileID: 1081414821777434, guid: c86913b04e96fb44a80fa2f68646fcda, type: 3}
-  grenadeCount: 3
-  grenadeGenerationPoint: {fileID: 0}
-  throwFroce: 15
 --- !u!20 &1152709272731825391 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 4156378107618010386, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}

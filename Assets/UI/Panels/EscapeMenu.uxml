@@ -5,7 +5,6 @@
             <ui:GroupBox name="Buttons" style="justify-content: space-around; height: 362px; width: 326px; top: auto;">
                 <ui:Button text="Audio" display-tooltip-when-elided="true" name="Audio" focusable="false" class="Button" />
                 <ui:Button text="Keybindings" display-tooltip-when-elided="true" name="Keybindings" focusable="false" class="Button" />
-                <ui:Button text="Credits" display-tooltip-when-elided="true" name="Credits" focusable="false" class="Button" />
                 <ui:Button text="Exit Game" display-tooltip-when-elided="true" name="Exit" focusable="false" class="Button" />
             </ui:GroupBox>
         </ui:VisualElement>

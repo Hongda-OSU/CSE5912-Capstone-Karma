@@ -153,6 +153,7 @@ MonoBehaviour:
   levelupCost: 0
   icon: {fileID: 21300000, guid: 9249fb82a2e46ca4f8e065ef50130acf, type: 3}
   type: 3
+  description: 
   triggerHealthPercentage: 0.3
   duration: 8
   slowTimeScale: 0.2
@@ -317,6 +318,7 @@ MonoBehaviour:
   levelupCost: 0
   icon: {fileID: 0}
   type: 3
+  description: 
   speed: 30
   acceleration: 1
   distance: 100
@@ -473,6 +475,7 @@ MonoBehaviour:
   levelupCost: 0
   icon: {fileID: 21300000, guid: bbb37c0803f923841a32db8b15e60c04, type: 3}
   type: 3
+  description: 
   distance: 10
   speed: 50
   baseDamage: 50
@@ -661,6 +664,7 @@ MonoBehaviour:
   levelupCost: 0
   icon: {fileID: 0}
   type: 3
+  description: 
   blackHolePrefab: {fileID: 1236643204216662, guid: 2697853bd9f90e44cab6eef818c68daa, type: 3}
   pullSpeed: 5
   radius: 6
@@ -765,6 +769,7 @@ MonoBehaviour:
   levelupCost: 0
   icon: {fileID: 0}
   type: 0
+  description: 
   baseDamage: 10
   elementType: 0
   extraSpeed: 0
@@ -936,6 +941,7 @@ MonoBehaviour:
   levelupCost: 0
   icon: {fileID: 0}
   type: 3
+  description: 
   blackSoulPointPrefab: {fileID: 668452988796817149, guid: 906d5ffc57c66e844b633e5e3651b8aa, type: 3}
   statUp: 20
   duration: 30
@@ -1144,6 +1150,18 @@ PrefabInstance:
       propertyPath: CharacterController
       value: 
       objectReference: {fileID: 6147906741550309920}
+    - target: {fileID: 4078243330117800146, guid: 6403c749e9886f94198a7863d0d6a642, type: 3}
+      propertyPath: xOffset
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4078243330117800146, guid: 6403c749e9886f94198a7863d0d6a642, type: 3}
+      propertyPath: yOffset
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4078243330117800146, guid: 6403c749e9886f94198a7863d0d6a642, type: 3}
+      propertyPath: peekScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4078243330561650204, guid: 6403c749e9886f94198a7863d0d6a642, type: 3}
       propertyPath: m_Name
       value: UI
@@ -1219,6 +1237,21 @@ MonoBehaviour:
   fadingTime: 0.15
   mainSkillIconSize: 100
   setSkillIconSize: 66
+--- !u!114 &724161351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7158231521263336691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06f4db7035e8d3843baba55101452cd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiDocument: {fileID: 7158231522919328438}
+  fadingTime: 0.01
+  isDisplayed: 0
 --- !u!4 &7158231521753236019 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4078243330561650207, guid: 6403c749e9886f94198a7863d0d6a642, type: 3}
@@ -1421,6 +1454,10 @@ PrefabInstance:
     - target: {fileID: 3914003179971651613, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3914003179978266601, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3914003180910380901, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
       propertyPath: attachmentSetSkills
@@ -1814,6 +1851,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -47.102562
       objectReference: {fileID: 0}
+    - target: {fileID: 4716139705190349433, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: description
+      value: asdasdasdasdas
+      objectReference: {fileID: 0}
     - target: {fileID: 6438540912941185749, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1821,6 +1862,7 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 6725730049476075925, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
     - {fileID: 473044049593638664, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+    - {fileID: 3914003179978266601, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
 --- !u!1 &6085753847091595438 stripped
 GameObject:

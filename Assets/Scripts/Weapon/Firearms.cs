@@ -51,6 +51,7 @@ namespace CSE5912.PolyGamers
         public ParticleSystem MuzzleParticle;
         public ParticleSystem CastingParticle;
         public GameObject ImpactPrefab;
+        [SerializeField] private GameObject ironSights;
         private GameObject arms;
 
 
@@ -133,8 +134,9 @@ namespace CSE5912.PolyGamers
         //    public Vector3 GunCameraPosition;
         //}
         public bool wasBulletFiredThisFrame = false;
-
-
+        // scope attached
+        internal bool isAttached;
+        private Attachment currentAttachment;
         private Bullet prevBullet;
 
         protected virtual void Awake()
@@ -296,6 +298,159 @@ namespace CSE5912.PolyGamers
                         ref tmp_RefGunCameraFOV,
                         Time.unscaledDeltaTime * 2);
 
+                if (isAttached)
+                {
+                    Vector3 tmp_RefGunCameraPosition = Vector3.zero;
+                    Vector3 aimingTo = Vector3.zero;
+                    switch (weaponType)
+                    {
+                        case WeaponType.AK47:
+                            if (currentAttachment.AttachmentRealName == "Scope Carbine A")
+                                aimingTo = new Vector3(0, -0.2f, 0.0255f);
+                            else if (currentAttachment.AttachmentRealName == "Scope Holo A")
+                                aimingTo = new Vector3(0, -0.2f, 0.0285f);
+                            else if (currentAttachment.AttachmentRealName == "Scope RedDotOuter A")
+                                aimingTo = new Vector3(0, -0.2f, 0.035f);
+                            GunCamera.transform.localPosition = Vector3.SmoothDamp(GunCamera.transform.localPosition,
+                                isAiming ? aimingTo : GunCameraLocalOriginalPosition,
+                                ref tmp_RefGunCameraPosition,
+                                Time.unscaledDeltaTime * 2);
+                            break;
+                        case WeaponType.M16:
+                            if (currentAttachment.AttachmentRealName == "Scope Carbine A")
+                                aimingTo = new Vector3(0, -0.02f, -0.01f);
+                            else if (currentAttachment.AttachmentRealName == "Scope Holo A")
+                                aimingTo = new Vector3(0, -0.02f, -0.005f);
+                            else if (currentAttachment.AttachmentRealName == "Scope RedDotOuter A")
+                                aimingTo = new Vector3(0, -0.02f, 0.01f);
+                            GunCamera.transform.localPosition = Vector3.SmoothDamp(GunCamera.transform.localPosition,
+                                isAiming ? aimingTo : GunCameraLocalOriginalPosition,
+                                ref tmp_RefGunCameraPosition,
+                                Time.unscaledDeltaTime * 2);
+                            break;
+                        case WeaponType.SCAR:
+                            if (currentAttachment.AttachmentRealName == "Scope Carbine A")
+                                aimingTo = new Vector3(0, -0.02f, -0.01f);
+                            else if (currentAttachment.AttachmentRealName == "Scope Holo A")
+                                aimingTo = new Vector3(0, -0.02f, -0.005f);
+                            else if (currentAttachment.AttachmentRealName == "Scope RedDotOuter A")
+                                aimingTo = new Vector3(0, -0.02f, 0.005f);
+                            GunCamera.transform.localPosition = Vector3.SmoothDamp(GunCamera.transform.localPosition,
+                                isAiming ? aimingTo : GunCameraLocalOriginalPosition,
+                                ref tmp_RefGunCameraPosition,
+                                Time.unscaledDeltaTime * 2);
+                            break;
+                        case WeaponType.Glock18:
+                            if (currentAttachment.AttachmentRealName == "Scope Carbine A")
+                                aimingTo = new Vector3(0, -0.2f, 0.018f);
+                            else if (currentAttachment.AttachmentRealName == "Scope Holo A")
+                                aimingTo = new Vector3(0, -0.2f, 0.02f);
+                            else if (currentAttachment.AttachmentRealName == "Scope RedDotOuter A")
+                                aimingTo = new Vector3(0, -0.2f, 0.025f);
+                            GunCamera.transform.localPosition = Vector3.SmoothDamp(GunCamera.transform.localPosition,
+                                isAiming ? aimingTo : GunCameraLocalOriginalPosition,
+                                ref tmp_RefGunCameraPosition,
+                                Time.unscaledDeltaTime * 2);
+                            break;
+                        case WeaponType.BERETTA:
+                            if (currentAttachment.AttachmentRealName == "Scope Carbine A")
+                                aimingTo = new Vector3(0, -0.25f, 0.008f);
+                            else if (currentAttachment.AttachmentRealName == "Scope Holo A")
+                                aimingTo = new Vector3(0, -0.25f, 0.01f);
+                            else if (currentAttachment.AttachmentRealName == "Scope RedDotOuter A")
+                                aimingTo = new Vector3(0, -0.25f, 0.018f);
+                            GunCamera.transform.localPosition = Vector3.SmoothDamp(GunCamera.transform.localPosition,
+                                isAiming ? aimingTo : GunCameraLocalOriginalPosition,
+                                ref tmp_RefGunCameraPosition,
+                                Time.unscaledDeltaTime * 2);
+                            break;
+                        case WeaponType.P85:
+                            if (currentAttachment.AttachmentRealName == "Scope Carbine A")
+                                aimingTo = new Vector3(0, -0.25f, 0.008f);
+                            else if (currentAttachment.AttachmentRealName == "Scope Holo A")
+                                aimingTo = new Vector3(0, -0.25f, 0.015f);
+                            else if (currentAttachment.AttachmentRealName == "Scope RedDotOuter A")
+                                aimingTo = new Vector3(0, -0.25f, 0.018f);
+                            GunCamera.transform.localPosition = Vector3.SmoothDamp(GunCamera.transform.localPosition,
+                                isAiming ? aimingTo : GunCameraLocalOriginalPosition,
+                                ref tmp_RefGunCameraPosition,
+                                Time.unscaledDeltaTime * 2);
+                            break;
+                        case WeaponType.HKP7:
+                            if (currentAttachment.AttachmentRealName == "Scope Carbine A")
+                                aimingTo = new Vector3(0, -0.25f, 0.008f);
+                            else if (currentAttachment.AttachmentRealName == "Scope Holo A")
+                                aimingTo = new Vector3(0, -0.25f, 0.015f);
+                            else if (currentAttachment.AttachmentRealName == "Scope RedDotOuter A")
+                                aimingTo = new Vector3(0, -0.25f, 0.018f);
+                            GunCamera.transform.localPosition = Vector3.SmoothDamp(GunCamera.transform.localPosition,
+                                isAiming ? aimingTo : GunCameraLocalOriginalPosition,
+                                ref tmp_RefGunCameraPosition,
+                                Time.unscaledDeltaTime * 2);
+                            break;
+                        case WeaponType.MP7:
+                            if (currentAttachment.AttachmentRealName == "Scope RedDotOuter A")
+                                aimingTo = new Vector3(0, -0.02f, 0.03f);
+                            else
+                                aimingTo = new Vector3(0, -0.02f, 0.015f);
+                            GunCamera.transform.localPosition = Vector3.SmoothDamp(GunCamera.transform.localPosition,
+                                isAiming ? aimingTo : GunCameraLocalOriginalPosition,
+                                ref tmp_RefGunCameraPosition,
+                                Time.unscaledDeltaTime * 2);
+                            break;
+                        case WeaponType.VZ61:
+                            if (currentAttachment.AttachmentRealName == "Scope RedDotOuter A")
+                                aimingTo = new Vector3(0, -0.02f, 0.03f);
+                            else
+                                aimingTo = new Vector3(0, -0.015f, 0.015f);
+                            GunCamera.transform.localPosition = Vector3.SmoothDamp(GunCamera.transform.localPosition,
+                                isAiming ? aimingTo : GunCameraLocalOriginalPosition,
+                                ref tmp_RefGunCameraPosition,
+                                Time.unscaledDeltaTime * 2);
+                            break;
+                        case WeaponType.UZI:
+                            if (currentAttachment.AttachmentRealName == "Scope RedDotOuter A")
+                                aimingTo = new Vector3(0, -0.2f, 0.035f);
+                            else
+                                aimingTo = new Vector3(0, -0.2f, 0.02f);
+                            GunCamera.transform.localPosition = Vector3.SmoothDamp(GunCamera.transform.localPosition,
+                                isAiming ? aimingTo : GunCameraLocalOriginalPosition,
+                                ref tmp_RefGunCameraPosition,
+                                Time.unscaledDeltaTime * 2);
+                            break;
+                        case WeaponType.P90:
+                            if (currentAttachment.AttachmentRealName == "Scope RedDotOuter A")
+                                aimingTo = new Vector3(0, -0.2f, 0.058f);
+                            else
+                                aimingTo = new Vector3(0, -0.2f, 0.042f);
+                            GunCamera.transform.localPosition = Vector3.SmoothDamp(GunCamera.transform.localPosition,
+                                isAiming ? aimingTo : GunCameraLocalOriginalPosition,
+                                ref tmp_RefGunCameraPosition,
+                                Time.unscaledDeltaTime * 2);
+                            break;
+                        case WeaponType.MP5:
+                            if (currentAttachment.AttachmentRealName == "Scope RedDotOuter A")
+                                aimingTo = new Vector3(0, -0.02f, 0.03f);
+                            else
+                                aimingTo = new Vector3(0, -0.015f, 0.015f);
+                            GunCamera.transform.localPosition = Vector3.SmoothDamp(GunCamera.transform.localPosition,
+                                isAiming ? aimingTo : GunCameraLocalOriginalPosition,
+                                ref tmp_RefGunCameraPosition,
+                                Time.unscaledDeltaTime * 2);
+                            break;
+                        case WeaponType.ShotGun:
+                            if (currentAttachment.AttachmentRealName == "Scope RedDotOuter A")
+                                aimingTo = new Vector3(0, -0.02f, 0.03f);
+                            else
+                                aimingTo = new Vector3(0, -0.015f, 0.02f);
+                            GunCamera.transform.localPosition = Vector3.SmoothDamp(GunCamera.transform.localPosition,
+                                isAiming ? aimingTo : GunCameraLocalOriginalPosition,
+                                ref tmp_RefGunCameraPosition,
+                                Time.unscaledDeltaTime * 2);
+                            break;
+                    }
+                }
+
                 //TODO: check attachment, if true, smooth transit gun camera position to (0,-0.2f,0.03f)
                 //if (isAttached)
                 //{
@@ -305,13 +460,6 @@ namespace CSE5912.PolyGamers
                 //    //    ref tmp_GunCurrentFOV,
                 //    //    Time.deltaTime * 2);
 
-                //    // smooth transit to aiming pos
-                //    Vector3 tmp_RefGunCameraPosition = Vector3.zero;
-                //    GunCamera.transform.localPosition = Vector3.SmoothDamp(GunCamera.transform.localPosition,
-                //        isAiming ? scopeInfo.GunCameraPosition : GunCameraLocalOriginalPosition,
-                //        ref tmp_RefGunCameraPosition,
-                //        Time.deltaTime * 2);
-                //}
             }
         }
 
@@ -336,12 +484,16 @@ namespace CSE5912.PolyGamers
         internal void StartAiming()
         {
             isAiming = true;
+            if(isAttached && weaponType != WeaponType.M16 && weaponType != WeaponType.SCAR && weaponType != WeaponType.P85 && weaponType != WeaponType.UZI)
+                this.ironSights.SetActive(false);
             Aiming();
         }
 
         internal void StopAiming()
         {
             isAiming = false;
+            if (isAttached && weaponType != WeaponType.M16 && weaponType != WeaponType.SCAR && weaponType != WeaponType.P85 && weaponType != WeaponType.UZI)
+                this.ironSights.SetActive(true);
             Aiming();
         }
 
@@ -378,6 +530,15 @@ namespace CSE5912.PolyGamers
 
             attachments[index] = attachment;
             attachment.AttachTo(this);
+
+            if (attachment.Type == Attachment.AttachmentType.Scope)
+            {
+                this.gameObject.transform.Find("Armature/weapon/" + attachment.AttachmentRealName).gameObject.SetActive(true);
+                if (this.weaponType is WeaponType.M16 || this.weaponType is WeaponType.SCAR || this.weaponType is WeaponType.P85 || this.weaponType is WeaponType.UZI)
+                    ironSights.SetActive(false);
+                isAttached = true;
+                currentAttachment = attachment;
+            }
         }
 
         public void RemoveAttachment(Attachment target)
@@ -389,16 +550,15 @@ namespace CSE5912.PolyGamers
             {
                 if (attachments[i] == target)
                 {
+                    isAttached = false;
+                    this.gameObject.transform.Find("Armature/weapon/" + attachments[i].AttachmentRealName).gameObject.SetActive(false);
+                    if (this.weaponType is WeaponType.M16 || this.weaponType is WeaponType.SCAR || this.weaponType is WeaponType.P85 || this.weaponType is WeaponType.UZI)
+                        ironSights.SetActive(true);
                     attachments[i] = null;
                     target.AttachTo(null);
                 }
             }
         }
-
-        //protected virtual void CreateBullet()
-        //{
-
-        //}
 
         public string WeaponName { get { return weaponName; } set { weaponName = value; } }
         public WeaponType Type { get { return weaponType; } } 

@@ -18,7 +18,6 @@ namespace CSE5912.PolyGamers
 
         private Button audioButton;
         private Button KeybindingsButton;
-        private Button creditsButton;
         //private Button resolutionButton;
         //private Button languageButton;
         private Button exitButton;
@@ -40,6 +39,8 @@ namespace CSE5912.PolyGamers
             audioPanel = root.Q<VisualElement>("AudioPanel");
 
             root.style.display = DisplayStyle.None;
+
+            ResetPanel();
         }
 
         private void Start()
@@ -52,12 +53,17 @@ namespace CSE5912.PolyGamers
             KeybindingsButton = root.Q<Button>("Keybindings");
             KeybindingsButton.clicked += KeybindingsButtonPressed;
 
-            creditsButton = root.Q<Button>("Credits");
-            creditsButton.clicked += CreditsButtonPressed;
-
             exitButton = root.Q<Button>("Exit");
             exitButton.clicked += ExitButtonPressed;
 
+        }
+
+        private void ResetPanel()
+        {
+            optionsPanel.style.display = DisplayStyle.Flex;
+            optionsPanel.style.opacity = 1f;
+
+            audioPanel.style.display = DisplayStyle.None;
         }
 
         public IEnumerator DisplayMenu(bool enabled)
@@ -69,6 +75,7 @@ namespace CSE5912.PolyGamers
             if (!enabled)
             {
                 yield return StartCoroutine(FadeOut(root));
+                ResetPanel();
             }
             else
             {
@@ -88,11 +95,6 @@ namespace CSE5912.PolyGamers
         private void KeybindingsButtonPressed()
         {
             // todo - load keybindings ui screen
-        }
-
-        private void CreditsButtonPressed()
-        {
-            // todo - load credits screen
         }
 
         // go back to previous UI

@@ -10,27 +10,38 @@ namespace CSE5912.PolyGamers
         [SerializeField] private Attachment.AttachmentType type;
         [SerializeField] private Attachment.AttachmentSet set;
 
+        [TextArea(5, 10)]
+        [SerializeField] private string citation;
+
         private Attachment attachment;
         private AttachmentBonus bonus;
 
         public void Setup(Attachment.AttachmentRarity rarity)
         {
             CurrentItemType = ItemType.Attachment;
-
+           
             GameObject obj = new GameObject();
             attachment = obj.AddComponent<Attachment>();
-
+            // set attachment real name
+            attachment.AttachmentRealName = this.gameObject.name.Replace("(Clone)", "");
             attachment.Set = set;
             attachment.Type = type;
             attachment.Rarity = rarity;
             attachment.IconImage = iconImage;
 
             bonus = new AttachmentBonus(attachment);
-            attachment.Bonus = bonus;
-
             attachment.SetSkill = PlayerSkillManager.Instance.GetSetSkill(set);
 
+            //attachment.Set = set;
+            //attachment.Type = type;
+            //attachment.Rarity = rarity;
+            //attachment.IconImage = iconImage;
+            //attachment.Bonus = bonus;
+
+
             attachment.gameObject.name = attachment.AttachmentName;
+
+            attachment.Initialize(Type, rarity, set, bonus, iconImage, citation);
 
             SetupVfx(WeaponsPanelControl.Instance.AttachmentRarityToColor[rarity]);
         }

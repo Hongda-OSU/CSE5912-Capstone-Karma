@@ -20,10 +20,11 @@ namespace CSE5912.PolyGamers
 
         [SerializeField] protected Sprite icon;
 
-        protected string description;
-
-
         [SerializeField] protected SkillType type;
+
+        [TextArea(5, 10)]
+        [SerializeField] protected string description;
+
         public enum SkillType
         {
             Passive,
@@ -76,6 +77,6 @@ namespace CSE5912.PolyGamers
         public int Level { get { return level; } }
         public SkillType Type { get { return type; } }
         public Sprite Icon { get { return icon; } }
-
+        public string Description { get { return description; } }
     }
 }
