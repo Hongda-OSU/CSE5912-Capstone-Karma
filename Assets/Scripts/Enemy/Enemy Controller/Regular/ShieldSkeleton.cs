@@ -47,13 +47,22 @@ namespace CSE5912.PolyGamers
                     animator.SetBool("InAttackRange", false);
                 }
 
-                if (!(animator.GetCurrentAnimatorStateInfo(0).IsName("Sword-Attack-R5") ||
-                    animator.GetCurrentAnimatorStateInfo(0).IsName("Sword-Attack-R2") ||
-                    animator.GetCurrentAnimatorStateInfo(0).IsName("Shield-Attack1") ||
-                    animator.GetCurrentAnimatorStateInfo(0).IsName("Sword-Attack-R7")))
-                {
-                    isAttacking = false;
-                }
+                if (enemyName != "Shield Skeleton Spear")
+                    if (!(animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 1") ||
+                          animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 2") ||
+                          animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 3") ||
+                          animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 4")))
+                    {
+                        isAttacking = false;
+                    }
+                if (enemyName == "Shield Skeleton Spear")
+                    if (!(animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 1") ||
+                          animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 2") ||
+                          animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 3") ))
+                    {
+                        isAttacking = false;
+                    }
+
 
                 if (isAttacking)
                 {
