@@ -10,6 +10,9 @@ namespace CSE5912.PolyGamers
         [SerializeField] private Attachment.AttachmentType type;
         [SerializeField] private Attachment.AttachmentSet set;
 
+        [Header("-1 if not rune")]
+        [SerializeField] private int runeIndex = -1;
+
         [TextArea(5, 10)]
         [SerializeField] private string citation;
 
@@ -35,7 +38,7 @@ namespace CSE5912.PolyGamers
 
             attachment.gameObject.name = attachment.AttachmentName;
 
-            attachment.Initialize(type, rarity, set, iconImage, citation);
+            attachment.Initialize(type, rarity, set, iconImage, citation, runeIndex);
 
             SetupVfx(WeaponsPanelControl.Instance.AttachmentRarityToColor[rarity]);
         }
