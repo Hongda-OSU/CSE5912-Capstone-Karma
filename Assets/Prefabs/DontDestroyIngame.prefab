@@ -393,7 +393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiDocument: {fileID: 7158231522919328438}
-  fadingTime: 0.01
+  fadingTime: 0.15
   isDisplayed: 0
 --- !u!114 &1898652786
 MonoBehaviour:

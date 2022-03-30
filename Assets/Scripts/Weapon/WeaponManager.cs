@@ -195,7 +195,7 @@ namespace CSE5912.PolyGamers
 
                 ItemPeekControl.Instance.PeekItem(item);
 
-                TipsControl.Instance.PopUpTip("T", "Pick up");
+                //TipsControl.Instance.PopUpTip("T", "Pick up");
 
                 // player pick up weapon by pressing T
                 if (inputSchemes.PlayerActions.PickUp.triggered)

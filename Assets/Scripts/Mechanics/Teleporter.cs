@@ -55,12 +55,12 @@ namespace CSE5912.PolyGamers
             if (other.tag != "Player" || !isActivated || isUsed)
                 return;
 
-            TipsControl.Instance.PopUpTip("Z", "Teleport");
+            TipsControl.Instance.PopUp("Z", "Teleport");
 
             if (InputManager.Instance.InputSchemes.PlayerActions.Teleport.triggered)
             {
                 StartCoroutine(TeleportPlayer(target.position));
-                TipsControl.Instance.PopOffTip();
+                TipsControl.Instance.PopOff();
             }
         }
 
@@ -69,7 +69,7 @@ namespace CSE5912.PolyGamers
             if (other.tag != "Player" || !isActivated || isUsed)
                 return;
 
-            TipsControl.Instance.PopOffTip();
+            TipsControl.Instance.PopOff();
         }
 
         private IEnumerator TeleportPlayer(Vector3 to)

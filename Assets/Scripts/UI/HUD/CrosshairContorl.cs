@@ -63,13 +63,16 @@ namespace CSE5912.PolyGamers
                 else if (isMoving && weaponManager.isFiring)
                     currentSize = Mathf.Lerp(currentSize, (MaxSize + FiringSize) / 2, Time.deltaTime * speed);
 
-                // if player is shooting without aiming, then crosshair become smaller
-                else if (weaponManager.isFiring)
+                // if continue shooting
+                else if (weaponManager.isFiring && weaponManager.CarriedWeapon.shootingType == Firearms.ShootingType.Continued)
                 {
-                    if (weaponManager.CarriedWeapon.shootingType == Firearms.ShootingType.Continued)
-                        currentSize = Mathf.Lerp(currentSize, FiringSize, Time.deltaTime * speed);
-                    else
-                        currentSize = Mathf.Lerp(currentSize, FiringSize, 0.5f);
+                    currentSize = Mathf.Lerp(currentSize, FiringSize, Time.deltaTime * speed);
+                }
+
+                // if fixed shooting
+                else if (weaponManager.CarriedWeapon.wasBulletFiredThisFrame && weaponManager.CarriedWeapon.shootingType == Firearms.ShootingType.Fixed)
+                {
+                    currentSize = Mathf.Lerp(currentSize, FiringSize, 0.5f);
                 }
 
                 else

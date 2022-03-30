@@ -61,8 +61,8 @@ namespace CSE5912.PolyGamers
 
         public void Clear()
         {
-            if (prevItem != null)
-                TipsControl.Instance.PopOffTip();
+            //if (prevItem != null)
+            //    TipsControl.Instance.PopOffTip();
 
             prevItem = null;
 

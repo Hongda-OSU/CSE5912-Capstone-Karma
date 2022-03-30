@@ -55,12 +55,12 @@ namespace CSE5912.PolyGamers
                 isBossDefeated = true;
             }
 
-            TipsControl.Instance.PopUpTip("Z", "Teleport");
+            TipsControl.Instance.PopUp("Z", "Teleport");
 
             if (isBossDefeated && InputManager.Instance.InputSchemes.PlayerActions.Teleport.WasPressedThisFrame())
             {
                 StartCoroutine(TeleportBack());
-                TipsControl.Instance.PopOffTip();
+                TipsControl.Instance.PopOff();
             }
         }
 
@@ -69,7 +69,7 @@ namespace CSE5912.PolyGamers
             if (other.transform.tag != "Player" || !isTriggered)
                 return;
 
-            TipsControl.Instance.PopOffTip();
+            TipsControl.Instance.PopOff();
 
             isTriggered = false;
             isEnded = false;

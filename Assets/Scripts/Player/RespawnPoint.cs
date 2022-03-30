@@ -25,21 +25,28 @@ namespace CSE5912.PolyGamers
             if (other.gameObject.layer != LayerMask.NameToLayer("Player"))
                 return;
 
-            TipsControl.Instance.PopUpTip("X", "Activate");
-
-            if (isReady && InputManager.Instance.InputSchemes.PlayerActions.ActivateRespawnPoint.triggered)
+            if (isReady)
             {
-                StartCoroutine(Cooldown());
+                TipsControl.Instance.PopUp("X", "Activate");
 
-                GameObject vfx = Instantiate(activateVfxPrefab, transform);
-                Destroy(vfx, 10f);
+                if (InputManager.Instance.InputSchemes.PlayerActions.ActivateRespawnPoint.triggered)
+                {
+                    StartCoroutine(Cooldown());
 
-                activateAudio.Play();
+                    GameObject vfx = Instantiate(activateVfxPrefab, transform);
+                    Destroy(vfx, 10f);
 
-                RespawnManager.Instance.CurrentRespawnPoint = this;
+                    activateAudio.Play();
 
-                Debug.Log("to-do: recover player");
-                // recover player
+                    RespawnManager.Instance.CurrentRespawnPoint = this;
+
+                    Debug.Log("to-do: recover player");
+                    // recover player
+                }
+            }
+            else
+            {
+                TipsControl.Instance.PopOff();
             }
         }
 

@@ -31,7 +31,7 @@ namespace CSE5912.PolyGamers
             tips.style.display = DisplayStyle.None;
         }
 
-        public void PopUpTip(string keyTip, string actionTip)
+        public void PopUp(string keyTip, string actionTip)
         {
             if (isDisplayed)
                 return;
@@ -42,7 +42,7 @@ namespace CSE5912.PolyGamers
             action.text = actionTip;
             StartCoroutine(FadeIn(tips));
         }
-        public void PopOffTip()
+        public void PopOff()
         {
             if (!isDisplayed)
                 return;
