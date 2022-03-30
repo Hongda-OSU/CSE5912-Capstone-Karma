@@ -104,7 +104,7 @@ namespace CSE5912.PolyGamers
 
             DontDestroy.Instance.Destroy();
 
-            IngameAudioControl.Instance.SmoothMusicVolume(0f);
+            BgmControl.Instance.SmoothMusicVolume(0f);
 
             SceneLoader.Instance.LoadLevel(startSceneIndex);
         }

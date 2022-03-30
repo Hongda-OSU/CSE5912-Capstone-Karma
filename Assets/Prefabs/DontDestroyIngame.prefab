@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9ff4c5b1d6cf554f9befb6d1b3da96b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathAudio: {fileID: 5552792558209074504}
   respawnPoints: {fileID: 0}
   currentRespawnPoint: {fileID: 0}
   currentSoulPoint: {fileID: 0}
@@ -140,8 +141,8 @@ GameObject:
   - component: {fileID: 6615771459190495546}
   - component: {fileID: 6615771459190495525}
   - component: {fileID: 6615771459190495547}
-  - component: {fileID: 6615771459190495544}
   - component: {fileID: 178917607}
+  - component: {fileID: 2110043003}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -192,20 +193,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objects:
   - {fileID: 2447045659279533477}
---- !u!114 &6615771459190495544
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6615771459190495524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 832b47bc22b28cf49ba0dec1484e2413, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainAudio: {fileID: 4599161197706867103}
-  bossDefeated: {fileID: 6615771459735549196}
 --- !u!114 &178917607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,6 +206,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
+--- !u!114 &2110043003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6615771459190495524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 011e8d7dac31a4144bb56ff8da2024a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentBgm: {fileID: 8300000, guid: 7c99b5423f93c40c3b708db90e76cfdc, type: 3}
+  mainAudio: {fileID: 4599161197706867103}
+  bossDefeated: {fileID: 6615771459735549196}
 --- !u!1 &6615771460806367146
 GameObject:
   m_ObjectHideFlags: 0
@@ -512,6 +514,11 @@ AudioSource:
 --- !u!82 &4599161197706867103 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 7213765682349246432, guid: 26c829ee06488ee43b0bd41e41132bf1, type: 3}
+  m_PrefabInstance: {fileID: 6615771459040540287}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &5552792558209074504 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1639462540083426103, guid: 26c829ee06488ee43b0bd41e41132bf1, type: 3}
   m_PrefabInstance: {fileID: 6615771459040540287}
   m_PrefabAsset: {fileID: 0}
 --- !u!82 &6615771458997316989 stripped

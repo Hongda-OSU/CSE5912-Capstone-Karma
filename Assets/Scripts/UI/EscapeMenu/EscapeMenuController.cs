@@ -37,9 +37,9 @@ namespace CSE5912.PolyGamers
 
             isDisplayed = !isDisplayed;
             if (isDisplayed)
-                IngameAudioControl.Instance.SmoothMusicVolume(0.3f);
+                BgmControl.Instance.SmoothMusicVolume(0.3f);
             else
-                IngameAudioControl.Instance.SmoothMusicVolume(1f);
+                BgmControl.Instance.SmoothMusicVolume(1f);
 
             PostProcessingController.Instance.SetBlurryCameraView(isDisplayed);
 

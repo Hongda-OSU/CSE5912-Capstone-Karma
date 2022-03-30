@@ -31,7 +31,7 @@ namespace CSE5912.PolyGamers
             collider3d.enabled = false;
 
             PlayDeathAnimation();
-            IngameAudioControl.Instance.MainAudio.Stop();
+            BgmControl.Instance.MainAudio.Stop();
             GetComponentInChildren<BossInformation>().Fadeout();
         }
 
@@ -43,7 +43,7 @@ namespace CSE5912.PolyGamers
             vfx.transform.position = transform.position + Vector3.up * GetComponentInChildren<Renderer>().bounds.size.y / 2;
             Destroy(vfx, 10f);
 
-            IngameAudioControl.Instance.PlayBossDefeated();
+            BgmControl.Instance.PlayBossDefeated();
         }
 
         public bool IsBossFightTriggered { get { return playerDetected; } }

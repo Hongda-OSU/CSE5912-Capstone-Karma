@@ -6,6 +6,8 @@ namespace CSE5912.PolyGamers
 { 
     public class RespawnManager : MonoBehaviour
     {
+        [SerializeField] private AudioSource deathAudio;
+
         [SerializeField] private GameObject respawnPoints;
         private List<RespawnPoint> respawnPointList;
         [SerializeField] private RespawnPoint currentRespawnPoint;
@@ -46,6 +48,8 @@ namespace CSE5912.PolyGamers
 
             //EnemyManager.Instance.FreezeAll();
 
+            deathAudio.Play();
+            BgmControl.Instance.SmoothStopMusic();
             DeathPanelController.Instance.Display(true);
 
             currWeapon.Display(false);
@@ -67,10 +71,12 @@ namespace CSE5912.PolyGamers
                 yield return new WaitForSeconds(delta);
             }
 
+            // respawn at last activated respawn point
             player.layer = LayerMask.NameToLayer("Player");
 
             player.transform.position = currentRespawnPoint.transform.position;
 
+            BgmControl.Instance.PlayBgm();
             GameStateController.Instance.SetGameState(GameStateController.GameState.InGame);
 
             DeathPanelController.Instance.Display(false);

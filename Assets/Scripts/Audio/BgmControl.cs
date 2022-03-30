@@ -4,14 +4,15 @@ using UnityEngine;
 
 namespace CSE5912.PolyGamers
 {
-    public class IngameAudioControl : MonoBehaviour
+    public class BgmControl : MonoBehaviour
     {
+        [SerializeField] private AudioClip currentBgm;
         [SerializeField] private AudioSource mainAudio;
 
         [SerializeField] private AudioSource bossDefeated;
 
-        private static IngameAudioControl instance;
-        public static IngameAudioControl Instance { get { return instance; } }
+        private static BgmControl instance;
+        public static BgmControl Instance { get { return instance; } }
 
         private void Awake()
         {
@@ -24,6 +25,13 @@ namespace CSE5912.PolyGamers
         {
             mainAudio.volume = 1f;
             mainAudio.clip = clip;
+            mainAudio.Play();
+        }
+
+        public void PlayBgm()
+        {
+            mainAudio.volume = 1f;
+            mainAudio.clip = currentBgm;
             mainAudio.Play();
         }
 

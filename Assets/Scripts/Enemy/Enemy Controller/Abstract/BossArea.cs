@@ -79,7 +79,7 @@ namespace CSE5912.PolyGamers
 
         private IEnumerator TriggerBossFight()
         {
-            IngameAudioControl.Instance.SmoothStopMusic();
+            BgmControl.Instance.SmoothStopMusic();
 
             yield return new WaitForSeconds(triggerDelay);
 
@@ -89,7 +89,7 @@ namespace CSE5912.PolyGamers
             {
                 yield return new WaitForSeconds(Time.deltaTime);
             }
-            IngameAudioControl.Instance.Play(bossMusic);
+            BgmControl.Instance.Play(bossMusic);
             enemy.gameObject.GetComponentInChildren<BossInformation>().Display(true);
         }
 
