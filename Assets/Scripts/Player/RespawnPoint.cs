@@ -6,7 +6,11 @@ namespace CSE5912.PolyGamers
 {
     public class RespawnPoint : MonoBehaviour
     {
-        [SerializeField] private bool isActivated = false;
+        [SerializeField] private AudioSource activateAudio;
+        [SerializeField] private GameObject activateVfxPrefab;
+
+        [SerializeField] private float timeBetweenActivate = 5f;
+        [SerializeField] private bool isReady = true;
 
         private Collider collider3d;
 
@@ -16,14 +20,36 @@ namespace CSE5912.PolyGamers
             collider3d.isTrigger = true;
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void OnTriggerStay(Collider other)
         {
             if (other.gameObject.layer != LayerMask.NameToLayer("Player"))
                 return;
 
-            isActivated = true;
+            TipsControl.Instance.PopUpTip("X", "Activate");
 
-            RespawnManager.Instance.CurrentRespawnPoint = this;
+            if (isReady && InputManager.Instance.InputSchemes.PlayerActions.ActivateRespawnPoint.triggered)
+            {
+                StartCoroutine(Cooldown());
+
+                GameObject vfx = Instantiate(activateVfxPrefab, transform);
+                Destroy(vfx, 10f);
+
+                activateAudio.Play();
+
+                RespawnManager.Instance.CurrentRespawnPoint = this;
+
+                Debug.Log("to-do: recover player");
+                // recover player
+            }
+        }
+
+        private IEnumerator Cooldown()
+        {
+            isReady = false;
+
+            yield return new WaitForSeconds(timeBetweenActivate);
+
+            isReady = true;
         }
     }
 }

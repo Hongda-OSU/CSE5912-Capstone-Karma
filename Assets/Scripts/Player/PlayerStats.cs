@@ -70,7 +70,11 @@ namespace CSE5912.PolyGamers
         [SerializeField] private float resistUp = 30f;
 
         [Header("Audio")]
+        [SerializeField] private AudioSource levelUpAudio;
         [SerializeField] private AudioSource statUpAudio;
+
+        [Header("VFX")]
+        [SerializeField] private GameObject levelUpVfxPrefab;
 
         private UnityEvent takeDamageEvent;
 
@@ -191,6 +195,11 @@ namespace CSE5912.PolyGamers
                 level++;
 
                 statPoint++;
+
+                levelUpAudio.Play();
+
+                GameObject vfx = Instantiate(levelUpVfxPrefab, PlayerManager.Instance.Player.transform);
+                Destroy(vfx, 10f);
             }
         }
 

@@ -64,7 +64,7 @@ namespace CSE5912.PolyGamers
 
             SetVolume(master, 10);
             SetVolume(music, 10);
-            SetVolume(effect, 7);
+            SetVolume(effect, 10);
 
             backButton.clicked += BackButtonPressed;
         }

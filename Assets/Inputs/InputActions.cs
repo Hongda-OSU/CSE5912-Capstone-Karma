@@ -107,6 +107,15 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ActivateRespawnPoint"",
+                    ""type"": ""Button"",
+                    ""id"": ""596756d7-56de-4d1a-b35a-f3dff8803d23"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -250,6 +259,17 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Teleport"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""07636c5a-a495-4a26-a17c-fb4b01329086"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ActivateRespawnPoint"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -585,6 +605,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         m_PlayerActions_Inspect = m_PlayerActions.FindAction("Inspect", throwIfNotFound: true);
         m_PlayerActions_PickUp = m_PlayerActions.FindAction("PickUp", throwIfNotFound: true);
         m_PlayerActions_Teleport = m_PlayerActions.FindAction("Teleport", throwIfNotFound: true);
+        m_PlayerActions_ActivateRespawnPoint = m_PlayerActions.FindAction("ActivateRespawnPoint", throwIfNotFound: true);
         // FPSActions
         m_FPSActions = asset.FindActionMap("FPSActions", throwIfNotFound: true);
         m_FPSActions_Shoot = m_FPSActions.FindAction("Shoot", throwIfNotFound: true);
@@ -672,6 +693,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerActions_Inspect;
     private readonly InputAction m_PlayerActions_PickUp;
     private readonly InputAction m_PlayerActions_Teleport;
+    private readonly InputAction m_PlayerActions_ActivateRespawnPoint;
     public struct PlayerActionsActions
     {
         private @InputActions m_Wrapper;
@@ -685,6 +707,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         public InputAction @Inspect => m_Wrapper.m_PlayerActions_Inspect;
         public InputAction @PickUp => m_Wrapper.m_PlayerActions_PickUp;
         public InputAction @Teleport => m_Wrapper.m_PlayerActions_Teleport;
+        public InputAction @ActivateRespawnPoint => m_Wrapper.m_PlayerActions_ActivateRespawnPoint;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -721,6 +744,9 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 @Teleport.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnTeleport;
                 @Teleport.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnTeleport;
                 @Teleport.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnTeleport;
+                @ActivateRespawnPoint.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnActivateRespawnPoint;
+                @ActivateRespawnPoint.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnActivateRespawnPoint;
+                @ActivateRespawnPoint.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnActivateRespawnPoint;
             }
             m_Wrapper.m_PlayerActionsActionsCallbackInterface = instance;
             if (instance != null)
@@ -752,6 +778,9 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 @Teleport.started += instance.OnTeleport;
                 @Teleport.performed += instance.OnTeleport;
                 @Teleport.canceled += instance.OnTeleport;
+                @ActivateRespawnPoint.started += instance.OnActivateRespawnPoint;
+                @ActivateRespawnPoint.performed += instance.OnActivateRespawnPoint;
+                @ActivateRespawnPoint.canceled += instance.OnActivateRespawnPoint;
             }
         }
     }
@@ -937,6 +966,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         void OnInspect(InputAction.CallbackContext context);
         void OnPickUp(InputAction.CallbackContext context);
         void OnTeleport(InputAction.CallbackContext context);
+        void OnActivateRespawnPoint(InputAction.CallbackContext context);
     }
     public interface IFPSActionsActions
     {
