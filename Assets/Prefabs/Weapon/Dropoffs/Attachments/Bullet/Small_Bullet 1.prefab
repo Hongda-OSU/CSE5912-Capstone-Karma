@@ -121,12 +121,7 @@ MonoBehaviour:
   iconImage: {fileID: 21300014, guid: 04e6792f470c37741aa02ec74be1777b, type: 3}
   type: 0
   set: 4
-  citation: "The idea of tactical intelligent weapons \nwas introduced about twenty
-    years ago.\nIt was a combination of mass production \ntype of strategy AI with
-    firearms. The AI \nmodule on the weapon will direct the \nbuilt-in micro computer
-    on the ammunions\nto track and attack near by hostiles.\nThe most valuable, but
-    dangerous, part of\nthis technology is that, it can turn anyone\nthat can pull
-    the trigger to a sharpshooter."
+  citation: 
 --- !u!114 &6141398131721530093
 MonoBehaviour:
   m_ObjectHideFlags: 0

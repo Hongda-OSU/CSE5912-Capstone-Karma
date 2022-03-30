@@ -121,11 +121,7 @@ MonoBehaviour:
   iconImage: {fileID: 21300010, guid: 04e6792f470c37741aa02ec74be1777b, type: 3}
   type: 0
   set: 3
-  citation: "Despite the fact that our civilization has \nthousands and thousands
-    years of history, \nwe are still an infant in the field of \nunderstanding the
-    world around us. I doubt \nyou could even imagine, that interferences \nand manipulations
-    of the star stream at the \n'atomic level', as called by those human, \ncan accientally
-    lead to the distortion of time \nand space."
+  citation: 
 --- !u!114 &8057359097553529103
 MonoBehaviour:
   m_ObjectHideFlags: 0
