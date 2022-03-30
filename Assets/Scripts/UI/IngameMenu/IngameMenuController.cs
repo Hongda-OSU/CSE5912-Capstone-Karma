@@ -7,7 +7,7 @@ namespace CSE5912.PolyGamers
 {
     public class IngameMenuController : MonoBehaviour
     {
-
+        [SerializeField] private AudioSource menuOpenAudio;
         private IngameMenu ingameMenu;
 
         public bool isDisplayed = false;
@@ -43,6 +43,8 @@ namespace CSE5912.PolyGamers
                 return;
 
             isDisplayed = !isDisplayed;
+
+            menuOpenAudio.Play();
 
             WeaponsPanelControl.Instance.ResetPanel();
             SkillsPanelControl.Instance.ResetPanel();
