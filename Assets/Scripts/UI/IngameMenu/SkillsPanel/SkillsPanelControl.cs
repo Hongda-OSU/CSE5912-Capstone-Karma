@@ -8,6 +8,8 @@ namespace CSE5912.PolyGamers
 {
     public class SkillsPanelControl : UI
     {
+        [SerializeField] private AudioSource levelUpAudio;
+
         private PlayerSkillManager playerSkill;
 
         private SkillTree currentSkillTree;
@@ -109,7 +111,9 @@ namespace CSE5912.PolyGamers
             }
             else 
             {
-                skillTree_element.LevelUpSkill(slot);
+                var result = skillTree_element.LevelUpSkill(slot);
+                if (result)
+                    levelUpAudio.Play();
             }
 
             UpdateVisual();

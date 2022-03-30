@@ -89,17 +89,16 @@ namespace CSE5912.PolyGamers
             return null;
         }
 
-        public void LevelUpSkill(VisualElement slot)
+        public bool LevelUpSkill(VisualElement slot)
         {
             foreach (var skillSlot in skillSlotList)
             {
                 if (skillSlot.slot == slot)
                 {
-                    skillSlot.LevelUp();
-
-                    return;
+                    return skillSlot.LevelUp();
                 }
             }
+            return false;
         }
 
         public void AssignPassive(int index, PlayerSkill skill)

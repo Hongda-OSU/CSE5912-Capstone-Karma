@@ -53,9 +53,9 @@ namespace CSE5912.PolyGamers
             }
         }
 
-        public void LevelUp()
+        public bool LevelUp()
         {
-            skill.LevelUp();
+            var result = skill.LevelUp();
 
             if (skill.Level > 0)
             {
@@ -74,6 +74,8 @@ namespace CSE5912.PolyGamers
                     }
                 }
             }
+
+            return result;
         }
     }
 }

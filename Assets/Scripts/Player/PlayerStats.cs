@@ -69,6 +69,9 @@ namespace CSE5912.PolyGamers
         [SerializeField] private float damageUp = 0.03f;
         [SerializeField] private float resistUp = 30f;
 
+        [Header("Audio")]
+        [SerializeField] private AudioSource statUpAudio;
+
         private UnityEvent takeDamageEvent;
 
         private static PlayerStats instance;
@@ -213,6 +216,8 @@ namespace CSE5912.PolyGamers
         {
             if (statPoint == 0)
                 return;
+
+            statUpAudio.Play();
 
             switch (stat)
             {
