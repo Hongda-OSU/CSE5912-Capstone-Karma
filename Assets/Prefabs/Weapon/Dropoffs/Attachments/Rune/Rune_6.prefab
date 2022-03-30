@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1525556952477793267}
   - component: {fileID: 1065363660751506039}
   m_Layer: 10
-  m_Name: Rune_3
+  m_Name: Rune_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,7 +44,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1807362271620844}
-  m_Mesh: {fileID: 4300000, guid: 179fdb21a9d7067408ce3b1990f4dded, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 31290ae798da1354b80c5c0802e58292, type: 3}
 --- !u!23 &23395050226745434
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ca2681a61b9801e499af2d536cacd578, type: 2}
+  - {fileID: 2100000, guid: 574d79b859d6d484c9f9005c991a423c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -116,10 +116,10 @@ MonoBehaviour:
   outline: {fileID: 1065363660751506039}
   indicator: {fileID: 3987064975149717231}
   opacity: 0.3
-  iconImage: {fileID: 21300000, guid: 0d6fe719ca1a6304b86fd5a8d517fa48, type: 3}
+  iconImage: {fileID: 21300000, guid: 33a6203d7c3a9244ba0e334f4fe0ac3a, type: 3}
   type: 3
   set: 0
-  runeIndex: 3
+  runeIndex: 6
   citation: 
 --- !u!114 &1065363660751506039
 MonoBehaviour:

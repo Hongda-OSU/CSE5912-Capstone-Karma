@@ -17,7 +17,7 @@ namespace CSE5912.PolyGamers
             Initialize();
         }
 
-        public void Initialize()
+        private void Initialize()
         {
             var type = attachment.Type;
             // to-do
@@ -28,6 +28,13 @@ namespace CSE5912.PolyGamers
             var list = bonus.typeToFunctionList[type];
             bonus.AssignBonusFunction(type, UnityEngine.Random.Range(0, list.Count));
 
+        }
+
+        public void GetRuneBonus(int index)
+        {
+            bonus = new Bonus(attachment);
+
+            bonus.AssignBonusFunction(index);
         }
 
         public void Perform(bool enabled)
@@ -126,6 +133,16 @@ namespace CSE5912.PolyGamers
             internal void AssignBonusFunction(Attachment.AttachmentType type, int index)
             {
                 var func = typeToFunctionList[type][index];
+
+                func(true);
+                func(false);
+
+                bonusFunction = func;
+            }
+
+            internal void AssignBonusFunction(int index)
+            {
+                var func = typeToFunctionList[Attachment.AttachmentType.Rune][index];
 
                 func(true);
                 func(false);
