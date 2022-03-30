@@ -9777,6 +9777,7 @@ GameObject:
   - component: {fileID: 830326077473745239}
   - component: {fileID: 2693942647853715645}
   - component: {fileID: 9006994909369775017}
+  - component: {fileID: 680537967}
   m_Layer: 1
   m_Name: RespawnPoint
   m_TagString: Untagged
@@ -14699,3 +14700,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!135 &680537967
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 668452988796817149}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 4.15
+  m_Center: {x: 0.00999999, y: 0, z: 0}

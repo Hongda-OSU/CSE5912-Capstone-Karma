@@ -33,13 +33,14 @@ namespace CSE5912.PolyGamers
 
         public void PopUp(string keyTip, string actionTip)
         {
+            key.text = keyTip;
+            action.text = actionTip;
+
             if (isDisplayed)
                 return;
 
             isDisplayed = true;
 
-            key.text = keyTip;
-            action.text = actionTip;
             StartCoroutine(FadeIn(tips));
         }
         public void PopOff()

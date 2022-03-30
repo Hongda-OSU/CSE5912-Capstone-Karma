@@ -29,7 +29,7 @@ namespace CSE5912.PolyGamers
             {
                 TipsControl.Instance.PopUp("X", "Activate");
 
-                if (InputManager.Instance.InputSchemes.PlayerActions.ActivateRespawnPoint.triggered)
+                if (InputManager.Instance.InputSchemes.PlayerActions.ActivateRespawnPoint.WasPressedThisFrame())
                 {
                     StartCoroutine(Cooldown());
 
@@ -48,6 +48,14 @@ namespace CSE5912.PolyGamers
             {
                 TipsControl.Instance.PopOff();
             }
+        }
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.gameObject.layer != LayerMask.NameToLayer("Player"))
+                return;
+
+            TipsControl.Instance.PopOff();
+
         }
 
         private IEnumerator Cooldown()
