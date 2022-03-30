@@ -119,11 +119,7 @@ MonoBehaviour:
   iconImage: {fileID: 21300022, guid: cfb5b9a722516ae4586bad26c20d19a1, type: 3}
   type: 2
   set: 3
-  citation: "I understand your doubts about what \nyou saw, since the creed we hold
-    prohibits \nus from questioning the absolute objectivity \nof time. But the important
-    part is, when we \nare travelling at a different time compares \nto the world
-    around us, we can see the \nuniverse around us at a new level of detail \nand
-    objectivity."
+  citation: 
 --- !u!114 &6699346991721726290
 MonoBehaviour:
   m_ObjectHideFlags: 0
