@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 361251282684853777}
   - component: {fileID: 361251282685585387}
   - component: {fileID: 361251282687025411}
-  - component: {fileID: 423560741400422913}
+  - component: {fileID: 2863328241988301617}
   m_Layer: 0
   m_Name: SM_Wep_Shield_Skull_01
   m_TagString: Untagged
@@ -84,7 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &423560741400422913
+--- !u!64 &2863328241988301617
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,7 +97,7 @@ MeshCollider:
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
-  m_Mesh: {fileID: 43896880475034386, guid: f80537c1a3e5d9b49ab6102ef9cdfffd, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 7b67d90977497b24c890fe89d3a17e05, type: 3}
 --- !u!1 &540448300982314918
 GameObject:
   m_ObjectHideFlags: 0
@@ -527,7 +527,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 4300016, guid: 9ad76de1617627d45ba4fa8ddf255af4, type: 3}
+  m_Mesh: {fileID: 4300014, guid: 9ad76de1617627d45ba4fa8ddf255af4, type: 3}
   m_Bones:
   - {fileID: 542789086591414574}
   - {fileID: 543023563298554926}
