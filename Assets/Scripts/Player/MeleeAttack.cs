@@ -14,6 +14,9 @@ namespace CSE5912.PolyGamers
         [SerializeField] private float range = 1f;
         [SerializeField] private bool isEnabled = true;
 
+        [SerializeField] private AudioSource sfx;
+        [SerializeField] private AudioClip[] sounds;
+
         public UnityEvent meleeEvent = new UnityEvent();
 
         private static MeleeAttack instance;
@@ -32,6 +35,9 @@ namespace CSE5912.PolyGamers
                 return;
 
             StartCoroutine(CoolDown());
+
+            sfx.clip = sounds[Random.Range(0, sounds.Length)];
+            sfx.Play();
 
             FPSControllerCC.Instance.animator.SetTrigger("KnifeAttack");
             meleeEvent.Invoke();
