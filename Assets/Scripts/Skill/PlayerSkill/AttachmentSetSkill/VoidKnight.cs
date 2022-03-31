@@ -13,6 +13,8 @@ namespace CSE5912.PolyGamers
         [SerializeField] private float baseDamage;
         [SerializeField] private float range = 1f;
 
+        [SerializeField] private AudioSource sfx;
+
         private float timeSince;
         private float totalTime;
         private bool isPerforming = false;
@@ -48,6 +50,8 @@ namespace CSE5912.PolyGamers
         private void StartDash()
         {
             StartCoolingdown();
+
+            sfx.Play();
 
             isPerforming = true;
 
