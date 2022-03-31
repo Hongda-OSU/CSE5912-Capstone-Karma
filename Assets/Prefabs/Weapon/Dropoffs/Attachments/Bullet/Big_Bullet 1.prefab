@@ -121,7 +121,12 @@ MonoBehaviour:
   iconImage: {fileID: 21300010, guid: 04e6792f470c37741aa02ec74be1777b, type: 3}
   type: 0
   set: 3
-  citation: 
+  runeIndex: -1
+  citation: "Our souls were borned by the deep, raised \nin the deep, came from the
+    deep and will \nultimatly return to the deep. You see your \nsoul as it is in
+    the color of pure black, for it \nis the noble color of the abyss, the only \nthing
+    we can see at the end. Touch it, feel it, \nand learn to use it. Maybe at the
+    end of the \nday, you will truly understand the similarity \nbetween us.\n"
 --- !u!114 &8057359097553529103
 MonoBehaviour:
   m_ObjectHideFlags: 0
