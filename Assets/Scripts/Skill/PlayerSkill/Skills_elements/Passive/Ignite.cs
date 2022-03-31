@@ -16,6 +16,8 @@ namespace CSE5912.PolyGamers
         [SerializeField] private float baseRadius = 1f;
         [SerializeField] private float radiusPerLevel = 0.5f;
 
+        [SerializeField] private AudioSource sfx;
+
         private List<Enemy> performed;
 
         private void Awake()
@@ -35,6 +37,8 @@ namespace CSE5912.PolyGamers
 
         private void Perform(Enemy target)
         {
+            sfx.Play();
+
             float hitRadius = baseRadius + radiusPerLevel * (level - 1);
 
             GameObject vfx = Instantiate(vfxPrefab);

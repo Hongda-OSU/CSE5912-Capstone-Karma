@@ -19,6 +19,8 @@ namespace CSE5912.PolyGamers
         [SerializeField] private GameObject buffVfxPrefab;
         [SerializeField] private string buffPositionPath;
 
+        [SerializeField] private AudioSource sfx;
+
         private InputAction action;
 
         private Firearms buffedWeapon;
@@ -42,6 +44,8 @@ namespace CSE5912.PolyGamers
             isReady = false;
 
             buffedWeapon = WeaponManager.Instance.CarriedWeapon;
+
+            sfx.Play();
 
             GameObject vfx = Instantiate(vfxPrefab, PlayerManager.Instance.Player.transform);
             Destroy(vfx, 5f);
