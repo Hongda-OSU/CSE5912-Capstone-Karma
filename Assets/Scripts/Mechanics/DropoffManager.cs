@@ -115,7 +115,7 @@ namespace CSE5912.PolyGamers
 
             weapon.Rarity = rarity;
             weapon.PerformBonus(false);
-            WeaponBonus weaponBonus = new WeaponBonus(weapon);
+            WeaponBonus weaponBonus = new WeaponBonus(weapon.Rarity);
             weapon.Bonus = weaponBonus;
             weapon.Element = (Element.Type)Random.Range(0, 5);
             if (weapon.Element is Element.Type.Cryo)

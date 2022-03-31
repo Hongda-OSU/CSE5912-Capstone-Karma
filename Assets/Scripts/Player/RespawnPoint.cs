@@ -20,6 +20,23 @@ namespace CSE5912.PolyGamers
             collider3d.isTrigger = true;
         }
 
+        private void Activate()
+        {
+            DataManager.Instance.Save();
+
+            StartCoroutine(Cooldown());
+
+            GameObject vfx = Instantiate(activateVfxPrefab, transform);
+            Destroy(vfx, 10f);
+
+            activateAudio.Play();
+
+            RespawnManager.Instance.CurrentRespawnPoint = this;
+
+            Debug.Log("to-do: recover player");
+            // recover player
+        }
+
         private void OnTriggerStay(Collider other)
         {
             if (other.gameObject.layer != LayerMask.NameToLayer("Player"))
@@ -31,17 +48,7 @@ namespace CSE5912.PolyGamers
 
                 if (InputManager.Instance.InputSchemes.PlayerActions.ActivateRespawnPoint.WasPressedThisFrame())
                 {
-                    StartCoroutine(Cooldown());
-
-                    GameObject vfx = Instantiate(activateVfxPrefab, transform);
-                    Destroy(vfx, 10f);
-
-                    activateAudio.Play();
-
-                    RespawnManager.Instance.CurrentRespawnPoint = this;
-
-                    Debug.Log("to-do: recover player");
-                    // recover player
+                    Activate();
                 }
             }
             else

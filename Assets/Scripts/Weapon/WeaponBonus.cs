@@ -5,26 +5,27 @@ using UnityEngine;
 
 namespace CSE5912.PolyGamers
 {
+    [Serializable]
     public class WeaponBonus
     {
-        private Firearms weapon;
+        private int level;
 
         private List<int> availableBonusIndex;
         private List<Bonus> bonusList;
-        public WeaponBonus(Firearms weapon)
+
+        public WeaponBonus(Firearms.WeaponRarity rarity)
         {
-            this.weapon = weapon; 
+            level = (int)rarity + 1;
+
             Initialize();
         }
 
         public void Initialize()
         {
-            weapon.WeaponName = weapon.Rarity.ToString() + weapon.Type;
-
             bonusList = new List<Bonus>();
-            for (int i = 0; i < (int)weapon.Rarity + 1; i++)
+            for (int i = 0; i < level; i++)
             {
-                Bonus bonus = new Bonus(weapon);
+                Bonus bonus = new Bonus(level);
                 if (i == 0)
                 {
                     availableBonusIndex = new List<int>();
@@ -60,12 +61,10 @@ namespace CSE5912.PolyGamers
             return list;
         }
 
-
+        [Serializable]
         internal class Bonus
         {
             internal delegate void BonusFunction(bool enabled);
-
-            private Firearms weapon;
 
             private float value;
 
@@ -91,10 +90,10 @@ namespace CSE5912.PolyGamers
 
 
             //internal enum 
-            internal Bonus(Firearms weapon)
+            internal Bonus(int level)
             {
-                this.weapon = weapon;
-                level = (int)weapon.Rarity + 1;
+                this.level = level;
+
                 isReady = true;
 
                 bonusFunctionList = new List<BonusFunction>()

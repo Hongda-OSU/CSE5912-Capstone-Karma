@@ -88,10 +88,14 @@ namespace CSE5912.PolyGamers
         private void StartGameButtonPressed()
         {
             StartCoroutine(FadeOutBgm());
+
             SceneLoader.Instance.LoadLevel(gameSceneIndex);
+            //DataManager.Instance.Load();
+
             clickSound.Play();
             root.style.display = DisplayStyle.None;
         }
+
         private IEnumerator FadeOutBgm()
         {
             float timeSince = 0f;

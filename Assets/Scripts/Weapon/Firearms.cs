@@ -165,7 +165,7 @@ namespace CSE5912.PolyGamers
             var go = Instantiate(BulletPrefab);
             Destroy(go);
 
-            weaponBonus = new WeaponBonus(this);
+            weaponBonus = new WeaponBonus(rarity);
             shootEvent = new UnityEvent();
         }
 
