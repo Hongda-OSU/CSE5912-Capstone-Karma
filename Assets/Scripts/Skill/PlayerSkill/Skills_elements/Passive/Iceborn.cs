@@ -13,6 +13,8 @@ namespace CSE5912.PolyGamers
         [SerializeField] private float baseRevive = 0.05f;
         [SerializeField] private float revivePerLevel = 0.01f;
 
+        [SerializeField] private AudioSource sfx;
+
         private void Update()
         {
             if (!isLearned || !isReady)
@@ -36,6 +38,8 @@ namespace CSE5912.PolyGamers
         private IEnumerator Perform()
         {
             isReady = false;
+
+            sfx.Play();
 
             GameObject vfx = Instantiate(vfxPrefab, PlayerManager.Instance.Player.transform);
             vfx.transform.position = PlayerManager.Instance.Player.transform.position;

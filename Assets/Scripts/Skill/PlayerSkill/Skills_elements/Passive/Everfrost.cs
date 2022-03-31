@@ -41,6 +41,7 @@ namespace CSE5912.PolyGamers
 
             float frozenTime = baseFrozenTime + frozenTimePerLevel * (level - 1);
 
+            
             StartCoroutine(enemy.Freeze(frozenTime));
             StartCoroutine(vfx.GetComponent<IceControl>().WaitFor(frozenTime));
 
