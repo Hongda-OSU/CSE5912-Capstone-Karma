@@ -21,6 +21,8 @@ namespace CSE5912.PolyGamers
         [SerializeField] private int baseLightningNumber = 1;
         [SerializeField] private int lightningNumberPerLevel = 1;
 
+        [SerializeField] private AudioSource sfx;
+
         private void Update()
         {
             var target = PlayerManager.Instance.HitByBullet;
@@ -54,11 +56,16 @@ namespace CSE5912.PolyGamers
                 inRange.Add(enemy.gameObject);
             }
 
+            sfx.transform.position = transform.position;
 
             if (inRange.Count == 0)
                 return;
 
             Enemy targetEnemy = target.GetComponent<Enemy>();
+
+            sfx.transform.position = targetEnemy.transform.position;
+            sfx.Play();
+
             for (int i = 0; i < lightningNum; i++)
             {
                 int index = Random.Range(0, inRange.Count);
@@ -94,6 +101,7 @@ namespace CSE5912.PolyGamers
         private IEnumerator DisplayVfx(Vector3 first, Vector3 second)
         {
             GameObject vfx = Instantiate(vfxPrefab);
+            vfx.transform.position = (first + second) / 2;
 
             LineRenderer lineRenderer = vfx.GetComponentInParent<LineRenderer>();
 
@@ -109,8 +117,9 @@ namespace CSE5912.PolyGamers
                 lineRenderer.SetPosition(0, first);
                 lineRenderer.SetPosition(1, second);
             }
+            lineRenderer.enabled = false;
 
-            Destroy(vfx);
+            Destroy(vfx, 5f);
         }
 
         //public override bool LevelUp()
