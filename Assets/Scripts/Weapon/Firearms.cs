@@ -500,6 +500,7 @@ namespace CSE5912.PolyGamers
         // for weapon reloading
         internal void ReloadAmmo()
         {
+            if (CurrentAmmo == AmmoInMag) return;
             isReloading = true;
             isAiming = false;
             GunAnimator.SetBool("Aim", isAiming);

@@ -101,12 +101,17 @@ namespace CSE5912.PolyGamers
             //}
             //else
             //{
-                // determine current speed;
+            if (WeaponManager.Instance.CarriedWeapon.isAiming)
+            {
+                currentSpeed = isCrouched ? WalkSpeedWhenCrouched : WalkSpeed;
+            }
+            else
+            {
                 if (isCrouched)
                     currentSpeed = isSprinted ? SprintingSpeedWhenCrouched : WalkSpeedWhenCrouched;
                 else
                     currentSpeed = isSprinted ? SprintingSpeed : WalkSpeed;
-            //}
+            }
             HandleAnimation();
 
             //// skill cool down
