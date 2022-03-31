@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiDocument: {fileID: 7898107785223328187}
   fadingTime: 0.15
+  levelUpAudio: {fileID: 0}
 --- !u!1 &7898107784490858762
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,6 +158,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b91c79de579034c43bf5c6d6dcd1239e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menuOpenAudio: {fileID: 0}
+  isDisplayed: 0
 --- !u!114 &7898107785223328186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,7 +226,7 @@ MonoBehaviour:
   commonColor: {r: 1, g: 1, b: 1, a: 1}
   rareColor: {r: 0, g: 0, b: 1, a: 1}
   epicColor: {r: 1, g: 0, b: 1, a: 1}
-  legendaryColor: {r: 1, g: 0, b: 0, a: 1}
+  legendaryColor: {r: 1, g: 0.9677757, b: 0, a: 1}
   divineColor: {r: 0, g: 1, b: 1, a: 1}
   weaponRowsControl: {fileID: 7898107785620898927}
   attachmentInventoryControl: {fileID: 7898107785620898924}

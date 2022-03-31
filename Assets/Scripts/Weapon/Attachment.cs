@@ -57,9 +57,11 @@ namespace CSE5912.PolyGamers
             this.citation = citation;
 
             attachmentBonus = new AttachmentBonus(this);
-            if (runeIndex > -1) 
+            if (runeIndex > -1)
+            {
                 attachmentBonus.GetRuneBonus(runeIndex);
-
+                this.rarity = AttachmentRarity.Divine;
+            }
             setSkill = PlayerSkillManager.Instance.GetSetSkill(attachmentSet);
         }
         public void AttachTo(Firearms weapon)

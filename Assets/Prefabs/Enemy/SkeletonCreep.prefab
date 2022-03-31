@@ -1395,7 +1395,7 @@ MonoBehaviour:
   dropWeaponChance: 1
   dropWeaponNumber: 1
   dropWeaponTypes: 00000000
-  dropWeaponRarities: 00000000
+  dropWeaponRarities: 01000000
   dropAttachmentChance: 1
   dropAttachmentNumber: 3
   dropAttachmentTypes: 03000000

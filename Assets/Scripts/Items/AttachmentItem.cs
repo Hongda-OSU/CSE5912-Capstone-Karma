@@ -26,21 +26,13 @@ namespace CSE5912.PolyGamers
             attachment = obj.AddComponent<Attachment>();
 
             // set attachment real name
-            attachment.AttachmentRealName = this.gameObject.name.Replace("(Clone)", "");
-
-
-            //attachment.Set = set;
-            //attachment.Type = type;
-            //attachment.Rarity = rarity;
-            //attachment.IconImage = iconImage;
-            //attachment.Bonus = bonus;
-
+            attachment.AttachmentRealName = gameObject.name.Replace("(Clone)", "");
 
             attachment.gameObject.name = attachment.AttachmentName;
 
             attachment.Initialize(type, rarity, set, iconImage, citation, runeIndex);
 
-            SetupVfx(WeaponsPanelControl.Instance.AttachmentRarityToColor[rarity]);
+            SetupVfx(WeaponsPanelControl.Instance.AttachmentRarityToColor[attachment.Rarity]);
         }
 
         public Attachment.AttachmentType Type { get { return type; } }
