@@ -120,7 +120,12 @@ MonoBehaviour:
   iconImage: {fileID: 21300030, guid: 04e6792f470c37741aa02ec74be1777b, type: 3}
   type: 1
   set: 3
-  citation: 
+  runeIndex: -1
+  citation: "The decomposition of body and the dissipation\n of souls, that was the
+    true meaning of proper\n death. But even flesh and bones were no where\n to be
+    found, the deepest percipitation of souls\n would still occasionally remain in
+    this fractured\n world. Those percipitations are always in \nthe color of black,
+    for that is the color of the \nstarless deep sky."
 --- !u!114 &3484439512392026361
 MonoBehaviour:
   m_ObjectHideFlags: 0

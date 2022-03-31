@@ -120,7 +120,11 @@ MonoBehaviour:
   type: 3
   set: 0
   runeIndex: 2
-  citation: 
+  citation: "Nobles in the fortress was among the first \ngroup of people that truly
+    realize the source\n of all brilliances, the mother of all seas, was \ndraining.
+    Desperation and impious lead them \nto question the lord's ruling and the grace
+    from \nthe deep. They tainted the sacred rune of god \nwith red: the blasphemous
+    color of blood and \nmadness."
 --- !u!114 &7723061538969400814
 MonoBehaviour:
   m_ObjectHideFlags: 0

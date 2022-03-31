@@ -120,9 +120,12 @@ MonoBehaviour:
   iconImage: {fileID: 21300034, guid: 04e6792f470c37741aa02ec74be1777b, type: 3}
   type: 1
   set: 4
-  citation: '
-
-'
+  runeIndex: -1
+  citation: "Great Leviathan, the beloved apostle of the \ngod, the grandeur miracle
+    of our world, the \nmother that gently nurtures us all... Could you \nhear my
+    prayer? The drought takes everything. \nThe order is no where to be found. Shadows
+    \nwandering in the fortress, taking innocent souls \nwith them. Please, at least
+    have mercy on lives \noutside. Please be mercy."
 --- !u!114 &1496213525996577868
 MonoBehaviour:
   m_ObjectHideFlags: 0

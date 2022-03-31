@@ -121,7 +121,11 @@ MonoBehaviour:
   iconImage: {fileID: 21300014, guid: 04e6792f470c37741aa02ec74be1777b, type: 3}
   type: 0
   set: 4
-  citation: 
+  runeIndex: -1
+  citation: "Ages ago, the great desert of Mare Felixia \nused to be the origin of
+    the unlimitable lake: \nthe dark, cold womb that gave birth to the \ngreat Leviathan.
+    The most ancient lives \nwas born in the giant toridal swirls stirred \nup by
+    the serpent of the deep."
 --- !u!114 &6141398131721530093
 MonoBehaviour:
   m_ObjectHideFlags: 0

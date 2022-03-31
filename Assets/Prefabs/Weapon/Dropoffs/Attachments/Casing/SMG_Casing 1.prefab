@@ -119,7 +119,14 @@ MonoBehaviour:
   iconImage: {fileID: 21300018, guid: 04e6792f470c37741aa02ec74be1777b, type: 3}
   type: 2
   set: 4
-  citation: 
+  runeIndex: -1
+  citation: "The boundless lake mirrors countless roofs \nin golden. Sacred light
+    of the three moons \nshines on the dome of sky. Disciples' prayer \nwhispers
+    the churning abyss. Everything falls \nin slience, in the sleepless city of Karcosa.
+    \nThey prey for the holiest order to be restored \nfrom broken. They prey for
+    the bottomless \nfoutain to norurish the lifeless lands once \nagain. They prey
+    for the lord to return to the \nthrone. They prey quietly, in the sleepless city
+    \nof Karcosa. "
 --- !u!114 &6999133787408769904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,7 +141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outlineMode: 0
   outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 2
+  outlineWidth: 0
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []

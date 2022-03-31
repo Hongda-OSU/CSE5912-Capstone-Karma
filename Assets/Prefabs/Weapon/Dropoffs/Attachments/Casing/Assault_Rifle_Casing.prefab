@@ -119,7 +119,12 @@ MonoBehaviour:
   iconImage: {fileID: 21300022, guid: cfb5b9a722516ae4586bad26c20d19a1, type: 3}
   type: 2
   set: 3
-  citation: 
+  runeIndex: -1
+  citation: "Among thousands years of the history of \nMare Felixia, the argument
+    around the origin \nof life had never been put to an end. Some \nsaid that it
+    was the thick and dark water of \nthe shapless lake brought souls to all lives'
+    \nancestors. Others said that the bottomless \nabyss of water  is the synonym
+    of the \nlimitless dark sky beyond."
 --- !u!114 &6699346991721726290
 MonoBehaviour:
   m_ObjectHideFlags: 0
