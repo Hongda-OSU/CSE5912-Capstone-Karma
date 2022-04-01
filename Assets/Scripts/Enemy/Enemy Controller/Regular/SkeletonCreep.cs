@@ -20,7 +20,6 @@ namespace CSE5912.PolyGamers
                 return;
             }
 
-
             if ((distanceToPlayer <= viewRadius && Vector3.Angle(transform.forward, directionToPlayer) < viewAngle / 2)
                 || distanceToPlayer <= closeDetectionRange || isAttackedByPlayer)
             {
@@ -47,10 +46,10 @@ namespace CSE5912.PolyGamers
                     animator.SetBool("InAttackRange", false);
                 }
 
-                if (!(animator.GetCurrentAnimatorStateInfo(0).IsName("Mace-Attack-L1") ||
-                    animator.GetCurrentAnimatorStateInfo(0).IsName("Dagger-Attack-L1") ||
-                    animator.GetCurrentAnimatorStateInfo(0).IsName("Mace-Attack-R1") ||
-                    animator.GetCurrentAnimatorStateInfo(0).IsName("Item-Attack-R2")))
+                if (!(animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 1") ||
+                      animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 2") ||
+                      animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 3") ||
+                      animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 4")))
                 {
                     isAttacking = false;
                 }
@@ -78,11 +77,24 @@ namespace CSE5912.PolyGamers
 
         protected override void Hit() {
             float damageAmount;           
-            if (distanceToPlayer <= attackRange) {
+            if (distanceToPlayer <= agent.stoppingDistance + 0.3) 
+            {
                 damageAmount = attackDamage + Mathf.RoundToInt(Random.Range(-1f, 2f));
                 Damage damage = new Damage(damageAmount, Element.Type.Physical, this, PlayerStats.Instance);
                 PlayerStats.Instance.TakeDamage(damage);
+                if (PlayerStats.Instance.Health > 0f)
+                    FPSControllerCC.Instance.AddImpact(this.gameObject.transform.TransformDirection(Vector3.forward), 15f);
             }
+        }
+
+        private void StopAgent()
+        {
+            agent.speed = 0;
+        }
+
+        private void StartAgent()
+        {
+            agent.speed = 3;
         }
 
         protected override void HandleWander() {

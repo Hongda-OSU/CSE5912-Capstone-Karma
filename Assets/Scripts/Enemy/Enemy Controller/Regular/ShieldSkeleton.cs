@@ -57,8 +57,8 @@ namespace CSE5912.PolyGamers
                     }
                 if (enemyName == "Shield Skeleton Spear")
                     if (!(animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 1") ||
-                          animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 2") ||
-                          animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 3") ))
+                          animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 3") ||
+                          animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 4") ))
                     {
                         isAttacking = false;
                     }
@@ -92,6 +92,12 @@ namespace CSE5912.PolyGamers
                 damageAmount = attackDamage + Mathf.RoundToInt(Random.Range(-2f, 4f));
                 Damage damage = new Damage(damageAmount, Element.Type.Physical, this, PlayerStats.Instance);
                 PlayerStats.Instance.TakeDamage(damage);
+                if (PlayerStats.Instance.Health > 0f)
+                    if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 4"))
+                        FPSControllerCC.Instance.AddImpact(this.gameObject.transform.TransformDirection(Vector3.forward), 40f);
+                    else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 3"))
+                        FPSControllerCC.Instance.AddImpact(this.gameObject.transform.TransformDirection(Vector3.forward), 40f);
+
             }
         }
 

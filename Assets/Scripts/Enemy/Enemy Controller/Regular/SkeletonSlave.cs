@@ -60,19 +60,23 @@ namespace CSE5912.PolyGamers
         protected override void Hit()
         {
             float damageAmount;
-            if (distanceToPlayer <= attackRange)
+            if (distanceToPlayer <= agent.stoppingDistance + 0.3)
             {
                 damageAmount = attackDamage + Mathf.RoundToInt(Random.Range(-3f, 2f));
                 Damage damage = new Damage(damageAmount, Element.Type.Physical, this, PlayerStats.Instance);
                 PlayerStats.Instance.TakeDamage(damage);
+                if (PlayerStats.Instance.Health > 0f)
+                    FPSControllerCC.Instance.AddImpact(this.gameObject.transform.TransformDirection(Vector3.forward), 20f);
             }
         }
 
         void Scratch() {
-            if (distanceToPlayer <= attackRange)
+            if (distanceToPlayer <= agent.stoppingDistance + 0.3)
             {
                 Damage damage = new Damage(Mathf.RoundToInt(Random.Range(8f, 10f)), Element.Type.Physical, this, PlayerStats.Instance);
                 PlayerStats.Instance.TakeDamage(damage);
+                if (PlayerStats.Instance.Health > 0f)
+                    FPSControllerCC.Instance.AddImpact(this.gameObject.transform.TransformDirection(Vector3.forward), 5f);
             }
         }
 

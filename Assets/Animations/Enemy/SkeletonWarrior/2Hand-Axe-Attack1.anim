@@ -64933,7 +64933,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 1
   m_Events:
   - time: 0.76666665
-    functionName: HeavyHit
+    functionName: Hit
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

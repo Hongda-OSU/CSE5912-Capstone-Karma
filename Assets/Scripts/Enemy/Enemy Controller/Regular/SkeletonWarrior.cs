@@ -32,8 +32,8 @@ namespace CSE5912.PolyGamers
                     animator.SetBool("InAttackRange", true);
                     animator.SetBool("AttackFinished", false);
                     AttackPlayerRandomly();
-                    if ((animator.GetCurrentAnimatorStateInfo(0).IsName("2Hand-Axe-Attack3") ||
-                        animator.GetCurrentAnimatorStateInfo(0).IsName("2Hand-Axe-Attack1")) &&
+                    if ((animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 3") ||
+                        animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 4")) &&
                         animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
                     {
                         isAttacking = false;
@@ -56,11 +56,30 @@ namespace CSE5912.PolyGamers
         protected override void Hit()
         {
             float damageAmount;
-            if (distanceToPlayer <= attackRange)
+            if (distanceToPlayer <= agent.stoppingDistance + 0.3)
             {
                 damageAmount = attackDamage + Mathf.RoundToInt(Random.Range(-5f, 2f));
                 Damage damage = new Damage(damageAmount, Element.Type.Physical, this, PlayerStats.Instance);
                 PlayerStats.Instance.TakeDamage(damage);
+                if (PlayerStats.Instance.Health > 0f)
+                {
+                    if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 1"))
+                    {
+                        FPSControllerCC.Instance.AddImpact(this.gameObject.transform.TransformDirection(Vector3.forward), 10f);
+                    }
+                    else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 2"))
+                    {
+                        FPSControllerCC.Instance.AddImpact(this.gameObject.transform.TransformDirection(Vector3.forward), 10f);
+                    }
+                    else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 3"))
+                    {
+                        FPSControllerCC.Instance.AddImpact(this.gameObject.transform.TransformDirection(Vector3.forward), 50f);
+                    }
+                    else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 4"))
+                    {
+                        FPSControllerCC.Instance.AddImpact(this.gameObject.transform.TransformDirection(Vector3.forward), 50f);
+                    }
+                }
             }
         }
 
