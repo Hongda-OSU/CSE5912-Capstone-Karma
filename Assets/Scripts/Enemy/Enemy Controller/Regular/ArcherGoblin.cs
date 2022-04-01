@@ -6,7 +6,6 @@ namespace CSE5912.PolyGamers
     public class ArcherGoblin : EliteEnemy
     {
         [SerializeField] private GameObject arrowVFX;
-        [SerializeField] private GameObject arrow;
         private int counter = 0;
 
         protected override void PerformActions()
@@ -17,14 +16,9 @@ namespace CSE5912.PolyGamers
             {
                 case Status.Idle:
                     if (playerDetected)
-                    {
-                        FaceTarget(directionToPlayer);
                         MoveToPlayer();
-                    }
                     else
-                    {
                         Rest();
-                    }
                     break;
 
                 case Status.Moving:
@@ -35,42 +29,28 @@ namespace CSE5912.PolyGamers
                     {
                         isPlayingAttackAnim = true;
                         // 3~8
-                        if (isPlayerInAttackRange && distanceToPlayer > closeDetectionRange)
-                        {
+                        if (isPlayerInAttackRange)
                             Attack(1);
-                        }
                         // 8~15
                         else if (distanceToPlayer <= 15f && distanceToPlayer > attackRange)
-                        {
                             Attack(2);
-                        }
                         else
-                        {
                             isPlayingAttackAnim = false;
-                        }
                     }
                     break;
 
                 case Status.Attacking:
-                    if (distanceToPlayer <= 5f)
+                    if (distanceToPlayer <= 20f && distanceToPlayer > 15f)
                     {
-                        animator.SetTrigger("RollBackward");
-                        if (counter == 0)
-                        {
-                            animator.SetTrigger("DodgeLeft");
-                        }
-                        else if (counter > 0)
-                        {
-                            animator.SetTrigger("DodgeRight");
-                        }
+                        animator.SetTrigger("RollForward");
                     }
-                    else if (distanceToPlayer <= 14f && distanceToPlayer > 12f)
+
+                    if (distanceToPlayer < closeDetectionRange)
                     {
-                        if (counter == 1)
-                        {
-                            if(Random.value > 0.3f)
-                                animator.SetTrigger("RollForward");
-                        }
+                        if(Random.value < 0.5f)
+                            animator.SetTrigger("DodgeLeft");
+                        else
+                            animator.SetTrigger("DodgeRight");
                     }
                     status = Status.Moving;
                     break;
@@ -105,16 +85,6 @@ namespace CSE5912.PolyGamers
                 vfx.transform.LookAt(PlayerManager.Instance.Player.transform.position);
                 Destroy(vfx, 4f);
             }
-        }
-
-        private void Reload()
-        {
-            arrow.SetActive(true);
-        }
-
-        private void ReloadFinish()
-        {
-            arrow.SetActive(false);
         }
 
         private void TrippleShooting()

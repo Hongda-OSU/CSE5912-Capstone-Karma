@@ -121,7 +121,14 @@ MonoBehaviour:
   type: 3
   set: 0
   runeIndex: 3
-  citation: 
+  citation: "Once known as the unbreakable shield of \nthe Felixia king, the mighty
+    guardian knight's\n fame spread from the capital of the dynasty \nto the edge
+    of the map in those old times. \nWhen nobles betraied everything on the filthy
+    \nnight of blood, the king's shield dissapear with \nhis lord. Some said that
+    he was buried in the \nfortress, some said that it was him who stabbed\n the
+    back of the king first. But according to the \nlegend that very few people know,
+    the king's \nshield brought his lord out of the blasphemy \nplace, and was still
+    guarding the dignity and\n legacy of the lost kingdom."
 --- !u!114 &1065363660751506039
 MonoBehaviour:
   m_ObjectHideFlags: 0

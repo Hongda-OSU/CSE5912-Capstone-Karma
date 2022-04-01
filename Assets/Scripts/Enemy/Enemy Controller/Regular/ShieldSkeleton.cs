@@ -57,8 +57,8 @@ namespace CSE5912.PolyGamers
                     }
                 if (enemyName == "Shield Skeleton Spear")
                     if (!(animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 1") ||
-                          animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 2") ||
-                          animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 3") ))
+                          animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 3") ||
+                          animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 4") ))
                     {
                         isAttacking = false;
                     }
@@ -71,6 +71,7 @@ namespace CSE5912.PolyGamers
                 else
                 {
                     agent.isStopped = false;
+                    agent.speed = agentSpeed;
                 }
             }
             else
@@ -87,11 +88,26 @@ namespace CSE5912.PolyGamers
         protected override void Hit()
         {
             float damageAmount;
-            if (distanceToPlayer <= attackRange)
+            if (distanceToPlayer <= agent.stoppingDistance + 0.3)
             {
                 damageAmount = attackDamage + Mathf.RoundToInt(Random.Range(-2f, 4f));
                 Damage damage = new Damage(damageAmount, Element.Type.Physical, this, PlayerStats.Instance);
                 PlayerStats.Instance.TakeDamage(damage);
+                if (PlayerStats.Instance.Health > 0f)
+                {
+                    if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 1"))
+                    {
+                        FPSControllerCC.Instance.AddImpact(this.gameObject.transform.TransformDirection(Vector3.forward), 5f);
+                    }
+                    else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 3"))
+                    {
+                        FPSControllerCC.Instance.AddImpact(this.gameObject.transform.TransformDirection(Vector3.forward), 20f);
+                    }
+                    else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 4"))
+                    {
+                        FPSControllerCC.Instance.AddImpact(this.gameObject.transform.TransformDirection(Vector3.forward), 30f);
+                    }
+                }
             }
         }
 
@@ -102,7 +118,7 @@ namespace CSE5912.PolyGamers
 
         private void StartAgent()
         {
-            agent.speed = 3;
+            agent.speed = agentSpeed;
         }
 
         private void ResetAttackAnimationTriggers()

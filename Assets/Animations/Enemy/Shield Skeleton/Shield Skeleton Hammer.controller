@@ -139,7 +139,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Sword-Attack-R7
+  m_Name: Attack 4
   m_Speed: 0.8
   m_CycleOffset: 0
   m_Transitions:
@@ -268,7 +268,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Sword-Attack-R2
+  m_Name: Attack 2
   m_Speed: 0.8
   m_CycleOffset: 0
   m_Transitions:
@@ -515,7 +515,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shield-Attack1
+  m_Name: Attack 3
   m_Speed: 0.7
   m_CycleOffset: 0
   m_Transitions:
@@ -568,7 +568,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Sword-Attack-R5
+  m_Name: Attack 1
   m_Speed: 0.8
   m_CycleOffset: 0
   m_Transitions:

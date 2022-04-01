@@ -95,6 +95,8 @@ namespace CSE5912.PolyGamers
                 damageAmount = attackDamage + Mathf.RoundToInt(Random.Range(-3f, 3f));
                 Damage damage = new Damage(damageAmount, Element.Type.Physical, this, PlayerStats.Instance);
                 PlayerStats.Instance.TakeDamage(damage);
+                if (PlayerStats.Instance.Health > 0f)
+                    FPSControllerCC.Instance.AddImpact(this.gameObject.transform.TransformDirection(Vector3.forward), 15f);
             }
         }
 

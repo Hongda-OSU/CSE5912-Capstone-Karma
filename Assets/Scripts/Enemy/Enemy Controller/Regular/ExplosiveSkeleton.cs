@@ -73,9 +73,14 @@ namespace CSE5912.PolyGamers
             GameObject vfx = Instantiate(effect);
             vfx.transform.position = new Vector3(transform.position.x, -0.5f, transform.position.z);
 
-            if (DistanceToPlayer < 3f) 
+            if (DistanceToPlayer < closeDetectionRange) 
             {
                 Damage damage = new Damage(attackDamage, Element.Type.Fire, this, PlayerStats.Instance);
+                if (PlayerStats.Instance.Health > 0f)
+                {
+                    FPSControllerCC.Instance.AddImpact(Vector3.up, 100f);
+                    FPSControllerCC.Instance.AddImpact(this.gameObject.transform.TransformDirection(Vector3.forward), 300f);
+                }
                 PlayerStats.Instance.TakeDamage(damage);
             }
             health = 0;
