@@ -182,32 +182,36 @@ namespace CSE5912.PolyGamers
             bool isItem = Physics.Raycast(EyeCameraTransform.position,
                 EyeCameraTransform.forward, out RaycastHit hit,
                 RayCastMaxDistance, ItemLayerMask);
+
             if (isItem)
             {
+                bool hasItem = hit.collider.TryGetComponent(out BaseItem item);
+
+                ItemPeekControl.Instance.PeekItem(item);
+
                 // player pick up weapon by pressing E
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     // get the item component of type BaseItem, if it exists
-                    bool hasItem = hit.collider.TryGetComponent(out FirearmsItem firearmsItem);
                     if (hasItem)
                     {
-                        PickupWeapon(firearmsItem);
-                        Debug.Log(firearmsItem.Weapon.WeaponName);
+                        PickupWeapon(item);
+                        PickupAttachment(item);
+                        Debug.Log(item.name);
                     }
-                    //if (hasItem)
-                    //{
-                    //    // pick up the baseItem (could be FirearmsItem or Attachment)
-                    //    PickupWeapon(baseItem);
-                    //    PickupAttachment(baseItem);
-                    //}
                 }
+            }
+            else
+            {
+                ItemPeekControl.Instance.Clear();
             }
         }
 
-        private void PickupWeapon(FirearmsItem firearmsItem)
+        private void PickupWeapon(BaseItem baseItem)
         {
             // if the baseItem find is not FirearmsItem, return
-            //if (!(firearmsItem is FirearmsItem firearmsItem)) return;
+            if (!(baseItem is FirearmsItem firearmsItem)) return;
+
             var weapon = firearmsItem.Weapon;
 
             weapon.gameObject.transform.SetParent(weaponCollection.transform, false);
@@ -216,54 +220,18 @@ namespace CSE5912.PolyGamers
 
             SetupCarriedWeapon(weapon);
 
-            // loop through each arm in the Firearm list
-            //foreach (Firearms arm in Arms)
-            //{
-            //    // compare the arm name to find the corresponding Firearm weapon
-            //    if (firearmsItem.ArmsName.CompareTo(arm.name) == 0)
-            //    {
-            //        // equip firearm weapon base on weapon type
-            //        switch (firearmsItem.CurrentFirearmsType)
-            //        {
-            //            case FirearmsItem.FirearmsType.AssaultRifle:
-            //                MainWeapon = arm;
-            //                break;
-            //            case FirearmsItem.FirearmsType.HandGun:
-            //                SecondaryWeapon = arm;
-            //                break;
-            //        }
-            //        // firearmsItem.HideItem();
-            //        SetupCarriedWeapon(arm);
-            //    }
-            //}
         }
 
         private void PickupAttachment(BaseItem baseItem)
         {
             // if the baseItem find is not Attachment, return
             if (!(baseItem is AttachmentItem attachmentItem)) return;
-            // enable attachment on weapon base on attachment type
-            //switch (attachmentItem.Type)
-            //{
-            //    case Attachment.AttachmentType.Scope:
-            //        foreach (Firearms.ScopeInfo scopeInfo in carriedWeapon.ScopeInfos)
-            //        {
-            //            // find the right scope to enable
-            //            if (scopeInfo.ScopeName.CompareTo(attachmentItem.) != 0)
-            //            {
-            //                scopeInfo.ScopeGameObject.SetActive(false);
-            //                continue;
-            //            }
-            //            // enable the scope
-            //            scopeInfo.ScopeGameObject.SetActive(true);
-            //            carriedWeapon.SetupCarriedScope(scopeInfo);
-            //            // enable scoping value in Firearms
-            //            carriedWeapon.isAttached = true;
-            //        }
-            //        break;
-            //    case Attachment.AttachmentType.Other:
-            //        break;
-            //}
+
+            var attachment = attachmentItem.Attachment;
+
+            PlayerInventory.Instance.AddAttachment(attachment);
+            Debug.Log(attachment.Rarity);
+
         }
 
         // allow weapon switching during reloading

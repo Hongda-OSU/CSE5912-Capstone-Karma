@@ -38,5 +38,19 @@ namespace CSE5912.PolyGamers
             healthBar.style.width = PlayerStats.Instance.Health * lengthPerUnit;
             maxHealthBar.style.width = PlayerStats.Instance.MaxHealth * lengthPerUnit;
         }
+
+        public override void Display(bool enabled)
+        {
+            if (enabled)
+            {
+                healthBar.style.display = DisplayStyle.Flex;
+                maxHealthBar.style.display = DisplayStyle.Flex;
+            }
+            else
+            {
+                healthBar.style.display = DisplayStyle.None;
+                maxHealthBar.style.display = DisplayStyle.None;
+            }
+        }
     }
 }

@@ -338,6 +338,7 @@ MonoBehaviour:
   AmmoInMag: 8
   MaxAmmoCarried: 32
   FireRate: 5
+  CurrentAmmo: 0
   ShootingAudioSource: {fileID: 757171806144942215}
   ReloadingAudioSource: {fileID: 757171806144942215}
   WeaponAudioData: {fileID: 11400000, guid: 4a28fc5339b14394cb909b4c66004902, type: 2}
@@ -349,17 +350,7 @@ MonoBehaviour:
   SpreadAngle: 90
   shootingType: 0
   iconImage: {fileID: 0}
-  description: 
   attachments: []
-  ScopeInfos:
-  - ScopeName: 2X
-    ScopeGameObject: {fileID: 8001524344842474005}
-    GunCameraFovWhenAttached: 0
-    GunCameraPosition: {x: 0, y: 0, z: 0}
-  - ScopeName: RedDotSight
-    ScopeGameObject: {fileID: 8001524344369890286}
-    GunCameraFovWhenAttached: 0
-    GunCameraPosition: {x: 0, y: 0, z: 0}
   ImpactPrefab: {fileID: 1879272669879180, guid: 7bef351ddc33ae044b671a7664396a20, type: 3}
   impactAudioData: {fileID: 11400000, guid: a4453f74fe5729140b9af202c367f21d, type: 2}
 --- !u!1 &837845098396444027
@@ -2121,7 +2112,7 @@ Transform:
   m_Children:
   - {fileID: 8001524343436085603}
   m_Father: {fileID: 4172133018842139838}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4172119940055524135
 MonoBehaviour:
@@ -2460,8 +2451,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4172119940055524134}
   - {fileID: 8001524343183977257}
+  - {fileID: 4172119940055524134}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2622,9 +2613,6 @@ MonoBehaviour:
   ItemLayerMask:
     serializedVersion: 2
     m_Bits: 1024
-  Arms:
-  - {fileID: 0}
-  - {fileID: 789240833929632200}
 --- !u!1 &5793499334547682943
 GameObject:
   m_ObjectHideFlags: 0
@@ -7501,7 +7489,7 @@ Transform:
   - {fileID: 8001524343171758130}
   - {fileID: 8001524343545211202}
   m_Father: {fileID: 4172133018842139838}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8001524343330553121
 GameObject:

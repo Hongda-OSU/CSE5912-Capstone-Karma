@@ -14,6 +14,8 @@ namespace CSE5912.PolyGamers
 
         [SerializeField] private Firearms defaultWeapon;
 
+        [SerializeField] private GameObject attachmentParent;
+
         private WeaponsPanelControl weaponsPanelControl;
         private AttachmentInventoryControl attachmentInventoryControl;
 
@@ -51,29 +53,29 @@ namespace CSE5912.PolyGamers
             if (!Contains(defaultWeapon))
                 AddWeapon(defaultWeapon);
 
-            if (!yes)
-            {
-                // test
-                GameObject testAttachments = new GameObject();
-                int num = 100;
-                for (int i = 0; i < num; i++)
-                {
-                    var attachment = new GameObject();
-                    attachment.AddComponent<Attachment>();
-                    attachment.transform.SetParent(testAttachments.transform);
+            //if (!yes)
+            //{
+            //    // test
+            //    GameObject testAttachments = new GameObject();
+            //    int num = 100;
+            //    for (int i = 0; i < num; i++)
+            //    {
+            //        var attachment = new GameObject();
+            //        attachment.AddComponent<Attachment>();
+            //        attachment.transform.SetParent(testAttachments.transform);
 
-                    var at = attachment.GetComponent<Attachment>();
+            //        var at = attachment.GetComponent<Attachment>();
 
-                    at.AttachmentName = i.ToString();
-                    at.IconImage = attachmentIcons[UnityEngine.Random.Range(0, attachmentIcons.Length)];
+            //        at.AttachmentName = i.ToString();
+            //        at.IconImage = attachmentIcons[UnityEngine.Random.Range(0, attachmentIcons.Length)];
 
-                    attachmentList.Add(at);
-                }
+            //        attachmentList.Add(at);
+            //    }
 
 
-                UpdateAll();
-                yes = true;
-            }
+            //    UpdateAll();
+            //    yes = true;
+            //}
         }
 
 
@@ -87,6 +89,14 @@ namespace CSE5912.PolyGamers
                     break;
                 }
             }
+            UpdateAll();
+        }
+
+        public void AddAttachment(Attachment attachment)
+        {
+            attachmentList.Add(attachment);
+            attachment.transform.SetParent(attachmentParent.transform);
+
             UpdateAll();
         }
 

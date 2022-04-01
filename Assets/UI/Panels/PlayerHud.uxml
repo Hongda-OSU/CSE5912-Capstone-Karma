@@ -1,6 +1,7 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/Styles/Hud.uss?fileID=7433441132597879392&amp;guid=ca36900cbf93cba4d99cfd34716a89b8&amp;type=3#Hud" />
-    <ui:VisualElement name="Background" style="flex-grow: 1; justify-content: center; align-items: center;">
+    <Style src="project://database/Assets/UI/Styles/WeaponsView.uss?fileID=7433441132597879392&amp;guid=41f86612847d72049837f08362464366&amp;type=3#WeaponsView" />
+    <ui:VisualElement name="Background" style="flex-grow: 1; justify-content: center; align-items: center; display: none;">
         <ui:VisualElement name="Crosshair" style="width: 50px; height: 50px; background-image: url(&apos;project://database/Assets/UI/VFX/UI/PNG/White/crosshair009.png?fileID=2800000&amp;guid=bf2523c3fc5e0264ba9dceb2b1464c7a&amp;type=3#crosshair009&apos;); align-items: center; justify-content: center; opacity: 0.9; position: absolute;">
             <ui:VisualElement name="Dot" style="width: 50px; height: 50px; background-image: url(&apos;project://database/Assets/UI/VFX/UI/PNG/White%20Retina/crosshair001.png?fileID=2800000&amp;guid=cffd6d05c9c3dd347bda7a879c1c1da8&amp;type=3#crosshair001&apos;);" />
         </ui:VisualElement>
@@ -14,21 +15,100 @@
         </ui:VisualElement>
         <ui:VisualElement name="WeaponInformation" style="position: absolute; right: 50px; bottom: 50px; width: 500px; height: 600px; flex-direction: column-reverse; align-items: flex-end; justify-content: flex-start;">
             <ui:VisualElement name="Weapon_4" class="Weapon" style="background-image: url(&apos;project://database/Assets/UI/VFX/UI/Gun_Icons_Spritesheet/Gun_Icons_Spritesheet.png?fileID=21300000&amp;guid=ce679aa762875164cb3718b2eaa85abc&amp;type=3#assault_rifle_01_icon&apos;); -unity-background-scale-mode: scale-to-fit;">
-                <ui:Label text="Label" display-tooltip-when-elided="true" name="Ammo" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/FontAssets/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); -unity-text-align: upper-center;" />
+                <ui:Label text="Label" display-tooltip-when-elided="true" name="Ammo" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); -unity-text-align: upper-center;" />
             </ui:VisualElement>
             <ui:VisualElement name="Weapon_3" class="Weapon" style="flex-direction: column;">
-                <ui:Label text="Label" display-tooltip-when-elided="true" name="Ammo" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/FontAssets/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); -unity-text-align: upper-center;" />
+                <ui:Label text="Label" display-tooltip-when-elided="true" name="Ammo" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); -unity-text-align: upper-center;" />
             </ui:VisualElement>
             <ui:VisualElement name="Weapon_2" class="Weapon">
-                <ui:Label text="Label" display-tooltip-when-elided="true" name="Ammo" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/FontAssets/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); -unity-text-align: upper-center;" />
+                <ui:Label text="Label" display-tooltip-when-elided="true" name="Ammo" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); -unity-text-align: upper-center;" />
             </ui:VisualElement>
             <ui:VisualElement name="Weapon_1" class="Weapon">
-                <ui:Label text="Label" display-tooltip-when-elided="true" name="Ammo" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/FontAssets/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); -unity-text-align: upper-center;" />
+                <ui:Label text="Label" display-tooltip-when-elided="true" name="Ammo" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); -unity-text-align: upper-center;" />
             </ui:VisualElement>
             <ui:VisualElement name="Weapon_0" class="Weapon">
-                <ui:Label text="Label" display-tooltip-when-elided="true" name="Ammo" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/FontAssets/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); -unity-text-align: upper-center;" />
+                <ui:Label text="Label" display-tooltip-when-elided="true" name="Ammo" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); -unity-text-align: upper-center;" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
-    <ui:VisualElement name="DamageNumbers" style="position: absolute;" />
+    <ui:VisualElement name="WeaponPeek" style="width: 600px; height: 400px; align-items: center; display: none; border-left-width: 5px; border-right-width: 5px; border-top-width: 1px; border-bottom-width: 5px; border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(75, 76, 73); border-bottom-color: rgb(255, 255, 255); background-color: rgba(0, 0, 0, 0.65); flex-direction: column; position: absolute;">
+        <ui:VisualElement name="Title" style="height: 80px; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 1px; border-left-color: rgba(255, 255, 255, 0.65); border-right-color: rgba(255, 255, 255, 0.65); border-top-color: rgba(255, 255, 255, 0.65); border-bottom-color: rgba(255, 255, 255, 0.65); width: 600px; align-items: center;">
+            <ui:Label text="Name" display-tooltip-when-elided="true" name="Name" style="flex-grow: 1; width: auto; -unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); font-size: 20px; white-space: normal; height: auto; -unity-text-align: upper-center; padding-bottom: 0;" />
+            <ui:Label text="Type" display-tooltip-when-elided="true" name="Type" style="flex-grow: 1; width: 424px; -unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); font-size: 12px; white-space: normal; height: auto; -unity-text-align: upper-center; padding-bottom: 0;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="Content" style="flex-direction: row; flex-grow: 1; width: 581px;">
+            <ui:VisualElement name="Icon" style="flex-grow: 0.3; width: 175px; background-image: url(&apos;project://database/Assets/UI/VFX/UI/Gun_Icons_Spritesheet/Gun_Icons_Spritesheet.png?fileID=21300000&amp;guid=ce679aa762875164cb3718b2eaa85abc&amp;type=3#assault_rifle_01_icon&apos;); -unity-background-scale-mode: scale-to-fit;" />
+            <ui:VisualElement name="Stats" style="flex-grow: 1; flex-direction: column; align-items: center; justify-content: flex-start;">
+                <ui:VisualElement name="Specific" style="padding-top: 20px; padding-bottom: 10px; border-bottom-color: rgba(255, 255, 255, 0.65); border-bottom-width: 0;">
+                    <ui:VisualElement name="Rarity" class="SpecificRow">
+                        <ui:Label text="Rarity" display-tooltip-when-elided="true" name="Label" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); font-size: 12px;" />
+                        <ui:Label text="Common" display-tooltip-when-elided="true" name="Data" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); font-size: 12px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="Damage" class="SpecificRow">
+                        <ui:Label text="Damage" display-tooltip-when-elided="true" name="Label" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); font-size: 12px;" />
+                        <ui:Label text="10" display-tooltip-when-elided="true" name="Data" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); font-size: 12px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="Element" class="SpecificRow">
+                        <ui:Label text="Element" display-tooltip-when-elided="true" name="Label" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); font-size: 12px;" />
+                        <ui:Label text="Physical" display-tooltip-when-elided="true" name="Data" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); font-size: 12px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="Ammo" class="SpecificRow">
+                        <ui:Label text="Ammo" display-tooltip-when-elided="true" name="Label" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); font-size: 12px;" />
+                        <ui:Label text="30 / 120" display-tooltip-when-elided="true" name="Data" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); font-size: 12px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="Bonus" style="width: 289px;">
+                    <ui:VisualElement name="BonusRow" class="SpecificRow" style="justify-content: center; border-top-width: 1px; border-top-color: rgba(255, 255, 255, 0); border-left-color: rgba(255, 255, 255, 0); border-right-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0);">
+                        <ui:Label text="Physical Damage +4.2%" display-tooltip-when-elided="true" name="Data" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); font-size: 12px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="BonusRow" class="SpecificRow" style="justify-content: center;">
+                        <ui:Label text="Physical Damage +4.2%" display-tooltip-when-elided="true" name="Data" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); font-size: 12px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="BonusRow" class="SpecificRow" style="justify-content: center;">
+                        <ui:Label text="Physical Damage +4.2%" display-tooltip-when-elided="true" name="Data" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); font-size: 12px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="BonusRow" class="SpecificRow" style="justify-content: center;">
+                        <ui:Label text="Physical Damage +4.2%" display-tooltip-when-elided="true" name="Data" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); font-size: 12px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="BonusRow" class="SpecificRow" style="justify-content: center;">
+                        <ui:Label text="Physical Damage +4.2%" display-tooltip-when-elided="true" name="Data" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); font-size: 12px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="AttachmentPeek" style="width: 600px; height: 400px; align-items: center; display: flex; border-left-width: 5px; border-right-width: 5px; border-top-width: 1px; border-bottom-width: 5px; border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(75, 76, 73); border-bottom-color: rgb(255, 255, 255); background-color: rgba(0, 0, 0, 0.65); flex-direction: column; position: absolute;">
+        <ui:VisualElement name="Title" style="height: 80px; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 1px; border-left-color: rgba(255, 255, 255, 0.65); border-right-color: rgba(255, 255, 255, 0.65); border-top-color: rgba(255, 255, 255, 0.65); border-bottom-color: rgba(255, 255, 255, 0.65); width: 600px; align-items: center;">
+            <ui:Label text="Name" display-tooltip-when-elided="true" name="Name" style="flex-grow: 1; width: auto; -unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); font-size: 20px; white-space: normal; height: auto; -unity-text-align: upper-center; padding-bottom: 0;" />
+            <ui:Label text="Type" display-tooltip-when-elided="true" name="Type" style="flex-grow: 1; width: 424px; -unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); font-size: 12px; white-space: normal; height: auto; -unity-text-align: upper-center; padding-bottom: 0;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="Content" style="flex-direction: row; flex-grow: 1; width: 581px;">
+            <ui:VisualElement name="Icon" style="flex-grow: 0.3; width: 175px; background-image: resource(&apos;Low Poly FPS Pack/Components/Textures_&amp;_Sprites/UI/Misc_Icons_Spritesheet/Misc_Icons_Spritesheet&apos;); -unity-background-scale-mode: scale-to-fit;" />
+            <ui:VisualElement name="Stats" style="flex-grow: 1; flex-direction: column; align-items: center; justify-content: flex-start;">
+                <ui:VisualElement name="Specific" style="padding-top: 20px; padding-bottom: 50px; border-bottom-color: rgba(255, 255, 255, 0.65); border-bottom-width: 0;">
+                    <ui:VisualElement name="Rarity" class="SpecificRow">
+                        <ui:Label text="Rarity" display-tooltip-when-elided="true" name="Label" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); font-size: 12px;" />
+                        <ui:Label text="Common" display-tooltip-when-elided="true" name="Data" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); font-size: 12px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="Bonus" style="width: 289px;">
+                    <ui:VisualElement name="BonusRow" class="SpecificRow" style="justify-content: center; border-top-width: 1px; border-top-color: rgba(255, 255, 255, 0); border-left-color: rgba(255, 255, 255, 0); border-right-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0);">
+                        <ui:Label text="Physical Damage +4.2%" display-tooltip-when-elided="true" name="Data" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); font-size: 12px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="BonusRow" class="SpecificRow" style="justify-content: center;">
+                        <ui:Label text="Physical Damage +4.2%" display-tooltip-when-elided="true" name="Data" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); font-size: 12px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="BonusRow" class="SpecificRow" style="justify-content: center;">
+                        <ui:Label text="Physical Damage +4.2%" display-tooltip-when-elided="true" name="Data" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); font-size: 12px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="BonusRow" class="SpecificRow" style="justify-content: center;">
+                        <ui:Label text="Physical Damage +4.2%" display-tooltip-when-elided="true" name="Data" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); font-size: 12px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="BonusRow" class="SpecificRow" style="justify-content: center;">
+                        <ui:Label text="Physical Damage +4.2%" display-tooltip-when-elided="true" name="Data" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/UiElement/Futura%20SDF.asset?fileID=11400000&amp;guid=8f7da2db5416b234a88cdb420d609972&amp;type=2#Futura SDF&apos;); color: rgb(255, 255, 255); font-size: 12px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
 </ui:UXML>

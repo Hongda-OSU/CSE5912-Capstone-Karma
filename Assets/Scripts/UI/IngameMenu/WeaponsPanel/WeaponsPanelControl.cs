@@ -110,12 +110,14 @@ namespace CSE5912.PolyGamers
             {
                 weapon = weaponRowsControl.FindWeaponByRow(slot.parent);
 
-                if (selectedWeaponSlot != slot && !attachmentInventoryControl.IsInventoryOpened())
+                if (selectedWeaponSlot != slot)
                 {
                     selectedWeapon = weapon;
                 }
 
                 selectedWeaponSlot = slot;
+                selectedEquippedAttachmentSlot = null;
+                selectedAttachmentInventorySlot = null;
             }
 
             return weapon;
@@ -141,6 +143,7 @@ namespace CSE5912.PolyGamers
                     }
 
                     selectedEquippedAttachmentSlot = slot;
+                    selectedWeaponSlot = null;
                 }
             }
 
@@ -164,6 +167,7 @@ namespace CSE5912.PolyGamers
 
                     selectedAttachmentInventorySlot = slot;
                 }
+                selectedWeaponSlot = null;
             }
 
             return attachment;
@@ -248,6 +252,10 @@ namespace CSE5912.PolyGamers
 
         private void WeaponSlot_performed(VisualElement weaponSlot)
         {
+            if (attachmentInventoryControl.attachmentsInventory.style.display == DisplayStyle.Flex)
+            {
+                StartCoroutine(PopOffAttachmentInventory());
+            }
             StartCoroutine(PopUpWeaponSpecific(weaponSlot));
 
             SelectSlot(weaponSlot);
@@ -321,6 +329,7 @@ namespace CSE5912.PolyGamers
                 newWeapon.SetAttachment(attachment, index);
 
                 weaponRow.attachmentIconSlots[index].style.backgroundImage = new StyleBackground(attachment.IconImage);
+                weaponRow.attachmentIconSlots[index].style.unityBackgroundImageTintColor = Instance.AttachmentRarityToColor[attachment.Rarity];
                 weaponRow.attachmentIconSlots[index].style.unityBackgroundScaleMode = ScaleMode.ScaleToFit;
 
                 selectedAttachmentInventorySlot = null;
@@ -382,6 +391,7 @@ namespace CSE5912.PolyGamers
                 }
 
                 selectedEquippedAttachmentSlot = null;
+                selectedAttachment = null;
 
                 UpdateSlotsVisual();
             }
@@ -429,7 +439,7 @@ namespace CSE5912.PolyGamers
             {
                 yield return StartCoroutine(PopOffSpecific());
             }
-            else if (selectedWeaponSlot != weaponSlot && attachmentInventoryControl.attachmentsInventory.style.display == DisplayStyle.None)
+            else if (selectedWeaponSlot != weaponSlot)
             {
                 PopUpSpecific(weapon);
             }
@@ -448,9 +458,9 @@ namespace CSE5912.PolyGamers
             specificPanel.style.borderRightColor = color;
 
 
-            VisualElement title = specificPanel.Q<VisualElement>("Title");
-            VisualElement specific = specificPanel.Q<VisualElement>("Specific");
-            VisualElement bonus = specificPanel.Q<VisualElement>("Bonus");
+            VisualElement title = specificPanel.Q<VisualElement>("WeaponSpecific").Q<VisualElement>("Title");
+            VisualElement specific = specificPanel.Q<VisualElement>("WeaponSpecific").Q<VisualElement>("Specific");
+            VisualElement bonus = specificPanel.Q<VisualElement>("WeaponSpecific").Q<VisualElement>("Bonus");
 
 
             title.Q<Label>("Name").text = weapon.WeaponName;
@@ -507,9 +517,9 @@ namespace CSE5912.PolyGamers
             specificPanel.style.borderRightColor = color;
 
 
-            VisualElement title = specificPanel.Q<VisualElement>("Title");
-            VisualElement specific = specificPanel.Q<VisualElement>("Specific");
-            VisualElement bonus = specificPanel.Q<VisualElement>("Bonus");
+            VisualElement title = specificPanel.Q<VisualElement>("AttachmentSpecific").Q<VisualElement>("Title");
+            VisualElement specific = specificPanel.Q<VisualElement>("AttachmentSpecific").Q<VisualElement>("Specific");
+            VisualElement bonus = specificPanel.Q<VisualElement>("AttachmentSpecific").Q<VisualElement>("Bonus");
 
 
             title.Q<Label>("Name").text = attachment.AttachmentName;
@@ -517,8 +527,6 @@ namespace CSE5912.PolyGamers
 
             title.Q<Label>("Type").text = attachment.Type.ToString();
 
-
-            //specific.Q<VisualElement>("Rarity").Q<Label>("Label").style.color = rarityToColor[weapon.Rarity];
             specific.Q<VisualElement>("Rarity").Q<Label>("Data").text = attachment.Rarity.ToString();
             specific.Q<VisualElement>("Rarity").Q<Label>("Data").style.color = color;
 
@@ -541,6 +549,7 @@ namespace CSE5912.PolyGamers
             specificPanel.style.opacity = 1f;
             specificPanel.style.display = DisplayStyle.Flex;
         }
+
         private IEnumerator PopOffSpecific()
         {
             selectedWeaponSlot = null;

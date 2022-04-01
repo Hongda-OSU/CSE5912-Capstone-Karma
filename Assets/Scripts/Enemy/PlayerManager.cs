@@ -25,6 +25,7 @@ namespace CSE5912.PolyGamers
 
         private void Update()
         {
+            playerCamera = WeaponManager.Instance.CarriedWeapon.GunCamera;
         }
 
 

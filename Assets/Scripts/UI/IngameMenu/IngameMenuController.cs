@@ -34,7 +34,7 @@ namespace CSE5912.PolyGamers
         {
             isDisplayed = !isDisplayed;
 
-            ingameMenu.GetComponent<UI>().SetDisplay(isDisplayed);
+            ingameMenu.GetComponent<UI>().Display(isDisplayed);
 
             PostProcessingController.Instance.SetBlurryCameraView(isDisplayed);
 

@@ -5,13 +5,22 @@ namespace CSE5912.PolyGamers
     public class FirearmsItem : BaseItem
     {
         [SerializeField] private Firearms.WeaponType type;
-        private Firearms weapon;
+        [SerializeField] private Firearms weapon;
         private WeaponBonus bonus;
 
 
-        public void AssignWeapon(Firearms weapon)
+        private void Awake()
+        {
+            CurrentItemType = ItemType.Firearms;
+
+        }
+
+        public void Setup(Firearms weapon)
         {
             this.weapon = weapon;
+
+            var color = WeaponsPanelControl.Instance.WeaponRarityToColor[weapon.Rarity];
+            SetupVfx(color);
         }
 
 

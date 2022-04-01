@@ -72,6 +72,23 @@ namespace CSE5912.PolyGamers
             
         }
 
+        public override void Display(bool enabled)
+        {
+            if (!enabled)
+            {
+                StartCoroutine(FadeOut(root));
+
+                UnityEngine.Cursor.visible = false;
+                UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+            }
+            else
+            {
+                StartCoroutine(FadeIn(root));
+
+                UnityEngine.Cursor.visible = true;
+                UnityEngine.Cursor.lockState = CursorLockMode.None;
+            }
+        }
 
         // switch to weapons view
         private void WeaponsToggleOnChange()

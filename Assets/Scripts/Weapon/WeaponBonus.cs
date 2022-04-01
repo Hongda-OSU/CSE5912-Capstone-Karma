@@ -19,7 +19,7 @@ namespace CSE5912.PolyGamers
 
         public void Initialize()
         {
-            weapon.name = weapon.Rarity.ToString() + weapon.Type;
+            weapon.WeaponName = weapon.Rarity.ToString() + weapon.Type;
 
             bonusList = new List<Bonus>();
             for (int i = 0; i < (int)weapon.Rarity + 1; i++)
@@ -53,6 +53,7 @@ namespace CSE5912.PolyGamers
             var list = new List<string>();
             foreach(var bonus in bonusList)
                 list.Add(bonus.Description);
+
             return list;
         }
 
@@ -109,6 +110,10 @@ namespace CSE5912.PolyGamers
             internal void AssignBonusFunction(int index)
             {
                 var func = bonusFunctionList[index];
+
+                func(true);
+                func(false);
+
                 bonusFunction = func;
             }
 

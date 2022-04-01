@@ -42,6 +42,9 @@ namespace CSE5912.PolyGamers
         [SerializeField] private float dropWeaponChance;
         [SerializeField] private Firearms.WeaponType dropWeaponType = Firearms.WeaponType.AK47;
         [SerializeField] private Firearms.WeaponRarity dropWeaponRarity = Firearms.WeaponRarity.Divine;
+        [SerializeField] private float dropAttachmentChance;
+        [SerializeField] private Attachment.AttachmentType dropAttachmentType = Attachment.AttachmentType.Scope;
+        [SerializeField] private Attachment.AttachmentRarity dropAttachmentRarity = Attachment.AttachmentRarity.Divine;
 
         [Header("Certain Dropoff")]
         // todo
@@ -95,6 +98,7 @@ namespace CSE5912.PolyGamers
                 isAlive = false;
                 //test
                 DropWeapon();
+                DropAttachment();
             }
 
             if (!isAttackedByPlayer)
@@ -134,7 +138,14 @@ namespace CSE5912.PolyGamers
                 return;
 
             DropoffManager.Instance.DropWeapon(dropWeaponType, dropWeaponRarity, transform.position);
+        }
 
+        protected void DropAttachment()
+        {
+            if (Random.value < dropAttachmentChance)
+                return;
+
+            DropoffManager.Instance.DropAttachment(dropAttachmentType, dropAttachmentRarity, transform.position);
         }
 
         protected virtual void FaceTarget(Vector3 direction)
