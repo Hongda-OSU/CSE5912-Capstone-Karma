@@ -121,7 +121,13 @@ MonoBehaviour:
   type: 3
   set: 0
   runeIndex: 0
-  citation: 
+  citation: "Darkness is not a substance that exists \non its own. Rather, it is
+    a concept that \nborn from relativity. Even in the furthest \nedge of the deep
+    space, the dim light \nfrom countless stars still shines in the \nethernal. Ancient
+    astrologers inferred \nthat darkness was the true face of the \ngod, for we can
+    never see the fullest \nbrilliance of the bless around us. The \nthunder, shining
+    in bright blue, was \nbelieved to be the evidence of god's \ngrandeur, came from
+    the other side of \nthe nebula."
 --- !u!114 &5365168431077571084
 MonoBehaviour:
   m_ObjectHideFlags: 0
