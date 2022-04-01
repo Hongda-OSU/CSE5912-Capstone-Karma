@@ -1400,7 +1400,7 @@ MonoBehaviour:
   dropAttachmentNumber: 3
   dropAttachmentTypes: 03000000
   dropAttachmentRarities: 04000000
-  rotateSpeed: 20
+  rotateSpeed: 90
   viewRadius: 15
   viewAngle: 135
   closeDetectionRange: 3

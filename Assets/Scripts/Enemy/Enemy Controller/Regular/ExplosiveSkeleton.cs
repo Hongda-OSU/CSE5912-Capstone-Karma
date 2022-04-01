@@ -76,8 +76,11 @@ namespace CSE5912.PolyGamers
             if (DistanceToPlayer < closeDetectionRange) 
             {
                 Damage damage = new Damage(attackDamage, Element.Type.Fire, this, PlayerStats.Instance);
-                FPSControllerCC.Instance.AddImpact(Vector3.up, 100f);
-                FPSControllerCC.Instance.AddImpact(this.gameObject.transform.TransformDirection(Vector3.forward), 300f);
+                if (PlayerStats.Instance.Health > 0f)
+                {
+                    FPSControllerCC.Instance.AddImpact(Vector3.up, 100f);
+                    FPSControllerCC.Instance.AddImpact(this.gameObject.transform.TransformDirection(Vector3.forward), 300f);
+                }
                 PlayerStats.Instance.TakeDamage(damage);
             }
             health = 0;

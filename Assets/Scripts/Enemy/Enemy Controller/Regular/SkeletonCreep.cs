@@ -61,6 +61,7 @@ namespace CSE5912.PolyGamers
                 else
                 {
                     agent.isStopped = false;
+                    agent.speed = agentSpeed;
                 }
             }
             else
@@ -94,7 +95,7 @@ namespace CSE5912.PolyGamers
 
         private void StartAgent()
         {
-            agent.speed = 3;
+            agent.speed = agentSpeed;
         }
 
         protected override void HandleWander() {

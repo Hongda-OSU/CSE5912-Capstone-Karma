@@ -105,7 +105,7 @@ namespace CSE5912.PolyGamers
 
         private void StartAgent()
         {
-            agent.speed = 6;
+            agent.speed = agentSpeed;
         }
 
         private void ResetAttackAnimationTriggers()

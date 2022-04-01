@@ -64,6 +64,7 @@ namespace CSE5912.PolyGamers
                 else
                 {
                     agent.isStopped = false;
+                    agent.speed = agentSpeed;
                 }
             }
             else
