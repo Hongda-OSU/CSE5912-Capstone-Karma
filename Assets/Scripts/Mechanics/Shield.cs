@@ -26,8 +26,7 @@ namespace CSE5912.PolyGamers
 
         private void Awake()
         {
-            shield_energy = maxShield_energy;
-            shield_armor = maxShield_armor;
+            ResetShield();
         }
 
         private void Update()
@@ -54,6 +53,8 @@ namespace CSE5912.PolyGamers
             {
                 timeSinceDamaged += delta;
             }
+
+            shield_energy = Mathf.Clamp(shield_energy, 0, maxShield_energy);
         }
 
         private void UpdateArmor()
@@ -82,6 +83,8 @@ namespace CSE5912.PolyGamers
 
                 isOn = true;
             }
+
+            shield_armor = Mathf.Clamp(shield_armor, 0, maxShield_armor);
         }
 
 
@@ -132,7 +135,7 @@ namespace CSE5912.PolyGamers
         public float Shield_armor { get { return shield_armor; } set { shield_armor = value; } }
         public float MaxShield_armor { get { return maxShield_armor; } set { maxShield_armor = value; } }
         public float Shield_energy { get { return shield_energy; } set { shield_energy = value; } }
-        public float MaxShield_energy { get { return maxShield_energy; } set { shield_energy = value; } }
+        public float MaxShield_energy { get { return maxShield_energy; } set { maxShield_energy = value; } }
         public float Overflow { get { return overflow; } }
 
     }

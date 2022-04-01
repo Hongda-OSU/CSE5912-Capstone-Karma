@@ -111,13 +111,13 @@ namespace CSE5912.PolyGamers
 
                 runeBonusList = new List<BonusFunction>()
                 {
-                    //HighDamageLowResist,
-                    //HighSpeedLowDamage,
-                    //HighCritChanceLowCritDamage,
+                    HighDamageLowResist,
+                    HighSpeedLowDamage,
+                    HighCritChanceLowCritDamage,
                     HealthToShield,
-                    //Tank,
-                    //Vampire,
-                    //MeleeAndBullet,
+                    Tank,
+                    Vampire,
+                    MeleeAndBullet,
 
                 };
 

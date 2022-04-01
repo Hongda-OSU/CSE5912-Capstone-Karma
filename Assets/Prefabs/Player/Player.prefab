@@ -759,8 +759,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3914003179883955253}
-  - component: {fileID: 3914003179883955252}
   - component: {fileID: 3302887819601688399}
+  - component: {fileID: 3914003179883955252}
   m_Layer: 8
   m_Name: Stats
   m_TagString: Untagged
@@ -783,6 +783,29 @@ Transform:
   m_Father: {fileID: 3914003179971651603}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3302887819601688399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3914003179883955254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7334376b3a7c92e47bfe5b6bc9709a32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shield_energy: 1
+  maxShield_energy: 1
+  timeSinceDamaged: 0
+  timeToRestore: 5
+  restoreSpeed: 10
+  elementalDamageReduction: 0.75
+  shield_armor: 0
+  maxShield_armor: 1
+  physicalDamageReduction: 0.5
+  resistBonus: 0.1
+  resistGained: 0
 --- !u!114 &3914003179883955252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -840,28 +863,6 @@ MonoBehaviour:
   levelUpAudio: {fileID: 0}
   statUpAudio: {fileID: 0}
   levelUpVfxPrefab: {fileID: 0}
---- !u!114 &3302887819601688399
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3914003179883955254}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7334376b3a7c92e47bfe5b6bc9709a32, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shield_energy: 1
-  maxShield_energy: 1
-  timeSinceDamaged: 0
-  timeToRestore: 5
-  restoreSpeed: 10
-  elementalDamageReduction: 0.75
-  shield_armor: 0
-  maxShield_armor: 1
-  physicalDamageReduction: 0.5
-  resistBonus: 0.1
 --- !u!1 &3914003179907011759
 GameObject:
   m_ObjectHideFlags: 0
