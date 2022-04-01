@@ -14,11 +14,14 @@ namespace CSE5912.PolyGamers
         public int sceneIndex;
 
         [DataMember]
-        public WeaponData weaponData;
+        public List<WeaponData> weaponDataList = new List<WeaponData>();
 
-        public GameData(Firearms weapon)
+        public GameData(List<Firearms> weaponList)
         {
-            weaponData = new WeaponData(weapon);
+            for (int i = 0; i < weaponList.Count; i++)
+            {
+                weaponDataList.Add(new WeaponData(weaponList[i]));
+            }
         }
 
         [Serializable]

@@ -41,49 +41,58 @@ namespace CSE5912.PolyGamers
         private void LoadItems(GameData data)
         {
             var weaponList = DropoffManager.Instance.BaseWeaponList;
-            var weaponData = data.weaponData;
 
+            // clear current weapons
             foreach (Transform child in WeaponManager.Instance.WeaponCollection.transform)
             {
                 PlayerInventory.Instance.RemoveWeapon(child.GetComponent<Firearms>());
                 Destroy(child.gameObject);
             }
 
-            GameObject weaponObj = null;
-            foreach (var baseWeapon in weaponList)
+            // load weapon data
+            for (int i = 0; i < data.weaponDataList.Count; i++)
             {
-                if (baseWeapon.GetComponent<Firearms>().Type == weaponData.type)
+                var weaponData = data.weaponDataList[i];
+
+                // create base weapon of saved type
+                GameObject weaponObj = null;
+                foreach (var baseWeapon in weaponList)
                 {
-                    weaponObj = Instantiate(baseWeapon);
-                    weaponObj.transform.SetParent(transform, false);
+                    if (baseWeapon.GetComponent<Firearms>().Type == weaponData.type)
+                    {
+                        weaponObj = Instantiate(baseWeapon);
+                        weaponObj.transform.SetParent(transform, false);
+                    }
                 }
+                if (weaponObj == null)
+                {
+                    Debug.LogError("Error: Weapon type " + weaponData.type.ToString() + " not found. ");
+                    return;
+                }
+
+                // load saved weapon data
+                var weapon = weaponObj.GetComponent<Firearms>();
+
+                weapon.WeaponName = weaponData.name;
+                weapon.Rarity = weaponData.rarity;
+                weapon.Damage = weaponData.damage;
+                weapon.Element = weaponData.element;
+                weapon.CurrentAmmo = weaponData.currentAmmoInMag;
+                weapon.CurrentMaxAmmoCarried = weaponData.currentTotalAmmo;
+                weapon.Bonus = weaponData.weaponBonus;
+
+                // final setup
+                PlayerInventory.Instance.AddWeapon(weapon);
+                weapon.gameObject.transform.SetParent(WeaponManager.Instance.WeaponCollection.transform, false);
+                weapon.gameObject.SetActive(false);
             }
-            if (weaponObj == null)
-            {
-                Debug.LogError("Error: Weapon type " + weaponData.type.ToString() + " not found. ");
-                return;
-            }
 
-            var weapon = weaponObj.GetComponent<Firearms>();
-
-            weapon.WeaponName = weaponData.name;
-            weapon.Rarity = weaponData.rarity;
-            weapon.Damage = weaponData.damage;
-            weapon.Element = weaponData.element;
-            weapon.CurrentAmmo = weaponData.currentAmmoInMag;
-            weapon.CurrentMaxAmmoCarried = weaponData.currentTotalAmmo;
-            weapon.Bonus = weaponData.weaponBonus;
-
-            PlayerInventory.Instance.AddWeapon(weapon);
-
-            weapon.gameObject.transform.SetParent(WeaponManager.Instance.WeaponCollection.transform, false);
-
-            WeaponManager.Instance.SetupCarriedWeapon(weapon);
+            WeaponManager.Instance.SetupCarriedWeapon(PlayerInventory.Instance.GetPlayerWeaponList()[0]);
         }
 
         public void Save()
         {
-            GameData gameData = new GameData(WeaponManager.Instance.CarriedWeapon);
+            GameData gameData = new GameData(PlayerInventory.Instance.GetPlayerWeaponList());
             gameData.sceneIndex = SceneManager.GetActiveScene().buildIndex;
 
             BinaryFormatter formatter = new BinaryFormatter();
