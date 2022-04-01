@@ -54,13 +54,13 @@ namespace CSE5912.PolyGamers
                 foundTarget = false;
                 agent.isStopped = true;
                 animator.SetBool("Run", false);
-                //agent.speed = 2f;
+                agent.stoppingDistance = 2f;
             }
         }
         protected override void Hit()
         {
             float damageAmount;
-            if (distanceToPlayer <= agent.stoppingDistance + 0.3)
+            if (distanceToPlayer <= attackRange)
             {
                 damageAmount = attackDamage + Mathf.RoundToInt(Random.Range(-3f, 2f));
                 Damage damage = new Damage(damageAmount, Element.Type.Physical, this, PlayerStats.Instance);
@@ -71,7 +71,7 @@ namespace CSE5912.PolyGamers
         }
 
         void Scratch() {
-            if (distanceToPlayer <= agent.stoppingDistance + 0.3)
+            if (distanceToPlayer <= attackRange)
             {
                 Damage damage = new Damage(Mathf.RoundToInt(Random.Range(8f, 10f)), Element.Type.Physical, this, PlayerStats.Instance);
                 PlayerStats.Instance.TakeDamage(damage);
