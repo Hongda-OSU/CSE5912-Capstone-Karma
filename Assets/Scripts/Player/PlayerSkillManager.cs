@@ -13,8 +13,13 @@ namespace CSE5912.PolyGamers
         [SerializeField] private GameObject attachmentSetSkills;
         private Dictionary<Attachment.AttachmentSet, PlayerSkill> setToSkill = new Dictionary<Attachment.AttachmentSet, PlayerSkill>();
 
+        [SerializeField] private GameObject bonusSkills;
+        private Dictionary<string, PlayerSkill> bonusToSkill = new Dictionary<string, PlayerSkill>();
+
+
         private PlayerSkill mainSkill;
         private PlayerSkill setSkill;
+
 
         private static PlayerSkillManager instance;
         public static PlayerSkillManager Instance { get { return instance; } }
@@ -74,6 +79,9 @@ namespace CSE5912.PolyGamers
             setToSkill.Add(Attachment.AttachmentSet.Sergeant76, attachmentSetSkills.GetComponentInChildren<Sergeant76>());
             setToSkill.Add(Attachment.AttachmentSet.BlackSoul, attachmentSetSkills.GetComponentInChildren<BlackSoul>());
             setToSkill.Add(Attachment.AttachmentSet.Leviathan, attachmentSetSkills.GetComponentInChildren<Leviathan>());
+
+
+            bonusToSkill.Add("HealthToShield", bonusSkills.GetComponentInChildren<HealthToShield>());
         }
 
         public void SetMainSkill(PlayerSkill skill)
@@ -89,6 +97,10 @@ namespace CSE5912.PolyGamers
         public PlayerSkill GetSetSkill(Attachment.AttachmentSet set)
         {
             return setToSkill[set];
+        }
+        public PlayerSkill GetBonusSkill(string name)
+        {
+            return bonusToSkill[name];
         }
 
         public void TryActivateSetSkill()

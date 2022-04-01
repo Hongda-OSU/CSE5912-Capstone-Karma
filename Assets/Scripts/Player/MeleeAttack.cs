@@ -86,7 +86,7 @@ namespace CSE5912.PolyGamers
 
 
         public bool IsEnabled { get { return isEnabled; } set { isEnabled = value; } }
-        public Element.Type ElementType { get { return elementType; } }
+        public Element.Type ElementType { get { return elementType; } set { elementType = value; } }
         public float BaseDamage { get { return baseDamage; } set { baseDamage = value; } }
     }
 }

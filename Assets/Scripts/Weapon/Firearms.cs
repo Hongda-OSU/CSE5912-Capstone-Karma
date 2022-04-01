@@ -552,9 +552,14 @@ namespace CSE5912.PolyGamers
                 if (attachments[i] == target)
                 {
                     isAttached = false;
-                    this.gameObject.transform.Find("Armature/weapon/" + attachments[i].AttachmentRealName).gameObject.SetActive(false);
-                    if (this.weaponType is WeaponType.M16 || this.weaponType is WeaponType.SCAR || this.weaponType is WeaponType.P85 || this.weaponType is WeaponType.UZI)
-                        ironSights.SetActive(true);
+
+                    if (target.Type == Attachment.AttachmentType.Scope)
+                    {
+                        this.gameObject.transform.Find("Armature/weapon/" + attachments[i].AttachmentRealName).gameObject.SetActive(false);
+                        if (this.weaponType is WeaponType.M16 || this.weaponType is WeaponType.SCAR || this.weaponType is WeaponType.P85 || this.weaponType is WeaponType.UZI)
+                            ironSights.SetActive(true);
+                    }
+
                     attachments[i] = null;
                     target.AttachTo(null);
                 }
@@ -564,7 +569,7 @@ namespace CSE5912.PolyGamers
         public string WeaponName { get { return weaponName; } set { weaponName = value; } }
         public WeaponType Type { get { return weaponType; } } 
         public WeaponRarity Rarity { get { return rarity; } set { rarity = value; } }
-        public float Damage { get { return damage; } }
+        public float Damage { get { return damage; } set { damage = value; } }
         public Element.Type Element { get { return element; } set { element = value; } }
         public WeaponBonus Bonus { get { return weaponBonus; } set { weaponBonus = value; } }
         public Sprite IconImage { get { return iconImage; } }

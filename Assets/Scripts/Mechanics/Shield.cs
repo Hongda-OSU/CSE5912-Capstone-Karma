@@ -19,6 +19,7 @@ namespace CSE5912.PolyGamers
         [SerializeField] private float maxShield_armor = 20;
         [SerializeField] private float physicalDamageReduction = 0.5f;
         [SerializeField] private float resistBonus = 0.1f;
+        [SerializeField] private float resistGained;
         private bool isOn = false;
 
         private float overflow;
@@ -57,26 +58,29 @@ namespace CSE5912.PolyGamers
 
         private void UpdateArmor()
         {
-            var resist = shield_armor * resistBonus;
             if (shield_armor <= 0f && isOn)
             {
+                PlayerStats.Instance.GetResist().Physical.Value -= resistGained;
+                PlayerStats.Instance.GetResist().Fire.Value -= resistGained;
+                PlayerStats.Instance.GetResist().Cryo.Value -= resistGained;
+                PlayerStats.Instance.GetResist().Electro.Value -= resistGained;
+                PlayerStats.Instance.GetResist().Venom.Value -= resistGained;
+
+                resistGained = 0f;
+
                 isOn = false;
-
-                PlayerStats.Instance.GetResist().Physical.Value -= resist;
-                PlayerStats.Instance.GetResist().Fire.Value -= resist;
-                PlayerStats.Instance.GetResist().Cryo.Value -= resist;
-                PlayerStats.Instance.GetResist().Electro.Value -= resist;
-                PlayerStats.Instance.GetResist().Venom.Value -= resist;
             }
-            else if (!isOn)
+            else if (shield_armor > 0f && !isOn)
             {
-                isOn = true;
+                resistGained = shield_armor * resistBonus;
 
-                PlayerStats.Instance.GetResist().Physical.Value += resist;
-                PlayerStats.Instance.GetResist().Fire.Value += resist;
-                PlayerStats.Instance.GetResist().Cryo.Value += resist;
-                PlayerStats.Instance.GetResist().Electro.Value += resist;
-                PlayerStats.Instance.GetResist().Venom.Value += resist;
+                PlayerStats.Instance.GetResist().Physical.Value += resistGained;
+                PlayerStats.Instance.GetResist().Fire.Value += resistGained;  
+                PlayerStats.Instance.GetResist().Cryo.Value += resistGained;
+                PlayerStats.Instance.GetResist().Electro.Value += resistGained;
+                PlayerStats.Instance.GetResist().Venom.Value += resistGained;
+
+                isOn = true;
             }
         }
 

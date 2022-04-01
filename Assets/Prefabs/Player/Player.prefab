@@ -483,6 +483,7 @@ MonoBehaviour:
   speed: 50
   baseDamage: 50
   range: 1
+  sfx: {fileID: 0}
 --- !u!1 &939211911
 GameObject:
   m_ObjectHideFlags: 0
@@ -651,6 +652,8 @@ MonoBehaviour:
   extraSpeed: 0
   range: 1
   isEnabled: 1
+  sfx: {fileID: 0}
+  sounds: []
   meleeEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -801,6 +804,8 @@ MonoBehaviour:
   health: 25
   maxHealth: 100
   shield: {fileID: 0}
+  bulletVamp: 0
+  takeDamageFactor: 1
   moveSpeedFactor: 1
   reloadSpeedFactor: 1
   fireRateFactor: 1
@@ -990,6 +995,7 @@ Transform:
   m_Children:
   - {fileID: 6061025882080312815}
   - {fileID: 1416963879}
+  - {fileID: 7905573763569772434}
   m_Father: {fileID: 3914003179971651603}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1008,6 +1014,7 @@ MonoBehaviour:
   skillPoints: 100
   skillTree_element: {fileID: 1110533165218009687}
   attachmentSetSkills: {fileID: 1416963878}
+  bonusSkills: {fileID: 0}
 --- !u!114 &3914003180910380902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1025,6 +1032,97 @@ MonoBehaviour:
   cryoColor: {r: 0, g: 1, b: 1, a: 1}
   electroColor: {r: 0, g: 0, b: 1, a: 1}
   venomColor: {r: 0, g: 1, b: 0, a: 1}
+--- !u!1 &8208746873207503741
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7905573763569772434}
+  m_Layer: 8
+  m_Name: BonusSkill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7905573763569772434
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8208746873207503741}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4433188999302491197}
+  m_Father: {fileID: 3914003180910380903}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8675915563253644574
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4433188999302491197}
+  - component: {fileID: 7306806004774780966}
+  m_Layer: 8
+  m_Name: HealthToShield
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4433188999302491197
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8675915563253644574}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7905573763569772434}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7306806004774780966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8675915563253644574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5464ab27f0e1a0947ba0a46692d35dd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 0
+  timeSincePerformed: 0
+  isReady: 0
+  skillName: Health to Shield
+  requiredSkill: {fileID: 0}
+  isLearned: 0
+  level: 0
+  maxLevel: 1
+  learnCost: 0
+  levelupCost: 0
+  icon: {fileID: 0}
+  type: 0
+  description: 
+  health: 0
+  maxHealth: 0
 --- !u!1001 &3914003181359763965
 PrefabInstance:
   m_ObjectHideFlags: 0

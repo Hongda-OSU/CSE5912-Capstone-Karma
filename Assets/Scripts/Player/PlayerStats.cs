@@ -19,6 +19,8 @@ namespace CSE5912.PolyGamers
         [SerializeField] private float health = 100f;
         [SerializeField] private float maxHealth = 100f;
         [SerializeField] private Shield shield;
+        [SerializeField] private float bulletVamp = 0f;
+        [SerializeField] private float takeDamageFactor = 1f;
 
         [Header("Agility")]
         [SerializeField] private float moveSpeedFactor = 1f;
@@ -108,6 +110,8 @@ namespace CSE5912.PolyGamers
 
         public void TakeDamage(Damage damage)
         {
+            damage.ResolvedValue *= takeDamageFactor;
+
             shield.TakeDamage(damage);
 
             Health -= shield.Overflow;
@@ -311,6 +315,8 @@ namespace CSE5912.PolyGamers
         public float MaxShield_armor { get { return shield.MaxShield_armor; } set { shield.MaxShield_armor = value; } }
         public float Shield_energy { get { return shield.Shield_energy; } set { shield.Shield_energy = Mathf.Clamp(value, 0f, MaxShield_energy); } }
         public float MaxShield_energy { get { return shield.MaxShield_energy; } set { shield.MaxShield_energy = value; } }
+        public float BulletVamp { get { return bulletVamp; } set { bulletVamp = value; } }
+        public float TakeDamageFactor { get { return takeDamageFactor; } set { takeDamageFactor = value; } }
 
         public int StatPoint { get { return statPoint; } }
         public int Level { get { return level; } }

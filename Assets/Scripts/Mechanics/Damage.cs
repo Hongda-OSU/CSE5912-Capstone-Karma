@@ -50,7 +50,7 @@ namespace CSE5912.PolyGamers
         }
 
         public float RawValue { get { return rawValue; } }
-        public float ResolvedValue { get { return resolvedValue; } }
+        public float ResolvedValue { get { return resolvedValue; } set { resolvedValue = value; } }
         public bool IsCrit { get { return isCrit; } }
         public Element.Type Element { get { return element; } }
         public IDamageable Source { get { return source; } }

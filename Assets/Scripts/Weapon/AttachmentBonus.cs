@@ -111,13 +111,13 @@ namespace CSE5912.PolyGamers
 
                 runeBonusList = new List<BonusFunction>()
                 {
-                    HighDamageLowResist,
-                    HighSpeedLowDamage,
-                    HighCritChanceLowCritDamage,
-                    //HealthToShield,
+                    //HighDamageLowResist,
+                    //HighSpeedLowDamage,
+                    //HighCritChanceLowCritDamage,
+                    HealthToShield,
                     //Tank,
                     //Vampire,
-                    //BulletLoan,
+                    //MeleeAndBullet,
 
                 };
 
@@ -427,31 +427,120 @@ namespace CSE5912.PolyGamers
                 }
             }
 
-            //internal void HealthToShield(bool enabled)
-            //{
-            //    float chance = 2f;
-            //    float damage = 0.5f;
+            internal void HealthToShield(bool enabled)
+            {
+                description =
+                    "Convert health to energy shield and armor shield";
 
-            //    description =
-            //        "Crit chance *" + chance +
-            //        "Crit damage *" + damage;
+                if (enabled)
+                {
+                    PlayerSkillManager.Instance.GetBonusSkill("HealthToShield").LevelUp();
 
-            //    if (enabled)
-            //    {
-            //        PlayerStats.Instance.CritRate *= chance;
-            //        PlayerStats.Instance.CritDamageFactor *= damage;
+                    isReady = false;
+                }
+                else
+                {
+                    PlayerSkillManager.Instance.GetBonusSkill("HealthToShield").ResetLevel();
 
-            //        isReady = false;
-            //    }
-            //    else
-            //    {
-            //        PlayerStats.Instance.CritRate /= chance;
-            //        PlayerStats.Instance.CritDamageFactor /= damage;
+                    isReady = true;
+                }
+            }
 
-            //        isReady = true;
-            //    }
-            //}
 
+            internal void Tank(bool enabled)
+            {
+                float resist = 500f;
+                float slow = 0.75f;
+
+                description =
+                    "All resists +" + resist +
+                    "\nMove speed -" + slow * 100 + "%";
+
+                if (enabled)
+                {
+                    PlayerStats.Instance.GetResist().Physical.Value += resist;
+                    PlayerStats.Instance.GetResist().Fire.Value += resist;
+                    PlayerStats.Instance.GetResist().Cryo.Value += resist;
+                    PlayerStats.Instance.GetResist().Electro.Value += resist;
+                    PlayerStats.Instance.GetResist().Venom.Value += resist;
+
+                    PlayerStats.Instance.MoveSpeedFactor -= slow;
+
+                    isReady = false;
+                }
+                else
+                {
+                    PlayerStats.Instance.GetResist().Physical.Value -= resist;
+                    PlayerStats.Instance.GetResist().Fire.Value -= resist;
+                    PlayerStats.Instance.GetResist().Cryo.Value -= resist;
+                    PlayerStats.Instance.GetResist().Electro.Value -= resist;
+                    PlayerStats.Instance.GetResist().Venom.Value -= resist;
+
+                    PlayerStats.Instance.MoveSpeedFactor += slow;
+
+                    isReady = true;
+                }
+            }
+
+            internal void Vampire(bool enabled)
+            {
+                float vamp = 0.5f;
+                float takeDamage = 1f;
+
+                description =
+                    "Heal for " + vamp * 100 + "% of damage dealt by firearms" +
+                    "\nTake double damage";
+
+                if (enabled)
+                {
+                    PlayerStats.Instance.BulletVamp += vamp;
+
+                    PlayerStats.Instance.TakeDamageFactor += takeDamage;
+
+                    isReady = false;
+                }
+                else
+                {
+                    PlayerStats.Instance.BulletVamp -= vamp;
+
+                    PlayerStats.Instance.TakeDamageFactor -= takeDamage;
+
+                    isReady = true;
+                }
+            }
+
+            internal void MeleeAndBullet(bool enabled)
+            {
+                description =
+                    "Exchange the damages and elements of firearm and melee attack";
+
+                if (enabled)
+                {
+                    var damage = WeaponManager.Instance.CarriedWeapon.Damage;
+                    var element = WeaponManager.Instance.CarriedWeapon.Element;
+
+                    WeaponManager.Instance.CarriedWeapon.Damage = MeleeAttack.Instance.BaseDamage;
+                    WeaponManager.Instance.CarriedWeapon.Element = MeleeAttack.Instance.ElementType;
+
+                    MeleeAttack.Instance.BaseDamage = damage;
+                    MeleeAttack.Instance.ElementType = element;
+
+                    isReady = false;
+                }
+                else
+                {
+                    var damage = WeaponManager.Instance.CarriedWeapon.Damage;
+                    var element = WeaponManager.Instance.CarriedWeapon.Element;
+
+                    WeaponManager.Instance.CarriedWeapon.Damage = MeleeAttack.Instance.BaseDamage;
+                    WeaponManager.Instance.CarriedWeapon.Element = MeleeAttack.Instance.ElementType;
+
+                    MeleeAttack.Instance.BaseDamage = damage;
+                    MeleeAttack.Instance.ElementType = element;
+
+                    isReady = true;
+                }
+            }
 
             public string Description { get { return description; } }
         } 

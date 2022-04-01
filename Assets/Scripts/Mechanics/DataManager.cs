@@ -12,8 +12,6 @@ namespace CSE5912.PolyGamers
 {
     public class DataManager : MonoBehaviour
     {
-        [SerializeField] private GameObject data;
-
         [SerializeField] private string fileName = "GameData";
 
         private static DataManager instance;
@@ -38,6 +36,12 @@ namespace CSE5912.PolyGamers
                 }
             }
         }
+
+        private void LoadItems(GameData data)
+        {
+
+        }
+
         public void Save()
         {
             GameData gameData = new GameData();
@@ -118,13 +122,13 @@ namespace CSE5912.PolyGamers
     }
 
     [Serializable]
-    [DataContract]
+    //[DataContract]
     public class GameData
     {
-        [DataMember]
+        //[DataMember]
         public int sceneIndex;
 
-        [DataMember]
+        //[DataMember]
         public WeaponBonus weaponBonus;
 
 

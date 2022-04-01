@@ -44,11 +44,15 @@ namespace CSE5912.PolyGamers
             Damage damage = new Damage(weapon.Damage, weapon.Element, PlayerStats.Instance, enemy);
             enemy.TakeDamage(damage);
 
+            PlayerStats.Instance.Health += damage.ResolvedValue * PlayerStats.Instance.BulletVamp;
+
             StartCoroutine(DamageNumberControl.Instance.DisplayDamageNumber(damage, position));
         }
         public void PerformBulletDamage(Shield shield, Damage damage, Vector3 position)
         {
             shield.TakeDamage(damage);
+
+            PlayerStats.Instance.Health += damage.ResolvedValue * PlayerStats.Instance.BulletVamp;
 
             StartCoroutine(DamageNumberControl.Instance.DisplayDamageNumber(damage, position));
         }
