@@ -101,7 +101,7 @@ namespace CSE5912.PolyGamers
             specific.Q<VisualElement>("Element").Q<Label>("Data").text = weapon.Element.ToString();
             specific.Q<VisualElement>("Element").Q<Label>("Data").style.color = Element.Instance.TypeToColor[weapon.Element];
 
-            specific.Q<VisualElement>("Ammo").Q<Label>("Data").text = weapon.AmmoInMag.ToString();
+            specific.Q<VisualElement>("Ammo").Q<Label>("Data").text = weapon.MaxAmmoPerMag.ToString();
 
 
             var list = weapon.Bonus.GetBonusDescriptionList();

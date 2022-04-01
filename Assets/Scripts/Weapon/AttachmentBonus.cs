@@ -231,15 +231,15 @@ namespace CSE5912.PolyGamers
 
                 description = "Ammo +" + Math.Round(value * 100, 1) + "%";
 
-                int ammo = WeaponManager.Instance.CarriedWeapon.AmmoInMag;
+                int ammo = WeaponManager.Instance.CarriedWeapon.MaxAmmoPerMag;
                 if (enabled)
                 {
-                    WeaponManager.Instance.CarriedWeapon.AmmoInMag = (int)Mathf.Floor(ammo * (1 + value));
+                    WeaponManager.Instance.CarriedWeapon.MaxAmmoPerMag = (int)Mathf.Floor(ammo * (1 + value));
                     isReady = false;
                 }
                 else
                 {
-                    WeaponManager.Instance.CarriedWeapon.AmmoInMag = (int)Mathf.Ceil(ammo / (1 + value));
+                    WeaponManager.Instance.CarriedWeapon.MaxAmmoPerMag = (int)Mathf.Ceil(ammo / (1 + value));
                     isReady = true;
                 }
             }

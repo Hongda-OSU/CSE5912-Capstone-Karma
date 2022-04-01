@@ -31,10 +31,7 @@ namespace CSE5912.PolyGamers
             if (instance != null && instance != this)
                 Destroy(gameObject);
             instance = this;
-
-        }
-        private void Start()
-        {
+            
             var preInstWeapon = Instantiate(baseWeaponPrefabs);
             Destroy(preInstWeapon);
 
@@ -229,5 +226,7 @@ namespace CSE5912.PolyGamers
                 Destroy(child.gameObject);
             }
         }
+
+        public List<GameObject> BaseWeaponList { get { return baseWeaponList; } }
     }
 }

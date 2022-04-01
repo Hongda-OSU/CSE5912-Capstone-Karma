@@ -7814,10 +7814,11 @@ MonoBehaviour:
   CastingParticle: {fileID: 5609508093069029783}
   ImpactPrefab: {fileID: 1879272669879180, guid: 7bef351ddc33ae044b671a7664396a20, type: 3}
   ironSights: {fileID: 3702886108667409051}
-  AmmoInMag: 7
+  CurrentAmmo: 7
+  MaxAmmoPerMag: 7
+  CurrentMaxAmmoCarried: 42
   MaxAmmoCarried: 42
   FireRate: 7
-  CurrentAmmo: 0
   shootEvent:
     m_PersistentCalls:
       m_Calls: []

@@ -56,15 +56,16 @@ namespace CSE5912.PolyGamers
 
 
         [Header("WeaponInfo")]
-        // predefined ammo per mag (AK: 30, Glock: 8)
-        public int AmmoInMag;
-        // predefined ammo total (AK: 120, Glock: 32)
-        public int MaxAmmoCarried;
-        public float FireRate;
         // current ammo in mag (per)
         public int CurrentAmmo;
+        // predefined ammo per mag (AK: 30, Glock: 8)
+        public int MaxAmmoPerMag;
         // total current ammo left in mag (all)
-        protected int CurrentMaxAmmoCarried;
+        public int CurrentMaxAmmoCarried;
+        // predefined ammo total (AK: 120, Glock: 32)
+        public int MaxAmmoCarried;
+
+        public float FireRate;
         protected float LastFireTime;
         // current gun animator
         internal Animator GunAnimator; 
@@ -142,7 +143,7 @@ namespace CSE5912.PolyGamers
         protected virtual void Awake()
         {
             // set up current ammo
-            CurrentAmmo = AmmoInMag; 
+            CurrentAmmo = MaxAmmoPerMag; 
             CurrentMaxAmmoCarried = MaxAmmoCarried;
             // set up the gun animator
             GunAnimator = GetComponent<Animator>(); 
@@ -252,12 +253,12 @@ namespace CSE5912.PolyGamers
                     if (GunStateInfo.normalizedTime >= 0.9f)
                     {
                         // calculate how many ammo have been used and how much ammo left
-                        int ammoUsed = AmmoInMag - CurrentAmmo;
+                        int ammoUsed = MaxAmmoPerMag - CurrentAmmo;
                         int remaingAmmo = CurrentMaxAmmoCarried - ammoUsed;
                         if (remaingAmmo <= 0)
                             CurrentAmmo += CurrentMaxAmmoCarried;
                         else
-                            CurrentAmmo = AmmoInMag;
+                            CurrentAmmo = MaxAmmoPerMag;
                         // update how many ammo left 
                         CurrentMaxAmmoCarried = remaingAmmo <= 0 ? 0 : remaingAmmo;
                         // reloading finished
@@ -500,7 +501,7 @@ namespace CSE5912.PolyGamers
         // for weapon reloading
         internal void ReloadAmmo()
         {
-            if (CurrentAmmo == AmmoInMag) return;
+            if (CurrentAmmo == MaxAmmoPerMag) return;
             isReloading = true;
             isAiming = false;
             GunAnimator.SetBool("Aim", isAiming);

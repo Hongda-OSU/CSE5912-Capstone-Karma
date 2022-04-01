@@ -288,6 +288,9 @@ namespace CSE5912.PolyGamers
         {
             return carriedWeapon.transform.forward.normalized;
         }
+
+
+        public GameObject WeaponCollection { get { return weaponCollection; } }
     }
 }
    
