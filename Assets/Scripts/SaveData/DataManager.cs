@@ -39,8 +39,6 @@ namespace CSE5912.PolyGamers
             }
             if (Input.GetKeyDown(KeyCode.O))
                 Save();
-
-            Debug.Log(PlayerStats.Instance.GetResist().Fire.Value);
         }
 
         private void LoadData(GameData data)

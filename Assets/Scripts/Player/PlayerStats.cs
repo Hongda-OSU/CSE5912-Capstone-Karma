@@ -304,49 +304,6 @@ namespace CSE5912.PolyGamers
             }
         }
 
-        //public void LoadPlayerStatsData(GameData.PlayerStatsData data)
-        //{
-        //    statPoint = data.statPoint;
-        //    level = data.level;
-        //    experience = data.experience;
-        //    experienceToUpgrade = data.experienceToUpgrade;
-        //    experienceMultiplier = data.experienceMultiplier;
-
-        //    health = data.health;
-        //    maxHealth = data.maxHealth;
-        //    shield.Shield_energy = data.energyShield;
-        //    shield.MaxShield_energy = data.maxEnergyShield;
-        //    shield.Shield_armor = data.armorShield;
-        //    shield.MaxShield_armor = data.maxArmorShield;
-        //    bulletVamp = data.bulletVamp;
-        //    takeDamageFactor = data.takeDamageFactor;
-
-        //    moveSpeedFactor = data.moveSpeedFactor;
-        //    reloadSpeedFactor = data.reloadSpeedFactor;
-        //    fireRateFactor = data.fireRateFactor;
-
-        //    meleeDamageFactor = data.meleeDamageFactor;
-        //    meleeSpeedFactor = data.meleeSpeedFactor;
-
-        //    critRate = data.critRate;
-        //    critDamageFactor = data.critDamageFactor;
-
-        //    damageFactor = data.damageFactor;
-
-        //    burnedBaseChance = data.burnedChance;
-        //    frozenBaseChance = data.frozenChance;
-        //    electrocutedBaseChance = data.electrocutedChance;
-        //    infectedBaseChance = data.infectedChance;
-
-        //    burnedDamagePerStack = data.burnedDamage;
-        //    frozenSlowdownPerStack = data.frozenSlowdown;
-        //    electrocutedResistReductionPerStack = data.electrocutedReduction;
-        //    infectedCurrentHealthDamagePerStack = data.infectedDamage;
-
-        //    resist = data.resist;
-        //}
-
-        
 
         public DamageFactor GetDamageFactor()
         {
