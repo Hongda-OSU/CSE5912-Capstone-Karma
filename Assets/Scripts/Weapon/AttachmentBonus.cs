@@ -54,6 +54,12 @@ namespace CSE5912.PolyGamers
             return list;
         }
 
+        public void SetBonusReady(bool isReady)
+        {
+            bonus.isReady = isReady;
+        }
+
+
 
         [Serializable]
         internal class Bonus
@@ -63,7 +69,7 @@ namespace CSE5912.PolyGamers
             private float value;
             private int level;
             internal string description = "None";
-            private bool isReady;
+            internal bool isReady;
             private bool isInitialized = false;
 
             internal BonusFunction bonusFunction;

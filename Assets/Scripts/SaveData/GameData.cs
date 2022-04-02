@@ -11,14 +11,13 @@ namespace CSE5912.PolyGamers
     [DataContract]
     public class GameData
     {
-        [DataMember]
-        public int sceneIndex;
+        [DataMember] public int sceneIndex;
 
-        [DataMember]
-        public List<WeaponData> weaponDataList = new List<WeaponData>();
+        [DataMember] public List<WeaponData> weaponDataList = new List<WeaponData>();
 
-        [DataMember]
-        public List<AttachmentData> attachmentDataList = new List<AttachmentData>();
+        [DataMember] public List<AttachmentData> attachmentDataList = new List<AttachmentData>();
+
+        [DataMember] public PlayerStatsData playerStatsData;
 
         public GameData(List<Firearms> weaponList, List<Attachment> attachmentList)
         {
@@ -34,37 +33,31 @@ namespace CSE5912.PolyGamers
                     attachmentDataList.Add(new AttachmentData(attachmentList[i]));
                 }
             }
+
+            playerStatsData = new PlayerStatsData(PlayerStats.Instance);
         }
 
         [Serializable]
         [DataContract]
         public class WeaponData
         {
-            [DataMember]
-            public string name;
+            [DataMember] public string name;
 
-            [DataMember]
-            public Firearms.WeaponType type;
+            [DataMember] public Firearms.WeaponType type;
 
-            [DataMember]
-            public Firearms.WeaponRarity rarity;
+            [DataMember] public Firearms.WeaponRarity rarity;
 
-            [DataMember]
-            public float damage;
+            [DataMember] public float damage;
 
-            [DataMember]
-            public Element.Type element;
+            [DataMember] public Element.Type element;
 
-            [DataMember]
-            public int currentAmmoInMag;
-            [DataMember]
-            public int currentTotalAmmo;
+            [DataMember] public int currentAmmoInMag;
 
-            [DataMember]
-            public WeaponBonus weaponBonus;
+            [DataMember] public int currentTotalAmmo;
 
-            [DataMember]
-            public List<AttachmentData> attachmentDataList = new List<AttachmentData>();
+            [DataMember] public WeaponBonus weaponBonus;
+
+            [DataMember] public List<AttachmentData> attachmentDataList = new List<AttachmentData>();
 
             public WeaponData(Firearms weapon)
             {
@@ -93,29 +86,21 @@ namespace CSE5912.PolyGamers
         [DataContract]
         public class AttachmentData
         {
-            [DataMember]
-            public string name;
+            [DataMember] public string name;
 
-            [DataMember]
-            public string realName;
+            [DataMember] public string realName;
 
-            [DataMember]
-            public Attachment.AttachmentType type;
+            [DataMember] public Attachment.AttachmentType type;
 
-            [DataMember]
-            public Attachment.AttachmentRarity rarity;
+            [DataMember] public Attachment.AttachmentRarity rarity;
 
-            [DataMember]
-            public Attachment.AttachmentSet set;
+            [DataMember] public Attachment.AttachmentSet set;
 
-            [DataMember]
-            public AttachmentBonus attachmentBonus;
+            [DataMember] public AttachmentBonus attachmentBonus;
 
-            [DataMember]
-            public string citation;
+            [DataMember] public string citation;
 
-            [DataMember]
-            public string iconPath;
+            [DataMember] public string iconPath;
 
             public AttachmentData(Attachment attachment)
             {
@@ -129,5 +114,97 @@ namespace CSE5912.PolyGamers
                 iconPath = AssetDatabase.GetAssetPath(attachment.IconImage);
             }
         }
+
+        [Serializable]
+        [DataContract]
+        public class PlayerStatsData
+        {
+            [DataMember] public int statPoint;
+            [DataMember] public int level;
+            [DataMember] public float experience;
+            [DataMember] public float experienceToUpgrade;
+            //[DataMember] public float experienceMultiplier;
+
+            [DataMember] public Dictionary<string, int> nameToStatsLevel = new Dictionary<string, int>();
+            //[DataMember] public float health;
+            //[DataMember] public float maxHealth;
+            //[DataMember] public float energyShield;
+            //[DataMember] public float maxEnergyShield;
+            //[DataMember] public float armorShield;
+            //[DataMember] public float maxArmorShield;
+            //[DataMember] public float bulletVamp;
+            //[DataMember] public float takeDamageFactor;
+
+            //[DataMember] public float moveSpeedFactor;
+            //[DataMember] public float reloadSpeedFactor;
+            //[DataMember] public float fireRateFactor;
+
+            //[DataMember] public float meleeDamageFactor;
+            //[DataMember] public float meleeSpeedFactor;
+
+            //[DataMember] public float critRate;
+            //[DataMember] public float critDamageFactor;
+
+            //[DataMember] public DamageFactor damageFactor;
+
+            //[DataMember] public float burnedChance;
+            //[DataMember] public float frozenChance;
+            //[DataMember] public float electrocutedChance;
+            //[DataMember] public float infectedChance;
+
+            //[DataMember] public float burnedDamage;
+            //[DataMember] public float frozenSlowdown;
+            //[DataMember] public float electrocutedReduction;
+            //[DataMember] public float infectedDamage;
+
+            //[DataMember] public Resist resist;
+
+            public PlayerStatsData(PlayerStats stats)
+            {
+
+                statPoint = stats.StatPoint;
+                level = stats.Level;
+                experience = stats.Experience;
+                experienceToUpgrade = stats.ExperienceToUpgrade;
+
+                nameToStatsLevel = stats.NameToStatsLevel;
+
+                //experienceMultiplier = stats.ExperienceMultiplier;
+
+                //health = stats.Health;
+                //maxHealth = stats.MaxHealth;
+                //energyShield = stats.Shield_energy;
+                //maxEnergyShield = stats.MaxShield_energy;
+                //armorShield = stats.Shield_armor;
+                //maxArmorShield = stats.MaxShield_armor;
+                //bulletVamp = stats.BulletVamp;
+                //takeDamageFactor = stats.TakeDamageFactor;
+
+                //moveSpeedFactor = stats.MoveSpeedFactor;
+                //reloadSpeedFactor = stats.ReloadSpeedFactor;
+                //fireRateFactor = stats.FireRateFactor;
+
+                //meleeDamageFactor = stats.MeleeDamageFactor;
+                //meleeSpeedFactor = stats.MeleeSpeedFactor;
+
+                //critRate = stats.CritRate;
+                //critDamageFactor = stats.CritDamageFactor;
+
+                //damageFactor = stats.GetDamageFactor();
+
+                //burnedChance = stats.BurnedBaseChance;
+                //frozenChance = stats.FrozenBaseChance;
+                //electrocutedChance = stats.ElectrocutedBaseChance;
+                //infectedChance = stats.InfectedBaseChance;
+
+                //burnedDamage = stats.BurnedDamagePerStack;
+                //frozenSlowdown = stats.FrozenSlowdownPerStack;
+                //electrocutedReduction = stats.ElectrocutedResistReductionPerStack;
+                //infectedDamage = stats.InfectedCurrentHealthDamagePerStack;
+
+                //resist = stats.GetResist();
+            }
+        }
+
     }
 }

@@ -39,6 +39,8 @@ namespace CSE5912.PolyGamers
             }
             if (Input.GetKeyDown(KeyCode.O))
                 Save();
+
+            Debug.Log(PlayerStats.Instance.GetResist().Fire.Value);
         }
 
         private void LoadData(GameData data)
@@ -57,6 +59,10 @@ namespace CSE5912.PolyGamers
                 PlayerInventory.Instance.RemoveWeapon(child.GetComponent<Firearms>());
                 Destroy(child.gameObject);
             }
+
+
+            // load player stats
+            LoadPlayerStats(data.playerStatsData);
 
             // load weapon data
             for (int i = 0; i < data.weaponDataList.Count; i++)
@@ -83,6 +89,7 @@ namespace CSE5912.PolyGamers
                 var attachment = LoadAttachment(data.attachmentDataList[i]);
                 PlayerInventory.Instance.AddAttachment(attachment);
             }
+
         }
 
         private Firearms LoadWeapon(GameData.WeaponData data)
@@ -107,6 +114,7 @@ namespace CSE5912.PolyGamers
             // load saved weapon data
             var weapon = weaponObj.GetComponent<Firearms>();
             weapon.Attachments = new Attachment[4];
+            weapon.PerformBonus(false);
 
             weapon.WeaponName = data.name;
             weapon.Rarity = data.rarity;
@@ -115,6 +123,8 @@ namespace CSE5912.PolyGamers
             weapon.CurrentAmmo = data.currentAmmoInMag;
             weapon.CurrentMaxAmmoCarried = data.currentTotalAmmo;
             weapon.Bonus = data.weaponBonus;
+
+            weapon.Bonus.SetBonusReady(true);
 
             // final setup
             PlayerInventory.Instance.AddWeapon(weapon);
@@ -135,16 +145,41 @@ namespace CSE5912.PolyGamers
             attachment.AttachmentRealName = data.realName;
             attachment.Type = data.type;
             attachment.Rarity = data.rarity;
-            Debug.Log(attachment.Rarity);
             attachment.Set = data.set;
             attachment.SetSkill = PlayerSkillManager.Instance.GetSetSkill(attachment.Set);
             attachment.Bonus = data.attachmentBonus;
             attachment.Citation = data.citation;
             attachment.IconImage = Resources.Load<Sprite>(data.iconPath.Replace("Assets/Resources/", "").Replace(".png", ""));
 
+            attachment.Bonus.SetBonusReady(true);
+            //attachment.PerformBonus(false);
+
             attachment.gameObject.name = attachment.AttachmentName;
 
             return attachment;
+        }
+
+        private void LoadPlayerStats(GameData.PlayerStatsData data)
+        {
+            var stats = PlayerStats.Instance;
+
+            stats.ResetStats();
+
+            stats.StatPoint = data.statPoint;
+            stats.Level = data.level;
+            stats.Experience = data.experience;
+            stats.ExperienceToUpgrade = data.experienceToUpgrade;
+
+            foreach (var kvp in data.nameToStatsLevel)
+            {
+                for (int i = 0; i < kvp.Value; i++)
+                {
+                    stats.AddStat(kvp.Key, true);
+                }
+            }
+            stats.NameToStatsLevel = data.nameToStatsLevel;
+
+            //PlayerStats.Instance.LoadPlayerStatsData(data);
         }
 
 

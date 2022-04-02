@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace CSE5912.PolyGamers
 {
+    [System.Serializable]
     public class DamageFactor
     {
         private ElementDamageFactor physical;
@@ -12,6 +13,7 @@ namespace CSE5912.PolyGamers
         private ElementDamageFactor electro;
         private ElementDamageFactor venom;
 
+        [System.Serializable]
         public class ElementDamageFactor
         {
             private float value = 0f;
@@ -23,7 +25,7 @@ namespace CSE5912.PolyGamers
                 this.element = element;
             }
 
-            public float Value { get { return value; } set { if (value >= 0f) this.value = value; } }
+            public float Value { get { return value; } set { if (value < 0) value = 0f; this.value = value; } }
             public Element.Type Element { get { return element; } }
             public float DebuffChance { get { return debuffChance; } set { debuffChance = Mathf.Clamp(value, 0f, 1f); } }
         }

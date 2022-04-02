@@ -8,6 +8,8 @@ namespace CSE5912.PolyGamers
     [Serializable]
     public class WeaponBonus
     {
+        public bool isEnabled = false;
+
         private Firearms.WeaponRarity rarity;
         private int level;
 
@@ -51,6 +53,7 @@ namespace CSE5912.PolyGamers
 
         public void Perform(bool enabled)
         {
+            isEnabled = enabled;
             foreach (var bonus in bonusList)
                 bonus.Perform(enabled);
         }
@@ -64,6 +67,12 @@ namespace CSE5912.PolyGamers
             return list;
         }
 
+        public void SetBonusReady(bool isReady)
+        {
+            foreach (var bonus in bonusList)
+                bonus.isReady = isReady;
+        }
+
         [Serializable]
         internal class Bonus
         {
@@ -73,7 +82,7 @@ namespace CSE5912.PolyGamers
 
             private int level;
             internal string description = "None";
-            private bool isReady;
+            internal bool isReady;
             private bool isInitialized = false;
 
             private BonusFunction bonusFunction;
@@ -124,7 +133,6 @@ namespace CSE5912.PolyGamers
 
                 };
             }
-
             internal void AssignBonusFunction(int index)
             {
                 var func = bonusFunctionList[index];

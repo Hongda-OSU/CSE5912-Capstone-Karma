@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace CSE5912.PolyGamers
 {
+    [System.Serializable]
     public class Resist
     {
         private ElementResist physical;
@@ -12,6 +13,7 @@ namespace CSE5912.PolyGamers
         private ElementResist electro;
         private ElementResist venom;
 
+        [System.Serializable]
         public class ElementResist
         {
             private float value = 0f;

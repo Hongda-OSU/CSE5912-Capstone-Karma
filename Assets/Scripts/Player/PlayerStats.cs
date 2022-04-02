@@ -78,6 +78,9 @@ namespace CSE5912.PolyGamers
         [Header("VFX")]
         [SerializeField] private GameObject levelUpVfxPrefab;
 
+
+        private Dictionary<string, int> nameToStatsLevel = new Dictionary<string, int>();
+
         private UnityEvent takeDamageEvent;
 
         private static PlayerStats instance;
@@ -212,16 +215,16 @@ namespace CSE5912.PolyGamers
             experience += value * experienceMultiplier;
         }
 
-        public void ResetFactors()
+        public void ResetStats()
         {
-            moveSpeedFactor = 1f;
-            reloadSpeedFactor = 1f;
-
-            damageFactor_physical = 1f;
-            damageFactor_fire = 1f;
-            damageFactor_cryo = 1f;
-            damageFactor_electro = 1f;
-            damageFactor_venom = 1f;
+            foreach (var kvp in nameToStatsLevel)
+            {
+                for (int i = 0; i < kvp.Value; i++)
+                {
+                    AddStat(kvp.Key, false);
+                }
+            }
+            nameToStatsLevel.Clear();
         }
 
 
@@ -232,59 +235,116 @@ namespace CSE5912.PolyGamers
 
             statUpAudio.Play();
 
+            if (nameToStatsLevel.ContainsKey(stat))
+            {
+                nameToStatsLevel[stat]++;
+            }
+            else
+            {
+                nameToStatsLevel.Add(stat, 1);
+            }
+
+            AddStat(stat, true);
+            statPoint--;
+        }
+
+        public void AddStat(string stat, bool levelUp)
+        {
+            int multiplier = levelUp ? 1 : -1;
             switch (stat)
             {
                 case "Health":
-                    health += healthUp;
-                    maxHealth += healthUp;
+                    health += healthUp * multiplier;
+                    maxHealth += healthUp * multiplier;
                     break;
                 case "Shield_armor":
-                    shield.Shield_armor += shieldUp;
-                    shield.MaxShield_armor += shieldUp;
+                    shield.Shield_armor += shieldUp * multiplier;
+                    shield.MaxShield_armor += shieldUp * multiplier;
                     break;
                 case "Shield_energy":
-                    shield.Shield_energy += shieldUp;
-                    shield.MaxShield_energy += shieldUp;
+                    shield.Shield_energy += shieldUp * multiplier;
+                    shield.MaxShield_energy += shieldUp * multiplier;
                     break;
                 case "CritRate":
-                    critRate += critRateUp;
+                    critRate += critRateUp * multiplier;
                     break;
                 case "CritDamage":
-                    critDamageFactor += critDamageUp;
+                    critDamageFactor += critDamageUp * multiplier;
                     break;
                 case "PhysicalDamage":
-                    damageFactor.Physical.Value += damageUp;
+                    damageFactor.Physical.Value += damageUp * multiplier;
                     break;
                 case "FireDamage":
-                    damageFactor.Fire.Value += damageUp;
+                    damageFactor.Fire.Value += damageUp * multiplier;
                     break;
                 case "CryoDamage":
-                    damageFactor.Cryo.Value += damageUp;
+                    damageFactor.Cryo.Value += damageUp * multiplier;
                     break;
                 case "ElectroDamage":
-                    damageFactor.Electro.Value += damageUp;
+                    damageFactor.Electro.Value += damageUp * multiplier;
                     break;
                 case "VenomDamage":
-                    damageFactor.Venom.Value += damageUp;
+                    damageFactor.Venom.Value += damageUp * multiplier;
                     break;
                 case "PhysicalResist":
-                    resist.Physical.Value += resistUp;
+                    resist.Physical.Value += resistUp * multiplier;
                     break;
                 case "FireResist":
-                    resist.Fire.Value += resistUp;
+                    resist.Fire.Value += resistUp * multiplier;
                     break;
                 case "CryoResist":
-                    resist.Cryo.Value += resistUp;
+                    resist.Cryo.Value += resistUp * multiplier;
                     break;
                 case "ElectroResist":
-                    resist.Electro.Value += resistUp;
+                    resist.Electro.Value += resistUp * multiplier;
                     break;
                 case "VenomResist":
-                    resist.Venom.Value += resistUp;
+                    resist.Venom.Value += resistUp * multiplier;
                     break;
             }
-            statPoint--;
         }
+
+        //public void LoadPlayerStatsData(GameData.PlayerStatsData data)
+        //{
+        //    statPoint = data.statPoint;
+        //    level = data.level;
+        //    experience = data.experience;
+        //    experienceToUpgrade = data.experienceToUpgrade;
+        //    experienceMultiplier = data.experienceMultiplier;
+
+        //    health = data.health;
+        //    maxHealth = data.maxHealth;
+        //    shield.Shield_energy = data.energyShield;
+        //    shield.MaxShield_energy = data.maxEnergyShield;
+        //    shield.Shield_armor = data.armorShield;
+        //    shield.MaxShield_armor = data.maxArmorShield;
+        //    bulletVamp = data.bulletVamp;
+        //    takeDamageFactor = data.takeDamageFactor;
+
+        //    moveSpeedFactor = data.moveSpeedFactor;
+        //    reloadSpeedFactor = data.reloadSpeedFactor;
+        //    fireRateFactor = data.fireRateFactor;
+
+        //    meleeDamageFactor = data.meleeDamageFactor;
+        //    meleeSpeedFactor = data.meleeSpeedFactor;
+
+        //    critRate = data.critRate;
+        //    critDamageFactor = data.critDamageFactor;
+
+        //    damageFactor = data.damageFactor;
+
+        //    burnedBaseChance = data.burnedChance;
+        //    frozenBaseChance = data.frozenChance;
+        //    electrocutedBaseChance = data.electrocutedChance;
+        //    infectedBaseChance = data.infectedChance;
+
+        //    burnedDamagePerStack = data.burnedDamage;
+        //    frozenSlowdownPerStack = data.frozenSlowdown;
+        //    electrocutedResistReductionPerStack = data.electrocutedReduction;
+        //    infectedCurrentHealthDamagePerStack = data.infectedDamage;
+
+        //    resist = data.resist;
+        //}
 
         
 
@@ -292,10 +352,14 @@ namespace CSE5912.PolyGamers
         {
             return damageFactor;
         }
+        public DamageFactor PlayerDamageFactor { set { damageFactor = value; } }
+
         public Resist GetResist()
         {
             return resist;
         }
+        public Resist PlayerResist { set { resist = value; } }
+
         public float Health { get { return health; } 
             set 
             {
@@ -318,8 +382,8 @@ namespace CSE5912.PolyGamers
         public float BulletVamp { get { return bulletVamp; } set { bulletVamp = value; } }
         public float TakeDamageFactor { get { return takeDamageFactor; } set { takeDamageFactor = value; } }
 
-        public int StatPoint { get { return statPoint; } }
-        public int Level { get { return level; } }
+        public int StatPoint { get { return statPoint; } set { statPoint = value; } }
+        public int Level { get { return level; } set { level = value; } }
         public float Experience { get { return experience; } set { experience = value; } }
         public float ExperienceToUpgrade { get { return experienceToUpgrade; } set { experienceToUpgrade = value; } }
         public float ExperienceMultiplier { get { return experienceMultiplier; } set { experienceMultiplier = value; } }
@@ -349,6 +413,8 @@ namespace CSE5912.PolyGamers
         public float CritDamageUp { get { return critDamageUp; } }
         public float DamageUp { get { return damageUp; } }
         public float ResistUp { get { return resistUp; } }
+
+        public Dictionary<string, int> NameToStatsLevel { get { return nameToStatsLevel; } set { nameToStatsLevel = value; } }
 
         public UnityEvent TakeDamageEvent { get { return takeDamageEvent; } }
     }
