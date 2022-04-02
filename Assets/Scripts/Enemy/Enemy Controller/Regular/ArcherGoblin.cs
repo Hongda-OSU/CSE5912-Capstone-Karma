@@ -7,6 +7,10 @@ namespace CSE5912.PolyGamers
     {
         [SerializeField] private GameObject arrowVFX;
         private int counter = 0;
+        private GameObject vfx;
+        private GameObject vfx1;
+        private GameObject vfx2;
+        private GameObject vfx3;
 
         protected override void PerformActions()
         {
@@ -80,7 +84,9 @@ namespace CSE5912.PolyGamers
                 TrippleShooting();
             else
             {
-                GameObject vfx = Instantiate(arrowVFX, transform.position + transform.forward * 0.8f + new Vector3(0, 1f, 0), Quaternion.identity);
+                vfx = Instantiate(arrowVFX, transform.position + transform.forward * 0.8f + new Vector3(0, 1f, 0), Quaternion.identity);
+                vfx.gameObject.AddComponent<RangeShootingResolve>();
+                vfx.GetComponent<RangeShootingResolve>().SetVariables(attackDamage, 50f, this);
                 // arrow follow player direction
                 vfx.transform.LookAt(PlayerManager.Instance.Player.transform.position);
                 Destroy(vfx, 4f);
@@ -89,9 +95,16 @@ namespace CSE5912.PolyGamers
 
         private void TrippleShooting()
         {
-            GameObject vfx1 = Instantiate(arrowVFX, transform.position + transform.forward * 0.8f + new Vector3(0, 1f, 0), Quaternion.identity);
-            GameObject vfx2 = Instantiate(arrowVFX, transform.position + transform.forward * 0.8f + new Vector3(0, 1f, 0), Quaternion.identity);
-            GameObject vfx3 = Instantiate(arrowVFX, transform.position + transform.forward * 0.8f + new Vector3(0, 1f, 0), Quaternion.identity);
+            vfx1 = Instantiate(arrowVFX, transform.position + transform.forward * 0.8f + new Vector3(0, 1f, 0), Quaternion.identity); 
+            vfx2 = Instantiate(arrowVFX, transform.position + transform.forward * 0.8f + new Vector3(0, 1f, 0), Quaternion.identity);
+            vfx3 = Instantiate(arrowVFX, transform.position + transform.forward * 0.8f + new Vector3(0, 1f, 0), Quaternion.identity);
+
+            vfx1.gameObject.AddComponent<RangeShootingResolve>();
+            vfx1.GetComponent<RangeShootingResolve>().SetVariables(attackDamage, 50f, this);
+            vfx2.gameObject.AddComponent<RangeShootingResolve>();
+            vfx2.GetComponent<RangeShootingResolve>().SetVariables(attackDamage, 50f, this);
+            vfx3.gameObject.AddComponent<RangeShootingResolve>();
+            vfx3.GetComponent<RangeShootingResolve>().SetVariables(attackDamage, 50f, this);
 
             Vector3 angle_1 = DirFromAngle(15f, false) * 10f;
             Vector3 angle_2 = DirFromAngle(315f, false) * 10f;

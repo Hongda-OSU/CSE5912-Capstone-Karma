@@ -111,7 +111,7 @@ namespace CSE5912.PolyGamers
         {
             waitAction = Random.Range(-2, 4);
 
-            bool roll = Random.value < 0.5f;
+            bool roll = Random.value < 0.7f;
             if (roll)
                 SetRoll((Direction)waitAction);
 
@@ -122,6 +122,43 @@ namespace CSE5912.PolyGamers
             float randomWaitTime = Random.Range(timeBetweenWaitActions.x, timeBetweenWaitActions.y);
             yield return new WaitForSeconds(randomWaitTime);
         }
+
+        protected override void Hit()
+        {
+            float damageAmount;
+            if (distanceToPlayer <= agent.stoppingDistance + 0.3)
+            {
+                damageAmount = attackDamage + Mathf.RoundToInt(Random.Range(-2f, 4f));
+                Damage damage = new Damage(damageAmount, Element.Type.Physical, this, PlayerStats.Instance);
+                PlayerStats.Instance.TakeDamage(damage);
+                if (PlayerStats.Instance.Health > 0f)
+                {
+                    if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack_1"))
+                    {
+                        FPSControllerCC.Instance.AddImpact(this.gameObject.transform.TransformDirection(Vector3.forward), 30f);
+                    }
+                    else if (animator.GetCurrentAnimatorStateInfo(0).IsName("SwordAttack_0"))
+                    {
+                        FPSControllerCC.Instance.AddImpact(this.gameObject.transform.TransformDirection(Vector3.forward), 5f);
+                    }
+                    else if (animator.GetCurrentAnimatorStateInfo(0).IsName("SwordAttack_2"))
+                    {
+                        FPSControllerCC.Instance.AddImpact(this.gameObject.transform.TransformDirection(Vector3.forward), 40f);
+                    }
+                }
+            }
+        }
+
+        private void StopAgent()
+        {
+            agent.speed = 0;
+        }
+
+        private void StartAgent()
+        {
+            agent.speed = agentSpeed;
+        }
+
 
         //protected override void StartAttack()
         //{

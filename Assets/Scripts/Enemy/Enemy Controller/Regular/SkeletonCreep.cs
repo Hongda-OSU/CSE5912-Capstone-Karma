@@ -61,12 +61,12 @@ namespace CSE5912.PolyGamers
                 else
                 {
                     agent.isStopped = false;
-                    agent.speed = agentSpeed;
                 }
             }
             else
             {
                 foundTarget = false;
+                agent.speed = agentSpeed;
                 animator.SetBool("FoundPlayer", false);
                 if (!canWander)
                 {

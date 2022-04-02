@@ -2256,7 +2256,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 0
+  m_BaseOffset: -0.05
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &1182816256733115014
@@ -2300,7 +2300,7 @@ MonoBehaviour:
   dropAttachmentNumber: 1
   dropAttachmentTypes: 
   dropAttachmentRarities: 
-  rotateSpeed: 20
+  rotateSpeed: 90
   viewRadius: 15
   viewAngle: 135
   closeDetectionRange: 2
