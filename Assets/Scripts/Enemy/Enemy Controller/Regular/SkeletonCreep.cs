@@ -107,7 +107,7 @@ namespace CSE5912.PolyGamers
 
                 if (!agent.hasPath)
                 {
-                    agent.SetDestination(GetPoint.Instance.GetRandomPoint());
+                    agent.SetDestination(WanderAreaManager.Instance.GetRandomPoint(this.wanderAreaNumber));              
                 }
 
                 if (Vector3.Distance(agent.destination, transform.position) <= 0.2f) {
