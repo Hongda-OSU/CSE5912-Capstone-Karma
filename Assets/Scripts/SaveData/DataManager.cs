@@ -8,6 +8,7 @@ using System.Xml.Linq;
 using System.Text;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using UnityEditor;
 
 namespace CSE5912.PolyGamers
 {
@@ -44,10 +45,9 @@ namespace CSE5912.PolyGamers
         private void LoadData(GameData data)
         {
             // clear attachments
-            for (int i = 0; i < PlayerInventory.Instance.AttachmentList.Count; i++)
+            foreach (Transform child in PlayerInventory.Instance.AttachmentCollection.transform)
             {
-                var attachment = PlayerInventory.Instance.AttachmentList[i];
-                PlayerInventory.Instance.RemoveAttachment(attachment);
+                Destroy(child.gameObject);
             }
             PlayerInventory.Instance.AttachmentList.Clear();
 
@@ -76,10 +76,10 @@ namespace CSE5912.PolyGamers
                     var attachment = LoadAttachment(weaponData.attachmentDataList[j]);
                     PlayerInventory.Instance.AddAttachment(attachment);
                     weapon.SetAttachment(attachment, j);
-                    PlayerSkillManager.Instance.TryActivateSetSkill();
                 }
             }
             WeaponManager.Instance.SetupCarriedWeapon(PlayerInventory.Instance.GetPlayerWeaponList()[0]);
+            PlayerSkillManager.Instance.TryActivateSetSkill();
 
             // load attachments
             for (int i = 0; i < data.attachmentDataList.Count; i++)
@@ -147,7 +147,11 @@ namespace CSE5912.PolyGamers
             attachment.SetSkill = PlayerSkillManager.Instance.GetSetSkill(attachment.Set);
             attachment.Bonus = data.attachmentBonus;
             attachment.Citation = data.citation;
-            attachment.IconImage = Resources.Load<Sprite>(data.iconPath.Replace("Assets/Resources/", "").Replace(".png", ""));
+
+            var iconImage = AssetDatabase.LoadAssetAtPath<Sprite>(data.iconPath);
+            if (iconImage == null)
+                Debug.LogError("Image path not found: " + data.iconPath);
+            attachment.IconImage = iconImage;
 
             attachment.Bonus.SetBonusReady(true);
             //attachment.PerformBonus(false);

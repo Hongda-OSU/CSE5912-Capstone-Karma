@@ -125,6 +125,10 @@ namespace CSE5912.PolyGamers
             else
             {
                 setSkill = null;
+                foreach (var kvp in setToSkill)
+                {
+                    kvp.Value.ResetLevel();
+                }
             }
             SkillInformationControl.Instance.SetupSetSkill(setSkill);
         }

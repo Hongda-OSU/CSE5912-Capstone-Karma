@@ -116,9 +116,10 @@ MonoBehaviour:
   outline: {fileID: 5365168431077571084}
   indicator: {fileID: 761794825925665420}
   opacity: 0.3
-  iconImage: {fileID: 21300016, guid: cfb5b9a722516ae4586bad26c20d19a1, type: 3}
+  iconImage: {fileID: 21300000, guid: f7387a2b09c460f4b866f2cd09286c1f, type: 2}
   type: 2
   set: 1
+  runeIndex: -1
   citation: "After the message spread out secretly, \nmany nobles and civilians outside
     the \nfortress had ideas about the king's \ndisappearing. The main gate was shutted
     \na year ago, and the fortress was closely \nguarded by those iron knights. It

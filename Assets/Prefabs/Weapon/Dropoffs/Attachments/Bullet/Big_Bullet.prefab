@@ -118,9 +118,10 @@ MonoBehaviour:
   outline: {fileID: 8057359097553529103}
   indicator: {fileID: 5659729956262351260}
   opacity: 0.3
-  iconImage: {fileID: 21300010, guid: 04e6792f470c37741aa02ec74be1777b, type: 3}
+  iconImage: {fileID: 21300000, guid: 3046b8f60109e43429ec147b0132ed6a, type: 2}
   type: 0
   set: 0
+  runeIndex: -1
   citation: "Despite the fact that our civilization has \nthousands and thousands
     years of history, \nwe are still an infant in the field of \nunderstanding the
     world around us. I doubt \nyou could even imagine, that interferences \nand manipulations

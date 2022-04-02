@@ -117,9 +117,10 @@ MonoBehaviour:
   outline: {fileID: 3484439512392026361}
   indicator: {fileID: 5483521657120820121}
   opacity: 0.3
-  iconImage: {fileID: 21300030, guid: 04e6792f470c37741aa02ec74be1777b, type: 3}
+  iconImage: {fileID: 21300000, guid: 8aeac11558a387b4294128050ac982bb, type: 2}
   type: 1
   set: 0
+  runeIndex: -1
   citation: "I remember what Master taught us, \nand I agree with it. We must be
     aware \nof our ignorance, standing under the \ngrandeur galactic dome, for our
     eyes \nare yet to open. That is exactly why \nI am exploring with these prohibited

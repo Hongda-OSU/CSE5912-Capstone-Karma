@@ -117,7 +117,7 @@ MonoBehaviour:
   outline: {fileID: 1496213525996577868}
   indicator: {fileID: 8930810168917339182}
   opacity: 0.3
-  iconImage: {fileID: 21300034, guid: 04e6792f470c37741aa02ec74be1777b, type: 3}
+  iconImage: {fileID: 21300000, guid: 402fe1c6fbddb4b4d8230976068070ab, type: 2}
   type: 1
   set: 4
   runeIndex: -1
