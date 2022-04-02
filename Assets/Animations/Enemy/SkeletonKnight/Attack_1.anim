@@ -94992,6 +94992,13 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 1
   m_Events:
+  - time: 0.06666667
+    functionName: StopAgent
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.43333334
     functionName: AnimAttackStart
     data: 
@@ -95001,6 +95008,13 @@ AnimationClip:
     messageOptions: 0
   - time: 0.49237105
     functionName: Hit
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.6666667
+    functionName: StartAgent
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

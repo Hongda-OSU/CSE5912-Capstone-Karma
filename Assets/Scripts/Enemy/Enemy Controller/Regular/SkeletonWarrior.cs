@@ -56,7 +56,7 @@ namespace CSE5912.PolyGamers
         protected override void Hit()
         {
             float damageAmount;
-            if (distanceToPlayer <= agent.stoppingDistance + 0.3)
+            if (distanceToPlayer <= attackRange)
             {
                 damageAmount = attackDamage + Mathf.RoundToInt(Random.Range(-5f, 2f));
                 Damage damage = new Damage(damageAmount, Element.Type.Physical, this, PlayerStats.Instance);
@@ -65,11 +65,11 @@ namespace CSE5912.PolyGamers
                 {
                     if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 1"))
                     {
-                        FPSControllerCC.Instance.AddImpact(this.gameObject.transform.TransformDirection(Vector3.forward), 10f);
+                        FPSControllerCC.Instance.AddImpact(this.gameObject.transform.TransformDirection(Vector3.forward), 5f);
                     }
                     else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 2"))
                     {
-                        FPSControllerCC.Instance.AddImpact(this.gameObject.transform.TransformDirection(Vector3.forward), 10f);
+                        FPSControllerCC.Instance.AddImpact(this.gameObject.transform.TransformDirection(Vector3.forward), 5f);
                     }
                     else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 3"))
                     {

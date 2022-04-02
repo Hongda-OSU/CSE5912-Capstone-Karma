@@ -64,12 +64,12 @@ namespace CSE5912.PolyGamers
                 else
                 {
                     agent.isStopped = false;
-                    agent.speed = agentSpeed;
                 }
             }
             else
             {
                 foundTarget = false;
+                agent.speed = agentSpeed;
                 animator.SetBool("FoundPlayer", false);
                 if (!canPatrol)
                 {
@@ -90,7 +90,7 @@ namespace CSE5912.PolyGamers
                 {
                     if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 1"))
                     {
-                        FPSControllerCC.Instance.AddImpact(this.gameObject.transform.TransformDirection(Vector3.forward), 3f);
+                        FPSControllerCC.Instance.AddImpact(this.gameObject.transform.TransformDirection(Vector3.forward), 5f);
                     }
                     else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 2"))
                     {
@@ -111,7 +111,7 @@ namespace CSE5912.PolyGamers
 
         private void StartAgent()
         {
-            agent.speed = 3;
+            agent.speed = agentSpeed;
         }
 
         private void ResetAttackAnimationTriggers()

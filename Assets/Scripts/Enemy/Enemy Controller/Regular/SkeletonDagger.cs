@@ -84,7 +84,7 @@ namespace CSE5912.PolyGamers
                 {
                     if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 1"))
                     {
-                        FPSControllerCC.Instance.AddImpact(this.gameObject.transform.TransformDirection(Vector3.forward), 3f);
+                        FPSControllerCC.Instance.AddImpact(this.gameObject.transform.TransformDirection(Vector3.forward), 5f);
                     }
                     else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 2"))
                     {
