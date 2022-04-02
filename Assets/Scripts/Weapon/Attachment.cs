@@ -19,7 +19,7 @@ namespace CSE5912.PolyGamers
 
         // UI related
         [Header("UI related")]
-        private Sprite iconImage;
+        [SerializeField] private Sprite iconImage;
 
         private string citation;
 
@@ -85,7 +85,7 @@ namespace CSE5912.PolyGamers
         public AttachmentBonus Bonus { get { return attachmentBonus; } set { attachmentBonus = value; } }
         public PlayerSkill SetSkill { get { return setSkill; } set { setSkill = value; } }
         public Sprite IconImage { get { return iconImage; } set { iconImage = value; } }
-        public string Citation { get { return "\"" + citation + "\""; } }
+        public string Citation { get { return citation; } set { citation = value; } }
         public string AttachmentRealName { get { return attachmentRealName; } set { attachmentRealName = value; } }
     }
 

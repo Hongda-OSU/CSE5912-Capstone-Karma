@@ -911,7 +911,7 @@ MonoBehaviour:
   maxNumOfWeapons: 5
   maxNumOfAttachmentsPerWeapon: 4
   defaultWeapon: {fileID: 4369238742308309045}
-  attachmentParent: {fileID: 3914003179805071008}
+  attachmentCollection: {fileID: 3914003179805071008}
   playerWeapons: []
 --- !u!1 &3914003179971651613
 GameObject:

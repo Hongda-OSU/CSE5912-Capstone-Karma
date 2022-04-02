@@ -5,25 +5,30 @@ using UnityEngine;
 
 namespace CSE5912.PolyGamers
 {
+    [Serializable]
     public class AttachmentBonus
     {
-        private Attachment attachment;
-
+        private Attachment.AttachmentRarity rarity;
+        private Attachment.AttachmentType type;
+        private int level;
         private Bonus bonus;
 
         public AttachmentBonus(Attachment attachment)
         {
-            this.attachment = attachment; 
+            rarity = attachment.Rarity;
+            type = attachment.Type;
+
+            level = (int)rarity + 1;
+
             Initialize();
         }
 
         private void Initialize()
         {
-            var type = attachment.Type;
             // to-do
-            attachment.AttachmentName = attachment.Rarity.ToString() + type;
+            //attachment.AttachmentName = attachment.Rarity.ToString() + type;
 
-            bonus = new Bonus(attachment);
+            bonus = new Bonus(level);
 
             var list = bonus.typeToFunctionList[type];
             bonus.AssignBonusFunction(type, UnityEngine.Random.Range(0, list.Count));
@@ -32,7 +37,7 @@ namespace CSE5912.PolyGamers
 
         public void GetRuneBonus(int index)
         {
-            bonus = new Bonus(attachment);
+            bonus = new Bonus(level);
 
             bonus.AssignBonusFunction(index);
         }
@@ -50,11 +55,10 @@ namespace CSE5912.PolyGamers
         }
 
 
+        [Serializable]
         internal class Bonus
         {
             internal delegate void BonusFunction(bool enabled);
-
-            private Attachment attachment;
 
             private float value;
             private int level;
@@ -85,10 +89,10 @@ namespace CSE5912.PolyGamers
 
 
             //internal enum 
-            internal Bonus(Attachment attachment)
+            internal Bonus(int level)
             {
-                this.attachment = attachment;
-                level = (int)attachment.Rarity + 1;
+                this.level = level;
+
                 isReady = true;
 
                 bulletBonusList = new List<BonusFunction>()

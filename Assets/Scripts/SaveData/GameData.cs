@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using UnityEditor;
 using UnityEngine;
 
 namespace CSE5912.PolyGamers
@@ -16,11 +17,22 @@ namespace CSE5912.PolyGamers
         [DataMember]
         public List<WeaponData> weaponDataList = new List<WeaponData>();
 
-        public GameData(List<Firearms> weaponList)
+        [DataMember]
+        public List<AttachmentData> attachmentDataList = new List<AttachmentData>();
+
+        public GameData(List<Firearms> weaponList, List<Attachment> attachmentList)
         {
             for (int i = 0; i < weaponList.Count; i++)
             {
                 weaponDataList.Add(new WeaponData(weaponList[i]));
+            }
+
+            for (int i = 0; i < attachmentList.Count; i++)
+            {
+                if (attachmentList[i].AttachedTo == null)
+                {
+                    attachmentDataList.Add(new AttachmentData(attachmentList[i]));
+                }
             }
         }
 
@@ -51,8 +63,8 @@ namespace CSE5912.PolyGamers
             [DataMember]
             public WeaponBonus weaponBonus;
 
-            //[DataMember]
-            //attachment
+            [DataMember]
+            public List<AttachmentData> attachmentDataList = new List<AttachmentData>();
 
             public WeaponData(Firearms weapon)
             {
@@ -64,8 +76,58 @@ namespace CSE5912.PolyGamers
                 currentAmmoInMag = weapon.CurrentAmmo;
                 currentTotalAmmo = weapon.CurrentMaxAmmoCarried;
                 weaponBonus = weapon.Bonus;
+
+                for (int i = 0; i < weapon.Attachments.Length; i++)
+                {
+                    var attachment = weapon.Attachments[i];
+                    if (attachment == null)
+                        attachmentDataList.Add(null);
+                    else 
+                        attachmentDataList.Add(new AttachmentData(attachment));
+                }
             }
 
+        }
+
+        [Serializable]
+        [DataContract]
+        public class AttachmentData
+        {
+            [DataMember]
+            public string name;
+
+            [DataMember]
+            public string realName;
+
+            [DataMember]
+            public Attachment.AttachmentType type;
+
+            [DataMember]
+            public Attachment.AttachmentRarity rarity;
+
+            [DataMember]
+            public Attachment.AttachmentSet set;
+
+            [DataMember]
+            public AttachmentBonus attachmentBonus;
+
+            [DataMember]
+            public string citation;
+
+            [DataMember]
+            public string iconPath;
+
+            public AttachmentData(Attachment attachment)
+            {
+                name = attachment.AttachmentName;
+                realName = attachment.AttachmentRealName;
+                type = attachment.Type;
+                rarity = attachment.Rarity;
+                set = attachment.Set;
+                attachmentBonus = attachment.Bonus;
+                citation = attachment.Citation;
+                iconPath = AssetDatabase.GetAssetPath(attachment.IconImage);
+            }
         }
     }
 }

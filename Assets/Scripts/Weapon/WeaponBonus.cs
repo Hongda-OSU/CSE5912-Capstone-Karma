@@ -8,6 +8,7 @@ namespace CSE5912.PolyGamers
     [Serializable]
     public class WeaponBonus
     {
+        private Firearms.WeaponRarity rarity;
         private int level;
 
         private List<int> availableBonusIndex;
@@ -15,6 +16,8 @@ namespace CSE5912.PolyGamers
 
         public WeaponBonus(Firearms.WeaponRarity rarity)
         {
+            this.rarity = rarity;
+
             level = (int)rarity + 1;
 
             Initialize();

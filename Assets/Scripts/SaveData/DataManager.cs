@@ -7,6 +7,7 @@ using System.Runtime.Serialization;
 using System.Xml.Linq;
 using System.Text;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 namespace CSE5912.PolyGamers
 {
@@ -33,14 +34,22 @@ namespace CSE5912.PolyGamers
                 var saveData = Load();
                 if (saveData != null)
                 {
-                    LoadItems(saveData);
+                    LoadData(saveData);
                 }
             }
+            if (Input.GetKeyDown(KeyCode.O))
+                Save();
         }
 
-        private void LoadItems(GameData data)
+        private void LoadData(GameData data)
         {
-            var weaponList = DropoffManager.Instance.BaseWeaponList;
+            // clear attachments
+            for (int i = 0; i < PlayerInventory.Instance.AttachmentList.Count; i++)
+            {
+                var attachment = PlayerInventory.Instance.AttachmentList[i];
+                PlayerInventory.Instance.RemoveAttachment(attachment);
+            }
+            PlayerInventory.Instance.AttachmentList.Clear();
 
             // clear current weapons
             foreach (Transform child in WeaponManager.Instance.WeaponCollection.transform)
@@ -53,46 +62,91 @@ namespace CSE5912.PolyGamers
             for (int i = 0; i < data.weaponDataList.Count; i++)
             {
                 var weaponData = data.weaponDataList[i];
+                var weapon = LoadWeapon(weaponData);
 
-                // create base weapon of saved type
-                GameObject weaponObj = null;
-                foreach (var baseWeapon in weaponList)
+                // load attached attachments
+                for (int j = 0; j < weaponData.attachmentDataList.Count; j++)
                 {
-                    if (baseWeapon.GetComponent<Firearms>().Type == weaponData.type)
-                    {
-                        weaponObj = Instantiate(baseWeapon);
-                        weaponObj.transform.SetParent(transform, false);
-                    }
+                    if (weaponData.attachmentDataList[j] == null)
+                        continue;
+                    var attachment = LoadAttachment(weaponData.attachmentDataList[j]);
+                    PlayerInventory.Instance.AddAttachment(attachment);
+                    weapon.SetAttachment(attachment, j);
+                    PlayerSkillManager.Instance.TryActivateSetSkill();
                 }
-                if (weaponObj == null)
-                {
-                    Debug.LogError("Error: Weapon type " + weaponData.type.ToString() + " not found. ");
-                    return;
-                }
-
-                // load saved weapon data
-                var weapon = weaponObj.GetComponent<Firearms>();
-
-                weapon.WeaponName = weaponData.name;
-                weapon.Rarity = weaponData.rarity;
-                weapon.Damage = weaponData.damage;
-                weapon.Element = weaponData.element;
-                weapon.CurrentAmmo = weaponData.currentAmmoInMag;
-                weapon.CurrentMaxAmmoCarried = weaponData.currentTotalAmmo;
-                weapon.Bonus = weaponData.weaponBonus;
-
-                // final setup
-                PlayerInventory.Instance.AddWeapon(weapon);
-                weapon.gameObject.transform.SetParent(WeaponManager.Instance.WeaponCollection.transform, false);
-                weapon.gameObject.SetActive(false);
             }
 
             WeaponManager.Instance.SetupCarriedWeapon(PlayerInventory.Instance.GetPlayerWeaponList()[0]);
         }
 
+        private Firearms LoadWeapon(GameData.WeaponData data)
+        {
+            var weaponList = DropoffManager.Instance.BaseWeaponList;
+            // create base weapon of saved type
+            GameObject weaponObj = null;
+            foreach (var baseWeapon in weaponList)
+            {
+                if (baseWeapon.GetComponent<Firearms>().Type == data.type)
+                {
+                    weaponObj = Instantiate(baseWeapon);
+                    weaponObj.transform.SetParent(transform, false);
+                }
+            }
+            if (weaponObj == null)
+            {
+                Debug.LogError("Error: Weapon type " + data.type.ToString() + " not found. ");
+                return null;
+            }
+
+            // load saved weapon data
+            var weapon = weaponObj.GetComponent<Firearms>();
+            weapon.Attachments = new Attachment[4];
+
+            weapon.WeaponName = data.name;
+            weapon.Rarity = data.rarity;
+            weapon.Damage = data.damage;
+            weapon.Element = data.element;
+            weapon.CurrentAmmo = data.currentAmmoInMag;
+            weapon.CurrentMaxAmmoCarried = data.currentTotalAmmo;
+            weapon.Bonus = data.weaponBonus;
+
+            // final setup
+            PlayerInventory.Instance.AddWeapon(weapon);
+            weapon.gameObject.transform.SetParent(WeaponManager.Instance.WeaponCollection.transform, false);
+            weapon.gameObject.SetActive(false);
+
+            return weapon;
+        }
+
+        private Attachment LoadAttachment(GameData.AttachmentData data)
+        {
+            GameObject attachmentObj = new GameObject();
+            attachmentObj.transform.SetParent(PlayerInventory.Instance.AttachmentCollection.transform, false);
+
+            var attachment = attachmentObj.AddComponent<Attachment>();
+
+            attachment.AttachmentName = data.name;
+            attachment.AttachmentRealName = data.realName;
+            attachment.Type = data.type;
+            attachment.Rarity = data.rarity;
+            Debug.Log(attachment.Rarity);
+            attachment.Set = data.set;
+            attachment.SetSkill = PlayerSkillManager.Instance.GetSetSkill(attachment.Set);
+            attachment.Bonus = data.attachmentBonus;
+            attachment.Citation = data.citation;
+            attachment.IconImage = Resources.Load<Sprite>(data.iconPath.Replace("Assets/Resources/", "").Replace(".png", ""));
+
+            attachment.gameObject.name = attachment.AttachmentName;
+
+            return attachment;
+        }
+
+
         public void Save()
         {
-            GameData gameData = new GameData(PlayerInventory.Instance.GetPlayerWeaponList());
+            var inventory = PlayerInventory.Instance;
+
+            GameData gameData = new GameData(inventory.GetPlayerWeaponList(), inventory.AttachmentList);
             gameData.sceneIndex = SceneManager.GetActiveScene().buildIndex;
 
             BinaryFormatter formatter = new BinaryFormatter();
@@ -103,32 +157,9 @@ namespace CSE5912.PolyGamers
 
             stream.Close();
 
-            //Debug.Log(Application.persistentDataPath);
-
-            //// Stream the file with a File Stream. (Note that File.Create() 'Creates' or 'Overwrites' a file.)
-            //FileStream file = File.Create(Application.persistentDataPath + "/" + fileName + ".dat");
-
-            //// Create a new Player_Data.
-            //GameData gameData = new GameData(data, SceneManager.GetActiveScene().buildIndex);
-
-            ////Serialize to xml
-            //DataContractSerializer bf = new DataContractSerializer(gameData.GetType());
-            //MemoryStream streamer = new MemoryStream();
-
-            ////Serialize the file
-            //bf.WriteObject(streamer, gameData);
-            //streamer.Seek(0, SeekOrigin.Begin);
-
-            ////Save to disk
-            //file.Write(streamer.GetBuffer(), 0, streamer.GetBuffer().Length);
-
-            //// Close the file to prevent any corruptions
-            //file.Close();
-
-            //string result = XElement.Parse(Encoding.ASCII.GetString(streamer.GetBuffer()).Replace("\0", "")).ToString();
-            //Debug.Log("Serialized Result: " + result);
-
+            Debug.Log("Data saved. ");
         }
+
         public GameData Load()
         {
             string path = Application.persistentDataPath + "/" + fileName + ".savegame";

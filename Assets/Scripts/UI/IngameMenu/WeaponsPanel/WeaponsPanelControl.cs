@@ -223,6 +223,12 @@ namespace CSE5912.PolyGamers
                     {
                         attachmentIconSlot.style.backgroundImage = null;
                     }
+                    else
+                    {
+                        attachmentIconSlot.style.backgroundImage = new StyleBackground(attachments[i].IconImage);
+                        attachmentIconSlot.style.unityBackgroundImageTintColor = Instance.AttachmentRarityToColor[attachments[i].Rarity];
+                        attachmentIconSlot.style.unityBackgroundScaleMode = ScaleMode.ScaleToFit;
+                    }
                     ApplySelectedVfx(attachmentSlot, attachmentSlot == selectedEquippedAttachmentSlot);
                 }
             }
@@ -343,7 +349,7 @@ namespace CSE5912.PolyGamers
             }
         }
 
-        private void EquipAttachment(Attachment attachment)
+        public void EquipAttachment(Attachment attachment)
         {
             var type = GetAttachmentType(selectedEquippedAttachmentSlot);
             if (attachment == null || attachment.Type != type)
@@ -574,7 +580,7 @@ namespace CSE5912.PolyGamers
             specific.Q<VisualElement>("Rarity").Q<Label>("Data").text = attachment.Rarity.ToString();
             specific.Q<VisualElement>("Rarity").Q<Label>("Data").style.color = color;
 
-            text.Q<Label>("Citation").text = attachment.Citation;
+            text.Q<Label>("Citation").text = "\"" + attachment.Citation + "\"";
 
             if (attachment.Rarity == Attachment.AttachmentRarity.Divine && attachment.Type != Attachment.AttachmentType.Rune)
             {

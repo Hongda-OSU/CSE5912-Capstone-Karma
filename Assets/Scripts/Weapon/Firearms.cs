@@ -117,7 +117,7 @@ namespace CSE5912.PolyGamers
         // Attachments
         [Header("Attachments")]
         [SerializeField] protected Attachment[] attachments;
-        public Attachment[] Attachments { get { return attachments; } }
+        public Attachment[] Attachments { get { return attachments; } set { attachments = value; } }
 
         public FirearmsItem firearmsItem;
 
@@ -153,6 +153,9 @@ namespace CSE5912.PolyGamers
             GunCameraLocalOriginalPosition = GunCamera.transform.localPosition;
             doAimingCoroutine = DoAim();
 
+            // define how many attachments one gun could have (4)
+            attachments = new Attachment[4];
+
             foreach (Transform child in transform)
             {
                 if (child.name == "arms")
@@ -169,13 +172,7 @@ namespace CSE5912.PolyGamers
             weaponBonus = new WeaponBonus(rarity);
             shootEvent = new UnityEvent();
         }
-
-        protected void Start()
-        {
-            // define how many attachments one gun could have (4)
-            attachments = new Attachment[PlayerInventory.Instance.MaxNumOfAttachmentsPerWeapon];
-
-        }
+       
 
         private void OnEnable()
         {

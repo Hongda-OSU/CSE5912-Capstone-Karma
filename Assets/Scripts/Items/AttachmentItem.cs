@@ -28,9 +28,9 @@ namespace CSE5912.PolyGamers
             // set attachment real name
             attachment.AttachmentRealName = gameObject.name.Replace("(Clone)", "");
 
-            attachment.gameObject.name = attachment.AttachmentName;
-
             attachment.Initialize(type, rarity, set, iconImage, citation, runeIndex);
+
+            attachment.gameObject.name = attachment.AttachmentName;
 
             SetupVfx(WeaponsPanelControl.Instance.AttachmentRarityToColor[attachment.Rarity]);
         }

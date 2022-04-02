@@ -14,10 +14,10 @@ namespace CSE5912.PolyGamers
 
         [SerializeField] private Firearms defaultWeapon;
 
-        [SerializeField] private GameObject attachmentParent;
+        [SerializeField] private GameObject attachmentCollection;
 
-        private WeaponsPanelControl weaponsPanelControl;
-        private AttachmentInventoryControl attachmentInventoryControl;
+        //private WeaponsPanelControl weaponsPanelControl;
+        //private AttachmentInventoryControl attachmentInventoryControl;
 
         [SerializeField] private Firearms[] playerWeapons; 
 
@@ -42,8 +42,8 @@ namespace CSE5912.PolyGamers
 
         private void Start()
         {
-            weaponsPanelControl = WeaponsPanelControl.Instance;
-            attachmentInventoryControl = AttachmentInventoryControl.Instance;
+            //weaponsPanelControl = WeaponsPanelControl.Instance;
+            //attachmentInventoryControl = AttachmentInventoryControl.Instance;
             AddWeapon(defaultWeapon);
         }
 
@@ -77,7 +77,7 @@ namespace CSE5912.PolyGamers
         public void AddAttachment(Attachment attachment)
         {
             attachmentList.Add(attachment);
-            attachment.transform.SetParent(attachmentParent.transform);
+            attachment.transform.SetParent(attachmentCollection.transform);
 
             UpdateAll();
         }
@@ -132,5 +132,7 @@ namespace CSE5912.PolyGamers
         public int MaxNumOfWeapons { get { return maxNumOfWeapons; } }
         public int MaxNumOfAttachmentsPerWeapon { get { return maxNumOfAttachmentsPerWeapon; } }
         public Firearms[] PlayerWeapons { get { return playerWeapons; } }
+        public List<Attachment> AttachmentList { get { return attachmentList; } }
+        public GameObject AttachmentCollection { get { return attachmentCollection; } }
     }
 }
