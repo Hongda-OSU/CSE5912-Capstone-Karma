@@ -75,8 +75,14 @@ namespace CSE5912.PolyGamers
                     PlayerSkillManager.Instance.TryActivateSetSkill();
                 }
             }
-
             WeaponManager.Instance.SetupCarriedWeapon(PlayerInventory.Instance.GetPlayerWeaponList()[0]);
+
+            // load attachments
+            for (int i = 0; i < data.attachmentDataList.Count; i++)
+            {
+                var attachment = LoadAttachment(data.attachmentDataList[i]);
+                PlayerInventory.Instance.AddAttachment(attachment);
+            }
         }
 
         private Firearms LoadWeapon(GameData.WeaponData data)
