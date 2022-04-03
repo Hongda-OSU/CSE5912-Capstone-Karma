@@ -83,11 +83,10 @@ namespace CSE5912.PolyGamers
                 }
                 PlayerStats.Instance.TakeDamage(damage);
             }
+            health = 0;
+            Die();
 
-            //health = 0;
-            //Die();
-
-            Destroy(gameObject);
+            Destroy(barrel);
             Destroy(vfx, 10f);
             exploded = true;
         }
