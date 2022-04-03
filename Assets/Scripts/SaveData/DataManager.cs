@@ -32,14 +32,14 @@ namespace CSE5912.PolyGamers
             // test
             if (Input.GetKeyDown(KeyCode.P))
             {
-                var saveData = Load();
+                var saveData = Load(0);
                 if (saveData != null)
                 {
                     LoadData(saveData);
                 }
             }
             if (Input.GetKeyDown(KeyCode.O))
-                Save();
+                Save(0);
         }
 
         private void LoadData(GameData data)
@@ -202,7 +202,7 @@ namespace CSE5912.PolyGamers
             }
         }
 
-        public void Save()
+        public void Save(int index)
         {
             var inventory = PlayerInventory.Instance;
 
@@ -211,7 +211,7 @@ namespace CSE5912.PolyGamers
 
             BinaryFormatter formatter = new BinaryFormatter();
 
-            string path = Application.persistentDataPath + "/" + fileName + ".savegame";
+            string path = Application.persistentDataPath + "/" + fileName + "_" + index + ".savegame";
             FileStream stream = new FileStream(path, FileMode.Create);
             formatter.Serialize(stream, gameData);
 
@@ -220,9 +220,9 @@ namespace CSE5912.PolyGamers
             Debug.Log("Data saved. ");
         }
 
-        public GameData Load()
+        public GameData Load(int index)
         {
-            string path = Application.persistentDataPath + "/" + fileName + ".savegame";
+            string path = Application.persistentDataPath + "/" + fileName + "_" + index + ".savegame";
 
             if (File.Exists(path))
             {
@@ -243,7 +243,7 @@ namespace CSE5912.PolyGamers
                 catch (Exception)
                 {
                     stream.Close();
-                    Debug.LogError("Failed to load save data. ");
+                    Debug.LogError("Failed to load save data. Path: " + path);
 
                     return null;
                 }
@@ -251,7 +251,7 @@ namespace CSE5912.PolyGamers
             }
             else
             {
-                Debug.Log("Save data not found. ");
+                Debug.Log("Save data not found. Path: " + path);
 
                 return null;
             }
