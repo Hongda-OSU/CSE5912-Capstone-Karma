@@ -9,8 +9,9 @@ namespace CSE5912.PolyGamers
         [Header("Explosion")]
         [SerializeField] private GameObject effect;
         [SerializeField] private GameObject barrel;
-
-        bool exploded = false;
+        private bool exploded = false;
+        public GameObject Barrel => barrel;
+        public bool Exploded { set { exploded = value; } }
 
         protected override void PerformActions()
         {
@@ -84,9 +85,9 @@ namespace CSE5912.PolyGamers
                 PlayerStats.Instance.TakeDamage(damage);
             }
             health = 0;
+            barrel.gameObject.SetActive(false);
             Die();
 
-            Destroy(barrel);
             Destroy(vfx, 10f);
             exploded = true;
         }
