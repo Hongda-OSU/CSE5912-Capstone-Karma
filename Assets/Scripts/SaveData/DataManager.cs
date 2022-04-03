@@ -195,7 +195,10 @@ namespace CSE5912.PolyGamers
 
             foreach (var kvp in data.skillToLevel)
             {
-                kvp.Key.SetLevel(kvp.Value);
+                var skill = PlayerSkillManager.Instance.GetPlayerSkill(kvp.Key);
+
+                skill.SetLevel(kvp.Value);
+                SkillsPanelControl.Instance.CurrentSkillTree.FindSlotBySkill(skill).UpdateVisual();
             }
         }
 

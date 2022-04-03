@@ -12,6 +12,7 @@ namespace CSE5912.PolyGamers
         [SerializeField] private GameObject skillTree_element;
         [SerializeField] private List<PlayerSkill> playerSkillList = new List<PlayerSkill>();
 
+
         [SerializeField] private GameObject attachmentSetSkills;
         private Dictionary<Attachment.AttachmentSet, PlayerSkill> setToSkill = new Dictionary<Attachment.AttachmentSet, PlayerSkill>();
 
@@ -131,6 +132,17 @@ namespace CSE5912.PolyGamers
             SkillInformationControl.Instance.SetupMainSkill(mainSkill);
         }
 
+        public PlayerSkill GetPlayerSkill(string skillName)
+        {
+            foreach (var skill in playerSkillList)
+            {
+                if (skill.Name == skillName)
+                    return skill;
+            }
+
+            Debug.LogError(skillName + " not found. ");
+            return null;
+        }
         public PlayerSkill GetSetSkill(Attachment.AttachmentSet set)
         {
             return setToSkill[set];

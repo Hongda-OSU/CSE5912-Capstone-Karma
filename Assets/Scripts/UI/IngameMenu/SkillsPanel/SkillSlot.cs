@@ -57,6 +57,13 @@ namespace CSE5912.PolyGamers
         {
             var result = skill.LevelUp();
 
+            UpdateVisual();
+
+            return result;
+        }
+
+        public void UpdateVisual()
+        {
             if (skill.Level > 0)
             {
                 SetSlotActive(true);
@@ -74,8 +81,6 @@ namespace CSE5912.PolyGamers
                     }
                 }
             }
-
-            return result;
         }
     }
 }

@@ -146,7 +146,7 @@ namespace CSE5912.PolyGamers
         public class PlayerSkillData
         {
             [DataMember] public int skillPoint;
-            [DataMember] public Dictionary<PlayerSkill, int> skillToLevel = new Dictionary<PlayerSkill, int>();
+            [DataMember] public Dictionary<string, int> skillToLevel = new Dictionary<string, int>();
 
             public PlayerSkillData(PlayerSkillManager skillManager)
             {
@@ -156,7 +156,7 @@ namespace CSE5912.PolyGamers
                 {
                     var skill = skillManager.PlayerSkillList[i];
 
-                    skillToLevel.Add(skill, skill.Level);
+                    skillToLevel.Add(skill.Name, skill.Level);
                 }
             }
         }
