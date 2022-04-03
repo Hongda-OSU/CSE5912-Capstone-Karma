@@ -26,20 +26,22 @@ namespace CSE5912.PolyGamers
         protected override void Start()
         {
             base.Start();
-            transform.position = new Vector3(transform.position.x, 1200f, transform.position.z);
+            agent.enabled = false;
+            transform.position = new Vector3(transform.position.x, 40f, transform.position.z);
         }
         protected override void PerformActions()
         {
             if (isFalling)
             {
-                //transform.position = new Vector3(transform.position.x, transform.position.y - 500f * Time.deltaTime, transform.position.z);
+                transform.position = new Vector3(transform.position.x, transform.position.y - 50f * Time.deltaTime, transform.position.z);
 
-                var target = new Vector3(transform.position.x, 4f, transform.position.z);
-                transform.position = Vector3.MoveTowards(transform.position, target, 500f * Time.deltaTime);
+                //var target = new Vector3(transform.position.x, 4f, transform.position.z);
+                //transform.position = Vector3.MoveTowards(transform.position, target, 500f * Time.deltaTime);
 
                 if (transform.position.y <= 4f)
                 {
                     isFalling = false;
+                    agent.enabled = true;
                     animator.SetTrigger("Land");
                 }
 
@@ -69,20 +71,24 @@ namespace CSE5912.PolyGamers
                     {
                         isPlayingAttackAnim = true;
 
-                        if (Vector3.Distance(player.position, pivot_1.position) <= 40f && Vector3.Distance(player.position, pivot_1.position) >= 30f)
+                        if (Vector3.Distance(player.position, pivot_1.position) <= 30f && Vector3.Distance(player.position, pivot_1.position) >= 22f)
                         {
+                            FaceTarget(directionToPlayer);
                             Attack(1);                          
                         }
                         else if (isPlayerInAttackRange && distanceToPlayer > closeDetectionRange)
                         {
+                            FaceTarget(directionToPlayer);
                             Attack(2);
                         }
                         else if (distanceToPlayer <= 15f)
                         {
+                            FaceTarget(directionToPlayer);
                             Attack(3);
                         }
                         else if (distanceToPlayer <= 70f && Vector3.Distance(player.position, pivot_1.position) > 30f)
                         {
+                            FaceTarget(directionToPlayer);
                             Attack(4);
                         }
                         else
@@ -168,14 +174,9 @@ namespace CSE5912.PolyGamers
         }
 
         public void ShardstoneShooting() {
-            GameObject vfx_1 = Instantiate(prefab_1);
-            GameObject vfx_2 = Instantiate(prefab_1);
-            GameObject vfx_3 = Instantiate(prefab_1);
-
-            vfx_1.transform.position = pivot_1.position;
-            vfx_2.transform.position = pivot_1.position;
-            vfx_3.transform.position = pivot_1.position;
-
+            GameObject vfx_1 = Instantiate(prefab_1, pivot_1.position, Quaternion.identity);
+            GameObject vfx_2 = Instantiate(prefab_1, pivot_1.position, Quaternion.identity);
+            GameObject vfx_3 = Instantiate(prefab_1, pivot_1.position, Quaternion.identity);
 
             Vector3 angle_1 = DirFromAngle(30f, false) * 10f;
             Vector3 angle_2 = DirFromAngle(330f, false) * 10f;
@@ -193,7 +194,7 @@ namespace CSE5912.PolyGamers
             GameObject vfx = Instantiate(prefab_2);
             vfx.transform.position = new Vector3(transform.position.x, -0.5f, transform.position.z);
             //vfx.transform.LookAt(new Vector3(PlayerManager.Instance.Player.transform.position.x, 0f, PlayerManager.Instance.Player.transform.position.z));
-
+           
             Destroy(vfx, 2f);
         }
 
@@ -210,6 +211,7 @@ namespace CSE5912.PolyGamers
         public void Landing() {
             GameObject vfx = Instantiate(prefab_5);
             vfx.transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
+
             Destroy(vfx, 4f);
         }
 

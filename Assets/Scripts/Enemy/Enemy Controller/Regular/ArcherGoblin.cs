@@ -86,7 +86,7 @@ namespace CSE5912.PolyGamers
             {
                 vfx = Instantiate(arrowVFX, transform.position + transform.forward * 0.8f + new Vector3(0, 1f, 0), Quaternion.identity);
                 vfx.gameObject.AddComponent<RangeShootingResolve>();
-                vfx.GetComponent<RangeShootingResolve>().SetVariables(attackDamage, 50f, this);
+                vfx.GetComponent<RangeShootingResolve>().SetVariables(attackDamage, 50f, this, "back");
                 // arrow follow player direction
                 vfx.transform.LookAt(PlayerManager.Instance.Player.transform.position);
                 Destroy(vfx, 4f);
@@ -100,11 +100,11 @@ namespace CSE5912.PolyGamers
             vfx3 = Instantiate(arrowVFX, transform.position + transform.forward * 0.8f + new Vector3(0, 1f, 0), Quaternion.identity);
 
             vfx1.gameObject.AddComponent<RangeShootingResolve>();
-            vfx1.GetComponent<RangeShootingResolve>().SetVariables(attackDamage, 50f, this);
+            vfx1.GetComponent<RangeShootingResolve>().SetVariables(attackDamage, 50f, this, "back");
             vfx2.gameObject.AddComponent<RangeShootingResolve>();
-            vfx2.GetComponent<RangeShootingResolve>().SetVariables(attackDamage, 50f, this);
+            vfx2.GetComponent<RangeShootingResolve>().SetVariables(attackDamage, 50f, this, "back");
             vfx3.gameObject.AddComponent<RangeShootingResolve>();
-            vfx3.GetComponent<RangeShootingResolve>().SetVariables(attackDamage, 50f, this);
+            vfx3.GetComponent<RangeShootingResolve>().SetVariables(attackDamage, 50f, this, "back");
 
             Vector3 angle_1 = DirFromAngle(15f, false) * 10f;
             Vector3 angle_2 = DirFromAngle(315f, false) * 10f;

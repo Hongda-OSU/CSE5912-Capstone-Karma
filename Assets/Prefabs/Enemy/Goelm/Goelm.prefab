@@ -1794,7 +1794,7 @@ MonoBehaviour:
   health: 1500
   maxHealth: 1500
   attackDamage: 50
-  attackRange: 25
+  attackRange: 20
   agentSpeed: 0
   isAlive: 1
   isFrozen: 0
