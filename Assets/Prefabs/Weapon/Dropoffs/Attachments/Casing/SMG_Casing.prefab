@@ -115,10 +115,9 @@ MonoBehaviour:
   CurrentItemType: 1
   outline: {fileID: 6999133787408769904}
   indicator: {fileID: 234100912767892172}
-  opacity: 0.3
   iconImage: {fileID: 21300000, guid: 6f33d1863356af043a457143318e32a1, type: 2}
   type: 2
-  set: 0
+  set: 2
   runeIndex: -1
   citation: "The unexpected popularity of the recent \nclassical super hero film,
     Sergeant 76, has \ndrawn massive attention in the society. \nWhile a lot of fans

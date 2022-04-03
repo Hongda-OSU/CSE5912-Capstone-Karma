@@ -91,5 +91,11 @@ namespace CSE5912.PolyGamers
             Destroy(vfx, 10f);
             exploded = true;
         }
+
+        private void OnEnable()
+        {
+            this.gameObject.GetComponent<ExplosiveSkeleton>().Barrel.gameObject.SetActive(true);
+            this.gameObject.GetComponent<ExplosiveSkeleton>().Exploded = false;
+        }
     }
 }

@@ -27,6 +27,11 @@ namespace CSE5912.PolyGamers
         float slowdownCounter = 3.5f;
         float originSpeedFactor;
 
+        private void OnEnable()
+        {
+            transform.position = new Vector3(transform.position.x, 40f, transform.position.z);
+        }
+
         protected override void Start()
         {
             base.Start();

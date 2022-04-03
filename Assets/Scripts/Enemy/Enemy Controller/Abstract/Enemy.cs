@@ -113,12 +113,6 @@ namespace CSE5912.PolyGamers
             playerDetected = false;
             foundTarget = false;
             isAttackedByPlayer = false;
-
-            if (enemyName == "Explosive Skeleton")
-            {
-                this.gameObject.GetComponent<ExplosiveSkeleton>().Barrel.gameObject.SetActive(true);
-                this.gameObject.GetComponent<ExplosiveSkeleton>().Exploded = false;
-            }
         }
 
         protected void Initialize()
