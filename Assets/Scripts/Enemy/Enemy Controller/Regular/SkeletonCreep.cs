@@ -9,8 +9,8 @@ namespace CSE5912.PolyGamers
     {
         private bool isAttacking = false;
 
-        private bool wandering = false;
-        private float wanderCounter = 10f;
+        //private bool wandering = false;
+        //private float wanderCounter = 10f;
 
         protected override void PerformActions()
         {

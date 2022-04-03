@@ -10,7 +10,7 @@ namespace CSE5912.PolyGamers
         [SerializeField] private Transform pivot;
         [SerializeField] private float pivotBias = 1f;
 
-        [SerializeField] private int number = 15;
+        //[SerializeField] private int number = 15;
         [SerializeField] private float speed = 50f;
       
 

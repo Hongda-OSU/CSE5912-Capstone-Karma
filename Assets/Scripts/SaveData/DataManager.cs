@@ -16,6 +16,8 @@ namespace CSE5912.PolyGamers
     {
         [SerializeField] private string fileName = "GameData";
 
+        [SerializeField] private int currentDataIndex = -1;
+
 
         private static DataManager instance;
         public static DataManager Instance { get { return instance; } }
@@ -25,6 +27,8 @@ namespace CSE5912.PolyGamers
             if (instance != null && instance != this)
                 Destroy(gameObject);
             instance = this;
+
+            DontDestroyOnLoad(gameObject);
         }
 
         private void Update()
@@ -32,6 +36,7 @@ namespace CSE5912.PolyGamers
             // test
             if (Input.GetKeyDown(KeyCode.P))
             {
+                
                 var saveData = Load(0);
                 if (saveData != null)
                 {
@@ -39,7 +44,7 @@ namespace CSE5912.PolyGamers
                 }
             }
             if (Input.GetKeyDown(KeyCode.O))
-                Save(0);
+                Save();
         }
 
         private void LoadData(GameData data)
@@ -202,22 +207,21 @@ namespace CSE5912.PolyGamers
             }
         }
 
-        public void Save(int index)
+        public void Save()
         {
             var inventory = PlayerInventory.Instance;
 
             GameData gameData = new GameData(inventory.GetPlayerWeaponList(), inventory.AttachmentList);
-            gameData.sceneIndex = SceneManager.GetActiveScene().buildIndex;
 
             BinaryFormatter formatter = new BinaryFormatter();
 
-            string path = Application.persistentDataPath + "/" + fileName + "_" + index + ".savegame";
+            string path = Application.persistentDataPath + "/" + fileName + "_" + currentDataIndex + ".savegame";
             FileStream stream = new FileStream(path, FileMode.Create);
             formatter.Serialize(stream, gameData);
 
             stream.Close();
 
-            Debug.Log("Data saved. ");
+            Debug.Log("Data saved. Path: " + path);
         }
 
         public GameData Load(int index)
@@ -236,7 +240,7 @@ namespace CSE5912.PolyGamers
                     GameData gameData = formatter.Deserialize(stream) as GameData;
                     stream.Close();
 
-                    Debug.Log("Save data loaded. ");
+                    Debug.Log("Save data loaded. Path: " + path);
 
                     return gameData;
                 }

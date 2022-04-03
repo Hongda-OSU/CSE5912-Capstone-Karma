@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace CSE5912.PolyGamers
 {
@@ -12,6 +13,10 @@ namespace CSE5912.PolyGamers
     public class GameData
     {
         [DataMember] public int sceneIndex;
+
+        [DataMember] public string mapName;
+
+        [DataMember] public int gamePlayTimeInMinutes;
 
         [DataMember] public List<WeaponData> weaponDataList = new List<WeaponData>();
 
@@ -23,6 +28,12 @@ namespace CSE5912.PolyGamers
 
         public GameData(List<Firearms> weaponList, List<Attachment> attachmentList)
         {
+            sceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+            mapName = SceneManager.GetActiveScene().name;
+
+            gamePlayTimeInMinutes = (int)(GameStateController.Instance.GamePlayTimeInSeconds / 60f);
+
             for (int i = 0; i < weaponList.Count; i++)
             {
                 weaponDataList.Add(new WeaponData(weaponList[i]));

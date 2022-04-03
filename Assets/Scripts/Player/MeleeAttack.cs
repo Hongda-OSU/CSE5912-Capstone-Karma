@@ -10,7 +10,7 @@ namespace CSE5912.PolyGamers
         [Header("Melee Attack")]
         [SerializeField] private float baseDamage = 10f;
         [SerializeField] private Element.Type elementType = Element.Type.Physical;
-        [SerializeField] private float extraSpeed = 0f;
+        //[SerializeField] private float extraSpeed = 0f;
         [SerializeField] private float range = 1f;
         [SerializeField] private bool isEnabled = true;
 

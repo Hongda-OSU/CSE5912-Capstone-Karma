@@ -10,8 +10,8 @@ namespace CSE5912.PolyGamers
     {
         [SerializeField] private int gameSceneIndex;
 
-        [SerializeField] private AudioSource bgm;
-        [SerializeField] private AudioSource clickSound;
+        public AudioSource bgm;
+        public AudioSource clickSound;
 
         private VisualElement mainMenuPanel;
         private VisualElement audioPanel;
@@ -23,6 +23,7 @@ namespace CSE5912.PolyGamers
 
         private VisualElement optionsPanel;
         private VisualElement creditsPanel;
+        private VisualElement profilesPanel;
 
         private Button audioButton;
         private Button KeybindingsButton;
@@ -47,11 +48,13 @@ namespace CSE5912.PolyGamers
             optionsPanel = root.Q<VisualElement>("OptionsPanel");
             audioPanel = root.Q<VisualElement>("AudioPanel");
             creditsPanel = root.Q<VisualElement>("CreditsPanel");
+            profilesPanel = root.Q<VisualElement>("ProfilesPanel");
 
             mainMenuPanel.style.display = DisplayStyle.Flex;
             optionsPanel.style.display = DisplayStyle.None;
             audioPanel.style.display = DisplayStyle.None;
             creditsPanel.style.display = DisplayStyle.None;
+            profilesPanel.style.display = DisplayStyle.None;
         }
 
         private void Start()
@@ -87,27 +90,10 @@ namespace CSE5912.PolyGamers
         // load the main game scene
         private void StartGameButtonPressed()
         {
-            StartCoroutine(FadeOutBgm());
-
-            SceneLoader.Instance.LoadLevel(gameSceneIndex);
-            //DataManager.Instance.Load();
-
+            StartCoroutine(FadeTo(mainMenuPanel, profilesPanel));
             clickSound.Play();
-            root.style.display = DisplayStyle.None;
         }
 
-        private IEnumerator FadeOutBgm()
-        {
-            float timeSince = 0f;
-            float fadeoutTime = 0.5f;
-            while (timeSince < fadeoutTime)
-            {
-                timeSince += Time.deltaTime;
-                yield return new WaitForSeconds(Time.deltaTime);
-
-                bgm.volume = fadeoutTime - timeSince;
-            }
-        }
 
         // open option menu
         private void OptionsButtonPressed()

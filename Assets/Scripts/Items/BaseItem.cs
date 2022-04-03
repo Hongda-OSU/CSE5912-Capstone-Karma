@@ -9,14 +9,14 @@ namespace CSE5912.PolyGamers
 
         [SerializeField] private Outline outline;
         [SerializeField] private Renderer indicator;
-        [SerializeField] private float opacity = 0.3f;
+        //[SerializeField] private float opacity = 0.3f;
 
         private float distanceToDisplay = 40f;
 
         private float rotateSpeed = 90f;
 
-        private float floatSpeed = 1f;
-        private float floatHeight = 0.1f;
+        //private float floatSpeed = 1f;
+        //private float floatHeight = 0.1f;
 
 
         protected virtual void Update()

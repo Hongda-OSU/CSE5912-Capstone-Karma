@@ -9,7 +9,7 @@ namespace CSE5912.PolyGamers
         [SerializeField] private GameObject prefab;
         [SerializeField] private Transform pivot;
         [SerializeField] private float speed = 50f;
-        [SerializeField] private float attackRange = 15f;
+        //[SerializeField] private float attackRange = 15f;
 
         [SerializeField] private GameObject impactPrefab;
 

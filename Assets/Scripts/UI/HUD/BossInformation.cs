@@ -10,7 +10,7 @@ namespace CSE5912.PolyGamers
         [SerializeField] private float distanceToDisplay = 10f;
 
         [SerializeField] private float width = 1000f;
-        [SerializeField] private float height = 20f;
+        //[SerializeField] private float height = 20f;
 
         private Label detail;
         private VisualElement healthBar;

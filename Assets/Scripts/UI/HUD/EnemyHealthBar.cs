@@ -165,7 +165,7 @@ namespace CSE5912.PolyGamers
             private VisualElement slot;
             private Label stack;
 
-            private Debuff debuff;
+            //private Debuff debuff;
 
             public DebuffSlot(VisualElement slot)
             {
@@ -192,7 +192,7 @@ namespace CSE5912.PolyGamers
             public void Clear()
             {
                 slot.style.display = DisplayStyle.None;
-                debuff = null;
+                //debuff = null;
                 slot.style.backgroundImage = null;
             }
 
