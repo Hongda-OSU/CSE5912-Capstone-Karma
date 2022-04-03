@@ -40,15 +40,20 @@ namespace CSE5912.PolyGamers
                 var saveData = Load(0);
                 if (saveData != null)
                 {
-                    LoadData(saveData);
+                    LoadDataToGame(saveData, 0);
                 }
             }
             if (Input.GetKeyDown(KeyCode.O))
                 Save();
         }
 
-        private void LoadData(GameData data)
+        public void LoadDataToGame(GameData data, int index)
         {
+            currentDataIndex = index;
+
+            if (data == null)
+                return;
+
             // clear attachments
             foreach (Transform child in PlayerInventory.Instance.AttachmentCollection.transform)
             {
@@ -258,6 +263,29 @@ namespace CSE5912.PolyGamers
                 Debug.Log("Save data not found. Path: " + path);
 
                 return null;
+            }
+        }
+
+        public void Clear(int index)
+        {
+            string path = Application.persistentDataPath + "/" + fileName + "_" + index + ".savegame";
+
+            if (File.Exists(path))
+            {
+                try
+                {
+                    File.Delete(path);
+                    Debug.Log("Save data deleted. Path: " + path);
+                }
+                catch (Exception)
+                {
+                    Debug.LogError("Failed to delete save data. Path: " + path);
+                }
+
+            }
+            else
+            {
+                Debug.Log("Save data not found. Path: " + path);
             }
         }
 

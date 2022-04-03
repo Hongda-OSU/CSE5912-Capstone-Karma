@@ -14,10 +14,12 @@ namespace CSE5912.PolyGamers
             public VisualElement playerData;
             public VisualElement gameData;
             public Label newGame;
+            public Button clear;
 
-            public Profile(Button profile)
+            public Profile(Button profile, Button clear)
             {
                 button = profile;
+                this.clear = clear;
 
                 indexLabel = profile.Q<Label>("Index");
                 playerData = profile.Q<VisualElement>("PlayerData");
@@ -31,6 +33,11 @@ namespace CSE5912.PolyGamers
                 { 
                     Instance.ProfileButtonPressed(index); 
                 };
+
+                clear.clicked += delegate
+                {
+                    Instance.ClearButtonPressed(index);
+                };
             }
 
             public void LoadPreview(int index)
@@ -41,6 +48,7 @@ namespace CSE5912.PolyGamers
                     playerData.style.display = DisplayStyle.Flex;
                     gameData.style.display = DisplayStyle.Flex;
                     newGame.style.display = DisplayStyle.None;
+                    clear.style.opacity = 1f;
 
                     playerData.Q<Label>("Level").text = saveData.playerStatsData.level.ToString();
                     playerData.Q<Label>("Exp").text = saveData.playerStatsData.experience.ToString() + " / " + saveData.playerStatsData.experienceToUpgrade.ToString();
@@ -59,15 +67,18 @@ namespace CSE5912.PolyGamers
                     playerData.style.display = DisplayStyle.None;
                     gameData.style.display = DisplayStyle.None;
                     newGame.style.display = DisplayStyle.Flex;
+                    clear.style.opacity = 0f;
                 }
             }
         }
         private VisualElement panel;
+        private VisualElement shade;
 
         private List<Profile> profileList = new List<Profile>();
 
         private Button back;
 
+        private int clearIndex = -1;
 
         private static ProfilesPanelControl instance;
         public static ProfilesPanelControl Instance { get { return instance; } }
@@ -82,9 +93,15 @@ namespace CSE5912.PolyGamers
 
             panel = root.Q<VisualElement>("ProfilesPanel");
 
-            foreach (Button child in panel.Q<VisualElement>("Profiles").Children())
+            shade = root.Q<VisualElement>("Shade");
+            shade.style.display = DisplayStyle.None;
+
+            foreach (VisualElement child in panel.Q<VisualElement>("Profiles").Children())
             {
-                profileList.Add(new Profile(child));
+                var profile = child.Q<Button>("Profile_" + child.name);
+                var clear = child.Q<Button>("Clear");
+
+                profileList.Add(new Profile(profile, clear));
             }
 
             back = panel.Q<Button>("Back");
@@ -95,8 +112,11 @@ namespace CSE5912.PolyGamers
             for (int i = 0; i < profileList.Count; i++)
             {
                 profileList[i].AssignAction(i);
-                profileList[i].LoadPreview(i);
             }
+            LoadPreviews();
+
+            shade.Q<Button>("Yes").clicked += YesButtonPressed;
+            shade.Q<Button>("No").clicked += NoButtonPressed;
 
             back.clicked += BackButtonPressed;
         }
@@ -110,18 +130,46 @@ namespace CSE5912.PolyGamers
             StartCoroutine(FadeOutBgm());
 
             SceneLoader.Instance.LoadLevel(sceneIndex);
-            //DataManager.Instance.Load();
+            DataManager.Instance.LoadDataToGame(saveData, index);
 
             StartSceneMenu.Instance.clickSound.Play();
             root.style.display = DisplayStyle.None;
         }
 
+        private void ClearButtonPressed(int index)
+        {
+            clearIndex = index;
+            StartCoroutine(FadeIn(shade));
+        }
+        private void YesButtonPressed()
+        {
+            if (clearIndex > -1)
+            {
+                DataManager.Instance.Clear(clearIndex);
+                clearIndex = -1;
+            }
+            StartCoroutine(FadeOut(shade));
+            LoadPreviews();
+        }
+        private void NoButtonPressed()
+        {
+            clearIndex = -1;
+            StartCoroutine(FadeOut(shade));
+        }
 
         private void BackButtonPressed()
         {
             StartCoroutine(FadeTo(panel, root.Q<VisualElement>("MainMenuPanel")));
         }
 
+
+        private void LoadPreviews()
+        {
+            for (int i = 0; i < profileList.Count; i++)
+            {
+                profileList[i].LoadPreview(i);
+            }
+        }
         private IEnumerator FadeOutBgm()
         {
             float timeSince = 0f;

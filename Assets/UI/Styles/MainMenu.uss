@@ -74,3 +74,54 @@
     background-color: rgba(255, 255, 255, 0.81);
     transition-duration: 0.15s;
 }
+
+.Clear {
+    -unity-font-definition: url('project://database/Assets/UI/Fonts/UiElement/Trajan%20Pro%20Regular%20SDF.asset?fileID=11400000&guid=0821ecf0f29a62243aeeef3d0eb445c6&type=2#Trajan Pro Regular SDF');
+    color: rgba(255, 255, 255, 255);
+    font-size: 20px;
+    background-color: rgba(188, 188, 188, 0);
+    border-left-color: rgba(149, 149, 149, 0);
+    border-right-color: rgba(149, 149, 149, 0);
+    border-top-color: rgba(149, 149, 149, 0);
+    border-bottom-color: rgba(149, 149, 149, 0);
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-left: 50px;
+    height: 50%;
+}
+
+.Clear:hover {
+    -unity-font-definition: url('project://database/Assets/UI/Fonts/UiElement/Trajan%20Pro%20Regular%20SDF.asset?fileID=11400000&guid=0821ecf0f29a62243aeeef3d0eb445c6&type=2#Trajan Pro Regular SDF');
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    background-color: rgba(255, 255, 255, 0.12);
+    border-left-color: rgba(149, 149, 149, 0);
+    border-right-color: rgba(149, 149, 149, 0);
+    border-top-color: rgba(149, 149, 149, 0);
+    border-bottom-color: rgba(149, 149, 149, 0);
+    padding-left: 20px;
+    margin-left: 50px;
+    padding-right: 20px;
+    padding-top: 0;
+    padding-bottom: 0;
+    transition-duration: 0.15s;
+}
+
+.Clear:active {
+    -unity-font-definition: url('project://database/Assets/UI/Fonts/UiElement/Trajan%20Pro%20Regular%20SDF.asset?fileID=11400000&guid=0821ecf0f29a62243aeeef3d0eb445c6&type=2#Trajan Pro Regular SDF');
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    background-color: rgba(255, 255, 255, 0.78);
+    border-left-color: rgba(149, 149, 149, 0);
+    border-right-color: rgba(149, 149, 149, 0);
+    border-top-color: rgba(149, 149, 149, 0);
+    border-bottom-color: rgba(149, 149, 149, 0);
+    padding-left: 20px;
+    margin-left: 50px;
+    padding-right: 20px;
+    padding-top: 0;
+    padding-bottom: 0;
+    transition-duration: 0.15s;
+}
