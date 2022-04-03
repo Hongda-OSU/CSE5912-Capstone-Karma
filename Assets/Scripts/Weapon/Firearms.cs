@@ -213,6 +213,10 @@ namespace CSE5912.PolyGamers
         public void Display(bool enabled)
         {
             arms.SetActive(enabled);
+            if (isAttached)
+            {
+                this.gameObject.transform.Find("Armature/weapon/" + currentAttachment.AttachmentRealName).gameObject.SetActive(enabled);
+            }
         }
 
         public void Attack()

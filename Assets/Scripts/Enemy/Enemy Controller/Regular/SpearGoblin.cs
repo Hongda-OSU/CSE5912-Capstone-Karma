@@ -151,7 +151,6 @@ namespace CSE5912.PolyGamers
         private void ResetMoveLeftOrRightTrigger()
         {
             animator.ResetTrigger("MoveLeft");
-            animator.ResetTrigger("MoveRight");
         }
 
         private void Move()

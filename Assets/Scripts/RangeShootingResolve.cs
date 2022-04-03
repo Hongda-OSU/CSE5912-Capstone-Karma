@@ -21,7 +21,6 @@ namespace CSE5912.PolyGamers
             //float damageCalculation;
             if (other.tag == "Player")
             {
-                Debug.Log("Hit");
                 //damageCalculation = damageAmount + Mathf.RoundToInt(Random.Range(-2f, 4f));
                 Damage damage = new Damage(Mathf.RoundToInt(Random.Range(8f, 10f)), Element.Type.Physical, sourceFrom, PlayerStats.Instance);
                 PlayerStats.Instance.TakeDamage(damage);
