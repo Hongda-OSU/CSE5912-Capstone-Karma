@@ -8,7 +8,9 @@ namespace CSE5912.PolyGamers
     {
 
         [SerializeField] private int skillPoints = 0;
+
         [SerializeField] private GameObject skillTree_element;
+        [SerializeField] private List<PlayerSkill> playerSkillList = new List<PlayerSkill>();
 
         [SerializeField] private GameObject attachmentSetSkills;
         private Dictionary<Attachment.AttachmentSet, PlayerSkill> setToSkill = new Dictionary<Attachment.AttachmentSet, PlayerSkill>();
@@ -32,6 +34,42 @@ namespace CSE5912.PolyGamers
             }
             instance = this;
 
+            playerSkillList.Add(skillTree_element.transform.GetComponentInChildren<Epiphany>());
+
+            playerSkillList.Add(skillTree_element.transform.GetComponentInChildren<FireAscension>());
+            playerSkillList.Add(skillTree_element.transform.GetComponentInChildren<CryoAscension>());
+            playerSkillList.Add(skillTree_element.transform.GetComponentInChildren<ElectroAscension>());
+            playerSkillList.Add(skillTree_element.transform.GetComponentInChildren<VenomAscension>());
+
+            playerSkillList.Add(skillTree_element.transform.GetComponentInChildren<FireMastery>());
+            playerSkillList.Add(skillTree_element.transform.GetComponentInChildren<CryoMastery>());
+            playerSkillList.Add(skillTree_element.transform.GetComponentInChildren<ElectroMastery>());
+            playerSkillList.Add(skillTree_element.transform.GetComponentInChildren<VenomMastery>());
+
+            playerSkillList.Add(skillTree_element.transform.GetComponentInChildren<FireIntellection>());
+            playerSkillList.Add(skillTree_element.transform.GetComponentInChildren<CryoIntellection>());
+            playerSkillList.Add(skillTree_element.transform.GetComponentInChildren<ElectroIntellection>());
+            playerSkillList.Add(skillTree_element.transform.GetComponentInChildren<VenomIntellection>());
+
+            playerSkillList.Add(skillTree_element.GetComponentInChildren<Incendiary>());
+            playerSkillList.Add(skillTree_element.GetComponentInChildren<Inferno>());
+            playerSkillList.Add(skillTree_element.GetComponentInChildren<Ignite>());
+            playerSkillList.Add(skillTree_element.GetComponentInChildren<LivingFlame>());
+
+            playerSkillList.Add(skillTree_element.GetComponentInChildren<Everfrost>());
+            playerSkillList.Add(skillTree_element.GetComponentInChildren<Iceborn>());
+            playerSkillList.Add(skillTree_element.GetComponentInChildren<Frostbite>());
+            playerSkillList.Add(skillTree_element.GetComponentInChildren<Eternity>());
+
+            playerSkillList.Add(skillTree_element.GetComponentInChildren<LightningBolt>());
+            playerSkillList.Add(skillTree_element.GetComponentInChildren<LightningChain>());
+            playerSkillList.Add(skillTree_element.GetComponentInChildren<Detonation>());
+            playerSkillList.Add(skillTree_element.GetComponentInChildren<Smite>());
+
+            playerSkillList.Add(skillTree_element.GetComponentInChildren<Pandemic>());
+            playerSkillList.Add(skillTree_element.GetComponentInChildren<Fester>());
+            playerSkillList.Add(skillTree_element.GetComponentInChildren<Perish>());
+            playerSkillList.Add(skillTree_element.GetComponentInChildren<MixedInfection>());
         }
 
         private void Start()
@@ -72,7 +110,6 @@ namespace CSE5912.PolyGamers
             SkillsPanelControl.Instance.SkillTree_element.AssignPassive(13, skillTree_element.GetComponentInChildren<Fester>());
             SkillsPanelControl.Instance.SkillTree_element.AssignPassive(14, skillTree_element.GetComponentInChildren<Perish>());
             SkillsPanelControl.Instance.SkillTree_element.AssignPassive(15, skillTree_element.GetComponentInChildren<MixedInfection>());
-
 
             setToSkill.Add(Attachment.AttachmentSet.AtomBreak, attachmentSetSkills.GetComponentInChildren<AtomBreak>());
             setToSkill.Add(Attachment.AttachmentSet.VoidKnight, attachmentSetSkills.GetComponentInChildren<VoidKnight>());
@@ -156,5 +193,6 @@ namespace CSE5912.PolyGamers
 
         public int SkillPoints { get { return skillPoints; } set { skillPoints = value; } }
         public PlayerSkill MainSkill { get { return mainSkill; } }
+        public List<PlayerSkill> PlayerSkillList { get { return playerSkillList; } }
     }
 }

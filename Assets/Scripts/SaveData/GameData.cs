@@ -19,6 +19,8 @@ namespace CSE5912.PolyGamers
 
         [DataMember] public PlayerStatsData playerStatsData;
 
+        [DataMember] public PlayerSkillData playerSkillData;
+
         public GameData(List<Firearms> weaponList, List<Attachment> attachmentList)
         {
             for (int i = 0; i < weaponList.Count; i++)
@@ -35,6 +37,7 @@ namespace CSE5912.PolyGamers
             }
 
             playerStatsData = new PlayerStatsData(PlayerStats.Instance);
+            playerSkillData = new PlayerSkillData(PlayerSkillManager.Instance);
         }
 
         [Serializable]
@@ -134,6 +137,27 @@ namespace CSE5912.PolyGamers
                 experienceToUpgrade = stats.ExperienceToUpgrade;
 
                 nameToStatsLevel = stats.NameToStatsLevel;
+            }
+        }
+
+
+        [Serializable]
+        [DataContract]
+        public class PlayerSkillData
+        {
+            [DataMember] public int skillPoint;
+            [DataMember] public Dictionary<PlayerSkill, int> skillToLevel = new Dictionary<PlayerSkill, int>();
+
+            public PlayerSkillData(PlayerSkillManager skillManager)
+            {
+                skillPoint = skillManager.SkillPoints;
+                
+                for (int i = 0; i < skillManager.PlayerSkillList.Count; i++)
+                {
+                    var skill = skillManager.PlayerSkillList[i];
+
+                    skillToLevel.Add(skill, skill.Level);
+                }
             }
         }
 

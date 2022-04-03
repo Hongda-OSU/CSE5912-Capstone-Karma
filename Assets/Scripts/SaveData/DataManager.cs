@@ -62,6 +62,9 @@ namespace CSE5912.PolyGamers
             // load player stats
             LoadPlayerStats(data.playerStatsData);
 
+            // load player skills
+            LoadPlayerSkill(data.playerSkillData);
+
             // load weapon data
             for (int i = 0; i < data.weaponDataList.Count; i++)
             {
@@ -184,6 +187,17 @@ namespace CSE5912.PolyGamers
             //PlayerStats.Instance.LoadPlayerStatsData(data);
         }
 
+        private void LoadPlayerSkill(GameData.PlayerSkillData data)
+        {
+            var skillManager = PlayerSkillManager.Instance;
+
+            skillManager.SkillPoints = data.skillPoint;
+
+            foreach (var kvp in data.skillToLevel)
+            {
+                kvp.Key.SetLevel(kvp.Value);
+            }
+        }
 
         public void Save()
         {

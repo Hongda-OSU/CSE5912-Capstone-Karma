@@ -13,13 +13,17 @@ namespace CSE5912.PolyGamers
 
         private GameObject originSoulPoint;
 
+        private void Start()
+        {
+            originSoulPoint = RespawnManager.Instance.soulPointPrefab;
+        }
         public override bool LevelUp()
         {
             var result = base.LevelUp();
 
             if (result)
             {
-                originSoulPoint = RespawnManager.Instance.soulPointPrefab;
+                //originSoulPoint = RespawnManager.Instance.soulPointPrefab;
 
                 blackSoulPointPrefab.GetComponent<BlackSoulPoint>().statUp = statUp;
                 blackSoulPointPrefab.GetComponent<BlackSoulPoint>().duration = duration;

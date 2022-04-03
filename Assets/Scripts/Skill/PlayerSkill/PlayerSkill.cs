@@ -58,6 +58,12 @@ namespace CSE5912.PolyGamers
             }
             return true;
         }
+        public void SetLevel(int level)
+        {
+            isLearned = level > 0;
+            isReady = level > 0;
+            this.level = Mathf.Clamp(level, 0, maxLevel);
+        }
 
         public virtual void ResetLevel()
         {
