@@ -114,6 +114,7 @@ namespace CSE5912.PolyGamers
         private void BackButtonPressed()
         {
             StartCoroutine(FadeTo(audioPanel, root.Q<VisualElement>("OptionsPanel")));
+            StartSceneMenu.Instance.clickSound.Play();
         }
     }
 }

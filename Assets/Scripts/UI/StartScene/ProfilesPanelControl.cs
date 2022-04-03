@@ -48,7 +48,7 @@ namespace CSE5912.PolyGamers
                     playerData.style.display = DisplayStyle.Flex;
                     gameData.style.display = DisplayStyle.Flex;
                     newGame.style.display = DisplayStyle.None;
-                    clear.style.opacity = 1f;
+                    clear.style.display = DisplayStyle.Flex;
 
                     playerData.Q<Label>("Level").text = saveData.playerStatsData.level.ToString();
                     playerData.Q<Label>("Exp").text = saveData.playerStatsData.experience.ToString() + " / " + saveData.playerStatsData.experienceToUpgrade.ToString();
@@ -60,17 +60,18 @@ namespace CSE5912.PolyGamers
                     var minutes = time % 60;
                     gameData.Q<Label>("Time").text = hours + "H " + minutes + "M";
 
-                    Debug.Log(time + " = " + hours + ", " + minutes);
+                    Debug.Log("PlayTime: " + time + " = " + hours + ", " + minutes);
                 }
                 else
                 {
                     playerData.style.display = DisplayStyle.None;
                     gameData.style.display = DisplayStyle.None;
                     newGame.style.display = DisplayStyle.Flex;
-                    clear.style.opacity = 0f;
+                    clear.style.display = DisplayStyle.None;
                 }
             }
         }
+
         private VisualElement panel;
         private VisualElement shade;
 
@@ -140,6 +141,7 @@ namespace CSE5912.PolyGamers
         {
             clearIndex = index;
             StartCoroutine(FadeIn(shade));
+            StartSceneMenu.Instance.clickSound.Play();
         }
         private void YesButtonPressed()
         {
@@ -150,16 +152,19 @@ namespace CSE5912.PolyGamers
             }
             StartCoroutine(FadeOut(shade));
             LoadPreviews();
+            StartSceneMenu.Instance.clickSound.Play();
         }
         private void NoButtonPressed()
         {
             clearIndex = -1;
             StartCoroutine(FadeOut(shade));
+            StartSceneMenu.Instance.clickSound.Play();
         }
 
         private void BackButtonPressed()
         {
             StartCoroutine(FadeTo(panel, root.Q<VisualElement>("MainMenuPanel")));
+            StartSceneMenu.Instance.clickSound.Play();
         }
 
 

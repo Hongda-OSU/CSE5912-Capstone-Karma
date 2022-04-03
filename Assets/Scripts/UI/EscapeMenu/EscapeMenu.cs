@@ -100,6 +100,8 @@ namespace CSE5912.PolyGamers
         // go back to previous UI
         private void ExitButtonPressed()
         {
+            StartCoroutine(FadeOut(optionsPanel));
+
             clickSound.Play();
 
             DontDestroy.Instance.Destroy();
