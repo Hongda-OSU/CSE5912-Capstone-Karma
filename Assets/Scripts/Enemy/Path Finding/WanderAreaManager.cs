@@ -10,6 +10,8 @@ namespace CSE5912.PolyGamers
         public GetPoint Area_2;
         public GetPoint Area_3;
         public GetPoint Area_4;
+        public GetPoint Area_5;
+        public GetPoint Area_6;
 
         public static WanderAreaManager Instance;
 
@@ -36,6 +38,14 @@ namespace CSE5912.PolyGamers
             else if (AreaNumber == 4f)
             {
                 Instance = Area_4;
+            }
+            else if (AreaNumber == 5f)
+            {
+                Instance = Area_5;
+            }
+            else if (AreaNumber == 6f)
+            {
+                Instance = Area_6;
             }
             else
             {
