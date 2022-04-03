@@ -198,11 +198,13 @@ namespace CSE5912.PolyGamers
 
         public bool UpdateBulletFired()
         {
-            bool shoot = WeaponManager.Instance.isFiring && prevBullet != bulletFired;
+            bool result = WeaponManager.Instance.isFiring && prevBullet != bulletFired;
 
             prevBullet = bulletFired;
+            if (bulletFired == null)
+                result = false;
 
-            return shoot;
+            return result;
         }
 
         private void Update()
