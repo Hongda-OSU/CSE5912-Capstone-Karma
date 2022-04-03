@@ -23924,7 +23924,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7378602250552525107
 Transform:
   m_ObjectHideFlags: 0
@@ -76786,7 +76786,7 @@ Transform:
   m_GameObject: {fileID: 7382314340930660443}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalScale: {x: 3.7, y: 3.7, z: 3.7}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7378966040697112929}
@@ -80662,36 +80662,6 @@ ParticleSystem:
     - serializedVersion: 3
       emitter: {fileID: 7256654026592685417}
       type: 0
-      properties: 4
-      emitProbability: 1
-    - serializedVersion: 3
-      emitter: {fileID: 7257305551136236265}
-      type: 2
-      properties: 4
-      emitProbability: 1
-    - serializedVersion: 3
-      emitter: {fileID: 7257136756790610147}
-      type: 2
-      properties: 4
-      emitProbability: 1
-    - serializedVersion: 3
-      emitter: {fileID: 7262373753534932353}
-      type: 2
-      properties: 4
-      emitProbability: 1
-    - serializedVersion: 3
-      emitter: {fileID: 7257063746159010833}
-      type: 2
-      properties: 4
-      emitProbability: 1
-    - serializedVersion: 3
-      emitter: {fileID: 7257024903986788595}
-      type: 2
-      properties: 4
-      emitProbability: 1
-    - serializedVersion: 3
-      emitter: {fileID: 7256557694201632087}
-      type: 2
       properties: 4
       emitProbability: 1
   LightsModule:

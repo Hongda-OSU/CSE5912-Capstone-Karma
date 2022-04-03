@@ -22,12 +22,17 @@ namespace CSE5912.PolyGamers
         [SerializeField] private GameObject prefab_5;
 
         bool isFalling = false;
+        bool slowdownPlayer = false;
+        bool playerSlowed = false;
+        float slowdownCounter = 3.5f;
+        float originSpeedFactor;
 
         protected override void Start()
         {
             base.Start();
             agent.enabled = false;
             transform.position = new Vector3(transform.position.x, 40f, transform.position.z);
+            originSpeedFactor = PlayerStats.Instance.MoveSpeedFactor;
         }
         protected override void PerformActions()
         {
@@ -49,6 +54,25 @@ namespace CSE5912.PolyGamers
 
             if (!isBossFightTriggered)
                 return;
+
+            if (slowdownPlayer)
+            {
+                if (!playerSlowed) 
+                {
+                    PlayerStats.Instance.MoveSpeedFactor /= 10f;
+                    playerSlowed = true;
+                }
+
+                slowdownCounter -= Time.deltaTime;
+
+                if (slowdownCounter <= 0f) 
+                {
+                    PlayerStats.Instance.MoveSpeedFactor = originSpeedFactor;
+                    slowdownCounter = 3.5f;
+                    slowdownPlayer = false;
+                    playerSlowed = false;
+                }
+            }
 
             switch (status) 
             {
@@ -181,9 +205,23 @@ namespace CSE5912.PolyGamers
             Vector3 angle_1 = DirFromAngle(30f, false) * 10f;
             Vector3 angle_2 = DirFromAngle(330f, false) * 10f;
 
-            vfx_1.transform.LookAt(new Vector3(PlayerManager.Instance.Player.transform.position.x, PlayerManager.Instance.Player.transform.position.y - 2f, PlayerManager.Instance.Player.transform.position.z) + angle_1);
-            vfx_2.transform.LookAt(new Vector3(PlayerManager.Instance.Player.transform.position.x, PlayerManager.Instance.Player.transform.position.y - 2f, PlayerManager.Instance.Player.transform.position.z));
-            vfx_3.transform.LookAt(new Vector3(PlayerManager.Instance.Player.transform.position.x, PlayerManager.Instance.Player.transform.position.y - 2f, PlayerManager.Instance.Player.transform.position.z) + angle_2);
+            vfx_1.transform.LookAt(new Vector3(PlayerManager.Instance.Player.transform.position.x, PlayerManager.Instance.Player.transform.position.y - 1.5f, PlayerManager.Instance.Player.transform.position.z) + angle_1);
+            vfx_2.transform.LookAt(new Vector3(PlayerManager.Instance.Player.transform.position.x, PlayerManager.Instance.Player.transform.position.y - 1.5f, PlayerManager.Instance.Player.transform.position.z));
+            vfx_3.transform.LookAt(new Vector3(PlayerManager.Instance.Player.transform.position.x, PlayerManager.Instance.Player.transform.position.y - 1.5f, PlayerManager.Instance.Player.transform.position.z) + angle_2);
+
+            if (Vector3.Distance(player.position, pivot_1.position) <= 30f && 
+                Vector3.Angle(transform.forward, directionToPlayer) < 60 / 2 &&
+                PlayerManager.Instance.Player.transform.position.y <= vfx_2.transform.position.y + 1f) 
+            {
+                Damage damage = new Damage(Random.Range(7f, 15f), Element.Type.Physical, this, PlayerStats.Instance);
+                PlayerStats.Instance.TakeDamage(damage);
+
+                if (PlayerStats.Instance.Health > 0f) 
+                {
+                    FPSControllerCC.Instance.AddImpact(this.gameObject.transform.TransformDirection(Vector3.forward), 100f);
+                    FPSControllerCC.Instance.AddImpact(Vector3.up, 100f);
+                }
+            }
 
             Destroy(vfx_1, 4f);
             Destroy(vfx_2, 4f);
@@ -194,7 +232,14 @@ namespace CSE5912.PolyGamers
             GameObject vfx = Instantiate(prefab_2);
             vfx.transform.position = new Vector3(transform.position.x, -0.5f, transform.position.z);
             //vfx.transform.LookAt(new Vector3(PlayerManager.Instance.Player.transform.position.x, 0f, PlayerManager.Instance.Player.transform.position.z));
-           
+
+            Damage damage = new Damage(Random.Range(3f, 5f), Element.Type.Physical, this, PlayerStats.Instance);
+            PlayerStats.Instance.TakeDamage(damage);
+
+            if (PlayerStats.Instance.Health > 0f) { 
+                FPSControllerCC.Instance.AddImpact(this.gameObject.transform.TransformDirection(Vector3.forward), 200f);
+            }
+
             Destroy(vfx, 2f);
         }
 
@@ -204,8 +249,29 @@ namespace CSE5912.PolyGamers
             vfx.transform.position = new Vector3(PlayerManager.Instance.Player.transform.position.x, PlayerManager.Instance.Player.transform.position.y - 2f, PlayerManager.Instance.Player.transform.position.z);
             dust.transform.position = pivot_1.position;
 
+            if (PlayerManager.Instance.Player.transform.position.y < vfx.transform.position.y + 3f) 
+            {
+                Damage damage = new Damage(Random.Range(1f,5f), Element.Type.Venom, this, PlayerStats.Instance);
+                PlayerStats.Instance.TakeDamage(damage);
+                slowdownPlayer = true;
+            }
+
             Destroy(vfx, 4f);
             Destroy(dust, 2f);
+        }
+
+        protected override void Hit() {
+            float damageAmount;
+            if (distanceToPlayer <= attackRange)
+            {
+                damageAmount = attackDamage + Mathf.RoundToInt(Random.Range(-10f, 5f));
+                Damage damage = new Damage(damageAmount, Element.Type.Physical, this, PlayerStats.Instance);
+                PlayerStats.Instance.TakeDamage(damage);
+                if (PlayerStats.Instance.Health > 0f)
+                {
+                    FPSControllerCC.Instance.AddImpact(this.gameObject.transform.TransformDirection(Vector3.forward), 200f);
+                }
+            }
         }
 
         public void Landing() {
