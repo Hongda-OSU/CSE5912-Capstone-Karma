@@ -58,6 +58,8 @@ namespace CSE5912.PolyGamers
         protected override void PlayDeathAnimation()
         {
             animator.SetTrigger("Die");
+
+            transform.Find("Audio Sources").Find("Death").GetComponent<AudioSource>().Play();
         }
 
         protected override void HandlePatrol()
@@ -77,13 +79,17 @@ namespace CSE5912.PolyGamers
             if (DistanceToPlayer < closeDetectionRange) 
             {
                 Damage damage = new Damage(attackDamage, Element.Type.Fire, this, PlayerStats.Instance);
+                PlayerStats.Instance.TakeDamage(damage);
+
                 if (PlayerStats.Instance.Health > 0f)
                 {
                     FPSControllerCC.Instance.AddImpact(Vector3.up, 100f);
                     FPSControllerCC.Instance.AddImpact(this.gameObject.transform.TransformDirection(Vector3.forward), 300f);
                 }
-                PlayerStats.Instance.TakeDamage(damage);
+
+                transform.Find("Audio Sources").Find("Explode").GetComponent<AudioSource>().Play();
             }
+
             health = 0;
             barrel.gameObject.SetActive(false);
             Die();

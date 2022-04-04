@@ -144,6 +144,8 @@ namespace CSE5912.PolyGamers
             {
                 animator.SetTrigger("Die_2");
             }
+
+            GetComponentInChildren<AudioSource>().Play();
         }
 
         private void ResetAttackAnimationTriggers()
