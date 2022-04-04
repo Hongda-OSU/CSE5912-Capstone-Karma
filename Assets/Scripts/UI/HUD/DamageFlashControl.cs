@@ -9,7 +9,6 @@ namespace CSE5912.PolyGamers
     {
         [SerializeField] private Sprite flash;
         [SerializeField] private Color color;
-        [SerializeField] private float duration;
         [SerializeField] private bool isTriggered;
 
         private VisualElement panel;
@@ -45,7 +44,7 @@ namespace CSE5912.PolyGamers
             }
             else
             {
-                panel.style.opacity = Mathf.Lerp(panel.resolvedStyle.opacity, 0f, Time.deltaTime / duration);
+                panel.style.opacity = Mathf.Lerp(panel.resolvedStyle.opacity, 0f, Time.deltaTime / fadingTime);
             }
         }
 
