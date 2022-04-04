@@ -508,7 +508,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &542377278907418665
 Transform:
   m_ObjectHideFlags: 0
@@ -623,7 +623,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &542377278907425657
 Transform:
   m_ObjectHideFlags: 0
@@ -1016,7 +1016,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &542377278907411017
 Transform:
   m_ObjectHideFlags: 0
@@ -1381,12 +1381,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50293296a5a7ed14ca34cf2c18ea9ced, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyName: 
-  level: 0
-  experience: 0
+  enemyName: Hammer Skeleton
+  level: 1
+  experience: 1
   health: 200
   maxHealth: 200
-  attackDamage: 0
+  attackDamage: 5
   attackRange: 5
   agentSpeed: 3
   isAlive: 1
@@ -1924,7 +1924,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &542377278907415897
 Transform:
   m_ObjectHideFlags: 0
@@ -2935,27 +2935,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 431196, guid: d6869b11ec4023a4b9853c8b8ee24688, type: 3}
       propertyPath: m_LocalScale.x
-      value: 99.99998
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 431196, guid: d6869b11ec4023a4b9853c8b8ee24688, type: 3}
       propertyPath: m_LocalScale.y
-      value: 99.99998
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 431196, guid: d6869b11ec4023a4b9853c8b8ee24688, type: 3}
       propertyPath: m_LocalScale.z
-      value: 99.99997
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 431196, guid: d6869b11ec4023a4b9853c8b8ee24688, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.847874
+      value: -10.2
       objectReference: {fileID: 0}
     - target: {fileID: 431196, guid: d6869b11ec4023a4b9853c8b8ee24688, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.4408863
+      value: -3.4
       objectReference: {fileID: 0}
     - target: {fileID: 431196, guid: d6869b11ec4023a4b9853c8b8ee24688, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -24.999813
+      value: 3.2
       objectReference: {fileID: 0}
     - target: {fileID: 431196, guid: d6869b11ec4023a4b9853c8b8ee24688, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2985,13 +2985,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90.24
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 3320424, guid: d6869b11ec4023a4b9853c8b8ee24688, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 37488a5bd16becc488241e5039e6bbc9, type: 3}
+    m_RemovedComponents:
+    - {fileID: 64285489540866384, guid: d6869b11ec4023a4b9853c8b8ee24688, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d6869b11ec4023a4b9853c8b8ee24688, type: 3}
 --- !u!4 &6647681637167962026 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 431196, guid: d6869b11ec4023a4b9853c8b8ee24688, type: 3}
   m_PrefabInstance: {fileID: 6647681637168317430}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6647681637168245128 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 191102, guid: d6869b11ec4023a4b9853c8b8ee24688, type: 3}
+  m_PrefabInstance: {fileID: 6647681637168317430}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &4965149474477814041
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6647681637168245128}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 37488a5bd16becc488241e5039e6bbc9, type: 3}
 --- !u!1001 &7643956132823071488
 PrefabInstance:
   m_ObjectHideFlags: 0

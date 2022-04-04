@@ -2,7 +2,7 @@
 
 namespace CSE5912.PolyGamers
 {
-    public class HammerSkeleton : RegularEnemy
+    public class SwordSkeleton : RegularEnemy
     {
         private bool isAttacking = false;
         private bool getToInitialPosition = false;
@@ -48,7 +48,7 @@ namespace CSE5912.PolyGamers
                 }
 
                 if (!(animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 1") ||
-                      animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 2") ))
+                      animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 2")))
                 {
                     isAttacking = false;
                 }
@@ -86,11 +86,15 @@ namespace CSE5912.PolyGamers
                 {
                     if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 1"))
                     {
-                        FPSControllerCC.Instance.AddImpact(this.gameObject.transform.TransformDirection(Vector3.forward), 70f);
+                        FPSControllerCC.Instance.AddImpact(this.gameObject.transform.TransformDirection(Vector3.forward), 5f);
                     }
                     else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 2"))
                     {
-                        FPSControllerCC.Instance.AddImpact(this.gameObject.transform.TransformDirection(Vector3.forward), 50f);
+                        FPSControllerCC.Instance.AddImpact(this.gameObject.transform.TransformDirection(Vector3.forward), 20f);
+                    }
+                    else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 3"))
+                    {
+                        FPSControllerCC.Instance.AddImpact(this.gameObject.transform.TransformDirection(Vector3.forward), 20f);
                     }
                 }
             }
