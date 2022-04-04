@@ -36,7 +36,6 @@ namespace CSE5912.PolyGamers
 
         public void RespawnPlayerToLast()
         {
-
             StartCoroutine(PerformRespawnProcess());
         }
 

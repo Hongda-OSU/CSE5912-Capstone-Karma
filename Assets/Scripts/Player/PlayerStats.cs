@@ -74,6 +74,8 @@ namespace CSE5912.PolyGamers
         [Header("Audio")]
         [SerializeField] private AudioSource levelUpAudio;
         [SerializeField] private AudioSource statUpAudio;
+        [SerializeField] private AudioSource takeDamageAudio;
+        [SerializeField] private AudioClip[] damagedSounds;
 
         [Header("VFX")]
         [SerializeField] private GameObject levelUpVfxPrefab;
@@ -125,6 +127,9 @@ namespace CSE5912.PolyGamers
 
             takeDamageEvent.Invoke();
             DamageFlashControl.Instance.TriggerDamageFlash();
+
+            takeDamageAudio.clip = damagedSounds[Random.Range(0, damagedSounds.Length)];
+            takeDamageAudio.Play();
 
             if (health <= 0)
                 Die();

@@ -73,14 +73,14 @@ namespace CSE5912.PolyGamers
 
         public void SmoothStopMusic()
         {
-            StartCoroutine(FadeAndPause());
+            StartCoroutine(FadeAndStop());
         }
 
-        private IEnumerator FadeAndPause()
+        private IEnumerator FadeAndStop()
         {
             yield return StartCoroutine(FadeBgm(0f));
 
-            mainAudio.Pause();
+            mainAudio.Stop();
         }
         public AudioSource MainAudio { get { return mainAudio; } }
     }

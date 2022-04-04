@@ -284,7 +284,6 @@ GameObject:
   - component: {fileID: 6615771459190495546}
   - component: {fileID: 6615771459190495525}
   - component: {fileID: 178917607}
-  - component: {fileID: 2110043003}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -335,21 +334,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   gamePlayTimeInSeconds: 0
---- !u!114 &2110043003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6615771459190495524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 011e8d7dac31a4144bb56ff8da2024a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentBgm: {fileID: 8300000, guid: 7c99b5423f93c40c3b708db90e76cfdc, type: 3}
-  mainAudio: {fileID: 4599161197706867103}
-  bossDefeated: {fileID: 6615771459735549196}
 --- !u!1 &6615771460806367146
 GameObject:
   m_ObjectHideFlags: 0
@@ -566,7 +550,6 @@ MonoBehaviour:
   fadingTime: 0.15
   flash: {fileID: 21300000, guid: 560421fa1d3522244a139c72d723c4f1, type: 3}
   color: {r: 1, g: 0, b: 0, a: 1}
-  duration: 0.15
   isTriggered: 0
 --- !u!114 &7158231522919328438 stripped
 MonoBehaviour:
@@ -594,6 +577,10 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 16a1e57b7c6beed47a2a3d6cde89e77f, type: 3}
+    - target: {fileID: 1639462540083426103, guid: 26c829ee06488ee43b0bd41e41132bf1, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: eee20dfac62db0345a9fb6e86aa298da, type: 3}
     - target: {fileID: 7104330124380581884, guid: 26c829ee06488ee43b0bd41e41132bf1, type: 3}
       propertyPath: m_audioClip
       value: 
@@ -652,7 +639,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7213765682349246432, guid: 26c829ee06488ee43b0bd41e41132bf1, type: 3}
       propertyPath: m_Volume
-      value: 0.3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7213765682349246432, guid: 26c829ee06488ee43b0bd41e41132bf1, type: 3}
       propertyPath: m_audioClip
@@ -660,6 +647,11 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 7c99b5423f93c40c3b708db90e76cfdc, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26c829ee06488ee43b0bd41e41132bf1, type: 3}
+--- !u!82 &640629001887348438 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5993175897669730473, guid: 26c829ee06488ee43b0bd41e41132bf1, type: 3}
+  m_PrefabInstance: {fileID: 6615771459040540287}
+  m_PrefabAsset: {fileID: 0}
 --- !u!82 &4132148919159806339 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 7104330124380581884, guid: 26c829ee06488ee43b0bd41e41132bf1, type: 3}
@@ -670,6 +662,26 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7213765681218330153, guid: 26c829ee06488ee43b0bd41e41132bf1, type: 3}
   m_PrefabInstance: {fileID: 6615771459040540287}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4599161196575942744 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7213765681218330151, guid: 26c829ee06488ee43b0bd41e41132bf1, type: 3}
+  m_PrefabInstance: {fileID: 6615771459040540287}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1498080152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4599161196575942744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 011e8d7dac31a4144bb56ff8da2024a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentBgm: {fileID: 8300000, guid: 7c99b5423f93c40c3b708db90e76cfdc, type: 3}
+  mainAudio: {fileID: 4599161197706867103}
+  bossDefeated: {fileID: 6615771459735549196}
 --- !u!82 &4599161196823173185 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 7213765680953339454, guid: 26c829ee06488ee43b0bd41e41132bf1, type: 3}
@@ -796,9 +808,49 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4132148919159806339}
     - target: {fileID: 3914003179883955252, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: takeDamageAudio
+      value: 
+      objectReference: {fileID: 640629001887348438}
+    - target: {fileID: 3914003179883955252, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
       propertyPath: levelUpVfxPrefab
       value: 
       objectReference: {fileID: 1624714524768532, guid: 920dacb22f4655748af6e87578f62204, type: 3}
+    - target: {fileID: 3914003179883955252, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: damagedSounds.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3914003179883955252, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: damagedSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 19bd70f938ccba641a9b2715f312088d, type: 3}
+    - target: {fileID: 3914003179883955252, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: damagedSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 7c005ee8c0140344292320a179a3a239, type: 3}
+    - target: {fileID: 3914003179883955252, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: damagedSounds.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 1d0aece4869b31f4386da07c262e3f82, type: 3}
+    - target: {fileID: 3914003179883955252, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: damagedSounds.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 18eec77e77f6a6048b435663f069cd53, type: 3}
+    - target: {fileID: 3914003179883955252, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: damagedSounds.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: b43f1fc7a0933534fa46c7498ff17a25, type: 3}
+    - target: {fileID: 3914003179883955252, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: damagedSounds.Array.data[5]
+      value: 
+      objectReference: {fileID: 8300000, guid: 3ba493730f9d6e64bb44609863dab650, type: 3}
+    - target: {fileID: 3914003179883955252, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: damagedSounds.Array.data[6]
+      value: 
+      objectReference: {fileID: 8300000, guid: 3c5404c0a13514947bd062643708c3da, type: 3}
+    - target: {fileID: 3914003179883955252, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: damagedSounds.Array.data[7]
+      value: 
+      objectReference: {fileID: 8300000, guid: a3969818c7d299b469006c0edc28bce8, type: 3}
     - target: {fileID: 3914003179907011757, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
       propertyPath: defaultWeapon
       value: 

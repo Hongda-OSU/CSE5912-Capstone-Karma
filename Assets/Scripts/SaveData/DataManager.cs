@@ -36,11 +36,13 @@ namespace CSE5912.PolyGamers
             // test
             if (Input.GetKeyDown(KeyCode.P))
             {
-                
-                var saveData = Load(0);
+                var index = 99;
+                currentDataIndex = index;
+
+                var saveData = Load(index);
                 if (saveData != null)
                 {
-                    LoadDataToGame(saveData, 0);
+                    LoadDataToGame(saveData, index);
                 }
             }
             if (Input.GetKeyDown(KeyCode.O))
