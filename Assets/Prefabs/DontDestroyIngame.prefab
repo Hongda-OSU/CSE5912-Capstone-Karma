@@ -731,6 +731,14 @@ PrefabInstance:
       propertyPath: OutputAudioMixerGroup
       value: 
       objectReference: {fileID: 2278350589391119314, guid: 16ed322527a09094c845f7f2988eff06, type: 2}
+    - target: {fileID: 939211913, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: icon
+      value: 
+      objectReference: {fileID: 21300000, guid: fe6fd6dd7231b454c95686f4516be780, type: 3}
+    - target: {fileID: 1374157010, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 2563ca2b733b2034dbf32a4a53c28d0a, type: 3}
     - target: {fileID: 1708189872, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
       propertyPath: sfx
       value: 
@@ -759,6 +767,10 @@ PrefabInstance:
       propertyPath: sounds.Array.data[4]
       value: 
       objectReference: {fileID: 8300000, guid: b2719992f1f278d47a373db05d08b50b, type: 3}
+    - target: {fileID: 2051531523, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: icon
+      value: 
+      objectReference: {fileID: 21300000, guid: eb93295deebd72f449ca8aff6f100469, type: 3}
     - target: {fileID: 1082636342024462559, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
       propertyPath: sfx
       value: 

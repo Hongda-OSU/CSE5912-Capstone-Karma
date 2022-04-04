@@ -52,9 +52,8 @@ MonoBehaviour:
   maxStack: 5
   duration: 5
   timeSince: 0
-  icon: {fileID: 21300000, guid: ff4b506799b7f6248b8cb5533bbc6c48, type: 3}
+  icon: {fileID: 21300000, guid: 94d3c696c8584674e86b93dd97726608, type: 3}
   target: {fileID: 0}
-  damagePerStack: 10
   deltaTime: 1
 --- !u!114 &7502315516231205177
 MonoBehaviour:
@@ -73,9 +72,8 @@ MonoBehaviour:
   maxStack: 5
   duration: 5
   timeSince: 0
-  icon: {fileID: 21300000, guid: 58731a742c5149847a0d7a37971b4c5c, type: 3}
+  icon: {fileID: 21300000, guid: 5c1ca5864543cbc4cb1506a247854d84, type: 3}
   target: {fileID: 0}
-  slowPerStack: 0.05
 --- !u!114 &8677699131892138985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,9 +91,8 @@ MonoBehaviour:
   maxStack: 5
   duration: 5
   timeSince: 0
-  icon: {fileID: 21300000, guid: 2a0551ce270b39f4c88f89e3ccf5e42f, type: 3}
+  icon: {fileID: 21300000, guid: 8764fbd63c3778c48899b954e239cce2, type: 3}
   target: {fileID: 0}
-  reductionPerStack: 0.05
 --- !u!114 &2854673331117607634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,6 +110,6 @@ MonoBehaviour:
   maxStack: 5
   duration: 5
   timeSince: 0
-  icon: {fileID: 21300000, guid: 2cb8dead163c6694f894e1780a1c8165, type: 3}
+  icon: {fileID: 21300000, guid: 2d1e3c37be957df4a82edf9e26afa55d, type: 3}
   target: {fileID: 0}
-  currentHealthPercentageDamagePerStack: 0.01
+  timeLasted: 0
