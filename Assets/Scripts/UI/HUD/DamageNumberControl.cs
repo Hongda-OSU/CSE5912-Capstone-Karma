@@ -35,6 +35,8 @@ namespace CSE5912.PolyGamers
         public IEnumerator DisplayDamageNumber(Damage damage, Vector3 position)
         {
             int number = (int)damage.ResolvedValue;
+            if (number <= 0)
+                yield break;
 
             Quaternion rotation = Quaternion.identity;
             rotation.y = 180f;

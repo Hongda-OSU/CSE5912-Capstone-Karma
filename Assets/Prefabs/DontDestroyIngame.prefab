@@ -545,12 +545,35 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4078243330561650207, guid: 6403c749e9886f94198a7863d0d6a642, type: 3}
   m_PrefabInstance: {fileID: 6615771458777951276}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7158231522919328436 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4078243331677390488, guid: 6403c749e9886f94198a7863d0d6a642, type: 3}
+  m_PrefabInstance: {fileID: 6615771458777951276}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3900480303347336373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7158231522919328436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64ef26a8d8c14cf4dadce516a967c190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiDocument: {fileID: 7158231522919328438}
+  fadingTime: 0.15
+  flash: {fileID: 21300000, guid: 560421fa1d3522244a139c72d723c4f1, type: 3}
+  color: {r: 1, g: 0, b: 0, a: 1}
+  duration: 0.15
+  isTriggered: 0
 --- !u!114 &7158231522919328438 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4078243331677390490, guid: 6403c749e9886f94198a7863d0d6a642, type: 3}
   m_PrefabInstance: {fileID: 6615771458777951276}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 7158231522919328436}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
@@ -626,6 +649,10 @@ PrefabInstance:
     - target: {fileID: 7213765681218330153, guid: 26c829ee06488ee43b0bd41e41132bf1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7213765682349246432, guid: 26c829ee06488ee43b0bd41e41132bf1, type: 3}
+      propertyPath: m_Volume
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 7213765682349246432, guid: 26c829ee06488ee43b0bd41e41132bf1, type: 3}
       propertyPath: m_audioClip
@@ -739,6 +766,14 @@ PrefabInstance:
     - target: {fileID: 1742487286542249138, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3302887819601688399, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: maxShield_armor
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3302887819601688399, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: maxShield_energy
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3411284260568864161, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
       propertyPath: sfx

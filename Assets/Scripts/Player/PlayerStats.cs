@@ -114,6 +114,8 @@ namespace CSE5912.PolyGamers
         public void TakeDamage(Damage damage)
         {
             damage.ResolvedValue *= takeDamageFactor;
+            if (damage.ResolvedValue <= 0)
+                return;
 
             shield.TakeDamage(damage);
 
@@ -122,11 +124,10 @@ namespace CSE5912.PolyGamers
             //Health -= damage.ResolvedValue;
 
             takeDamageEvent.Invoke();
+            DamageFlashControl.Instance.TriggerDamageFlash();
 
             if (health <= 0)
-            {
                 Die();
-            }
         }
 
         private void Die()
