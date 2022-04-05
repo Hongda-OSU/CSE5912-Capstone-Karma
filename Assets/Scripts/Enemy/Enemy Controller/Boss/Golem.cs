@@ -54,7 +54,6 @@ namespace CSE5912.PolyGamers
                     agent.enabled = true;
                     animator.SetTrigger("Land");
                 }
-
             }
 
             if (!isBossFightTriggered)
@@ -64,7 +63,7 @@ namespace CSE5912.PolyGamers
             {
                 if (!playerSlowed) 
                 {
-                    PlayerStats.Instance.MoveSpeedFactor /= 10f;
+                    PlayerStats.Instance.MoveSpeedFactor -= 0.8f;
                     playerSlowed = true;
                 }
 
@@ -176,6 +175,12 @@ namespace CSE5912.PolyGamers
 
                     break;
             }
+        }
+
+        protected override void Die()
+        {
+            PlayerStats.Instance.MoveSpeedFactor = originSpeedFactor;
+            base.Die();
         }
 
         public override void TriggerBossFight()
