@@ -104,6 +104,8 @@ namespace CSE5912.PolyGamers
         protected override void PlayDeathAnimation()
         {
             animator.SetTrigger("Die_1");
+
+            transform.Find("Audio Sources").Find("Death").GetComponent<AudioSource>().Play();
         }
 
         private void ResetAttackAnimationTriggers()

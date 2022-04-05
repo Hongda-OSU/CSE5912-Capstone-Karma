@@ -148,6 +148,16 @@ namespace CSE5912.PolyGamers
             }
         }
 
+        public void DeathSound1() 
+        {
+            transform.Find("Audio Sources").Find("Death_1").GetComponent<AudioSource>().Play();
+        }
+
+        public void DeathSound2()
+        {
+            transform.Find("Audio Sources").Find("Death_2").GetComponent<AudioSource>().Play();
+        }
+
         protected override void HandleWander()
         {
             

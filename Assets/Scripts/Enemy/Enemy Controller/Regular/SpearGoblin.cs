@@ -108,10 +108,14 @@ namespace CSE5912.PolyGamers
             if (random >= 0f && random < 0.5f)
             {
                 animator.SetTrigger("Die_1");
+
+                transform.Find("Audio Sources").Find("Death_1").GetComponent<AudioSource>().Play();
             }
             else if (random >= 0.5f && random < 1f)
             {
                 animator.SetTrigger("Die_2");
+
+                transform.Find("Audio Sources").Find("Death_2").GetComponent<AudioSource>().Play();
             }
         }
 

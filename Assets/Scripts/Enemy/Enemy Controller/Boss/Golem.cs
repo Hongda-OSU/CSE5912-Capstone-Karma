@@ -216,9 +216,9 @@ namespace CSE5912.PolyGamers
 
             if (Vector3.Distance(player.position, pivot_1.position) <= 30f && 
                 Vector3.Angle(transform.forward, directionToPlayer) < 60 / 2 &&
-                PlayerManager.Instance.Player.transform.position.y <= vfx_2.transform.position.y + 1f) 
+                (PlayerManager.Instance.Player.transform.position.y <= vfx_2.transform.position.y + 2f)) 
             {
-                Damage damage = new Damage(Random.Range(7f, 15f), Element.Type.Physical, this, PlayerStats.Instance);
+                Damage damage = new Damage(Random.Range(10f, 20f), Element.Type.Physical, this, PlayerStats.Instance);
                 PlayerStats.Instance.TakeDamage(damage);
 
                 if (PlayerStats.Instance.Health > 0f) 
