@@ -18,6 +18,8 @@ namespace CSE5912.PolyGamers
 
         [DataMember] public int gamePlayTimeInMinutes;
 
+        [DataMember] public float[] playerPosition = new float[3];
+
         [DataMember] public List<WeaponData> weaponDataList = new List<WeaponData>();
 
         [DataMember] public List<AttachmentData> attachmentDataList = new List<AttachmentData>();
@@ -33,6 +35,12 @@ namespace CSE5912.PolyGamers
             mapName = SceneManager.GetActiveScene().name;
 
             gamePlayTimeInMinutes = (int)(GameStateController.Instance.GamePlayTimeInSeconds / 60f);
+
+            var player = PlayerManager.Instance.Player;
+
+            playerPosition[0] = player.transform.position.x;
+            playerPosition[1] = player.transform.position.y;
+            playerPosition[2] = player.transform.position.z;
 
             for (int i = 0; i < weaponList.Count; i++)
             {

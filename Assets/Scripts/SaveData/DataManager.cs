@@ -14,7 +14,7 @@ namespace CSE5912.PolyGamers
 
         [SerializeField] private static int currentDataIndex = -1;
 
-        [SerializeField] private bool isSceneLoaded = false;
+        [SerializeField] private bool isSceneLoaded = true;
 
         private static DataManager instance;
         public static DataManager Instance { get { return instance; } }
@@ -80,6 +80,14 @@ namespace CSE5912.PolyGamers
                 PlayerInventory.Instance.RemoveWeapon(child.GetComponent<Firearms>());
                 Destroy(child.gameObject);
             }
+
+            // load position
+            var player = PlayerManager.Instance.Player;
+
+            var position = new Vector3(data.playerPosition[0], data.playerPosition[1], data.playerPosition[2]);
+            FPSControllerCC.Instance.CharacterController.enabled = false;
+            player.transform.position = position;
+            FPSControllerCC.Instance.CharacterController.enabled = true;
 
 
             // load player stats

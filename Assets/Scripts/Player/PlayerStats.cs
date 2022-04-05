@@ -115,6 +115,9 @@ namespace CSE5912.PolyGamers
 
         public void TakeDamage(Damage damage)
         {
+            if (!isAlive)
+                return;
+
             damage.ResolvedValue *= takeDamageFactor;
             if (damage.ResolvedValue <= 0)
                 return;
