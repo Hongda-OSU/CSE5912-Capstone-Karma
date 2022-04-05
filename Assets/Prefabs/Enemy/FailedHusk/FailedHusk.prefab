@@ -361,8 +361,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4918150346303140}
   - component: {fileID: 95458022740784092}
+  - component: {fileID: 1717994415}
+  - component: {fileID: 1717994414}
+  - component: {fileID: 1086876102601878040}
   m_Layer: 0
-  m_Name: Chr_Undead_Knight_01
+  m_Name: FailedHusk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -397,7 +400,7 @@ Animator:
   m_GameObject: {fileID: 1246891314395918}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 9ad76de1617627d45ba4fa8ddf255af4, type: 3}
-  m_Controller: {fileID: 9100000, guid: 67154ec006ee1ca42a84d943449c4797, type: 2}
+  m_Controller: {fileID: 9100000, guid: 1194cab4f9a11b641b85c292d58c79d6, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -407,6 +410,98 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!136 &1717994415
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246891314395918}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1.9339596
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.91565305, z: 0}
+--- !u!195 &1717994414
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246891314395918}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &1086876102601878040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246891314395918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4984a051d077736468f66601afca0a9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyName: Failed Husk
+  level: 0
+  experience: 0
+  health: 0
+  maxHealth: 0
+  attackDamage: 0
+  attackRange: 5
+  agentSpeed: 0
+  isAlive: 1
+  isFrozen: 0
+  isInvincible: 0
+  damageFactor_physical: 1
+  damageFactor_fire: 1
+  damageFactor_cryo: 1
+  damageFactor_electro: 1
+  damageFactor_venom: 1
+  physicalResist: 0
+  fireResist: 0
+  cryoResist: 0
+  electroResist: 0
+  venomResist: 0
+  dropWeaponChance: 0
+  dropWeaponNumber: 1
+  dropWeaponTypes: 
+  dropWeaponRarities: 
+  dropAttachmentChance: 0
+  dropAttachmentNumber: 1
+  dropAttachmentTypes: 
+  dropAttachmentRarities: 
+  rotateSpeed: 20
+  viewRadius: 15
+  viewAngle: 135
+  closeDetectionRange: 3
+  timeToDestroy: 5
+  playerDetected: 0
+  maxContinuousAttackNum: 3
+  currentAttackNum: 0
+  timeBetweenAttack: 3
+  timeBetweenWaitActions: {x: 1, y: 2}
+  aggro: 0
+  aggroThreshold: 2
+  maxRetreatTime: 3
+  isBossFightTriggered: 0
+  bossDeathVfxPrefab: {fileID: 0}
 --- !u!1 &1261939588107060
 GameObject:
   m_ObjectHideFlags: 0
@@ -1014,6 +1109,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4042356988809080}
+  - {fileID: 2356275539797139011}
   m_Father: {fileID: 4065839835827666}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1837,6 +1933,7 @@ Transform:
   - {fileID: 4536074116737720}
   - {fileID: 4926054007173384}
   - {fileID: 4248895916371480}
+  - {fileID: 5622328258900624268}
   m_Father: {fileID: 4583411808250968}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1872,6 +1969,131 @@ Transform:
   m_Father: {fileID: 4610566962120662}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2453075650756380588
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2356275539797139011}
+  m_Layer: 0
+  m_Name: BackPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2356275539797139011
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2453075650756380588}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -0.295, y: 0.229, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4829170939379372}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!1 &9206059576115567398
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5622328258900624268}
+  m_Layer: 0
+  m_Name: WeaponPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5622328258900624268
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9206059576115567398}
+  m_LocalRotation: {x: -0.50627804, y: 0.44727546, z: -0.49364215, w: 0.5476721}
+  m_LocalPosition: {x: 0.095, y: 0.051, z: -0.033}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1404410474571856294}
+  m_Father: {fileID: 4487155159382630}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: -6.486, y: 84.962, z: -90}
+--- !u!1001 &1404410474572253164
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5622328258900624268}
+    m_Modifications:
+    - target: {fileID: 102960, guid: 2673fd445b977ac488c595eba74eeb06, type: 3}
+      propertyPath: m_Name
+      value: FailedHusk_sword
+      objectReference: {fileID: 0}
+    - target: {fileID: 458314, guid: 2673fd445b977ac488c595eba74eeb06, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 458314, guid: 2673fd445b977ac488c595eba74eeb06, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 458314, guid: 2673fd445b977ac488c595eba74eeb06, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 458314, guid: 2673fd445b977ac488c595eba74eeb06, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 458314, guid: 2673fd445b977ac488c595eba74eeb06, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 458314, guid: 2673fd445b977ac488c595eba74eeb06, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 458314, guid: 2673fd445b977ac488c595eba74eeb06, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 458314, guid: 2673fd445b977ac488c595eba74eeb06, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 458314, guid: 2673fd445b977ac488c595eba74eeb06, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 458314, guid: 2673fd445b977ac488c595eba74eeb06, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 458314, guid: 2673fd445b977ac488c595eba74eeb06, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2673fd445b977ac488c595eba74eeb06, type: 3}
+--- !u!4 &1404410474571856294 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 458314, guid: 2673fd445b977ac488c595eba74eeb06, type: 3}
+  m_PrefabInstance: {fileID: 1404410474572253164}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5270514094475156580
 PrefabInstance:
   m_ObjectHideFlags: 0

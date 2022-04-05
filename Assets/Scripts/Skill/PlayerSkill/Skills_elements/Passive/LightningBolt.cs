@@ -25,15 +25,17 @@ namespace CSE5912.PolyGamers
         {
             if (WeaponManager.Instance.CarriedWeapon.wasBulletFiredThisFrame)
             {
-                StartCoroutine(Perform(WeaponManager.Instance.CarriedWeapon.bulletFired.transform));
+                StartCoroutine(Perform(WeaponManager.Instance.CarriedWeapon.bulletFired));
             }
         }
-        private IEnumerator Perform(Transform point)
+        private IEnumerator Perform(Bullet bullet)
         {
-            if (!isReady)
+            if (!isReady || bullet == null)
                 yield break;
 
             StartCoolingdown();
+
+            var point = bullet.transform;
 
             var position = point.position +
                 point.right * pivot.x + point.up * pivot.y + point.forward * pivot.z;
