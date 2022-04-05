@@ -122,16 +122,16 @@ namespace CSE5912.PolyGamers
             back.clicked += BackButtonPressed;
         }
 
-        private void ProfileButtonPressed(int index)
+        private void ProfileButtonPressed(int dataIndex)
         {
-            var saveData = DataManager.Instance.Load(index);
+            var saveData = DataManager.Instance.Load(dataIndex);
 
             int sceneIndex = saveData == null ? 1 : saveData.sceneIndex;
 
             StartCoroutine(FadeOutBgm());
 
             SceneLoader.Instance.LoadLevel(sceneIndex);
-            DataManager.Instance.LoadDataToGame(saveData, index);
+            DataManager.Instance.LoadSaveData(dataIndex);
 
             StartSceneMenu.Instance.clickSound.Play();
             root.style.display = DisplayStyle.None;

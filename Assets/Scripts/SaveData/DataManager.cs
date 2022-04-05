@@ -1,13 +1,9 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using System;
-using System.Runtime.Serialization;
-using System.Xml.Linq;
-using System.Text;
-using UnityEngine.SceneManagement;
-using System.Collections.Generic;
 using UnityEditor;
 
 namespace CSE5912.PolyGamers
@@ -16,8 +12,9 @@ namespace CSE5912.PolyGamers
     {
         [SerializeField] private string fileName = "GameData";
 
-        [SerializeField] private int currentDataIndex = -1;
+        [SerializeField] private static int currentDataIndex = -1;
 
+        [SerializeField] private bool isSceneLoaded = false;
 
         private static DataManager instance;
         public static DataManager Instance { get { return instance; } }
@@ -25,7 +22,10 @@ namespace CSE5912.PolyGamers
         private void Awake()
         {
             if (instance != null && instance != this)
+            {
                 Destroy(gameObject);
+                return;
+            }
             instance = this;
 
             DontDestroyOnLoad(gameObject);
@@ -42,16 +42,27 @@ namespace CSE5912.PolyGamers
                 var saveData = Load(index);
                 if (saveData != null)
                 {
-                    LoadDataToGame(saveData, index);
+                    LoadDataToGame();
                 }
             }
             if (Input.GetKeyDown(KeyCode.O))
                 Save();
+
+            if (!isSceneLoaded && SceneManager.GetActiveScene().buildIndex != 0)
+            {
+                isSceneLoaded = true;
+                LoadDataToGame();
+            }
         }
 
-        public void LoadDataToGame(GameData data, int index)
+        public void LoadSaveData(int dataIndex)
         {
-            currentDataIndex = index;
+            isSceneLoaded = false;
+            currentDataIndex = dataIndex;
+        }
+        public void LoadDataToGame()
+        {
+            var data = Load(currentDataIndex);
 
             if (data == null)
                 return;
