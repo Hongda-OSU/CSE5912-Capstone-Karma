@@ -48,7 +48,7 @@ namespace CSE5912.PolyGamers
         private IEnumerator FadeBgm(float volume)
         {
             float timeSince = 0f;
-            while (timeSince < SceneLoader.Instance.FadeoutTime)
+            while (timeSince < 0.5f)
             {
                 timeSince += Time.deltaTime;
                 yield return new WaitForSecondsRealtime(Time.deltaTime);
