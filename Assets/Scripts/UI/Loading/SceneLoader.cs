@@ -8,18 +8,13 @@ namespace CSE5912.PolyGamers
 {
     public class SceneLoader : UI
     {
-        [SerializeField] private Sprite image;
-        [SerializeField] private float fadeoutTime = 0.5f;
+        [SerializeField] private bool isLoading = false;
+
+        private bool isFadingIn = true;
 
         private VisualElement loadingScreen;
 
-        private VisualElement loadingImage;
-
-        private VisualElement loadingBar;
-        private VisualElement progressBar;
-        [SerializeField] private float barWidth = 1350f;
-
-        private bool isLoading = false;
+        private VisualElement icon;
 
         private static SceneLoader instance;
         public static SceneLoader Instance { get { return instance; } }
@@ -33,28 +28,9 @@ namespace CSE5912.PolyGamers
 
             loadingScreen = root.Q<VisualElement>("LoadingScreen");
 
-            loadingImage = root.Q<VisualElement>("LoadingImage");
-            loadingImage.style.backgroundImage = new StyleBackground(image);
-            loadingImage.style.unityBackgroundScaleMode = ScaleMode.ScaleToFit;
-
-            loadingBar = root.Q<VisualElement>("LoadingBar");
-            loadingBar.style.width = barWidth;
-
-            progressBar = root.Q<VisualElement>("ProgressBar");
-            progressBar.style.width = 0f;
+            icon = loadingScreen.Q<VisualElement>("Icon");
 
             root.style.display = DisplayStyle.None;
-        }
-
-        // test
-        private void Update()
-        {
-
-            if (Input.GetKeyDown(KeyCode.M))
-            {
-                LoadLevel(2);
-            }
-
         }
 
         public void LoadLevel(int sceneIndex)
@@ -65,11 +41,42 @@ namespace CSE5912.PolyGamers
             StartCoroutine(LoadAsync(sceneIndex));
         }
 
+        private IEnumerator BlinkIcon(float time)
+        {
+            float totalTime = 0f;
+
+            while (isLoading)
+            {
+                var opacity = icon.resolvedStyle.opacity;
+                if (opacity >= 1f)
+                {
+                    isFadingIn = false;
+                    totalTime = 0f;
+                }
+                else if (opacity <= 0f)
+                {
+                    isFadingIn = true;
+                    totalTime = 0f;
+                }
+
+                totalTime += Time.deltaTime;
+                var step = totalTime / time;
+
+                if (isFadingIn)
+                    icon.style.opacity = Mathf.Lerp(0f, 1f, step);
+                else
+                    icon.style.opacity = Mathf.Lerp(1f, 0f, step);
+
+                yield return new WaitForSeconds(Time.deltaTime);
+            }
+
+        }
         private IEnumerator LoadAsync(int sceneIndex)
         {
             if (isLoading)
                 yield break;
 
+            icon.style.opacity = 0f;
             isLoading = true;
 
             loadingScreen.style.display = DisplayStyle.None;
@@ -78,32 +85,12 @@ namespace CSE5912.PolyGamers
 
             yield return StartCoroutine(FadeIn(loadingScreen));
 
-
-            progressBar.style.width = 0f;
-
-            bool isReady = false;
-            float timeSince = 0f;
-            float time = fadeoutTime;
-            while (!isReady)
-            {
-                if (timeSince >= time)
-                    isReady = true;
-
-                float progress = timeSince / time * 0.5f;
-
-                progressBar.style.width = progress * barWidth;
-
-                timeSince += Time.deltaTime;
-                yield return new WaitForSeconds(Time.deltaTime);
-            }
+            StartCoroutine(BlinkIcon(0.5f));
+            yield return new WaitForSeconds(2f);
 
             AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
             while (!operation.isDone)
             {
-                float progress = Mathf.Clamp01(operation.progress / 0.9f) * 0.25f + 0.75f;
-
-                progressBar.style.width = progress * barWidth;
-
                 yield return new WaitForSeconds(Time.deltaTime);
             }
 
@@ -112,6 +99,5 @@ namespace CSE5912.PolyGamers
             isLoading = false;
         }
 
-        public float FadeoutTime { get { return fadeoutTime; } }
     }
 }
