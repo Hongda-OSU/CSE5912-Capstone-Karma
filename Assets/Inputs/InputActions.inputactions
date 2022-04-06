@@ -364,6 +364,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "SwitchBetweenWeapon",
+                    "type": "Value",
+                    "id": "0bf66665-9f7b-44dd-a61e-2d4f93d0fc8d",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -496,6 +505,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "KnifeAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "edf4c9c6-9fa5-4dd1-90e8-764c18a12660",
+                    "path": "<Mouse>/scroll/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwitchBetweenWeapon",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

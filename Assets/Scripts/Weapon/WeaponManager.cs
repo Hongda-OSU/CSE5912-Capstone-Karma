@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace CSE5912.PolyGamers
@@ -11,7 +13,9 @@ namespace CSE5912.PolyGamers
         // 1st weapon in the inspector
         public Firearms MainWeapon;
         public Firearms SecondaryWeapon;
-        // TODO: add three more weapon 
+        public Firearms TertiaryWeapon;
+        public Firearms QuaternaryWeapon;
+        public Firearms QuinaryWeapon;
 
         [SerializeField] private GameObject weaponCollection;
         private List<Firearms> presetWeaponList;
@@ -76,6 +80,9 @@ namespace CSE5912.PolyGamers
         {
             MainWeapon = PlayerInventory.Instance.PlayerWeapons[0];
             SecondaryWeapon = PlayerInventory.Instance.PlayerWeapons[1];
+            TertiaryWeapon = PlayerInventory.Instance.PlayerWeapons[2];
+            QuaternaryWeapon = PlayerInventory.Instance.PlayerWeapons[3];
+            QuinaryWeapon = PlayerInventory.Instance.PlayerWeapons[4];
 
             // check item pick up
             CheckItem();
@@ -110,6 +117,17 @@ namespace CSE5912.PolyGamers
                 isFiring = false;
             }
 
+            if (inputSchemes.FPSActions.SwitchBetweenWeapon.ReadValue<float>() > 0 && !carriedWeapon.isAiming)
+            {
+                //Debug.Log("Switch to previous");
+                SwitchToPreviousWeapon();
+            } 
+            else if (inputSchemes.FPSActions.SwitchBetweenWeapon.ReadValue<float>() < 0 && !carriedWeapon.isAiming)
+            {
+                //Debug.Log("Switch to next");
+                SwitchToNextWeapon();
+            }
+
             // start lean shooting only when aiming, press Q for left lean, E for right lean
             if (inputSchemes.FPSActions.LeanLeft.IsPressed() && carriedWeapon.isAiming)
                 carriedWeapon.StartLeftLeanShooting();
@@ -117,6 +135,7 @@ namespace CSE5912.PolyGamers
                 carriedWeapon.StartRightLeanShooting();
             else
                 carriedWeapon.StopLeanShooting();
+
         }
 
         // reload ammo by pressing R
@@ -179,6 +198,48 @@ namespace CSE5912.PolyGamers
 
                 PlayerSkillManager.Instance.TryActivateSetSkill();
             }
+            // switch to 3rd weapon
+            else if (inputSchemes.FPSActions.SwitchToTertiaryWeapon.triggered
+                     && carriedWeapon != TertiaryWeapon
+                     && TertiaryWeapon != null
+                     && !carriedWeapon.isAiming)
+            {
+                ResetTriggers();
+                carriedWeapon.gameObject.SetActive(false);
+                carriedWeapon = TertiaryWeapon;
+                carriedWeapon.gameObject.SetActive(true);
+                fpsController.SetupAnimator(carriedWeapon.GunAnimator);
+
+                PlayerSkillManager.Instance.TryActivateSetSkill();
+            }
+            // switch to 4th weapon
+            else if (inputSchemes.FPSActions.SwitchToQuaternaryWeapon.triggered
+                     && carriedWeapon != QuaternaryWeapon
+                     && QuaternaryWeapon != null
+                     && !carriedWeapon.isAiming)
+            {
+                ResetTriggers();
+                carriedWeapon.gameObject.SetActive(false);
+                carriedWeapon = QuaternaryWeapon;
+                carriedWeapon.gameObject.SetActive(true);
+                fpsController.SetupAnimator(carriedWeapon.GunAnimator);
+
+                PlayerSkillManager.Instance.TryActivateSetSkill();
+            }
+            // switch to 5th weapon
+            else if (inputSchemes.FPSActions.SwitchToQuinaryWeapon.triggered
+                     && carriedWeapon != QuinaryWeapon
+                     && QuinaryWeapon != null
+                     && !carriedWeapon.isAiming)
+            {
+                ResetTriggers();
+                carriedWeapon.gameObject.SetActive(false);
+                carriedWeapon = QuinaryWeapon;
+                carriedWeapon.gameObject.SetActive(true);
+                fpsController.SetupAnimator(carriedWeapon.GunAnimator);
+
+                PlayerSkillManager.Instance.TryActivateSetSkill();
+            }
 
         }
 
@@ -213,6 +274,45 @@ namespace CSE5912.PolyGamers
                 ItemPeekControl.Instance.Clear();
                 //TipsControl.Instance.PopOffTip();
             }
+        }
+
+        private void SwitchToPreviousWeapon()
+        {
+            int numWeaponPossessed = PlayerInventory.Instance.PlayerWeapons.Where(element => element != null).Count();
+            int currentWeaponIndex = Array.IndexOf(PlayerInventory.Instance.PlayerWeapons, carriedWeapon);
+            if (numWeaponPossessed == 1) return;
+            Firearms weaponToSwitch = null;
+            if (currentWeaponIndex == 0)
+                weaponToSwitch = PlayerInventory.Instance.PlayerWeapons[numWeaponPossessed - 1];
+            else
+                weaponToSwitch = PlayerInventory.Instance.PlayerWeapons[currentWeaponIndex - 1];
+            ResetTriggers();
+            carriedWeapon.gameObject.SetActive(false);
+            carriedWeapon = weaponToSwitch;
+            carriedWeapon.gameObject.SetActive(true);
+            fpsController.SetupAnimator(carriedWeapon.GunAnimator);
+
+            PlayerSkillManager.Instance.TryActivateSetSkill();
+
+        }
+
+        private void SwitchToNextWeapon()
+        {
+            int numWeaponPossessed = PlayerInventory.Instance.PlayerWeapons.Where(element => element != null).Count();
+            int currentWeaponIndex = Array.IndexOf(PlayerInventory.Instance.PlayerWeapons, carriedWeapon);
+            if (numWeaponPossessed == 1) return;
+            Firearms weaponToSwitch = null;
+            if (currentWeaponIndex == numWeaponPossessed - 1)
+                weaponToSwitch = PlayerInventory.Instance.PlayerWeapons[0];
+            else
+                weaponToSwitch = PlayerInventory.Instance.PlayerWeapons[currentWeaponIndex + 1];
+            ResetTriggers();
+            carriedWeapon.gameObject.SetActive(false);
+            carriedWeapon = weaponToSwitch;
+            carriedWeapon.gameObject.SetActive(true);
+            fpsController.SetupAnimator(carriedWeapon.GunAnimator);
+
+            PlayerSkillManager.Instance.TryActivateSetSkill();
         }
 
         private void PickupWeapon(BaseItem baseItem)
@@ -274,11 +374,11 @@ namespace CSE5912.PolyGamers
                 carriedWeapon.gameObject.SetActive(false);
             }
             // swap to target weapon and set up gun animator
+            targetWeapon.isAiming = false;
+            targetWeapon.IsHoldingTrigger = false;
+            targetWeapon.isReloading = false;
             carriedWeapon = targetWeapon;
             carriedWeapon.gameObject.SetActive(true);
-            carriedWeapon.isAiming = false;
-            carriedWeapon.IsHoldingTrigger = false;
-            carriedWeapon.isReloading = false;
             // set up the correct gun animator
             fpsController.SetupAnimator(carriedWeapon.GunAnimator);
         }

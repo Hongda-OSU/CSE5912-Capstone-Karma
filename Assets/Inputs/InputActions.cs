@@ -386,6 +386,15 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwitchBetweenWeapon"",
+                    ""type"": ""Value"",
+                    ""id"": ""0bf66665-9f7b-44dd-a61e-2d4f93d0fc8d"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -520,6 +529,17 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""action"": ""KnifeAttack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""edf4c9c6-9fa5-4dd1-90e8-764c18a12660"",
+                    ""path"": ""<Mouse>/scroll/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchBetweenWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -620,6 +640,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         m_FPSActions_SwitchToTertiaryWeapon = m_FPSActions.FindAction("SwitchToTertiaryWeapon", throwIfNotFound: true);
         m_FPSActions_SwitchToQuaternaryWeapon = m_FPSActions.FindAction("SwitchToQuaternaryWeapon", throwIfNotFound: true);
         m_FPSActions_SwitchToQuinaryWeapon = m_FPSActions.FindAction("SwitchToQuinaryWeapon", throwIfNotFound: true);
+        m_FPSActions_SwitchBetweenWeapon = m_FPSActions.FindAction("SwitchBetweenWeapon", throwIfNotFound: true);
         // UiActions
         m_UiActions = asset.FindActionMap("UiActions", throwIfNotFound: true);
         m_UiActions_IngameMenu = m_UiActions.FindAction("IngameMenu", throwIfNotFound: true);
@@ -801,6 +822,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_FPSActions_SwitchToTertiaryWeapon;
     private readonly InputAction m_FPSActions_SwitchToQuaternaryWeapon;
     private readonly InputAction m_FPSActions_SwitchToQuinaryWeapon;
+    private readonly InputAction m_FPSActions_SwitchBetweenWeapon;
     public struct FPSActionsActions
     {
         private @InputActions m_Wrapper;
@@ -817,6 +839,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         public InputAction @SwitchToTertiaryWeapon => m_Wrapper.m_FPSActions_SwitchToTertiaryWeapon;
         public InputAction @SwitchToQuaternaryWeapon => m_Wrapper.m_FPSActions_SwitchToQuaternaryWeapon;
         public InputAction @SwitchToQuinaryWeapon => m_Wrapper.m_FPSActions_SwitchToQuinaryWeapon;
+        public InputAction @SwitchBetweenWeapon => m_Wrapper.m_FPSActions_SwitchBetweenWeapon;
         public InputActionMap Get() { return m_Wrapper.m_FPSActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -862,6 +885,9 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 @SwitchToQuinaryWeapon.started -= m_Wrapper.m_FPSActionsActionsCallbackInterface.OnSwitchToQuinaryWeapon;
                 @SwitchToQuinaryWeapon.performed -= m_Wrapper.m_FPSActionsActionsCallbackInterface.OnSwitchToQuinaryWeapon;
                 @SwitchToQuinaryWeapon.canceled -= m_Wrapper.m_FPSActionsActionsCallbackInterface.OnSwitchToQuinaryWeapon;
+                @SwitchBetweenWeapon.started -= m_Wrapper.m_FPSActionsActionsCallbackInterface.OnSwitchBetweenWeapon;
+                @SwitchBetweenWeapon.performed -= m_Wrapper.m_FPSActionsActionsCallbackInterface.OnSwitchBetweenWeapon;
+                @SwitchBetweenWeapon.canceled -= m_Wrapper.m_FPSActionsActionsCallbackInterface.OnSwitchBetweenWeapon;
             }
             m_Wrapper.m_FPSActionsActionsCallbackInterface = instance;
             if (instance != null)
@@ -902,6 +928,9 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 @SwitchToQuinaryWeapon.started += instance.OnSwitchToQuinaryWeapon;
                 @SwitchToQuinaryWeapon.performed += instance.OnSwitchToQuinaryWeapon;
                 @SwitchToQuinaryWeapon.canceled += instance.OnSwitchToQuinaryWeapon;
+                @SwitchBetweenWeapon.started += instance.OnSwitchBetweenWeapon;
+                @SwitchBetweenWeapon.performed += instance.OnSwitchBetweenWeapon;
+                @SwitchBetweenWeapon.canceled += instance.OnSwitchBetweenWeapon;
             }
         }
     }
@@ -982,6 +1011,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         void OnSwitchToTertiaryWeapon(InputAction.CallbackContext context);
         void OnSwitchToQuaternaryWeapon(InputAction.CallbackContext context);
         void OnSwitchToQuinaryWeapon(InputAction.CallbackContext context);
+        void OnSwitchBetweenWeapon(InputAction.CallbackContext context);
     }
     public interface IUiActionsActions
     {
