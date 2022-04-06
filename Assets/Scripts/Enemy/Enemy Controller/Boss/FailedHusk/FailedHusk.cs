@@ -8,11 +8,15 @@ namespace CSE5912.PolyGamers
     {
         [Header("Failed Husk")]
 
+        private SwordZone swordZone;
+        private Attack_0_failedHusk attack_0;
 
         private bool isPerforming = false;
 
         private void Awake()
         {
+            swordZone = GetComponentInChildren<SwordZone>();
+            attack_0 = GetComponentInChildren<Attack_0_failedHusk>();
 
             isInvincible = true;
         }
@@ -118,9 +122,25 @@ namespace CSE5912.PolyGamers
 
         private void Attack()
         {
-            SetAttack(Random.Range(0, 6));
+            if (attack_0.IsPerformingAllowed())
+                Attack_0();
 
             status = Status.Attacking;
+        }
+
+        private void Attack_0()
+        {
+            status = Status.Attacking;
+            SetAttack(0);
+            currentAttackNum++;
+            isPerforming = true;
+        }
+        private IEnumerator Attack_0_performed()
+        {
+            yield return StartCoroutine(attack_0.Perform());
+            StartCoroutine(swordZone.Perform());
+
+            isPerforming = false;
         }
 
         private void DonePerforming()

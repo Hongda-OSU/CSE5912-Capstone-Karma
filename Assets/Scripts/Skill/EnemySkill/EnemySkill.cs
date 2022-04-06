@@ -11,6 +11,7 @@ namespace CSE5912.PolyGamers
         private void Awake()
         {
             StartCoolingdown();
+            enemy = GetComponentInParent<Enemy>();
         }
 
         public abstract bool IsPerformingAllowed();
