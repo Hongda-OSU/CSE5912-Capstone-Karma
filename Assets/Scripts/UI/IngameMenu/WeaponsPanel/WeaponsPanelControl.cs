@@ -21,6 +21,8 @@ namespace CSE5912.PolyGamers
         [SerializeField] private WeaponRowsControl weaponRowsControl;
         [SerializeField] private AttachmentInventoryControl attachmentInventoryControl;
 
+        [SerializeField] private AudioSource equipSound;
+
         private VisualElement specificPanel;
 
         private VisualElement selectedAttachmentInventorySlot;
@@ -351,6 +353,8 @@ namespace CSE5912.PolyGamers
 
         public void EquipAttachment(Attachment attachment)
         {
+            equipSound.Play();
+
             var type = GetAttachmentType(selectedEquippedAttachmentSlot);
             if (attachment == null || attachment.Type != type)
                 return;

@@ -12,7 +12,7 @@ namespace CSE5912.PolyGamers
         [SerializeField] private float timeSinceDamaged = 0f;
         [SerializeField] private float timeToRestore = 5f;
         [SerializeField] private float restoreSpeed = 10f;
-        [SerializeField] private float elementalDamageReduction = 0.75f;
+        [SerializeField] private float elementalDamageReduction = 0.25f;
 
         [Header("Armor")]
         [SerializeField] private float shield_armor = 0f;
@@ -73,7 +73,7 @@ namespace CSE5912.PolyGamers
             }
             else if (shield_armor > 0f && !isOn)
             {
-                resistGained = shield_armor * resistBonus;
+                resistGained = maxShield_armor * resistBonus;
 
                 PlayerStats.Instance.GetResist().Physical.Value += resistGained;
                 PlayerStats.Instance.GetResist().Fire.Value += resistGained;  

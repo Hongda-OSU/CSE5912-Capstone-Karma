@@ -1399,7 +1399,7 @@ MonoBehaviour:
   dropWeaponRarities: 00000000
   dropAttachmentChance: 1
   dropAttachmentNumber: 3
-  dropAttachmentTypes: 000000000100000002000000
+  dropAttachmentTypes: 030000000100000002000000
   dropAttachmentRarities: 04000000
   rotateSpeed: 90
   viewRadius: 15

@@ -36,6 +36,8 @@ namespace CSE5912.PolyGamers
         internal bool isAiming;
         internal bool isFiring;
 
+        [SerializeField] private AudioSource pickupSound;
+
         // WeaponManager singleton
         private static WeaponManager instance;
         public static WeaponManager Instance { get { return instance; } }
@@ -264,6 +266,8 @@ namespace CSE5912.PolyGamers
                     // get the item component of type BaseItem, if it exists
                     if (hasItem)
                     {
+                        pickupSound.Play();
+
                         PickupWeapon(item);
                         PickupAttachment(item);
                     }
