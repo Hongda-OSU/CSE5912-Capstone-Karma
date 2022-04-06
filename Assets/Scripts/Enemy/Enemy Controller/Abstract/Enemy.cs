@@ -7,6 +7,7 @@ namespace CSE5912.PolyGamers
 {
     public abstract class Enemy : MonoBehaviour, IDamageable
     {
+        [SerializeField] private bool respawnable = true;
         [Header("Enemy Properties")]
         [SerializeField] protected string enemyName;
         [SerializeField] protected int level;
@@ -95,6 +96,12 @@ namespace CSE5912.PolyGamers
 
         public virtual void ResetEnemy()
         {
+            if (!isAlive && !respawnable)
+            {
+                gameObject.SetActive(false);
+                return;
+            }
+
             transform.position = startPosition;
             transform.rotation = startRotation;
             transform.localScale = startScale;

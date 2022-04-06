@@ -35,6 +35,7 @@ namespace CSE5912.PolyGamers
                         {
                             if (isPlayerInAttackRange)
                             {
+                                Attack();
                             }
                             else
                             {
@@ -85,7 +86,7 @@ namespace CSE5912.PolyGamers
         {
             isInvincible = false;
             isBossFightTriggered = true;
-            animator.applyRootMotion = false;
+            animator.applyRootMotion = true;
             isPerforming = false;
         }
 
@@ -115,6 +116,12 @@ namespace CSE5912.PolyGamers
         }
 
 
+        private void Attack()
+        {
+            SetAttack(Random.Range(0, 6));
+
+            status = Status.Attacking;
+        }
 
         private void DonePerforming()
         {
