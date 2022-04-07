@@ -160,7 +160,7 @@ namespace CSE5912.PolyGamers
         private float GetVeloctiy(Vector3 velocityHolder)
         {
             velocityHolder.y = 0;
-            return velocityHolder.magnitude * velocityMultiplier;
+            return velocityHolder.magnitude * velocityMultiplier / PlayerStats.Instance.MoveSpeedFactor;
         }
 
         // Perform Jump
