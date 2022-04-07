@@ -17,6 +17,7 @@ namespace CSE5912.PolyGamers
             crack.transform.position = enemy.transform.position;
 
             var scale = Vector3.one * size;
+            crack.transform.localScale = scale;
             foreach (Transform child in crack.transform)
                 child.transform.localScale = scale;
 

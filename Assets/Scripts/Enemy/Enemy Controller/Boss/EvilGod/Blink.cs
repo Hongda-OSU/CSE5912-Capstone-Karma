@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace CSE5912.PolyGamers
 {
-    public class Blink_evilGod : EnemySkill
+    public class Blink : EnemySkill
     {
         [SerializeField] private GameObject prefab;
         [SerializeField] private Transform pivot;
@@ -22,9 +22,20 @@ namespace CSE5912.PolyGamers
             origin.transform.position = pivot.position;
             Destroy(origin, 5f);
 
-            enemy.transform.position = position;
 
-            yield return new WaitForSeconds(Time.deltaTime);
+            if (enemy.Animator.applyRootMotion)
+            {
+                enemy.Animator.applyRootMotion = false;
+                yield return new WaitForSeconds(Time.deltaTime);
+                enemy.transform.position = position;
+                enemy.Animator.applyRootMotion = true;
+            }
+            else
+            {
+                yield return new WaitForSeconds(Time.deltaTime);
+                enemy.transform.position = position;
+            }
+
 
             enemy.transform.LookAt(PlayerManager.Instance.Player.transform);
 

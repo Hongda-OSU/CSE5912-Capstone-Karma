@@ -93954,6 +93954,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 2
     messageOptions: 0
+  - time: 1.3
+    functionName: Blink_performed
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 1.5
     functionName: BaseSwordAttack_started
     data: 

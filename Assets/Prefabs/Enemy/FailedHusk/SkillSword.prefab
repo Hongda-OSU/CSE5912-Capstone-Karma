@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2356508}
   - component: {fileID: 8164807990955168338}
   - component: {fileID: 3880089606437153028}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SkillSword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,3 +116,5 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 0
+  isPlayerHit: 0
+  objectHit: {fileID: 0}
