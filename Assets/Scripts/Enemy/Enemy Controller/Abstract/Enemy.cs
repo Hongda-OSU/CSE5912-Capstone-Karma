@@ -339,5 +339,6 @@ namespace CSE5912.PolyGamers
 
         public Vector3 StartPosition { get { return startPosition; } }
         public NavMeshAgent Agent { get { return agent; } }
+        public Animator Animator { get { return animator; } }
     }
 }

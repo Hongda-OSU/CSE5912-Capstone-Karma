@@ -9,11 +9,18 @@ namespace CSE5912.PolyGamers
         [Header("Failed Husk")]
         [SerializeField] private bool isUnleashed = false;
 
+        [SerializeField] private float leashedSpeed = 0.5f;
+        [SerializeField] private float unleashedSpeed = 1f;
+
+        [SerializeField] private float blinkCastSpeed = 0.25f;
+        [SerializeField] private float blinkCastTime = 0.5f;
+
         [SerializeField] private Damager_collision sword;
 
         private SwordZone swordZone;
         private GroundCrack groundCrack;
         private Slash slash;
+        private Blink blink;
 
         private List<EnemySkill> skillList = new List<EnemySkill>();
 
@@ -33,6 +40,7 @@ namespace CSE5912.PolyGamers
             swordZone = GetComponentInChildren<SwordZone>();
             groundCrack = GetComponentInChildren<GroundCrack>();
             slash = GetComponentInChildren<Slash>();
+            blink = GetComponentInChildren<Blink>();
 
             attack_0 = GetComponentInChildren<Attack_0_failedHusk>();
             attack_1 = GetComponentInChildren<Attack_1_failedHusk>();
@@ -52,7 +60,7 @@ namespace CSE5912.PolyGamers
 
         protected override void PerformActions()
         {
-            animator.speed = isUnleashed ? 1f : 0.5f;
+            //animator.speed = isUnleashed ? unleashedSpeed : leashedSpeed;
 
             if (isPerforming || !isBossFightTriggered)
                 return;
@@ -216,6 +224,18 @@ namespace CSE5912.PolyGamers
                 yield break;
 
             StartCoroutine(slash.Perform());
+        }
+        private IEnumerator Blink_performed()
+        {
+            if (!isUnleashed)
+                yield break;
+
+            var position = player.position - directionToPlayer * 5f;
+
+            animator.speed = blinkCastSpeed;
+            yield return new WaitForSeconds(blinkCastTime);
+            yield return StartCoroutine(blink.Perform(position));
+            animator.speed = unleashedSpeed;
         }
 
         private void DonePerforming()

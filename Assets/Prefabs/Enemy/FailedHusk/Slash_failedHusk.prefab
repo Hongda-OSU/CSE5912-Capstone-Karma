@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4468007722744538}
   - component: {fileID: 198004393317472366}
   - component: {fileID: 199137119591985784}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: FX_SwordSlash_Sparks_Down_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4895,7 +4895,7 @@ GameObject:
   - component: {fileID: 199387260536313912}
   - component: {fileID: 1427999064835005874}
   - component: {fileID: 6308165935293288305}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Slash_failedHusk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9801,6 +9801,8 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 0
+  isPlayerHit: 0
+  objectHit: {fileID: 0}
 --- !u!1 &1660937747807802
 GameObject:
   m_ObjectHideFlags: 0
@@ -9812,7 +9814,7 @@ GameObject:
   - component: {fileID: 4098086938850240}
   - component: {fileID: 198841223435444628}
   - component: {fileID: 199604502589906644}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: FX_SwordSlash_Sparks_Sideways_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14694,7 +14696,7 @@ GameObject:
   - component: {fileID: 4514892831693930}
   - component: {fileID: 198265046027378586}
   - component: {fileID: 199255219306010560}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: FX_SwordSlash_Hit_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19576,7 +19578,7 @@ GameObject:
   - component: {fileID: 4887420859085246}
   - component: {fileID: 198857080892521986}
   - component: {fileID: 199541015482562832}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: FX_SwordSlash_Sparks_Up_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}

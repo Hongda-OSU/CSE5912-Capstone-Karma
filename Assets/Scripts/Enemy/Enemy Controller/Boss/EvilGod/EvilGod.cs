@@ -16,7 +16,7 @@ namespace CSE5912.PolyGamers
         private Barrage_evilGod barrage;
 
         private Shield_evilGod shield;
-        private Blink_evilGod blink;
+        private Blink blink;
 
         private bool isPerforming = false;
 
@@ -28,7 +28,7 @@ namespace CSE5912.PolyGamers
             barrage = GetComponentInChildren<Barrage_evilGod>();
 
             shield = GetComponentInChildren<Shield_evilGod>();
-            blink = GetComponentInChildren<Blink_evilGod>();
+            blink = GetComponentInChildren<Blink>();
 
             isInvincible = true;
         }

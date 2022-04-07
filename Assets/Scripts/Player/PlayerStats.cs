@@ -16,6 +16,7 @@ namespace CSE5912.PolyGamers
 
         [Header("Durability")]
         [SerializeField] private bool isAlive = true;
+        [SerializeField] private bool isInvincible = false;
         [SerializeField] private float health = 100f;
         [SerializeField] private float maxHealth = 100f;
         [SerializeField] private Shield shield;
@@ -115,7 +116,7 @@ namespace CSE5912.PolyGamers
 
         public void TakeDamage(Damage damage)
         {
-            if (!isAlive)
+            if (!isAlive || isInvincible)
                 return;
 
             damage.ResolvedValue *= takeDamageFactor;
@@ -347,6 +348,8 @@ namespace CSE5912.PolyGamers
         public float MaxShield_energy { get { return shield.MaxShield_energy; } set { shield.MaxShield_energy = value; } }
         public float BulletVamp { get { return bulletVamp; } set { bulletVamp = value; } }
         public float TakeDamageFactor { get { return takeDamageFactor; } set { takeDamageFactor = value; } }
+        public bool IsAlive { get { return isAlive; } }
+        public bool IsInvincible { get { return isInvincible; } set { isInvincible = value; } }
 
         public int StatPoint { get { return statPoint; } set { statPoint = value; } }
         public int Level { get { return level; } set { level = value; } }

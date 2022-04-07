@@ -43,13 +43,15 @@ namespace CSE5912.PolyGamers
                     
                     StartCoroutine(Drop(sword));
 
-                    yield return new WaitForSeconds(0.01f);
                 }
             }
+            yield return null;
         }
 
         private IEnumerator Drop(GameObject sword)
         {
+            yield return new WaitForSeconds(Random.Range(0f, 0.3f));
+
             var position = sword.transform.position;
             if (Physics.Raycast(sword.transform.position, Vector3.down, out RaycastHit hit, layerMask))
             {
@@ -65,6 +67,8 @@ namespace CSE5912.PolyGamers
             }
 
             sword.GetComponent<Damager_collision>().enabled = false;
+
+            Destroy(sword, 5f);
         }
         public override bool IsPerformingAllowed()
         {
