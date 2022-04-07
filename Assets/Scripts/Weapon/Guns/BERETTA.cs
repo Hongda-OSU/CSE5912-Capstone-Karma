@@ -93,7 +93,7 @@ namespace CSE5912.PolyGamers
             // fake bullet when running
             if (FPSControllerCC.Instance.IsSprint && !WeaponManager.Instance.isAiming)
             {
-                Quaternion playerRot = PlayerManager.Instance.Player.transform.localRotation;
+                Quaternion playerRot = PlayerManager.Instance.Player.transform.rotation;
                 Quaternion mouseRot = PlayerManager.Instance.PlayerArms.transform.localRotation;
                 bulletRot = playerRot * mouseRot;
                 bulletPos = PlayerManager.Instance.Player.transform.position;
