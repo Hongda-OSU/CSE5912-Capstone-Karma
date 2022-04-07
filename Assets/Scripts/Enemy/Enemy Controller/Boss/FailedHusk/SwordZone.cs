@@ -70,6 +70,8 @@ namespace CSE5912.PolyGamers
                 sword.transform.position = Vector3.MoveTowards(sword.transform.position, position, speed * Time.deltaTime);
                 yield return new WaitForSeconds(Time.deltaTime);
             }
+
+            sword.GetComponent<Damager_collision>().enabled = false;
         }
     }
 }

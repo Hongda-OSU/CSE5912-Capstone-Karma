@@ -7,9 +7,12 @@ namespace CSE5912.PolyGamers
     public class FailedHusk : BossEnemy
     {
         [Header("Failed Husk")]
+        [SerializeField] private bool isUnleashed = false;
+
 
         private SwordZone swordZone;
         private GroundCrack groundCrack;
+        private Slash slash;
 
         private Attack_0_failedHusk attack_0;
         private Attack_1_failedHusk attack_1;
@@ -24,6 +27,7 @@ namespace CSE5912.PolyGamers
         {
             swordZone = GetComponentInChildren<SwordZone>();
             groundCrack = GetComponentInChildren<GroundCrack>();
+            slash = GetComponentInChildren<Slash>();
 
             attack_0 = GetComponentInChildren<Attack_0_failedHusk>();
             attack_1 = GetComponentInChildren<Attack_1_failedHusk>();
@@ -41,6 +45,7 @@ namespace CSE5912.PolyGamers
             if (isPerforming || !isBossFightTriggered)
                 return;
 
+            animator.speed = isUnleashed ? 1f : 0.5f;
 
             switch (status)
             {
@@ -170,7 +175,7 @@ namespace CSE5912.PolyGamers
         }
         private IEnumerator Attack_0_performed()
         {
-            yield return StartCoroutine(attack_0.Perform(swordZone));
+            yield return StartCoroutine(attack_0.Perform());
 
             isPerforming = false;
         }
@@ -184,7 +189,7 @@ namespace CSE5912.PolyGamers
         }
         private IEnumerator Attack_1_performed()
         {
-            yield return StartCoroutine(attack_1.Perform(groundCrack));
+            yield return StartCoroutine(attack_1.Perform());
 
             isPerforming = false;
         }
@@ -198,7 +203,7 @@ namespace CSE5912.PolyGamers
         }
         private IEnumerator Attack_2_performed()
         {
-            yield return StartCoroutine(attack_2.Perform(groundCrack));
+            yield return StartCoroutine(attack_2.Perform());
 
             isPerforming = false;
         }
@@ -243,6 +248,29 @@ namespace CSE5912.PolyGamers
             yield return StartCoroutine(attack_5.Perform());
 
             isPerforming = false;
+        }
+
+        private IEnumerator SwordZone_performed()
+        {
+            if (!isUnleashed)
+                yield break;
+
+            StartCoroutine(swordZone.Perform(this));
+        }
+
+        private IEnumerator GroundCrack_performed()
+        {
+            if (!isUnleashed)
+                yield break;
+
+            StartCoroutine(groundCrack.Perform(this));
+        }
+        private IEnumerator Slash_performed()
+        {
+            if (!isUnleashed)
+                yield break;
+
+            StartCoroutine(slash.Perform(this, 5f));
         }
 
         private void DonePerforming()

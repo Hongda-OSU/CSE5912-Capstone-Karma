@@ -6,21 +6,12 @@ namespace CSE5912.PolyGamers
 {
     public class Attack_0_failedHusk : EnemySkill
     {
-        [SerializeField] private bool isUpgraded = false;
-
-        [SerializeField] private GameObject swordPrefab;
-
-        [SerializeField] private int number;
         [SerializeField] private float range;
 
-        public IEnumerator Perform(SwordZone swordZone)
+        public IEnumerator Perform()
         {
             StartCoolingdown();
 
-            if (isUpgraded)
-            {
-                StartCoroutine(swordZone.Perform(enemy));
-            }
             yield return null;
         }
 

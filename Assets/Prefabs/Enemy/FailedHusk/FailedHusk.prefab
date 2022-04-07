@@ -85,6 +85,7 @@ Transform:
   m_Children:
   - {fileID: 1096381349}
   - {fileID: 2638442841136901192}
+  - {fileID: 1615677760}
   - {fileID: 1359524267}
   - {fileID: 1993426146067023783}
   - {fileID: 8252186912018712671}
@@ -121,7 +122,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1147981617}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1359524268
 MonoBehaviour:
@@ -139,10 +140,52 @@ MonoBehaviour:
   timeSincePerformed: 0
   isReady: 0
   enemy: {fileID: 1086876102601878040}
-  isUpgraded: 1
-  swordPrefab: {fileID: 102960, guid: 2673fd445b977ac488c595eba74eeb06, type: 3}
-  number: 30
   range: 5
+--- !u!1 &1615677759
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1615677760}
+  - component: {fileID: 1615677761}
+  m_Layer: 0
+  m_Name: Slash
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1615677760
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615677759}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1147981617}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1615677761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615677759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f76ae3b72c590642b5981f43dcac526, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slashPrefab: {fileID: 1652400581503036, guid: 0a53eda95dce69f4cbd3271a5e96d672, type: 3}
 --- !u!1 &1031015918865592
 GameObject:
   m_ObjectHideFlags: 0
@@ -647,6 +690,7 @@ MonoBehaviour:
   maxRetreatTime: 3
   isBossFightTriggered: 0
   bossDeathVfxPrefab: {fileID: 0}
+  isUnleashed: 0
 --- !u!1 &1261939588107060
 GameObject:
   m_ObjectHideFlags: 0
@@ -2144,7 +2188,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1147981617}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8742962533942246103
 MonoBehaviour:
@@ -2162,9 +2206,7 @@ MonoBehaviour:
   timeSincePerformed: 0
   isReady: 0
   enemy: {fileID: 1086876102601878040}
-  isUpgraded: 0
   range: 5
-  size: 3
 --- !u!1 &2453075650756380588
 GameObject:
   m_ObjectHideFlags: 0
@@ -2226,7 +2268,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1147981617}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7685842387408517175
 MonoBehaviour:
@@ -2244,9 +2286,7 @@ MonoBehaviour:
   timeSincePerformed: 0
   isReady: 0
   enemy: {fileID: 1086876102601878040}
-  isUpgraded: 0
   range: 5
-  size: 3
 --- !u!1 &6304676346945238737
 GameObject:
   m_ObjectHideFlags: 0
@@ -2292,6 +2332,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crackPrefab: {fileID: 1159970587636746, guid: edc4a6ee7ea3a754cac52ef47d71bf27, type: 3}
+  size: 0
 --- !u!1 &9206059576115567398
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,7 +22,7 @@ namespace CSE5912.PolyGamers
         public float velocityMultiplier = 1f;
 
         [Header("Physics")]
-        [SerializeField] private float mass = 3f;
+        [SerializeField] private float maxHealthToMassRatio = 0.05f;
         private Vector3 impact = Vector3.zero;
         public float Gravity;
         public float JumpHeight;
@@ -125,7 +125,7 @@ namespace CSE5912.PolyGamers
             dir.Normalize();
             if (dir.y < 0)
                 dir.y = -dir.y; // reflect down force on the ground
-            impact += dir.normalized * force / mass;
+            impact += dir.normalized * force / (PlayerStats.Instance.MaxHealth * maxHealthToMassRatio);
         }
         public bool isGrounded()
         {

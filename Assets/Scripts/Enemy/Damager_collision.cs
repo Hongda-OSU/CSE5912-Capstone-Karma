@@ -14,8 +14,8 @@ namespace CSE5912.PolyGamers
         [SerializeField] private LayerMask layerMask;
 
         private Enemy enemy;
-        private bool isPlayerHit = false;
-        private GameObject objectHit;
+        [SerializeField] private bool isPlayerHit = false;
+        [SerializeField] private GameObject objectHit;
 
         private SphereCollider collider3d;
 

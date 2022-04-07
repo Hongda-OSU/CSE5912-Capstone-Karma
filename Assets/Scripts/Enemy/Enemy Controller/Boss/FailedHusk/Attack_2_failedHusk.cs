@@ -6,19 +6,11 @@ namespace CSE5912.PolyGamers
 {
     public class Attack_2_failedHusk : EnemySkill
     {
-        [SerializeField] private bool isUpgraded = false;
-
         [SerializeField] private float range;
-        [SerializeField] private float size;
 
-        public IEnumerator Perform(GroundCrack crack)
+        public IEnumerator Perform()
         {
             StartCoolingdown();
-
-            if (isUpgraded)
-            {
-                StartCoroutine(crack.Perform(enemy, size));
-            }
 
             yield return null;
         }
