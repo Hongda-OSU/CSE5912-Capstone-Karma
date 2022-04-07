@@ -22,7 +22,7 @@ namespace CSE5912.PolyGamers
         private List<GameObject> missileList = new List<GameObject>();
 
 
-        public IEnumerator Perform()
+        public override IEnumerator Perform()
         {
             StartCoolingdown();
             for (int j = 0; j < numberOfWaves; j++)

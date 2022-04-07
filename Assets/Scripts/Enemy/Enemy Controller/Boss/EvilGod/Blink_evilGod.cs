@@ -9,6 +9,11 @@ namespace CSE5912.PolyGamers
         [SerializeField] private GameObject prefab;
         [SerializeField] private Transform pivot;
 
+        public override IEnumerator Perform()
+        {
+            throw new System.NotImplementedException();
+        }
+
         public IEnumerator Perform(Vector3 position)
         {
             GameObject blinks = new GameObject("Blinks");

@@ -44,6 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e18fb18e126d8e44f9e5fa0a7ef123de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cooldown: 0
+  timeSincePerformed: 0
+  isReady: 0
+  enemy: {fileID: 0}
   swordPrefab: {fileID: 102960, guid: 609fe0a663bc45b43b27f627d0cccd8a, type: 3}
   delay: 1
   speed: 100
@@ -89,6 +93,8 @@ Transform:
   - {fileID: 1359524267}
   - {fileID: 1993426146067023783}
   - {fileID: 8252186912018712671}
+  - {fileID: 1510989111}
+  - {fileID: 2051171437}
   m_Father: {fileID: 4918150346303140}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -141,6 +147,55 @@ MonoBehaviour:
   isReady: 0
   enemy: {fileID: 1086876102601878040}
   range: 5
+--- !u!1 &1510989110
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1510989111}
+  - component: {fileID: 1510989112}
+  m_Layer: 0
+  m_Name: Attack_3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1510989111
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1510989110}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1147981617}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1510989112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1510989110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0171e489acfa41489cdb293500186b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 5
+  timeSincePerformed: 0
+  isReady: 0
+  enemy: {fileID: 1086876102601878040}
+  range: 5
 --- !u!1 &1615677759
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,7 +240,61 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f76ae3b72c590642b5981f43dcac526, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cooldown: 0
+  timeSincePerformed: 0
+  isReady: 0
+  enemy: {fileID: 0}
   slashPrefab: {fileID: 1652400581503036, guid: 0a53eda95dce69f4cbd3271a5e96d672, type: 3}
+  distance: 5
+--- !u!1 &2051171436
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2051171437}
+  - component: {fileID: 2051171438}
+  m_Layer: 0
+  m_Name: Attack_4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2051171437
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2051171436}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1147981617}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2051171438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2051171436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e64e4e1510d908b41a595ae11ea869a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 5
+  timeSincePerformed: 0
+  isReady: 0
+  enemy: {fileID: 1086876102601878040}
+  range: 5
 --- !u!1 &1031015918865592
 GameObject:
   m_ObjectHideFlags: 0
@@ -651,7 +760,7 @@ MonoBehaviour:
   experience: 0
   health: 10000
   maxHealth: 10000
-  attackDamage: 0
+  attackDamage: 30
   attackRange: 5
   agentSpeed: 0
   isAlive: 1
@@ -689,8 +798,10 @@ MonoBehaviour:
   aggroThreshold: 2
   maxRetreatTime: 3
   isBossFightTriggered: 0
-  bossDeathVfxPrefab: {fileID: 0}
+  bossDeathVfxPrefab: {fileID: 988757988809306081, guid: a843d7fee6c736d4fb7f8fada989fbee, type: 3}
   isUnleashed: 0
+  sword: {fileID: 156079179706268467}
+  isPerforming: 0
 --- !u!1 &1261939588107060
 GameObject:
   m_ObjectHideFlags: 0
@@ -2331,8 +2442,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 180ed4055a3343648bdd760e4e977336, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cooldown: 0
+  timeSincePerformed: 0
+  isReady: 0
+  enemy: {fileID: 0}
   crackPrefab: {fileID: 1159970587636746, guid: edc4a6ee7ea3a754cac52ef47d71bf27, type: 3}
-  size: 0
+  size: 5
 --- !u!1 &9206059576115567398
 GameObject:
   m_ObjectHideFlags: 0
@@ -2422,6 +2537,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2673fd445b977ac488c595eba74eeb06, type: 3}
+--- !u!114 &156079179706268467 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1249738783567281375, guid: 2673fd445b977ac488c595eba74eeb06, type: 3}
+  m_PrefabInstance: {fileID: 1404410474572253164}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5beb3f12b06870649899597da886500c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1404410474571856294 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 458314, guid: 2673fd445b977ac488c595eba74eeb06, type: 3}

@@ -13,7 +13,7 @@ namespace CSE5912.PolyGamers
         [SerializeField] private float attackRange = 15f;
 
 
-        public IEnumerator Perform()
+        public override IEnumerator Perform()
         {
             StartCoolingdown();
 

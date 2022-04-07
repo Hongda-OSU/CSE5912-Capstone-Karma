@@ -9,22 +9,27 @@ namespace CSE5912.PolyGamers
         [Header("Failed Husk")]
         [SerializeField] private bool isUnleashed = false;
 
+        [SerializeField] private Damager_collision sword;
 
         private SwordZone swordZone;
         private GroundCrack groundCrack;
         private Slash slash;
+
+        private List<EnemySkill> skillList = new List<EnemySkill>();
 
         private Attack_0_failedHusk attack_0;
         private Attack_1_failedHusk attack_1;
         private Attack_2_failedHusk attack_2;
         private Attack_3_failedHusk attack_3;
         private Attack_4_failedHusk attack_4;
-        private Attack_5_failedHusk attack_5;
 
-        private bool isPerforming = false;
+        [SerializeField] private bool isPerforming = false;
 
         private void Awake()
         {
+            sword.Initialize(this);
+            sword.BaseDamage = AttackDamage;
+
             swordZone = GetComponentInChildren<SwordZone>();
             groundCrack = GetComponentInChildren<GroundCrack>();
             slash = GetComponentInChildren<Slash>();
@@ -34,7 +39,12 @@ namespace CSE5912.PolyGamers
             attack_2 = GetComponentInChildren<Attack_2_failedHusk>();
             attack_3 = GetComponentInChildren<Attack_3_failedHusk>();
             attack_4 = GetComponentInChildren<Attack_4_failedHusk>();
-            attack_5 = GetComponentInChildren<Attack_5_failedHusk>();
+
+            skillList.Add(attack_0);
+            skillList.Add(attack_1);
+            skillList.Add(attack_2);
+            skillList.Add(attack_3);
+            skillList.Add(attack_4);
 
             isInvincible = true;
         }
@@ -42,10 +52,11 @@ namespace CSE5912.PolyGamers
 
         protected override void PerformActions()
         {
+            animator.speed = isUnleashed ? 1f : 0.5f;
+
             if (isPerforming || !isBossFightTriggered)
                 return;
 
-            animator.speed = isUnleashed ? 1f : 0.5f;
 
             switch (status)
             {
@@ -141,113 +152,47 @@ namespace CSE5912.PolyGamers
 
         private void Attack()
         {
-            //Attack_0();
-            //Attack_1();
-            Attack_2();
-            //Attack_3();
-            //Attack_4();
-            //Attack_5();
+            var usable = new List<int>();
+            for (int i = 0; i < skillList.Count; i++) 
+            {
+                var skill = skillList[i];
+                if (skill.IsPerformingAllowed())
+                    usable.Add(i);
+            }
 
-            //if (attack_0.IsPerformingAllowed())
-            //    Attack_0();
-            //else if (attack_1.IsPerformingAllowed())
-            //    Attack_1();
-            //else if (attack_2.IsPerformingAllowed())
-            //    Attack_2();
-            //else if (attack_3.IsPerformingAllowed())
-            //    Attack_3();
-            //else if (attack_4.IsPerformingAllowed())
-            //    Attack_4();
-            //else if (attack_5.IsPerformingAllowed())
-            //    Attack_5();
-            //else 
-            //    PrepareForNextAttack();
+            if (usable.Count > 0)
+                SkillAttack(usable[Random.Range(0, usable.Count)]);
+            else
+                PrepareForNextAttack();
 
             status = Status.Attacking;
         }
 
-        private void Attack_0()
+        private void SkillAttack(int index)
         {
             status = Status.Attacking;
-            SetAttack(0);
+            SetAttack(index);
             currentAttackNum++;
             isPerforming = true;
         }
-        private IEnumerator Attack_0_performed()
+        private IEnumerator Attack_performed(int index)
         {
-            yield return StartCoroutine(attack_0.Perform());
+            yield return StartCoroutine(skillList[index].Perform());
 
             isPerforming = false;
         }
 
-        private void Attack_1()
+        private IEnumerator BaseSwordAttack_started()
         {
-            status = Status.Attacking;
-            SetAttack(1);
-            currentAttackNum++;
-            isPerforming = true;
-        }
-        private IEnumerator Attack_1_performed()
-        {
-            yield return StartCoroutine(attack_1.Perform());
+            sword.IsPlayerHit = false;
 
-            isPerforming = false;
+            yield return null;
         }
-
-        private void Attack_2()
+        private IEnumerator BaseSwordAttack_finished()
         {
-            status = Status.Attacking;
-            SetAttack(2);
-            currentAttackNum++;
-            isPerforming = true;
-        }
-        private IEnumerator Attack_2_performed()
-        {
-            yield return StartCoroutine(attack_2.Perform());
+            sword.IsPlayerHit = true;
 
-            isPerforming = false;
-        }
-
-        private void Attack_3()
-        {
-            status = Status.Attacking;
-            SetAttack(3);
-            currentAttackNum++;
-            isPerforming = true;
-        }
-        private IEnumerator Attack_3_performed()
-        {
-            yield return StartCoroutine(attack_3.Perform());
-
-            isPerforming = false;
-        }
-
-        private void Attack_4()
-        {
-            status = Status.Attacking;
-            SetAttack(4);
-            currentAttackNum++;
-            isPerforming = true;
-        }
-        private IEnumerator Attack_4_performed()
-        {
-            yield return StartCoroutine(attack_4.Perform());
-
-            isPerforming = false;
-        }
-
-        private void Attack_5()
-        {
-            status = Status.Attacking;
-            SetAttack(5);
-            currentAttackNum++;
-            isPerforming = true;
-        }
-        private IEnumerator Attack_5_performed()
-        {
-            yield return StartCoroutine(attack_5.Perform());
-
-            isPerforming = false;
+            yield return null;
         }
 
         private IEnumerator SwordZone_performed()
@@ -255,7 +200,7 @@ namespace CSE5912.PolyGamers
             if (!isUnleashed)
                 yield break;
 
-            StartCoroutine(swordZone.Perform(this));
+            StartCoroutine(swordZone.Perform());
         }
 
         private IEnumerator GroundCrack_performed()
@@ -263,14 +208,14 @@ namespace CSE5912.PolyGamers
             if (!isUnleashed)
                 yield break;
 
-            StartCoroutine(groundCrack.Perform(this));
+            StartCoroutine(groundCrack.Perform());
         }
         private IEnumerator Slash_performed()
         {
             if (!isUnleashed)
                 yield break;
 
-            StartCoroutine(slash.Perform(this, 5f));
+            StartCoroutine(slash.Perform());
         }
 
         private void DonePerforming()

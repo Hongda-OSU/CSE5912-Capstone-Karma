@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace CSE5912.PolyGamers
 {
-    public class SwordZone : MonoBehaviour
+    public class SwordZone : EnemySkill
     {
         [SerializeField] private GameObject swordPrefab;
 
@@ -18,14 +18,7 @@ namespace CSE5912.PolyGamers
 
         [SerializeField] private LayerMask layerMask;
 
-        private int totalNumber;
-
-        private void Awake()
-        {
-            totalNumber = row * numberPerRow;
-        }
-
-        public IEnumerator Perform(Enemy enemy)
+        public override IEnumerator Perform()
         {
             GameObject go = new GameObject("SwordZone");
 
@@ -72,6 +65,10 @@ namespace CSE5912.PolyGamers
             }
 
             sword.GetComponent<Damager_collision>().enabled = false;
+        }
+        public override bool IsPerformingAllowed()
+        {
+            return true;
         }
     }
 }

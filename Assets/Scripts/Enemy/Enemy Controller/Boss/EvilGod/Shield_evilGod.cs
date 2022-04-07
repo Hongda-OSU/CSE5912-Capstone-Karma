@@ -10,7 +10,7 @@ namespace CSE5912.PolyGamers
         [SerializeField] private float triggerHealthPercentage = 0.5f;
         [SerializeField] private Transform pivot;
 
-        public IEnumerator Perform()
+        public override IEnumerator Perform()
         {
             isReady = false;
 

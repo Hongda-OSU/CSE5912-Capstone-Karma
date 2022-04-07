@@ -8,7 +8,7 @@ namespace CSE5912.PolyGamers
     {
         [SerializeField] private float range;
 
-        public IEnumerator Perform()
+        public override IEnumerator Perform()
         {
             StartCoolingdown();
 

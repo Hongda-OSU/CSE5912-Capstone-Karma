@@ -14,6 +14,7 @@ namespace CSE5912.PolyGamers
             enemy = GetComponentInParent<Enemy>();
         }
 
+        public abstract IEnumerator Perform();
         public abstract bool IsPerformingAllowed();
 
     }

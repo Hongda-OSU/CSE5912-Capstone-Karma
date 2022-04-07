@@ -21,6 +21,10 @@ namespace CSE5912.PolyGamers
 
         [SerializeField] private float triggerHealthPercentage = 0.7f;
 
+        public override IEnumerator Perform()
+        {
+            throw new System.NotImplementedException();
+        }
         public IEnumerator Perform(List<GameObject> list)
         {
             var missileList = new List<GameObject>(list);

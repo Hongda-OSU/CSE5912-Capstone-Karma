@@ -4,12 +4,12 @@ using UnityEngine;
 
 namespace CSE5912.PolyGamers
 {
-    public class GroundCrack : MonoBehaviour
+    public class GroundCrack : EnemySkill
     {
         [SerializeField] private GameObject crackPrefab;
         [SerializeField] private float size;
 
-        public IEnumerator Perform(Enemy enemy)
+        public override IEnumerator Perform()
         {
             GameObject crack = Instantiate(crackPrefab);
             crack.GetComponent<Damager_collision>().Initialize(enemy);
@@ -26,6 +26,11 @@ namespace CSE5912.PolyGamers
             Destroy(crack, totalDuration / 2);
 
             yield return null;
+        }
+
+        public override bool IsPerformingAllowed()
+        {
+            return true;
         }
     }
 }

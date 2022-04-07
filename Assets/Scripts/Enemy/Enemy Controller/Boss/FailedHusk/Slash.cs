@@ -4,12 +4,12 @@ using UnityEngine;
 
 namespace CSE5912.PolyGamers
 {
-    public class Slash : MonoBehaviour
+    public class Slash : EnemySkill
     {
         [SerializeField] private GameObject slashPrefab;
+        [SerializeField] private float distance;
 
-
-        public IEnumerator Perform(Enemy enemy, float distance)
+        public override IEnumerator Perform()
         {
             GameObject slash = Instantiate(slashPrefab);
             slash.GetComponent<Damager_collision>().Initialize(enemy);
@@ -21,6 +21,10 @@ namespace CSE5912.PolyGamers
             Destroy(slash, totalDuration / 2);
 
             yield return null;
+        }
+        public override bool IsPerformingAllowed()
+        {
+            return true;
         }
     }
 }

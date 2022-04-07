@@ -13,7 +13,7 @@ namespace CSE5912.PolyGamers
 
         [SerializeField] private GameObject impactPrefab;
 
-        public IEnumerator Perform()
+        public override IEnumerator Perform()
         {
             StartCoolingdown();
 
