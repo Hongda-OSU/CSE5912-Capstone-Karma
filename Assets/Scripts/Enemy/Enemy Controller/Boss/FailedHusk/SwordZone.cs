@@ -25,7 +25,7 @@ namespace CSE5912.PolyGamers
             totalNumber = row * numberPerRow;
         }
 
-        public IEnumerator Perform()
+        public IEnumerator Perform(Enemy enemy)
         {
             GameObject go = new GameObject("SwordZone");
 
@@ -45,6 +45,7 @@ namespace CSE5912.PolyGamers
                     var position = new Vector3(x, height, z) + origin;
 
                     GameObject sword = Instantiate(swordPrefab, go.transform);
+                    sword.GetComponent<Damager_collision>().Initialize(enemy);
                     sword.transform.position = position;
                     
                     StartCoroutine(Drop(sword));

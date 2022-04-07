@@ -4,23 +4,22 @@ using UnityEngine;
 
 namespace CSE5912.PolyGamers
 {
-    public class Attack_0_failedHusk : EnemySkill
+    public class Attack_2_failedHusk : EnemySkill
     {
         [SerializeField] private bool isUpgraded = false;
 
-        [SerializeField] private GameObject swordPrefab;
-
-        [SerializeField] private int number;
         [SerializeField] private float range;
+        [SerializeField] private float size;
 
-        public IEnumerator Perform(SwordZone swordZone)
+        public IEnumerator Perform(GroundCrack crack)
         {
             StartCoolingdown();
 
             if (isUpgraded)
             {
-                StartCoroutine(swordZone.Perform(enemy));
+                StartCoroutine(crack.Perform(enemy, size));
             }
+
             yield return null;
         }
 
