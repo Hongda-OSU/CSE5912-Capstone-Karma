@@ -249,7 +249,6 @@ MonoBehaviour:
   prefab: {fileID: 180268, guid: 2532962bb8467674cb5e097e001d8ce9, type: 3}
   pivot: {fileID: 4857573218981676}
   speed: 50
-  attackRange: 15
   impactPrefab: {fileID: 191726, guid: 4937c80a8b4cbdd4497ab7e3c94b0efb, type: 3}
 --- !u!1 &1230739601
 GameObject:
@@ -260,7 +259,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1230739602}
-  - component: {fileID: 1230739603}
+  - component: {fileID: 3692211097697199631}
   m_Layer: 7
   m_Name: Blink
   m_TagString: Untagged
@@ -284,7 +283,7 @@ Transform:
   m_Father: {fileID: 192375470}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1230739603
+--- !u!114 &3692211097697199631
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -293,7 +292,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1230739601}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c00d30fc09311045bc710751d1bcc64, type: 3}
+  m_Script: {fileID: 11500000, guid: c9e5abbfac849f949bc1462243e49539, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 0
@@ -354,7 +353,6 @@ MonoBehaviour:
   prefab: {fileID: 180268, guid: 2532962bb8467674cb5e097e001d8ce9, type: 3}
   pivot: {fileID: 1815077942}
   pivotBias: 5
-  number: 15
   speed: 50
   timeBetweenAttack: 0.05
   directionBias: 2
@@ -1907,6 +1905,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c23cde8f3f94ec449834f873a4977635, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  respawnable: 1
   enemyName: Evil God
   level: 0
   experience: 0
