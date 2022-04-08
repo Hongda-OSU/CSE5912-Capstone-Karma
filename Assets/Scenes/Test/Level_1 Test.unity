@@ -30428,6 +30428,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4966503940352404, guid: 2a4503883d5001b488590305c2e38787, type: 3}
   m_PrefabInstance: {fileID: 656383253}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &657405040 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2453075650756380588, guid: 2b199db8d1af8e8448a03dbc6e582e95, type: 3}
+  m_PrefabInstance: {fileID: 783835410}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &659150909
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35104,6 +35109,18 @@ PrefabInstance:
     - target: {fileID: 4918150346303140, guid: 2b199db8d1af8e8448a03dbc6e582e95, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1086876102601878040, guid: 2b199db8d1af8e8448a03dbc6e582e95, type: 3}
+      propertyPath: seals
+      value: 
+      objectReference: {fileID: 657405040}
+    - target: {fileID: 1086876102601878040, guid: 2b199db8d1af8e8448a03dbc6e582e95, type: 3}
+      propertyPath: bossArea
+      value: 
+      objectReference: {fileID: 2077792038}
+    - target: {fileID: 1086876102601878040, guid: 2b199db8d1af8e8448a03dbc6e582e95, type: 3}
+      propertyPath: healthPerSeal
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 5448977433941620786, guid: 2b199db8d1af8e8448a03dbc6e582e95, type: 3}
       propertyPath: size

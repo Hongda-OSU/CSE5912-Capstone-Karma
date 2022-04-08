@@ -8,6 +8,8 @@ namespace CSE5912.PolyGamers
     {
         [Header("Failed Husk")]
         [SerializeField] private bool isUnleashed = false;
+        [SerializeField] private float unleashedHealth = 10000f;
+        [SerializeField] private string unleashedName = "Flawless Form";
 
         [SerializeField] private float leashedSpeed = 0.5f;
         [SerializeField] private float unleashedSpeed = 1f;
@@ -15,7 +17,17 @@ namespace CSE5912.PolyGamers
         [SerializeField] private float blinkCastSpeed = 0.25f;
         [SerializeField] private float blinkCastTime = 0.5f;
 
+        [SerializeField] private GameObject seals;
+        [SerializeField] private float healthPerSeal;
+        private List<GameObject> sealList = new List<GameObject>();
+        [SerializeField] private float currentDamageTaken = 0f;
+
+        [SerializeField] private float walkTime;
+        [SerializeField] private float timeToBlink = 3f;
+
         [SerializeField] private Damager_collision sword;
+
+        [SerializeField] private BossArea bossArea;
 
         private SwordZone swordZone;
         private GroundCrack groundCrack;
@@ -34,6 +46,11 @@ namespace CSE5912.PolyGamers
 
         private void Awake()
         {
+            foreach (Transform seal in seals.transform)
+            {
+                sealList.Add(seal.gameObject);
+            }
+
             sword.Initialize(this);
             sword.BaseDamage = AttackDamage;
 
@@ -55,16 +72,88 @@ namespace CSE5912.PolyGamers
             skillList.Add(attack_4);
 
             isInvincible = true;
+
+            maxHealth = healthPerSeal * 5;
+            health = maxHealth;
+        }
+        protected override void Start()
+        {
+            base.Start();
+
+            animator.speed = leashedSpeed;
+        }
+        public override void TakeDamage(Damage damage)
+        {
+            if (!isAlive || isInvincible)
+            {
+                return;
+            }
+
+            float value = damage.ResolvedValue;
+            if (sealList.Count > 0)
+            {
+                health -= value;
+
+                currentDamageTaken += value;
+                if (currentDamageTaken > healthPerSeal)
+                {
+                    animator.SetTrigger("Stagger");
+
+                    var seal = sealList[0];
+                    sealList.RemoveAt(0);
+                    Destroy(seal);
+
+                    currentDamageTaken = 0;
+                    if (sealList.Count == 0)
+                    {
+                        animator.SetTrigger("Unseal");
+                        BgmControl.Instance.MainAudio.Stop();
+                        GetComponentInChildren<BossInformation>().Display(false);
+                        isBossFightTriggered = false;
+                    }
+                }
+            }
+
+            else
+            {
+                health -= value;
+
+                if (health <= 0)
+                {
+                    Die();
+
+                    //test
+                    DropWeapon();
+                    DropAttachment();
+                }
+            }
+
+            if (!isAttackedByPlayer)
+            {
+                isAttackedByPlayer = true;
+            }
         }
 
+        private IEnumerator Unleash()
+        {
+            isUnleashed = true;
+
+            animator.speed = unleashedSpeed;
+
+            enemyName = unleashedName;
+
+            maxHealth = unleashedHealth;
+            health = maxHealth;
+
+            StartCoroutine(bossArea.TriggerBossFight(0f));
+
+            yield return null;
+        }
 
         protected override void PerformActions()
         {
-            //animator.speed = isUnleashed ? unleashedSpeed : leashedSpeed;
-
             //test
             PlayerStats.Instance.IsInvincible = true;
-            isUnleashed = true;
 
             if (isPerforming || !isBossFightTriggered)
                 return;
@@ -97,6 +186,17 @@ namespace CSE5912.PolyGamers
 
                 case Status.Moving:
                     status = Status.Idle;
+
+                    if (isUnleashed)
+                    {
+                        walkTime += Time.deltaTime;
+                        if (walkTime > timeToBlink)
+                        {
+                            StartCoroutine(Blink_performed());
+                            walkTime = 0f;
+                            Attack();
+                        }
+                    }
                     break;
 
                 case Status.Attacking:
@@ -104,7 +204,15 @@ namespace CSE5912.PolyGamers
                     {
                         PrepareForNextAttack();
                     }
-                    status = Status.Idle;
+                    else
+                    {
+                        status = Status.Idle;
+                    }
+
+                    if (isUnleashed)
+                    {
+                        walkTime = 0f;
+                    }
 
                     break;
 
@@ -143,15 +251,15 @@ namespace CSE5912.PolyGamers
 
         }
 
-        protected override void MoveToPlayer()
-        {
-            base.MoveToPlayer();
-
-        }
         protected override IEnumerator PerformActionsOnWaiting()
         {
+            SetMove(Direction.Backward);
+
+            yield return new WaitForSeconds(Random.Range(1f, 3f));
+
             currentAttackNum = 0;
-            yield return null;
+            SetMove(Direction.None);
+            status = Status.Idle;
         }
 
         protected override void PlayDeathAnimation()
@@ -164,6 +272,9 @@ namespace CSE5912.PolyGamers
 
         private void Attack()
         {
+            SetMove(Direction.None);
+            status = Status.Attacking;
+
             var usable = new List<int>();
             for (int i = 0; i < skillList.Count; i++) 
             {
@@ -177,7 +288,6 @@ namespace CSE5912.PolyGamers
             else
                 PrepareForNextAttack();
 
-            status = Status.Attacking;
         }
 
         private void SkillAttack(int index)
@@ -243,7 +353,7 @@ namespace CSE5912.PolyGamers
             if (!isUnleashed)
                 yield break;
 
-            var position = player.position - directionToPlayer * 5f;
+            var position = player.position - directionToPlayer * 3f;
 
             animator.speed = blinkCastSpeed;
             yield return new WaitForSeconds(blinkCastTime);

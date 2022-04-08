@@ -93,6 +93,21 @@ namespace CSE5912.PolyGamers
             enemy.gameObject.GetComponentInChildren<BossInformation>().Display(true);
         }
 
+        public IEnumerator TriggerBossFight(float delay)
+        {
+            BgmControl.Instance.SmoothStopMusic();
+
+            yield return new WaitForSeconds(delay);
+
+            enemy.TriggerBossFight();
+
+            while (!enemy.IsBossFightTriggered)
+            {
+                yield return new WaitForSeconds(Time.deltaTime);
+            }
+            BgmControl.Instance.Play(bossMusic);
+            enemy.gameObject.GetComponentInChildren<BossInformation>().Display(true);
+        }
 
     }
 }

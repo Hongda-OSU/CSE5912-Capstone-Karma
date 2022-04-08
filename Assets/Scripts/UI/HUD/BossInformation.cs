@@ -72,21 +72,6 @@ namespace CSE5912.PolyGamers
             //debuffs.style.display = DisplayStyle.Flex;
         }
 
-        private bool DisplayEnabled()
-        {
-            float maxDistance = distanceToDisplay;
-            //if (enemy.IsAttackedByPlayer)
-            //    maxDistance = distanceToDisplayIfAttacked;
-
-            float distance = Vector3.Distance(PlayerManager.Instance.Player.transform.position, transform.position);
-
-            if (distance < maxDistance)
-            {
-                return true;
-            }
-
-            return false;
-        }
         private void SetHealthBar()
         {
 
