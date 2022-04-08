@@ -62,6 +62,10 @@ namespace CSE5912.PolyGamers
         {
             //animator.speed = isUnleashed ? unleashedSpeed : leashedSpeed;
 
+            //test
+            PlayerStats.Instance.IsInvincible = true;
+            isUnleashed = true;
+
             if (isPerforming || !isBossFightTriggered)
                 return;
 
@@ -218,11 +222,20 @@ namespace CSE5912.PolyGamers
 
             StartCoroutine(groundCrack.Perform());
         }
-        private IEnumerator Slash_performed()
+        
+        /*
+         *  0 = right, 
+         *  1 = down,
+         *  2 = left,
+         *  3 = top,
+         *  4 = prick,
+         */
+        private IEnumerator Slash_performed(int flag)
         {
             if (!isUnleashed)
                 yield break;
 
+            slash.direction = flag;
             StartCoroutine(slash.Perform());
         }
         private IEnumerator Blink_performed()

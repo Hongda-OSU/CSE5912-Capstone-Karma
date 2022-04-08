@@ -35025,6 +35025,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 446325664}
     m_Modifications:
+    - target: {fileID: 1096381350, guid: 2b199db8d1af8e8448a03dbc6e582e95, type: 3}
+      propertyPath: size
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1096381350, guid: 2b199db8d1af8e8448a03dbc6e582e95, type: 3}
+      propertyPath: swordZonePrefab
+      value: 
+      objectReference: {fileID: 1011191742018456, guid: 5691527dfbbab47488cfb04482ec3473, type: 3}
+    - target: {fileID: 1615677761, guid: 2b199db8d1af8e8448a03dbc6e582e95, type: 3}
+      propertyPath: prickPrefab
+      value: 
+      objectReference: {fileID: 1893033738566276, guid: b47e6f5523b65e2409693c8d2fa1609c, type: 3}
+    - target: {fileID: 1615677761, guid: 2b199db8d1af8e8448a03dbc6e582e95, type: 3}
+      propertyPath: slashPrefab
+      value: 
+      objectReference: {fileID: 1919708242137258, guid: cf5f21e12e9b6bb479211cc64d53d7d2, type: 3}
     - target: {fileID: 1246891314395918, guid: 2b199db8d1af8e8448a03dbc6e582e95, type: 3}
       propertyPath: m_Name
       value: FailedHusk
@@ -35034,12 +35050,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4918150346303140, guid: 2b199db8d1af8e8448a03dbc6e582e95, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4918150346303140, guid: 2b199db8d1af8e8448a03dbc6e582e95, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4918150346303140, guid: 2b199db8d1af8e8448a03dbc6e582e95, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4918150346303140, guid: 2b199db8d1af8e8448a03dbc6e582e95, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4918150346303140, guid: 2b199db8d1af8e8448a03dbc6e582e95, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -2.544
       objectReference: {fileID: 0}
     - target: {fileID: 4918150346303140, guid: 2b199db8d1af8e8448a03dbc6e582e95, type: 3}
       propertyPath: m_LocalPosition.z
@@ -35073,6 +35101,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4918150346303140, guid: 2b199db8d1af8e8448a03dbc6e582e95, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5448977433941620786, guid: 2b199db8d1af8e8448a03dbc6e582e95, type: 3}
+      propertyPath: size
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5448977433941620786, guid: 2b199db8d1af8e8448a03dbc6e582e95, type: 3}
+      propertyPath: crackPrefab
+      value: 
+      objectReference: {fileID: 1210069404974878, guid: 1f002bfc2011a6d48bdac80d710fb9e9, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b199db8d1af8e8448a03dbc6e582e95, type: 3}
 --- !u!1001 &784619532

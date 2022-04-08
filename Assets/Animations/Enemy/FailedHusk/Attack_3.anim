@@ -99587,15 +99587,15 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.8333333
-    functionName: BaseSwordAttack_finished
+  - time: 0.8
+    functionName: Blink_performed
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.93333334
-    functionName: Blink_performed
+  - time: 0.8333333
+    functionName: BaseSwordAttack_finished
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

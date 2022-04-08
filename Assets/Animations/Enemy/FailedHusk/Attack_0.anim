@@ -154191,7 +154191,7 @@ AnimationClip:
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 2
     messageOptions: 0
   - time: 1.6
     functionName: BaseSwordAttack_finished
@@ -154200,14 +154200,14 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 2
+  - time: 2.0333333
     functionName: Attack_performed
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 2.5333333
+  - time: 2.4
     functionName: Blink_performed
     data: 
     objectReferenceParameter: {fileID: 0}
@@ -154220,6 +154220,13 @@ AnimationClip:
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
+    messageOptions: 0
+  - time: 2.6666667
+    functionName: Slash_performed
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 4
     messageOptions: 0
   - time: 2.8333333
     functionName: SwordZone_performed
