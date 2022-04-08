@@ -38,11 +38,11 @@ namespace CSE5912.PolyGamers
                         isPlayingAttackAnim = true;
                         if (isPlayerInSafeDistance)
                         {
-                            Attack(2);
+                            Attack(1);
                         }
                         else if (distanceToPlayer > closeDetectionRange && distanceToPlayer < attackRange)
                         {
-                            Attack(1);
+                            Attack(2);
                         }
                         else
                         {
