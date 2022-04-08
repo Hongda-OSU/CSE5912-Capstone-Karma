@@ -5,13 +5,8 @@ namespace CSE5912.PolyGamers
 {
     public class DarkSlayer : EliteEnemy
     {
-        private IEnumerator stormAttack;
         public Vector3 Direction;
-
-        void Awake()
-        {
-            stormAttack = HammerStorm();
-        }
+        private bool attackFinished;
 
         protected override void PerformActions()
         {
@@ -36,7 +31,7 @@ namespace CSE5912.PolyGamers
                     if (!isAttacking)
                     {
                         isPlayingAttackAnim = true;
-                        // 0~8
+                        // 0~6
                         if (isPlayerInSafeDistance)
                         {
                             if (Random.value < 0.5f)
@@ -44,10 +39,10 @@ namespace CSE5912.PolyGamers
                             else 
                                 Attack(2);
                         }
-                        // 10~15
+                        // 8~15
                         else if (distanceToPlayer > closeDetectionRange + 2f && distanceToPlayer <= attackRange)
                         {
-                            if (Random.value < 0.5f)
+                            if (Random.value < 0.6f)
                                 Attack(3);
                             else
                                 Attack(4);
@@ -107,22 +102,23 @@ namespace CSE5912.PolyGamers
 
         private void StartStormAttack()
         {
-            StartCoroutine(stormAttack);
+            attackFinished = false;
+            StartCoroutine(HammerStorm());
         }
 
         private void StopStormAttack()
         {
-            StopCoroutine(stormAttack);
+            attackFinished = true;
         }
 
         private IEnumerator HammerStorm()
         {
-            while (true)
+            while (!attackFinished)
             {
                 Direction = transform.forward;
                 Direction += (player.transform.position - transform.position);
                 Direction.Normalize();
-                transform.position += Direction * 10f * Time.deltaTime;
+                transform.position += Direction * 4f * Time.deltaTime;
                 yield return new WaitForSeconds(Time.deltaTime);
             }
             yield return null;
