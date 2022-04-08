@@ -20,6 +20,8 @@ namespace CSE5912.PolyGamers
         private VisualElement debuffs;
         private List<EnemyHealthBar.DebuffSlot> debuffSlotList;
 
+        private IEnumerable<EasingFunction> transitionFunction;
+
         private float prevHealth;
 
         private GameObject target;
@@ -33,6 +35,8 @@ namespace CSE5912.PolyGamers
             detail = root.Q<Label>("Detail");
             maxHealthBar = root.Q<VisualElement>("MaxHealthBar");
             healthBar = maxHealthBar.Q<VisualElement>("HealthBar");
+
+            transitionFunction = maxHealthBar.resolvedStyle.transitionTimingFunction;
 
             target = transform.parent.gameObject;
             enemy = target.GetComponent<Enemy>();
@@ -51,15 +55,16 @@ namespace CSE5912.PolyGamers
         {
             if (displayHealthBar)
             {
-                //StartCoroutine(TriggerEffect());
                 SetHealthBar();
             }
             else
             {
                 maxHealthBar.style.width = 0f;
                 healthBar.style.width = 0f;
+                prevHealth = enemy.Health;
                 root.style.display = DisplayStyle.None;
             }
+            healthBar.style.maxWidth = maxHealthBar.resolvedStyle.width;
         }
 
         public override void Display(bool enabled)
@@ -67,9 +72,6 @@ namespace CSE5912.PolyGamers
             displayHealthBar = enabled;
 
             root.style.display = enabled ? DisplayStyle.Flex : DisplayStyle.None;
-            //healthBar.style.display = DisplayStyle.Flex;
-            //maxHealthBar.style.display = DisplayStyle.Flex;
-            //debuffs.style.display = DisplayStyle.Flex;
         }
 
         private void SetHealthBar()
@@ -92,8 +94,8 @@ namespace CSE5912.PolyGamers
             var deltaHealth = prevHealth - enemy.Health;
             if (deltaHealth > 0)
             {
-                healthBar.style.transitionDuration = new StyleList<TimeValue>(0f);
-                maxHealthBar.style.transitionDuration = new StyleList<TimeValue>(0f);
+                //healthBar.style.transitionDuration = new StyleList<TimeValue>(0f);
+                //maxHealthBar.style.transitionDuration = new StyleList<TimeValue>(0f);
 
                 VisualElement deltaEffect_right = new VisualElement();
                 maxHealthBar.Add(deltaEffect_right);

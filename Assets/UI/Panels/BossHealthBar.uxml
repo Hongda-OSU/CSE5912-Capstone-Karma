@@ -3,7 +3,7 @@
     <ui:VisualElement name="Background" style="flex-grow: 0; justify-content: flex-start; align-items: center;">
         <ui:Label text="Detail" display-tooltip-when-elided="true" name="Detail" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/UiElement/Trajan%20Pro%20Regular%20SDF.asset?fileID=11400000&amp;guid=0821ecf0f29a62243aeeef3d0eb445c6&amp;type=2#Trajan Pro Regular SDF&apos;); color: rgb(255, 255, 255); font-size: 30px; margin-top: 30px; transition-duration: 0.15s;" />
         <ui:VisualElement name="MaxHealthBar" style="background-color: rgba(0, 15, 8, 0.78); width: 1000px; height: 20px; position: relative; flex-direction: row; left: auto; justify-content: center; transition-duration: 3s;">
-            <ui:VisualElement name="HealthBar" style="position: absolute; width: 1000px; height: 20px; background-color: rgb(222, 29, 11); -unity-text-outline-color: rgb(0, 0, 0); left: auto; transition-duration: 3s;" />
+            <ui:VisualElement name="HealthBar" style="position: absolute; width: 1000px; height: 20px; background-color: rgb(222, 29, 11); -unity-text-outline-color: rgb(0, 0, 0); left: auto; transition-duration: 0s;" />
         </ui:VisualElement>
         <ui:VisualElement name="Debuffs" style="height: 30px; flex-direction: row; justify-content: space-around; width: 269px; top: 25px; position: relative;">
             <ui:VisualElement name="Debuff" style="width: 50px; height: 50px; background-image: url(&apos;project://database/Assets/Prefabs/Scope/Artwork/Textures/Scope_Textures/Red_Dot_Sight_2_Texture.png?fileID=21300000&amp;guid=ad28c66c9c982644f982fbfcce59bb94&amp;type=3#Red_Dot_Sight_2_Texture&apos;); justify-content: flex-end; align-items: center;">

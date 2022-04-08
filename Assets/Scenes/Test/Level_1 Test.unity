@@ -35119,9 +35119,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2077792038}
     - target: {fileID: 1086876102601878040, guid: 2b199db8d1af8e8448a03dbc6e582e95, type: 3}
+      propertyPath: endUnleashVfx
+      value: 
+      objectReference: {fileID: 988757988809306081, guid: cad2f27bb7b7ce0438047edce7fafcee, type: 3}
+    - target: {fileID: 1086876102601878040, guid: 2b199db8d1af8e8448a03dbc6e582e95, type: 3}
       propertyPath: healthPerSeal
       value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: 1086876102601878040, guid: 2b199db8d1af8e8448a03dbc6e582e95, type: 3}
+      propertyPath: startUnleashVfx
+      value: 
+      objectReference: {fileID: 1481440290192140, guid: 9d1d6187a4bef6848b61be029e7fe07c, type: 3}
     - target: {fileID: 5448977433941620786, guid: 2b199db8d1af8e8448a03dbc6e582e95, type: 3}
       propertyPath: size
       value: 1.5

@@ -29,6 +29,15 @@ namespace CSE5912.PolyGamers
 
         [SerializeField] private BossArea bossArea;
 
+        [SerializeField] private Material leashedMaterial;
+        [SerializeField] private Material unleashedMaterial;
+        [SerializeField] private Renderer bodyRenderer;
+        [SerializeField] private Renderer headRenderer;
+        [SerializeField] private Renderer swordRenderer;
+
+        [SerializeField] private GameObject startUnleashVfx;
+        [SerializeField] private GameObject endUnleashVfx;
+
         private SwordZone swordZone;
         private GroundCrack groundCrack;
         private Slash slash;
@@ -75,6 +84,8 @@ namespace CSE5912.PolyGamers
 
             maxHealth = healthPerSeal * 5;
             health = maxHealth;
+
+            SetMaterial(leashedMaterial);
         }
         protected override void Start()
         {
@@ -82,6 +93,14 @@ namespace CSE5912.PolyGamers
 
             animator.speed = leashedSpeed;
         }
+
+        private void SetMaterial(Material mat)
+        {
+            bodyRenderer.material = mat;
+            headRenderer.material = mat;
+            swordRenderer.material = mat;
+        }
+
         public override void TakeDamage(Damage damage)
         {
             if (!isAlive || isInvincible)
@@ -114,7 +133,7 @@ namespace CSE5912.PolyGamers
                 }
             }
 
-            else
+            else if (isUnleashed)
             {
                 health -= value;
 
@@ -138,6 +157,9 @@ namespace CSE5912.PolyGamers
         {
             isUnleashed = true;
 
+            rotateSpeed *= 2f;
+
+            SetMaterial(unleashedMaterial);
             animator.speed = unleashedSpeed;
 
             enemyName = unleashedName;
@@ -192,7 +214,8 @@ namespace CSE5912.PolyGamers
                         walkTime += Time.deltaTime;
                         if (walkTime > timeToBlink)
                         {
-                            StartCoroutine(Blink_performed());
+                            var position = player.position - directionToPlayer;
+                            StartCoroutine(blink.Perform(position));
                             walkTime = 0f;
                             Attack();
                         }
@@ -366,5 +389,21 @@ namespace CSE5912.PolyGamers
             isPerforming = false;
         }
 
+        private void StartUnleash()
+        {
+            startUnleashVfx = Instantiate(startUnleashVfx);
+            startUnleashVfx.transform.position = transform.position + Vector3.up * startUnleashVfx.GetComponentInChildren<Renderer>().bounds.size.y;
+
+            FPSControllerCC.Instance.AddImpact(directionToPlayer, PlayerStats.Instance.MaxHealth);
+        }
+
+        private void EndUnleash()
+        {
+            Destroy(startUnleashVfx);
+
+            endUnleashVfx = Instantiate(endUnleashVfx);
+            endUnleashVfx.transform.position = transform.position;
+            Destroy(endUnleashVfx, 10f);
+        }
     }
 }

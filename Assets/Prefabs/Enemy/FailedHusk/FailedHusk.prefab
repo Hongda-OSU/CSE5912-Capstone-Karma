@@ -794,11 +794,24 @@ MonoBehaviour:
   isBossFightTriggered: 0
   bossDeathVfxPrefab: {fileID: 988757988809306081, guid: a843d7fee6c736d4fb7f8fada989fbee, type: 3}
   isUnleashed: 0
+  unleashedHealth: 10000
+  unleashedName: Flawless Form
   leashedSpeed: 0.5
   unleashedSpeed: 1
   blinkCastSpeed: 0.25
   blinkCastTime: 0.5
+  seals: {fileID: 0}
+  healthPerSeal: 0
+  currentDamageTaken: 0
+  walkTime: 0
+  timeToBlink: 3
   sword: {fileID: 156079179706268467}
+  bossArea: {fileID: 0}
+  leashedMaterial: {fileID: 2100000, guid: 9b018396441b694459ca47fd0cd5d463, type: 2}
+  unleashedMaterial: {fileID: 2100000, guid: 522a7258102ce8f4bbfa72a796f0e24c, type: 2}
+  bodyRenderer: {fileID: 137341390338042718}
+  headRenderer: {fileID: 23566696785946438}
+  swordRenderer: {fileID: 1404410474569954032}
   isPerforming: 0
 --- !u!1 &1261939588107060
 GameObject:
@@ -1566,7 +1579,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2a12d3fc0532ba64e972160db18dfd99, type: 2}
+  - {fileID: 2100000, guid: 522a7258102ce8f4bbfa72a796f0e24c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1640,7 +1653,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2a12d3fc0532ba64e972160db18dfd99, type: 2}
+  - {fileID: 2100000, guid: 522a7258102ce8f4bbfa72a796f0e24c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2667,6 +2680,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5beb3f12b06870649899597da886500c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!23 &1404410474569954032 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2356508, guid: 2673fd445b977ac488c595eba74eeb06, type: 3}
+  m_PrefabInstance: {fileID: 1404410474572253164}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1404410474571856294 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 458314, guid: 2673fd445b977ac488c595eba74eeb06, type: 3}
