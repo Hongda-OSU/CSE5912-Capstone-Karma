@@ -266,9 +266,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1724935809}
   - component: {fileID: 1724935810}
-  - component: {fileID: 1724935811}
+  - component: {fileID: 7914875570930583758}
   m_Layer: 0
-  m_Name: OnScreenTip
+  m_Name: Dialogue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -305,7 +305,7 @@ MonoBehaviour:
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 9197481963319205126, guid: 612b73690a14e9546a7bc7f68e9c4e9f, type: 3}
   m_SortingOrder: 0
---- !u!114 &1724935811
+--- !u!114 &7914875570930583758
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -314,12 +314,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1724935808}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc67d55c8bc6b5c489f84870676f1af5, type: 3}
+  m_Script: {fileID: 11500000, guid: f82820e084480a847922d010b6bc12ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   uiDocument: {fileID: 1724935810}
   fadingTime: 0.5
   isDisplayed: 0
+  isInterrupted: 0
+  timeToReDisplay: 3
+  timeSinceInterrupted: 0
 --- !u!1 &1791497987
 GameObject:
   m_ObjectHideFlags: 0

@@ -126,7 +126,10 @@ namespace CSE5912.PolyGamers
             if (dir.y < 0)
                 dir.y = -dir.y; // reflect down force on the ground
             impact += dir.normalized * force / (PlayerStats.Instance.MaxHealth * maxHealthToMassRatio);
+
+            DialogueControl.Instance.HideImmediate();
         }
+
         public bool isGrounded()
         {
             return coyoteTime < const_maxCoyoteTime;

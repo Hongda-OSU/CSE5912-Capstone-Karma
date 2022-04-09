@@ -5,9 +5,13 @@ using UnityEngine.UIElements;
 
 namespace CSE5912.PolyGamers
 {
-    public class OnScreenTipControl : UI
+    public class DialogueControl : UI
     {
         [SerializeField] private bool isDisplayed = false;
+
+        [SerializeField] private bool isInterrupted = false;
+        [SerializeField] private float timeToReDisplay = 3f;
+        [SerializeField] private float timeSinceInterrupted = 0f;
 
         private VisualElement panel;
         private Label label;
@@ -15,8 +19,8 @@ namespace CSE5912.PolyGamers
         private Coroutine displayCoroutine;
         private Coroutine hideCoroutine;
         
-        private static OnScreenTipControl instance;
-        public static OnScreenTipControl Instance { get { return instance; } }
+        private static DialogueControl instance;
+        public static DialogueControl Instance { get { return instance; } }
 
         private void Awake()
         {
@@ -26,18 +30,38 @@ namespace CSE5912.PolyGamers
 
             Initialize();
 
+            timeSinceInterrupted = timeToReDisplay;
+
             panel = root.Q<VisualElement>("Panel");
             label = panel.Q<Label>("Text");
 
             panel.style.display = DisplayStyle.None;
         }
 
+        private void Update()
+        {
+            if (isInterrupted && !isDisplayed)
+            {
+                timeSinceInterrupted += Time.deltaTime;
+                if (timeSinceInterrupted >= timeToReDisplay)
+                {
+                    isInterrupted = false;
+                }
+            }
+
+            if (WeaponManager.Instance.CarriedWeapon.wasBulletFiredThisFrame)
+            {
+                HideImmediate();
+            }
+        }
+
         public void Display(string text)
         {
-            label.text = text;
-            if (!isDisplayed)
+            if (!isDisplayed && !isInterrupted)
             {
                 isDisplayed = true;
+
+                label.text = text;
 
                 if (hideCoroutine != null)
                     StopCoroutine(hideCoroutine);
@@ -48,8 +72,7 @@ namespace CSE5912.PolyGamers
 
         public void Hide()
         {
-            label.text = "";
-            if (isDisplayed)
+            if (isDisplayed && !isInterrupted)
             {
                 isDisplayed = false;
 
@@ -60,11 +83,28 @@ namespace CSE5912.PolyGamers
             }
         }
 
+        public void HideImmediate()
+        {
+            isInterrupted = true;
+            timeSinceInterrupted = 0f;
+
+            isDisplayed = false;
+
+            if (displayCoroutine != null)
+                StopCoroutine(displayCoroutine);
+
+            if (hideCoroutine != null)
+                StopCoroutine(hideCoroutine);
+
+            panel.style.display = DisplayStyle.None;
+        }
+
         private IEnumerator Display()
         {
             label.style.opacity = 0f;
             yield return StartCoroutine(FadeIn(panel));
             yield return StartCoroutine(FadeIn(label));
         }
+
     }
 }

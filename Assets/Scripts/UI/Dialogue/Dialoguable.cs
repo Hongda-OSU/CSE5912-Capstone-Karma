@@ -5,7 +5,7 @@ using UnityEngine;
 namespace CSE5912.PolyGamers
 {
     [RequireComponent(typeof(SphereCollider))]
-    public class Hinter : MonoBehaviour
+    public class Dialoguable : MonoBehaviour
     {
         [TextArea(5, 10)]
         [SerializeField] private string text;
@@ -17,13 +17,12 @@ namespace CSE5912.PolyGamers
             collider3d.isTrigger = true;
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void OnTriggerStay(Collider other)
         {
-            Debug.Log(other.name);
             if (other.tag != "Player")
                 return;
 
-            OnScreenTipControl.Instance.Display(text);
+            DialogueControl.Instance.Display(text);
         }
 
         private void OnTriggerExit(Collider other)
@@ -31,7 +30,7 @@ namespace CSE5912.PolyGamers
             if (other.tag != "Player")
                 return;
 
-            OnScreenTipControl.Instance.Hide();
+            DialogueControl.Instance.Hide();
         }
     }
 }

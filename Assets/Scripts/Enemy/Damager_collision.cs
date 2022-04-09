@@ -56,7 +56,7 @@ namespace CSE5912.PolyGamers
             
             target.TakeDamage(damage);
             if (hitBack)
-                target.HitBack((target.transform.position - transform.position).normalized, damage.ResolvedValue);
+                FPSControllerCC.Instance.AddImpact((target.transform.position - transform.position).normalized, damage.ResolvedValue);
 
             isPlayerHit = true;
         }

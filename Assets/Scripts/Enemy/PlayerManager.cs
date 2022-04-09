@@ -46,6 +46,8 @@ namespace CSE5912.PolyGamers
 
             PlayerStats.Instance.Health += damage.ResolvedValue * PlayerStats.Instance.BulletVamp;
 
+            DialogueControl.Instance.HideImmediate();
+
             StartCoroutine(DamageNumberControl.Instance.DisplayDamageNumber(damage, position));
         }
         public void PerformBulletDamage(Shield shield, Damage damage, Vector3 position)
@@ -53,6 +55,8 @@ namespace CSE5912.PolyGamers
             shield.TakeDamage(damage);
 
             PlayerStats.Instance.Health += damage.ResolvedValue * PlayerStats.Instance.BulletVamp;
+
+            DialogueControl.Instance.HideImmediate();
 
             StartCoroutine(DamageNumberControl.Instance.DisplayDamageNumber(damage, position));
         }
@@ -64,6 +68,8 @@ namespace CSE5912.PolyGamers
                 return;
 
             enemy.TakeDamage(damage);
+
+            DialogueControl.Instance.HideImmediate();
 
             Renderer renderer = enemy.transform.GetComponentInChildren<Renderer>();
             Vector3 position = enemy.transform.position + Vector3.up * renderer.bounds.size.y / 2;

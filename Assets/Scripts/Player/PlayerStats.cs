@@ -132,6 +132,8 @@ namespace CSE5912.PolyGamers
             takeDamageEvent.Invoke();
             DamageFlashControl.Instance.TriggerDamageFlash();
 
+            DialogueControl.Instance.HideImmediate();
+
             takeDamageAudio.clip = damagedSounds[Random.Range(0, damagedSounds.Length)];
             takeDamageAudio.Play();
 
@@ -146,6 +148,8 @@ namespace CSE5912.PolyGamers
 
             isAlive = false;
             RespawnManager.Instance.RespawnPlayerToLast();
+
+            DialogueControl.Instance.HideImmediate();
         }
 
         public void Respawn()
@@ -154,11 +158,6 @@ namespace CSE5912.PolyGamers
 
             health = maxHealth;
             shield.ResetShield();
-        }
-
-        public void HitBack(Vector3 dir, float force)
-        {
-            FPSControllerCC.Instance.AddImpact(dir, force);
         }
 
         public float ComputeExtraDamage(float baseValue)
