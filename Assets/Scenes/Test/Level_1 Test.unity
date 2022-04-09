@@ -59489,6 +59489,65 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4304446898657832, guid: 63f612186130a2943a9cd95acbd8a566, type: 3}
   m_PrefabInstance: {fileID: 1319848017}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1320267228
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1320267231}
+  - component: {fileID: 1320267230}
+  - component: {fileID: 1320267229}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1320267229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1320267228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e9a25f2ffb877a4f8691031afeef24d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: ???????
+--- !u!135 &1320267230
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1320267228}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 4.36
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1320267231
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1320267228}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10.4707155, y: 23.59, z: 282.18}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1322215765
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -78053,18 +78112,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: DontDestroyIngame
       objectReference: {fileID: 0}
-    - target: {fileID: 2447045659279533477, guid: 1a11865d3612ad846a85693553e0f51d, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4891331284789523491, guid: 1a11865d3612ad846a85693553e0f51d, type: 3}
-      propertyPath: MaxAmmoPerMag
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 4891331284789523491, guid: 1a11865d3612ad846a85693553e0f51d, type: 3}
-      propertyPath: MaxAmmoCarried
-      value: 10000
-      objectReference: {fileID: 0}
     - target: {fileID: 5025218709125218332, guid: 1a11865d3612ad846a85693553e0f51d, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -78108,14 +78155,6 @@ PrefabInstance:
     - target: {fileID: 5025218709125218332, guid: 1a11865d3612ad846a85693553e0f51d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6086826900040140240, guid: 1a11865d3612ad846a85693553e0f51d, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -24.04
-      objectReference: {fileID: 0}
-    - target: {fileID: 6086826900040140240, guid: 1a11865d3612ad846a85693553e0f51d, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 610.31
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a11865d3612ad846a85693553e0f51d, type: 3}
