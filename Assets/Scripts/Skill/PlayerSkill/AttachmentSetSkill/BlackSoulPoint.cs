@@ -24,7 +24,7 @@ namespace CSE5912.PolyGamers
             if (other.gameObject.layer != LayerMask.NameToLayer("Player"))
                 return;
 
-            pickUpAudio.Play();
+            //pickUpAudio.Play();
             
             PlayerStats.Instance.Experience += experience;
             experience = 0f;
