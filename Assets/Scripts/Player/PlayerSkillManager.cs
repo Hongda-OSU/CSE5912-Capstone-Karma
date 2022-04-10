@@ -20,6 +20,10 @@ namespace CSE5912.PolyGamers
         private Dictionary<string, PlayerSkill> bonusToSkill = new Dictionary<string, PlayerSkill>();
 
 
+        [SerializeField] private AudioSource readySound;
+        private bool isMainSoundPlayed = true;
+        private bool isSetSoundPlayed = true;
+
         private PlayerSkill mainSkill;
         private PlayerSkill setSkill;
 
@@ -120,6 +124,32 @@ namespace CSE5912.PolyGamers
 
 
             bonusToSkill.Add("HealthToShield", bonusSkills.GetComponentInChildren<HealthToShield>());
+        }
+
+        private void Update()
+        {
+            PlaySoundOnSkillsReady();
+        }
+
+        private void PlaySoundOnSkillsReady()
+        {
+            if (mainSkill.IsReady && !isMainSoundPlayed)
+            {
+                isMainSoundPlayed = true;
+                readySound.Play();
+            }
+            else if (!mainSkill.IsReady)
+                isMainSoundPlayed = false;
+
+            if (setSkill.IsReady && !isSetSoundPlayed)
+            {
+                isSetSoundPlayed = true;
+                readySound.Play();
+            }
+            else if (!setSkill.IsReady)
+            {
+                isSetSoundPlayed = false;
+            }
         }
 
         public void SetMainSkill(PlayerSkill skill)

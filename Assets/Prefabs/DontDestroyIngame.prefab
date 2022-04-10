@@ -1044,6 +1044,11 @@ AudioSource:
   m_CorrespondingSourceObject: {fileID: 1752485382, guid: 26c829ee06488ee43b0bd41e41132bf1, type: 3}
   m_PrefabInstance: {fileID: 6615771459040540287}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &7913143594694189654 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3899786579469718569, guid: 26c829ee06488ee43b0bd41e41132bf1, type: 3}
+  m_PrefabInstance: {fileID: 6615771459040540287}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6615771459377584275
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1271,6 +1276,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3914003180910380901, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: readySound
+      value: 
+      objectReference: {fileID: 7913143594694189654}
     - target: {fileID: 3914003180910380901, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
       propertyPath: bonusSkills
       value: 

@@ -8,6 +8,7 @@ namespace CSE5912.PolyGamers
     public class WeaponInformationControl : UI
     {
         [SerializeField] private Firearms currentWeapon;
+        [SerializeField] private Color backgroundColor;
 
         private VisualElement weaponInformation;
         private List<VisualElement> weaponInformationList;
@@ -61,6 +62,14 @@ namespace CSE5912.PolyGamers
                     weapon.style.unityBackgroundScaleMode = ScaleMode.ScaleToFit;
                     weapon.style.display = DisplayStyle.Flex;
 
+                    if (WeaponManager.Instance.CarriedWeapon == playerWeaponList[i])
+                    {
+                        weapon.style.backgroundColor = backgroundColor;
+                    }
+                    else
+                    {
+                        weapon.style.backgroundColor = Color.clear;
+                    }
                 }
                 else
                 {

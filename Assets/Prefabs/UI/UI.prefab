@@ -424,6 +424,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4078243330561650207}
     m_Modifications:
+    - target: {fileID: 4982027066111394168, guid: 5178edcff8f78624cb5bd316f7c455df, type: 3}
+      propertyPath: backgroundColor.a
+      value: 0.627451
+      objectReference: {fileID: 0}
     - target: {fileID: 4982027066111394170, guid: 5178edcff8f78624cb5bd316f7c455df, type: 3}
       propertyPath: weaponManager
       value: 
