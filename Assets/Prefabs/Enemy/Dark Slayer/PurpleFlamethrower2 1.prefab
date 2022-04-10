@@ -4830,6 +4830,7 @@ GameObject:
   - component: {fileID: 466732}
   - component: {fileID: 19928642}
   - component: {fileID: 19882418}
+  - component: {fileID: 3861630406784815385}
   m_Layer: 0
   m_Name: PurpleFlamethrower2 1
   m_TagString: Untagged
@@ -9538,6 +9539,19 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!65 &3861630406784815385
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 162574}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 10}
+  m_Center: {x: 0.000052690506, y: 0, z: 4.5}
 --- !u!1 &182860
 GameObject:
   m_ObjectHideFlags: 0

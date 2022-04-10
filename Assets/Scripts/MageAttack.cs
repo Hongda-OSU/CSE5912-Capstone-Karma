@@ -57,6 +57,7 @@ namespace CSE5912.PolyGamers
                 if (PlayerStats.Instance.Health > 0f)
                 {
                     FPSControllerCC.Instance.AddImpact(this.gameObject.transform.TransformDirection(Vector3.forward), Force);
+                    FPSControllerCC.Instance.AddImpact(Vector3.up, 2f * Force);
                 }
                 Destroy(this.gameObject);
             }

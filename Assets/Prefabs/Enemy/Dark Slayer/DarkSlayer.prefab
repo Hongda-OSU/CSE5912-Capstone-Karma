@@ -1592,11 +1592,11 @@ MonoBehaviour:
   isAlive: 1
   isFrozen: 0
   isInvincible: 0
-  damageFactor_physical: 25
-  damageFactor_fire: 25
-  damageFactor_cryo: 25
-  damageFactor_electro: 25
-  damageFactor_venom: 25
+  damageFactor_physical: 1
+  damageFactor_fire: 1
+  damageFactor_cryo: 1
+  damageFactor_electro: 1
+  damageFactor_venom: 1
   physicalResist: 60
   fireResist: 60
   cryoResist: 60
@@ -1950,7 +1950,7 @@ MeshCollider:
   m_GameObject: {fileID: 5648252587695255054}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
