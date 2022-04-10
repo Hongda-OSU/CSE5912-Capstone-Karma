@@ -133,22 +133,28 @@ namespace CSE5912.PolyGamers
 
         private void PlaySoundOnSkillsReady()
         {
-            if (mainSkill.IsReady && !isMainSoundPlayed)
+            if (mainSkill != null)
             {
-                isMainSoundPlayed = true;
-                readySound.Play();
+                if (mainSkill.IsReady && !isMainSoundPlayed)
+                {
+                    isMainSoundPlayed = true;
+                    readySound.Play();
+                }
+                else if (!mainSkill.IsReady)
+                    isMainSoundPlayed = false;
             }
-            else if (!mainSkill.IsReady)
-                isMainSoundPlayed = false;
 
-            if (setSkill.IsReady && !isSetSoundPlayed)
+            if (setSkill != null)
             {
-                isSetSoundPlayed = true;
-                readySound.Play();
-            }
-            else if (!setSkill.IsReady)
-            {
-                isSetSoundPlayed = false;
+                if (setSkill.IsReady && !isSetSoundPlayed)
+                {
+                    isSetSoundPlayed = true;
+                    readySound.Play();
+                }
+                else if (!setSkill.IsReady)
+                {
+                    isSetSoundPlayed = false;
+                }
             }
         }
 

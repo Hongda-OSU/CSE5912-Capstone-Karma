@@ -8,7 +8,7 @@ namespace CSE5912.PolyGamers
     public class BossArea : MonoBehaviour
     {
         [SerializeField] private BossEnemy enemy;
-        [SerializeField] private AudioClip bossMusic;
+        public AudioClip bossMusic;
         [SerializeField] private float triggerDelay = 3f;
 
         [SerializeField] private Teleporter teleporter;
@@ -93,21 +93,6 @@ namespace CSE5912.PolyGamers
             enemy.gameObject.GetComponentInChildren<BossInformation>().Display(true);
         }
 
-        public IEnumerator TriggerBossFight(float delay)
-        {
-            BgmControl.Instance.SmoothStopMusic();
-
-            yield return new WaitForSeconds(delay);
-
-            enemy.TriggerBossFight();
-
-            while (!enemy.IsBossFightTriggered)
-            {
-                yield return new WaitForSeconds(Time.deltaTime);
-            }
-            BgmControl.Instance.Play(bossMusic);
-            enemy.gameObject.GetComponentInChildren<BossInformation>().Display(true);
-        }
 
         public bool GetIsTriggered() 
         {

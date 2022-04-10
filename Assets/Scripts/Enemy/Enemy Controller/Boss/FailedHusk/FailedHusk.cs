@@ -38,6 +38,12 @@ namespace CSE5912.PolyGamers
         [SerializeField] private GameObject startUnleashVfx;
         [SerializeField] private GameObject endUnleashVfx;
 
+        [SerializeField] private AudioSource[] slashSounds;
+        [SerializeField] private AudioSource[] empoweredSounds;
+        [SerializeField] private AudioSource[] unleashSounds;
+        [SerializeField] private AudioSource[] Bgms;
+        [SerializeField] private AudioSource staggerSound;
+
         private SwordZone swordZone;
         private GroundCrack groundCrack;
         private Slash slash;
@@ -86,6 +92,8 @@ namespace CSE5912.PolyGamers
             health = maxHealth;
 
             SetMaterial(leashedMaterial);
+
+            bossArea.bossMusic = Bgms[0].clip;
         }
         protected override void Start()
         {
@@ -122,6 +130,8 @@ namespace CSE5912.PolyGamers
                     sealList.RemoveAt(0);
                     Destroy(seal);
 
+                    staggerSound.Play();
+
                     currentDamageTaken = 0;
                     if (sealList.Count == 0)
                     {
@@ -129,6 +139,7 @@ namespace CSE5912.PolyGamers
                         BgmControl.Instance.MainAudio.Stop();
                         GetComponentInChildren<BossInformation>().Display(false);
                         isBossFightTriggered = false;
+                        BgmControl.Instance.SmoothStopMusic();
                     }
                 }
             }
@@ -167,7 +178,11 @@ namespace CSE5912.PolyGamers
             maxHealth = unleashedHealth;
             health = maxHealth;
 
-            StartCoroutine(bossArea.TriggerBossFight(0f));
+            bossArea.bossMusic = Bgms[1].clip;
+
+            TriggerBossFight();
+            BgmControl.Instance.Play(bossArea.bossMusic);
+            GetComponentInChildren<BossInformation>().Display(true);
 
             yield return null;
         }
@@ -217,6 +232,7 @@ namespace CSE5912.PolyGamers
                             var position = player.position - directionToPlayer;
                             StartCoroutine(blink.Perform(position));
                             walkTime = 0f;
+                            timeToBlink = Random.Range(1f, 3f);
                             Attack();
                         }
                     }
@@ -329,6 +345,8 @@ namespace CSE5912.PolyGamers
 
         private IEnumerator BaseSwordAttack_started()
         {
+            slashSounds[Random.Range(0, slashSounds.Length)].Play();
+
             sword.IsPlayerHit = false;
 
             yield return null;
@@ -368,6 +386,8 @@ namespace CSE5912.PolyGamers
             if (!isUnleashed)
                 yield break;
 
+            empoweredSounds[Random.Range(0, empoweredSounds.Length)].Play();
+
             slash.direction = flag;
             StartCoroutine(slash.Perform());
         }
@@ -391,6 +411,8 @@ namespace CSE5912.PolyGamers
 
         private void StartUnleash()
         {
+            unleashSounds[0].Play();
+
             startUnleashVfx = Instantiate(startUnleashVfx);
             startUnleashVfx.transform.position = transform.position + Vector3.up * startUnleashVfx.GetComponentInChildren<Renderer>().bounds.size.y;
 
@@ -400,6 +422,8 @@ namespace CSE5912.PolyGamers
         private void EndUnleash()
         {
             Destroy(startUnleashVfx);
+
+            unleashSounds[1].Play();
 
             endUnleashVfx = Instantiate(endUnleashVfx);
             endUnleashVfx.transform.position = transform.position;
