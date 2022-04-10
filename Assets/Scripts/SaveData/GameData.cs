@@ -16,7 +16,7 @@ namespace CSE5912.PolyGamers
 
         [DataMember] public string mapName;
 
-        [DataMember] public int gamePlayTimeInMinutes;
+        [DataMember] public float gamePlayTimeInSeconds;
 
         [DataMember] public float[] playerPosition = new float[3];
 
@@ -34,7 +34,7 @@ namespace CSE5912.PolyGamers
 
             mapName = SceneManager.GetActiveScene().name;
 
-            gamePlayTimeInMinutes = (int)(GameStateController.Instance.GamePlayTimeInSeconds / 60f);
+            gamePlayTimeInSeconds = GameStateController.Instance.gamePlayTimeInSeconds;
 
             var player = PlayerManager.Instance.Player;
 

@@ -7,7 +7,7 @@ namespace CSE5912.PolyGamers
     public class GameStateController : MonoBehaviour
     {
         [SerializeField] private GameState state;
-        [SerializeField] private float gamePlayTimeInSeconds;
+        public float gamePlayTimeInSeconds;
 
         private InputActions inputSchemes;
 
@@ -81,6 +81,5 @@ namespace CSE5912.PolyGamers
             }
         }
         public GameState State { get { return state; } }
-        public float GamePlayTimeInSeconds { get { return gamePlayTimeInSeconds; } }
     }
 }

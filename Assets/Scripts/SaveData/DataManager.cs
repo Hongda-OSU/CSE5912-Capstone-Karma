@@ -33,20 +33,20 @@ namespace CSE5912.PolyGamers
 
         private void Update()
         {
-            // test
-            if (Input.GetKeyDown(KeyCode.P))
-            {
-                var index = 99;
-                currentDataIndex = index;
+            //// test
+            //if (Input.GetKeyDown(KeyCode.P))
+            //{
+            //    var index = 99;
+            //    currentDataIndex = index;
 
-                var saveData = Load(index);
-                if (saveData != null)
-                {
-                    LoadDataToGame();
-                }
-            }
-            if (Input.GetKeyDown(KeyCode.O))
-                Save();
+            //    var saveData = Load(index);
+            //    if (saveData != null)
+            //    {
+            //        LoadDataToGame();
+            //    }
+            //}
+            //if (Input.GetKeyDown(KeyCode.O))
+            //    Save();
 
             if (!isSceneLoaded && SceneManager.GetActiveScene().buildIndex != 0)
             {
@@ -89,6 +89,8 @@ namespace CSE5912.PolyGamers
             player.transform.position = position;
             FPSControllerCC.Instance.CharacterController.enabled = true;
 
+            // load playtime
+            GameStateController.Instance.gamePlayTimeInSeconds = data.gamePlayTimeInSeconds;
 
             // load player stats
             LoadPlayerStats(data.playerStatsData);

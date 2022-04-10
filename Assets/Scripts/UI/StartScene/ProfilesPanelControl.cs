@@ -55,12 +55,12 @@ namespace CSE5912.PolyGamers
 
                     gameData.Q<Label>("Map").text = saveData.mapName;
 
-                    int time = saveData.gamePlayTimeInMinutes;
-                    var hours = time / 60;
-                    var minutes = time % 60;
+                    int timeInMinutes = (int)(saveData.gamePlayTimeInSeconds / 60f);
+                    var hours = timeInMinutes / 60;
+                    var minutes = timeInMinutes % 60;
                     gameData.Q<Label>("Time").text = hours + "H " + minutes + "M";
 
-                    Debug.Log("PlayTime: " + time + " = " + hours + ", " + minutes);
+                    Debug.Log("PlayTime: " + timeInMinutes + " = " + hours + ", " + minutes);
                 }
                 else
                 {
