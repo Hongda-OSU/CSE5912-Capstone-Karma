@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 namespace CSE5912.PolyGamers
 {
@@ -32,6 +33,7 @@ namespace CSE5912.PolyGamers
             isEnded = true;
 
             yield return StartCoroutine(teleporter.TeleportBack());
+            BgmControl.Instance.PlayCurrentBgm();
 
             isEnded = false;
         }

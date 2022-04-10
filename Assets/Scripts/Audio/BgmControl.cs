@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace CSE5912.PolyGamers
 {
     public class BgmControl : MonoBehaviour
     {
-        [SerializeField] private AudioClip currentBgm;
+        [SerializeField] private AudioClip[] bgms;
         [SerializeField] private AudioSource mainAudio;
 
         [SerializeField] private AudioSource bossDefeated;
@@ -28,10 +29,10 @@ namespace CSE5912.PolyGamers
             mainAudio.Play();
         }
 
-        public void PlayBgm()
+        public void PlayCurrentBgm()
         {
             mainAudio.volume = 1f;
-            mainAudio.clip = currentBgm;
+            mainAudio.clip = bgms[SceneManager.GetActiveScene().buildIndex];
             mainAudio.Play();
         }
 

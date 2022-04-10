@@ -75,7 +75,7 @@ namespace CSE5912.PolyGamers
 
             player.transform.position = currentRespawnPoint.transform.position;
 
-            BgmControl.Instance.PlayBgm();
+            BgmControl.Instance.PlayCurrentBgm();
             GameStateController.Instance.SetGameState(GameStateController.GameState.InGame);
 
             DeathPanelController.Instance.Display(false);
