@@ -18,100 +18,135 @@ namespace CSE5912.PolyGamers
         [SerializeField] private GameObject blackFire;
 
         private bool inPhase2 = false;
+        private bool switchingPhase = false;
         private float flameCoolDown = 0f;
 
         protected override void PerformActions()
         {
-            if (!isBossFightTriggered)
-                return;
-
-            switch (status)
+            if (!isBossFightTriggered) 
             {
-                case Status.Idle:
-                    if (playerDetected)
-                    {
-                        FaceTarget(directionToPlayer);
-                        RandomTeleport();
-                        MoveToPlayer();
-                        isAttackedByPlayer = false;
-                        animator.SetBool("FastMove", false);
-                    }
-                    else
-                    {
-                        Rest();
-                    }
-                    break;
+                return;
+            }
 
-                case Status.Moving:
+            if (health <= MaxHealth / 2f) 
+            {
+                if (!inPhase2) {
+                    animator.SetTrigger("SecondPhase");
+                }
 
-                    if (!isAttacking)
-                    {
-                        if (isAttackedByPlayer || distanceToPlayer >= 12f)
+                switchingPhase = true;
+                inPhase2 = true;
+            }
+
+            if (switchingPhase)
+            {             
+                if (animator.GetCurrentAnimatorStateInfo(0).IsName("dead2")) 
+                {
+                    animator.ResetTrigger("SecondPhase");
+                }
+                
+                return;
+            }
+            else 
+            {
+                switch (status)
+                {
+                    case Status.Idle:
+                        if (playerDetected)
                         {
-                            if (Random.Range(0f, 1f) < 0.5f)
-                            {
-                                RandomTeleport();
-                            }
-                            else
-                            {
-                                animator.SetBool("FastMove", true);
-                            }
-
+                            FaceTarget(directionToPlayer);
+                            RandomTeleport();
+                            MoveToPlayer();
                             isAttackedByPlayer = false;
-                        }
-
-                        flameCoolDown -= Time.deltaTime;
-
-                        if (flameCoolDown <= 0f)
-                        {
-                            Attack(4);
-                            flameCoolDown = Random.Range(5f, 15f);
-                        }
-
-                        if (isPlayerInAttackRange)
-                        {
-                            if (animator.GetBool("FastMove"))
-                            {
-                                if (Random.Range(0f, 1f) < 0.33f)
-                                {
-                                    Attack(1);
-                                }
-                                else if(Random.Range(0f, 1f) >= 0.33f && Random.Range(0f, 1f) < 0.66f)
-                                {
-                                    Attack(2);
-                                }
-                                else 
-                                {
-                                    Attack(3);
-                                }
-                            }
-                            else 
-                            {
-                                Attack(1);
-                            }
+                            animator.SetBool("FastMove", false);
                         }
                         else
                         {
-                            MoveToPlayer();
+                            Rest();
                         }
-                    }
-                    break;
+                        break;
 
-                case Status.Attacking:
+                    case Status.Moving:
 
-                    FaceTarget(directionToPlayer);
+                        if (!isAttacking)
+                        {
+                            if (isAttackedByPlayer || distanceToPlayer >= 12f)
+                            {
+                                if (Random.Range(0f, 1f) < 0.5f)
+                                {
+                                    RandomTeleport();
+                                }
+                                else
+                                {
+                                    animator.SetBool("FastMove", true);
+                                }
 
-                    if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
-                    {
-                        status = Status.Idle;
-                        animator.ResetTrigger("Attack_1");
-                        animator.ResetTrigger("Attack_2");
-                        animator.ResetTrigger("Attack_3");
-                        animator.ResetTrigger("Attack_4");
-                    }
+                                isAttackedByPlayer = false;
+                            }
 
-                    break;
+                            flameCoolDown -= Time.deltaTime;
+
+                            if (flameCoolDown <= 0f)
+                            {
+                                Attack(4);
+                                flameCoolDown = Random.Range(5f, 15f);
+                            }
+
+                            if (isPlayerInAttackRange)
+                            {
+                                if (animator.GetBool("FastMove"))
+                                {
+                                    if (Random.Range(0f, 1f) < 0.33f)
+                                    {
+                                        Attack(1);
+                                    }
+                                    else if (Random.Range(0f, 1f) >= 0.33f && Random.Range(0f, 1f) < 0.66f)
+                                    {
+                                        Attack(2);
+                                    }
+                                    else
+                                    {
+                                        Attack(3);
+                                    }
+                                }
+                                else
+                                {
+                                    Attack(1);
+                                }
+                            }
+                            else
+                            {
+                                MoveToPlayer();
+                            }
+                        }
+                        break;
+
+                    case Status.Attacking:
+
+                        FaceTarget(directionToPlayer);
+
+                        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+                        {
+                            status = Status.Idle;
+                            animator.ResetTrigger("Attack_1");
+                            animator.ResetTrigger("Attack_2");
+                            animator.ResetTrigger("Attack_3");
+                            animator.ResetTrigger("Attack_4");
+                        }
+
+                        break;
+                }
             }
+        }
+
+        public void RandomSlashStart() 
+        { 
+        
+        }
+
+        public void RandomSlashFinish()
+        {
+
         }
 
         private void RandomTeleport() 
@@ -150,13 +185,16 @@ namespace CSE5912.PolyGamers
             GameObject vfx = Instantiate(explosion_2, flamePivot.transform.position, Quaternion.identity);
             Destroy(vfx, 3f);
 
-            Damage damage = new Damage(Random.Range(10f, 20f), Element.Type.Physical, this, PlayerStats.Instance);
-            PlayerStats.Instance.TakeDamage(damage);
-
-            if (PlayerStats.Instance.Health > 0f)
+            if (distanceToPlayer <= attackRange + 1f) 
             {
-                FPSControllerCC.Instance.AddImpact(this.gameObject.transform.TransformDirection(Vector3.forward), 100f);
-                FPSControllerCC.Instance.AddImpact(Vector3.up, 100f);
+                Damage damage = new Damage(Random.Range(17.5f, 22.5f), Element.Type.Fire, this, PlayerStats.Instance);
+                PlayerStats.Instance.TakeDamage(damage);
+
+                if (PlayerStats.Instance.Health > 0f)
+                {
+                    FPSControllerCC.Instance.AddImpact(this.gameObject.transform.TransformDirection(Vector3.forward), 100f);
+                    FPSControllerCC.Instance.AddImpact(Vector3.up, 100f);
+                }
             }
         }
 
@@ -172,16 +210,31 @@ namespace CSE5912.PolyGamers
             GameObject vfx_1 = Instantiate(swirl, transform.position + new Vector3(0f, 0.5f, 0f), Quaternion.identity);
             Destroy(vfx_1, 3f);
 
-            if (PlayerStats.Instance.Health > 0f)
+            if (distanceToPlayer <= attackRange + 0.2f)
             {
-                FPSControllerCC.Instance.AddImpact(this.gameObject.transform.TransformDirection(Vector3.forward), 50f);
-                FPSControllerCC.Instance.AddImpact(Vector3.up, 200f);
+                Damage damage = new Damage(Random.Range(20f, 30f), Element.Type.Physical, this, PlayerStats.Instance);
+                PlayerStats.Instance.TakeDamage(damage);
+
+                if (PlayerStats.Instance.Health > 0f)
+                {
+                    FPSControllerCC.Instance.AddImpact(this.gameObject.transform.TransformDirection(Vector3.forward), 50f);
+                    FPSControllerCC.Instance.AddImpact(Vector3.up, 200f);
+                }
             }
         }
 
         public void Hit_1() 
-        { 
-        
+        {
+            if (distanceToPlayer <= attackRange + 0.2f)
+            {
+                Damage damage = new Damage(Random.Range(12f, 18f), Element.Type.Physical, this, PlayerStats.Instance);
+                PlayerStats.Instance.TakeDamage(damage);
+
+                if (PlayerStats.Instance.Health > 0f)
+                {
+                    FPSControllerCC.Instance.AddImpact(this.gameObject.transform.TransformDirection(Vector3.forward), 50f);
+                }
+            }
         }
 
         public void PhaseTransition() 
