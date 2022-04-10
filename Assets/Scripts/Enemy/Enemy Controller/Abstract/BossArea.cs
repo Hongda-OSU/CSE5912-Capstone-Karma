@@ -109,5 +109,15 @@ namespace CSE5912.PolyGamers
             enemy.gameObject.GetComponentInChildren<BossInformation>().Display(true);
         }
 
+        public bool GetIsTriggered() 
+        {
+            return isTriggered;
+        }
+
+        public bool GetIsBossDefeated()
+        {
+            return isBossDefeated;
+        }
+
     }
 }
