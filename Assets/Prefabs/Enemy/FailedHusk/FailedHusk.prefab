@@ -48,8 +48,8 @@ MonoBehaviour:
   timeSincePerformed: 0
   isReady: 0
   enemy: {fileID: 0}
-  swordZonePrefab: {fileID: 0}
-  size: 0
+  swordZonePrefab: {fileID: 1011191742018456, guid: 5691527dfbbab47488cfb04482ec3473, type: 3}
+  size: 1.5
 --- !u!1 &1147981616
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,8 +236,8 @@ MonoBehaviour:
   timeSincePerformed: 0
   isReady: 0
   enemy: {fileID: 0}
-  slashPrefab: {fileID: 1652400581503036, guid: 0a53eda95dce69f4cbd3271a5e96d672, type: 3}
-  prickPrefab: {fileID: 0}
+  slashPrefab: {fileID: 1919708242137258, guid: cf5f21e12e9b6bb479211cc64d53d7d2, type: 3}
+  prickPrefab: {fileID: 1893033738566276, guid: b47e6f5523b65e2409693c8d2fa1609c, type: 3}
   distance: 5
   direction: 0
 --- !u!1 &2051171436
@@ -669,8 +669,8 @@ Transform:
   m_GameObject: {fileID: 1246891314395918}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4603077835385150}
   - {fileID: 4925381026159354}
@@ -801,8 +801,8 @@ MonoBehaviour:
   unleashedSpeed: 1
   blinkCastSpeed: 0.25
   blinkCastTime: 0.5
-  seals: {fileID: 0}
-  healthPerSeal: 0
+  seals: {fileID: 2453075650756380588}
+  healthPerSeal: 200
   currentDamageTaken: 0
   walkTime: 0
   timeToBlink: 3
@@ -813,13 +813,25 @@ MonoBehaviour:
   bodyRenderer: {fileID: 137341390338042718}
   headRenderer: {fileID: 23566696785946438}
   swordRenderer: {fileID: 1404410474569954032}
-  startUnleashVfx: {fileID: 0}
-  endUnleashVfx: {fileID: 0}
-  slashSounds: []
-  empoweredSounds: []
-  unleashSounds: []
-  Bgms: []
-  staggerSound: {fileID: 0}
+  startUnleashVfx: {fileID: 1481440290192140, guid: 9d1d6187a4bef6848b61be029e7fe07c, type: 3}
+  endUnleashVfx: {fileID: 988757988809306081, guid: cad2f27bb7b7ce0438047edce7fafcee, type: 3}
+  slashSounds:
+  - {fileID: 901614340828147149}
+  - {fileID: 8084607608272149544}
+  - {fileID: 4507863095473601782}
+  - {fileID: 8327829944430034741}
+  empoweredSounds:
+  - {fileID: 6338253313856827450}
+  - {fileID: 4171877951669883421}
+  - {fileID: 8297315937970443010}
+  - {fileID: 828591222001698680}
+  unleashSounds:
+  - {fileID: 116791052931011753}
+  - {fileID: 7354752913957675465}
+  Bgms:
+  - {fileID: 4811050940386592183}
+  - {fileID: 2389356472505406521}
+  staggerSound: {fileID: 4519514483147950372}
   isPerforming: 0
 --- !u!1 &1261939588107060
 GameObject:
@@ -3562,8 +3574,8 @@ MonoBehaviour:
   timeSincePerformed: 0
   isReady: 0
   enemy: {fileID: 0}
-  crackPrefab: {fileID: 1159970587636746, guid: edc4a6ee7ea3a754cac52ef47d71bf27, type: 3}
-  size: 5
+  crackPrefab: {fileID: 1210069404974878, guid: 1f002bfc2011a6d48bdac80d710fb9e9, type: 3}
+  size: 1.5
 --- !u!1 &6702184953473454694
 GameObject:
   m_ObjectHideFlags: 0
