@@ -8,7 +8,6 @@ namespace CSE5912.PolyGamers
     {
         [SerializeField] private float experience;
         [SerializeField] private GameObject pickUpVfxPrefab;
-        [SerializeField] private AudioSource pickUpAudio;
 
         public float statUp;
         public float duration;
@@ -24,8 +23,6 @@ namespace CSE5912.PolyGamers
             if (other.gameObject.layer != LayerMask.NameToLayer("Player"))
                 return;
 
-            //pickUpAudio.Play();
-            
             PlayerStats.Instance.Experience += experience;
             experience = 0f;
             Destroy(gameObject);

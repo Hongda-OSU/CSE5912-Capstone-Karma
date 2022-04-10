@@ -62,11 +62,15 @@ namespace CSE5912.PolyGamers
             this.mainSkill = mainSkill;
 
             if (mainSkill == null)
-                return;
+            {
+                mainSkillIcon.style.backgroundImage = null;
+            }
+            else
+            {
+                var skillSlot = SkillsPanelControl.Instance.CurrentSkillTree.FindSlotBySkill(mainSkill);
 
-            var skillSlot = SkillsPanelControl.Instance.CurrentSkillTree.FindSlotBySkill(mainSkill);
-
-            mainSkillIcon.style.backgroundImage = new StyleBackground(skillSlot.icon.resolvedStyle.backgroundImage);
+                mainSkillIcon.style.backgroundImage = new StyleBackground(skillSlot.icon.resolvedStyle.backgroundImage);
+            }
             mainSkillIcon.style.unityBackgroundScaleMode = ScaleMode.ScaleToFit;
         }
 
