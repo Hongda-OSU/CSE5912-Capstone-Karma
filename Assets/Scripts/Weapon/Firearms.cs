@@ -195,6 +195,11 @@ namespace CSE5912.PolyGamers
             MeleeAttack.Instance.PerformDamage();
         }
 
+        public void RefillAmmo()
+        {
+            CurrentAmmo = MaxAmmoPerMag;
+            CurrentMaxAmmoCarried = MaxAmmoCarried;
+        }
 
         public bool UpdateBulletFired()
         {

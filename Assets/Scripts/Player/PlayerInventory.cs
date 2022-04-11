@@ -90,6 +90,12 @@ namespace CSE5912.PolyGamers
             UpdateAll();
         }
 
+        public void RefillAmmos()
+        {
+            foreach (var weapon in playerWeapons)
+                if (weapon != null)
+                    weapon.RefillAmmo();
+        }
         public bool IsWeaponInventoryFull()
         {
             foreach (var weapon in playerWeapons)

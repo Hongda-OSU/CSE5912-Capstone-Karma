@@ -33,8 +33,7 @@ namespace CSE5912.PolyGamers
 
             RespawnManager.Instance.CurrentRespawnPoint = this;
 
-            Debug.Log("to-do: recover player");
-            // recover player
+            PlayerStats.Instance.Recover();
         }
 
         private void OnTriggerStay(Collider other)

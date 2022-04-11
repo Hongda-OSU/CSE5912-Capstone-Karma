@@ -156,8 +156,15 @@ namespace CSE5912.PolyGamers
         {
             isAlive = true;
 
+            Recover();
+        }
+
+        public void Recover()
+        {
             health = maxHealth;
             shield.ResetShield();
+
+            PlayerInventory.Instance.RefillAmmos();
         }
 
         public float ComputeExtraDamage(float baseValue)

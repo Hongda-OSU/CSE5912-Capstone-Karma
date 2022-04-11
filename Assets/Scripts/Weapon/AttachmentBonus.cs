@@ -242,14 +242,21 @@ namespace CSE5912.PolyGamers
                 description = "Ammo +" + Math.Round(value * 100, 1) + "%";
 
                 int ammo = WeaponManager.Instance.CarriedWeapon.MaxAmmoPerMag;
+                int total = WeaponManager.Instance.CarriedWeapon.MaxAmmoCarried;
                 if (enabled)
                 {
                     WeaponManager.Instance.CarriedWeapon.MaxAmmoPerMag = (int)Mathf.Floor(ammo * (1 + value));
+                    WeaponManager.Instance.CarriedWeapon.CurrentAmmo = (int)Mathf.Floor(WeaponManager.Instance.CarriedWeapon.CurrentAmmo * (1 + value));
+                    WeaponManager.Instance.CarriedWeapon.MaxAmmoCarried = (int)Mathf.Floor(total * (1 + value));
+                    WeaponManager.Instance.CarriedWeapon.CurrentMaxAmmoCarried = (int)Mathf.Floor(WeaponManager.Instance.CarriedWeapon.CurrentMaxAmmoCarried * (1 + value));
                     isReady = false;
                 }
                 else
                 {
                     WeaponManager.Instance.CarriedWeapon.MaxAmmoPerMag = (int)Mathf.Ceil(ammo / (1 + value));
+                    WeaponManager.Instance.CarriedWeapon.CurrentAmmo = (int)Mathf.Ceil(WeaponManager.Instance.CarriedWeapon.CurrentAmmo / (1 + value));
+                    WeaponManager.Instance.CarriedWeapon.MaxAmmoCarried = (int)Mathf.Ceil(total / (1 + value));
+                    WeaponManager.Instance.CarriedWeapon.CurrentMaxAmmoCarried = (int)Mathf.Ceil(WeaponManager.Instance.CarriedWeapon.CurrentMaxAmmoCarried / (1 + value));
                     isReady = true;
                 }
             }
