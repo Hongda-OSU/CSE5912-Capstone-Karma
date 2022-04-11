@@ -18,6 +18,9 @@ namespace CSE5912.PolyGamers
 
         private void Update()
         {
+            if (EnemyManager.Instance == null)
+                return;
+    
             foreach (var obj in EnemyManager.Instance.EnemyList)
             {
                 var enemy = obj.GetComponent<Enemy>();

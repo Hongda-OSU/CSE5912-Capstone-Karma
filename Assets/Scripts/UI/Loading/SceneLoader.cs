@@ -10,6 +10,9 @@ namespace CSE5912.PolyGamers
     {
         [SerializeField] private bool isLoading = false;
 
+        [SerializeField] private bool isPositionUpdatedOnLoad = false;
+        private Vector3 positionOnLoad;
+
         private bool isFadingIn = true;
 
         private VisualElement loadingScreen;
@@ -97,6 +100,26 @@ namespace CSE5912.PolyGamers
             root.style.display = DisplayStyle.None;
 
             isLoading = false;
+
+            if (isPositionUpdatedOnLoad)
+            {
+                PlayerManager.Instance.Player.transform.position = positionOnLoad;
+                isPositionUpdatedOnLoad = false;
+            }
+
+            PlayerStats.Instance.IsInvincible = false;
+
+            FPSMouseLook.Instance.ResetLook();
+
+            FPSControllerCC.Instance.AllowMoving(true);
+
+            GameStateController.Instance.SetGameState(GameStateController.GameState.InGame);
+        }
+
+        public void SetPositionOnLoad(Vector3 position)
+        {
+            isPositionUpdatedOnLoad = true;
+            positionOnLoad = position;
         }
 
     }

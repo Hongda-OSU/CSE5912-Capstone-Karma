@@ -75,6 +75,7 @@ namespace CSE5912.PolyGamers
         private IEnumerator TeleportPlayer(Vector3 to)
         {
             isUsed = true;
+            PlayerStats.Instance.IsInvincible = true;
 
             var player = PlayerManager.Instance.Player;
 

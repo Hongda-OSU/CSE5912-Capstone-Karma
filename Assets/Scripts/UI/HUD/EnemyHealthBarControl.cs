@@ -20,6 +20,9 @@ namespace CSE5912.PolyGamers
 
         public void DisplayEnemyHealthBars(bool enabled)
         {
+            if (EnemyManager.Instance == null)
+                return;
+
             foreach (var child in EnemyManager.Instance.EnemyList)
             {
                 if (!child.activeSelf)

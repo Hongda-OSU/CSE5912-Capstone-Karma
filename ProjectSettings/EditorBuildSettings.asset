@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main/Mare Felixia.unity
     guid: 3a6b7be2fc26b004b8b232f406a37111
+  - enabled: 1
+    path: Assets/Scenes/Main/Blasphemy Sanctum.unity
+    guid: 5dfe98c22ff34bd44a41d3fc3d3072d5
   m_configObjects: {}
