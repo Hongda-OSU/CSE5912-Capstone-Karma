@@ -8,8 +8,10 @@ namespace CSE5912.PolyGamers
     [RequireComponent(typeof(Collider))]
     public class ForwardToNextLevel : MonoBehaviour
     {
+        [Tooltip(" -1 if game is over")]
         [SerializeField] private int nextLevelIndex;
         [SerializeField] private Vector3 nextLevelPosition;
+
 
         [SerializeField] private bool isActivated = false;
         [SerializeField] private bool isUsed = false;
@@ -33,7 +35,16 @@ namespace CSE5912.PolyGamers
 
             if (InputManager.Instance.InputSchemes.PlayerActions.Teleport.triggered)
             {
-                StartCoroutine(MoveToNext());
+                // -1: game is over
+                if (nextLevelIndex == -1)
+                {
+                    StartCoroutine(PlayGameEnding());
+                }
+                else
+                {
+                    StartCoroutine(MoveToNext());
+                }
+
                 TipsControl.Instance.PopOff();
             }
         }
@@ -64,6 +75,8 @@ namespace CSE5912.PolyGamers
 
             yield return new WaitForSeconds(3f);
 
+            DataManager.Instance.Save();
+
             SceneLoader.Instance.SetPositionOnLoad(nextLevelPosition);
             SceneLoader.Instance.LoadLevel(nextLevelIndex);
 
@@ -77,6 +90,37 @@ namespace CSE5912.PolyGamers
 
             //Destroy(portal, 1f);
             //isUsed = false;
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.P))
+                StartCoroutine(PlayGameEnding());
+        }
+        private IEnumerator PlayGameEnding()
+        {
+            if (isUsed)
+                yield break;
+            isUsed = true;
+
+            DontDestroyOnLoad(this);
+
+            DataManager.Instance.Save();
+
+            BgmControl.Instance.SmoothMusicVolume(0f);
+
+            SceneLoader.Instance.LoadLevel(0);
+
+            GameStateController.Instance.SetGameState(GameStateController.GameState.GameOver);
+
+            DontDestroy.Instance.Destroy();
+
+            while (SceneManager.GetActiveScene().buildIndex != 0)
+                yield return new WaitForSeconds(Time.deltaTime);
+
+            StartSceneMenu.Instance.PlayGameEnding();
+
+            Destroy(this);
         }
 
         public void Activate()

@@ -10,7 +10,16 @@ namespace CSE5912.PolyGamers
     {
         [SerializeField] private int gameSceneIndex;
 
-        public AudioSource bgm;
+        [SerializeField] private float displayDelay = 2f;
+        private float timeSince = 0f;
+        [SerializeField] private bool isDisplayedOnStart = false;
+        [SerializeField] private float comeoutTime = 2f;
+
+        [SerializeField] private bool isGameEnding = false;
+
+        public AudioSource audioSource;
+        public AudioClip menuBgm;
+        public AudioClip creditsBgm;
         public AudioSource clickSound;
 
         private VisualElement mainMenuPanel;
@@ -50,11 +59,14 @@ namespace CSE5912.PolyGamers
             creditsPanel = root.Q<VisualElement>("CreditsPanel");
             profilesPanel = root.Q<VisualElement>("ProfilesPanel");
 
-            mainMenuPanel.style.display = DisplayStyle.Flex;
+            mainMenuPanel.style.display = DisplayStyle.None;
             optionsPanel.style.display = DisplayStyle.None;
             audioPanel.style.display = DisplayStyle.None;
             creditsPanel.style.display = DisplayStyle.None;
             profilesPanel.style.display = DisplayStyle.None;
+
+            audioSource.clip = menuBgm;
+            audioSource.Play();
         }
 
         private void Start()
@@ -86,7 +98,19 @@ namespace CSE5912.PolyGamers
             // not showing at default
             optionsPanel.style.display = DisplayStyle.None;
         }
-        
+
+        private void Update()
+        {
+            if (!isGameEnding && !isDisplayedOnStart)
+            {
+                timeSince += Time.deltaTime;
+                if (timeSince > displayDelay)
+                {
+                    isDisplayedOnStart = true;
+                    StartCoroutine(FadeIn(mainMenuPanel, comeoutTime));
+                }
+            }
+        }
         // load the main game scene
         private void StartGameButtonPressed()
         {
@@ -125,10 +149,13 @@ namespace CSE5912.PolyGamers
 
         private void CreditsButtonPressed()
         {
+            audioSource.clip = creditsBgm;
+            audioSource.Play();
+
             StartCoroutine(FadeTo(optionsPanel, creditsPanel));
             clickSound.Play();
 
-            CreditsPanelControl.Instance.StartDisplay();
+            CreditsPanelControl.Instance.StartDisplay(false);
         }
 
         // go back to previous UI
@@ -136,6 +163,23 @@ namespace CSE5912.PolyGamers
         {
             StartCoroutine(FadeTo(optionsPanel, mainMenuPanel));
             clickSound.Play();
+        }
+
+        public void PlayGameEnding()
+        {
+            isGameEnding = true;
+
+            audioSource.clip = creditsBgm; 
+            audioSource.loop = false;
+            audioSource.Play();
+
+            mainMenuPanel.style.display = DisplayStyle.None;
+            optionsPanel.style.display = DisplayStyle.None;
+            audioPanel.style.display = DisplayStyle.None;
+            creditsPanel.style.display = DisplayStyle.None;
+            profilesPanel.style.display = DisplayStyle.None;
+
+            CreditsPanelControl.Instance.StartDisplay(true);
         }
     }
 }

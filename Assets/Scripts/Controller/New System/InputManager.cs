@@ -42,8 +42,6 @@ namespace CSE5912.PolyGamers
             openIngameMenuHandler = new OpenIngameMenuHandler(inputSchemes);
             openEscapeMenuHandler = new OpenEscapeMenuHandler(inputSchemes);
             scrollHandler = new ScrollHandler(inputSchemes, WeaponsPanelControl.Instance);
-
-            GameStateController.Instance.Initialize(inputSchemes);
         }
 
         void Update()

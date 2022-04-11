@@ -395,7 +395,13 @@ MonoBehaviour:
   uiDocument: {fileID: 697325963008044403}
   fadingTime: 0.15
   gameSceneIndex: 1
-  bgm: {fileID: 2083631457}
+  displayDelay: 2
+  isDisplayedOnStart: 0
+  comeoutTime: 1.5
+  isGameEnding: 0
+  audioSource: {fileID: 2083631457}
+  menuBgm: {fileID: 8300000, guid: 094972fe3c8cc4ef68b251616dfe1860, type: 3}
+  creditsBgm: {fileID: 8300000, guid: 2740fcc8cb2534f18b4f9261d1b7b16c, type: 3}
   clickSound: {fileID: 725981375}
 --- !u!4 &1932671152127862322
 Transform:
@@ -423,6 +429,12 @@ PrefabInstance:
       propertyPath: uiDocument
       value: 
       objectReference: {fileID: 697325963008044403}
+    - target: {fileID: 3010026486981923963, guid: 81c88596e5fe92d4fa0114d5bd2b60f1, type: 3}
+      propertyPath: gameEndingClaim
+      value: "Thanks for playing.\nYour data has been saved. \nYou can start over
+        with your current items, skills and level.\nEnemies are now stronger and
+        drop better loots. "
+      objectReference: {fileID: 0}
     - target: {fileID: 4891910940064807943, guid: 81c88596e5fe92d4fa0114d5bd2b60f1, type: 3}
       propertyPath: m_RootOrder
       value: 2

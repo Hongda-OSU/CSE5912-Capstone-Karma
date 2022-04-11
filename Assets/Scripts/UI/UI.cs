@@ -108,6 +108,24 @@ namespace CSE5912.PolyGamers
             SetButtonsInteractable(element, true);
         }
 
+        protected IEnumerator FadeIn(VisualElement element, float fadingTime)
+        {
+            SetButtonsInteractable(element, false);
+
+            element.style.opacity = 0f;
+            element.style.display = DisplayStyle.Flex;
+
+            float time = 0f;
+            while (time < fadingTime)
+            {
+                time += deltaTime;
+                yield return new WaitForSecondsRealtime(deltaTime);
+
+                element.style.opacity = time / fadingTime;
+            }
+
+            SetButtonsInteractable(element, true);
+        }
 
         protected IEnumerator TranslateTo(VisualElement element, float top, float left)
         {

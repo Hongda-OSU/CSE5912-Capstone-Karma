@@ -108,6 +108,8 @@ namespace CSE5912.PolyGamers
 
             BgmControl.Instance.SmoothMusicVolume(0f);
 
+            PlayerStats.Instance.IsInvincible = true;
+
             SceneLoader.Instance.LoadLevel(startSceneIndex);
         }
         public bool IsFadingComplete { get { return isFadingComplete; } }

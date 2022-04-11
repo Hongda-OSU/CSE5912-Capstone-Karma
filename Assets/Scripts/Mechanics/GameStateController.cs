@@ -28,14 +28,15 @@ namespace CSE5912.PolyGamers
             instance = this;
         }
 
+        private void Start()
+        {
+            inputSchemes = InputManager.Instance.InputSchemes;
+            SetGameState(GameState.InGame);
+        }
+
         private void Update()
         {
             gamePlayTimeInSeconds += Time.unscaledDeltaTime;
-        }
-
-        public void Initialize(InputActions inputSchemes)
-        {
-            this.inputSchemes = inputSchemes;
         }
 
         public void SetGameState(GameState state)

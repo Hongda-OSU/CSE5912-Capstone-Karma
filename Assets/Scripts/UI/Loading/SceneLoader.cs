@@ -107,6 +107,9 @@ namespace CSE5912.PolyGamers
                 isPositionUpdatedOnLoad = false;
             }
 
+            if (sceneIndex == 0)
+                yield break;
+
             PlayerStats.Instance.IsInvincible = false;
 
             FPSMouseLook.Instance.ResetLook();
@@ -114,6 +117,8 @@ namespace CSE5912.PolyGamers
             FPSControllerCC.Instance.AllowMoving(true);
 
             GameStateController.Instance.SetGameState(GameStateController.GameState.InGame);
+
+            BgmControl.Instance.PlayCurrentBgm();
         }
 
         public void SetPositionOnLoad(Vector3 position)

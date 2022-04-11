@@ -184,7 +184,7 @@ namespace CSE5912.PolyGamers
                 timeSince += Time.deltaTime;
                 yield return new WaitForSeconds(Time.deltaTime);
 
-                StartSceneMenu.Instance.bgm.volume = fadeoutTime - timeSince;
+                StartSceneMenu.Instance.audioSource.volume = fadeoutTime - timeSince;
             }
         }
     }
