@@ -510,6 +510,7 @@ namespace CSE5912.PolyGamers
         internal void ReloadAmmo()
         {
             if (CurrentAmmo == MaxAmmoPerMag) return;
+            if (CurrentMaxAmmoCarried == 0) return;
             isReloading = true;
             isAiming = false;
             GunAnimator.SetBool("Aim", isAiming);
