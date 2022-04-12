@@ -4,17 +4,21 @@ namespace CSE5912.PolyGamers
 {
     public class MageAttack : MonoBehaviour
     {
-        public float Speed;
-        public float Damage;
-        public float Force;
+        private float Speed;
+        private float Damage;
+        private float Force;
+        private Element.Type Type;
+
         private IDamageable source;
+
         private Transform bulletTransform;
         private Vector3 Direction;
         private Vector3 prevPosition;
         public Vector3 hitPosition;
+
         public GameObject ImpactPrefab;
         public GameObject targetHit;
-     
+
 
         void Start()
         {
@@ -22,6 +26,7 @@ namespace CSE5912.PolyGamers
             prevPosition = bulletTransform.position;
             Direction = bulletTransform.forward;
         }
+
         void Update()
         {
             prevPosition = bulletTransform.position;
@@ -35,14 +40,16 @@ namespace CSE5912.PolyGamers
             CheckTargetHit(hit);
         }
 
-        public void SetVariables(float speed, float damage, float force, GameObject impact, IDamageable sourceFrom)
+        public void SetVariables(float speed, float damage, float force, GameObject impact, IDamageable sourceFrom, Element.Type type)
         {
             Speed = speed;
             Damage = damage;
             Force = force;
+            Type = type;
             ImpactPrefab = impact;
             source = sourceFrom;
         }
+
 
         private void CheckTargetHit(RaycastHit hit)
         {
@@ -50,9 +57,10 @@ namespace CSE5912.PolyGamers
             targetHit = hit.transform.gameObject;
             GameObject vfx = Instantiate(ImpactPrefab, hitPosition, Quaternion.identity);
             Destroy(vfx, 1f);
+
             if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Player"))
             {
-                Damage damage = new Damage(Damage + Mathf.RoundToInt(Random.Range(-2f, 4f)), Element.Type.Fire, source, PlayerStats.Instance);
+                Damage damage = new Damage(Damage + Mathf.RoundToInt(Random.Range(-2f, 4f)), Type, source, PlayerStats.Instance);
                 PlayerStats.Instance.TakeDamage(damage);
                 if (PlayerStats.Instance.Health > 0f)
                 {

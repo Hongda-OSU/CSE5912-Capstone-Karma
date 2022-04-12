@@ -107,7 +107,7 @@ namespace CSE5912.PolyGamers
                 fireBallVFX = Instantiate(fireBall, transform.position + transform.forward * 0.8f + new Vector3(0, 1f, 0), Quaternion.identity);
                 fireBallVFX.transform.LookAt(PlayerManager.Instance.Player.transform.position);
                 fireBallVFX.AddComponent<MageAttack>();
-                fireBallVFX.GetComponent<MageAttack>().SetVariables(10f, 30f, 50f, impact, this);
+                fireBallVFX.GetComponent<MageAttack>().SetVariables(10f, attackDamage, 50f, impact, this, Element.Type.Fire);
                 Destroy(fireBallVFX, 4f);
             }
         }
@@ -127,11 +127,11 @@ namespace CSE5912.PolyGamers
             energyBallVFX3.transform.LookAt(PlayerManager.Instance.Player.transform.position + angle_2);
 
             energyBallVFX1.gameObject.AddComponent<MageAttack>();
-            energyBallVFX1.GetComponent<MageAttack>().SetVariables(10f, 30f, 60f, impact, this);
+            energyBallVFX1.GetComponent<MageAttack>().SetVariables(10f, attackDamage, 60f, impact, this, Element.Type.Fire);
             energyBallVFX2.gameObject.AddComponent<MageAttack>();
-            energyBallVFX2.GetComponent<MageAttack>().SetVariables(10f, 30f, 60f, impact, this);
+            energyBallVFX2.GetComponent<MageAttack>().SetVariables(10f, attackDamage, 60f, impact, this, Element.Type.Fire);
             energyBallVFX3.gameObject.AddComponent<MageAttack>();
-            energyBallVFX3.GetComponent<MageAttack>().SetVariables(10f, 30f, 60f, impact, this);
+            energyBallVFX3.GetComponent<MageAttack>().SetVariables(10f, attackDamage, 60f, impact, this, Element.Type.Fire);
 
             Destroy(energyBallVFX1, 4f);
             Destroy(energyBallVFX2, 4f);
