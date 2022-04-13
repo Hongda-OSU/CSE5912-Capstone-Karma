@@ -113,6 +113,9 @@ namespace CSE5912.PolyGamers
 
             Destroy(portal, 1f);
             isUsed = false;
+
+            // Bug fixed
+            PlayerStats.Instance.IsInvincible = false;
         }
 
         public IEnumerator TeleportBack()
