@@ -915,6 +915,21 @@ MonoBehaviour:
   fadingTime: 0.15
   mainSkillIconSize: 100
   setSkillIconSize: 66
+--- !u!114 &125306466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7158231521263336691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdce788dc25aadb45bd599ecccf3d00e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiDocument: {fileID: 7158231522919328438}
+  fadingTime: 0.15
+  displayTime: 3
 --- !u!4 &7158231521753236019 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4078243330561650207, guid: 6403c749e9886f94198a7863d0d6a642, type: 3}
@@ -1035,7 +1050,7 @@ PrefabInstance:
     - target: {fileID: 7213765682349246432, guid: 26c829ee06488ee43b0bd41e41132bf1, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 7c99b5423f93c40c3b708db90e76cfdc, type: 3}
+      objectReference: {fileID: 8300000, guid: 0d33068d3aaf0b84ca0ab00cf6ae2233, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26c829ee06488ee43b0bd41e41132bf1, type: 3}
 --- !u!82 &640629001887348438 stripped
@@ -1072,9 +1087,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bgms:
   - {fileID: 8300000, guid: 094972fe3c8cc4ef68b251616dfe1860, type: 3}
-  - {fileID: 8300000, guid: 7c99b5423f93c40c3b708db90e76cfdc, type: 3}
-  - {fileID: 8300000, guid: 7c99b5423f93c40c3b708db90e76cfdc, type: 3}
-  - {fileID: 8300000, guid: 7c99b5423f93c40c3b708db90e76cfdc, type: 3}
+  - {fileID: 8300000, guid: 0d33068d3aaf0b84ca0ab00cf6ae2233, type: 3}
+  - {fileID: 8300000, guid: 948e6f92f5b18784f96ab5dcda19a2bf, type: 3}
+  - {fileID: 8300000, guid: 485eb2a55e213b84fa1f79ea38bbe644, type: 3}
   mainAudio: {fileID: 4599161197706867103}
   bossDefeated: {fileID: 6615771459735549196}
 --- !u!82 &4599161196823173185 stripped
@@ -1184,6 +1199,18 @@ PrefabInstance:
       propertyPath: sfx
       value: 
       objectReference: {fileID: 1678901569}
+    - target: {fileID: 1082636342024462559, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: icon
+      value: 
+      objectReference: {fileID: 21300000, guid: bc4e66f60cc61964db4058ead8f6e1bb, type: 3}
+    - target: {fileID: 1082636342024462559, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: isReady
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1082636342024462559, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: isLearned
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1132428565656182083, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
