@@ -28,6 +28,7 @@ namespace CSE5912.PolyGamers
                 return;
             }
 
+            /*
             if (health <= MaxHealth / 2f) 
             {
                 if (!inPhase2) {
@@ -37,6 +38,7 @@ namespace CSE5912.PolyGamers
                 switchingPhase = true;
                 inPhase2 = true;
             }
+            */
 
             if (switchingPhase)
             {             
