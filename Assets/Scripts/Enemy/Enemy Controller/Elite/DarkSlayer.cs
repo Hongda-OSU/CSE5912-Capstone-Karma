@@ -4,7 +4,7 @@ using Random = UnityEngine.Random;
 
 namespace CSE5912.PolyGamers
 {
-    public class DarkSlayer : EliteEnemy
+    public class DarkSlayer : BossEnemy
     {
         public Vector3 Direction;
         private bool attackFinished;
@@ -314,6 +314,18 @@ namespace CSE5912.PolyGamers
         void OnEnable()
         {
             attackFinished = false;
+        }
+
+        public override void TriggerBossFight()
+        {
+            isInvincible = true;
+            animator.SetTrigger("Awake");
+        }
+
+        protected override void AwakeAnimationComplete()
+        {
+            isInvincible = false;
+            isBossFightTriggered = true;
         }
     }
 }
