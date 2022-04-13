@@ -11,6 +11,7 @@ namespace CSE5912.PolyGamers
         [SerializeField] private GameState state;
         public float gamePlayTimeInSeconds;
 
+        public Dictionary<string, bool> bossToAlive = new Dictionary<string, bool>();
         private InputActions inputSchemes;
 
         private static GameStateController instance;
@@ -28,6 +29,13 @@ namespace CSE5912.PolyGamers
             if (instance != null && instance != this)
                 Destroy(gameObject);
             instance = this;
+
+            bossToAlive.Add("Golem", true);
+            bossToAlive.Add("HellBlade", true);
+            bossToAlive.Add("EvilGod", true);
+            bossToAlive.Add("DarkSlayer", true);
+            bossToAlive.Add("FailedHusk", true);
+
         }
 
         private void Start()

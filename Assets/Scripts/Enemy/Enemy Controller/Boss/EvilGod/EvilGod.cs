@@ -287,5 +287,11 @@ namespace CSE5912.PolyGamers
             isPerforming = false;
         }
 
+        protected override void Die()
+        {
+            base.Die();
+
+            GameStateController.Instance.bossToAlive["EvilGod"] = false;
+        }
     }
 }

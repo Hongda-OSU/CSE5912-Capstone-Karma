@@ -280,6 +280,12 @@ namespace CSE5912.PolyGamers
             return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
         }
 
+        protected override void Die()
+        {
+            base.Die();
+
+            GameStateController.Instance.bossToAlive["HellBlade"] = false;
+        }
         /*
         void OnDrawGizmosSelected()
         {
@@ -287,6 +293,6 @@ namespace CSE5912.PolyGamers
             Gizmos.DrawWireSphere(transform.position, viewRadius);
         }
         */
-    
+
     }
 }

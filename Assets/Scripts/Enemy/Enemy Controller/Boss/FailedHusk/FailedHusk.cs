@@ -429,5 +429,12 @@ namespace CSE5912.PolyGamers
             endUnleashVfx.transform.position = transform.position;
             Destroy(endUnleashVfx, 10f);
         }
+
+        protected override void Die()
+        {
+            base.Die();
+
+            GameStateController.Instance.bossToAlive["FailedHusk"] = false;
+        }
     }
 }

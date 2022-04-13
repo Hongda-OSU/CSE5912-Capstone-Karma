@@ -182,6 +182,8 @@ namespace CSE5912.PolyGamers
         {
             PlayerStats.Instance.MoveSpeedFactor = originSpeedFactor;
             base.Die();
+
+            GameStateController.Instance.bossToAlive["Golem"] = false;
         }
 
         public override void TriggerBossFight()

@@ -22,6 +22,8 @@ namespace CSE5912.PolyGamers
 
         [DataMember] public float[] playerPosition = new float[3];
 
+        [DataMember] public Dictionary<string, bool> bossToAlive = new Dictionary<string, bool>();
+
         [DataMember] public List<WeaponData> weaponDataList = new List<WeaponData>();
 
         [DataMember] public List<AttachmentData> attachmentDataList = new List<AttachmentData>();
@@ -39,6 +41,8 @@ namespace CSE5912.PolyGamers
             gamePlayTimeInSeconds = GameStateController.Instance.gamePlayTimeInSeconds;
 
             karmicLevel = GameStateController.Instance.karmicLevel;
+
+            bossToAlive = GameStateController.Instance.bossToAlive;
 
             var player = PlayerManager.Instance.Player;
 

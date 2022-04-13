@@ -327,5 +327,12 @@ namespace CSE5912.PolyGamers
             isInvincible = false;
             isBossFightTriggered = true;
         }
+
+        protected override void Die()
+        {
+            base.Die();
+
+            GameStateController.Instance.bossToAlive["DarkSlayer"] = false;
+        }
     }
 }
