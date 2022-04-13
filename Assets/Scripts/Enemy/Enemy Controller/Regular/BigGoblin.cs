@@ -115,7 +115,7 @@ namespace CSE5912.PolyGamers
 
         private IEnumerator IceRain(Vector3 position) 
         {
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 12; i++)
             {
                 yield return new WaitForSeconds(0.2f);
                 Vector3 randomPos = RandomCircle(position, Random.Range(1f, 3f));
@@ -174,7 +174,7 @@ namespace CSE5912.PolyGamers
         private IEnumerator SkillCoolDown()
         {
             isAbleToAttack = false;
-            yield return new WaitForSeconds(12f);
+            yield return new WaitForSeconds(8f);
             isAbleToAttack = true;
         }
     }

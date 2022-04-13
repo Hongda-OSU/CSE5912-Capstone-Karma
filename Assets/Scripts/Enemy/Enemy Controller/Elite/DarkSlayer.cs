@@ -120,7 +120,7 @@ namespace CSE5912.PolyGamers
 
         private void FlameRise()
         {
-            flameVFX = Instantiate(DarkFlame, transform.position + new Vector3(0, 2, 0) + Vector3.back, Quaternion.Euler(-90, 0, 0));
+            flameVFX = Instantiate(DarkFlame, transform.position + new Vector3(0, 2, 0) + transform.forward * -3f, Quaternion.Euler(-90, 0, 0));
         }
 
         private void FlameEnd()
