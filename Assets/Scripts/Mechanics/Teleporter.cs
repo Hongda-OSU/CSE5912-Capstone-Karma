@@ -45,10 +45,23 @@ namespace CSE5912.PolyGamers
             if (other.tag != "Player" || isActivated || isInitialized)
                 return;
 
+            Activate(true);
+        }
+        public void Activate(bool playAnimation)
+        {
+            if (isActivated || isInitialized)
+                return;
+
             isInitialized = true;
 
-            StartCoroutine(PlayActivateAnimation());
-
+            if (playAnimation)
+                StartCoroutine(PlayActivateAnimation());
+            else
+            {
+                teleporter.transform.position = finalPivot.position;
+                meshFilter.mesh = activeMesh;
+                isActivated = true;
+            }
         }
         private void OnTriggerStay(Collider other)
         {

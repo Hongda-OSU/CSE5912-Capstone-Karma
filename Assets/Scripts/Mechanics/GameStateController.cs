@@ -91,6 +91,12 @@ namespace CSE5912.PolyGamers
                     break;
             }
         }
+
+        public void ResetBosses()
+        {
+            foreach (var kvp in bossToAlive)
+                bossToAlive[kvp.Key] = true;
+        }
         public GameState State { get { return state; } }
     }
 }

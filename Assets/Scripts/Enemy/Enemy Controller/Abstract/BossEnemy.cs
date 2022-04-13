@@ -11,6 +11,8 @@ namespace CSE5912.PolyGamers
 
         [SerializeField] private GameObject bossDeathVfxPrefab;
 
+        public BossArea bossArea;
+
         public abstract void TriggerBossFight();
         protected abstract void AwakeAnimationComplete();
 
@@ -44,6 +46,14 @@ namespace CSE5912.PolyGamers
             Destroy(vfx, 10f);
 
             BgmControl.Instance.PlayBossDefeated();
+        }
+
+        public void SetBossDefeated(bool hasBeenDefeated)
+        {
+            isBossFightTriggered = hasBeenDefeated;
+            isAlive = !hasBeenDefeated;
+            bossArea.isBossDefeated = hasBeenDefeated;
+            gameObject.SetActive(!hasBeenDefeated);
         }
 
         public bool IsBossFightTriggered { get { return playerDetected; } }

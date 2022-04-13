@@ -12,9 +12,9 @@ namespace CSE5912.PolyGamers
         public AudioClip bossMusic;
         [SerializeField] private float triggerDelay = 3f;
 
-        [SerializeField] private Teleporter teleporter;
+        public Teleporter teleporter;
 
-        [SerializeField] private bool isBossDefeated = false;
+        public bool isBossDefeated = false;
         [SerializeField] private bool isEnded = false;
 
         [SerializeField] private bool isTriggered = false;
@@ -105,6 +105,7 @@ namespace CSE5912.PolyGamers
         {
             return isBossDefeated;
         }
+
 
     }
 }

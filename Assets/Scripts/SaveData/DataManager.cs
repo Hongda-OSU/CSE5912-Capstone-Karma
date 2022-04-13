@@ -131,6 +131,28 @@ namespace CSE5912.PolyGamers
                 PlayerInventory.Instance.AddAttachment(attachment);
             }
 
+            // load bosses
+            foreach (var kvp in data.bossToAlive)
+            {
+                var bossName = kvp.Key;
+                var boss = GameObject.Find(bossName);
+                if (boss == null)
+                    continue;
+
+                var enemy = boss.GetComponent<BossEnemy>();
+
+                if (enemy == null)
+                {
+                    Debug.Log("Boss not found: " + bossName);
+                }
+                else 
+                {
+                    var hasBeenDefeated = !kvp.Value;
+                    enemy.SetBossDefeated(hasBeenDefeated);
+                    enemy.bossArea.teleporter.Activate(false);
+                }
+            }
+
         }
 
         private Firearms LoadWeapon(GameData.WeaponData data)

@@ -112,6 +112,7 @@ namespace CSE5912.PolyGamers
 
             GameStateController.Instance.SetGameState(GameStateController.GameState.GameOver);
             GameStateController.Instance.karmicLevel++;
+            GameStateController.Instance.ResetBosses();
 
             DontDestroy.Instance.Destroy();
 
