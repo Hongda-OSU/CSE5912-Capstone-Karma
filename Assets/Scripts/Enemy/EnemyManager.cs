@@ -9,6 +9,9 @@ namespace CSE5912.PolyGamers
         [SerializeField] private GameObject enemies;
         [SerializeField] private LayerMask layerMask;
 
+        [SerializeField] private float enemyLevel;
+        [SerializeField] private bool isLevelledUp = false;
+
         private List<GameObject> enemyList;
 
 
@@ -30,6 +33,16 @@ namespace CSE5912.PolyGamers
                 if (enemy.gameObject.activeSelf)
                     enemyList.Add(enemy.gameObject);
             }
+
+        }
+        private void Update()
+        {
+            if (GameStateController.Instance.karmicLevel > 0 && !isLevelledUp)
+            {
+                isLevelledUp = true;
+                enemyLevel = GameStateController.Instance.karmicLevel;
+                LevelupAll(GameStateController.Instance.karmicLevel);
+            }
         }
 
         public void ResetEnemiesInScene()
@@ -39,6 +52,14 @@ namespace CSE5912.PolyGamers
                 enemy.SetActive(false);
                 enemy.SetActive(true);
                 enemy.GetComponent<Enemy>().ResetEnemy();
+            }
+        }
+
+        private void LevelupAll(int level)
+        {
+            foreach (GameObject enemy in enemyList)
+            {
+                enemy.GetComponent<Enemy>().LevelUp(level);
             }
         }
 

@@ -1,7 +1,8 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement name="Background" style="background-color: rgb(0, 0, 0); flex-grow: 1; align-items: flex-end; justify-content: flex-end;">
-        <ui:VisualElement name="LoadingScreen" style="flex-grow: 0; align-items: center; justify-content: center;">
-            <ui:VisualElement name="Icon" style="background-image: url(&apos;project://database/Assets/UI/Vfx/Karma_game_icon.png?fileID=2800000&amp;guid=9cc0e907dde46654bacb7f2428d73277&amp;type=3#Karma_game_icon&apos;); width: 300px; height: 300px; right: 30%; bottom: 30%;" />
+    <ui:VisualElement name="Background" style="background-color: rgb(0, 0, 0); flex-grow: 1; align-items: center; justify-content: center;">
+        <ui:VisualElement name="LoadingScreen" style="flex-grow: 0; align-items: center; justify-content: center; right: auto; left: 40%; top: 30%;">
+            <ui:VisualElement name="Icon" style="background-image: url(&apos;project://database/Assets/UI/Vfx/Karma_game_icon.png?fileID=2800000&amp;guid=9cc0e907dde46654bacb7f2428d73277&amp;type=3#Karma_game_icon&apos;); width: 300px; height: 300px; right: auto; bottom: auto;" />
         </ui:VisualElement>
+        <ui:Label text="Karmic Level: 1" display-tooltip-when-elided="true" name="KarmicLevel" style="position: absolute; -unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/UiElement/Trajan%20Pro%20Regular%20SDF.asset?fileID=11400000&amp;guid=0821ecf0f29a62243aeeef3d0eb445c6&amp;type=2#Trajan Pro Regular SDF&apos;); color: rgba(255, 255, 255, 255); font-size: 60px; top: 5%;" />
     </ui:VisualElement>
 </ui:UXML>

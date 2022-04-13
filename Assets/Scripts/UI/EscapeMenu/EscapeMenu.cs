@@ -54,7 +54,7 @@ namespace CSE5912.PolyGamers
             KeybindingsButton.clicked += KeybindingsButtonPressed;
 
             exitButton = root.Q<Button>("Exit");
-            exitButton.clicked += ExitButtonPressed;
+            exitButton.clicked += delegate { StartCoroutine(ExitButtonPressed()); };
 
         }
 
@@ -98,11 +98,11 @@ namespace CSE5912.PolyGamers
         }
 
         // go back to previous UI
-        private void ExitButtonPressed()
+        private IEnumerator ExitButtonPressed()
         {
-            StartCoroutine(FadeOut(optionsPanel));
-
             clickSound.Play();
+
+            yield return StartCoroutine(FadeOut(root));
 
             DontDestroy.Instance.Destroy();
 
@@ -110,7 +110,7 @@ namespace CSE5912.PolyGamers
 
             PlayerStats.Instance.IsInvincible = true;
 
-            SceneLoader.Instance.LoadLevel(startSceneIndex);
+            SceneLoader.Instance.LoadLevel(startSceneIndex, GameStateController.Instance.karmicLevel);
         }
         public bool IsFadingComplete { get { return isFadingComplete; } }
     }

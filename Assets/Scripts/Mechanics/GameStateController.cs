@@ -6,6 +6,8 @@ namespace CSE5912.PolyGamers
 {
     public class GameStateController : MonoBehaviour
     {
+        public int karmicLevel = -1;
+
         [SerializeField] private GameState state;
         public float gamePlayTimeInSeconds;
 

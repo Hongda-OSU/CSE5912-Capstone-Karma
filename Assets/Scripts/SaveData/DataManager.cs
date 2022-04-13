@@ -65,7 +65,11 @@ namespace CSE5912.PolyGamers
             var data = Load(currentDataIndex);
 
             if (data == null)
+            {
+                GameStateController.Instance.karmicLevel = 1;
+
                 return;
+            }
 
             // clear attachments
             foreach (Transform child in PlayerInventory.Instance.AttachmentCollection.transform)
@@ -91,6 +95,9 @@ namespace CSE5912.PolyGamers
 
             // load playtime
             GameStateController.Instance.gamePlayTimeInSeconds = data.gamePlayTimeInSeconds;
+
+            // load karmic level
+            GameStateController.Instance.karmicLevel = data.karmicLevel;
 
             // load player stats
             LoadPlayerStats(data.playerStatsData);

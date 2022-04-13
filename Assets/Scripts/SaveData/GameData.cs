@@ -18,6 +18,8 @@ namespace CSE5912.PolyGamers
 
         [DataMember] public float gamePlayTimeInSeconds;
 
+        [DataMember] public int karmicLevel;
+
         [DataMember] public float[] playerPosition = new float[3];
 
         [DataMember] public List<WeaponData> weaponDataList = new List<WeaponData>();
@@ -35,6 +37,8 @@ namespace CSE5912.PolyGamers
             mapName = SceneManager.GetActiveScene().name;
 
             gamePlayTimeInSeconds = GameStateController.Instance.gamePlayTimeInSeconds;
+
+            karmicLevel = GameStateController.Instance.karmicLevel;
 
             var player = PlayerManager.Instance.Player;
 

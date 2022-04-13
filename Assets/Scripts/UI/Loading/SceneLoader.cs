@@ -18,6 +18,7 @@ namespace CSE5912.PolyGamers
         private VisualElement loadingScreen;
 
         private VisualElement icon;
+        private Label karmicLevelLabel;
 
         private static SceneLoader instance;
         public static SceneLoader Instance { get { return instance; } }
@@ -32,16 +33,17 @@ namespace CSE5912.PolyGamers
             loadingScreen = root.Q<VisualElement>("LoadingScreen");
 
             icon = loadingScreen.Q<VisualElement>("Icon");
+            karmicLevelLabel = root.Q<Label>("KarmicLevel");
 
             root.style.display = DisplayStyle.None;
         }
 
-        public void LoadLevel(int sceneIndex)
+        public void LoadLevel(int sceneIndex, int karmicLevel)
         {
             if (DropoffManager.Instance != null)
                 DropoffManager.Instance.ClearDropoffs();
 
-            StartCoroutine(LoadAsync(sceneIndex));
+            StartCoroutine(LoadAsync(sceneIndex, karmicLevel));
         }
 
         private IEnumerator BlinkIcon(float time)
@@ -74,12 +76,15 @@ namespace CSE5912.PolyGamers
             }
 
         }
-        private IEnumerator LoadAsync(int sceneIndex)
+        private IEnumerator LoadAsync(int sceneIndex, int karmicLevel)
         {
             if (isLoading)
                 yield break;
 
             icon.style.opacity = 0f;
+
+            karmicLevelLabel.text = "Karmic Level: " + karmicLevel;
+
             isLoading = true;
 
             loadingScreen.style.display = DisplayStyle.None;

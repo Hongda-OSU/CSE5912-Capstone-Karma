@@ -72,13 +72,12 @@ namespace CSE5912.PolyGamers
 
             GameStateController.Instance.SetGameState(GameStateController.GameState.Loading);
 
-
             yield return new WaitForSeconds(3f);
 
             DataManager.Instance.Save();
 
             SceneLoader.Instance.SetPositionOnLoad(nextLevelPosition);
-            SceneLoader.Instance.LoadLevel(nextLevelIndex);
+            SceneLoader.Instance.LoadLevel(nextLevelIndex, GameStateController.Instance.karmicLevel);
 
             //player.transform.position = target.transform.position;
             //player.transform.position = to;
@@ -109,9 +108,10 @@ namespace CSE5912.PolyGamers
 
             BgmControl.Instance.SmoothMusicVolume(0f);
 
-            SceneLoader.Instance.LoadLevel(0);
+            SceneLoader.Instance.LoadLevel(0, GameStateController.Instance.karmicLevel);
 
             GameStateController.Instance.SetGameState(GameStateController.GameState.GameOver);
+            GameStateController.Instance.karmicLevel++;
 
             DontDestroy.Instance.Destroy();
 

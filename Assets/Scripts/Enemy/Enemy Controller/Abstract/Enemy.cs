@@ -94,6 +94,14 @@ namespace CSE5912.PolyGamers
 
         }
 
+        public void LevelUp(int level)
+        {
+            this.level = level;
+
+            //experience *= 3f;
+            // to-do
+        }
+
         public virtual void ResetEnemy()
         {
             if (!isAlive && !respawnable)

@@ -126,11 +126,17 @@ namespace CSE5912.PolyGamers
         {
             var saveData = DataManager.Instance.Load(dataIndex);
 
-            int sceneIndex = saveData == null ? 1 : saveData.sceneIndex;
+            int sceneIndex = 1;
+            int karmicLevel = 1;
+            if (saveData != null)
+            {
+                sceneIndex = saveData.sceneIndex;
+                karmicLevel = saveData.karmicLevel;
+            }
 
             StartCoroutine(FadeOutBgm());
 
-            SceneLoader.Instance.LoadLevel(sceneIndex);
+            SceneLoader.Instance.LoadLevel(sceneIndex, karmicLevel);
             DataManager.Instance.LoadSaveData(dataIndex);
 
             StartSceneMenu.Instance.clickSound.Play();
