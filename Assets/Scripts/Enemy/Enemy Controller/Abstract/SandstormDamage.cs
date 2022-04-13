@@ -15,8 +15,9 @@ namespace CSE5912.PolyGamers
         {
             if (area.GetIsTriggered() && !area.GetIsBossDefeated())
             {
+                
                 if (Vector3.Distance(PlayerManager.Instance.Player.transform.position, safeRangeCenter.position) > safeRangeRadius) 
-                {
+                {        
                     PlayerStats.Instance.TakeDamage(new Damage(5f, Element.Type.Physical, boss, PlayerStats.Instance));
                 }
             }
