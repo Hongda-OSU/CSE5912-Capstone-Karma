@@ -93,8 +93,9 @@ namespace CSE5912.PolyGamers
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.P))
-                StartCoroutine(PlayGameEnding());
+            //// test
+            //if (Input.GetKeyDown(KeyCode.P))
+            //    StartCoroutine(PlayGameEnding());
         }
         private IEnumerator PlayGameEnding()
         {

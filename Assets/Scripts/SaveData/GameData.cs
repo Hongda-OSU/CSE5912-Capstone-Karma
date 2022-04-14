@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -141,7 +140,7 @@ namespace CSE5912.PolyGamers
                 set = attachment.Set;
                 attachmentBonus = attachment.Bonus;
                 citation = attachment.Citation;
-                iconPath = AssetDatabase.GetAssetPath(attachment.IconImage);
+                iconPath = "UI/GunIcons/big_bullet_icon";
             }
         }
 

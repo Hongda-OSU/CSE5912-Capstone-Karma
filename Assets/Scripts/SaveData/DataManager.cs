@@ -4,7 +4,6 @@ using System.Collections;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using System;
-using UnityEditor;
 
 namespace CSE5912.PolyGamers
 {
@@ -33,20 +32,24 @@ namespace CSE5912.PolyGamers
 
         private void Update()
         {
-            //// test
-            //if (Input.GetKeyDown(KeyCode.P))
-            //{
-            //    var index = 99;
-            //    currentDataIndex = index;
+            // test
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                var index = 99;
+                currentDataIndex = index;
 
-            //    var saveData = Load(index);
-            //    if (saveData != null)
-            //    {
-            //        LoadDataToGame();
-            //    }
-            //}
-            //if (Input.GetKeyDown(KeyCode.O))
-            //    Save();
+                var saveData = Load(index);
+                if (saveData != null)
+                {
+                    LoadDataToGame();
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.O))
+            {
+                var index = 99;
+                currentDataIndex = index;
+                Save();
+            }
 
             if (!isSceneLoaded && SceneManager.GetActiveScene().buildIndex != 0)
             {
@@ -213,7 +216,7 @@ namespace CSE5912.PolyGamers
             attachment.Bonus = data.attachmentBonus;
             attachment.Citation = data.citation;
 
-            var iconImage = AssetDatabase.LoadAssetAtPath<Sprite>(data.iconPath);
+            var iconImage = Resources.Load<Sprite>(data.iconPath);
             if (iconImage == null)
                 Debug.LogError("Image path not found: " + data.iconPath);
             attachment.IconImage = iconImage;
