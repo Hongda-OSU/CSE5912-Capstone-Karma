@@ -140,7 +140,7 @@ namespace CSE5912.PolyGamers
                 set = attachment.Set;
                 attachmentBonus = attachment.Bonus;
                 citation = attachment.Citation;
-                iconPath = "UI/GunIcons/big_bullet_icon";
+                iconPath = "UI/Icons/" + attachment.IconImage.name;
             }
         }
 
