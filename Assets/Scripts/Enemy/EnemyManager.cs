@@ -13,8 +13,8 @@ namespace CSE5912.PolyGamers
         [SerializeField] private float enemyLevel;
         [SerializeField] private bool isLevelledUp = false;
 
-        private List<GameObject> enemyList;
-        private List<GameObject> bossList;
+        private List<GameObject> enemyList = new List<GameObject>();
+        private List<GameObject> bossList = new List<GameObject>();
 
         private static EnemyManager instance;
         public static EnemyManager Instance { get { return instance; } }
@@ -28,20 +28,24 @@ namespace CSE5912.PolyGamers
             }
             instance = this;
 
-            enemyList = new List<GameObject>();
-            foreach (Transform enemy in enemies.transform)
+            if (enemies != null)
             {
-                if (enemy.gameObject.activeSelf)
-                    enemyList.Add(enemy.gameObject);
+                foreach (Transform enemy in enemies.transform)
+                {
+                    if (enemy.gameObject.activeSelf)
+                        enemyList.Add(enemy.gameObject);
+                }
             }
 
 
-            bossList = new List<GameObject>();
-            foreach (Transform boss in bosses.transform)
+            if (bosses != null)
             {
-                var enemy = boss.GetComponentInChildren<BossEnemy>().gameObject;
-                if (enemy.gameObject.activeSelf)
-                    bossList.Add(enemy);
+                foreach (Transform boss in bosses.transform)
+                {
+                    var enemy = boss.GetComponentInChildren<BossEnemy>().gameObject;
+                    if (enemy.gameObject.activeSelf)
+                        bossList.Add(enemy);
+                }
             }
 
         }

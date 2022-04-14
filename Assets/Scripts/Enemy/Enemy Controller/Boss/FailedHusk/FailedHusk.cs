@@ -27,7 +27,7 @@ namespace CSE5912.PolyGamers
 
         [SerializeField] private Damager_collision sword;
 
-        [SerializeField] private BossArea bossArea;
+        //[SerializeField] private BossArea bossArea;
 
         [SerializeField] private Material leashedMaterial;
         [SerializeField] private Material unleashedMaterial;
