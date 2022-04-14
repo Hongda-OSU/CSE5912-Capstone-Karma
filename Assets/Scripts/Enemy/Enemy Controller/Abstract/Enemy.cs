@@ -45,7 +45,7 @@ namespace CSE5912.PolyGamers
         [SerializeField] private float venomResist = 0f;
         protected Resist resist;
 
-        [Header("Random Dropoff")]
+        [Header("Dropoff")]
         [SerializeField] private float dropWeaponChance;
         [SerializeField] private int dropWeaponNumber = 1;
         [SerializeField] private Firearms.WeaponType[] dropWeaponTypes;
@@ -56,9 +56,6 @@ namespace CSE5912.PolyGamers
         [SerializeField] private Attachment.AttachmentType[] dropAttachmentTypes;
         [SerializeField] private Attachment.AttachmentRarity[] dropAttachmentRarities;
 
-        [Header("Certain Dropoff")]
-        // todo
-        //[SerializeField] private
 
         [Header("Other")]
         [SerializeField] protected float rotateSpeed = 20f;

@@ -33,6 +33,7 @@ namespace CSE5912.PolyGamers
         private VisualElement optionsPanel;
         private VisualElement creditsPanel;
         private VisualElement profilesPanel;
+        private VisualElement keybindingsPanel;
 
         private Button audioButton;
         private Button KeybindingsButton;
@@ -58,12 +59,14 @@ namespace CSE5912.PolyGamers
             audioPanel = root.Q<VisualElement>("AudioPanel");
             creditsPanel = root.Q<VisualElement>("CreditsPanel");
             profilesPanel = root.Q<VisualElement>("ProfilesPanel");
+            keybindingsPanel = root.Q<VisualElement>("KeybindingsPanel");
 
             mainMenuPanel.style.display = DisplayStyle.None;
             optionsPanel.style.display = DisplayStyle.None;
             audioPanel.style.display = DisplayStyle.None;
             creditsPanel.style.display = DisplayStyle.None;
             profilesPanel.style.display = DisplayStyle.None;
+            keybindingsPanel.style.display = DisplayStyle.None;
 
             audioSource.clip = menuBgm;
             audioSource.Play();
@@ -144,7 +147,8 @@ namespace CSE5912.PolyGamers
 
         private void KeybindingsButtonPressed()
         {
-            // todo - load keybindings ui screen
+            StartCoroutine(FadeTo(optionsPanel, keybindingsPanel));
+            clickSound.Play();
         }
 
         private void CreditsButtonPressed()
@@ -178,6 +182,7 @@ namespace CSE5912.PolyGamers
             audioPanel.style.display = DisplayStyle.None;
             creditsPanel.style.display = DisplayStyle.None;
             profilesPanel.style.display = DisplayStyle.None;
+            keybindingsPanel.style.display = DisplayStyle.None;
 
             CreditsPanelControl.Instance.StartDisplay(true);
         }
