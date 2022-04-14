@@ -596,6 +596,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiDocument: {fileID: 697325963008044403}
   fadingTime: 0.15
+  clickSound: {fileID: 725981375}
   mixer: {fileID: 24100000, guid: 16ed322527a09094c845f7f2988eff06, type: 2}
 --- !u!114 &6644025475734028540
 MonoBehaviour:
@@ -625,6 +626,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiDocument: {fileID: 697325963008044403}
   fadingTime: 0.15
+  clickSound: {fileID: 725981375}
 --- !u!1001 &7213765680269964929
 PrefabInstance:
   m_ObjectHideFlags: 0

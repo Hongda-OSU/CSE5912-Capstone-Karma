@@ -15,11 +15,11 @@ namespace CSE5912.PolyGamers
 
         private VisualElement optionsPanel;
         private VisualElement audioPanel;
+        private VisualElement keybindingsPanel;
 
         private Button audioButton;
         private Button KeybindingsButton;
         //private Button resolutionButton;
-        //private Button languageButton;
         private Button exitButton;
 
         private bool isFadingComplete = true;
@@ -37,6 +37,7 @@ namespace CSE5912.PolyGamers
 
             optionsPanel = root.Q<VisualElement>("OptionsPanel");
             audioPanel = root.Q<VisualElement>("AudioPanel");
+            keybindingsPanel = root.Q<VisualElement>("KeybindingsPanel");
 
             root.style.display = DisplayStyle.None;
 
@@ -64,6 +65,7 @@ namespace CSE5912.PolyGamers
             optionsPanel.style.opacity = 1f;
 
             audioPanel.style.display = DisplayStyle.None;
+            keybindingsPanel.style.display = DisplayStyle.None;
         }
 
         public IEnumerator DisplayMenu(bool enabled)
@@ -94,7 +96,8 @@ namespace CSE5912.PolyGamers
 
         private void KeybindingsButtonPressed()
         {
-            // todo - load keybindings ui screen
+            StartCoroutine(FadeTo(optionsPanel, keybindingsPanel));
+            clickSound.Play();
         }
 
         // go back to previous UI

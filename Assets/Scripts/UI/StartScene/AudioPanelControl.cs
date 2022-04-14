@@ -33,6 +33,7 @@ namespace CSE5912.PolyGamers
 
         }
 
+        [SerializeField] private AudioSource clickSound;
         [SerializeField] private AudioMixer mixer;
 
         private VisualElement audioPanel;
@@ -114,7 +115,7 @@ namespace CSE5912.PolyGamers
         private void BackButtonPressed()
         {
             StartCoroutine(FadeTo(audioPanel, root.Q<VisualElement>("OptionsPanel")));
-            StartSceneMenu.Instance.clickSound.Play();
+            clickSound.Play();
         }
     }
 }

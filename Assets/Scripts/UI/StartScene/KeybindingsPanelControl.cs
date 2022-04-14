@@ -7,6 +7,8 @@ namespace CSE5912.PolyGamers
 {
     public class KeybindingsPanelControl : UI
     {
+        [SerializeField] private AudioSource clickSound;
+
         private VisualElement panel;
 
         private Button back;
@@ -33,7 +35,7 @@ namespace CSE5912.PolyGamers
         private void BackButtonPressed()
         {
             StartCoroutine(FadeTo(panel, root.Q<VisualElement>("OptionsPanel")));
-            StartSceneMenu.Instance.clickSound.Play();
+            clickSound.Play();
         }
 
     }
