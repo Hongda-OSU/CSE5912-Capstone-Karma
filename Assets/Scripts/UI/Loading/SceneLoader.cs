@@ -124,9 +124,6 @@ namespace CSE5912.PolyGamers
             GameStateController.Instance.SetGameState(GameStateController.GameState.InGame);
 
             BgmControl.Instance.PlayCurrentBgm();
-
-            yield return new WaitForSeconds(2f);
-            StartCoroutine(MapInformationControl.Instance.DisplayMapName(SceneManager.GetActiveScene().name));
         }
 
         public void SetPositionOnLoad(Vector3 position)

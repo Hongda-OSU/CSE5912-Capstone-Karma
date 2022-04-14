@@ -10,6 +10,11 @@ namespace CSE5912.PolyGamers
     {
         [SerializeField] private float displayTime = 3f;
 
+        [SerializeField] private int previousSceneIndex = 0;
+        [SerializeField] private int currentSceneIndex = 0;
+
+        [SerializeField] private bool isDisplayed = false;
+
         private VisualElement mapInformation;
         private Label mapName;
 
@@ -30,9 +35,27 @@ namespace CSE5912.PolyGamers
             mapInformation.style.opacity = 0f;
         }
 
-        public IEnumerator DisplayMapName(string name)
+        private void Update()
         {
-            mapName.text = name;
+            currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+            if (currentSceneIndex != previousSceneIndex)
+            {
+                isDisplayed = false;
+                StartCoroutine(DisplayMapName());
+                previousSceneIndex = currentSceneIndex;
+            }
+        }
+
+        public IEnumerator DisplayMapName()
+        {
+            if (isDisplayed)
+                yield break;
+
+            isDisplayed = true;
+
+            yield return new WaitForSeconds(2f);
+
+            mapName.text = SceneManager.GetActiveScene().name;
 
             yield return StartCoroutine(FadeIn(mapInformation));
 
