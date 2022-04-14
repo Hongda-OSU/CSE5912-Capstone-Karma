@@ -21,7 +21,7 @@ namespace CSE5912.PolyGamers
             animator.applyRootMotion = false;
         }
 
-        protected override void Update()
+        protected override void Update() 
         {
             base.Update();
             if (!isAlive || isFrozen)

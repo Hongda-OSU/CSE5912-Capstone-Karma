@@ -66,11 +66,11 @@ namespace CSE5912.PolyGamers
         private void Update()
         {
 
-            if (transform.parent.parent.name == "BossFight_EvilGod" && Input.GetKeyDown(KeyCode.O))
-            {
-                StartCoroutine(TeleportPlayer(target.position));
-                TipsControl.Instance.PopOff();
-            }
+            //if (transform.parent.parent.name == "BossFight_EvilGod" && Input.GetKeyDown(KeyCode.O))
+            //{
+            //    StartCoroutine(TeleportPlayer(target.position));
+            //    TipsControl.Instance.PopOff();
+            //}
         }
         private void OnTriggerStay(Collider other)
         {
