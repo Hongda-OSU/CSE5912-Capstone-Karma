@@ -64,10 +64,10 @@ namespace CSE5912.PolyGamers
             currentFrameRateIndex = 0;
             FrameRateButtonPressed();
 
-            isFullScreened = true;
+            isFullScreened = false;
             FullScreenButtonPressed();
 
-            isVsynced = true;
+            isVsynced = false;
             VsyncButtonPressed();
         }
 
