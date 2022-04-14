@@ -16,10 +16,11 @@ namespace CSE5912.PolyGamers
         private VisualElement optionsPanel;
         private VisualElement audioPanel;
         private VisualElement keybindingsPanel;
+        private VisualElement videoPanel;
 
         private Button audioButton;
         private Button KeybindingsButton;
-        //private Button resolutionButton;
+        private Button videoButton;
         private Button exitButton;
 
         private bool isFadingComplete = true;
@@ -38,6 +39,7 @@ namespace CSE5912.PolyGamers
             optionsPanel = root.Q<VisualElement>("OptionsPanel");
             audioPanel = root.Q<VisualElement>("AudioPanel");
             keybindingsPanel = root.Q<VisualElement>("KeybindingsPanel");
+            videoPanel = root.Q<VisualElement>("VideoPanel");
 
             root.style.display = DisplayStyle.None;
 
@@ -50,6 +52,9 @@ namespace CSE5912.PolyGamers
             // set up buttons
             audioButton = root.Q<Button>("Audio");
             audioButton.clicked += AudioButtonPressed;
+
+            videoButton = root.Q<Button>("Video");
+            videoButton.clicked += VideoButtonPressed;
 
             KeybindingsButton = root.Q<Button>("Keybindings");
             KeybindingsButton.clicked += KeybindingsButtonPressed;
@@ -65,6 +70,7 @@ namespace CSE5912.PolyGamers
             optionsPanel.style.opacity = 1f;
 
             audioPanel.style.display = DisplayStyle.None;
+            videoPanel.style.display = DisplayStyle.None;
             keybindingsPanel.style.display = DisplayStyle.None;
         }
 
@@ -93,6 +99,11 @@ namespace CSE5912.PolyGamers
             StartCoroutine(FadeTo(optionsPanel, audioPanel));
             clickSound.Play();
         }
+        private void VideoButtonPressed()
+        {
+            StartCoroutine(FadeTo(optionsPanel, videoPanel));
+            clickSound.Play();
+        }
 
         private void KeybindingsButtonPressed()
         {
@@ -100,7 +111,6 @@ namespace CSE5912.PolyGamers
             clickSound.Play();
         }
 
-        // go back to previous UI
         private IEnumerator ExitButtonPressed()
         {
             clickSound.Play();
