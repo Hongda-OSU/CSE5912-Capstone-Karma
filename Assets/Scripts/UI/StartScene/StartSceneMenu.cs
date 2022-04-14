@@ -34,11 +34,12 @@ namespace CSE5912.PolyGamers
         private VisualElement creditsPanel;
         private VisualElement profilesPanel;
         private VisualElement keybindingsPanel;
+        private VisualElement videoPanel;
 
         private Button audioButton;
         private Button KeybindingsButton;
         private Button creditsButton;
-        //private Button resolutionButton;
+        private Button videoButton;
         //private Button languageButton;
         private Button backButton;
 
@@ -60,6 +61,7 @@ namespace CSE5912.PolyGamers
             creditsPanel = root.Q<VisualElement>("CreditsPanel");
             profilesPanel = root.Q<VisualElement>("ProfilesPanel");
             keybindingsPanel = root.Q<VisualElement>("KeybindingsPanel");
+            videoPanel = root.Q<VisualElement>("VideoPanel");
 
             mainMenuPanel.style.display = DisplayStyle.None;
             optionsPanel.style.display = DisplayStyle.None;
@@ -67,6 +69,7 @@ namespace CSE5912.PolyGamers
             creditsPanel.style.display = DisplayStyle.None;
             profilesPanel.style.display = DisplayStyle.None;
             keybindingsPanel.style.display = DisplayStyle.None;
+            videoPanel.style.display = DisplayStyle.None;
 
             audioSource.clip = menuBgm;
             audioSource.Play();
@@ -94,6 +97,9 @@ namespace CSE5912.PolyGamers
 
             creditsButton = root.Q<Button>("Credits");
             creditsButton.clicked += CreditsButtonPressed;
+
+            videoButton = root.Q<Button>("Video");
+            videoButton.clicked += VideoButtonPressed;
 
             backButton = root.Q<Button>("Back");
             backButton.clicked += BackButtonPressed;
@@ -150,6 +156,11 @@ namespace CSE5912.PolyGamers
             StartCoroutine(FadeTo(optionsPanel, keybindingsPanel));
             clickSound.Play();
         }
+        private void VideoButtonPressed()
+        {
+            StartCoroutine(FadeTo(optionsPanel, videoPanel));
+            clickSound.Play();
+        }
 
         private void CreditsButtonPressed()
         {
@@ -183,6 +194,7 @@ namespace CSE5912.PolyGamers
             creditsPanel.style.display = DisplayStyle.None;
             profilesPanel.style.display = DisplayStyle.None;
             keybindingsPanel.style.display = DisplayStyle.None;
+            videoPanel.style.display = DisplayStyle.None;
 
             CreditsPanelControl.Instance.StartDisplay(true);
         }

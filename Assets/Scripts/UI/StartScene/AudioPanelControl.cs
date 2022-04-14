@@ -44,8 +44,15 @@ namespace CSE5912.PolyGamers
 
         private Button backButton;
 
+        private static AudioPanelControl instance;
+        public static AudioPanelControl Instance { get { return instance; } }
+
         private void Awake()
         {
+            if (instance != null && instance != this)
+                Destroy(gameObject);
+            instance = this;
+
             Initialize();
 
             audioPanel = root.Q<VisualElement>("AudioPanel");

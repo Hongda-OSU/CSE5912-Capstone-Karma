@@ -358,6 +358,7 @@ GameObject:
   - component: {fileID: 6644025475734028539}
   - component: {fileID: 6644025475734028540}
   - component: {fileID: 6644025475734028541}
+  - component: {fileID: 6644025475734028542}
   m_Layer: 5
   m_Name: StartSceneMenu
   m_TagString: Untagged
@@ -500,6 +501,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4078243331889891850}
+  - component: {fileID: 4078243331889891851}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -525,6 +527,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4078243331889891851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4078243331889891849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15cbcee0927c2fe44a32750d2339498f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resolutionWidth: 1920
+  resolutionHeight: 1080
 --- !u!1001 &5522499895953581612
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -627,6 +643,23 @@ MonoBehaviour:
   uiDocument: {fileID: 697325963008044403}
   fadingTime: 0.15
   clickSound: {fileID: 725981375}
+--- !u!114 &6644025475734028542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 230016087766095512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 461a92b3a10e4744dbc47cbb2e5e44bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiDocument: {fileID: 697325963008044403}
+  fadingTime: 0.15
+  clickSound: {fileID: 725981375}
+  isFullScreened: 0
+  isVsynced: 0
 --- !u!1001 &7213765680269964929
 PrefabInstance:
   m_ObjectHideFlags: 0
