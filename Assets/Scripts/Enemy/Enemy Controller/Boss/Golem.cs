@@ -217,25 +217,33 @@ namespace CSE5912.PolyGamers
             GameObject vfx_3 = Instantiate(prefab_1, pivot_1.position, Quaternion.identity);
 
             Vector3 angle_1 = DirFromAngle(30f, false) * 10f;
-            Vector3 angle_2 = DirFromAngle(330f, false) * 10f;
+            Vector3 angle_2 = DirFromAngle(-30f, false) * 10f;
 
             vfx_1.transform.LookAt(new Vector3(PlayerManager.Instance.Player.transform.position.x, PlayerManager.Instance.Player.transform.position.y - 1.5f, PlayerManager.Instance.Player.transform.position.z) + angle_1);
             vfx_2.transform.LookAt(new Vector3(PlayerManager.Instance.Player.transform.position.x, PlayerManager.Instance.Player.transform.position.y - 1.5f, PlayerManager.Instance.Player.transform.position.z));
             vfx_3.transform.LookAt(new Vector3(PlayerManager.Instance.Player.transform.position.x, PlayerManager.Instance.Player.transform.position.y - 1.5f, PlayerManager.Instance.Player.transform.position.z) + angle_2);
 
-            if (Vector3.Distance(player.position, pivot_1.position) <= 30f &&
-                Vector3.Angle(transform.forward, directionToPlayer) < 60 / 2 &&
-                (PlayerManager.Instance.Player.transform.position.y <= vfx_2.transform.position.y + 2f))
-            {
-                Damage damage = new Damage(Random.Range(10f, 20f), Element.Type.Physical, this, PlayerStats.Instance);
-                PlayerStats.Instance.TakeDamage(damage);
+            vfx_1.AddComponent<ShardStoneCollision>();
+            vfx_2.AddComponent<ShardStoneCollision>();
+            vfx_3.AddComponent<ShardStoneCollision>();
 
-                if (PlayerStats.Instance.Health > 0f)
-                {
-                    FPSControllerCC.Instance.AddImpact(this.gameObject.transform.TransformDirection(Vector3.forward), 100f);
-                    FPSControllerCC.Instance.AddImpact(Vector3.up, 800f);
-                }
-            }
+            vfx_1.GetComponent<ShardStoneCollision>().SetVariables(attackDamage, 75f, 200f,this);
+            vfx_2.GetComponent<ShardStoneCollision>().SetVariables(attackDamage, 75f, 200f, this);
+            vfx_3.GetComponent<ShardStoneCollision>().SetVariables(attackDamage, 75f, 200f, this);
+
+            //if (Vector3.Distance(player.position, pivot_1.position) <= 30f &&
+            //    Vector3.Angle(transform.forward, directionToPlayer) < 60 / 2 &&
+            //    (PlayerManager.Instance.Player.transform.position.y <= vfx_2.transform.position.y + 2f))
+            //{
+            //    Damage damage = new Damage(Random.Range(10f, 20f), Element.Type.Physical, this, PlayerStats.Instance);
+            //    PlayerStats.Instance.TakeDamage(damage);
+
+            //    if (PlayerStats.Instance.Health > 0f)
+            //    {
+            //        FPSControllerCC.Instance.AddImpact(this.gameObject.transform.TransformDirection(Vector3.forward), 100f);
+            //        FPSControllerCC.Instance.AddImpact(Vector3.up, 800f);
+            //    }
+            //}
 
             Destroy(vfx_1, 4f);
             Destroy(vfx_2, 4f);
