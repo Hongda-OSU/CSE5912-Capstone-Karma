@@ -50,7 +50,7 @@ namespace CSE5912.PolyGamers
 
         public void Initialize(AttachmentType type, AttachmentRarity rarity, AttachmentSet set, Sprite image, string citation, int runeIndex)
         {
-            attachmentName = rarity.ToString() + " " + type.ToString();
+            attachmentName = type.ToString();
 
             attachmentType = type;
             this.rarity = rarity;
