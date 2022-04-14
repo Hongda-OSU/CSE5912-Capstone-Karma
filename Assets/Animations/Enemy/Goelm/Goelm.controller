@@ -351,7 +351,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Idle_Standing_Combat 1
+  m_Name: Inactive
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:

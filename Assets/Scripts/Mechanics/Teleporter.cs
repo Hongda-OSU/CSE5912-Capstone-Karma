@@ -63,6 +63,15 @@ namespace CSE5912.PolyGamers
                 isActivated = true;
             }
         }
+        private void Update()
+        {
+
+            if (transform.parent.parent.name == "BossFight_EvilGod" && Input.GetKeyDown(KeyCode.O))
+            {
+                StartCoroutine(TeleportPlayer(target.position));
+                TipsControl.Instance.PopOff();
+            }
+        }
         private void OnTriggerStay(Collider other)
         {
             if (other.tag != "Player" || !isActivated || isUsed)

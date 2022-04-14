@@ -36,6 +36,10 @@ namespace CSE5912.PolyGamers
 
         protected override void PerformActions()
         {
+            if (!PlayerStats.Instance.IsAlive)
+            {
+                isPerforming = true;
+            }
             if (isPerforming || !isBossFightTriggered)
                 return;
 
@@ -121,6 +125,7 @@ namespace CSE5912.PolyGamers
         {
             base.ResetEnemy();
             isBossFightTriggered = false;
+            isPerforming = false;
 
             lightningMissile.IsReady = true;
             lightningExplosion.IsReady = true;

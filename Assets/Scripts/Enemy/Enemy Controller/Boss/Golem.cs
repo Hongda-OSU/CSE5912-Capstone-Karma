@@ -39,6 +39,15 @@ namespace CSE5912.PolyGamers
             transform.position = new Vector3(transform.position.x, 40f, transform.position.z);
             originSpeedFactor = PlayerStats.Instance.MoveSpeedFactor;
         }
+
+        public override void ResetEnemy()
+        {
+            base.ResetEnemy();
+
+            agent.enabled = false;
+            transform.position = new Vector3(transform.position.x, 40f, transform.position.z);
+            originSpeedFactor = PlayerStats.Instance.MoveSpeedFactor;
+        }
         protected override void PerformActions()
         {
             if (isFalling)

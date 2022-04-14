@@ -26,7 +26,6 @@ namespace CSE5912.PolyGamers
         {
             PlayerStats.Instance.GetExperience(experience);
 
-            // remove enemy from enemy list and destroy
             isAlive = false;
             agent.isStopped = true;
 
@@ -54,6 +53,14 @@ namespace CSE5912.PolyGamers
             isAlive = !hasBeenDefeated;
             bossArea.isBossDefeated = hasBeenDefeated;
             gameObject.SetActive(!hasBeenDefeated);
+        }
+
+        public override void ResetEnemy()
+        {
+            base.ResetEnemy();
+
+            animator.Play("Inactive");
+            isBossFightTriggered = false;
         }
 
         public bool IsBossFightTriggered { get { return playerDetected; } }

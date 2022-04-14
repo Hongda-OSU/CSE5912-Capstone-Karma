@@ -189,9 +189,6 @@ namespace CSE5912.PolyGamers
 
         protected override void PerformActions()
         {
-            //test
-            PlayerStats.Instance.IsInvincible = true;
-
             if (isPerforming || !isBossFightTriggered)
                 return;
 

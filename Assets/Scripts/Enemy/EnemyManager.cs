@@ -7,13 +7,14 @@ namespace CSE5912.PolyGamers
     public class EnemyManager : MonoBehaviour
     {
         [SerializeField] private GameObject enemies;
+        [SerializeField] private GameObject bosses;
         [SerializeField] private LayerMask layerMask;
 
         [SerializeField] private float enemyLevel;
         [SerializeField] private bool isLevelledUp = false;
 
         private List<GameObject> enemyList;
-
+        private List<GameObject> bossList;
 
         private static EnemyManager instance;
         public static EnemyManager Instance { get { return instance; } }
@@ -32,6 +33,15 @@ namespace CSE5912.PolyGamers
             {
                 if (enemy.gameObject.activeSelf)
                     enemyList.Add(enemy.gameObject);
+            }
+
+
+            bossList = new List<GameObject>();
+            foreach (Transform boss in bosses.transform)
+            {
+                var enemy = boss.GetComponentInChildren<BossEnemy>().gameObject;
+                if (enemy.gameObject.activeSelf)
+                    bossList.Add(enemy);
             }
 
         }
@@ -53,11 +63,21 @@ namespace CSE5912.PolyGamers
                 enemy.SetActive(true);
                 enemy.GetComponent<Enemy>().ResetEnemy();
             }
+            foreach (GameObject enemy in bossList)
+            {
+                enemy.SetActive(false);
+                enemy.SetActive(true);
+                enemy.GetComponent<Enemy>().ResetEnemy();
+            }
         }
 
         private void LevelupAll(int level)
         {
             foreach (GameObject enemy in enemyList)
+            {
+                enemy.GetComponent<Enemy>().LevelUp(level);
+            }
+            foreach (GameObject enemy in bossList)
             {
                 enemy.GetComponent<Enemy>().LevelUp(level);
             }
