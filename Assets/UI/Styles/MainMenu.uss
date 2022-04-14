@@ -10,7 +10,7 @@
     -unity-text-align: middle-center;
     height: 93px;
     -unity-text-outline-color: rgba(255, 255, 255, 0.47);
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.78);
+    text-shadow: 0 0 0 rgba(255, 255, 255, 0.78);
     -unity-text-outline-width: 0;
     width: 319px;
     transition-duration: 0.5s;
@@ -77,7 +77,7 @@
 
 .Clear {
     -unity-font-definition: url('project://database/Assets/UI/Fonts/UiElement/Trajan%20Pro%20Regular%20SDF.asset?fileID=11400000&guid=0821ecf0f29a62243aeeef3d0eb445c6&type=2#Trajan Pro Regular SDF');
-    color: rgba(255, 255, 255, 255);
+    color: rgb(255, 255, 255);
     font-size: 20px;
     background-color: rgba(188, 188, 188, 0);
     border-left-color: rgba(149, 149, 149, 0);
