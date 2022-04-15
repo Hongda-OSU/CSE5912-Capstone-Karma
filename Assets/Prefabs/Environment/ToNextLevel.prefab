@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextLevelIndex: 0
-  nextLevelPosition: {x: 0, y: 0, z: 0}
+  nextLevelPosition: {x: -3.6, y: 10, z: -55}
   isActivated: 0
   isUsed: 0
   portalPrefab: {fileID: 1881552412633134, guid: 3ad9deb72dad7c640958ecf68366e065, type: 3}

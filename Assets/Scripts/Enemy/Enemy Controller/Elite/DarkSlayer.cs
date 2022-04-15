@@ -48,9 +48,9 @@ namespace CSE5912.PolyGamers
                         // 0~8
                         if (isPlayerInSafeDistance)
                         {
-                            if (Random.value < 0.4f)
+                            if (Random.value < 0.2f)
                             {
-                                Attack(2);
+                                Attack(1);
                             }
                             else
                             {
@@ -299,7 +299,7 @@ namespace CSE5912.PolyGamers
         private IEnumerator SkillCoolDown()
         {
             isAbleToAttack = false;
-            yield return new WaitForSeconds(12f);
+            yield return new WaitForSeconds(8f);
             isAbleToAttack = true;
         }
 
