@@ -1,5 +1,133 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &171102530
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 171102531}
+  - component: {fileID: 171102532}
+  m_Layer: 0
+  m_Name: Sound
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &171102531
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171102530}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7049757283280610851}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &171102532
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171102530}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 2278350589391119314, guid: 16ed322527a09094c845f7f2988eff06, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 1149111be4b17d64fa7eedda897f5612, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 30
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &193064546
 GameObject:
   m_ObjectHideFlags: 0
@@ -146,6 +274,7 @@ MonoBehaviour:
   isReady: 0
   skillName: Atom Break
   requiredSkill: {fileID: 0}
+  requiredSkillLevel: 0
   isLearned: 0
   level: 0
   maxLevel: 1
@@ -312,12 +441,13 @@ MonoBehaviour:
   isReady: 0
   skillName: Sergeant 76
   requiredSkill: {fileID: 0}
+  requiredSkillLevel: 0
   isLearned: 0
   level: 0
   maxLevel: 1
   learnCost: 0
   levelupCost: 0
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 2563ca2b733b2034dbf32a4a53c28d0a, type: 3}
   type: 3
   description: Activate the tactical intellectual weapon system and direct every
     bullet to near by enemies automatically for a while.
@@ -366,8 +496,8 @@ AudioSource:
   m_GameObject: {fileID: 698742160}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 2278350589391119314, guid: 16ed322527a09094c845f7f2988eff06, type: 2}
+  m_audioClip: {fileID: 8300000, guid: ec20f6c2d2c70fd4cab03dab440aa916, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -470,6 +600,7 @@ MonoBehaviour:
   isReady: 0
   skillName: Void Knight
   requiredSkill: {fileID: 0}
+  requiredSkillLevel: 0
   isLearned: 0
   level: 0
   maxLevel: 1
@@ -477,13 +608,13 @@ MonoBehaviour:
   levelupCost: 0
   icon: {fileID: 21300000, guid: bbb37c0803f923841a32db8b15e60c04, type: 3}
   type: 3
-  description: Replace the dash move with a unity melee dash attack, that is quicker
+  description: Melee attack is upgraded to a unity melee dash attack, that is quicker
     and can move a longer distance.
   distance: 10
   speed: 50
   baseDamage: 50
   range: 1
-  sfx: {fileID: 0}
+  sfx: {fileID: 698742163}
 --- !u!1 &939211911
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,16 +664,17 @@ MonoBehaviour:
   isReady: 0
   skillName: Leviathan
   requiredSkill: {fileID: 0}
+  requiredSkillLevel: 0
   isLearned: 0
   level: 0
   maxLevel: 1
   learnCost: 0
   levelupCost: 0
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: fe6fd6dd7231b454c95686f4516be780, type: 3}
   type: 3
-  description: When player is in the air, allow the player to jump again and release
-    the strength of the deep swirl. The swirl draws enemies near by into it and hampers
-    their movement.
+  description: Player is granted the ability to jump again in the air and release
+    the strength of the deep swirl underneath, which then keep drawing enemies near
+    by into its center.
   blackHolePrefab: {fileID: 1236643204216662, guid: 2697853bd9f90e44cab6eef818c68daa, type: 3}
   pullSpeed: 5
   radius: 6
@@ -600,6 +732,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1708189871}
   - component: {fileID: 1708189872}
+  - component: {fileID: 1428630081}
   m_Layer: 2
   m_Name: MeleeAttack
   m_TagString: Untagged
@@ -620,7 +753,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1132428565656182083}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1708189872
 MonoBehaviour:
@@ -639,6 +772,7 @@ MonoBehaviour:
   isReady: 1
   skillName: Melee Attack
   requiredSkill: {fileID: 0}
+  requiredSkillLevel: 0
   isLearned: 1
   level: 1
   maxLevel: 1
@@ -649,14 +783,114 @@ MonoBehaviour:
   description: 
   baseDamage: 10
   elementType: 0
-  extraSpeed: 0
   range: 1
   isEnabled: 1
-  sfx: {fileID: 0}
-  sounds: []
+  sfx: {fileID: 1428630081}
+  sounds:
+  - {fileID: 8300000, guid: cbf67a069ef52ac4da9cbe4b64e50c7d, type: 3}
+  - {fileID: 8300000, guid: 95f244a9ef03565429bf17e001fbc462, type: 3}
+  - {fileID: 8300000, guid: 355d2041fdf6eea408523ce4ab8c6908, type: 3}
+  - {fileID: 8300000, guid: c659346803b1c3c49a74e49f6e8408a7, type: 3}
+  - {fileID: 8300000, guid: b2719992f1f278d47a373db05d08b50b, type: 3}
   meleeEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!82 &1428630081
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1708189870}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 2278350589391119314, guid: 16ed322527a09094c845f7f2988eff06, type: 2}
+  m_audioClip: {fileID: 8300000, guid: cbf67a069ef52ac4da9cbe4b64e50c7d, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2051531521
 GameObject:
   m_ObjectHideFlags: 0
@@ -706,16 +940,16 @@ MonoBehaviour:
   isReady: 0
   skillName: Black Soul
   requiredSkill: {fileID: 0}
+  requiredSkillLevel: 0
   isLearned: 0
   level: 0
   maxLevel: 1
   learnCost: 0
   levelupCost: 0
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: eb93295deebd72f449ca8aff6f100469, type: 3}
   type: 3
-  description: When killed in game, the soul of the player will remain at where the
-    player died. The player can pick up the soul and get an ability boost until they
-    died again.
+  description: The soul dropped by player when killed is tainted by the power of
+    void, which grants player an extra ability boost for a while on pickup.
   blackSoulPointPrefab: {fileID: 668452988796817149, guid: 906d5ffc57c66e844b633e5e3651b8aa, type: 3}
   statUp: 20
   duration: 30
@@ -796,13 +1030,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shield_energy: 1
-  maxShield_energy: 1
+  maxShield_energy: 10
   timeSinceDamaged: 0
   timeToRestore: 5
   restoreSpeed: 10
-  elementalDamageReduction: 0.75
+  elementalDamageReduction: 0.25
   shield_armor: 0
-  maxShield_armor: 1
+  maxShield_armor: 10
   physicalDamageReduction: 0.5
   resistBonus: 0.1
   resistGained: 0
@@ -818,13 +1052,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 214d9417912c0a544ba12e4f2cdd3d7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statPoint: 1
+  statPoint: 10
   level: 1
   experience: 0
   experienceToUpgrade: 668
   experienceMultiplier: 1
   isAlive: 1
-  health: 25
+  isInvincible: 0
+  health: 100
   maxHealth: 100
   shield: {fileID: 0}
   bulletVamp: 0
@@ -862,7 +1097,15 @@ MonoBehaviour:
   resistUp: 30
   levelUpAudio: {fileID: 0}
   statUpAudio: {fileID: 0}
-  levelUpVfxPrefab: {fileID: 0}
+  takeDamageAudio: {fileID: 0}
+  damagedSounds:
+  - {fileID: 8300000, guid: 19bd70f938ccba641a9b2715f312088d, type: 3}
+  - {fileID: 8300000, guid: 7c005ee8c0140344292320a179a3a239, type: 3}
+  - {fileID: 8300000, guid: 1d0aece4869b31f4386da07c262e3f82, type: 3}
+  - {fileID: 8300000, guid: 18eec77e77f6a6048b435663f069cd53, type: 3}
+  - {fileID: 8300000, guid: 3c5404c0a13514947bd062643708c3da, type: 3}
+  - {fileID: 8300000, guid: a3969818c7d299b469006c0edc28bce8, type: 3}
+  levelUpVfxPrefab: {fileID: 1624714524768532, guid: 920dacb22f4655748af6e87578f62204, type: 3}
 --- !u!1 &3914003179907011759
 GameObject:
   m_ObjectHideFlags: 0
@@ -910,7 +1153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxNumOfWeapons: 5
   maxNumOfAttachmentsPerWeapon: 4
-  defaultWeapon: {fileID: 4369238742308309045}
+  defaultWeapon: {fileID: 1742487286542249136}
   attachmentCollection: {fileID: 3914003179805071008}
   playerWeapons: []
 --- !u!1 &3914003179971651613
@@ -1014,8 +1257,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillPoints: 100
   skillTree_element: {fileID: 1110533165218009687}
+  playerSkillList: []
   attachmentSetSkills: {fileID: 1416963878}
-  bonusSkills: {fileID: 0}
+  bonusSkills: {fileID: 8208746873207503741}
+  readySound: {fileID: 0}
 --- !u!114 &3914003180910380902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1114,6 +1359,7 @@ MonoBehaviour:
   isReady: 0
   skillName: Health to Shield
   requiredSkill: {fileID: 0}
+  requiredSkillLevel: 0
   isLearned: 0
   level: 0
   maxLevel: 1
@@ -1747,6 +1993,26 @@ PrefabInstance:
       propertyPath: m_CullingMask.m_Bits
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 3350638349240941901, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
+      propertyPath: damage
+      value: 111
+      objectReference: {fileID: 0}
+    - target: {fileID: 3350638349240941901, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
+      propertyPath: rarity
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3350638349240941901, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
+      propertyPath: MaxAmmoPerMag
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3350638349240941901, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
+      propertyPath: MaxAmmoCarried
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3350638349240941903, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4092260174426645251, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
       propertyPath: damage
       value: 10
@@ -1865,7 +2131,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4172133018842139838, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.18
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4172133018842139838, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1873,7 +2139,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4172133018842139838, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 62.63
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4172133018842139838, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2100,9 +2366,9 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 4156378107618010386, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
   m_PrefabInstance: {fileID: 3914003181359763965}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4369238742308309045 stripped
+--- !u!114 &1742487286542249136 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 789240833929632200, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
+  m_CorrespondingSourceObject: {fileID: 3350638349240941901, guid: e00cca390cb84584c9e9eeb43f39490b, type: 3}
   m_PrefabInstance: {fileID: 3914003181359763965}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -2123,6 +2389,59 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3914003180910380903}
     m_Modifications:
+    - target: {fileID: 274371513515088434, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: learnCost
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 274371513515088434, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: description
+      value: 'Increase the max stack and duration of Infected.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 274371513515088434, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: requiredSkillLevel
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 280656796637143094, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: description
+      value: 'Increase Burned damage.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 280656796637143094, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: damagePerLevel
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 657428493852881379, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: sfx
+      value: 
+      objectReference: {fileID: 171102532}
+    - target: {fileID: 657428493852881379, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: learnCost
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 657428493852881379, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: description
+      value: 'Create lightning chains between Electrocuted enemies, dealing Electro
+        damage.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 657428493852881379, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: requiredSkillLevel
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 817557530761882676, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: description
+      value: 'Increase Infected damage.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 817557530761882676, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: damagePerLevel
+      value: 0.0012
+      objectReference: {fileID: 0}
     - target: {fileID: 1016950843055038975, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
       propertyPath: type
       value: 2
@@ -2135,33 +2454,296 @@ PrefabInstance:
       propertyPath: skillName
       value: Fire Mastery
       objectReference: {fileID: 0}
+    - target: {fileID: 1578324709308914723, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: description
+      value: 'Increase Electrocuted chance.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1793425200995189684, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: learnCost
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1793425200995189684, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: description
+      value: 'If an enemy keeps full stack of Infected for a period of time, it takes
+        a Venom damage based on its max health.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1793425200995189684, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: requiredSkillLevel
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1803135099923796885, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: sfx
+      value: 
+      objectReference: {fileID: 1321413246}
+    - target: {fileID: 1803135099923796885, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: learnCost
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1803135099923796885, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: description
+      value: 'Enemies killed by player will explode and deal Fire damage.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1803135099923796885, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: requiredSkillLevel
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2048762331157106484, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: description
+      value: 'Increase Electro damage.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2123765920890886998, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: description
+      value: 'Increase Cryo damage.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207365925700132250, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: learnCost
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207365925700132250, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: description
+      value: 'Once player is hit, release a nova that deals Cryo damage and applies
+        Frozen to nearby enemies.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207365925700132250, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: requiredSkillLevel
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2658415475860527637, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: learnCost
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2658415475860527637, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: baseDamage
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 2658415475860527637, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: description
+      value: 'Once the Electrocuted stack of an enemy reaches max, the enemy will
+        trigger an explosion in several seconds.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2658415475860527637, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: damagePerLevel
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2658415475860527637, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: requiredSkillLevel
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2805712980985175988, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: learnCost
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2805712980985175988, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: description
+      value: "If player's health is low enough, heal player based on max health and
+        create an area that keeps dealing Cryo damage and applies Frozen to enemies
+        in it. \n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2805712980985175988, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: requiredSkill
+      value: 
+      objectReference: {fileID: 2950832725201902510}
+    - target: {fileID: 2805712980985175988, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: requiredSkillLevel
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2897123150642413036, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: description
+      value: 'Increase Frozen slowdown.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2897123150642413036, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: slowPerLevel
+      value: 0.008
+      objectReference: {fileID: 0}
     - target: {fileID: 3258852430572098994, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3557732270986425943, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: description
+      value: 'Increase Infected chance.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3884017398985561891, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: learnCost
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3884017398985561891, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: description
+      value: 'Enemies with full stack of Infected are executed if their health is
+        low enough.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3884017398985561891, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: requiredSkillLevel
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4115402730406604643, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: description
+      value: 'Increase Electrocuted resist reduction.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4115402730406604643, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: reductionPerLevel
+      value: 0.012
       objectReference: {fileID: 0}
     - target: {fileID: 4123112667914540131, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
       propertyPath: m_Name
       value: SkillTree_element
       objectReference: {fileID: 0}
     - target: {fileID: 4131798823945266923, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: sfx
+      value: 
+      objectReference: {fileID: 1678901569}
+    - target: {fileID: 4131798823945266923, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: icon
+      value: 
+      objectReference: {fileID: 21300000, guid: bc4e66f60cc61964db4058ead8f6e1bb, type: 3}
+    - target: {fileID: 4131798823945266923, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
       propertyPath: type
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4131798823945266923, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
       propertyPath: isReady
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4131798823945266923, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
       propertyPath: isLearned
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4131798823945266923, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
       propertyPath: learnCost
-      value: 0
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4131798823945266923, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: description
+      value: 'Comprehend the mystery of elements, enhance elemental damage and chance
+        to apply debuff.
+
+'
       objectReference: {fileID: 0}
     - target: {fileID: 4131798823945266923, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
       propertyPath: levelupCost
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4179569426526119337, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: learnCost
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4179569426526119337, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: description
+      value: 'Enemies with full stack of Infected spread poison fog, stacking Infected
+        to nearby enemies.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4339116167573838083, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: description
+      value: 'Increase Frozen chance.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4431942205427578084, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: learnCost
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4431942205427578084, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: description
+      value: 'Flames created by Incendiary now automatically track to nearby enemies.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4431942205427578084, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: requiredSkillLevel
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4823999113057736717, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: learnCost
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4823999113057736717, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: description
+      value: 'Create flame on where player''s bullets hit. Flames deal Fire damage
+        to nearby enemies.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4969561338147674473, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: learnCost
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4969561338147674473, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: description
+      value: 'Shoot extra lightning bolts when player fires.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224485190991706361, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: cooldown
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224485190991706361, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: learnCost
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224485190991706361, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: description
+      value: 'Summon lightning strikes to nearby Electrocuted enemies every once
+        in a while.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224485190991706361, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: requiredSkillLevel
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5840628462726239704, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: learnCost
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5840628462726239704, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: description
+      value: "Flames created by Incendiary now can spread to enemy. \n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5840628462726239704, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: requiredSkillLevel
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6327656852420084066, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: description
+      value: 'Increase Venom damage.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6488929183860810517, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: learnCost
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6488929183860810517, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: description
+      value: 'Enemies with full stack of Frozen are sealed by ice, taking Cryo damage
+        and being unable to move for a while.
+
+'
       objectReference: {fileID: 0}
     - target: {fileID: 7083110851631250395, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
       propertyPath: m_RootOrder
@@ -2207,9 +2789,40 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7875621236571475856, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: description
+      value: 'Increase Burned chance.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7911957400862834203, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: description
+      value: 'Increase Fire damage.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420778227818968688, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: m_Name
+      value: Ignite
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584508729298648141, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: sfx
+      value: 
+      objectReference: {fileID: 972577063}
+    - target: {fileID: 8584508729298648141, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: learnCost
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8584508729298648141, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
       propertyPath: description
-      value: asdasdasdasdas
+      value: 'If Everfrost is applied to any enemy, player heals himself based on
+        missing health.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584508729298648141, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+      propertyPath: requiredSkillLevel
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
@@ -2218,8 +2831,327 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4123112667914540131, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
   m_PrefabInstance: {fileID: 3914003181380142644}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2950832725201902510 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2207365925700132250, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+  m_PrefabInstance: {fileID: 3914003181380142644}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55ee4996143a13e4787d2d163dc4cbda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &4795709119780073540 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8420778227818968688, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+  m_PrefabInstance: {fileID: 3914003181380142644}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1321413246
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4795709119780073540}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 2278350589391119314, guid: 16ed322527a09094c845f7f2988eff06, type: 2}
+  m_audioClip: {fileID: 8300000, guid: a684817aefc8a79459affc978497636b, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 30
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!4 &6061025882080312815 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7083110851631250395, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+  m_PrefabInstance: {fileID: 3914003181380142644}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6370694946143056035 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7942120393447454359, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+  m_PrefabInstance: {fileID: 3914003181380142644}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1678901569
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6370694946143056035}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 2278350589391119314, guid: 16ed322527a09094c845f7f2988eff06, type: 2}
+  m_audioClip: {fileID: 8300000, guid: a261277286f5cce4d82c73bb3a79acae, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!1 &6927046928732579454 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6228624918904922186, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
+  m_PrefabInstance: {fileID: 3914003181380142644}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &972577063
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6927046928732579454}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 2278350589391119314, guid: 16ed322527a09094c845f7f2988eff06, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 20243fba3b238d448a20648fcbc0e980, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &7049757283280610851 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6306325641260195863, guid: baf2fbc536d3bf34b8a967e6fc3f2caa, type: 3}
   m_PrefabInstance: {fileID: 3914003181380142644}
   m_PrefabAsset: {fileID: 0}
