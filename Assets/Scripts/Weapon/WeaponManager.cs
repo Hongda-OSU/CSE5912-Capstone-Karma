@@ -7,6 +7,8 @@ namespace CSE5912.PolyGamers
 {
     public class WeaponManager : MonoBehaviour
     {
+        [SerializeField] private AudioSource switchSound;
+
         public InputActions inputSchemes;
         // FPS controller and Weapons
         [SerializeField] private FPSControllerCC fpsController;
@@ -185,6 +187,7 @@ namespace CSE5912.PolyGamers
                 fpsController.SetupAnimator(carriedWeapon.GunAnimator);
 
                 PlayerSkillManager.Instance.TryActivateSetSkill();
+                switchSound.Play();
             }
             // 1. switch to secondary weapon by pressing Alpha2
             else if (inputSchemes.FPSActions.SwitchToSecondaryWeapon.triggered
@@ -199,6 +202,7 @@ namespace CSE5912.PolyGamers
                 fpsController.SetupAnimator(carriedWeapon.GunAnimator);
 
                 PlayerSkillManager.Instance.TryActivateSetSkill();
+                switchSound.Play();
             }
             // switch to 3rd weapon
             else if (inputSchemes.FPSActions.SwitchToTertiaryWeapon.triggered
@@ -213,6 +217,7 @@ namespace CSE5912.PolyGamers
                 fpsController.SetupAnimator(carriedWeapon.GunAnimator);
 
                 PlayerSkillManager.Instance.TryActivateSetSkill();
+                switchSound.Play();
             }
             // switch to 4th weapon
             else if (inputSchemes.FPSActions.SwitchToQuaternaryWeapon.triggered
@@ -227,6 +232,7 @@ namespace CSE5912.PolyGamers
                 fpsController.SetupAnimator(carriedWeapon.GunAnimator);
 
                 PlayerSkillManager.Instance.TryActivateSetSkill();
+                switchSound.Play();
             }
             // switch to 5th weapon
             else if (inputSchemes.FPSActions.SwitchToQuinaryWeapon.triggered
@@ -241,6 +247,7 @@ namespace CSE5912.PolyGamers
                 fpsController.SetupAnimator(carriedWeapon.GunAnimator);
 
                 PlayerSkillManager.Instance.TryActivateSetSkill();
+                switchSound.Play();
             }
 
         }

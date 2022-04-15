@@ -8,6 +8,8 @@ namespace CSE5912.PolyGamers
 {
     public class IngameMenu : UI
     {
+        [SerializeField] private AudioSource switchSound;
+
         private WeaponsPanelControl weaponsPanelControl;
         private StatsPanelControl statsPanelControl;
         private SkillsPanelControl skillsPanelControl;
@@ -104,6 +106,8 @@ namespace CSE5912.PolyGamers
             }
             else if (!weaponsToggle.value && currentPanel == weaponsPanel)
                 weaponsToggle.value = true;
+
+            switchSound.Play();
         }
 
         // switch to mods view
@@ -117,6 +121,8 @@ namespace CSE5912.PolyGamers
             }
             else if (!statsToggle.value && currentPanel == statsPanel)
                 statsToggle.value = true;
+
+            switchSound.Play();
         }
 
         // switch to skills view
@@ -132,6 +138,8 @@ namespace CSE5912.PolyGamers
             }
             else if (!skillsToggle.value && currentPanel == skillsPanel)
                 skillsToggle.value = true;
+
+            switchSound.Play();
         }
 
 
