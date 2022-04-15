@@ -11,6 +11,7 @@ namespace CSE5912.PolyGamers
         [SerializeField] private LayerMask layerMask;
 
         [SerializeField] private float enemyLevel;
+        [SerializeField] private float levelUpScale = 3f;
         [SerializeField] private bool isLevelledUp = false;
 
         private List<GameObject> enemyList = new List<GameObject>();
@@ -56,6 +57,7 @@ namespace CSE5912.PolyGamers
                 isLevelledUp = true;
                 enemyLevel = GameStateController.Instance.karmicLevel;
                 LevelupAll(GameStateController.Instance.karmicLevel);
+                Debug.Log("Enemies have been leveled up to Lv. " + GameStateController.Instance.karmicLevel);
             }
         }
 
@@ -79,11 +81,11 @@ namespace CSE5912.PolyGamers
         {
             foreach (GameObject enemy in enemyList)
             {
-                enemy.GetComponent<Enemy>().LevelUp(level);
+                enemy.GetComponent<Enemy>().LevelUp(level, levelUpScale);
             }
             foreach (GameObject enemy in bossList)
             {
-                enemy.GetComponent<Enemy>().LevelUp(level);
+                enemy.GetComponent<Enemy>().LevelUp(level, levelUpScale);
             }
         }
 

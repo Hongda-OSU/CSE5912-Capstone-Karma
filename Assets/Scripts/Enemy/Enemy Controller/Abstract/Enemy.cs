@@ -10,7 +10,7 @@ namespace CSE5912.PolyGamers
         [SerializeField] private bool respawnable = true;
         [Header("Enemy Properties")]
         [SerializeField] protected string enemyName;
-        [SerializeField] protected int level;
+        [SerializeField] protected int level = 1;
         [SerializeField] protected float experience;
 
         [SerializeField] protected float health;
@@ -91,12 +91,36 @@ namespace CSE5912.PolyGamers
 
         }
 
-        public void LevelUp(int level)
+        public void LevelUp(int level, float scalePerLevel)
         {
-            this.level = level;
+            if (this.level == 0)
+                this.level = 1;
 
-            //experience *= 3f;
-            // to-do
+            if (level == this.level)
+                return;
+
+            var scale = (level - this.level) * scalePerLevel;
+
+            experience *= scale;
+
+            health *= scale;
+            maxHealth *= scale;
+
+            attackDamage *= scale;
+
+            damageFactor.Physical.Value *= scale;
+            damageFactor.Fire.Value *= scale;
+            damageFactor.Cryo.Value *= scale;
+            damageFactor.Electro.Value *= scale;
+            damageFactor.Venom.Value *= scale;
+
+            resist.Physical.Value *= scale;
+            resist.Fire.Value *= scale;
+            resist.Cryo.Value *= scale;
+            resist.Electro.Value *= scale;
+            resist.Venom.Value *= scale;
+
+            this.level = level;
         }
 
         public virtual void ResetEnemy()
