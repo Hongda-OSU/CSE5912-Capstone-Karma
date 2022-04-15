@@ -19,6 +19,15 @@ namespace CSE5912.PolyGamers
         [SerializeField] private float radiusPerLevel = 3f;
 
 
+        protected override string GetBuiltSpecific()
+        {
+            var dmg = BuildSpecific("Damage", baseDamage, damagePerLevel, "", "Electro damage");
+            var num = BuildSpecific("Number of Lightning Bolts", baseTargetNumber, targetNumberPerLevel, "", "");
+            var rad = BuildSpecific("Radius", baseRadius, radiusPerLevel, "m", "");
+            var cd = BuildSpecific("Cooldown", cooldown, 0, "s", "");
+            return dmg + num + rad + cd;
+        }
+
         private void Update()
         {
             if (!isLearned || !isReady)

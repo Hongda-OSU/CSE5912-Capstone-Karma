@@ -25,6 +25,13 @@ namespace CSE5912.PolyGamers
         private Bullet prevBullet;
         private LivingFlame livingFlame;
 
+        protected override string GetBuiltSpecific()
+        {
+            var dmg = BuildSpecific("Damage", baseDamage, damagePerLevel, "", "Fire damage");
+            var duration = BuildSpecific("Duration", baseTime, timePerLevel, "s", "");
+            return dmg + duration;
+        }
+
         private void Awake()
         {
             burningEnemyList = new List<Enemy>();

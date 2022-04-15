@@ -8,6 +8,11 @@ namespace CSE5912.PolyGamers
     {
         [SerializeField] private float chancePerLevel = 0.03f;
 
+        protected override string GetBuiltSpecific()
+        {
+            var value = BuildSpecific("Frozen Chance", chancePerLevel * 100, chancePerLevel * 100, "%", "");
+            return value;
+        }
         public override bool LevelUp()
         {
             bool result = base.LevelUp();

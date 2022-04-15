@@ -25,6 +25,15 @@ namespace CSE5912.PolyGamers
 
         private Firearms buffedWeapon;
 
+        protected override string GetBuiltSpecific()
+        {
+            var drt = BuildSpecific("Duration", duration, 0, "s", "");
+            var dmg = BuildSpecific("Elemental Damage", damageUp * 100, 0, "%", "");
+            var chc = BuildSpecific("Debuff Chance", chanceUp * 100, 0, "%", "");
+            var cd = BuildSpecific("Cooldown", cooldown, 0, "s", "");
+            return drt + dmg + chc + cd;
+        }
+
         private void Start()
         {
             action = InputManager.Instance.InputSchemes.PlayerActions.MainSkill;

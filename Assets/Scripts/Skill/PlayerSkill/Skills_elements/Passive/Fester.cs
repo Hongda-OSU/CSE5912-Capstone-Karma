@@ -16,6 +16,13 @@ namespace CSE5912.PolyGamers
         [SerializeField] private float baseDamage = 0.1f;
         [SerializeField] private float damagePerLevel = 0.01f;
 
+        protected override string GetBuiltSpecific()
+        {
+            var dmg = BuildSpecific("Damage", baseDamage, damagePerLevel, "%", "of target's max health");
+            var trigger = BuildSpecific("Trigger Time", triggerTime, timePerLevel, "s", "");
+            return dmg + trigger;
+        }
+
         private void Update()
         {
             if (EnemyManager.Instance == null)

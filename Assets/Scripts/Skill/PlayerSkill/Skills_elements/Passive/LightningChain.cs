@@ -23,6 +23,13 @@ namespace CSE5912.PolyGamers
 
         [SerializeField] private AudioSource sfx;
 
+        protected override string GetBuiltSpecific()
+        {
+            var dmg = BuildSpecific("Damage", baseDamage, damagePerLevel, "", "Cryo damage");
+            var chance = BuildSpecific("Chance", baseChance * 100, chancePerLevel * 100, "%", "");
+            var num = BuildSpecific("Number of Targets", baseLightningNumber, lightningNumberPerLevel, "", "");
+            return dmg + chance + num;
+        }
         private void Update()
         {
             var target = PlayerManager.Instance.HitByBullet;

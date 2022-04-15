@@ -18,6 +18,14 @@ namespace CSE5912.PolyGamers
         public float radius = 30f;
         public float speed = 5f;
 
+        protected override string GetBuiltSpecific()
+        {
+            var stk = BuildSpecific("Number of Flames per Tracked Enemy", baseStack, stackPerLevel, "", "flames per enemy");
+            var duration = BuildSpecific("Duration", baseTime, timePerLevel, "s", "");
+            var rad = BuildSpecific("Radius", radius, 0, "m", "");
+            return stk + duration + rad;
+        }
+
         public override bool LevelUp()
         {
             bool result = base.LevelUp();

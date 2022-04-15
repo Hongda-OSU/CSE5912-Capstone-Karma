@@ -15,6 +15,13 @@ namespace CSE5912.PolyGamers
         [SerializeField] private float baseFrozenTime = 2f;
         [SerializeField] private float frozenTimePerLevel = 0.3f;
 
+        protected override string GetBuiltSpecific()
+        {
+            var dmg = BuildSpecific("Damage", baseDamage, damagePerLevel, "", "Cryo damage");
+            var time = BuildSpecific("Frozen Time", baseFrozenTime, frozenTimePerLevel, "s", "");
+            return dmg + time;
+        }
+
         private void Update()
         {
             if (!isLearned)

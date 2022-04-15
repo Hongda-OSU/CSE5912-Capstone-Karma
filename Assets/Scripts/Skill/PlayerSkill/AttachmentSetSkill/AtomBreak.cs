@@ -25,6 +25,11 @@ namespace CSE5912.PolyGamers
         [SerializeField] private AudioClip clipIn;
         [SerializeField] private AudioClip clipOut;
 
+        protected override string GetBuiltSpecific()
+        {
+            return "";
+        }
+
         private void Awake()
         {
             initRadiaLevel = radiaBlur.Level;

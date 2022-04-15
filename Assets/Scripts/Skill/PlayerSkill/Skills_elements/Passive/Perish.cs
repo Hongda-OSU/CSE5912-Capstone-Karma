@@ -14,6 +14,12 @@ namespace CSE5912.PolyGamers
         [SerializeField] private float triggerHealthPerLevel = 0.015f;
 
 
+        protected override string GetBuiltSpecific()
+        {
+            var dmg = BuildSpecific("Execution Health", baseTriggerHealth * 100, triggerHealthPerLevel * 100, "%", "of target's max health");
+            return dmg;
+        }
+
         private void Update()
         {
             var target = PlayerManager.Instance.HitByBullet;

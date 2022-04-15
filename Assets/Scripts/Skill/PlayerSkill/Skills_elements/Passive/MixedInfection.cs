@@ -8,8 +8,6 @@ namespace CSE5912.PolyGamers
     {
 
         [Header("MixedInfection")]
-        [SerializeField] private GameObject vfxPrefab;
-
         [SerializeField] private int baseMaxStack = 6;
         [SerializeField] private int maxStackPerLevel = 1;
 
@@ -36,6 +34,13 @@ namespace CSE5912.PolyGamers
 
             float time = baseTime + timePerLevel * (level - 1);
             target.Infected.Duration = time;
+        }
+
+        protected override string GetBuiltSpecific()
+        {
+            var stk = BuildSpecific("Max Stack", baseMaxStack, maxStackPerLevel, "", "");
+            var time = BuildSpecific("Duration", baseTime, timePerLevel, "s", "");
+            return stk + time;
         }
     }
 }

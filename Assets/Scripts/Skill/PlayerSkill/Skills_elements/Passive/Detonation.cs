@@ -13,7 +13,13 @@ namespace CSE5912.PolyGamers
 
         [SerializeField] private float baseDamage = 200f;
         [SerializeField] private float damagePerLevel = 50f;
-        
+
+        protected override string GetBuiltSpecific()
+        {
+            var dmg = BuildSpecific("Damage", baseDamage, damagePerLevel, "", "Electro damage");
+            var time = BuildSpecific("Trigger Time", triggerTime, 0, "s", "");
+            return dmg + time;
+        }
 
         private void Update()
         {

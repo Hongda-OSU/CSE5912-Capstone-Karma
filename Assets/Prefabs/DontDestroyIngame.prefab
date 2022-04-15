@@ -1246,6 +1246,11 @@ PrefabInstance:
       propertyPath: sfx
       value: 
       objectReference: {fileID: 6615771458968464640}
+    - target: {fileID: 698742162, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: description
+      value: Melee attack is upgraded to a unity melee dash attack, that is quicker
+        and can move a longer distance.
+      objectReference: {fileID: 0}
     - target: {fileID: 698742163, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
       propertyPath: m_audioClip
       value: 
@@ -1258,6 +1263,12 @@ PrefabInstance:
       propertyPath: icon
       value: 
       objectReference: {fileID: 21300000, guid: fe6fd6dd7231b454c95686f4516be780, type: 3}
+    - target: {fileID: 939211913, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: description
+      value: Player is granted the ability to jump again in the air and release the
+        strength of the deep swirl underneath, which then keep drawing enemies near
+        by into its center.
+      objectReference: {fileID: 0}
     - target: {fileID: 1374157010, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
       propertyPath: icon
       value: 
@@ -1294,6 +1305,63 @@ PrefabInstance:
       propertyPath: icon
       value: 
       objectReference: {fileID: 21300000, guid: eb93295deebd72f449ca8aff6f100469, type: 3}
+    - target: {fileID: 2051531523, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: description
+      value: The soul dropped by player when killed is tainted by the power of void,
+        which grants player an extra ability boost for a while on pickup.
+      objectReference: {fileID: 0}
+    - target: {fileID: 267849936195883287, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: learnCost
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 267849936195883287, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: description
+      value: 'Enemies with full stack of Infected are executed if their health is
+        low enough.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 267849936195883287, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: requiredSkillLevel
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 508571962541305955, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: description
+      value: 'Increase Infected chance.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 749556927264792375, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: description
+      value: 'Increase Frozen chance.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 851249408358740688, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: learnCost
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 851249408358740688, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: description
+      value: 'Flames created by Incendiary now automatically track to nearby enemies.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 851249408358740688, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: requiredSkillLevel
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 887636940730770333, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: learnCost
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 887636940730770333, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: description
+      value: 'Enemies with full stack of Infected spread poison fog, stacking Infected
+        to nearby enemies.
+
+'
+      objectReference: {fileID: 0}
     - target: {fileID: 1053333844059208370, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
       propertyPath: pickupSound
       value: 
@@ -1318,6 +1386,23 @@ PrefabInstance:
       propertyPath: isLearned
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1082636342024462559, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: learnCost
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1082636342024462559, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: description
+      value: 'Comprehend the mystery of elements, enhance elemental damage and chance
+        to apply debuff.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1102693465820981591, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: description
+      value: 'Increase Electrocuted resist reduction.
+
+'
+      objectReference: {fileID: 0}
     - target: {fileID: 1132428565656182083, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1327,9 +1412,46 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1206595473586739584, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: learnCost
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206595473586739584, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: description
+      value: "If player's health is low enough, heal player based on max health and
+        create an area that keeps dealing Cryo damage and applies Frozen to enemies
+        in it. \n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206595473586739584, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
       propertyPath: requiredSkill
       value: 
       objectReference: {fileID: 8303660992716309309}
+    - target: {fileID: 1206595473586739584, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: requiredSkillLevel
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1348199088892992545, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: learnCost
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1348199088892992545, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: baseDamage
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 1348199088892992545, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: description
+      value: 'Once the Electrocuted stack of an enemy reaches max, the enemy will
+        trigger an explosion in several seconds.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1348199088892992545, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: damagePerLevel
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1348199088892992545, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: requiredSkillLevel
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1742487286542249136, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
       propertyPath: damage
       value: 111
@@ -1350,6 +1472,45 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2190423975437302744, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: description
+      value: 'Increase Frozen slowdown.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2573245139258300951, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: description
+      value: 'Increase Electrocuted chance.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2950832725201902510, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: learnCost
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2950832725201902510, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: description
+      value: 'Once player is hit, release a nova that deals Cryo damage and applies
+        Frozen to nearby enemies.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2950832725201902510, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: requiredSkillLevel
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3044432642557315328, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: description
+      value: 'Increase Electro damage.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3109864175613091170, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: description
+      value: 'Increase Cryo damage.
+
+'
+      objectReference: {fileID: 0}
     - target: {fileID: 3302887819601688399, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
       propertyPath: maxShield_armor
       value: 10
@@ -1362,10 +1523,59 @@ PrefabInstance:
       propertyPath: elementalDamageReduction
       value: 0.25
       objectReference: {fileID: 0}
+    - target: {fileID: 3364984487554631040, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: learnCost
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3364984487554631040, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: description
+      value: 'If an enemy keeps full stack of Infected for a period of time, it takes
+        a Venom damage based on its max health.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3364984487554631040, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: requiredSkillLevel
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3411284260568864161, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
       propertyPath: sfx
       value: 
       objectReference: {fileID: 1321413246}
+    - target: {fileID: 3411284260568864161, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: learnCost
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3411284260568864161, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: description
+      value: 'Enemies killed by player will explode and deal Fire damage.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3411284260568864161, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: requiredSkillLevel
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3863972309679479814, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: learnCost
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3863972309679479814, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: description
+      value: 'Increase the max stack and duration of Infected.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3863972309679479814, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: requiredSkillLevel
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3869791618654709250, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: description
+      value: 'Increase Burned damage.
+
+'
+      objectReference: {fileID: 0}
     - target: {fileID: 3914003179883955252, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
       propertyPath: health
       value: 100
@@ -1502,17 +1712,134 @@ PrefabInstance:
       propertyPath: OutputAudioMixerGroup
       value: 
       objectReference: {fileID: 2278350589391119314, guid: 16ed322527a09094c845f7f2988eff06, type: 2}
+    - target: {fileID: 4398285216383789568, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: description
+      value: 'Increase Infected damage.
+
+'
+      objectReference: {fileID: 0}
     - target: {fileID: 4561850226997704663, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
       propertyPath: sfx
       value: 
       objectReference: {fileID: 171102532}
+    - target: {fileID: 4561850226997704663, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: learnCost
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4561850226997704663, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: description
+      value: 'Create lightning chains between Electrocuted enemies, dealing Electro
+        damage.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4561850226997704663, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: requiredSkillLevel
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4716139705190349433, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
       propertyPath: sfx
       value: 
       objectReference: {fileID: 972577063}
+    - target: {fileID: 4716139705190349433, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: learnCost
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4716139705190349433, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: description
+      value: 'If Everfrost is applied to any enemy, player heals himself based on
+        missing health.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4716139705190349433, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: requiredSkillLevel
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4795709119780073540, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
       propertyPath: m_Name
       value: Ignite
+      objectReference: {fileID: 0}
+    - target: {fileID: 6564707765027342756, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: description
+      value: 'Increase Burned chance.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6601642024818587695, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: description
+      value: 'Increase Fire damage.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7025913688053335894, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: description
+      value: 'Increase Venom damage.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7448744342446724076, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: learnCost
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7448744342446724076, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: description
+      value: "Flames created by Incendiary now can spread to enemy. \n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7448744342446724076, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: requiredSkillLevel
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7808146165607294241, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: learnCost
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7808146165607294241, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: description
+      value: 'Enemies with full stack of Frozen are sealed by ice, taking Cryo damage
+        and being unable to move for a while.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261352770236784477, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: learnCost
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261352770236784477, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: description
+      value: 'Shoot extra lightning bolts when player fires.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404592689331478073, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: learnCost
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404592689331478073, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: description
+      value: 'Create flame on where player''s bullets hit. Flames deal Fire damage
+        to nearby enemies.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 9137888023880466125, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: cooldown
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9137888023880466125, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: learnCost
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9137888023880466125, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: description
+      value: 'Summon lightning strikes to nearby Electrocuted enemies every once
+        in a while.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 9137888023880466125, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: requiredSkillLevel
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}

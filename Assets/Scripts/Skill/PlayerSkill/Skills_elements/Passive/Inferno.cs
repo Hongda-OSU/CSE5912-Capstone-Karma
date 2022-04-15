@@ -8,6 +8,13 @@ namespace CSE5912.PolyGamers
     {
         [Header("Inferno")]
         [SerializeField] Incendiary incendiary;
+
+
+        protected override string GetBuiltSpecific()
+        {
+            return "";
+        }
+
         public override bool LevelUp()
         {
             bool result = base.LevelUp();

@@ -21,6 +21,14 @@ namespace CSE5912.PolyGamers
         [SerializeField] private float boltTimeGap = 0.1f;
         [SerializeField] private Vector3 offset;
 
+        protected override string GetBuiltSpecific()
+        {
+            var dmg = BuildSpecific("Damage", baseDamage, damagePerLevel, "", "Electro damage");
+            var num = BuildSpecific("Number of Lightning Bolts", baseLightningNumber, lightningNumberPerLevel, "", "");
+            var cd = BuildSpecific("Cooldown", cooldown, 0, "s", "");
+            return dmg + num + cd;
+        }
+
         private void Update()
         {
             if (WeaponManager.Instance.CarriedWeapon.wasBulletFiredThisFrame)

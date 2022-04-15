@@ -16,6 +16,13 @@ namespace CSE5912.PolyGamers
         [SerializeField] private float baseRadius = 3f;
         [SerializeField] private float radiusPerLevel = 0.5f;
 
+        protected override string GetBuiltSpecific()
+        {
+            var time = BuildSpecific("Duration", baseTime, timePerLevel, "s", "");
+            var rad = BuildSpecific("Radius", baseRadius, radiusPerLevel, "m", "");
+            var cd = BuildSpecific("Cooldown", cooldown, 0, "s", "");
+            return time + rad + cd;
+        }
         private void Update()
         {
             if (EnemyManager.Instance == null)

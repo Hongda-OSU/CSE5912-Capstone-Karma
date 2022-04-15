@@ -20,6 +20,13 @@ namespace CSE5912.PolyGamers
 
         private List<Enemy> performed;
 
+        protected override string GetBuiltSpecific()
+        {
+            var dmg = BuildSpecific("Damage", baseDamage, damagePerLevel, "", "Fire damage");
+            var rad = BuildSpecific("Radius", baseRadius, radiusPerLevel, "m", "");
+            return dmg + rad;
+        }
+
         private void Awake()
         {
             performed = new List<Enemy>();

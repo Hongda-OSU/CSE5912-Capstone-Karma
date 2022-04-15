@@ -8,6 +8,12 @@ namespace CSE5912.PolyGamers
     {
         [SerializeField] private float slowPerLevel = 0.04f;
 
+        protected override string GetBuiltSpecific()
+        {
+            var value = BuildSpecific("Slow", slowPerLevel * 100, slowPerLevel * 100, "%", "");
+            return value;
+        }
+
         public override bool LevelUp()
         {
             bool result = base.LevelUp();

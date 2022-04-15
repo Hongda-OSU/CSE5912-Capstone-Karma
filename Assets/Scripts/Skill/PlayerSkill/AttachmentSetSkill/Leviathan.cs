@@ -21,6 +21,11 @@ namespace CSE5912.PolyGamers
 
         [SerializeField] private LayerMask layerMask;
 
+        protected override string GetBuiltSpecific()
+        {
+            return "";
+        }
+
         private void Update()
         {
             if (!isLearned)

@@ -8,6 +8,12 @@ namespace CSE5912.PolyGamers
     {
         [SerializeField] private float percentageDamagePerLevel = 0.02f;
 
+        protected override string GetBuiltSpecific()
+        {
+            var value = BuildSpecific("Venom Damage", percentageDamagePerLevel * 100, percentageDamagePerLevel * 100, "%", "");
+            return value;
+        }
+
         private void Update()
         {
             if (isReady)

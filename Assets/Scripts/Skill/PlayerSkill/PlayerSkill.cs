@@ -9,6 +9,7 @@ namespace CSE5912.PolyGamers
         [SerializeField] protected string skillName;
 
         [SerializeField] protected PlayerSkill requiredSkill;
+        [SerializeField] protected int requiredSkillLevel;
 
         [SerializeField] protected bool isLearned = false;
 
@@ -22,7 +23,7 @@ namespace CSE5912.PolyGamers
 
         [SerializeField] protected SkillType type;
 
-        [TextArea(5, 10)]
+        [TextArea(20, 30)]
         [SerializeField] protected string description;
 
         public enum SkillType
@@ -40,8 +41,9 @@ namespace CSE5912.PolyGamers
             if (level >= maxLevel)
                 return false;
 
-            if (requiredSkill != null && !requiredSkill.IsLeanred)
+            if (requiredSkill != null && requiredSkill.level < requiredSkillLevel)
                 return false;
+
 
             if (level == 0 && playerSkill.SkillPoints >= learnCost)
             {
@@ -73,9 +75,49 @@ namespace CSE5912.PolyGamers
             level = 0;
         }
 
-        // todo
-        //public abstract string GetSpecific();
+        protected string BuildSpecific(string tag, float baseValue, float valuePerLevel, string unit, string suffix)
+        {
+            string result = "\n\n";
 
+            result += tag + ":\n";
+
+            for (int i = 0; i < maxLevel; i++)
+            {
+                string value = baseValue + valuePerLevel * i + unit;
+                if (i < maxLevel - 1)
+                {
+                    value += "/";
+                }
+                else
+                {
+                    value += " " + suffix;
+                }
+                result += value;
+            }
+
+            return result;
+        }
+
+        protected string GetRequirements()
+        {
+            var learn = "";
+            if (learnCost > 0)
+                learn = "\nLearn Cost: " + learnCost;
+
+            var levelup = "";
+            if (levelupCost > 0)
+                levelup = "\nUpgrade Cost: " + levelupCost;
+
+            var require = "";
+            if (requiredSkill != null)
+            {
+                require += "\nRequired: " + requiredSkill.Name + " Lv. " + requiredSkillLevel;
+            }
+
+            return "\n" + learn + levelup + require;
+        } 
+
+        abstract protected string GetBuiltSpecific();
 
         public string Name { get { return skillName; } }
         public PlayerSkill RequiredSkill { get { return requiredSkill; } set { requiredSkill = value; } }
@@ -83,6 +125,6 @@ namespace CSE5912.PolyGamers
         public int Level { get { return level; } }
         public SkillType Type { get { return type; } }
         public Sprite Icon { get { return icon; } }
-        public string Description { get { return description; } }
+        public string Description { get { return description + GetBuiltSpecific() + GetRequirements(); } }
     }
 }

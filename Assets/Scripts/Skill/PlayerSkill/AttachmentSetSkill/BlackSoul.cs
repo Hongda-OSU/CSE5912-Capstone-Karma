@@ -13,6 +13,11 @@ namespace CSE5912.PolyGamers
 
         private GameObject originSoulPoint;
 
+        protected override string GetBuiltSpecific()
+        {
+            return "";
+        }
+
         private void Start()
         {
             originSoulPoint = RespawnManager.Instance.soulPointPrefab;

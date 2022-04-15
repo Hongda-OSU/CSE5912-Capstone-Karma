@@ -150,6 +150,7 @@ namespace CSE5912.PolyGamers
             specificPanel.Q<Label>("Name").text = skill.Name;
             specificPanel.Q<Label>("Type").text = skill.Type.ToString();
             specificPanel.Q<Label>("Description").text = skill.Description;
+            specificPanel.Q<Label>("Citation").text = "";
 
             specificPanel.style.opacity = 1f;
             specificPanel.style.display = DisplayStyle.Flex;

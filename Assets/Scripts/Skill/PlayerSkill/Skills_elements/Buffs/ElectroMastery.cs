@@ -8,6 +8,12 @@ namespace CSE5912.PolyGamers
     {
         [SerializeField] private float reductionPerLevel = 0.06f;
 
+        protected override string GetBuiltSpecific()
+        {
+            var value = BuildSpecific("Resist Reduction", reductionPerLevel * 100, reductionPerLevel * 100, "%", "");
+            return value;
+        }
+
         public override bool LevelUp()
         {
             bool result = base.LevelUp();

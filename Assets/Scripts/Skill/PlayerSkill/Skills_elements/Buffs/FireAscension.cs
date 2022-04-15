@@ -8,6 +8,12 @@ namespace CSE5912.PolyGamers
     {
         [SerializeField] private float percentageDamagePerLevel = 0.02f;
 
+        protected override string GetBuiltSpecific()
+        {
+            var value = BuildSpecific("Fire Damage", percentageDamagePerLevel * 100, percentageDamagePerLevel * 100, "%", "");
+            return value;
+        }
+
         public override bool LevelUp()
         {
             bool result = base.LevelUp();

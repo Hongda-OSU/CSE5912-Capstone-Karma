@@ -8,6 +8,12 @@ namespace CSE5912.PolyGamers
     {
         [SerializeField] private float damagePerLevel = 5f;
 
+        protected override string GetBuiltSpecific()
+        {
+            var value = BuildSpecific("Damage", damagePerLevel, damagePerLevel, "", "Fire damage");
+            return value;
+        }
+
         public override bool LevelUp()
         {
             bool result = base.LevelUp();

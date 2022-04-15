@@ -22,6 +22,11 @@ namespace CSE5912.PolyGamers
         private static MeleeAttack instance;
         public static MeleeAttack Instance { get { return instance; } }
 
+        protected override string GetBuiltSpecific()
+        {
+            return "";
+        }
+
         private void Awake()
         {
             if (instance != null && instance != this)

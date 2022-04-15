@@ -16,6 +16,13 @@ namespace CSE5912.PolyGamers
         [SerializeField] private float baseRadius = 3f;
         [SerializeField] private float radiusPerLevel = 1f;
 
+        protected override string GetBuiltSpecific()
+        {
+            var dmg = BuildSpecific("Damage", baseDamage, damagePerLevel, "", "Cryo damage");
+            var rad = BuildSpecific("Radius", baseRadius, radiusPerLevel, "m", "");
+            return dmg + rad;
+        }
+
         private void Start()
         {
             PlayerStats.Instance.TakeDamageEvent.AddListener(Perform);

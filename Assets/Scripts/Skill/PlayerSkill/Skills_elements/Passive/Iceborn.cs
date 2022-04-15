@@ -15,6 +15,12 @@ namespace CSE5912.PolyGamers
 
         [SerializeField] private AudioSource sfx;
 
+        protected override string GetBuiltSpecific()
+        {
+            var heal = BuildSpecific("Damage", baseRevive * 100, revivePerLevel * 100, "%", "of player's missing health");
+            return heal;
+        }
+
         private void Update()
         {
             if (!isLearned || !isReady)

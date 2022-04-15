@@ -20,6 +20,16 @@ namespace CSE5912.PolyGamers
 
         [SerializeField] private float triggerHealthPercentage = 0.3f;
 
+        protected override string GetBuiltSpecific()
+        {
+            var time = BuildSpecific("Duration", baseTime, timePerLevel, "s", "");
+            var rad = BuildSpecific("Radius", baseRadius, radiusPerLevel, "m", "");
+            var heal = BuildSpecific("Healing", baseHeal * 100, healPerLevel * 100, "%", "of player's max health");
+            var trigger = BuildSpecific("Trigger Health", triggerHealthPercentage * 100, 0, "%", "of player's max health");
+            var cd = BuildSpecific("Cooldown", cooldown, 0, "s", "");
+            return time + rad + heal + trigger + cd;
+        }
+
         private void Update()
         {
             float healthPercentage = PlayerStats.Instance.Health / PlayerStats.Instance.MaxHealth;

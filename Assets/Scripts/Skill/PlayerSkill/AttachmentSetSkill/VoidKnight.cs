@@ -24,6 +24,11 @@ namespace CSE5912.PolyGamers
         private CharacterController cc;
         private GameObject player;
 
+        protected override string GetBuiltSpecific()
+        {
+            return "";
+        }
+
         private void Start()
         {
             player = PlayerManager.Instance.Player;
