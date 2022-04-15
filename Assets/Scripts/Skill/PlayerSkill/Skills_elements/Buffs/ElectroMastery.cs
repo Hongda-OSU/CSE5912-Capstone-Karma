@@ -6,12 +6,13 @@ namespace CSE5912.PolyGamers
 {
     public class ElectroMastery : PlayerSkill
     {
-        [SerializeField] private float reductionPerLevel = 0.06f;
+        [SerializeField] private float reductionPerLevel = 0.012f;
 
         protected override string GetBuiltSpecific()
         {
-            var value = BuildSpecific("Resist Reduction", reductionPerLevel * 100, reductionPerLevel * 100, "%", "");
-            return value;
+            var value = BuildSpecific("Resist Reduction", reductionPerLevel * 100, reductionPerLevel * 100, "%", "per stack");
+            var curr = "\n\nBase resist reduction per stack: \n" + PlayerStats.Instance.ElectrocutedResistReductionPerStack * 100 + "%";
+            return value + curr;
         }
 
         public override bool LevelUp()

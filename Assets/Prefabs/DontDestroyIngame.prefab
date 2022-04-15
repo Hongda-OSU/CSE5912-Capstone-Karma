@@ -1403,6 +1403,10 @@ PrefabInstance:
 
 '
       objectReference: {fileID: 0}
+    - target: {fileID: 1102693465820981591, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: reductionPerLevel
+      value: 0.012
+      objectReference: {fileID: 0}
     - target: {fileID: 1132428565656182083, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1477,6 +1481,10 @@ PrefabInstance:
       value: 'Increase Frozen slowdown.
 
 '
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190423975437302744, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: slowPerLevel
+      value: 0.008
       objectReference: {fileID: 0}
     - target: {fileID: 2573245139258300951, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
       propertyPath: description
@@ -1575,6 +1583,10 @@ PrefabInstance:
       value: 'Increase Burned damage.
 
 '
+      objectReference: {fileID: 0}
+    - target: {fileID: 3869791618654709250, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: damagePerLevel
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3914003179883955252, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
       propertyPath: health
@@ -1717,6 +1729,10 @@ PrefabInstance:
       value: 'Increase Infected damage.
 
 '
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398285216383789568, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: damagePerLevel
+      value: 0.0012
       objectReference: {fileID: 0}
     - target: {fileID: 4561850226997704663, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
       propertyPath: sfx

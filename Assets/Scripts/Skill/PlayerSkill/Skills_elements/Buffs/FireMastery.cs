@@ -6,12 +6,13 @@ namespace CSE5912.PolyGamers
 {
     public class FireMastery : PlayerSkill
     {
-        [SerializeField] private float damagePerLevel = 5f;
+        [SerializeField] private float damagePerLevel = 1f;
 
         protected override string GetBuiltSpecific()
         {
-            var value = BuildSpecific("Damage", damagePerLevel, damagePerLevel, "", "Fire damage");
-            return value;
+            var value = BuildSpecific("Damage", damagePerLevel, damagePerLevel, "", "Fire damage per stack");
+            var curr = "\n\nBase damage per stack: \n" + PlayerStats.Instance.BurnedDamagePerStack;
+            return value + curr;
         }
 
         public override bool LevelUp()

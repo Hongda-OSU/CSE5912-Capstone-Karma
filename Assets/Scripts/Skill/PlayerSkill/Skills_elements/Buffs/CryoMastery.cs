@@ -6,12 +6,13 @@ namespace CSE5912.PolyGamers
 {
     public class CryoMastery : PlayerSkill
     {
-        [SerializeField] private float slowPerLevel = 0.04f;
+        [SerializeField] private float slowPerLevel = 0.008f;
 
         protected override string GetBuiltSpecific()
         {
-            var value = BuildSpecific("Slow", slowPerLevel * 100, slowPerLevel * 100, "%", "");
-            return value;
+            var value = BuildSpecific("Slow", slowPerLevel * 100, slowPerLevel * 100, "%", "per stack");
+            var curr = "\n\nBase slowdown per stack: \n" + PlayerStats.Instance.FrozenSlowdownPerStack * 100 + "%";
+            return value + curr;
         }
 
         public override bool LevelUp()
