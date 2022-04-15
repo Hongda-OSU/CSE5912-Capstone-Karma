@@ -171,6 +171,7 @@ namespace CSE5912.PolyGamers
 
             weaponBonus = new WeaponBonus(rarity);
             shootEvent = new UnityEvent();
+            IsHoldingTrigger = false;
         }
        
 
