@@ -61,7 +61,8 @@ namespace CSE5912.PolyGamers
             frameRateList.Add(30);
             frameRateList.Add(60);
             frameRateList.Add(120);
-            currentFrameRateIndex = 0;
+            frameRateList.Add(300);
+            currentFrameRateIndex = 1;
             FrameRateButtonPressed();
 
             isFullScreened = false;
