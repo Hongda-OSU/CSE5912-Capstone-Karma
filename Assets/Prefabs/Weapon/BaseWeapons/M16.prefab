@@ -3354,6 +3354,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: 
   weaponType: 2
+  weaponClass: 2
   rarity: 0
   damage: 14
   element: 0

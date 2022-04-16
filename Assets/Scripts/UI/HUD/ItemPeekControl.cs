@@ -87,7 +87,7 @@ namespace CSE5912.PolyGamers
 
             title.Q<Label>("Name").text = weapon.WeaponName;
             title.Q<Label>("Name").style.color = color;
-            title.Q<Label>("Type").text = weapon.Type.ToString();
+            title.Q<Label>("Type").text = weapon.Class.ToString();
 
             icon.style.backgroundImage = new StyleBackground(weapon.IconImage);
             icon.style.unityBackgroundImageTintColor = color;

@@ -11,6 +11,7 @@ namespace CSE5912.PolyGamers
         [Header("WeaponStats")]
         [SerializeField] private string weaponName;
         [SerializeField] private WeaponType weaponType;
+        [SerializeField] private WeaponClass weaponClass;
         [SerializeField] private WeaponRarity rarity = WeaponRarity.Common;
         [SerializeField] private float damage = 0f;
         [SerializeField] private Element.Type element;
@@ -39,7 +40,15 @@ namespace CSE5912.PolyGamers
             UZI,
             P90,
             MP5,
-            ShotGun
+            Benelli,
+        }
+
+        public enum WeaponClass
+        {
+            Pistol,
+            SMG,
+            AR,
+            Shotgun,
         }
 
         [Header("WeaponEffect")]
@@ -448,7 +457,7 @@ namespace CSE5912.PolyGamers
                                 ref tmp_RefGunCameraPosition,
                                 Time.unscaledDeltaTime * 2);
                             break;
-                        case WeaponType.ShotGun:
+                        case WeaponType.Benelli:
                             if (currentAttachment.AttachmentRealName == "Scope RedDotOuter A")
                                 aimingTo = new Vector3(0, -0.02f, 0.03f);
                             else
@@ -578,7 +587,8 @@ namespace CSE5912.PolyGamers
         }
 
         public string WeaponName { get { return weaponName; } set { weaponName = value; } }
-        public WeaponType Type { get { return weaponType; } } 
+        public WeaponType Type { get { return weaponType; } }
+        public WeaponClass Class { get { return weaponClass; } }
         public WeaponRarity Rarity { get { return rarity; } set { rarity = value; } }
         public float Damage { get { return damage; } set { damage = value; } }
         public Element.Type Element { get { return element; } set { element = value; } }

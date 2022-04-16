@@ -11186,6 +11186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: 
   weaponType: 7
+  weaponClass: 1
   rarity: 0
   damage: 9
   element: 0

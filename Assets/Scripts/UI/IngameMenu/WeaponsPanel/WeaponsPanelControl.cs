@@ -505,24 +505,19 @@ namespace CSE5912.PolyGamers
             VisualElement bonus = specificPanel.Q<VisualElement>("WeaponSpecific").Q<VisualElement>("Bonus");
 
 
-            title.Q<Label>("Name").text = weapon.WeaponName;
+            title.Q<Label>("Name").text = weapon.Type.ToString();
             title.Q<Label>("Name").style.color = color;
 
-            title.Q<Label>("Type").text = weapon.Type.ToString();
+            title.Q<Label>("Type").text = weapon.Class.ToString();
 
 
-            //specific.Q<VisualElement>("Rarity").Q<Label>("Label").style.color = rarityToColor[weapon.Rarity];
             specific.Q<VisualElement>("Rarity").Q<Label>("Data").text = weapon.Rarity.ToString();
             specific.Q<VisualElement>("Rarity").Q<Label>("Data").style.color = color;
 
-            //specific.Q<VisualElement>("Damage").Q<Label>("Label").style.color = rarityToColor[weapon.Rarity];
             specific.Q<VisualElement>("Damage").Q<Label>("Data").text = weapon.Damage.ToString();
 
-            //specific.Q<VisualElement>("Element").Q<Label>("Label").style.color = rarityToColor[weapon.Rarity];
             specific.Q<VisualElement>("Element").Q<Label>("Data").text = RichTextHelper.WrapInColor(weapon.Element.ToString(), weapon.Element);
-            //specific.Q<VisualElement>("Element").Q<Label>("Data").style.color = Element.Instance.TypeToColor[weapon.Element];
 
-            //specific.Q<VisualElement>("Ammo").Q<Label>("Label").style.color = rarityToColor[weapon.Rarity];
             specific.Q<VisualElement>("Ammo").Q<Label>("Data").text = weapon.MaxAmmoPerMag.ToString();
 
 
