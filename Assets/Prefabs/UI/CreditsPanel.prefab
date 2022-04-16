@@ -47,10 +47,38 @@ MonoBehaviour:
   uiDocument: {fileID: 0}
   fadingTime: 1
   credits:
-  - '<size=35>By</size>
+  - '<size=30>By</size>
 
     Poly Gamers'
-  - Hongda Lin    Zijie Lian    Baihua Yang
-  - '?'
+  - "Hongda Lin    Zijie Lian    Baihua Yang\n<font=\"SourceHanSerif-Regular SDF\">\u6797\u6CD3\u8FBE\t\u7EC3\u5B50\u6770\t\u6768\u4F70\u6866\n</font>"
+  - '<size=30>Music</size>
+
+    Hollow Knight
+
+    Elden Ring
+
+'
+  - '<size=30>Arts & Effects</size>
+
+    BR Monsters Animations Set 1
+
+    Hovl Studio
+
+    Low
+    Poly FPS Pack
+
+    Polygon Dungeon
+
+    Polygon Dungeon Realms
+
+    Polygon Fantasy
+    Rivals
+
+    Polygon Particle FX
+
+    Sci-Fi Arsenal'
+  gameEndingClaim: "Thanks for playing.\nYour data has been saved. \nYou can start
+    over with your current items, skills and level.\nEnemies are now stronger and
+    drop better loots. "
   isDisplaying: 0
   displayTime: 3

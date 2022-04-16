@@ -431,15 +431,9 @@ PrefabInstance:
       propertyPath: uiDocument
       value: 
       objectReference: {fileID: 697325963008044403}
-    - target: {fileID: 3010026486981923963, guid: 81c88596e5fe92d4fa0114d5bd2b60f1, type: 3}
-      propertyPath: gameEndingClaim
-      value: "Thanks for playing.\nYour data has been saved. \nYou can start over
-        with your current items, skills and level.\nEnemies are now stronger and
-        drop better loots. "
-      objectReference: {fileID: 0}
     - target: {fileID: 4891910940064807943, guid: 81c88596e5fe92d4fa0114d5bd2b60f1, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4891910940064807943, guid: 81c88596e5fe92d4fa0114d5bd2b60f1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -535,7 +529,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5949477295633595825, guid: f3e96cce9e60624478a911b4099ebe2d, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5949477295633595825, guid: f3e96cce9e60624478a911b4099ebe2d, type: 3}
       propertyPath: m_LocalPosition.x
