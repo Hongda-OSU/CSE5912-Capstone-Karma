@@ -252,7 +252,7 @@ namespace CSE5912.PolyGamers
 
 
 
-        public IEnumerator Freeze(float time)
+        public virtual IEnumerator Freeze(float time)
         {
             isFrozen = true;
             agent.isStopped = true;
@@ -268,7 +268,7 @@ namespace CSE5912.PolyGamers
 
             frozen.Stack = 0;
         }
-        public void SlowDown(float percentage)
+        public virtual void SlowDown(float percentage)
         {
             if (!isFrozen)
             {

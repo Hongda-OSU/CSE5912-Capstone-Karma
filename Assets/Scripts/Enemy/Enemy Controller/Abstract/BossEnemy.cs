@@ -63,6 +63,32 @@ namespace CSE5912.PolyGamers
             isBossFightTriggered = false;
         }
 
+
+        public override IEnumerator Freeze(float time)
+        {
+            isFrozen = true;
+            agent.isStopped = true;
+            agent.speed = 0;
+            animator.speed = 0;
+
+            yield return new WaitForSeconds(time / 2f);
+
+            isFrozen = false;
+            agent.isStopped = false;
+            agent.speed = agentSpeed;
+            animator.speed = 1;
+
+            frozen.Stack = 0;
+        }
+        public override void SlowDown(float percentage)
+        {
+            if (!isFrozen)
+            {
+                agent.speed = agentSpeed * (1 - percentage / 2f);
+                animator.speed = 1 - percentage / 2f;
+            }
+        }
+
         public bool IsBossFightTriggered { get { return playerDetected; } }
     }
 }
