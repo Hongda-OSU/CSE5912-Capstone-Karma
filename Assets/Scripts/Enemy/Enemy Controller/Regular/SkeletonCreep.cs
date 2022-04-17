@@ -21,7 +21,7 @@ namespace CSE5912.PolyGamers
             }
 
             if ((distanceToPlayer <= viewRadius && Vector3.Angle(transform.forward, directionToPlayer) < viewAngle / 2)
-                || distanceToPlayer <= closeDetectionRange || isAttackedByPlayer)
+                || distanceToPlayer <= closeDetectionRange || isAttackedByPlayer || isAggroOn)
             {
                 foundTarget = true;
                 agent.isStopped = false;

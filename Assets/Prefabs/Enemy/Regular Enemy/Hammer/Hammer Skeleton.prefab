@@ -1414,13 +1414,17 @@ MonoBehaviour:
   rotateSpeed: 90
   viewRadius: 15
   viewAngle: 135
-  closeDetectionRange: 10
+  closeDetectionRange: 3
   timeToDestroy: 5
   playerDetected: 0
   canWander: 0
   wanderAreaNumber: 0
   canPatrol: 0
   waypoints: []
+  isAggroOn: 0
+  aggro: 0
+  aggroDuration: 5
+  aggroRange: 10
 --- !u!195 &8885311757387730813
 NavMeshAgent:
   m_ObjectHideFlags: 0

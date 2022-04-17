@@ -23,7 +23,7 @@ namespace CSE5912.PolyGamers
             directionToPlayer = (player.position - transform.position).normalized;
 
             if ((distanceToPlayer <= viewRadius && Vector3.Angle(transform.forward, directionToPlayer) < viewAngle / 2)
-                || distanceToPlayer <= closeDetectionRange || isAttackedByPlayer)
+                || distanceToPlayer <= closeDetectionRange || isAttackedByPlayer || isAggroOn)
             {
 
                 foundTarget = true;

@@ -7,11 +7,18 @@ namespace CSE5912.PolyGamers
 {
     public abstract class RegularEnemy : Enemy
     {
+        [Header("Regular Enemy")]
         [Header("Path Finding")]
         [SerializeField] protected bool canWander = false;
         [SerializeField] protected float wanderAreaNumber = 0f;
         [SerializeField] protected bool canPatrol = false;
         [SerializeField] protected Transform[] waypoints;
+
+        [SerializeField] protected bool isAggroOn = false;
+        [SerializeField] private float aggro;
+        [SerializeField] private float aggroDuration = 5f;
+        [SerializeField] private float aggroRange = 10f;
+        private bool prevFound;
 
         protected virtual void Start()
         {
@@ -26,7 +33,8 @@ namespace CSE5912.PolyGamers
             base.Update();
             if (!isAlive || isFrozen)
                 return;
-            
+
+            CalculateAggro();
 
             PerformActions();
         }
@@ -36,7 +44,31 @@ namespace CSE5912.PolyGamers
 
         protected abstract void HandlePatrol();
 
+        private void CalculateAggro()
+        {
+            if (!prevFound && foundTarget)
+                aggro = aggroDuration;
 
+            isAggroOn = aggro > 0f;
+
+            if (isAggroOn)
+            {
+                Collider[] hitColliders = Physics.OverlapSphere(transform.position, aggroRange);
+
+                bool isPlayerSeen = false;
+                foreach (var hitCollider in hitColliders)
+                {
+                    if (hitCollider.gameObject.tag == "Player")
+                        isPlayerSeen = true;
+                }
+                if (!isPlayerSeen)
+                    aggro -= Time.deltaTime;
+                else
+                    aggro = aggroDuration;
+            }
+
+            prevFound = foundTarget;
+        }
         
         // These codes below are used by Eiditor for testing purpose.
         public Transform GetTransform()
