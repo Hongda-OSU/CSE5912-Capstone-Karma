@@ -19,11 +19,11 @@ namespace CSE5912.PolyGamers
 
         [SerializeField] private bool isTriggered = false;
 
-        private SphereCollider triggerCollider;
+        private Collider triggerCollider;
 
         private void Awake()
         {
-            triggerCollider = GetComponent<SphereCollider>();
+            triggerCollider = GetComponent<Collider>();
             triggerCollider.isTrigger = true;
         }
 

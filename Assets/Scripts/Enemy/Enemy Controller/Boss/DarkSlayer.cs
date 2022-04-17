@@ -265,7 +265,7 @@ namespace CSE5912.PolyGamers
             if (distanceToPlayer > attackRange - 2f)
             {
                 FPSControllerCC.Instance.AddImpact(Vector3.up, 200f);
-                FPSControllerCC.Instance.AddImpact(this.gameObject.transform.TransformDirection(Vector3.back), 150f);
+                FPSControllerCC.Instance.AddImpact(this.gameObject.transform.TransformDirection(Vector3.back), 175f);
             }
 
             StartCoroutine(Doom(transform.position));
