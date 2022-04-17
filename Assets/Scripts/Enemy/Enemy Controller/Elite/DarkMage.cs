@@ -141,7 +141,7 @@ namespace CSE5912.PolyGamers
         private void Protection()
         {
             darkNova = Instantiate(nova, transform.position + new Vector3(0,1,0), Quaternion.Euler(new Vector3(75, 0, 0)));
-            FPSControllerCC.Instance.AddImpact(this.gameObject.transform.TransformDirection(Vector3.forward), 100f);
+            FPSControllerCC.Instance.AddImpact(this.gameObject.transform.TransformDirection(Vector3.forward), 75f);
             FPSControllerCC.Instance.AddImpact(transform.up, 30f);
             Destroy(darkNova, 2f);
         }
