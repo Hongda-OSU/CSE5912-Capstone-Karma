@@ -141,7 +141,7 @@ namespace CSE5912.PolyGamers
                 Die();
         }
 
-        private void Die()
+        public void Die()
         {
             if (!isAlive)
                 return;
