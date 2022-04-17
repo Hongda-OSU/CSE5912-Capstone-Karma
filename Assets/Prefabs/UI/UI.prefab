@@ -673,7 +673,7 @@ MonoBehaviour:
   uiDocument: {fileID: 4078243331677390490}
   fadingTime: 1
   displayTime: 3
-  timeToSee: 4
+  timeToSee: 3
   previousSceneIndex: 0
   currentSceneIndex: 0
   isDisplayed: 0
