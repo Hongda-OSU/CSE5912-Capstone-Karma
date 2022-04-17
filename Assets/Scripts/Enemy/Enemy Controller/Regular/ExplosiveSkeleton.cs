@@ -9,6 +9,7 @@ namespace CSE5912.PolyGamers
         [Header("Explosion")]
         [SerializeField] private GameObject effect;
         [SerializeField] private GameObject barrel;
+        [SerializeField] private float distanceToExplode = 3f;
         private bool exploded = false;
         public GameObject Barrel => barrel;
         public bool Exploded { set { exploded = value; } }
@@ -39,7 +40,7 @@ namespace CSE5912.PolyGamers
 
                 agent.SetDestination(player.position);
 
-                if (distanceToPlayer < closeDetectionRange)
+                if (distanceToPlayer < distanceToExplode)
                 {
                     if (!exploded)
                     {
@@ -76,7 +77,7 @@ namespace CSE5912.PolyGamers
             GameObject vfx = Instantiate(effect);
             vfx.transform.position = new Vector3(transform.position.x, -0.5f, transform.position.z);
 
-            if (DistanceToPlayer < closeDetectionRange) 
+            if (DistanceToPlayer < distanceToExplode) 
             {
                 Damage damage = new Damage(attackDamage, Element.Type.Fire, this, PlayerStats.Instance);
                 if (PlayerStats.Instance.Health > 0f)

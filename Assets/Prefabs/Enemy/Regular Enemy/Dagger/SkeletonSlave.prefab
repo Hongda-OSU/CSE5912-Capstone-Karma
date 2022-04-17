@@ -1696,7 +1696,7 @@ MonoBehaviour:
   rotateSpeed: 90
   viewRadius: 15
   viewAngle: 135
-  closeDetectionRange: 3
+  closeDetectionRange: 10
   timeToDestroy: 5
   playerDetected: 0
   canWander: 0
