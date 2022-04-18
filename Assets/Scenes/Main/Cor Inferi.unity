@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_20
       objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -210,7 +214,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1195570329910516, guid: 99104113e60aced47bfd36eb0758c6c2, type: 3}
       propertyPath: m_Layer
-      value: 19
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1195570329910516, guid: 99104113e60aced47bfd36eb0758c6c2, type: 3}
       propertyPath: m_IsActive
@@ -298,6 +302,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Obelisk_03
       objectReference: {fileID: 0}
+    - target: {fileID: 148708, guid: 18a46a3340964084192d989b9cf0359a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 460760, guid: 18a46a3340964084192d989b9cf0359a, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -346,6 +354,10 @@ PrefabInstance:
     - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_37
+      objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
@@ -425,6 +437,10 @@ PrefabInstance:
     - target: {fileID: 1066581971393794, guid: 275ce8159925c14489d0467d0e9ac9c0, type: 3}
       propertyPath: m_Name
       value: FX_Lava_Rocks_Spread_01 (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1066581971393794, guid: 275ce8159925c14489d0467d0e9ac9c0, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4684897327074620, guid: 275ce8159925c14489d0467d0e9ac9c0, type: 3}
       propertyPath: m_RootOrder
@@ -512,6 +528,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_45
       objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -585,6 +605,10 @@ PrefabInstance:
     - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_33
+      objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
@@ -660,6 +684,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Hell_Spikes_05 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 1986913146536826, guid: 1d979db59fa7f1f48ac953325be2140e, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4135041391929242, guid: 1d979db59fa7f1f48ac953325be2140e, type: 3}
       propertyPath: m_RootOrder
       value: 19
@@ -722,6 +750,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1430525925}
     m_Modifications:
+    - target: {fileID: 1048357940420298, guid: 8ff94f8665d36b6419b9c053865dd1c9, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4665384389845944, guid: 8ff94f8665d36b6419b9c053865dd1c9, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -775,6 +807,10 @@ PrefabInstance:
     - target: {fileID: 1926004577517272, guid: c3fd75a8de985494d86dd032e81bf0a9, type: 3}
       propertyPath: m_Name
       value: SM_Env_Hell_Floating_Rock_Chain_06
+      objectReference: {fileID: 0}
+    - target: {fileID: 1926004577517272, guid: c3fd75a8de985494d86dd032e81bf0a9, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4873569881161632, guid: c3fd75a8de985494d86dd032e81bf0a9, type: 3}
       propertyPath: m_RootOrder
@@ -932,6 +968,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Tiles_196
       objectReference: {fileID: 0}
+    - target: {fileID: 139220, guid: 704795cfbb02b844591f900d2b76342e, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 468454, guid: 704795cfbb02b844591f900d2b76342e, type: 3}
       propertyPath: m_RootOrder
       value: 25
@@ -983,7 +1023,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1195570329910516, guid: 99104113e60aced47bfd36eb0758c6c2, type: 3}
       propertyPath: m_Layer
-      value: 19
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1195570329910516, guid: 99104113e60aced47bfd36eb0758c6c2, type: 3}
       propertyPath: m_IsActive
@@ -1069,7 +1109,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 143862027}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LeftChains
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1117,6 +1157,10 @@ PrefabInstance:
     - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_41
+      objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
@@ -1192,6 +1236,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_29
       objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -1266,6 +1314,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_02
       objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1333,7 +1385,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 171334911}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1383,6 +1435,10 @@ PrefabInstance:
     - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_38
+      objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
@@ -1524,6 +1580,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FX_Lava_Rocks_Spread_01 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1066581971393794, guid: 275ce8159925c14489d0467d0e9ac9c0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4684897327074620, guid: 275ce8159925c14489d0467d0e9ac9c0, type: 3}
       propertyPath: m_RootOrder
       value: 50
@@ -1597,6 +1657,10 @@ PrefabInstance:
     - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_26
+      objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
@@ -1674,7 +1738,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1195570329910516, guid: 99104113e60aced47bfd36eb0758c6c2, type: 3}
       propertyPath: m_Layer
-      value: 19
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1195570329910516, guid: 99104113e60aced47bfd36eb0758c6c2, type: 3}
       propertyPath: m_IsActive
@@ -1815,6 +1879,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_39
       objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -1885,6 +1953,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 460986814}
     m_Modifications:
+    - target: {fileID: 1070019982353598, guid: 7b84683c77802a74e94f461386c4bb60, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4452586911148624, guid: 7b84683c77802a74e94f461386c4bb60, type: 3}
       propertyPath: m_RootOrder
       value: 19
@@ -1947,6 +2019,10 @@ PrefabInstance:
     - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_08
+      objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
@@ -2017,6 +2093,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Hell_Spikes_05 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1986913146536826, guid: 1d979db59fa7f1f48ac953325be2140e, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4135041391929242, guid: 1d979db59fa7f1f48ac953325be2140e, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -2082,6 +2162,10 @@ PrefabInstance:
     - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_32
+      objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
@@ -2157,6 +2241,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_47
       objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -2230,6 +2318,10 @@ PrefabInstance:
     - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_42
+      objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
@@ -2305,6 +2397,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Hell_Spikes_04 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1602785494025164, guid: 92064442806018f4095480c9d0700358, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4180948109188390, guid: 92064442806018f4095480c9d0700358, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -2367,6 +2463,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1430525925}
     m_Modifications:
+    - target: {fileID: 1608660628484316, guid: 99024be2f78226941bc3bb115e1bf2b6, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4625024271484452, guid: 99024be2f78226941bc3bb115e1bf2b6, type: 3}
       propertyPath: m_RootOrder
       value: 33
@@ -2514,6 +2614,10 @@ PrefabInstance:
     - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
@@ -2713,6 +2817,10 @@ PrefabInstance:
       value: SM_Env_Lava_Cube_01 (3)
       objectReference: {fileID: 0}
     - target: {fileID: 1585772528118418, guid: 9bca2673c7c15e142ab1ab594a42ba2c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585772528118418, guid: 9bca2673c7c15e142ab1ab594a42ba2c, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -2785,6 +2893,10 @@ PrefabInstance:
     - target: {fileID: 167114, guid: 7473a5138ccf3844a9cd93d43675b88e, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_Flat_23
+      objectReference: {fileID: 0}
+    - target: {fileID: 167114, guid: 7473a5138ccf3844a9cd93d43675b88e, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 484294, guid: 7473a5138ccf3844a9cd93d43675b88e, type: 3}
       propertyPath: m_RootOrder
@@ -3035,6 +3147,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_40
       objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -3147,6 +3263,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FX_Lava_Rocks_Spread_01 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1066581971393794, guid: 275ce8159925c14489d0467d0e9ac9c0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4684897327074620, guid: 275ce8159925c14489d0467d0e9ac9c0, type: 3}
       propertyPath: m_RootOrder
       value: 51
@@ -3233,6 +3353,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_44
       objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -3306,6 +3430,10 @@ PrefabInstance:
     - target: {fileID: 1066581971393794, guid: 275ce8159925c14489d0467d0e9ac9c0, type: 3}
       propertyPath: m_Name
       value: FX_Lava_Rocks_Spread_01 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1066581971393794, guid: 275ce8159925c14489d0467d0e9ac9c0, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4684897327074620, guid: 275ce8159925c14489d0467d0e9ac9c0, type: 3}
       propertyPath: m_RootOrder
@@ -3385,6 +3513,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_Flat_15
       objectReference: {fileID: 0}
+    - target: {fileID: 167114, guid: 7473a5138ccf3844a9cd93d43675b88e, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 484294, guid: 7473a5138ccf3844a9cd93d43675b88e, type: 3}
       propertyPath: m_RootOrder
       value: 19
@@ -3436,7 +3568,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1195570329910516, guid: 99104113e60aced47bfd36eb0758c6c2, type: 3}
       propertyPath: m_Layer
-      value: 19
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1195570329910516, guid: 99104113e60aced47bfd36eb0758c6c2, type: 3}
       propertyPath: m_IsActive
@@ -3524,6 +3656,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_38
       objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -3597,6 +3733,10 @@ PrefabInstance:
     - target: {fileID: 1707442010829320, guid: bf9cb0944f9cfcd4297a42e5982659c9, type: 3}
       propertyPath: m_Name
       value: SM_Env_Hell_Obelisk_04 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707442010829320, guid: bf9cb0944f9cfcd4297a42e5982659c9, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4079299077823542, guid: bf9cb0944f9cfcd4297a42e5982659c9, type: 3}
       propertyPath: m_RootOrder
@@ -3672,6 +3812,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_27
       objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -3742,6 +3886,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1430525925}
     m_Modifications:
+    - target: {fileID: 1768334668950150, guid: f4e6fa0e6ba13d346bf44d362caec7b7, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1768334668950150, guid: f4e6fa0e6ba13d346bf44d362caec7b7, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -3912,6 +4060,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Hell_Spikes_04 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1602785494025164, guid: 92064442806018f4095480c9d0700358, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4180948109188390, guid: 92064442806018f4095480c9d0700358, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -3973,6 +4125,10 @@ PrefabInstance:
     - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_34
+      objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
@@ -4081,6 +4237,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_35
       objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -4157,7 +4317,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1195570329910516, guid: 99104113e60aced47bfd36eb0758c6c2, type: 3}
       propertyPath: m_Layer
-      value: 19
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1195570329910516, guid: 99104113e60aced47bfd36eb0758c6c2, type: 3}
       propertyPath: m_IsActive
@@ -4241,6 +4401,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1430525925}
     m_Modifications:
+    - target: {fileID: 1275230128935058, guid: f9e7b57b787e04c458f5d932888b32e3, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4660120819930014, guid: f9e7b57b787e04c458f5d932888b32e3, type: 3}
       propertyPath: m_RootOrder
       value: 47
@@ -4301,7 +4465,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 460986814}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Arena
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4345,6 +4509,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1430525925}
     m_Modifications:
+    - target: {fileID: 1986913146536826, guid: 1d979db59fa7f1f48ac953325be2140e, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4135041391929242, guid: 1d979db59fa7f1f48ac953325be2140e, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -4409,7 +4577,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1195570329910516, guid: 99104113e60aced47bfd36eb0758c6c2, type: 3}
       propertyPath: m_Layer
-      value: 19
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4441594524627914, guid: 99104113e60aced47bfd36eb0758c6c2, type: 3}
       propertyPath: m_RootOrder
@@ -4480,6 +4648,10 @@ PrefabInstance:
     - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_24
+      objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
@@ -4555,6 +4727,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_43
       objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -4625,6 +4801,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1430525925}
     m_Modifications:
+    - target: {fileID: 1533816182326320, guid: bbe446cd94311574c884242fecaf9883, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4041064387661536, guid: bbe446cd94311574c884242fecaf9883, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -4687,6 +4867,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_Flat_19
       objectReference: {fileID: 0}
+    - target: {fileID: 110106, guid: b085acf4daf0e2045876fb122e2f39c8, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 412926, guid: b085acf4daf0e2045876fb122e2f39c8, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -4735,6 +4919,10 @@ PrefabInstance:
     - target: {fileID: 145588, guid: d00442b5e6db1d946841cbe6ef7562d4, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_Flat_22
+      objectReference: {fileID: 0}
+    - target: {fileID: 145588, guid: d00442b5e6db1d946841cbe6ef7562d4, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 406854, guid: d00442b5e6db1d946841cbe6ef7562d4, type: 3}
       propertyPath: m_RootOrder
@@ -4789,6 +4977,10 @@ PrefabInstance:
     - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_36
+      objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
@@ -4864,6 +5056,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Hell_Floating_Rock_Chain_01 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1504110541172260, guid: 1d09befa46fc5bd4284c3891627bfc53, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4972080162376612, guid: 1d09befa46fc5bd4284c3891627bfc53, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -4921,6 +5117,10 @@ PrefabInstance:
     - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
@@ -4990,6 +5190,10 @@ PrefabInstance:
     - target: {fileID: 1222962156149308, guid: 3145edabccbd88f41a3c7d56060ef655, type: 3}
       propertyPath: m_Name
       value: SM_Env_Hell_Ground_Extended_02 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1222962156149308, guid: 3145edabccbd88f41a3c7d56060ef655, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4129695469482894, guid: 3145edabccbd88f41a3c7d56060ef655, type: 3}
       propertyPath: m_RootOrder
@@ -5151,6 +5355,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_28
       objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -5225,6 +5433,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FX_Lava_Rocks_Still_Large_01 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 1001180372509980, guid: d2f61431ccee79e45bbf1d8657199ff0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4278162073791572, guid: d2f61431ccee79e45bbf1d8657199ff0, type: 3}
       propertyPath: m_RootOrder
       value: 43
@@ -5293,7 +5505,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 553115213}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Start
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5330,6 +5542,10 @@ PrefabInstance:
     - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_43
+      objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
@@ -5405,6 +5621,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_33
       objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -5478,6 +5698,10 @@ PrefabInstance:
     - target: {fileID: 1066581971393794, guid: 275ce8159925c14489d0467d0e9ac9c0, type: 3}
       propertyPath: m_Name
       value: FX_Lava_Rocks_Spread_01 (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1066581971393794, guid: 275ce8159925c14489d0467d0e9ac9c0, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4684897327074620, guid: 275ce8159925c14489d0467d0e9ac9c0, type: 3}
       propertyPath: m_RootOrder
@@ -5564,6 +5788,10 @@ PrefabInstance:
     - target: {fileID: 1341400566451502, guid: 68b9ca83f6a52fd429c470306bce5916, type: 3}
       propertyPath: m_Name
       value: FX_Hell_Brazier_Fire_01 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1341400566451502, guid: 68b9ca83f6a52fd429c470306bce5916, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4046597960596706, guid: 68b9ca83f6a52fd429c470306bce5916, type: 3}
       propertyPath: m_RootOrder
@@ -5725,6 +5953,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_18
       objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -5795,6 +6027,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 460986814}
     m_Modifications:
+    - target: {fileID: 1958274793791844, guid: 3c7f4af00f96d8d468b62ffa1f95c15f, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4666272843087238, guid: 3c7f4af00f96d8d468b62ffa1f95c15f, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -5869,6 +6105,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_Flat_03
       objectReference: {fileID: 0}
+    - target: {fileID: 145588, guid: d00442b5e6db1d946841cbe6ef7562d4, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 406854, guid: d00442b5e6db1d946841cbe6ef7562d4, type: 3}
       propertyPath: m_RootOrder
       value: 21
@@ -5917,6 +6157,10 @@ PrefabInstance:
     - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_34
+      objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
@@ -5988,6 +6232,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 553115213}
     m_Modifications:
+    - target: {fileID: 101228, guid: 2f8bac6b7bae5254bbf64855f6613f5e, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 479558, guid: 2f8bac6b7bae5254bbf64855f6613f5e, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -6039,7 +6287,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1195570329910516, guid: 99104113e60aced47bfd36eb0758c6c2, type: 3}
       propertyPath: m_Layer
-      value: 19
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4441594524627914, guid: 99104113e60aced47bfd36eb0758c6c2, type: 3}
       propertyPath: m_RootOrder
@@ -6213,6 +6461,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_10
       objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -6281,6 +6533,10 @@ PrefabInstance:
     - target: {fileID: 1195570329910516, guid: 99104113e60aced47bfd36eb0758c6c2, type: 3}
       propertyPath: m_Name
       value: SM_Env_Hell_Spikes_06 (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195570329910516, guid: 99104113e60aced47bfd36eb0758c6c2, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4441594524627914, guid: 99104113e60aced47bfd36eb0758c6c2, type: 3}
       propertyPath: m_RootOrder
@@ -6352,6 +6608,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1430525925}
     m_Modifications:
+    - target: {fileID: 1926004577517272, guid: c3fd75a8de985494d86dd032e81bf0a9, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4873569881161632, guid: c3fd75a8de985494d86dd032e81bf0a9, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -6413,6 +6673,10 @@ PrefabInstance:
     - target: {fileID: 1195570329910516, guid: 99104113e60aced47bfd36eb0758c6c2, type: 3}
       propertyPath: m_Name
       value: SM_Env_Hell_Spikes_06 (31)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195570329910516, guid: 99104113e60aced47bfd36eb0758c6c2, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4441594524627914, guid: 99104113e60aced47bfd36eb0758c6c2, type: 3}
       propertyPath: m_RootOrder
@@ -6479,6 +6743,10 @@ PrefabInstance:
     - target: {fileID: 1512397109813864, guid: e2601cfae5922224da511097d24528bf, type: 3}
       propertyPath: m_Name
       value: SM_Env_Hell_Bone_Hand_L_01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1512397109813864, guid: e2601cfae5922224da511097d24528bf, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4866011163987012, guid: e2601cfae5922224da511097d24528bf, type: 3}
       propertyPath: m_RootOrder
@@ -6554,6 +6822,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_17
       objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -6628,6 +6900,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_CrackedRock_12
       objectReference: {fileID: 0}
+    - target: {fileID: 190504, guid: 6041dc253bbed79498437808853d8183, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 473592, guid: 6041dc253bbed79498437808853d8183, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -6688,6 +6964,10 @@ PrefabInstance:
     - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_46
+      objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
@@ -6763,6 +7043,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_36
       objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -6837,6 +7121,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_45
       objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -6910,6 +7198,10 @@ PrefabInstance:
     - target: {fileID: 1066581971393794, guid: 275ce8159925c14489d0467d0e9ac9c0, type: 3}
       propertyPath: m_Name
       value: FX_Lava_Rocks_Spread_01 (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1066581971393794, guid: 275ce8159925c14489d0467d0e9ac9c0, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4684897327074620, guid: 275ce8159925c14489d0467d0e9ac9c0, type: 3}
       propertyPath: m_RootOrder
@@ -6996,6 +7288,10 @@ PrefabInstance:
     - target: {fileID: 1704190832751100, guid: 35d750eec5540924192715311b65ea5d, type: 3}
       propertyPath: m_Name
       value: SM_Env_Hell_Pillar_04 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1704190832751100, guid: 35d750eec5540924192715311b65ea5d, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4358447527782146, guid: 35d750eec5540924192715311b65ea5d, type: 3}
       propertyPath: m_RootOrder
@@ -7216,6 +7512,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_31
       objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -7290,6 +7590,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_Flat_18
       objectReference: {fileID: 0}
+    - target: {fileID: 134226, guid: 1d394c025fb78e347ba38449641c36e2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 443018, guid: 1d394c025fb78e347ba38449641c36e2, type: 3}
       propertyPath: m_RootOrder
       value: 16
@@ -7337,7 +7641,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 756444774}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BackwardChains
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7385,6 +7689,10 @@ PrefabInstance:
     - target: {fileID: 1195570329910516, guid: 99104113e60aced47bfd36eb0758c6c2, type: 3}
       propertyPath: m_Name
       value: SM_Env_Hell_Spikes_06 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195570329910516, guid: 99104113e60aced47bfd36eb0758c6c2, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4441594524627914, guid: 99104113e60aced47bfd36eb0758c6c2, type: 3}
       propertyPath: m_RootOrder
@@ -7451,6 +7759,10 @@ PrefabInstance:
     - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
@@ -7521,6 +7833,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_11
       objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -7590,6 +7906,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Obelisk_02
       objectReference: {fileID: 0}
+    - target: {fileID: 148708, guid: 18a46a3340964084192d989b9cf0359a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 460760, guid: 18a46a3340964084192d989b9cf0359a, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -7638,6 +7958,10 @@ PrefabInstance:
     - target: {fileID: 1602785494025164, guid: 92064442806018f4095480c9d0700358, type: 3}
       propertyPath: m_Name
       value: SM_Env_Hell_Spikes_04 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1602785494025164, guid: 92064442806018f4095480c9d0700358, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4180948109188390, guid: 92064442806018f4095480c9d0700358, type: 3}
       propertyPath: m_RootOrder
@@ -7705,6 +8029,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Hell_Ground_Extended_02 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1222962156149308, guid: 3145edabccbd88f41a3c7d56060ef655, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4129695469482894, guid: 3145edabccbd88f41a3c7d56060ef655, type: 3}
       propertyPath: m_RootOrder
       value: 16
@@ -7769,7 +8097,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 850365759}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ForwardChains
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7817,6 +8145,10 @@ PrefabInstance:
     - target: {fileID: 1066581971393794, guid: 275ce8159925c14489d0467d0e9ac9c0, type: 3}
       propertyPath: m_Name
       value: FX_Lava_Rocks_Spread_01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1066581971393794, guid: 275ce8159925c14489d0467d0e9ac9c0, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4684897327074620, guid: 275ce8159925c14489d0467d0e9ac9c0, type: 3}
       propertyPath: m_RootOrder
@@ -7900,6 +8232,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Hell_Spikes_06 (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 1195570329910516, guid: 99104113e60aced47bfd36eb0758c6c2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4441594524627914, guid: 99104113e60aced47bfd36eb0758c6c2, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -7974,6 +8310,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Hell_Spikes_06 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 1195570329910516, guid: 99104113e60aced47bfd36eb0758c6c2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4441594524627914, guid: 99104113e60aced47bfd36eb0758c6c2, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -8044,6 +8384,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 460986814}
     m_Modifications:
+    - target: {fileID: 1512397109813864, guid: e2601cfae5922224da511097d24528bf, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4866011163987012, guid: e2601cfae5922224da511097d24528bf, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -8118,6 +8462,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_47
       objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -8191,6 +8539,14 @@ PrefabInstance:
     - target: {fileID: 1747092849511402, guid: c019f103b6f942a4eb241ad17009d1f0, type: 3}
       propertyPath: m_Name
       value: SM_Env_Hell_Bone_Skull_01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1747092849511402, guid: c019f103b6f942a4eb241ad17009d1f0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1813259106939582, guid: c019f103b6f942a4eb241ad17009d1f0, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4291255729478990, guid: c019f103b6f942a4eb241ad17009d1f0, type: 3}
       propertyPath: m_RootOrder
@@ -8298,6 +8654,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_01
       objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -8395,6 +8755,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 460986814}
     m_Modifications:
+    - target: {fileID: 1747092849511402, guid: c019f103b6f942a4eb241ad17009d1f0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1813259106939582, guid: c019f103b6f942a4eb241ad17009d1f0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4291255729478990, guid: c019f103b6f942a4eb241ad17009d1f0, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -8501,6 +8869,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_13
       objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -8569,6 +8941,10 @@ PrefabInstance:
     - target: {fileID: 139220, guid: 704795cfbb02b844591f900d2b76342e, type: 3}
       propertyPath: m_Name
       value: SM_Env_Tiles_197
+      objectReference: {fileID: 0}
+    - target: {fileID: 139220, guid: 704795cfbb02b844591f900d2b76342e, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 468454, guid: 704795cfbb02b844591f900d2b76342e, type: 3}
       propertyPath: m_RootOrder
@@ -8705,6 +9081,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FX_Lava_Rocks_Spread_01 (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 1066581971393794, guid: 275ce8159925c14489d0467d0e9ac9c0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4684897327074620, guid: 275ce8159925c14489d0467d0e9ac9c0, type: 3}
       propertyPath: m_RootOrder
       value: 59
@@ -8791,6 +9171,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_25
       objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -8867,7 +9251,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1195570329910516, guid: 99104113e60aced47bfd36eb0758c6c2, type: 3}
       propertyPath: m_Layer
-      value: 19
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1195570329910516, guid: 99104113e60aced47bfd36eb0758c6c2, type: 3}
       propertyPath: m_IsActive
@@ -8959,6 +9343,10 @@ PrefabInstance:
     - target: {fileID: 1462540118941320, guid: 5fcc58a71eb68224a9521f08431f770d, type: 3}
       propertyPath: m_Name
       value: SM_Env_Hell_Obelisk_05 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1462540118941320, guid: 5fcc58a71eb68224a9521f08431f770d, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4031358749343316, guid: 5fcc58a71eb68224a9521f08431f770d, type: 3}
       propertyPath: m_RootOrder
@@ -9138,6 +9526,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_Flat_14
       objectReference: {fileID: 0}
+    - target: {fileID: 145638, guid: 9543382690c0b4a45bab4ad4b37def98, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 471790, guid: 9543382690c0b4a45bab4ad4b37def98, type: 3}
       propertyPath: m_RootOrder
       value: 20
@@ -9189,7 +9581,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1195570329910516, guid: 99104113e60aced47bfd36eb0758c6c2, type: 3}
       propertyPath: m_Layer
-      value: 19
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4441594524627914, guid: 99104113e60aced47bfd36eb0758c6c2, type: 3}
       propertyPath: m_RootOrder
@@ -9267,7 +9659,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1086212061}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RightChains
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9315,6 +9707,10 @@ PrefabInstance:
     - target: {fileID: 1107076574278298, guid: f75b85570c2ff134fbfadd9d67074753, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_Medium_02 (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1107076574278298, guid: f75b85570c2ff134fbfadd9d67074753, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4103589100292548, guid: f75b85570c2ff134fbfadd9d67074753, type: 3}
       propertyPath: m_RootOrder
@@ -9396,7 +9792,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1195570329910516, guid: 99104113e60aced47bfd36eb0758c6c2, type: 3}
       propertyPath: m_Layer
-      value: 19
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1195570329910516, guid: 99104113e60aced47bfd36eb0758c6c2, type: 3}
       propertyPath: m_IsActive
@@ -9484,6 +9880,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_06
       objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -9549,6 +9949,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 460986814}
     m_Modifications:
+    - target: {fileID: 1642539396175948, guid: e2569ced491ce7a46bea5dda0340cb61, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4843166882797526, guid: e2569ced491ce7a46bea5dda0340cb61, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -9626,6 +10030,10 @@ PrefabInstance:
     - target: {fileID: 1066581971393794, guid: 275ce8159925c14489d0467d0e9ac9c0, type: 3}
       propertyPath: m_Name
       value: FX_Lava_Rocks_Spread_01 (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1066581971393794, guid: 275ce8159925c14489d0467d0e9ac9c0, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4684897327074620, guid: 275ce8159925c14489d0467d0e9ac9c0, type: 3}
       propertyPath: m_RootOrder
@@ -9709,6 +10117,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 171334911}
     m_Modifications:
+    - target: {fileID: 1004371427666424, guid: 7d914c544d792d946b045590b6f42adb, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572898335726558, guid: 7d914c544d792d946b045590b6f42adb, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1690311243125700, guid: 7d914c544d792d946b045590b6f42adb, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1716605862054490, guid: 7d914c544d792d946b045590b6f42adb, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1829514358592020, guid: 7d914c544d792d946b045590b6f42adb, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1993673811101540, guid: 7d914c544d792d946b045590b6f42adb, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4610130343512680, guid: 7d914c544d792d946b045590b6f42adb, type: 3}
       propertyPath: m_RootOrder
       value: 17
@@ -9774,6 +10206,10 @@ PrefabInstance:
     - target: {fileID: 1001180372509980, guid: d2f61431ccee79e45bbf1d8657199ff0, type: 3}
       propertyPath: m_Name
       value: FX_Lava_Rocks_Still_Large_01 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1001180372509980, guid: d2f61431ccee79e45bbf1d8657199ff0, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4278162073791572, guid: d2f61431ccee79e45bbf1d8657199ff0, type: 3}
       propertyPath: m_RootOrder
@@ -9847,7 +10283,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1195570329910516, guid: 99104113e60aced47bfd36eb0758c6c2, type: 3}
       propertyPath: m_Layer
-      value: 19
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1195570329910516, guid: 99104113e60aced47bfd36eb0758c6c2, type: 3}
       propertyPath: m_IsActive
@@ -9935,6 +10371,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FX_Lava_Rocks_Spread_01 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 1066581971393794, guid: 275ce8159925c14489d0467d0e9ac9c0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4684897327074620, guid: 275ce8159925c14489d0467d0e9ac9c0, type: 3}
       propertyPath: m_RootOrder
       value: 55
@@ -10021,6 +10461,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Hell_Spike_01 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1269237386624000, guid: 40224b089864f954f94d5646da749dfb, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4432049811522042, guid: 40224b089864f954f94d5646da749dfb, type: 3}
       propertyPath: m_RootOrder
       value: 27
@@ -10086,6 +10530,10 @@ PrefabInstance:
     - target: {fileID: 1643306381468404, guid: f4e3b0b9e2a90464abf3016f52c69e32, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_Cliff_01 (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1643306381468404, guid: f4e3b0b9e2a90464abf3016f52c69e32, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4880770922608714, guid: f4e3b0b9e2a90464abf3016f52c69e32, type: 3}
       propertyPath: m_RootOrder
@@ -10165,6 +10613,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_Flat_17
       objectReference: {fileID: 0}
+    - target: {fileID: 117630, guid: 3c7e3093f2f74ad499210774e0d01aea, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 473574, guid: 3c7e3093f2f74ad499210774e0d01aea, type: 3}
       propertyPath: m_RootOrder
       value: 17
@@ -10213,6 +10665,10 @@ PrefabInstance:
     - target: {fileID: 1943670088334392, guid: f337219e95db1f84f86bf38d08d73fc2, type: 3}
       propertyPath: m_Name
       value: SM_Env_Hell_Floating_Rock_Chain_02 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1943670088334392, guid: f337219e95db1f84f86bf38d08d73fc2, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4589857961905334, guid: f337219e95db1f84f86bf38d08d73fc2, type: 3}
       propertyPath: m_RootOrder
@@ -10275,6 +10731,10 @@ PrefabInstance:
     - target: {fileID: 1001180372509980, guid: d2f61431ccee79e45bbf1d8657199ff0, type: 3}
       propertyPath: m_Name
       value: FX_Lava_Rocks_Still_Large_01 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1001180372509980, guid: d2f61431ccee79e45bbf1d8657199ff0, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4278162073791572, guid: d2f61431ccee79e45bbf1d8657199ff0, type: 3}
       propertyPath: m_RootOrder
@@ -10424,6 +10884,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1808849362}
     m_Modifications:
+    - target: {fileID: 148708, guid: 18a46a3340964084192d989b9cf0359a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 460760, guid: 18a46a3340964084192d989b9cf0359a, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -10472,6 +10936,10 @@ PrefabInstance:
     - target: {fileID: 139220, guid: 704795cfbb02b844591f900d2b76342e, type: 3}
       propertyPath: m_Name
       value: SM_Env_Tiles_199
+      objectReference: {fileID: 0}
+    - target: {fileID: 139220, guid: 704795cfbb02b844591f900d2b76342e, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 468454, guid: 704795cfbb02b844591f900d2b76342e, type: 3}
       propertyPath: m_RootOrder
@@ -10616,6 +11084,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Hell_Spikes_06 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1195570329910516, guid: 99104113e60aced47bfd36eb0758c6c2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4441594524627914, guid: 99104113e60aced47bfd36eb0758c6c2, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -10681,6 +11153,10 @@ PrefabInstance:
     - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_35
+      objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
@@ -10755,6 +11231,10 @@ PrefabInstance:
     - target: {fileID: 1642539396175948, guid: e2569ced491ce7a46bea5dda0340cb61, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_Medium_06 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1642539396175948, guid: e2569ced491ce7a46bea5dda0340cb61, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4843166882797526, guid: e2569ced491ce7a46bea5dda0340cb61, type: 3}
       propertyPath: m_RootOrder
@@ -10834,6 +11314,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_05
       objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -10903,6 +11387,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_Flat_25
       objectReference: {fileID: 0}
+    - target: {fileID: 117630, guid: 3c7e3093f2f74ad499210774e0d01aea, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 473574, guid: 3c7e3093f2f74ad499210774e0d01aea, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -10954,7 +11442,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1195570329910516, guid: 99104113e60aced47bfd36eb0758c6c2, type: 3}
       propertyPath: m_Layer
-      value: 19
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1195570329910516, guid: 99104113e60aced47bfd36eb0758c6c2, type: 3}
       propertyPath: m_IsActive
@@ -11042,6 +11530,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_14
       objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -11110,6 +11602,10 @@ PrefabInstance:
     - target: {fileID: 190504, guid: 6041dc253bbed79498437808853d8183, type: 3}
       propertyPath: m_Name
       value: SM_Env_CrackedRock_11
+      objectReference: {fileID: 0}
+    - target: {fileID: 190504, guid: 6041dc253bbed79498437808853d8183, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 473592, guid: 6041dc253bbed79498437808853d8183, type: 3}
       propertyPath: m_RootOrder
@@ -11266,6 +11762,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_Flat_24
       objectReference: {fileID: 0}
+    - target: {fileID: 110106, guid: b085acf4daf0e2045876fb122e2f39c8, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 412926, guid: b085acf4daf0e2045876fb122e2f39c8, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -11315,6 +11815,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_Flat_16
       objectReference: {fileID: 0}
+    - target: {fileID: 110106, guid: b085acf4daf0e2045876fb122e2f39c8, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 412926, guid: b085acf4daf0e2045876fb122e2f39c8, type: 3}
       propertyPath: m_RootOrder
       value: 18
@@ -11360,6 +11864,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1430525925}
     m_Modifications:
+    - target: {fileID: 1704190832751100, guid: 35d750eec5540924192715311b65ea5d, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4358447527782146, guid: 35d750eec5540924192715311b65ea5d, type: 3}
       propertyPath: m_RootOrder
       value: 20
@@ -11432,7 +11940,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1430525925}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Hell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11522,6 +12030,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1430525925}
     m_Modifications:
+    - target: {fileID: 1500777126195474, guid: e60f79d92eb08f742a87aaf1f2fba606, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4624892991503678, guid: e60f79d92eb08f742a87aaf1f2fba606, type: 3}
       propertyPath: m_RootOrder
       value: 46
@@ -11579,6 +12091,10 @@ PrefabInstance:
     - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_48
+      objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
@@ -11654,6 +12170,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_16
       objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -11728,6 +12248,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FX_Lava_Rocks_Still_Large_01 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 1001180372509980, guid: d2f61431ccee79e45bbf1d8657199ff0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4278162073791572, guid: d2f61431ccee79e45bbf1d8657199ff0, type: 3}
       propertyPath: m_RootOrder
       value: 48
@@ -11781,6 +12305,10 @@ PrefabInstance:
     - target: {fileID: 1533816182326320, guid: bbe446cd94311574c884242fecaf9883, type: 3}
       propertyPath: m_Name
       value: SM_Env_Hell_Pillar_02 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1533816182326320, guid: bbe446cd94311574c884242fecaf9883, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4041064387661536, guid: bbe446cd94311574c884242fecaf9883, type: 3}
       propertyPath: m_RootOrder
@@ -11955,6 +12483,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_39
       objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -12029,6 +12561,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_09
       objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -12097,6 +12633,10 @@ PrefabInstance:
     - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_42
+      objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
@@ -12172,6 +12712,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_Flat_21
       objectReference: {fileID: 0}
+    - target: {fileID: 117630, guid: 3c7e3093f2f74ad499210774e0d01aea, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 473574, guid: 3c7e3093f2f74ad499210774e0d01aea, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -12220,6 +12764,10 @@ PrefabInstance:
     - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_37
+      objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
@@ -12291,6 +12839,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1430525925}
     m_Modifications:
+    - target: {fileID: 1265204518190232, guid: e657ebb2c9e005d4f8b807b7af76a777, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4419249621996364, guid: e657ebb2c9e005d4f8b807b7af76a777, type: 3}
       propertyPath: m_RootOrder
       value: 35
@@ -12469,6 +13021,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1430525925}
     m_Modifications:
+    - target: {fileID: 1341400566451502, guid: 68b9ca83f6a52fd429c470306bce5916, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4046597960596706, guid: 68b9ca83f6a52fd429c470306bce5916, type: 3}
       propertyPath: m_RootOrder
       value: 30
@@ -12542,7 +13098,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1195570329910516, guid: 99104113e60aced47bfd36eb0758c6c2, type: 3}
       propertyPath: m_Layer
-      value: 19
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1195570329910516, guid: 99104113e60aced47bfd36eb0758c6c2, type: 3}
       propertyPath: m_IsActive
@@ -12630,6 +13186,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_41
       objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -12714,6 +13274,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Hell_Obelisk_04 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1707442010829320, guid: bf9cb0944f9cfcd4297a42e5982659c9, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4079299077823542, guid: bf9cb0944f9cfcd4297a42e5982659c9, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -12787,6 +13351,10 @@ PrefabInstance:
     - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_40
+      objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
@@ -12862,6 +13430,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Hell_Obelisk_05 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1462540118941320, guid: 5fcc58a71eb68224a9521f08431f770d, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4031358749343316, guid: 5fcc58a71eb68224a9521f08431f770d, type: 3}
       propertyPath: m_RootOrder
       value: 16
@@ -12935,6 +13507,10 @@ PrefabInstance:
     - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_22
+      objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
@@ -13010,6 +13586,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FX_Lava_Rocks_Still_Large_01 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1001180372509980, guid: d2f61431ccee79e45bbf1d8657199ff0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4278162073791572, guid: d2f61431ccee79e45bbf1d8657199ff0, type: 3}
       propertyPath: m_RootOrder
       value: 34
@@ -13080,6 +13660,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FX_Hell_Brazier_Fire_01 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1341400566451502, guid: 68b9ca83f6a52fd429c470306bce5916, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4046597960596706, guid: 68b9ca83f6a52fd429c470306bce5916, type: 3}
       propertyPath: m_RootOrder
       value: 31
@@ -13145,6 +13729,10 @@ PrefabInstance:
     - target: {fileID: 1195570329910516, guid: 99104113e60aced47bfd36eb0758c6c2, type: 3}
       propertyPath: m_Name
       value: SM_Env_Hell_Spikes_06 (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195570329910516, guid: 99104113e60aced47bfd36eb0758c6c2, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4441594524627914, guid: 99104113e60aced47bfd36eb0758c6c2, type: 3}
       propertyPath: m_RootOrder
@@ -13219,6 +13807,10 @@ PrefabInstance:
     - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_46
+      objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
@@ -13301,7 +13893,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1195570329910516, guid: 99104113e60aced47bfd36eb0758c6c2, type: 3}
       propertyPath: m_Layer
-      value: 19
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4441594524627914, guid: 99104113e60aced47bfd36eb0758c6c2, type: 3}
       propertyPath: m_RootOrder
@@ -13381,6 +13973,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Hell_Ground_Extended_03 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 1958274793791844, guid: 3c7f4af00f96d8d468b62ffa1f95c15f, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4666272843087238, guid: 3c7f4af00f96d8d468b62ffa1f95c15f, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -13454,6 +14050,10 @@ PrefabInstance:
     - target: {fileID: 148708, guid: 18a46a3340964084192d989b9cf0359a, type: 3}
       propertyPath: m_Name
       value: SM_Env_Obelisk_04
+      objectReference: {fileID: 0}
+    - target: {fileID: 148708, guid: 18a46a3340964084192d989b9cf0359a, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 460760, guid: 18a46a3340964084192d989b9cf0359a, type: 3}
       propertyPath: m_RootOrder
@@ -13602,6 +14202,10 @@ PrefabInstance:
     - target: {fileID: 1265204518190232, guid: e657ebb2c9e005d4f8b807b7af76a777, type: 3}
       propertyPath: m_Name
       value: FX_Dust_Large_Soft_01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1265204518190232, guid: e657ebb2c9e005d4f8b807b7af76a777, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4419249621996364, guid: e657ebb2c9e005d4f8b807b7af76a777, type: 3}
       propertyPath: m_RootOrder
@@ -13771,6 +14375,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_21
       objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -13844,6 +14452,10 @@ PrefabInstance:
     - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
@@ -14083,6 +14695,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_44
       objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -14251,6 +14867,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_48
       objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -14321,6 +14941,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1430525925}
     m_Modifications:
+    - target: {fileID: 1001180372509980, guid: d2f61431ccee79e45bbf1d8657199ff0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4278162073791572, guid: d2f61431ccee79e45bbf1d8657199ff0, type: 3}
       propertyPath: m_RootOrder
       value: 38
@@ -14386,6 +15010,10 @@ PrefabInstance:
     - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
@@ -14734,6 +15362,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 460986814}
     m_Modifications:
+    - target: {fileID: 1047920938341974, guid: e28c21f05c6bd6540b5423d8a14ea570, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4558382576366930, guid: e28c21f05c6bd6540b5423d8a14ea570, type: 3}
       propertyPath: m_RootOrder
       value: 17
@@ -14815,7 +15447,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1195570329910516, guid: 99104113e60aced47bfd36eb0758c6c2, type: 3}
       propertyPath: m_Layer
-      value: 19
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1195570329910516, guid: 99104113e60aced47bfd36eb0758c6c2, type: 3}
       propertyPath: m_IsActive
@@ -14903,6 +15535,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_Flat_20
       objectReference: {fileID: 0}
+    - target: {fileID: 145638, guid: 9543382690c0b4a45bab4ad4b37def98, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 471790, guid: 9543382690c0b4a45bab4ad4b37def98, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -14951,6 +15587,10 @@ PrefabInstance:
     - target: {fileID: 148708, guid: 18a46a3340964084192d989b9cf0359a, type: 3}
       propertyPath: m_Name
       value: SM_Env_Obelisk_05
+      objectReference: {fileID: 0}
+    - target: {fileID: 148708, guid: 18a46a3340964084192d989b9cf0359a, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 460760, guid: 18a46a3340964084192d989b9cf0359a, type: 3}
       propertyPath: m_RootOrder
@@ -15087,6 +15727,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Hell_Pillar_01 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1290892660575886, guid: 41cb659555c7a9c4bb0482150158796e, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4133345481465830, guid: 41cb659555c7a9c4bb0482150158796e, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -15161,6 +15805,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_23
       objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -15234,6 +15882,10 @@ PrefabInstance:
     - target: {fileID: 1066581971393794, guid: 275ce8159925c14489d0467d0e9ac9c0, type: 3}
       propertyPath: m_Name
       value: FX_Lava_Rocks_Spread_01 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1066581971393794, guid: 275ce8159925c14489d0467d0e9ac9c0, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4684897327074620, guid: 275ce8159925c14489d0467d0e9ac9c0, type: 3}
       propertyPath: m_RootOrder
@@ -15321,6 +15973,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FX_Lava_Rocks_Still_Large_01 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 1001180372509980, guid: d2f61431ccee79e45bbf1d8657199ff0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4278162073791572, guid: d2f61431ccee79e45bbf1d8657199ff0, type: 3}
       propertyPath: m_RootOrder
       value: 45
@@ -15387,6 +16043,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 460986814}
     m_Modifications:
+    - target: {fileID: 1958274793791844, guid: 3c7f4af00f96d8d468b62ffa1f95c15f, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4666272843087238, guid: 3c7f4af00f96d8d468b62ffa1f95c15f, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -15460,6 +16120,10 @@ PrefabInstance:
     - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_19
+      objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
@@ -15535,6 +16199,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Hell_Chains_07
       objectReference: {fileID: 0}
+    - target: {fileID: 1081805812054200, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4205827940226358, guid: 3d8ef4162b746494194db7be3ef0498a, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -15606,7 +16274,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1195570329910516, guid: 99104113e60aced47bfd36eb0758c6c2, type: 3}
       propertyPath: m_Layer
-      value: 19
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4441594524627914, guid: 99104113e60aced47bfd36eb0758c6c2, type: 3}
       propertyPath: m_RootOrder
@@ -15678,6 +16346,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FX_Lava_Rocks_Still_Large_01 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1001180372509980, guid: d2f61431ccee79e45bbf1d8657199ff0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4278162073791572, guid: d2f61431ccee79e45bbf1d8657199ff0, type: 3}
       propertyPath: m_RootOrder
       value: 40
@@ -15736,6 +16408,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Tiles_198
       objectReference: {fileID: 0}
+    - target: {fileID: 139220, guid: 704795cfbb02b844591f900d2b76342e, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 468454, guid: 704795cfbb02b844591f900d2b76342e, type: 3}
       propertyPath: m_RootOrder
       value: 23
@@ -15784,6 +16460,10 @@ PrefabInstance:
     - target: {fileID: 190504, guid: 6041dc253bbed79498437808853d8183, type: 3}
       propertyPath: m_Name
       value: SM_Env_CrackedRock_09
+      objectReference: {fileID: 0}
+    - target: {fileID: 190504, guid: 6041dc253bbed79498437808853d8183, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 473592, guid: 6041dc253bbed79498437808853d8183, type: 3}
       propertyPath: m_RootOrder
@@ -15845,6 +16525,10 @@ PrefabInstance:
     - target: {fileID: 1926004577517272, guid: c3fd75a8de985494d86dd032e81bf0a9, type: 3}
       propertyPath: m_Name
       value: SM_Env_Hell_Floating_Rock_Chain_05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1926004577517272, guid: c3fd75a8de985494d86dd032e81bf0a9, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4873569881161632, guid: c3fd75a8de985494d86dd032e81bf0a9, type: 3}
       propertyPath: m_RootOrder
@@ -15908,6 +16592,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_CrackedRock_10
       objectReference: {fileID: 0}
+    - target: {fileID: 190504, guid: 6041dc253bbed79498437808853d8183, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 473592, guid: 6041dc253bbed79498437808853d8183, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -15965,6 +16653,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1430525925}
     m_Modifications:
+    - target: {fileID: 1066581971393794, guid: 275ce8159925c14489d0467d0e9ac9c0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4684897327074620, guid: 275ce8159925c14489d0467d0e9ac9c0, type: 3}
       propertyPath: m_RootOrder
       value: 37
@@ -16037,7 +16729,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1195570329910516, guid: 99104113e60aced47bfd36eb0758c6c2, type: 3}
       propertyPath: m_Layer
-      value: 19
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4441594524627914, guid: 99104113e60aced47bfd36eb0758c6c2, type: 3}
       propertyPath: m_RootOrder
