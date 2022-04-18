@@ -9,6 +9,8 @@ namespace CSE5912.PolyGamers
         [SerializeField] private AudioSource activateAudio;
         [SerializeField] private GameObject activateVfxPrefab;
 
+        [SerializeField] private bool isDefualtRespawnPoint = false;
+
         [SerializeField] private float timeBetweenActivate = 5f;
         [SerializeField] private bool isReady = true;
 
@@ -20,6 +22,13 @@ namespace CSE5912.PolyGamers
             collider3d.isTrigger = true;
         }
 
+        private void Start()
+        {
+            if (isDefualtRespawnPoint)
+            {
+                RespawnManager.Instance.CurrentRespawnPoint = this;
+            }
+        }
         private void Activate()
         {
             DataManager.Instance.Save();

@@ -8,11 +8,9 @@ namespace CSE5912.PolyGamers
     {
         [SerializeField] private AudioSource deathAudio;
 
-        [SerializeField] private GameObject respawnPoints;
-        private List<RespawnPoint> respawnPointList;
         [SerializeField] private RespawnPoint currentRespawnPoint;
 
-        [SerializeField] private GameObject currentSoulPoint;
+        private GameObject currentSoulPoint;
 
         [SerializeField] private GameObject deathVfxPrefab;
         [SerializeField] private float timeToRespawn = 8f;
