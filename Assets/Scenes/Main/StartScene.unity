@@ -431,6 +431,11 @@ PrefabInstance:
       propertyPath: uiDocument
       value: 
       objectReference: {fileID: 697325963008044403}
+    - target: {fileID: 3010026486981923963, guid: 81c88596e5fe92d4fa0114d5bd2b60f1, type: 3}
+      propertyPath: gameEndingClaim
+      value: "Thanks for playing.\nYour data has been saved. \nYou can start over
+        with your current items, skills and level and challenge stronger enemies."
+      objectReference: {fileID: 0}
     - target: {fileID: 4891910940064807943, guid: 81c88596e5fe92d4fa0114d5bd2b60f1, type: 3}
       propertyPath: m_RootOrder
       value: 1
