@@ -29,7 +29,10 @@ namespace CSE5912.PolyGamers
         private void Awake()
         {
             if (instance != null && instance != this)
+            {
                 Destroy(gameObject);
+                return;
+            }
             instance = this;
             
             var preInstWeapon = Instantiate(baseWeaponPrefabs);

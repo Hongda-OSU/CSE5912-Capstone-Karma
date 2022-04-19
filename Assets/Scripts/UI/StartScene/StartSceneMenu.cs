@@ -8,7 +8,7 @@ namespace CSE5912.PolyGamers
 {
     public class StartSceneMenu : UI
     {
-        [SerializeField] private int gameSceneIndex;
+        //[SerializeField] private int gameSceneIndex;
 
         [SerializeField] private float displayDelay = 2f;
         private float timeSince = 0f;
@@ -50,7 +50,10 @@ namespace CSE5912.PolyGamers
         private void Awake()
         {
             if (instance != null && instance != this)
+            {
                 Destroy(gameObject);
+                return;
+            }
             instance = this;
 
             Initialize();

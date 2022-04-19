@@ -11,8 +11,11 @@ namespace CSE5912.PolyGamers
         public static EnemyHealthBarControl Instance { get { return instance; } }
         private void Awake()
         {
-            if (instance != null && instance != this) 
+            if (instance != null && instance != this)
+            {
                 Destroy(gameObject);
+                return;
+            }
             instance = this;
 
         }

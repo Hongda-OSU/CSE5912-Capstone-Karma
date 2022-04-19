@@ -17,7 +17,10 @@ namespace CSE5912.PolyGamers
         void Awake()
         {
             if (instance != null && instance != this)
+            {
                 Destroy(gameObject);
+                return;
+            }
             instance = this;
 
             if (inputSchemes == null)

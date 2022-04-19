@@ -9,13 +9,18 @@ namespace CSE5912.PolyGamers
     {
         [SerializeField] private GameObject[] objects;
 
+
         private static DontDestroy instance;
         public static DontDestroy Instance { get { return instance; } }
 
         private void Awake()
         {
             if (instance != null && instance != this)
+            {
                 Destroy(gameObject);
+                return;
+            }
+
             instance = this;
 
             foreach (var obj in objects)

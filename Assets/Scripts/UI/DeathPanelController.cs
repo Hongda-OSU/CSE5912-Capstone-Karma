@@ -17,6 +17,7 @@ namespace CSE5912.PolyGamers
             if (instance != null && instance != this)
             {
                 Destroy(gameObject);
+                return;
             }
             instance = this;
 

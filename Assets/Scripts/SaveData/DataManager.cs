@@ -151,6 +151,7 @@ namespace CSE5912.PolyGamers
                 else 
                 {
                     var hasBeenDefeated = !kvp.Value;
+                    Debug.Log(bossName);
                     enemy.SetBossDefeated(hasBeenDefeated);
                     enemy.bossArea.teleporter.Activate(false);
                 }
