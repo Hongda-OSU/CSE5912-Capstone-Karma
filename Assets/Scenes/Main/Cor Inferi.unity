@@ -9050,7 +9050,7 @@ PrefabInstance:
       objectReference: {fileID: 1852242061}
     - target: {fileID: 1086876102601878040, guid: 2b199db8d1af8e8448a03dbc6e582e95, type: 3}
       propertyPath: enemyName
-      value: 'Rufus: Inferno Furious'
+      value: 'Rufus: Failed Husk'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b199db8d1af8e8448a03dbc6e582e95, type: 3}
