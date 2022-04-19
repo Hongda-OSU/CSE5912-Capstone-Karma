@@ -33,7 +33,7 @@ namespace CSE5912.PolyGamers
 
             PlayDeathAnimation();
             BgmControl.Instance.MainAudio.Stop();
-            GetComponentInChildren<BossInformation>().Fadeout();
+            StartCoroutine(GetComponentInChildren<BossInformation>().FadeOut());
         }
 
         protected void DeathAnimationComplete()
@@ -60,6 +60,7 @@ namespace CSE5912.PolyGamers
             base.ResetEnemy();
 
             animator.Play("Inactive");
+            
             isBossFightTriggered = false;
         }
 
