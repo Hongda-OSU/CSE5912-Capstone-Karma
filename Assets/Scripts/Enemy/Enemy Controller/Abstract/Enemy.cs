@@ -93,11 +93,18 @@ namespace CSE5912.PolyGamers
 
         public void LevelUp(int level, float scalePerLevel)
         {
-            if (this.level == 0)
-                this.level = 1;
-
-            if (level == this.level)
+            if (level == 1 && level == this.level)
                 return;
+            else if (level < this.level)
+            {
+                Debug.LogWarning("Enemy level is higher than expected. (" + enemyName + ")");
+                return;
+            }
+            else if (this.level < 1)
+            {
+                Debug.LogWarning("Enemy level is lower than 1. (" + enemyName + ")");
+                return;
+            }
 
             var scale = (level - this.level) * scalePerLevel;
 

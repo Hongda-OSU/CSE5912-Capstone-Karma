@@ -23,6 +23,10 @@ namespace CSE5912.PolyGamers
 
         private bool isAbleToAttack = true;
 
+        protected override void Start()
+        {
+            base.Start();
+        }
         protected override void PerformActions()
         {
             if (playerDetected)

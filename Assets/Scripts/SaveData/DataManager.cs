@@ -32,24 +32,24 @@ namespace CSE5912.PolyGamers
 
         private void Update()
         {
-            // test
-            if (Input.GetKeyDown(KeyCode.P))
-            {
-                var index = 99;
-                currentDataIndex = index;
+            //// test
+            //if (Input.GetKeyDown(KeyCode.P))
+            //{
+            //    var index = 99;
+            //    currentDataIndex = index;
 
-                var saveData = Load(index);
-                if (saveData != null)
-                {
-                    LoadDataToGame();
-                }
-            }
-            if (Input.GetKeyDown(KeyCode.O))
-            {
-                var index = 99;
-                currentDataIndex = index;
-                Save();
-            }
+            //    var saveData = Load(index);
+            //    if (saveData != null)
+            //    {
+            //        LoadDataToGame();
+            //    }
+            //}
+            //if (Input.GetKeyDown(KeyCode.O))
+            //{
+            //    var index = 99;
+            //    currentDataIndex = index;
+            //    Save();
+            //}
 
             if (!isSceneLoaded && SceneManager.GetActiveScene().buildIndex != 0)
             {

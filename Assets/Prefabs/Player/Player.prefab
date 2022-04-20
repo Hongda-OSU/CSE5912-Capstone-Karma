@@ -1052,7 +1052,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 214d9417912c0a544ba12e4f2cdd3d7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statPoint: 10
+  statPoint: 5
   level: 1
   experience: 0
   experienceToUpgrade: 668
@@ -1255,7 +1255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f193ba5a7f70a214789fae553883fec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillPoints: 100
+  skillPoints: 5
   skillTree_element: {fileID: 1110533165218009687}
   playerSkillList: []
   attachmentSetSkills: {fileID: 1416963878}
