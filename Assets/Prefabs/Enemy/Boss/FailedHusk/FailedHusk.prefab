@@ -751,7 +751,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   respawnable: 1
   enemyName: Failed Husk
-  level: 0
+  level: 1
   experience: 0
   health: 10000
   maxHealth: 10000
@@ -794,6 +794,7 @@ MonoBehaviour:
   maxRetreatTime: 3
   isBossFightTriggered: 0
   bossDeathVfxPrefab: {fileID: 988757988809306081, guid: a843d7fee6c736d4fb7f8fada989fbee, type: 3}
+  bossArea: {fileID: 0}
   isUnleashed: 0
   unleashedHealth: 10000
   unleashedName: Flawless Form
@@ -807,7 +808,6 @@ MonoBehaviour:
   walkTime: 0
   timeToBlink: 3
   sword: {fileID: 156079179706268467}
-  bossArea: {fileID: 0}
   leashedMaterial: {fileID: 2100000, guid: 9b018396441b694459ca47fd0cd5d463, type: 2}
   unleashedMaterial: {fileID: 2100000, guid: 522a7258102ce8f4bbfa72a796f0e24c, type: 2}
   bodyRenderer: {fileID: 137341390338042718}

@@ -2990,7 +2990,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   respawnable: 1
   enemyName: Shield Goblin
-  level: 0
+  level: 1
   experience: 0
   health: 100
   maxHealth: 100
