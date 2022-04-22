@@ -18,6 +18,7 @@ namespace CSE5912.PolyGamers
         [SerializeField] private float blinkCastTime = 0.5f;
 
         [SerializeField] private GameObject seals;
+        [SerializeField] private GameObject splatVfx;
         [SerializeField] private float healthPerSeal;
         private List<GameObject> sealList = new List<GameObject>();
         [SerializeField] private float currentDamageTaken = 0f;
@@ -129,6 +130,10 @@ namespace CSE5912.PolyGamers
                     var seal = sealList[0];
                     sealList.RemoveAt(0);
                     Destroy(seal);
+
+                    var splat = Instantiate(splatVfx);
+                    splat.transform.position = transform.position + Vector3.up * GetComponentInChildren<Renderer>().bounds.size.y / 2;
+                    Destroy(splat, 5f);
 
                     staggerSound.Play();
 

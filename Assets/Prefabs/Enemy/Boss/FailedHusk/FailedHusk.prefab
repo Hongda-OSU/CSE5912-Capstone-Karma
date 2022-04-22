@@ -803,6 +803,7 @@ MonoBehaviour:
   blinkCastSpeed: 0.25
   blinkCastTime: 0.5
   seals: {fileID: 2453075650756380588}
+  splatVfx: {fileID: 1407402442211574, guid: 12463d7ed5f14464f9e865a37f53e75a, type: 3}
   healthPerSeal: 200
   currentDamageTaken: 0
   walkTime: 0
