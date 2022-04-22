@@ -47,6 +47,10 @@ namespace CSE5912.PolyGamers
                 DropoffManager.Instance.ClearDropoffs();
 
             StartCoroutine(LoadAsync(sceneIndex, karmicLevel));
+
+            DataManager.Instance.master = int.Parse(AudioPanelControl.Instance.master.magnitude.text);
+            DataManager.Instance.music = int.Parse(AudioPanelControl.Instance.music.magnitude.text);
+            DataManager.Instance.effect = int.Parse(AudioPanelControl.Instance.effect.magnitude.text);
         }
 
         private IEnumerator BlinkIcon(float time)

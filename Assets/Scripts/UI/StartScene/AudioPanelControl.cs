@@ -8,7 +8,7 @@ namespace CSE5912.PolyGamers
 {
     public class AudioPanelControl : UI
     {
-        private class VolumeControl
+        public class VolumeControl
         {
             public Label label;
             public VisualElement volume;
@@ -28,9 +28,7 @@ namespace CSE5912.PolyGamers
                 {
                     thresholdList.Add(thresholds.Q<VisualElement>(i.ToString()));
                 }
-
             }
-
         }
 
         [SerializeField] private AudioSource clickSound;
@@ -38,9 +36,9 @@ namespace CSE5912.PolyGamers
 
         private VisualElement audioPanel;
 
-        private VolumeControl master;
-        private VolumeControl music;
-        private VolumeControl effect;
+        public VolumeControl master;
+        public VolumeControl music;
+        public VolumeControl effect;
 
         private Button backButton;
 
@@ -73,9 +71,9 @@ namespace CSE5912.PolyGamers
             AssignCallback(music);
             AssignCallback(effect);
 
-            SetVolume(master, 10);
-            SetVolume(music, 10);
-            SetVolume(effect, 10);
+            SetVolume(master, DataManager.Instance.master);
+            SetVolume(music, DataManager.Instance.music);
+            SetVolume(effect, DataManager.Instance.effect);
 
             backButton.clicked += BackButtonPressed;
         }
@@ -110,7 +108,7 @@ namespace CSE5912.PolyGamers
             }
         }
 
-        private void SetVolume(VolumeControl volumeControl, int magnitude)
+        public void SetVolume(VolumeControl volumeControl, int magnitude)
         {
             var value = Mathf.Clamp(magnitude / 10f, 0.01f, 1f);
             var volume = volumeControl.volume;

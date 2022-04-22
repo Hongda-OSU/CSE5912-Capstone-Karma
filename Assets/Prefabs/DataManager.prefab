@@ -46,3 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fileName: GameData
   isSceneLoaded: 1
+  master: 10
+  music: 10
+  effect: 7

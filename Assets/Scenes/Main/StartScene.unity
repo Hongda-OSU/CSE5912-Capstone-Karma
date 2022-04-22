@@ -224,10 +224,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8367945375793208332, guid: 6a1c6f80e8c344d4e9949eaa57cdb34e, type: 3}
-      propertyPath: data
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8367945375793208333, guid: 6a1c6f80e8c344d4e9949eaa57cdb34e, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -275,10 +271,6 @@ PrefabInstance:
     - target: {fileID: 8367945375793208339, guid: 6a1c6f80e8c344d4e9949eaa57cdb34e, type: 3}
       propertyPath: m_Name
       value: DataManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 8367945375793208339, guid: 6a1c6f80e8c344d4e9949eaa57cdb34e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a1c6f80e8c344d4e9949eaa57cdb34e, type: 3}
@@ -396,7 +388,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiDocument: {fileID: 697325963008044403}
   fadingTime: 0.15
-  gameSceneIndex: 1
   displayDelay: 2
   isDisplayedOnStart: 0
   comeoutTime: 1.5

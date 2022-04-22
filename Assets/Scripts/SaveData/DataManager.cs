@@ -15,6 +15,13 @@ namespace CSE5912.PolyGamers
 
         [SerializeField] private bool isSceneLoaded = true;
 
+        [Range(0, 10)]
+        public int master;
+        [Range(0, 10)]
+        public int music;
+        [Range(0, 10)]
+        public int effect;
+
         private static DataManager instance;
         public static DataManager Instance { get { return instance; } }
 
