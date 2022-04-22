@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -37,7 +38,9 @@ namespace CSE5912.PolyGamers
         // condition checking
         internal bool isAiming;
         internal bool isFiring;
-
+        internal bool isSwaping;
+        private WaitForSeconds waitForSeconds = new WaitForSeconds(0.35f);
+        private WaitForSeconds waitForSeconds2 = new WaitForSeconds(1f);
         [SerializeField] private AudioSource pickupSound;
 
         // WeaponManager singleton
@@ -83,16 +86,20 @@ namespace CSE5912.PolyGamers
 
         void Update()
         {
+            // don't update if no weapon
+            if (!carriedWeapon) return;
+
             MainWeapon = PlayerInventory.Instance.PlayerWeapons[0];
             SecondaryWeapon = PlayerInventory.Instance.PlayerWeapons[1];
             TertiaryWeapon = PlayerInventory.Instance.PlayerWeapons[2];
             QuaternaryWeapon = PlayerInventory.Instance.PlayerWeapons[3];
             QuinaryWeapon = PlayerInventory.Instance.PlayerWeapons[4];
 
+            RecheckCurrentWeapon();
+
             // check item pick up
             CheckItem();
-            // don't update if no weapon
-            if (!carriedWeapon) return;
+
             // handle weapon swapping
             SwapWeapon();
 
@@ -140,7 +147,18 @@ namespace CSE5912.PolyGamers
                 carriedWeapon.StartRightLeanShooting();
             else
                 carriedWeapon.StopLeanShooting();
+        }
 
+        private void RecheckCurrentWeapon()
+        {
+            int numWeaponPossessed = PlayerInventory.Instance.PlayerWeapons.Where(element => element != null).Count();
+            for (int i = 0; i < numWeaponPossessed; i++)
+            {
+                if (PlayerInventory.Instance.PlayerWeapons[i] != carriedWeapon)
+                {
+                    PlayerInventory.Instance.PlayerWeapons[i].IsHoldingTrigger = false;
+                }
+            }
         }
 
         // reload ammo by pressing R
@@ -180,7 +198,7 @@ namespace CSE5912.PolyGamers
                 && MainWeapon != null
                 && !carriedWeapon.isAiming)
             {
-                ResetTriggers();
+                ResetTriggers(MainWeapon);
                 // active main weapon and set up the corresponding gun animator for fps controller
                 carriedWeapon.gameObject.SetActive(false);
                 carriedWeapon = MainWeapon;
@@ -196,7 +214,7 @@ namespace CSE5912.PolyGamers
                      && SecondaryWeapon != null
                      && !carriedWeapon.isAiming)
             {
-                ResetTriggers();
+                ResetTriggers(SecondaryWeapon);
                 carriedWeapon.gameObject.SetActive(false);
                 carriedWeapon = SecondaryWeapon;
                 carriedWeapon.gameObject.SetActive(true);
@@ -211,7 +229,7 @@ namespace CSE5912.PolyGamers
                      && TertiaryWeapon != null
                      && !carriedWeapon.isAiming)
             {
-                ResetTriggers();
+                ResetTriggers(TertiaryWeapon);
                 carriedWeapon.gameObject.SetActive(false);
                 carriedWeapon = TertiaryWeapon;
                 carriedWeapon.gameObject.SetActive(true);
@@ -226,7 +244,7 @@ namespace CSE5912.PolyGamers
                      && QuaternaryWeapon != null
                      && !carriedWeapon.isAiming)
             {
-                ResetTriggers();
+                ResetTriggers(QuaternaryWeapon);
                 carriedWeapon.gameObject.SetActive(false);
                 carriedWeapon = QuaternaryWeapon;
                 carriedWeapon.gameObject.SetActive(true);
@@ -241,7 +259,7 @@ namespace CSE5912.PolyGamers
                      && QuinaryWeapon != null
                      && !carriedWeapon.isAiming)
             {
-                ResetTriggers();
+                ResetTriggers(QuinaryWeapon);
                 carriedWeapon.gameObject.SetActive(false);
                 carriedWeapon = QuinaryWeapon;
                 carriedWeapon.gameObject.SetActive(true);
@@ -298,7 +316,7 @@ namespace CSE5912.PolyGamers
                 weaponToSwitch = PlayerInventory.Instance.PlayerWeapons[numWeaponPossessed - 1];
             else
                 weaponToSwitch = PlayerInventory.Instance.PlayerWeapons[currentWeaponIndex - 1];
-            ResetTriggers();
+            ResetTriggers(weaponToSwitch);
             carriedWeapon.gameObject.SetActive(false);
             carriedWeapon = weaponToSwitch;
             carriedWeapon.gameObject.SetActive(true);
@@ -318,7 +336,7 @@ namespace CSE5912.PolyGamers
                 weaponToSwitch = PlayerInventory.Instance.PlayerWeapons[0];
             else
                 weaponToSwitch = PlayerInventory.Instance.PlayerWeapons[currentWeaponIndex + 1];
-            ResetTriggers();
+            ResetTriggers(weaponToSwitch);
             carriedWeapon.gameObject.SetActive(false);
             carriedWeapon = weaponToSwitch;
             carriedWeapon.gameObject.SetActive(true);
@@ -369,8 +387,9 @@ namespace CSE5912.PolyGamers
         }
 
         // allow weapon switching during reloading or shooting
-        private void ResetTriggers()
+        private void ResetTriggers(Firearms targetWeapon)
         {
+            StartCoroutine(PauseForTakeOutAnimation(targetWeapon));
             carriedWeapon.isReloading = false;
             carriedWeapon.IsHoldingTrigger = false;
         }
@@ -378,6 +397,7 @@ namespace CSE5912.PolyGamers
         public void SetupCarriedWeapon(Firearms targetWeapon)
         {
             // disable current carried weapon if exist
+            StartCoroutine(PauseForTakeOutAnimation(targetWeapon));
             if (carriedWeapon)
             {
                 carriedWeapon.isAiming = false;
@@ -387,14 +407,23 @@ namespace CSE5912.PolyGamers
             }
             // swap to target weapon and set up gun animator
             targetWeapon.isAiming = false;
-            targetWeapon.IsHoldingTrigger = false;
             targetWeapon.isReloading = false;
             carriedWeapon = targetWeapon;
             carriedWeapon.gameObject.SetActive(true);
+            targetWeapon.IsHoldingTrigger = false;
             // set up the correct gun animator
             fpsController.SetupAnimator(carriedWeapon.GunAnimator);
         }
 
+        private IEnumerator PauseForTakeOutAnimation(Firearms targetWeapon)
+        {
+            isSwaping = false;
+            if (targetWeapon.Class == Firearms.WeaponClass.Pistol)
+                yield return waitForSeconds;
+            else
+                yield return waitForSeconds2;
+            isSwaping = true;
+        }
 
         public Vector3 GetShootDirection()
         {

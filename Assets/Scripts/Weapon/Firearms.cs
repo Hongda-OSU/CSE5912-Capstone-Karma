@@ -490,6 +490,7 @@ namespace CSE5912.PolyGamers
         // for weapon shooting
         internal void HoldTrigger()
         {
+            if (!WeaponManager.Instance.isSwaping) return;
             Attack();
             IsHoldingTrigger = true;
         }
