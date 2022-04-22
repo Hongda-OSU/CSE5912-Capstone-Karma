@@ -143,6 +143,12 @@ namespace CSE5912.PolyGamers
             {
                 animator.SetTrigger("Die_2");
             }
+
+            transform.Find("Audio Sources").Find("Death").GetComponent<AudioSource>().Play();
+        }
+
+        public void DeathSound() {
+            
         }
 
         protected override void HandleWander()

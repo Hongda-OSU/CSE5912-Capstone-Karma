@@ -140,6 +140,8 @@ namespace CSE5912.PolyGamers
             {
                 animator.SetTrigger("Die_2");
             }
+
+            GetComponentInChildren<AudioSource>().Play();
         }
 
         protected override void HandleWander()

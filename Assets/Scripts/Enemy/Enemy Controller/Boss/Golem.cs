@@ -254,6 +254,8 @@ namespace CSE5912.PolyGamers
             //    }
             //}
 
+            transform.Find("Audio Sources").Find("GroundSmash").GetComponent<AudioSource>().Play();
+
             Destroy(vfx_1, 4f);
             Destroy(vfx_2, 4f);
             Destroy(vfx_3, 4f);
@@ -273,6 +275,8 @@ namespace CSE5912.PolyGamers
                 FPSControllerCC.Instance.AddImpact(this.gameObject.transform.TransformDirection(Vector3.forward), 200f);
             }
 
+            transform.Find("Audio Sources").Find("Stomp").GetComponent<AudioSource>().Play();
+
             Destroy(vfx, 2f);
         }
 
@@ -289,6 +293,8 @@ namespace CSE5912.PolyGamers
                 PlayerStats.Instance.TakeDamage(damage);
                 slowdownPlayer = true;
             }
+
+            transform.Find("Audio Sources").Find("GroundSmash").GetComponent<AudioSource>().Play();
 
             Destroy(vfx, 4f);
             Destroy(dust, 2f);
@@ -307,6 +313,8 @@ namespace CSE5912.PolyGamers
                     FPSControllerCC.Instance.AddImpact(this.gameObject.transform.TransformDirection(Vector3.forward), 200f);
                 }
             }
+
+            transform.Find("Audio Sources").Find("Swoosh").GetComponent<AudioSource>().Play();
         }
 
         public void Landing()
@@ -315,6 +323,8 @@ namespace CSE5912.PolyGamers
             vfx.transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
 
             Destroy(vfx, 4f);
+
+            transform.Find("Audio Sources").Find("Landing").GetComponent<AudioSource>().Play();
         }
 
         public Vector3 DirFromAngle(float angleInDegrees, bool angleIsGlobal)

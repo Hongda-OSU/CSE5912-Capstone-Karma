@@ -87,6 +87,11 @@ namespace CSE5912.PolyGamers
             }
         }
 
+        public void DeathSound()
+        {
+            transform.Find("Audio Sources").Find("Death").GetComponent<AudioSource>().Play();
+        }
+
         protected override IEnumerator PerformActionsOnWaiting()
         {
             FaceTarget(directionToPlayer);
