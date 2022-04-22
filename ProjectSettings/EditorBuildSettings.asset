@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main/Blasphemy Sanctum.unity
     guid: 5dfe98c22ff34bd44a41d3fc3d3072d5
+  - enabled: 1
+    path: Assets/Scenes/Main/Cor Inferi.unity
+    guid: 1e79bea8d3f055542bfe82a6d6cc6622
   m_configObjects: {}

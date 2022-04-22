@@ -12,18 +12,29 @@ namespace CSE5912.PolyGamers
         [SerializeField] private int nextLevelIndex;
         [SerializeField] private Vector3 nextLevelPosition;
 
+        [SerializeField] private BossEnemy[] bossesToActivate;
 
         [SerializeField] private bool isActivated = false;
         [SerializeField] private bool isUsed = false;
         [SerializeField] private GameObject portalPrefab;
 
-        Collider collider3d;
+        [SerializeField] private GameObject indicator;
 
+        private static ForwardToNextLevel instance;
+        public static ForwardToNextLevel Instance { get { return instance; } }
         private void Awake()
         {
-            collider3d = GetComponent<Collider>();
-            collider3d.enabled = true;
-            collider3d.isTrigger = true;
+            if (instance != null && instance != this)
+            {
+                Destroy(this);
+                return;
+            }
+            instance = this;
+
+            GetComponent<Collider>().enabled = true;
+            GetComponent<Collider>().isTrigger = true;
+
+            indicator.SetActive(isActivated);
         }
 
         private void OnTriggerStay(Collider other)
@@ -74,8 +85,6 @@ namespace CSE5912.PolyGamers
 
             yield return new WaitForSeconds(3f);
 
-            DataManager.Instance.Save();
-
             SceneLoader.Instance.SetPositionOnLoad(nextLevelPosition);
             SceneLoader.Instance.LoadLevel(nextLevelIndex, GameStateController.Instance.karmicLevel);
 
@@ -96,6 +105,15 @@ namespace CSE5912.PolyGamers
             //// test
             //if (Input.GetKeyDown(KeyCode.P))
             //    StartCoroutine(PlayGameEnding());
+            if (!isActivated)
+            {
+                bool trigger = true;
+                foreach (var boss in bossesToActivate)
+                    if (boss.IsAlive)
+                        trigger = false;
+                Activate(trigger);
+            }
+
         }
         private IEnumerator PlayGameEnding()
         {
@@ -109,11 +127,12 @@ namespace CSE5912.PolyGamers
 
             BgmControl.Instance.SmoothMusicVolume(0f);
 
-            SceneLoader.Instance.LoadLevel(0, GameStateController.Instance.karmicLevel);
 
             GameStateController.Instance.SetGameState(GameStateController.GameState.GameOver);
             GameStateController.Instance.karmicLevel++;
             GameStateController.Instance.ResetBosses();
+
+            SceneLoader.Instance.LoadLevel(0, GameStateController.Instance.karmicLevel);
 
             DontDestroy.Instance.Destroy();
 
@@ -122,12 +141,13 @@ namespace CSE5912.PolyGamers
 
             StartSceneMenu.Instance.PlayGameEnding();
 
-            Destroy(this);
+            Destroy(gameObject);
         }
 
-        public void Activate()
+        public void Activate(bool enabled)
         {
-            isActivated = true;
+            isActivated = enabled;
+            indicator.SetActive(enabled);
         }
     }
 }

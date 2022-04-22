@@ -49,11 +49,13 @@ namespace CSE5912.PolyGamers
         private void Update()
         {
             currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-            if (currentSceneIndex != previousSceneIndex)
+            if (currentSceneIndex != previousSceneIndex && currentSceneIndex != 0)
             {
                 isDisplayed = false;
                 StartCoroutine(DisplayMapName());
                 previousSceneIndex = currentSceneIndex;
+                DataManager.Instance.Save();
+
             }
         }
 

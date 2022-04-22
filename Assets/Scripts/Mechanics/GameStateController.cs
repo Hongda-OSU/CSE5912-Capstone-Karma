@@ -33,12 +33,7 @@ namespace CSE5912.PolyGamers
             }
             instance = this;
 
-            bossToAlive.Add("Golem", true);
-            bossToAlive.Add("HellBlade", true);
-            bossToAlive.Add("EvilGod", true);
-            bossToAlive.Add("DarkSlayer", true);
-            bossToAlive.Add("FailedHusk", true);
-
+            ResetBosses();
         }
 
         private void Start()
@@ -97,8 +92,13 @@ namespace CSE5912.PolyGamers
 
         public void ResetBosses()
         {
-            foreach (var kvp in bossToAlive)
-                bossToAlive[kvp.Key] = true;
+            bossToAlive.Clear();
+
+            bossToAlive.Add("Golem", true);
+            bossToAlive.Add("HellBlade", true);
+            bossToAlive.Add("EvilGod", true);
+            bossToAlive.Add("DarkSlayer", true);
+            bossToAlive.Add("FailedHusk", true);
         }
         public GameState State { get { return state; } }
     }

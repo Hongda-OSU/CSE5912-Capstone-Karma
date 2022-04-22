@@ -59,8 +59,6 @@ namespace CSE5912.PolyGamers
                     var hours = timeInMinutes / 60;
                     var minutes = timeInMinutes % 60;
                     gameData.Q<Label>("Time").text = hours + "H " + minutes + "M";
-
-                    Debug.Log("PlayTime: " + timeInMinutes + " = " + hours + ", " + minutes);
                 }
                 else
                 {

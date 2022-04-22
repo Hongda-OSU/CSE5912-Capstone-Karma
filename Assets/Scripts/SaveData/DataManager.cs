@@ -141,6 +141,7 @@ namespace CSE5912.PolyGamers
                 PlayerInventory.Instance.AddAttachment(attachment);
             }
 
+            GameStateController.Instance.bossToAlive = data.bossToAlive;
             // load bosses
             foreach (var kvp in data.bossToAlive)
             {
@@ -158,9 +159,9 @@ namespace CSE5912.PolyGamers
                 else 
                 {
                     var hasBeenDefeated = !kvp.Value;
-                    Debug.Log(bossName);
-                    enemy.SetBossDefeated(hasBeenDefeated);
+                    Debug.Log("Is " + bossName + " alive? " + kvp.Value);
                     enemy.bossArea.teleporter.Activate(false);
+                    enemy.SetBossDefeated(hasBeenDefeated);
                 }
             }
 

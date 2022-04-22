@@ -51,7 +51,7 @@ namespace CSE5912.PolyGamers
         {
             isBossFightTriggered = hasBeenDefeated;
             isAlive = !hasBeenDefeated;
-            bossArea.isBossDefeated = hasBeenDefeated;
+            bossArea.SetBossDefeated(hasBeenDefeated);
             gameObject.SetActive(!hasBeenDefeated);
         }
 

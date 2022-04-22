@@ -8,6 +8,8 @@ namespace CSE5912.PolyGamers
 {
     public class BossArea : MonoBehaviour
     {
+        [SerializeField] private bool allowReturn = true;
+
         [SerializeField] private BossEnemy enemy;
         public AudioClip bossMusic;
         [SerializeField] private float triggerDelay = 3f;
@@ -54,8 +56,11 @@ namespace CSE5912.PolyGamers
 
             if (enemy.IsBossFightTriggered && !enemy.IsAlive)
             {
-                isBossDefeated = true;
+                SetBossDefeated(true);
             }
+
+            if (!allowReturn)
+                return;
 
             TipsControl.Instance.PopUp("Z", "Teleport");
 
@@ -63,7 +68,17 @@ namespace CSE5912.PolyGamers
             {
                 StartCoroutine(TeleportBack());
                 TipsControl.Instance.PopOff();
+                DataManager.Instance.Save();
             }
+        }
+
+        public void SetBossDefeated(bool isDefeated)
+        {
+            if (isBossDefeated == isDefeated)
+                return;
+
+            isBossDefeated = isDefeated;
+
         }
 
         private void OnTriggerExit(Collider other)
