@@ -171,6 +171,11 @@ namespace CSE5912.PolyGamers
             }
         }
 
+        public void DeathSound()
+        {
+            transform.Find("Audio Sources").Find("Death").GetComponent<AudioSource>().Play();
+        }
+
         private IEnumerator SkillCoolDown()
         {
             isAbleToAttack = false;

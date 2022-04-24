@@ -156,6 +156,9 @@ namespace CSE5912.PolyGamers
             Vector3 position = PlayerManager.Instance.Player.transform.position + Quaternion.AngleAxis(Random.Range(0f, 135f), Vector3.up) * directionToPlayer * 20f / 2;
             GameObject vfx_1 = Instantiate(explosion_1, transform.position + new Vector3(0f, 0.6f, 0f), Quaternion.identity);
             transform.position = (position);
+
+            transform.Find("Audio Sources").Find("Teleport").GetComponent<AudioSource>().Play();
+
             Destroy(vfx_1, 3f);
         }
 
@@ -198,6 +201,8 @@ namespace CSE5912.PolyGamers
                     FPSControllerCC.Instance.AddImpact(Vector3.up, 100f);
                 }
             }
+
+            transform.Find("Audio Sources").Find("Fire").GetComponent<AudioSource>().Play();
         }
 
         public void ThrowFlame()
@@ -205,6 +210,8 @@ namespace CSE5912.PolyGamers
             GameObject vfx_1 = Instantiate(flame, flamePivot.transform.position, Quaternion.identity);
             vfx_1.transform.LookAt(new Vector3(PlayerManager.Instance.Player.transform.position.x, PlayerManager.Instance.Player.transform.position.y, PlayerManager.Instance.Player.transform.position.z));
             Destroy(vfx_1, 6f);
+
+            transform.Find("Audio Sources").Find("Fire").GetComponent<AudioSource>().Play();
         }
 
         public void Swirl()
@@ -223,6 +230,8 @@ namespace CSE5912.PolyGamers
                     FPSControllerCC.Instance.AddImpact(Vector3.up, 200f);
                 }
             }
+
+            transform.Find("Audio Sources").Find("Swirl").GetComponent<AudioSource>().Play();
         }
 
         public void Hit_1() 
@@ -237,6 +246,8 @@ namespace CSE5912.PolyGamers
                     FPSControllerCC.Instance.AddImpact(this.gameObject.transform.TransformDirection(Vector3.forward), 50f);
                 }
             }
+
+            transform.Find("Audio Sources").Find("Swoosh").GetComponent<AudioSource>().Play();
         }
 
         public void PhaseTransition() 
