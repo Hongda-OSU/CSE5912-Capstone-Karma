@@ -18,7 +18,11 @@ namespace CSE5912.PolyGamers
         protected override void PerformActions()
         {
             if (playerDetected)
+            {
                 FaceTarget(directionToPlayer);
+                animator.SetTrigger("Boost");
+            }
+                
             switch (status)
             {
                 case Status.Idle:
