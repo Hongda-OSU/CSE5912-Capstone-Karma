@@ -220,6 +220,8 @@ namespace CSE5912.PolyGamers
 
                 statPoint++;
 
+                PlayerSkillManager.Instance.SkillPoints++;
+
                 levelUpAudio.Play();
 
                 GameObject vfx = Instantiate(levelUpVfxPrefab, PlayerManager.Instance.Player.transform);

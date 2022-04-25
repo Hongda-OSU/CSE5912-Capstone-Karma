@@ -48,14 +48,14 @@ namespace CSE5912.PolyGamers
 
         public void UpdateBars()
         {
-            healthBar.style.width = PlayerStats.Instance.Health * lengthPerUnit;
             maxHealthBar.style.width = PlayerStats.Instance.MaxHealth * lengthPerUnit;
+            healthBar.style.width = PlayerStats.Instance.Health / PlayerStats.Instance.MaxHealth * maxHealthBar.resolvedStyle.width;
 
-            energyBar.style.width = PlayerStats.Instance.Shield_energy * lengthPerUnit;
             maxEnergyBar.style.width = PlayerStats.Instance.MaxShield_energy * lengthPerUnit;
+            energyBar.style.width = PlayerStats.Instance.Shield_energy / PlayerStats.Instance.MaxShield_energy * maxEnergyBar.resolvedStyle.width;
 
-            armorBar.style.width = PlayerStats.Instance.Shield_armor * lengthPerUnit;
             maxArmorBar.style.width = PlayerStats.Instance.MaxShield_armor * lengthPerUnit;
+            armorBar.style.width = PlayerStats.Instance.Shield_armor / PlayerStats.Instance.MaxShield_armor * maxArmorBar.resolvedStyle.width;
         }
 
         public override void Display(bool enabled)
