@@ -2268,7 +2268,7 @@ MonoBehaviour:
   maxHealth: 40
   attackDamage: 50
   attackRange: 10
-  agentSpeed: 2
+  agentSpeed: 1.5
   isAlive: 1
   isFrozen: 0
   isInvincible: 0

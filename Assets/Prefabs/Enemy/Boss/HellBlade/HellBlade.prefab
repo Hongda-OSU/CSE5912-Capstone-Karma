@@ -19737,10 +19737,10 @@ MonoBehaviour:
   respawnable: 1
   enemyName: 'Niveus: Eclipse Plague'
   level: 1
-  experience: 0
-  health: 1500
-  maxHealth: 1500
-  attackDamage: 20
+  experience: 250000
+  health: 2000
+  maxHealth: 2000
+  attackDamage: 100
   attackRange: 3
   agentSpeed: 0
   isAlive: 1
@@ -19751,19 +19751,19 @@ MonoBehaviour:
   damageFactor_cryo: 1
   damageFactor_electro: 1
   damageFactor_venom: 1
-  physicalResist: 100
-  fireResist: 200
-  cryoResist: 50
+  physicalResist: 80
+  fireResist: 60
+  cryoResist: 60
   electroResist: 120
-  venomResist: 175
-  dropWeaponChance: 0
-  dropWeaponNumber: 1
-  dropWeaponTypes: 
-  dropWeaponRarities: 
-  dropAttachmentChance: 0
-  dropAttachmentNumber: 1
-  dropAttachmentTypes: 
-  dropAttachmentRarities: 
+  venomResist: 300
+  dropWeaponChance: 1
+  dropWeaponNumber: 2
+  dropWeaponTypes: 02000000090000000a0000000b0000000c000000
+  dropWeaponRarities: 04000000
+  dropAttachmentChance: 1
+  dropAttachmentNumber: 3
+  dropAttachmentTypes: 000000000100000002000000
+  dropAttachmentRarities: 04000000
   rotateSpeed: 90
   viewRadius: 50
   viewAngle: 360

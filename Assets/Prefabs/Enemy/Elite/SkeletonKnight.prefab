@@ -2276,8 +2276,8 @@ MonoBehaviour:
   enemyName: SkeletonKnight
   level: 1
   experience: 1200
-  health: 200
-  maxHealth: 200
+  health: 250
+  maxHealth: 250
   attackDamage: 40
   attackRange: 5
   agentSpeed: 3
@@ -2290,8 +2290,8 @@ MonoBehaviour:
   damageFactor_electro: 1
   damageFactor_venom: 1
   physicalResist: 80
-  fireResist: 25
-  cryoResist: 25
+  fireResist: 60
+  cryoResist: 60
   electroResist: 20
   venomResist: 100
   dropWeaponChance: 0.4

@@ -1396,7 +1396,7 @@ MonoBehaviour:
   venomResist: 50
   dropWeaponChance: 0.15
   dropWeaponNumber: 1
-  dropWeaponTypes: 010000000600000004000000050000000000000009000000
+  dropWeaponTypes: 0100000006000000040000000500000000000000
   dropWeaponRarities: 0000000001000000
   dropAttachmentChance: 0.2
   dropAttachmentNumber: 1

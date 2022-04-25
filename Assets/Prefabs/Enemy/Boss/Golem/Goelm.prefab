@@ -2339,9 +2339,9 @@ MonoBehaviour:
   enemyName: Goelm
   level: 1
   experience: 25000
-  health: 2000
-  maxHealth: 2000
-  attackDamage: 75
+  health: 2500
+  maxHealth: 2500
+  attackDamage: 60
   attackRange: 20
   agentSpeed: 0
   isAlive: 1
@@ -2352,14 +2352,14 @@ MonoBehaviour:
   damageFactor_cryo: 1
   damageFactor_electro: 1
   damageFactor_venom: 1
-  physicalResist: 150
-  fireResist: 150
-  cryoResist: 150
-  electroResist: 150
-  venomResist: 150
+  physicalResist: 125
+  fireResist: 125
+  cryoResist: 80
+  electroResist: 125
+  venomResist: 180
   dropWeaponChance: 1
   dropWeaponNumber: 1
-  dropWeaponTypes: 0000000004000000030000000700000008000000
+  dropWeaponTypes: 0000000009000000030000000700000008000000
   dropWeaponRarities: 04000000
   dropAttachmentChance: 1
   dropAttachmentNumber: 3

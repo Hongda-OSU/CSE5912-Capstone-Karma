@@ -1042,12 +1042,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawnable: 1
-  enemyName: 
+  enemyName: Dark Mage
   level: 1
-  experience: 0
-  health: 200
-  maxHealth: 200
-  attackDamage: 10
+  experience: 10000
+  health: 350
+  maxHealth: 350
+  attackDamage: 80
   attackRange: 15
   agentSpeed: 0
   isAlive: 1
@@ -1058,19 +1058,19 @@ MonoBehaviour:
   damageFactor_cryo: 1
   damageFactor_electro: 1
   damageFactor_venom: 1
-  physicalResist: 25
-  fireResist: 25
-  cryoResist: 25
-  electroResist: 25
-  venomResist: 25
-  dropWeaponChance: 0
+  physicalResist: 60
+  fireResist: 80
+  cryoResist: 80
+  electroResist: 80
+  venomResist: 100
+  dropWeaponChance: 0.4
   dropWeaponNumber: 1
-  dropWeaponTypes: 
-  dropWeaponRarities: 
-  dropAttachmentChance: 0
+  dropWeaponTypes: 0000000002000000030000000a00000007000000
+  dropWeaponRarities: 0200000003000000
+  dropAttachmentChance: 0.4
   dropAttachmentNumber: 1
-  dropAttachmentTypes: 
-  dropAttachmentRarities: 
+  dropAttachmentTypes: 000000000100000002000000
+  dropAttachmentRarities: 0200000003000000
   rotateSpeed: 90
   viewRadius: 15
   viewAngle: 135

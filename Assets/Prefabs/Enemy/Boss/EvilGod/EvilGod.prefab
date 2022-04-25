@@ -1922,11 +1922,11 @@ MonoBehaviour:
   damageFactor_cryo: 1
   damageFactor_electro: 1
   damageFactor_venom: 1
-  physicalResist: 150
-  fireResist: 100
+  physicalResist: 100
+  fireResist: 80
   cryoResist: 100
   electroResist: 200
-  venomResist: 150
+  venomResist: 200
   dropWeaponChance: 1
   dropWeaponNumber: 1
   dropWeaponTypes: 020000000c0000000a0000000b00000003000000

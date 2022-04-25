@@ -1648,10 +1648,10 @@ MonoBehaviour:
   respawnable: 1
   enemyName: 'Dark Slayer: Fiend of The Deep'
   level: 1
-  experience: 0
-  health: 1000
-  maxHealth: 1000
-  attackDamage: 35
+  experience: 250000
+  health: 4000
+  maxHealth: 4000
+  attackDamage: 75
   attackRange: 15
   agentSpeed: 0
   isAlive: 1
@@ -1662,19 +1662,19 @@ MonoBehaviour:
   damageFactor_cryo: 1
   damageFactor_electro: 1
   damageFactor_venom: 1
-  physicalResist: 60
-  fireResist: 60
-  cryoResist: 60
-  electroResist: 60
-  venomResist: 60
-  dropWeaponChance: 0
-  dropWeaponNumber: 1
-  dropWeaponTypes: 
-  dropWeaponRarities: 
-  dropAttachmentChance: 0
-  dropAttachmentNumber: 1
-  dropAttachmentTypes: 
-  dropAttachmentRarities: 
+  physicalResist: 150
+  fireResist: 200
+  cryoResist: 150
+  electroResist: 150
+  venomResist: 250
+  dropWeaponChance: 1
+  dropWeaponNumber: 2
+  dropWeaponTypes: 000000000900000003000000070000000c000000
+  dropWeaponRarities: 04000000
+  dropAttachmentChance: 1
+  dropAttachmentNumber: 3
+  dropAttachmentTypes: 000000000100000002000000
+  dropAttachmentRarities: 04000000
   rotateSpeed: 90
   viewRadius: 18
   viewAngle: 135

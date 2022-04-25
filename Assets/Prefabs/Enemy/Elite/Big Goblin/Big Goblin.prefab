@@ -892,9 +892,9 @@ MonoBehaviour:
   damageFactor_cryo: 1
   damageFactor_electro: 1
   damageFactor_venom: 1
-  physicalResist: 40
+  physicalResist: 60
   fireResist: 40
-  cryoResist: 40
+  cryoResist: 100
   electroResist: 40
   venomResist: 60
   dropWeaponChance: 1

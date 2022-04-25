@@ -781,10 +781,10 @@ MonoBehaviour:
   respawnable: 1
   enemyName: Skeleton Dagger
   level: 1
-  experience: 0
-  health: 50
-  maxHealth: 50
-  attackDamage: 12
+  experience: 3000
+  health: 200
+  maxHealth: 200
+  attackDamage: 80
   attackRange: 2
   agentSpeed: 6
   isAlive: 1
@@ -795,19 +795,19 @@ MonoBehaviour:
   damageFactor_cryo: 1
   damageFactor_electro: 1
   damageFactor_venom: 1
-  physicalResist: 15
+  physicalResist: 20
   fireResist: 40
   cryoResist: 40
-  electroResist: 80
+  electroResist: 40
   venomResist: 150
-  dropWeaponChance: 0
+  dropWeaponChance: 0.2
   dropWeaponNumber: 1
-  dropWeaponTypes: 
-  dropWeaponRarities: 
-  dropAttachmentChance: 0
+  dropWeaponTypes: 00000000070000000800000005000000
+  dropWeaponRarities: 0100000002000000
+  dropAttachmentChance: 0.2
   dropAttachmentNumber: 1
-  dropAttachmentTypes: 
-  dropAttachmentRarities: 
+  dropAttachmentTypes: 000000000100000002000000
+  dropAttachmentRarities: 0100000002000000
   rotateSpeed: 90
   viewRadius: 15
   viewAngle: 135

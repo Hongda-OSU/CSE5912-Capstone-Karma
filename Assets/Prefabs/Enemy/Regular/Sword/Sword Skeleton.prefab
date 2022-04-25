@@ -2091,12 +2091,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawnable: 1
-  enemyName: 
+  enemyName: Sword Skeleton
   level: 1
-  experience: 1
-  health: 100
-  maxHealth: 100
-  attackDamage: 7
+  experience: 3500
+  health: 300
+  maxHealth: 300
+  attackDamage: 75
   attackRange: 5
   agentSpeed: 4
   isAlive: 1
@@ -2107,19 +2107,19 @@ MonoBehaviour:
   damageFactor_cryo: 1
   damageFactor_electro: 1
   damageFactor_venom: 1
-  physicalResist: 0
-  fireResist: 0
-  cryoResist: 0
-  electroResist: 0
-  venomResist: 0
-  dropWeaponChance: 0
+  physicalResist: 60
+  fireResist: 60
+  cryoResist: 60
+  electroResist: 80
+  venomResist: 100
+  dropWeaponChance: 0.2
   dropWeaponNumber: 1
-  dropWeaponTypes: 
-  dropWeaponRarities: 
-  dropAttachmentChance: 0
+  dropWeaponTypes: 0b00000003000000070000000a000000
+  dropWeaponRarities: 0100000002000000
+  dropAttachmentChance: 0.2
   dropAttachmentNumber: 1
-  dropAttachmentTypes: 
-  dropAttachmentRarities: 
+  dropAttachmentTypes: 000000000100000002000000
+  dropAttachmentRarities: 0100000002000000
   rotateSpeed: 90
   viewRadius: 15
   viewAngle: 135

@@ -752,10 +752,10 @@ MonoBehaviour:
   respawnable: 1
   enemyName: Failed Husk
   level: 1
-  experience: 0
+  experience: 500000
   health: 10000
   maxHealth: 10000
-  attackDamage: 30
+  attackDamage: 40
   attackRange: 5
   agentSpeed: 0
   isAlive: 1
@@ -766,19 +766,19 @@ MonoBehaviour:
   damageFactor_cryo: 1
   damageFactor_electro: 1
   damageFactor_venom: 1
-  physicalResist: 0
-  fireResist: 0
-  cryoResist: 0
-  electroResist: 0
-  venomResist: 0
-  dropWeaponChance: 0
-  dropWeaponNumber: 1
-  dropWeaponTypes: 
-  dropWeaponRarities: 
-  dropAttachmentChance: 0
-  dropAttachmentNumber: 1
-  dropAttachmentTypes: 
-  dropAttachmentRarities: 
+  physicalResist: 200
+  fireResist: 200
+  cryoResist: 200
+  electroResist: 200
+  venomResist: 200
+  dropWeaponChance: 1
+  dropWeaponNumber: 5
+  dropWeaponTypes: 0000000002000000030000000700000008000000090000000a0000000b0000000c000000
+  dropWeaponRarities: 04000000
+  dropAttachmentChance: 1
+  dropAttachmentNumber: 6
+  dropAttachmentTypes: 000000000100000002000000
+  dropAttachmentRarities: 04000000
   rotateSpeed: 20
   viewRadius: 15
   viewAngle: 135
