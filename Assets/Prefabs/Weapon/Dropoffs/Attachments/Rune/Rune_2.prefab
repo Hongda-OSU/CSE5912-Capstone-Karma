@@ -116,17 +116,34 @@ MonoBehaviour:
   CurrentItemType: 1
   outline: {fileID: 7723061538969400814}
   indicator: {fileID: 5718859055052913509}
-  opacity: 0.3
   iconImage: {fileID: 21300000, guid: 7d772d845fa5ada41b501fc7ba13abe8, type: 3}
   type: 3
   set: 0
   runeIndex: 2
-  citation: "Nobles in the fortress was among the first \ngroup of people that truly
-    realize the source\n of all brilliances, the mother of all seas, was \ndraining.
-    Desperation and impious lead them \nto question the lord's ruling and the grace
-    from \nthe deep. They tainted the sacred rune of god \nwith red: the blasphemous
-    color of blood and \nmadness. Starting from that day, the fortress \nwas filled
-    with the crimson grace of the flesh \nflame."
+  citation: 'We all know the truth from the beginning,
+
+    we just refuse to accept
+    it: our fountain of
+
+    life will ultimately drain one day. Not because
+
+    the
+    God has abandoned us, not because
+
+    our prayer was not sincere, not because
+
+    the
+    sunlight dired up the water... It just drain,
+
+    since it was not belong to
+    here. Do what you
+
+    pleased to sustain this dying lands above
+
+    you. One
+    day you will notice that your efforts
+
+    are meaningless.'
 --- !u!114 &7723061538969400814
 MonoBehaviour:
   m_ObjectHideFlags: 0

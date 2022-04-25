@@ -116,12 +116,17 @@ MonoBehaviour:
   CurrentItemType: 1
   outline: {fileID: 9120735646900837901}
   indicator: {fileID: 3675726115980719881}
-  opacity: 0.3
   iconImage: {fileID: 21300000, guid: e21783b9009bb3e40aac9f7487d624f7, type: 3}
   type: 3
   set: 0
   runeIndex: 4
-  citation: 
+  citation: "I was outside of the fortress on that night,\njust like all the other
+    refugees, confused and helpless. I had trouble falling in sleep on \nsuch a sultry
+    and dark night, but it is mainly\na feeling of something unfortunate would\nhappen.
+    And just as you know, fire start to\nrain from the sky, people start to shout
+    in\npain and fear, everything was chaotic.\nAt that point I know the omen is
+    real. They\nare from the darkest corner of the night\nsky. The void legion has
+    arrived."
 --- !u!114 &9120735646900837901
 MonoBehaviour:
   m_ObjectHideFlags: 0

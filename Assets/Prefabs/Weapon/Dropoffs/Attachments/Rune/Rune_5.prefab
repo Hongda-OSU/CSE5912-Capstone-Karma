@@ -116,12 +116,16 @@ MonoBehaviour:
   CurrentItemType: 1
   outline: {fileID: 7723061538969400814}
   indicator: {fileID: 5718859055052913509}
-  opacity: 0.3
   iconImage: {fileID: 21300000, guid: 4c8c3cce53210f54cacb61dbe4ed20f4, type: 3}
   type: 3
   set: 0
   runeIndex: 5
-  citation: 
+  citation: "Chaos and destruction was brought to \ncountries and lives in this land,
+    but the story\ndid not simply end there. Think about a\ngreat war that cause
+    almost everyone to\nperish. At the point when there is no one \nalive on the
+    battle field, a new chapter is\njust about to begin. Flesh and blood is always\ngoing
+    to rot and become the bed of maggots \nand plague. Death will ultimately give
+    born\nto more lives, this is how the world works.\n"
 --- !u!114 &7723061538969400814
 MonoBehaviour:
   m_ObjectHideFlags: 0

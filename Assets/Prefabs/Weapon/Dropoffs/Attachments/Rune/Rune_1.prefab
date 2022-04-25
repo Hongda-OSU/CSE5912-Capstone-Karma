@@ -116,12 +116,16 @@ MonoBehaviour:
   CurrentItemType: 1
   outline: {fileID: 9120735646900837901}
   indicator: {fileID: 3675726115980719881}
-  opacity: 0.3
   iconImage: {fileID: 21300000, guid: 7d772d845fa5ada41b501fc7ba13abe8, type: 3}
   type: 3
   set: 0
   runeIndex: 1
-  citation: 
+  citation: " A long time ago, the golden brilliance of the \nsun was believed to
+    be most untainted miracle\nof this world. A long time ago, an acient king\nfounded
+    the brightest civilization in the history,\nhaving the shape of the golden sun
+    as its emblem.\nA long time ago, people started to question the\ngrace of the
+    sun, and turned their back on what\nthey used to believe. But no matter what,
+    the \nemblem of the sun still shines as it used \nto be. \n"
 --- !u!114 &9120735646900837901
 MonoBehaviour:
   m_ObjectHideFlags: 0

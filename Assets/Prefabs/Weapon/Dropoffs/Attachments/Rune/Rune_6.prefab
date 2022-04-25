@@ -116,12 +116,16 @@ MonoBehaviour:
   CurrentItemType: 1
   outline: {fileID: 1065363660751506039}
   indicator: {fileID: 3987064975149717231}
-  opacity: 0.3
   iconImage: {fileID: 21300000, guid: 33a6203d7c3a9244ba0e334f4fe0ac3a, type: 3}
   type: 3
   set: 0
   runeIndex: 6
-  citation: 
+  citation: "Nobles in the fortress was among the first \ngroup of people that truly
+    realize the source\n of all brilliances, the mother of all seas, was \ndraining.
+    Desperation and impious lead them \nto question the lord's ruling and the grace
+    from \nthe deep. They tainted the sacred rune of god \nwith red: the blasphemous
+    color of blood and \nmadness. Starting from that day, the fortress \nwas filled
+    with the twisted grace of the flesh \nflame."
 --- !u!114 &1065363660751506039
 MonoBehaviour:
   m_ObjectHideFlags: 0
