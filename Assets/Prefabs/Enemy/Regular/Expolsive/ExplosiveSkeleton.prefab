@@ -2263,9 +2263,9 @@ MonoBehaviour:
   respawnable: 1
   enemyName: Explosive Skeleton
   level: 1
-  experience: 0
-  health: 120
-  maxHealth: 120
+  experience: 300
+  health: 40
+  maxHealth: 40
   attackDamage: 50
   attackRange: 10
   agentSpeed: 2
@@ -2277,19 +2277,19 @@ MonoBehaviour:
   damageFactor_cryo: 1
   damageFactor_electro: 1
   damageFactor_venom: 1
-  physicalResist: 20
-  fireResist: 50
-  cryoResist: 50
-  electroResist: 100
-  venomResist: 150
+  physicalResist: 1
+  fireResist: 20
+  cryoResist: 20
+  electroResist: 20
+  venomResist: 100
   dropWeaponChance: 0
   dropWeaponNumber: 1
   dropWeaponTypes: 
   dropWeaponRarities: 
-  dropAttachmentChance: 1
-  dropAttachmentNumber: 3
-  dropAttachmentTypes: 000000000200000001000000
-  dropAttachmentRarities: 04000000
+  dropAttachmentChance: 0
+  dropAttachmentNumber: 1
+  dropAttachmentTypes: 
+  dropAttachmentRarities: 
   rotateSpeed: 90
   viewRadius: 20
   viewAngle: 135
@@ -2300,8 +2300,13 @@ MonoBehaviour:
   wanderAreaNumber: 0
   canPatrol: 0
   waypoints: []
+  isAggroOn: 0
+  aggro: 0
+  aggroDuration: 5
+  aggroRange: 10
   effect: {fileID: 2497963346703946159, guid: 3020924a5ebb5ba4788273f5b5a9af20, type: 3}
   barrel: {fileID: 5182709447603436241}
+  distanceToExplode: 3
 --- !u!195 &5182709449158343154
 NavMeshAgent:
   m_ObjectHideFlags: 0

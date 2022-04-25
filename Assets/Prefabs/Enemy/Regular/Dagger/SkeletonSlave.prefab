@@ -1666,10 +1666,10 @@ MonoBehaviour:
   respawnable: 1
   enemyName: Skeleton Slave
   level: 1
-  experience: 0
-  health: 100
-  maxHealth: 100
-  attackDamage: 12
+  experience: 250
+  health: 50
+  maxHealth: 50
+  attackDamage: 25
   attackRange: 2
   agentSpeed: 7
   isAlive: 1
@@ -1680,19 +1680,19 @@ MonoBehaviour:
   damageFactor_cryo: 1
   damageFactor_electro: 1
   damageFactor_venom: 1
-  physicalResist: 15
-  fireResist: 40
-  cryoResist: 40
-  electroResist: 80
-  venomResist: 150
-  dropWeaponChance: 0
+  physicalResist: 1
+  fireResist: 25
+  cryoResist: 25
+  electroResist: 25
+  venomResist: 50
+  dropWeaponChance: 0.2
   dropWeaponNumber: 1
-  dropWeaponTypes: 
-  dropWeaponRarities: 
-  dropAttachmentChance: 0
+  dropWeaponTypes: 0000000008000000020000000900000004000000
+  dropWeaponRarities: 0000000001000000
+  dropAttachmentChance: 0.2
   dropAttachmentNumber: 1
-  dropAttachmentTypes: 
-  dropAttachmentRarities: 
+  dropAttachmentTypes: 000000000100000002000000
+  dropAttachmentRarities: 0000000001000000
   rotateSpeed: 90
   viewRadius: 15
   viewAngle: 135

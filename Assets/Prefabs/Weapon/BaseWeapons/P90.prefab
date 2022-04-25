@@ -16237,7 +16237,7 @@ MonoBehaviour:
   weaponType: 10
   weaponClass: 1
   rarity: 0
-  damage: 10
+  damage: 7
   element: 0
   BulletPenetrable: 0
   MuzzlePoint: {fileID: 4300899043351599720}
@@ -16249,8 +16249,8 @@ MonoBehaviour:
   ironSights: {fileID: 5920419712256407575}
   CurrentAmmo: 50
   MaxAmmoPerMag: 50
-  CurrentMaxAmmoCarried: 200
-  MaxAmmoCarried: 200
+  CurrentMaxAmmoCarried: 500
+  MaxAmmoCarried: 500
   FireRate: 14
   shootEvent:
     m_PersistentCalls:

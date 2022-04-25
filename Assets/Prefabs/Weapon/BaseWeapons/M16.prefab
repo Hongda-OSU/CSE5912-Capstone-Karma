@@ -3356,7 +3356,7 @@ MonoBehaviour:
   weaponType: 2
   weaponClass: 2
   rarity: 0
-  damage: 14
+  damage: 12
   element: 0
   BulletPenetrable: 0
   MuzzlePoint: {fileID: 8099851852605737339}
@@ -3366,10 +3366,10 @@ MonoBehaviour:
   CastingParticle: {fileID: 8099851852982384689}
   ImpactPrefab: {fileID: 1879272669879180, guid: 7bef351ddc33ae044b671a7664396a20, type: 3}
   ironSights: {fileID: 7316250306844416750}
-  CurrentAmmo: 30
-  MaxAmmoPerMag: 30
-  CurrentMaxAmmoCarried: 120
-  MaxAmmoCarried: 120
+  CurrentAmmo: 40
+  MaxAmmoPerMag: 40
+  CurrentMaxAmmoCarried: 320
+  MaxAmmoCarried: 320
   FireRate: 12
   shootEvent:
     m_PersistentCalls:

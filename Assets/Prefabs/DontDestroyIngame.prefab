@@ -46,9 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathAudio: {fileID: 5552792558209074504}
-  respawnPoints: {fileID: 0}
   currentRespawnPoint: {fileID: 0}
-  currentSoulPoint: {fileID: 0}
   deathVfxPrefab: {fileID: 988757988809306081, guid: b12173f9aa021f74bb26ff04c4dff436, type: 3}
   timeToRespawn: 3
   soulPointPrefab: {fileID: 668452988796817149, guid: d974c747b0da9d744af131f871deb7e8, type: 3}
@@ -554,6 +552,22 @@ PrefabInstance:
       propertyPath: switchSound
       value: 
       objectReference: {fileID: 1414153459673428518}
+    - target: {fileID: 1742487286542249136, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: damage
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1742487286542249136, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: rarity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1742487286542249136, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: MaxAmmoPerMag
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1742487286542249136, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: MaxAmmoCarried
+      value: 144
+      objectReference: {fileID: 0}
     - target: {fileID: 3914003179883955252, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
       propertyPath: statUpAudio
       value: 
@@ -566,6 +580,22 @@ PrefabInstance:
       propertyPath: takeDamageAudio
       value: 
       objectReference: {fileID: 640629001887348438}
+    - target: {fileID: 3914003179883955252, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: burnedBaseChance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3914003179883955252, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: frozenBaseChance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3914003179883955252, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: infectedBaseChance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3914003179883955252, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
+      propertyPath: electrocutedBaseChance
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3914003179971651603, guid: 705bb3101d6744742b014fb66dbc9f64, type: 3}
       propertyPath: m_RootOrder
       value: 2

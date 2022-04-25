@@ -11821,8 +11821,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: 
   weaponType: 4
+  weaponClass: 0
   rarity: 0
-  damage: 13
+  damage: 25
   element: 0
   BulletPenetrable: 0
   MuzzlePoint: {fileID: 2694320995250438046}
@@ -11834,9 +11835,9 @@ MonoBehaviour:
   ironSights: {fileID: 5437156090202374257}
   CurrentAmmo: 5
   MaxAmmoPerMag: 5
-  CurrentMaxAmmoCarried: 40
-  MaxAmmoCarried: 40
-  FireRate: 5
+  CurrentMaxAmmoCarried: 60
+  MaxAmmoCarried: 60
+  FireRate: 4
   shootEvent:
     m_PersistentCalls:
       m_Calls: []

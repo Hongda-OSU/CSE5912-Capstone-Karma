@@ -2526,9 +2526,9 @@ MonoBehaviour:
   respawnable: 1
   enemyName: Archer Goblin
   level: 1
-  experience: 0
-  health: 100
-  maxHealth: 100
+  experience: 300
+  health: 80
+  maxHealth: 80
   attackDamage: 25
   attackRange: 8
   agentSpeed: 0
@@ -2540,19 +2540,19 @@ MonoBehaviour:
   damageFactor_cryo: 1
   damageFactor_electro: 1
   damageFactor_venom: 1
-  physicalResist: 25
+  physicalResist: 30
   fireResist: 25
   cryoResist: 25
   electroResist: 25
   venomResist: 25
-  dropWeaponChance: 0
+  dropWeaponChance: 0.2
   dropWeaponNumber: 1
-  dropWeaponTypes: 
-  dropWeaponRarities: 
-  dropAttachmentChance: 0
+  dropWeaponTypes: 040000000000000002000000070000000a000000
+  dropWeaponRarities: 0200000001000000
+  dropAttachmentChance: 0.2
   dropAttachmentNumber: 1
-  dropAttachmentTypes: 
-  dropAttachmentRarities: 
+  dropAttachmentTypes: 000000000100000002000000
+  dropAttachmentRarities: 0100000002000000
   rotateSpeed: 90
   viewRadius: 15
   viewAngle: 135

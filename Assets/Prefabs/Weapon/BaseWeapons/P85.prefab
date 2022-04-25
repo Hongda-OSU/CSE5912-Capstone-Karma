@@ -1001,8 +1001,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: 
   weaponType: 5
+  weaponClass: 0
   rarity: 0
-  damage: 9
+  damage: 14
   element: 0
   BulletPenetrable: 0
   MuzzlePoint: {fileID: 8927636812175798231}
@@ -1012,11 +1013,11 @@ MonoBehaviour:
   CastingParticle: {fileID: 8927636811588954615}
   ImpactPrefab: {fileID: 1879272669879180, guid: 7bef351ddc33ae044b671a7664396a20, type: 3}
   ironSights: {fileID: 8926408680189611595}
-  CurrentAmmo: 8
-  MaxAmmoPerMag: 8
-  CurrentMaxAmmoCarried: 32
-  MaxAmmoCarried: 32
-  FireRate: 8
+  CurrentAmmo: 10
+  MaxAmmoPerMag: 10
+  CurrentMaxAmmoCarried: 120
+  MaxAmmoCarried: 120
+  FireRate: 6
   shootEvent:
     m_PersistentCalls:
       m_Calls: []

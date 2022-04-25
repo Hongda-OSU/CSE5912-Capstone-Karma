@@ -21009,8 +21009,8 @@ MonoBehaviour:
   ironSights: {fileID: 8175596514376324475}
   CurrentAmmo: 30
   MaxAmmoPerMag: 30
-  CurrentMaxAmmoCarried: 120
-  MaxAmmoCarried: 120
+  CurrentMaxAmmoCarried: 240
+  MaxAmmoCarried: 240
   FireRate: 10
   shootEvent:
     m_PersistentCalls:

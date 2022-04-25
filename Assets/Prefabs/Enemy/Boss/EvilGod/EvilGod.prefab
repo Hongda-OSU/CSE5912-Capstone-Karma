@@ -1908,10 +1908,10 @@ MonoBehaviour:
   respawnable: 1
   enemyName: Evil God
   level: 1
-  experience: 0
-  health: 1000
-  maxHealth: 1000
-  attackDamage: 15
+  experience: 25000
+  health: 1500
+  maxHealth: 1500
+  attackDamage: 100
   attackRange: 20
   agentSpeed: 0
   isAlive: 1
@@ -1922,19 +1922,19 @@ MonoBehaviour:
   damageFactor_cryo: 1
   damageFactor_electro: 1
   damageFactor_venom: 1
-  physicalResist: 0
-  fireResist: 0
-  cryoResist: 0
-  electroResist: 0
-  venomResist: 0
-  dropWeaponChance: 0
+  physicalResist: 150
+  fireResist: 100
+  cryoResist: 100
+  electroResist: 200
+  venomResist: 150
+  dropWeaponChance: 1
   dropWeaponNumber: 1
-  dropWeaponTypes: 
-  dropWeaponRarities: 
-  dropAttachmentChance: 0
-  dropAttachmentNumber: 1
-  dropAttachmentTypes: 
-  dropAttachmentRarities: 
+  dropWeaponTypes: 020000000c0000000a0000000b00000003000000
+  dropWeaponRarities: 04000000
+  dropAttachmentChance: 1
+  dropAttachmentNumber: 3
+  dropAttachmentTypes: 000000000100000002000000
+  dropAttachmentRarities: 04000000
   rotateSpeed: 50
   viewRadius: 1000
   viewAngle: 360

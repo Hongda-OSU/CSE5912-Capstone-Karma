@@ -1155,10 +1155,10 @@ MonoBehaviour:
   respawnable: 1
   enemyName: Spear Goblin
   level: 1
-  experience: 0
-  health: 100
-  maxHealth: 100
-  attackDamage: 5
+  experience: 250
+  health: 60
+  maxHealth: 60
+  attackDamage: 30
   attackRange: 4
   agentSpeed: 3
   isAlive: 1
@@ -1169,19 +1169,19 @@ MonoBehaviour:
   damageFactor_cryo: 1
   damageFactor_electro: 1
   damageFactor_venom: 1
-  physicalResist: 30
-  fireResist: 25
-  cryoResist: 100
-  electroResist: 25
-  venomResist: 20
-  dropWeaponChance: 0
+  physicalResist: 20
+  fireResist: 30
+  cryoResist: 30
+  electroResist: 30
+  venomResist: 30
+  dropWeaponChance: 0.2
   dropWeaponNumber: 1
-  dropWeaponTypes: 
-  dropWeaponRarities: 
-  dropAttachmentChance: 0
+  dropWeaponTypes: 0100000004000000020000000500000007000000
+  dropWeaponRarities: 0000000001000000
+  dropAttachmentChance: 0.2
   dropAttachmentNumber: 1
-  dropAttachmentTypes: 
-  dropAttachmentRarities: 
+  dropAttachmentTypes: 000000000100000002000000
+  dropAttachmentRarities: 0000000001000000
   rotateSpeed: 90
   viewRadius: 15
   viewAngle: 135
@@ -1192,6 +1192,10 @@ MonoBehaviour:
   wanderAreaNumber: 0
   canPatrol: 0
   waypoints: []
+  isAggroOn: 0
+  aggro: 0
+  aggroDuration: 5
+  aggroRange: 10
 --- !u!1 &8955643777893732201
 GameObject:
   m_ObjectHideFlags: 0

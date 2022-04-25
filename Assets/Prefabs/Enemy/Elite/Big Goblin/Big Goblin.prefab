@@ -878,10 +878,10 @@ MonoBehaviour:
   respawnable: 1
   enemyName: Big Goblin
   level: 1
-  experience: 0
+  experience: 3000
   health: 800
   maxHealth: 800
-  attackDamage: 15
+  attackDamage: 40
   attackRange: 15
   agentSpeed: 0
   isAlive: 1
@@ -892,19 +892,19 @@ MonoBehaviour:
   damageFactor_cryo: 1
   damageFactor_electro: 1
   damageFactor_venom: 1
-  physicalResist: 0
-  fireResist: 0
-  cryoResist: 0
-  electroResist: 0
-  venomResist: 0
-  dropWeaponChance: 0
+  physicalResist: 40
+  fireResist: 40
+  cryoResist: 40
+  electroResist: 40
+  venomResist: 60
+  dropWeaponChance: 1
   dropWeaponNumber: 1
-  dropWeaponTypes: 
-  dropWeaponRarities: 
-  dropAttachmentChance: 0
+  dropWeaponTypes: 0a0000000c0000000200000003000000070000000b000000
+  dropWeaponRarities: 03000000
+  dropAttachmentChance: 1
   dropAttachmentNumber: 1
-  dropAttachmentTypes: 
-  dropAttachmentRarities: 
+  dropAttachmentTypes: 000000000100000002000000
+  dropAttachmentRarities: 03000000
   rotateSpeed: 90
   viewRadius: 15
   viewAngle: 135

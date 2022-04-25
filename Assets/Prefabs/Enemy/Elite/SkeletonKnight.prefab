@@ -2275,10 +2275,10 @@ MonoBehaviour:
   respawnable: 1
   enemyName: SkeletonKnight
   level: 1
-  experience: 0
-  health: 500
-  maxHealth: 500
-  attackDamage: 30
+  experience: 1200
+  health: 200
+  maxHealth: 200
+  attackDamage: 40
   attackRange: 5
   agentSpeed: 3
   isAlive: 1
@@ -2289,19 +2289,19 @@ MonoBehaviour:
   damageFactor_cryo: 1
   damageFactor_electro: 1
   damageFactor_venom: 1
-  physicalResist: 0
-  fireResist: 0
-  cryoResist: 0
-  electroResist: 0
-  venomResist: 0
-  dropWeaponChance: 0
+  physicalResist: 80
+  fireResist: 25
+  cryoResist: 25
+  electroResist: 20
+  venomResist: 100
+  dropWeaponChance: 0.4
   dropWeaponNumber: 1
-  dropWeaponTypes: 
-  dropWeaponRarities: 
-  dropAttachmentChance: 0
+  dropWeaponTypes: 000000000200000003000000090000000b000000080000000a00000007000000
+  dropWeaponRarities: 0200000003000000
+  dropAttachmentChance: 0.4
   dropAttachmentNumber: 1
-  dropAttachmentTypes: 
-  dropAttachmentRarities: 
+  dropAttachmentTypes: 000000000100000002000000
+  dropAttachmentRarities: 0200000003000000
   rotateSpeed: 90
   viewRadius: 15
   viewAngle: 135

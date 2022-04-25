@@ -1375,10 +1375,10 @@ MonoBehaviour:
   respawnable: 1
   enemyName: SkeletonCreep
   level: 1
-  experience: 0
-  health: 100
-  maxHealth: 100
-  attackDamage: 10
+  experience: 250
+  health: 60
+  maxHealth: 60
+  attackDamage: 20
   attackRange: 2
   agentSpeed: 3
   isAlive: 1
@@ -1389,19 +1389,19 @@ MonoBehaviour:
   damageFactor_cryo: 1
   damageFactor_electro: 1
   damageFactor_venom: 1
-  physicalResist: 20
-  fireResist: 50
-  cryoResist: 50
-  electroResist: 100
-  venomResist: 150
-  dropWeaponChance: 1
+  physicalResist: 1
+  fireResist: 25
+  cryoResist: 25
+  electroResist: 25
+  venomResist: 50
+  dropWeaponChance: 0.15
   dropWeaponNumber: 1
-  dropWeaponTypes: 00000000
-  dropWeaponRarities: 00000000
-  dropAttachmentChance: 1
-  dropAttachmentNumber: 3
+  dropWeaponTypes: 010000000600000004000000050000000000000009000000
+  dropWeaponRarities: 0000000001000000
+  dropAttachmentChance: 0.2
+  dropAttachmentNumber: 1
   dropAttachmentTypes: 000000000100000002000000
-  dropAttachmentRarities: 04000000
+  dropAttachmentRarities: 0000000001000000
   rotateSpeed: 90
   viewRadius: 15
   viewAngle: 135

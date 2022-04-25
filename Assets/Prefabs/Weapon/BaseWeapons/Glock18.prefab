@@ -26206,6 +26206,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: 
   weaponType: 1
+  weaponClass: 0
   rarity: 1
   damage: 10
   element: 0
@@ -26217,10 +26218,10 @@ MonoBehaviour:
   CastingParticle: {fileID: 6767761925101302334}
   ImpactPrefab: {fileID: 1879272669879180, guid: 7bef351ddc33ae044b671a7664396a20, type: 3}
   ironSights: {fileID: 6767761924746562899}
-  CurrentAmmo: 8
-  MaxAmmoPerMag: 8
-  CurrentMaxAmmoCarried: 32
-  MaxAmmoCarried: 32
+  CurrentAmmo: 12
+  MaxAmmoPerMag: 12
+  CurrentMaxAmmoCarried: 144
+  MaxAmmoCarried: 144
   FireRate: 5
   shootEvent:
     m_PersistentCalls:
