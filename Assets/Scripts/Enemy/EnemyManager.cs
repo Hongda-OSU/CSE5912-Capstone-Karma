@@ -14,7 +14,7 @@ namespace CSE5912.PolyGamers
         [SerializeField] private float levelUpScale = 3f;
         [SerializeField] private bool isLevelledUp = false;
 
-        private List<GameObject> enemyList = new List<GameObject>();
+        private List<GameObject> regularList = new List<GameObject>();
         private List<GameObject> bossList = new List<GameObject>();
 
         private static EnemyManager instance;
@@ -34,7 +34,7 @@ namespace CSE5912.PolyGamers
                 foreach (Transform enemy in enemies.transform)
                 {
                     if (enemy.gameObject.activeSelf)
-                        enemyList.Add(enemy.gameObject);
+                        regularList.Add(enemy.gameObject);
                 }
             }
 
@@ -63,7 +63,7 @@ namespace CSE5912.PolyGamers
 
         public void ResetEnemiesInScene()
         {
-            foreach (GameObject enemy in enemyList)
+            foreach (GameObject enemy in regularList)
             {
                 enemy.SetActive(false);
                 enemy.SetActive(true);
@@ -79,7 +79,7 @@ namespace CSE5912.PolyGamers
 
         private void LevelupAll(int level)
         {
-            foreach (GameObject enemy in enemyList)
+            foreach (GameObject enemy in regularList)
             {
                 enemy.GetComponent<Enemy>().LevelUp(level, levelUpScale);
             }
@@ -94,7 +94,7 @@ namespace CSE5912.PolyGamers
             List<GameObject> result = new List<GameObject>();
 
             var planes = GeometryUtility.CalculateFrustumPlanes(WeaponManager.Instance.CarriedWeapon.GunCamera);
-            foreach (GameObject enemy in enemyList)
+            foreach (GameObject enemy in regularList)
             {
                 if (enemy != null && enemy.tag == "Enemy" && GeometryUtility.TestPlanesAABB(planes, enemy.GetComponent<Collider>().bounds))
                 {
@@ -114,7 +114,7 @@ namespace CSE5912.PolyGamers
         {
             List<GameObject> result = new List<GameObject>();
 
-            foreach (GameObject enemy in enemyList)
+            foreach (GameObject enemy in regularList)
             {
                 float distance = Vector3.Distance(PlayerManager.Instance.Player.transform.position, enemy.transform.position);
                 if (distance <= radius)
@@ -124,6 +124,7 @@ namespace CSE5912.PolyGamers
         }
 
 
-        public List<GameObject> EnemyList { get { return enemyList; } }
+        public List<GameObject> RugularList { get { return regularList; } }
+        public List<GameObject> BossList { get { return bossList; } }
     }
 }

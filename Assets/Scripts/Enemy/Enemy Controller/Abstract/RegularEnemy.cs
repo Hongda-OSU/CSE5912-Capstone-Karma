@@ -69,7 +69,14 @@ namespace CSE5912.PolyGamers
 
             prevFound = foundTarget;
         }
-        
+
+        public override void ResetEnemy()
+        {
+            base.ResetEnemy();
+
+            aggro = 0f;
+        }
+
         // These codes below are used by Eiditor for testing purpose.
         public Transform GetTransform()
         {

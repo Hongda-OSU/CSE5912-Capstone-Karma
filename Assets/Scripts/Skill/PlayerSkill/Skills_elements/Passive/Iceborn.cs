@@ -27,7 +27,7 @@ namespace CSE5912.PolyGamers
                 return;
 
             bool isTriggered = false;
-            foreach (var target in EnemyManager.Instance.EnemyList)
+            foreach (var target in EnemyManager.Instance.RugularList)
             {
                 if (target.GetComponent<Enemy>().IsFrozen)
                 {

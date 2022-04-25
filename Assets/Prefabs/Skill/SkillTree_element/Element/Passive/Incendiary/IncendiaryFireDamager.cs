@@ -23,7 +23,7 @@ namespace CSE5912.PolyGamers
 
             if (closest == null)
             {
-                foreach (var obj in EnemyManager.Instance.EnemyList)
+                foreach (var obj in EnemyManager.Instance.RugularList)
                 {
                     var enemy = obj.GetComponent<Enemy>();
                     if (enemy == null || !enemy.IsAlive)

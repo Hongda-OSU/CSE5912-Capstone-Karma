@@ -35,7 +35,7 @@ namespace CSE5912.PolyGamers
 
             int num = 0;
             int max = baseTargetNumber + targetNumberPerLevel * (level - 1);
-            foreach (var target in EnemyManager.Instance.EnemyList)
+            foreach (var target in EnemyManager.Instance.RugularList)
             {
                 if (num >= max)
                     break;

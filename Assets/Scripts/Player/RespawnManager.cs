@@ -84,6 +84,9 @@ namespace CSE5912.PolyGamers
             currWeapon.Display(true);
 
             PlayerStats.Instance.Respawn();
+
+            yield return new WaitForSeconds(Time.deltaTime);
+
             EnemyManager.Instance.ResetEnemiesInScene();
 
             yield return new WaitForSeconds(Time.deltaTime);

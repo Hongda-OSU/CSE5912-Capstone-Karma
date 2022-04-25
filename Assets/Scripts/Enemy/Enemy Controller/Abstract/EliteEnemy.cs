@@ -86,6 +86,12 @@ namespace CSE5912.PolyGamers
             PerformActions();
         }
 
+        public override void ResetEnemy()
+        {
+            base.ResetEnemy();
+
+            aggro = 0f;
+        }
 
         /*
          *  enemy actions

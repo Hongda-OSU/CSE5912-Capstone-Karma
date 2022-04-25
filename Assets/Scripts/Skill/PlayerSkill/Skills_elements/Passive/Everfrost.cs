@@ -27,7 +27,7 @@ namespace CSE5912.PolyGamers
             if (!isLearned)
                 return;
 
-            foreach (var obj in EnemyManager.Instance.EnemyList)
+            foreach (var obj in EnemyManager.Instance.RugularList)
             {
                 var enemy = obj.GetComponent<Enemy>();
                 if (enemy.Frozen.Stack < enemy.Frozen.MaxStack || enemy.IsFrozen)
