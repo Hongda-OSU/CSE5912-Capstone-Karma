@@ -1881,7 +1881,7 @@ MonoBehaviour:
   respawnable: 1
   enemyName: Shield Skeleton Sword
   level: 1
-  experience: 3500
+  experience: 7000
   health: 320
   maxHealth: 320
   attackDamage: 85

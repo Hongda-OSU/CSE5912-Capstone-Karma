@@ -59,6 +59,22 @@ namespace CSE5912.PolyGamers
                 LevelupAll(GameStateController.Instance.karmicLevel);
                 Debug.Log("Enemies have been leveled up to Lv. " + GameStateController.Instance.karmicLevel);
             }
+
+            if (Input.GetKeyDown(KeyCode.O))
+            {
+
+                foreach (GameObject enemy in regularList)
+                {
+                    enemy.GetComponent<Enemy>().Kill();
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                foreach (GameObject enemy in bossList)
+                {
+                    enemy.GetComponent<Enemy>().Kill();
+                }
+            }
         }
 
         public void ResetEnemiesInScene()

@@ -752,10 +752,10 @@ MonoBehaviour:
   respawnable: 1
   enemyName: Failed Husk
   level: 1
-  experience: 500000
-  health: 10000
-  maxHealth: 10000
-  attackDamage: 40
+  experience: 5000000
+  health: 100
+  maxHealth: 100
+  attackDamage: 100
   attackRange: 5
   agentSpeed: 0
   isAlive: 1
@@ -804,7 +804,7 @@ MonoBehaviour:
   blinkCastTime: 0.5
   seals: {fileID: 2453075650756380588}
   splatVfx: {fileID: 1407402442211574, guid: 12463d7ed5f14464f9e865a37f53e75a, type: 3}
-  healthPerSeal: 200
+  healthPerSeal: 1000
   currentDamageTaken: 0
   walkTime: 0
   timeToBlink: 3

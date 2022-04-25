@@ -427,7 +427,7 @@ MonoBehaviour:
   respawnable: 1
   enemyName: Dark Elf
   level: 1
-  experience: 3000
+  experience: 10000
   health: 220
   maxHealth: 220
   attackDamage: 70

@@ -1666,7 +1666,7 @@ MonoBehaviour:
   respawnable: 1
   enemyName: Skeleton Slave
   level: 1
-  experience: 250
+  experience: 600
   health: 50
   maxHealth: 50
   attackDamage: 25

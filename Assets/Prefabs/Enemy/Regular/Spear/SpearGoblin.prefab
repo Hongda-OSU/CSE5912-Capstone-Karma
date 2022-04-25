@@ -1155,7 +1155,7 @@ MonoBehaviour:
   respawnable: 1
   enemyName: Spear Goblin
   level: 1
-  experience: 250
+  experience: 400
   health: 60
   maxHealth: 60
   attackDamage: 30

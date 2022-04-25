@@ -781,7 +781,7 @@ MonoBehaviour:
   respawnable: 1
   enemyName: Skeleton Dagger
   level: 1
-  experience: 3000
+  experience: 6000
   health: 200
   maxHealth: 200
   attackDamage: 80

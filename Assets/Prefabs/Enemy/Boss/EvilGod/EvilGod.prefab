@@ -1908,7 +1908,7 @@ MonoBehaviour:
   respawnable: 1
   enemyName: Evil God
   level: 1
-  experience: 25000
+  experience: 30000
   health: 1500
   maxHealth: 1500
   attackDamage: 100

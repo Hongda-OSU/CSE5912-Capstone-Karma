@@ -2263,7 +2263,7 @@ MonoBehaviour:
   respawnable: 1
   enemyName: Explosive Skeleton
   level: 1
-  experience: 300
+  experience: 500
   health: 40
   maxHealth: 40
   attackDamage: 50

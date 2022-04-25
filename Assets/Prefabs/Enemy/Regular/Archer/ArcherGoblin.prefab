@@ -2526,7 +2526,7 @@ MonoBehaviour:
   respawnable: 1
   enemyName: Archer Goblin
   level: 1
-  experience: 300
+  experience: 600
   health: 80
   maxHealth: 80
   attackDamage: 25

@@ -878,7 +878,7 @@ MonoBehaviour:
   respawnable: 1
   enemyName: Big Goblin
   level: 1
-  experience: 3000
+  experience: 5000
   health: 800
   maxHealth: 800
   attackDamage: 40

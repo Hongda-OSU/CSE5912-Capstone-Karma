@@ -48,7 +48,7 @@ namespace CSE5912.PolyGamers
             Divine = 4,
         }
 
-        public void Initialize(AttachmentType type, AttachmentRarity rarity, AttachmentSet set, Sprite image, string citation, int runeIndex)
+        public void Initialize(AttachmentType type, AttachmentRarity rarity, AttachmentSet set, Sprite image, string citation, int runeIndex, string runeName)
         {
             attachmentName = type.ToString();
 
@@ -63,6 +63,7 @@ namespace CSE5912.PolyGamers
             {
                 attachmentBonus.GetRuneBonus(runeIndex);
                 this.rarity = AttachmentRarity.Divine;
+                attachmentName = runeName;
             }
             setSkill = PlayerSkillManager.Instance.GetSetSkill(attachmentSet);
         }

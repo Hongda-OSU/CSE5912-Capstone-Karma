@@ -2991,7 +2991,7 @@ MonoBehaviour:
   respawnable: 1
   enemyName: Shield Goblin
   level: 1
-  experience: 300
+  experience: 500
   health: 80
   maxHealth: 80
   attackDamage: 40

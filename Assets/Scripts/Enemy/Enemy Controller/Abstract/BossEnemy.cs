@@ -11,6 +11,8 @@ namespace CSE5912.PolyGamers
 
         [SerializeField] private GameObject bossDeathVfxPrefab;
 
+        [SerializeField] private int[] dropRuneIndex;
+
         public BossArea bossArea;
 
         public abstract void TriggerBossFight();
@@ -22,9 +24,19 @@ namespace CSE5912.PolyGamers
             playerDetected = isBossFightTriggered;
         }
 
+        protected void DropRune()
+        {
+            for (int i = 0; i < dropRuneIndex.Length; i++)
+            {
+                DropoffManager.Instance.DropRune(dropRuneIndex[i], transform.position);
+            }
+        }
+
         protected override void Die()
         {
             PlayerStats.Instance.GetExperience(experience);
+
+            DropRune();
 
             isAlive = false;
             agent.isStopped = true;

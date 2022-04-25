@@ -715,7 +715,7 @@ MonoBehaviour:
   respawnable: 1
   enemyName: Skeleton Warrior
   level: 1
-  experience: 750
+  experience: 1000
   health: 150
   maxHealth: 150
   attackDamage: 70

@@ -10,6 +10,8 @@ namespace CSE5912.PolyGamers
         [SerializeField] private Attachment.AttachmentType type;
         [SerializeField] private Attachment.AttachmentSet set;
 
+        [Header("Rune")]
+        [SerializeField] private string runeName;
         [Header("-1 if not rune")]
         [SerializeField] private int runeIndex = -1;
 
@@ -28,7 +30,7 @@ namespace CSE5912.PolyGamers
             // set attachment real name
             attachment.AttachmentRealName = gameObject.name.Replace("(Clone)", "");
 
-            attachment.Initialize(type, rarity, set, iconImage, citation, runeIndex);
+            attachment.Initialize(type, rarity, set, iconImage, citation, runeIndex, runeName);
 
             attachment.gameObject.name = attachment.AttachmentName;
 
@@ -37,5 +39,6 @@ namespace CSE5912.PolyGamers
 
         public Attachment.AttachmentType Type { get { return type; } }
         public Attachment Attachment { get { return attachment; } set { attachment = value; } }
+        public int RuneIndex { get { return runeIndex; } }
     }
 }

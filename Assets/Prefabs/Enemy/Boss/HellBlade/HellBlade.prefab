@@ -19737,7 +19737,7 @@ MonoBehaviour:
   respawnable: 1
   enemyName: 'Niveus: Eclipse Plague'
   level: 1
-  experience: 250000
+  experience: 700000
   health: 2000
   maxHealth: 2000
   attackDamage: 100

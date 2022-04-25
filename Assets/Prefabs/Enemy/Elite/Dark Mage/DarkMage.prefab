@@ -1044,7 +1044,7 @@ MonoBehaviour:
   respawnable: 1
   enemyName: Dark Mage
   level: 1
-  experience: 10000
+  experience: 30000
   health: 350
   maxHealth: 350
   attackDamage: 80

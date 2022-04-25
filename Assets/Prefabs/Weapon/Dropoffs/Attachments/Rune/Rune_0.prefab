@@ -116,10 +116,10 @@ MonoBehaviour:
   CurrentItemType: 1
   outline: {fileID: 5365168431077571084}
   indicator: {fileID: 761794825925665420}
-  opacity: 0.3
   iconImage: {fileID: 21300000, guid: 5c27fc79dd2011c4ab50f507f7cfb7af, type: 3}
   type: 3
   set: 0
+  runeName: 111
   runeIndex: 0
   citation: "Darkness is not a substance that exists \non its own. Rather, it is
     a concept that \nborn from relativity. Even in the furthest \nedge of the deep

@@ -222,6 +222,32 @@ namespace CSE5912.PolyGamers
         }
 
 
+        public GameObject DropRune(int runeIndex, Vector3 position)
+        {
+            GameObject dropoff;
+
+            GameObject drop = null;
+            foreach (var rune in attachmentDropoffList)
+            {
+                if (rune.GetComponent<AttachmentItem>().Type == Attachment.AttachmentType.Rune && rune.GetComponent<AttachmentItem>().RuneIndex == runeIndex)
+                {
+                    drop = rune;
+                }
+            }
+
+            Vector3 pos = position + Vector3.up * dropHeight;
+            Vector3 offset = new Vector3(Random.Range(-dropPositionVariance.x, dropPositionVariance.x), 0, Random.Range(-dropPositionVariance.y, dropPositionVariance.y));
+            pos += offset;
+
+            dropoff = Instantiate(drop, pos, Quaternion.identity);
+            dropoff.GetComponent<AttachmentItem>().Setup(Attachment.AttachmentRarity.Divine);
+
+            dropoff.transform.SetParent(transform, true);
+            dropoff.GetComponent<AttachmentItem>().Attachment.transform.SetParent(transform, true);
+
+            return dropoff;
+        }
+
         public void ClearDropoffs()
         {
             foreach (Transform child in transform)

@@ -1385,7 +1385,7 @@ MonoBehaviour:
   respawnable: 1
   enemyName: Hammer Skeleton
   level: 1
-  experience: 7500
+  experience: 20000
   health: 400
   maxHealth: 400
   attackDamage: 120

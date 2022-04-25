@@ -2275,7 +2275,7 @@ MonoBehaviour:
   respawnable: 1
   enemyName: SkeletonKnight
   level: 1
-  experience: 1200
+  experience: 1500
   health: 250
   maxHealth: 250
   attackDamage: 40
