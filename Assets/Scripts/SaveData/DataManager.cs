@@ -22,6 +22,9 @@ namespace CSE5912.PolyGamers
         [Range(0, 10)]
         public int effect;
 
+        [Range(0, 10)]
+        public int mouseSensitivity;
+
         private static DataManager instance;
         public static DataManager Instance { get { return instance; } }
 

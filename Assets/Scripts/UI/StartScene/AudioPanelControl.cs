@@ -8,7 +8,7 @@ namespace CSE5912.PolyGamers
 {
     public class AudioPanelControl : UI
     {
-        public class VolumeControl
+        public class SlideControl
         {
             public Label label;
             public VisualElement volume;
@@ -17,7 +17,7 @@ namespace CSE5912.PolyGamers
 
             public bool isMouseHovering = false;
 
-            public VolumeControl(VisualElement element)
+            public SlideControl(VisualElement element)
             {
                 label = element.Q<Label>("Label");
                 volume = element.Q<VisualElement>("Volume");
@@ -36,9 +36,9 @@ namespace CSE5912.PolyGamers
 
         private VisualElement audioPanel;
 
-        public VolumeControl master;
-        public VolumeControl music;
-        public VolumeControl effect;
+        public SlideControl master;
+        public SlideControl music;
+        public SlideControl effect;
 
         private Button backButton;
 
@@ -58,9 +58,9 @@ namespace CSE5912.PolyGamers
 
             audioPanel = root.Q<VisualElement>("AudioPanel");
 
-            master = new VolumeControl(audioPanel.Q<VisualElement>("Master"));
-            music = new VolumeControl(audioPanel.Q<VisualElement>("Music"));
-            effect = new VolumeControl(audioPanel.Q<VisualElement>("Effect"));
+            master = new SlideControl(audioPanel.Q<VisualElement>("Master"));
+            music = new SlideControl(audioPanel.Q<VisualElement>("Music"));
+            effect = new SlideControl(audioPanel.Q<VisualElement>("Effect"));
 
             backButton = audioPanel.Q<Button>("Back");
         }
@@ -79,7 +79,7 @@ namespace CSE5912.PolyGamers
         }
 
 
-        private void AssignCallback(VolumeControl volumeControl)
+        private void AssignCallback(SlideControl volumeControl)
         {
             var thresholdList = volumeControl.thresholdList;
             for (int i = 0; i < thresholdList.Count; i++)
@@ -90,7 +90,7 @@ namespace CSE5912.PolyGamers
             }
         }
 
-        private IEnumerator OnMouseHover(VolumeControl volumeControl, int magnitude)
+        private IEnumerator OnMouseHover(SlideControl volumeControl, int magnitude)
         {
             if (volumeControl.isMouseHovering)
                 yield break;
@@ -108,7 +108,7 @@ namespace CSE5912.PolyGamers
             }
         }
 
-        public void SetVolume(VolumeControl volumeControl, int magnitude)
+        public void SetVolume(SlideControl volumeControl, int magnitude)
         {
             var value = Mathf.Clamp(magnitude / 10f, 0.01f, 1f);
             var volume = volumeControl.volume;

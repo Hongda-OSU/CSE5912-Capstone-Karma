@@ -49,3 +49,4 @@ MonoBehaviour:
   master: 10
   music: 10
   effect: 7
+  mouseSensitivity: 7

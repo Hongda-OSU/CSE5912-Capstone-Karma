@@ -51,6 +51,8 @@ namespace CSE5912.PolyGamers
             DataManager.Instance.master = int.Parse(AudioPanelControl.Instance.master.magnitude.text);
             DataManager.Instance.music = int.Parse(AudioPanelControl.Instance.music.magnitude.text);
             DataManager.Instance.effect = int.Parse(AudioPanelControl.Instance.effect.magnitude.text);
+
+            DataManager.Instance.mouseSensitivity = int.Parse(KeybindingsPanelControl.Instance.mouseSensitivity.magnitude.text);
         }
 
         private IEnumerator BlinkIcon(float time)
