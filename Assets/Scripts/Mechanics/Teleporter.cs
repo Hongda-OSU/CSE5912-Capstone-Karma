@@ -124,6 +124,7 @@ namespace CSE5912.PolyGamers
 
             // Bug fixed
             PlayerStats.Instance.IsInvincible = false;
+            isPlayerInside = false;
         }
 
         public IEnumerator TeleportBack()

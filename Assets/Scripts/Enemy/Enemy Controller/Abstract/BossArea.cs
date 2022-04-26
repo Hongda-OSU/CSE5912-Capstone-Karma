@@ -39,6 +39,7 @@ namespace CSE5912.PolyGamers
             BgmControl.Instance.PlayCurrentBgm();
 
             isEnded = false;
+            isPlayerInside = false;
         }
 
         private void OnTriggerEnter(Collider other)
