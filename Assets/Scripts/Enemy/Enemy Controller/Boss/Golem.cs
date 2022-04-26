@@ -312,8 +312,10 @@ namespace CSE5912.PolyGamers
                 {
                     FPSControllerCC.Instance.AddImpact(this.gameObject.transform.TransformDirection(Vector3.forward), 200f);
                 }
-            }
+            }           
+        }
 
+        public void SwooshSound() {
             transform.Find("Audio Sources").Find("Swoosh").GetComponent<AudioSource>().Play();
         }
 

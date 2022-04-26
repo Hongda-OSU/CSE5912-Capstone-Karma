@@ -11,6 +11,8 @@ namespace CSE5912.PolyGamers
         [SerializeField] private GameObject barrel;
         [SerializeField] private float distanceToExplode = 3f;
         private bool exploded = false;
+        private bool screamPlayed = false;
+
         public GameObject Barrel => barrel;
         public bool Exploded { set { exploded = value; } }
 
@@ -30,6 +32,11 @@ namespace CSE5912.PolyGamers
                     // Inside attacking range, attack player.                
                     animator.SetBool("PlayerInAttackRange", true);
                     agent.speed = agentSpeed * 4f;
+
+                    if (!screamPlayed) {
+                        transform.Find("Audio Sources").Find("Scream").GetComponent<AudioSource>().Play();
+                        screamPlayed = true;
+                    }
                 }
                 else
                 {
