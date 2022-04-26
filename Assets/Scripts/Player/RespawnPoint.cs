@@ -14,6 +14,8 @@ namespace CSE5912.PolyGamers
         [SerializeField] private float timeBetweenActivate = 5f;
         [SerializeField] private bool isReady = true;
 
+        [SerializeField] private bool isPlayerInside = false;
+
         private Collider collider3d;
 
         private void Awake()
@@ -45,19 +47,23 @@ namespace CSE5912.PolyGamers
             PlayerStats.Instance.Recover();
         }
 
+        private void Update()
+        {
+            if (isPlayerInside && InputManager.Instance.InputSchemes.PlayerActions.ActivateRespawnPoint.WasPressedThisFrame())
+            {
+                Activate();
+            }
+        }
         private void OnTriggerStay(Collider other)
         {
             if (other.gameObject.layer != LayerMask.NameToLayer("Player"))
                 return;
 
+            isPlayerInside = true;
+
             if (isReady)
             {
                 TipsControl.Instance.PopUp("X", "Activate");
-
-                if (InputManager.Instance.InputSchemes.PlayerActions.ActivateRespawnPoint.WasPressedThisFrame())
-                {
-                    Activate();
-                }
             }
             else
             {
@@ -70,7 +76,7 @@ namespace CSE5912.PolyGamers
                 return;
 
             TipsControl.Instance.PopOff();
-
+            isPlayerInside = false;
         }
 
         private IEnumerator Cooldown()

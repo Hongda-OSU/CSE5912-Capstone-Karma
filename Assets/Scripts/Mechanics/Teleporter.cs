@@ -6,6 +6,8 @@ namespace CSE5912.PolyGamers
 {
     public class Teleporter : MonoBehaviour
     {
+        [SerializeField] private bool isPlayerInside = false;
+
         [SerializeField] private Transform target;
 
 
@@ -65,12 +67,12 @@ namespace CSE5912.PolyGamers
         }
         private void Update()
         {
+            if (isPlayerInside && InputManager.Instance.InputSchemes.PlayerActions.Teleport.triggered)
+            {
+                StartCoroutine(TeleportPlayer(target.position));
+                TipsControl.Instance.PopOff();
+            }
 
-            //if (transform.parent.parent.name == "BossFight_EvilGod" && Input.GetKeyDown(KeyCode.O))
-            //{
-            //    StartCoroutine(TeleportPlayer(target.position));
-            //    TipsControl.Instance.PopOff();
-            //}
         }
         private void OnTriggerStay(Collider other)
         {
@@ -79,11 +81,7 @@ namespace CSE5912.PolyGamers
 
             TipsControl.Instance.PopUp("Z", "Teleport");
 
-            if (InputManager.Instance.InputSchemes.PlayerActions.Teleport.triggered)
-            {
-                StartCoroutine(TeleportPlayer(target.position));
-                TipsControl.Instance.PopOff();
-            }
+            isPlayerInside = true;
         }
 
         private void OnTriggerExit(Collider other)
@@ -92,6 +90,7 @@ namespace CSE5912.PolyGamers
                 return;
 
             TipsControl.Instance.PopOff();
+            isPlayerInside = false;
         }
 
         private IEnumerator TeleportPlayer(Vector3 to)
