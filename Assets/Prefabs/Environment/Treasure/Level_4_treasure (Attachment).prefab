@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 1336615409708260}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.2, z: 1.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4129301600519780}
@@ -184,7 +184,7 @@ MonoBehaviour:
   dropWeaponNumber: 1
   dropWeaponTypes: 
   dropWeaponRarities: 
-  dropAttachmentChance: 0
+  dropAttachmentChance: 1
   dropAttachmentNumber: 1
   dropAttachmentTypes: 000000000100000002000000
   dropAttachmentRarities: 04000000
