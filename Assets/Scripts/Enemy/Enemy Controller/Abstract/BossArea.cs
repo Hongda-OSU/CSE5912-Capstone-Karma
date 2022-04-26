@@ -8,6 +8,8 @@ namespace CSE5912.PolyGamers
 {
     public class BossArea : MonoBehaviour
     {
+        [SerializeField] private bool isPlayerInside = false;
+
         [SerializeField] private bool allowReturn = true;
 
         [SerializeField] private BossEnemy enemy;
@@ -31,7 +33,6 @@ namespace CSE5912.PolyGamers
 
         private IEnumerator TeleportBack()
         {
-
             isEnded = true;
 
             yield return StartCoroutine(teleporter.TeleportBack());
@@ -49,6 +50,23 @@ namespace CSE5912.PolyGamers
             StartCoroutine(TriggerBossFight());
         }
 
+        private void Update()
+        {
+
+            if (isPlayerInside && isBossDefeated && InputManager.Instance.InputSchemes.PlayerActions.Teleport.WasPressedThisFrame())
+            {
+                StartCoroutine(TeleportBack());
+                TipsControl.Instance.PopOff();
+                DataManager.Instance.Save();
+            }
+            else if (!isPlayerInside)
+            {
+                isTriggered = false;
+                isEnded = false;
+                enemy.gameObject.GetComponentInChildren<BossInformation>().Display(false);
+            }
+        }
+
         private void OnTriggerStay(Collider other)
         {
             if (other.transform.tag != "Player" || isEnded || enemy.IsAlive)
@@ -64,12 +82,7 @@ namespace CSE5912.PolyGamers
 
             TipsControl.Instance.PopUp("Z", "Teleport");
 
-            if (isBossDefeated && InputManager.Instance.InputSchemes.PlayerActions.Teleport.WasPressedThisFrame())
-            {
-                StartCoroutine(TeleportBack());
-                TipsControl.Instance.PopOff();
-                DataManager.Instance.Save();
-            }
+            isPlayerInside = true;
         }
 
         public void SetBossDefeated(bool isDefeated)
@@ -87,11 +100,8 @@ namespace CSE5912.PolyGamers
                 return;
 
             TipsControl.Instance.PopOff();
+            isPlayerInside = false;
 
-            isTriggered = false;
-            isEnded = false;
-            //IngameAudioControl.Instance.Play(bossMusic);
-            enemy.gameObject.GetComponentInChildren<BossInformation>().Display(false);
         }
 
         private IEnumerator TriggerBossFight()
@@ -120,7 +130,5 @@ namespace CSE5912.PolyGamers
         {
             return isBossDefeated;
         }
-
-
     }
 }

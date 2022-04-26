@@ -124,6 +124,8 @@ namespace CSE5912.PolyGamers
             if (damage.ResolvedValue <= 0)
                 return;
 
+            var enemy = damage.Source as Enemy;
+            Debug.Log("Take damage from " + enemy.EnemyName + ": " + damage.Element + " " + damage.ResolvedValue);
             shield.TakeDamage(damage);
 
             Health -= shield.Overflow;
@@ -139,7 +141,10 @@ namespace CSE5912.PolyGamers
             takeDamageAudio.Play();
 
             if (health <= 0)
+            {
                 Die();
+                Debug.Log("Killed by " + enemy.EnemyName);
+            }
         }
 
         public void Die()
