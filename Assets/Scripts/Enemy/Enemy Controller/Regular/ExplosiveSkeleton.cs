@@ -102,6 +102,7 @@ namespace CSE5912.PolyGamers
 
             Destroy(vfx, 10f);
             exploded = true;
+            screamPlayed = false;
         }
 
         private void OnEnable()
