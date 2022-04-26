@@ -12,6 +12,8 @@ namespace CSE5912.PolyGamers
         [SerializeField] private int nextLevelIndex;
         [SerializeField] private Vector3 nextLevelPosition;
 
+        [SerializeField] private bool isPlayerInsde = false;
+
         [SerializeField] private BossEnemy[] bossesToActivate;
 
         [SerializeField] private bool isActivated = false;
@@ -37,6 +39,8 @@ namespace CSE5912.PolyGamers
             indicator.SetActive(isActivated);
         }
 
+        
+
         private void OnTriggerStay(Collider other)
         {
             if (other.tag != "Player" || !isActivated || isUsed)
@@ -44,20 +48,7 @@ namespace CSE5912.PolyGamers
 
             TipsControl.Instance.PopUp("Z", "Move to Next Level");
 
-            if (InputManager.Instance.InputSchemes.PlayerActions.Teleport.triggered)
-            {
-                // -1: game is over
-                if (nextLevelIndex == -1)
-                {
-                    StartCoroutine(PlayGameEnding());
-                }
-                else
-                {
-                    StartCoroutine(MoveToNext());
-                }
-
-                TipsControl.Instance.PopOff();
-            }
+            isPlayerInsde = true;
         }
 
 
@@ -67,6 +58,7 @@ namespace CSE5912.PolyGamers
                 return;
 
             TipsControl.Instance.PopOff();
+            isPlayerInsde = false;
         }
 
         private IEnumerator MoveToNext()
@@ -114,6 +106,20 @@ namespace CSE5912.PolyGamers
                 Activate(trigger);
             }
 
+            if (isPlayerInsde && isActivated && InputManager.Instance.InputSchemes.PlayerActions.Teleport.WasPerformedThisFrame())
+            {
+                // -1: game is over
+                if (nextLevelIndex == -1)
+                {
+                    StartCoroutine(PlayGameEnding());
+                }
+                else
+                {
+                    StartCoroutine(MoveToNext());
+                }
+
+                TipsControl.Instance.PopOff();
+            }
         }
         private IEnumerator PlayGameEnding()
         {

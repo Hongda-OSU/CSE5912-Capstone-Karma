@@ -58,6 +58,7 @@ namespace CSE5912.PolyGamers
 
             GameObject deathVfx = Instantiate(deathVfxPrefab);
             deathVfx.transform.position = currWeapon.transform.position;
+            Destroy(deathVfx, 10f);
 
             GameStateController.Instance.SetGameState(GameStateController.GameState.GameOver);
 
@@ -74,7 +75,11 @@ namespace CSE5912.PolyGamers
             // respawn at last activated respawn point
             player.layer = LayerMask.NameToLayer("Player");
 
+            FPSControllerCC.Instance.AllowMoving(false);
             player.transform.position = currentRespawnPoint.transform.position;
+            FPSControllerCC.Instance.AllowMoving(true);
+
+            yield return new WaitForSeconds(Time.deltaTime);
 
             BgmControl.Instance.PlayCurrentBgm();
             GameStateController.Instance.SetGameState(GameStateController.GameState.InGame);
