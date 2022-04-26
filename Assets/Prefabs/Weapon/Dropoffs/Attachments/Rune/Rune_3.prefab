@@ -116,10 +116,10 @@ MonoBehaviour:
   CurrentItemType: 1
   outline: {fileID: 1065363660751506039}
   indicator: {fileID: 3987064975149717231}
-  opacity: 0.3
   iconImage: {fileID: 21300000, guid: 0d6fe719ca1a6304b86fd5a8d517fa48, type: 3}
   type: 3
   set: 0
+  runeName: Golem's Core
   runeIndex: 3
   citation: "Once known as the unbreakable shield of \nthe Felixia king, the mighty
     guardian knight's\n fame spread from the capital of the dynasty \nto the edge
