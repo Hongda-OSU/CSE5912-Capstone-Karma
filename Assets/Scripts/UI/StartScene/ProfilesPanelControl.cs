@@ -51,7 +51,7 @@ namespace CSE5912.PolyGamers
                     clear.style.display = DisplayStyle.Flex;
 
                     playerData.Q<Label>("Level").text = "Lv. " + saveData.playerStatsData.level.ToString();
-                    playerData.Q<Label>("Exp").text = saveData.playerStatsData.experience.ToString() + " / " + saveData.playerStatsData.experienceToUpgrade.ToString();
+                    playerData.Q<Label>("Exp").text = Mathf.Round(saveData.playerStatsData.experience).ToString() + " / " + Mathf.Round(saveData.playerStatsData.experienceToUpgrade).ToString();
 
                     gameData.Q<Label>("Map").text = saveData.mapName;
 

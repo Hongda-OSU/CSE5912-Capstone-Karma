@@ -77,6 +77,7 @@ namespace CSE5912.PolyGamers
 
             FPSControllerCC.Instance.AllowMoving(false);
             player.transform.position = currentRespawnPoint.transform.position;
+            PlayerStats.Instance.IsInvincible = true;
             FPSControllerCC.Instance.AllowMoving(true);
 
             yield return new WaitForSeconds(Time.deltaTime);
@@ -95,6 +96,8 @@ namespace CSE5912.PolyGamers
             EnemyManager.Instance.ResetEnemiesInScene();
 
             yield return new WaitForSeconds(Time.deltaTime);
+
+            PlayerStats.Instance.IsInvincible = false;
 
             CreateSoulPoint(deathPosition);
         }

@@ -8,7 +8,7 @@ namespace CSE5912.PolyGamers
 {
     public class BossArea : MonoBehaviour
     {
-        [SerializeField] private bool isPlayerInside = false;
+        public bool isPlayerInside = false;
 
         [SerializeField] private bool allowReturn = true;
 
@@ -47,6 +47,7 @@ namespace CSE5912.PolyGamers
                 return;
 
             isTriggered = true;
+            isPlayerInside = true;
             StartCoroutine(TriggerBossFight());
         }
 
@@ -77,12 +78,13 @@ namespace CSE5912.PolyGamers
                 SetBossDefeated(true);
             }
 
+            isPlayerInside = true;
+
             if (!allowReturn)
                 return;
 
             TipsControl.Instance.PopUp("Z", "Teleport");
 
-            isPlayerInside = true;
         }
 
         public void SetBossDefeated(bool isDefeated)
@@ -106,6 +108,7 @@ namespace CSE5912.PolyGamers
 
         private IEnumerator TriggerBossFight()
         {
+            Debug.Log("Boss Fight Triggered. " + enemy.EnemyName);
             BgmControl.Instance.SmoothStopMusic();
 
             yield return new WaitForSeconds(triggerDelay);

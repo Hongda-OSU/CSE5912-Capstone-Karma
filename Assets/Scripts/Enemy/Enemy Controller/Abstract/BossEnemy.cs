@@ -74,6 +74,7 @@ namespace CSE5912.PolyGamers
             animator.Play("Inactive");
             
             isBossFightTriggered = false;
+            bossArea.isPlayerInside = false;
         }
 
 
