@@ -904,7 +904,7 @@ MonoBehaviour:
   dropAttachmentChance: 1
   dropAttachmentNumber: 1
   dropAttachmentTypes: 000000000100000002000000
-  dropAttachmentRarities: 03000000
+  dropAttachmentRarities: 0300000004000000
   rotateSpeed: 90
   viewRadius: 15
   viewAngle: 135

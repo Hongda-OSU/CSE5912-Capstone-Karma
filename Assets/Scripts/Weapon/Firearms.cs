@@ -238,7 +238,14 @@ namespace CSE5912.PolyGamers
 
         public void Attack()
         {
-            Shoot();
+            if (CurrentAmmo == 0 && !isReloading)
+            {
+                ReloadAmmo();
+            }
+            else
+            {
+                Shoot();
+            }
         }
 
         protected bool IsAllowShooting()
