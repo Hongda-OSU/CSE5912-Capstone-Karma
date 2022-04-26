@@ -63,7 +63,7 @@ namespace CSE5912.PolyGamers
 
             if (isReady)
             {
-                TipsControl.Instance.PopUp("X", "Activate");
+                TipsControl.Instance.PopUp("X", "Activate Respawn Point");
             }
             else
             {

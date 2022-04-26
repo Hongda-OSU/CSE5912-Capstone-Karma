@@ -223,7 +223,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0.5648125, b: 0.25098038, a: 1}
+      maxColor: {r: 0.25098038, g: 1, b: 0.95665145, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -5105,7 +5105,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 0, g: 1, b: 0.9293189, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -9956,7 +9956,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0.7885214, b: 0.29622638, a: 1}
+      maxColor: {r: 0.2980392, g: 1, b: 0.8874556, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 0.51724136, b: 0, a: 1}
@@ -14602,8 +14602,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activateAudio: {fileID: 9006994909369775017}
   activateVfxPrefab: {fileID: 8507548600404955057, guid: 8b1a111ab1cc74040830307e0a55ade9, type: 3}
+  isDefualtRespawnPoint: 0
   timeBetweenActivate: 5
   isReady: 1
+  isPlayerInside: 0
 --- !u!82 &9006994909369775017
 AudioSource:
   m_ObjectHideFlags: 0
