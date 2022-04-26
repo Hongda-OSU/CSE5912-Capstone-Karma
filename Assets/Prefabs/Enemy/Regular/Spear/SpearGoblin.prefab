@@ -1156,8 +1156,8 @@ MonoBehaviour:
   enemyName: Spear Goblin
   level: 1
   experience: 400
-  health: 60
-  maxHealth: 60
+  health: 100
+  maxHealth: 100
   attackDamage: 30
   attackRange: 4
   agentSpeed: 3

@@ -1950,6 +1950,7 @@ MonoBehaviour:
   maxRetreatTime: 3
   isBossFightTriggered: 0
   bossDeathVfxPrefab: {fileID: 988757988809306081, guid: a843d7fee6c736d4fb7f8fada989fbee, type: 3}
+  dropRuneIndex: 00000000
   bossArea: {fileID: 0}
   dodgeChance: 0.5
 --- !u!1 &1905241696832546

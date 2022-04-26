@@ -44,17 +44,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea9e3f6ae10db0542a5ffbac8337c416, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cooldown: 0
+  timeSincePerformed: 0
+  isReady: 0
   skillName: Ignite
   requiredSkill: {fileID: 0}
+  requiredSkillLevel: 0
   isLearned: 0
   level: 0
   maxLevel: 5
   learnCost: 1
   levelupCost: 1
-  cooldown: 0
+  icon: {fileID: 0}
   type: 0
+  description: 
   vfxPrefab: {fileID: 169654, guid: bdad641456c94554c99692658e1cd28f, type: 3}
   baseDamage: 50
-  damagePerLevel: 20
+  damagePerLevel: 40
   baseRadius: 1
   radiusPerLevel: 0.5
+  sfx: {fileID: 0}

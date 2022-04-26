@@ -1386,8 +1386,8 @@ MonoBehaviour:
   enemyName: Hammer Skeleton
   level: 1
   experience: 20000
-  health: 400
-  maxHealth: 400
+  health: 1600
+  maxHealth: 1600
   attackDamage: 120
   attackRange: 5
   agentSpeed: 4

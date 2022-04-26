@@ -44,21 +44,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0089673027dff94e94ad32df3b5b5de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cooldown: 0
+  timeSincePerformed: 0
+  isReady: 0
   skillName: Lightning Chain
   requiredSkill: {fileID: 0}
+  requiredSkillLevel: 0
   isLearned: 0
   level: 0
   maxLevel: 5
   learnCost: 1
   levelupCost: 1
-  cooldown: 0
+  icon: {fileID: 0}
   type: 0
+  description: 
   vfxPrefab: {fileID: 3808331006093793215, guid: 7dc820c199c816443b6a171c5b3f0cd9, type: 3}
   displayTime: 0.3
   effectDistance: 10
   baseChance: 0.3
   chancePerLevel: 0.1
-  baseDamage: 10
-  damagePerLevel: 10
+  baseDamage: 50
+  damagePerLevel: 30
   baseLightningNumber: 1
   lightningNumberPerLevel: 1
+  sfx: {fileID: 0}

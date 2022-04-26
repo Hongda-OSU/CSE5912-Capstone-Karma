@@ -716,8 +716,8 @@ MonoBehaviour:
   enemyName: Skeleton Warrior
   level: 1
   experience: 1000
-  health: 150
-  maxHealth: 150
+  health: 400
+  maxHealth: 400
   attackDamage: 70
   attackRange: 5
   agentSpeed: 3

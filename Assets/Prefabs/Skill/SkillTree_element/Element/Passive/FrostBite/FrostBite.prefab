@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7336312129208206919}
   - component: {fileID: 6269788425803089672}
   m_Layer: 0
-  m_Name: Frostbite
+  m_Name: FrostBite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,17 +44,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ee4996143a13e4787d2d163dc4cbda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cooldown: 0
+  timeSincePerformed: 0
+  isReady: 0
   skillName: Frostbite
   requiredSkill: {fileID: 0}
+  requiredSkillLevel: 0
   isLearned: 0
   level: 0
   maxLevel: 5
   learnCost: 1
   levelupCost: 1
-  cooldown: 0
+  icon: {fileID: 0}
   type: 0
+  description: 
   vfxPrefab: {fileID: 197368, guid: b9fcbc058f8adf943bcbb1338432af73, type: 3}
   baseDamage: 20
-  damagePerLevel: 10
+  damagePerLevel: 20
   baseRadius: 3
   radiusPerLevel: 1

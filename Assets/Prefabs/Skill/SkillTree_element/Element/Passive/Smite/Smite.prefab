@@ -44,18 +44,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 576ebb3a736d80e41a133efd2717a137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cooldown: 1
+  timeSincePerformed: 0
+  isReady: 0
   skillName: Smite
   requiredSkill: {fileID: 0}
+  requiredSkillLevel: 0
   isLearned: 0
   level: 0
   maxLevel: 5
   learnCost: 1
   levelupCost: 1
-  cooldown: 1
+  icon: {fileID: 0}
   type: 0
+  description: 
   vfxPrefab: {fileID: 6590587692847928727, guid: 22cebc78d4f534d4db954fc31b0b4615, type: 3}
   baseDamage: 200
-  damagePerLevel: 50
+  damagePerLevel: 100
   baseTargetNumber: 1
   targetNumberPerLevel: 1
   baseRadius: 10

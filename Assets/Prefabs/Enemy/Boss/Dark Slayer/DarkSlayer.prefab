@@ -1690,6 +1690,7 @@ MonoBehaviour:
   maxRetreatTime: 3
   isBossFightTriggered: 0
   bossDeathVfxPrefab: {fileID: 988757988809306081, guid: a843d7fee6c736d4fb7f8fada989fbee, type: 3}
+  dropRuneIndex: 0400000002000000
   bossArea: {fileID: 0}
   Direction: {x: 0, y: 0, z: 0}
   DarkFlame: {fileID: 149708, guid: 0ee606be96a90d64194e9f3816c6e466, type: 3}

@@ -2992,8 +2992,8 @@ MonoBehaviour:
   enemyName: Shield Goblin
   level: 1
   experience: 500
-  health: 80
-  maxHealth: 80
+  health: 100
+  maxHealth: 100
   attackDamage: 40
   attackRange: 3
   agentSpeed: 3

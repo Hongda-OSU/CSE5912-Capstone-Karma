@@ -44,18 +44,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2f791e6dad7cbf4d9436c3154a5ab5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cooldown: 0
+  timeSincePerformed: 0
+  isReady: 0
   skillName: Detonation
   requiredSkill: {fileID: 0}
+  requiredSkillLevel: 0
   isLearned: 0
   level: 0
   maxLevel: 5
   learnCost: 1
   levelupCost: 1
-  cooldown: 0
+  icon: {fileID: 0}
   type: 0
+  description: 
   vfxPrefab: {fileID: 159846, guid: ad36e9febd5565c48b1d755011a8998e, type: 3}
   triggerTime: 5
-  baseDamageRadius: 3
-  radiusPerLevel: 0.5
   baseDamage: 200
-  damagePerLevel: 50
+  damagePerLevel: 150

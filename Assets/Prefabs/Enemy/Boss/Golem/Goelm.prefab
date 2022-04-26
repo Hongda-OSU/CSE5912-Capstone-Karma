@@ -2380,7 +2380,7 @@ MonoBehaviour:
   maxRetreatTime: 3
   isBossFightTriggered: 0
   bossDeathVfxPrefab: {fileID: 988757988809306081, guid: a843d7fee6c736d4fb7f8fada989fbee, type: 3}
-  dropRuneIndex: 0000000001000000
+  dropRuneIndex: 03000000
   bossArea: {fileID: 0}
   prefab_1: {fileID: 7382314340930660443, guid: 5d6a188bb26db0f458d09b2c79181191, type: 3}
   pivot_1: {fileID: 8745886978540236905}

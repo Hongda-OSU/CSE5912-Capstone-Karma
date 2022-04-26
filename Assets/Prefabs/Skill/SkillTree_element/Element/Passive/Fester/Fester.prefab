@@ -44,17 +44,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98be9ff3ea8e68540b108145a3fb7e06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cooldown: 0
+  timeSincePerformed: 0
+  isReady: 0
   skillName: Fester
   requiredSkill: {fileID: 0}
+  requiredSkillLevel: 0
   isLearned: 0
   level: 0
   maxLevel: 5
   learnCost: 1
   levelupCost: 1
-  cooldown: 0
+  icon: {fileID: 0}
   type: 0
+  description: 
   vfxPrefab: {fileID: 1407402442211574, guid: 1d4dd7bf796cb374fb1c5b2c1b779fac, type: 3}
   triggerTime: 20
   timePerLevel: 1
   baseDamage: 0.1
-  damagePerLevel: 0.01
+  damagePerLevel: 0.03
