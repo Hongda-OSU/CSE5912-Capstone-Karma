@@ -118,6 +118,8 @@ namespace CSE5912.PolyGamers
         {
             clickSound.Play();
 
+            DataManager.Instance.SaveToLastRespawnPoint();
+
             yield return StartCoroutine(FadeOut(root));
 
             DontDestroy.Instance.Destroy();

@@ -31,7 +31,7 @@ namespace CSE5912.PolyGamers
 
         [DataMember] public PlayerSkillData playerSkillData;
 
-        public GameData(List<Firearms> weaponList, List<Attachment> attachmentList)
+        public GameData(List<Firearms> weaponList, List<Attachment> attachmentList, Vector3 position)
         {
             sceneIndex = SceneManager.GetActiveScene().buildIndex;
 
@@ -43,11 +43,9 @@ namespace CSE5912.PolyGamers
 
             bossToAlive = GameStateController.Instance.bossToAlive;
 
-            var player = PlayerManager.Instance.Player;
-
-            playerPosition[0] = player.transform.position.x;
-            playerPosition[1] = player.transform.position.y;
-            playerPosition[2] = player.transform.position.z;
+            playerPosition[0] = position.x;
+            playerPosition[1] = position.y;
+            playerPosition[2] = position.z;
 
             for (int i = 0; i < weaponList.Count; i++)
             {

@@ -102,6 +102,7 @@ namespace CSE5912.PolyGamers
             var player = PlayerManager.Instance.Player;
 
             var position = new Vector3(data.playerPosition[0], data.playerPosition[1], data.playerPosition[2]);
+            Debug.Log(position);
             FPSControllerCC.Instance.CharacterController.enabled = false;
             player.transform.position = position;
             FPSControllerCC.Instance.CharacterController.enabled = true;
@@ -283,7 +284,23 @@ namespace CSE5912.PolyGamers
         {
             var inventory = PlayerInventory.Instance;
 
-            GameData gameData = new GameData(inventory.GetPlayerWeaponList(), inventory.AttachmentList);
+            GameData gameData = new GameData(inventory.GetPlayerWeaponList(), inventory.AttachmentList, PlayerManager.Instance.Player.transform.position);
+
+            BinaryFormatter formatter = new BinaryFormatter();
+
+            string path = Application.persistentDataPath + "/" + fileName + "_" + currentDataIndex + ".savegame";
+            FileStream stream = new FileStream(path, FileMode.Create);
+            formatter.Serialize(stream, gameData);
+
+            stream.Close();
+
+            Debug.Log("Data saved. Path: " + path);
+        }
+        public void SaveToLastRespawnPoint()
+        {
+            var inventory = PlayerInventory.Instance;
+
+            GameData gameData = new GameData(inventory.GetPlayerWeaponList(), inventory.AttachmentList, RespawnManager.Instance.CurrentRespawnPoint.gameObject.transform.position);
 
             BinaryFormatter formatter = new BinaryFormatter();
 
