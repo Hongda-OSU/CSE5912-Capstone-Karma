@@ -75,6 +75,8 @@ namespace CSE5912.PolyGamers
 
             GameStateController.Instance.SetGameState(GameStateController.GameState.Loading);
 
+            DataManager.Instance.Save();
+
             yield return new WaitForSeconds(3f);
 
             SceneLoader.Instance.SetPositionOnLoad(nextLevelPosition);

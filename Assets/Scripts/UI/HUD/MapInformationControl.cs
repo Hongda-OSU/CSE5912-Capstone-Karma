@@ -54,8 +54,7 @@ namespace CSE5912.PolyGamers
                 isDisplayed = false;
                 StartCoroutine(DisplayMapName());
                 previousSceneIndex = currentSceneIndex;
-                DataManager.Instance.Save();
-
+                //DataManager.Instance.Save();
             }
         }
 

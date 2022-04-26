@@ -90,6 +90,7 @@ namespace CSE5912.PolyGamers
         {
             base.ResetEnemy();
 
+            status = Status.Idle;
             aggro = 0f;
         }
 
