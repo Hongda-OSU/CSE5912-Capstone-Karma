@@ -108,12 +108,12 @@ NavMeshSettings:
     agentTypeID: 0
     agentRadius: 0.5
     agentHeight: 2
-    agentSlope: 45
-    agentClimb: 0.5
-    ledgeDropHeight: 0
-    maxJumpAcrossDistance: 0
+    agentSlope: 60
+    agentClimb: 2
+    ledgeDropHeight: 1
+    maxJumpAcrossDistance: 1
     minRegionArea: 2
-    manualCellSize: 0
+    manualCellSize: 1
     cellSize: 0.16666667
     manualTileSize: 0
     tileSize: 256
@@ -1973,6 +1973,10 @@ PrefabInstance:
     - target: {fileID: 1070019982353598, guid: 7b84683c77802a74e94f461386c4bb60, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1070019982353598, guid: 7b84683c77802a74e94f461386c4bb60, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1070019982353598, guid: 7b84683c77802a74e94f461386c4bb60, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -9223,6 +9227,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4918150346303140, guid: 2b199db8d1af8e8448a03dbc6e582e95, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4918150346303140, guid: 2b199db8d1af8e8448a03dbc6e582e95, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4918150346303140, guid: 2b199db8d1af8e8448a03dbc6e582e95, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4918150346303140, guid: 2b199db8d1af8e8448a03dbc6e582e95, type: 3}
       propertyPath: m_LocalPosition.x
       value: -58.63474
       objectReference: {fileID: 0}
@@ -15212,6 +15228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a805f63ca8c742a44b7e77d9ded86b22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayerInside: 0
   allowReturn: 0
   enemy: {fileID: 991743867}
   bossMusic: {fileID: 0}

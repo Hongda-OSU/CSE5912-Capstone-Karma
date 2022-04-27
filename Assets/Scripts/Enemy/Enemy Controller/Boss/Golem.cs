@@ -123,11 +123,11 @@ namespace CSE5912.PolyGamers
                             FaceTarget(directionToPlayer);
                             Attack(3);
                         }
-                        else if (distanceToPlayer <= 70f && Vector3.Distance(player.position, pivot_1.position) > 30f)
-                        {
-                            FaceTarget(directionToPlayer);
-                            Attack(4);
-                        }
+                        //else if (distanceToPlayer <= 70f && Vector3.Distance(player.position, pivot_1.position) > 30f)
+                        //{
+                        //    FaceTarget(directionToPlayer);
+                        //    Attack(4);
+                        //}
                         else
                         {
                             isPlayingAttackAnim = false;
