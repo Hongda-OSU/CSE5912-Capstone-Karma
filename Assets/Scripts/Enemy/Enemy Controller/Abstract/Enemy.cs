@@ -214,6 +214,7 @@ namespace CSE5912.PolyGamers
         {
             Die();
         }
+
         protected virtual void Die()
         {
             PlayerStats.Instance.GetExperience(experience);

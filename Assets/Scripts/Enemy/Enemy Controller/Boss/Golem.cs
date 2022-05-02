@@ -190,6 +190,8 @@ namespace CSE5912.PolyGamers
         protected override void Die()
         {
             PlayerStats.Instance.MoveSpeedFactor = originSpeedFactor;
+            if (!agent.enabled)
+                agent.enabled = true;
             base.Die();
 
             GameStateController.Instance.bossToAlive["Golem"] = false;

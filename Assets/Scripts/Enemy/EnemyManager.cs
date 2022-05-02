@@ -62,17 +62,22 @@ namespace CSE5912.PolyGamers
 
             if (Input.GetKeyDown(KeyCode.O))
             {
-
                 foreach (GameObject enemy in regularList)
                 {
-                    enemy.GetComponent<Enemy>().Kill();
+                    if (enemy.activeInHierarchy)
+                        enemy.GetComponent<Enemy>().Kill();
                 }
             }
             if (Input.GetKeyDown(KeyCode.P))
             {
                 foreach (GameObject enemy in bossList)
                 {
-                    enemy.GetComponent<Enemy>().Kill();
+                    if (enemy.activeInHierarchy)
+                    {
+                        enemy.GetComponent<BossEnemy>().bossArea.isBossDefeated = true;
+                        enemy.GetComponent<Enemy>().Kill();
+                        BgmControl.Instance.MainAudio.Play();
+                    }
                 }
             }
         }

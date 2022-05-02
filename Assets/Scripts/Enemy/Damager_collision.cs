@@ -55,6 +55,7 @@ namespace CSE5912.PolyGamers
             Damage damage = new Damage(baseDamage, type, enemy, target);
             
             target.TakeDamage(damage);
+
             if (hitBack)
                 FPSControllerCC.Instance.AddImpact((target.transform.position - transform.position).normalized, damage.ResolvedValue);
 

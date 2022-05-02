@@ -393,8 +393,8 @@ MonoBehaviour:
   comeoutTime: 1.5
   isGameEnding: 0
   audioSource: {fileID: 2083631457}
-  menuBgm: {fileID: 8300000, guid: 094972fe3c8cc4ef68b251616dfe1860, type: 3}
-  creditsBgm: {fileID: 8300000, guid: 2740fcc8cb2534f18b4f9261d1b7b16c, type: 3}
+  menuBgm: {fileID: 8300000, guid: a2a9c4f94efea024585e69c712f17c61, type: 3}
+  creditsBgm: {fileID: 8300000, guid: 46a37bee92aaa1f4fb9f3804c94b9416, type: 3}
   clickSound: {fileID: 725981375}
 --- !u!4 &1932671152127862322
 Transform:
@@ -419,6 +419,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 4078243331889891850}
     m_Modifications:
     - target: {fileID: 3010026486981923963, guid: 81c88596e5fe92d4fa0114d5bd2b60f1, type: 3}
+      propertyPath: fadingTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3010026486981923963, guid: 81c88596e5fe92d4fa0114d5bd2b60f1, type: 3}
       propertyPath: uiDocument
       value: 
       objectReference: {fileID: 697325963008044403}
@@ -426,6 +430,65 @@ PrefabInstance:
       propertyPath: gameEndingClaim
       value: "Thanks for playing.\nYour data has been saved. \nYou can start over
         with your current items, skills and level and challenge stronger enemies."
+      objectReference: {fileID: 0}
+    - target: {fileID: 3010026486981923963, guid: 81c88596e5fe92d4fa0114d5bd2b60f1, type: 3}
+      propertyPath: credits.Array.data[0]
+      value: '<size=30>By</size>
+
+        Poly Gamers
+
+
+        The Ohio State University
+
+        Spring
+        2022, CSE5912'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3010026486981923963, guid: 81c88596e5fe92d4fa0114d5bd2b60f1, type: 3}
+      propertyPath: credits.Array.data[1]
+      value: "Hongda Lin    Zijie Lian    Baihua Yang\n<font=\"SourceHanSerif-Regular
+        SDF\">\u6797\u9E3F\u8FBE\t\u7EC3\u5B50\u6770\t\u6768\u4F70\u6866\n</font>"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3010026486981923963, guid: 81c88596e5fe92d4fa0114d5bd2b60f1, type: 3}
+      propertyPath: credits.Array.data[2]
+      value: '<size=30>Music</size>
+
+        Olivia Belli - From Your Garden
+
+        Rose
+        Riebl -  Near Dark
+
+        Jacob McNatt - Kingsblade
+
+        Context Sensitive
+        - Destiny
+
+        Travis Savoie -  Introduction
+
+        Travis Savoie -
+        Dancing With The Wolves'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3010026486981923963, guid: 81c88596e5fe92d4fa0114d5bd2b60f1, type: 3}
+      propertyPath: credits.Array.data[3]
+      value: '<size=30>Arts & Effects</size>
+
+        BR Monsters Animations Set
+
+        Hovl
+        Studio
+
+        Low Poly FPS Pack
+
+        Polygon Dungeon
+
+        Polygon
+        Dungeon Realms
+
+        Polygon Fantasy Rivals
+
+        Polygon Particle
+        FX
+
+        Sci-Fi Arsenal'
       objectReference: {fileID: 0}
     - target: {fileID: 4891910940064807943, guid: 81c88596e5fe92d4fa0114d5bd2b60f1, type: 3}
       propertyPath: m_RootOrder
@@ -642,6 +705,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1498080152, guid: 26c829ee06488ee43b0bd41e41132bf1, type: 3}
+      propertyPath: bgms.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: a2a9c4f94efea024585e69c712f17c61, type: 3}
+    - target: {fileID: 1498080152, guid: 26c829ee06488ee43b0bd41e41132bf1, type: 3}
+      propertyPath: bgms.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: f0a9a35d33ca6e741be21d61c2a6db04, type: 3}
+    - target: {fileID: 1498080152, guid: 26c829ee06488ee43b0bd41e41132bf1, type: 3}
+      propertyPath: bgms.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: ab7c171746034d544833f9117b26216e, type: 3}
     - target: {fileID: 7213765681218330151, guid: 26c829ee06488ee43b0bd41e41132bf1, type: 3}
       propertyPath: m_Name
       value: Audio
@@ -690,5 +765,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7213765682349246432, guid: 26c829ee06488ee43b0bd41e41132bf1, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: f0a9a35d33ca6e741be21d61c2a6db04, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26c829ee06488ee43b0bd41e41132bf1, type: 3}

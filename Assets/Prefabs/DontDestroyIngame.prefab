@@ -427,6 +427,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5025218709125218332}
     m_Modifications:
+    - target: {fileID: 1498080152, guid: 26c829ee06488ee43b0bd41e41132bf1, type: 3}
+      propertyPath: bgms.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: a2a9c4f94efea024585e69c712f17c61, type: 3}
+    - target: {fileID: 1498080152, guid: 26c829ee06488ee43b0bd41e41132bf1, type: 3}
+      propertyPath: bgms.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: f0a9a35d33ca6e741be21d61c2a6db04, type: 3}
+    - target: {fileID: 1498080152, guid: 26c829ee06488ee43b0bd41e41132bf1, type: 3}
+      propertyPath: bgms.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: ab7c171746034d544833f9117b26216e, type: 3}
     - target: {fileID: 7213765681218330151, guid: 26c829ee06488ee43b0bd41e41132bf1, type: 3}
       propertyPath: m_Name
       value: Audio
@@ -475,6 +487,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7213765682349246432, guid: 26c829ee06488ee43b0bd41e41132bf1, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: f0a9a35d33ca6e741be21d61c2a6db04, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26c829ee06488ee43b0bd41e41132bf1, type: 3}
 --- !u!82 &640629001887348438 stripped

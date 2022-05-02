@@ -56,6 +56,9 @@ namespace CSE5912.PolyGamers
             {
                 isDisplaying = false;
                 StartCoroutine(FadeTo(panel, previousPanel));
+                StartSceneMenu.Instance.audioSource.clip = StartSceneMenu.Instance.menuBgm;
+                StartSceneMenu.Instance.audioSource.Play();
+                StartSceneMenu.Instance.audioSource.loop = true;
                 StopCoroutine(display);
             }
         }

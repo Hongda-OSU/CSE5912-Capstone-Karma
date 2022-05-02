@@ -9,6 +9,10 @@ namespace CSE5912.PolyGamers
         private float force;
         private IDamageable source;
 
+        void Update()
+        {
+            StartCoroutine(DestorySelf());
+        }
 
         private void OnTriggerStay(Collider other)
         {
@@ -29,6 +33,13 @@ namespace CSE5912.PolyGamers
             damageAmount = damage;
             force = impact;
             source = sourceFrom;
+        }
+
+        private IEnumerator DestorySelf()
+        {
+            yield return new WaitForSeconds(5f);
+            if (this.gameObject != null)
+                Destroy(this.gameObject, 1f);
         }
 
     }

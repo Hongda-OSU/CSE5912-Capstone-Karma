@@ -124,6 +124,13 @@ namespace CSE5912.PolyGamers
         public override void ResetEnemy()
         {
             base.ResetEnemy();
+            if (lightningStorm.MissileList.Count > 0)
+            {
+                foreach (var lighting in lightningStorm.MissileList)
+                {
+                    Destroy(lighting);
+                }
+            }
             isBossFightTriggered = false;
             isPerforming = false;
 
