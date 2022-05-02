@@ -439,6 +439,10 @@ PrefabInstance:
       propertyPath: bgms.Array.data[2]
       value: 
       objectReference: {fileID: 8300000, guid: ab7c171746034d544833f9117b26216e, type: 3}
+    - target: {fileID: 1498080152, guid: 26c829ee06488ee43b0bd41e41132bf1, type: 3}
+      propertyPath: bgms.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 938736c326cf24b4091825f5c556b790, type: 3}
     - target: {fileID: 7213765681218330151, guid: 26c829ee06488ee43b0bd41e41132bf1, type: 3}
       propertyPath: m_Name
       value: Audio

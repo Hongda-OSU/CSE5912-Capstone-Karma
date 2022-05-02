@@ -9286,6 +9286,14 @@ PrefabInstance:
       propertyPath: enemyName
       value: 'Rufus: Failed Husk'
       objectReference: {fileID: 0}
+    - target: {fileID: 2389356472505406521, guid: 2b199db8d1af8e8448a03dbc6e582e95, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5a655b4168902f24f93733d501592bcb, type: 3}
+    - target: {fileID: 4811050940386592183, guid: 2b199db8d1af8e8448a03dbc6e582e95, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6d45e7c4bfbf5324585cbe05b6fd64dd, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b199db8d1af8e8448a03dbc6e582e95, type: 3}
 --- !u!114 &991743867 stripped

@@ -428,8 +428,8 @@ PrefabInstance:
       objectReference: {fileID: 697325963008044403}
     - target: {fileID: 3010026486981923963, guid: 81c88596e5fe92d4fa0114d5bd2b60f1, type: 3}
       propertyPath: gameEndingClaim
-      value: "Thanks for playing.\nYour data has been saved. \nYou can start over
-        with your current items, skills and level and challenge stronger enemies."
+      value: "Thanks for playing.\nYour data has been saved. \n\nYou can start over
+        with your \ncurrent items, skills and level \nand challenge stronger enemies."
       objectReference: {fileID: 0}
     - target: {fileID: 3010026486981923963, guid: 81c88596e5fe92d4fa0114d5bd2b60f1, type: 3}
       propertyPath: credits.Array.data[0]
@@ -459,13 +459,15 @@ PrefabInstance:
 
         Jacob McNatt - Kingsblade
 
-        Context Sensitive
-        - Destiny
+        Travis Savoie
+        -  RPG Toolkit
 
-        Travis Savoie -  Introduction
+        Context Sensitive - Destiny
 
-        Travis Savoie -
-        Dancing With The Wolves'
+        Travis Savoie
+        -  Into The Mists
+
+        Alex Roe - Elden Lords'
       objectReference: {fileID: 0}
     - target: {fileID: 3010026486981923963, guid: 81c88596e5fe92d4fa0114d5bd2b60f1, type: 3}
       propertyPath: credits.Array.data[3]
@@ -717,6 +719,10 @@ PrefabInstance:
       propertyPath: bgms.Array.data[2]
       value: 
       objectReference: {fileID: 8300000, guid: ab7c171746034d544833f9117b26216e, type: 3}
+    - target: {fileID: 1498080152, guid: 26c829ee06488ee43b0bd41e41132bf1, type: 3}
+      propertyPath: bgms.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 938736c326cf24b4091825f5c556b790, type: 3}
     - target: {fileID: 7213765681218330151, guid: 26c829ee06488ee43b0bd41e41132bf1, type: 3}
       propertyPath: m_Name
       value: Audio
