@@ -1,4 +1,5 @@
 # CSE5912-Capstone
 Capstone Project for CSE 5912
 
-<iframe src="https://giphy.com/embed/AUMmaYlfhuAjpho6eQ" width="480" height="268" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/AUMmaYlfhuAjpho6eQ">via GIPHY</a></p>
+![zd1]([https://user-images.githubusercontent.com/67817916/148726958-74e2a1d2-5847-47b6-b106-0a9979d599cc.gif](https://giphy.com/embed/AUMmaYlfhuAjpho6eQ))
+
